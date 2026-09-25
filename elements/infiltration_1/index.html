@@ -481,6 +481,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -556,14 +567,14 @@ Alias: infiltration_1</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../SoilSamplingActivity/">SoilSamplingActivity</a></td>
-<td>Collection of soil samples from the environment</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../MonetSoilSamplingActivity/">MonetSoilSamplingActivity</a></td>
 <td>Collection of soil cores according to the MONet soil sampling protocol</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../SoilSamplingActivity/">SoilSamplingActivity</a></td>
+<td>Collection of soil samples from the environment</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -597,26 +608,27 @@ Alias: infiltration_1</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Value</th>
+<th>property</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Regex Pattern</td>
-<td><code>^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$</code></td>
+<td>submission_pattern</td>
+<td>^((0[0-9]</td>
 </tr>
 </tbody>
 </table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -643,6 +655,10 @@ Alias: infiltration_1</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infiltration_1</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Amount</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">takes</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">accomplish</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">first</span><span class="nv"> </span><span class="s">infiltration</span><span class="nv"> </span><span class="s">activity.</span>
 <span class="w">  </span><span class="s">If</span><span class="nv"> </span><span class="s">infiltration</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">started</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">unsuccessful</span><span class="nv"> </span><span class="s">enter</span><span class="nv"> </span><span class="se">&#39;&#39;</span><span class="s">failed</span><span class="se">&#39;&#39;</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">infiltration</span>
 <span class="w">  </span><span class="s">time</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">attempted</span><span class="nv"> </span><span class="s">enter</span><span class="nv"> </span><span class="se">&#39;&#39;</span><span class="s">did</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">collect</span><span class="se">&#39;&#39;</span><span class="s">.</span><span class="nv"> </span><span class="s">Units</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">format</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">mm:ss</span><span class="nv"> </span><span class="s">required.</span>
@@ -655,7 +671,6 @@ Alias: infiltration_1</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MonetSoilSamplingActivity</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSamplingActivity</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$</span>
 </code></pre></div>
 </details>
 

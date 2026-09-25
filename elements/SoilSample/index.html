@@ -242,6 +242,15 @@
 <nav aria-label="Identifier and Mapping Information" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#annotations">
+<span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#schema-source">
 <span class="md-ellipsis">
       
@@ -1059,6 +1068,21 @@
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>submission_version</td>
+<td>1.3.1</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -1087,6 +1111,10 @@
 <h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_version</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_version</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.3.1</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A sample of soil collected from the environment.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
@@ -1171,15 +1199,21 @@
 <span class="nt">slot_usage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">al_sat</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">al_sat</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*percent$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Aluminum</span><span class="nv"> </span><span class="s">saturation</span><span class="nv"> </span><span class="s">(esp.</span><span class="nv"> </span><span class="s">For</span><span class="nv"> </span><span class="s">tropical</span><span class="nv"> </span><span class="s">soils)</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">percent)'</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*percent$</span>
 <span class="w">  </span><span class="nt">analysis_type</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analysis_type</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">depth</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">depth</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?-\d+(\.\d+)?\s*m$</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?-\d+(\.\d+)?\s*m$</span>
 <span class="w">  </span><span class="nt">heavy_metals</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">heavy_metals</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Heavy</span><span class="nv"> </span><span class="s">metals</span><span class="nv"> </span><span class="s">present</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">concentration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span>
@@ -1193,28 +1227,40 @@
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">microbial_biomass</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microbial_biomass</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'The</span><span class="nv"> </span><span class="s">part</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">organic</span><span class="nv"> </span><span class="s">matter</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">soil</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">constitutes</span><span class="nv"> </span><span class="s">living</span>
 <span class="w">      </span><span class="s">microorganisms</span><span class="nv"> </span><span class="s">smaller</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">5-10</span><span class="nv"> </span><span class="s">micrometer.</span><span class="nv"> </span><span class="s">If</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">keep</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">would</span><span class="nv"> </span><span class="s">need</span>
 <span class="w">      </span><span class="s">to</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">correction</span><span class="nv"> </span><span class="s">factors</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">conversion</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">final</span><span class="nv"> </span><span class="s">units.</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">g/kg</span>
 <span class="w">      </span><span class="s">soil</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">ug/g</span><span class="nv"> </span><span class="s">dry</span><span class="nv"> </span><span class="s">soil)'</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$</span>
 <span class="w">  </span><span class="nt">non_microb_biomass</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">non_microb_biomass</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Amount</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">non-microbial</span><span class="nv"> </span><span class="s">biomass</span><span class="nv"> </span><span class="s">measured.</span><span class="nv"> </span><span class="s">Include</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">name</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span>
 <span class="w">      </span><span class="s">part</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">biomass</span><span class="nv"> </span><span class="s">measured,</span><span class="nv"> </span><span class="s">e.g.</span><span class="nv"> </span><span class="s">insect,</span><span class="nv"> </span><span class="s">plant,</span><span class="nv"> </span><span class="s">total.</span><span class="nv"> </span><span class="s">Provide</span><span class="nv"> </span><span class="s">value</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">unit,</span>
 <span class="w">      </span><span class="s">any</span><span class="nv"> </span><span class="s">unit</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">valid.</span><span class="nv"> </span><span class="s">(example:</span><span class="nv"> </span><span class="s">insect</span><span class="nv"> </span><span class="s">5mg;</span><span class="nv"> </span><span class="s">plant</span><span class="nv"> </span><span class="s">2ug/mL)'</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$</span>
 <span class="w">  </span><span class="nt">size_frac_low</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">size_frac_low</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*um$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Refers</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mesh/pore</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">retain</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample.</span><span class="nv"> </span><span class="s">Materials</span>
 <span class="w">      </span><span class="s">smaller</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">threshold</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">excluded</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample.</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">um)'</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*um$</span>
 <span class="w">  </span><span class="nt">size_frac_up</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">size_frac_up</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*um$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Refers</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mesh/pore</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">pre-filter/pre-sort</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample.</span>
 <span class="w">      </span><span class="s">Materials</span><span class="nv"> </span><span class="s">larger</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">threshold</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">excluded</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample.</span><span class="nv"> </span><span class="s">(Unit:</span>
 <span class="w">      </span><span class="s">um)'</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*um$</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
@@ -1238,12 +1284,13 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhase</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAOMProduct</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WEOMProduct</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AerosolArmSample</span>
@@ -1282,6 +1329,10 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SynthesizedMaterialSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstancesUsedLink</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingSubstance</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProjectParticipant</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimestampValue</span>
@@ -1299,21 +1350,31 @@
 <h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_version</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_version</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.3.1</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A sample of soil collected from the environment.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">al_sat</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">al_sat</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*percent$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Aluminum</span><span class="nv"> </span><span class="s">saturation</span><span class="nv"> </span><span class="s">(esp.</span><span class="nv"> </span><span class="s">For</span><span class="nv"> </span><span class="s">tropical</span><span class="nv"> </span><span class="s">soils)</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">percent)'</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*percent$</span>
 <span class="w">  </span><span class="nt">analysis_type</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analysis_type</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">depth</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">depth</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?-\d+(\.\d+)?\s*m$</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?-\d+(\.\d+)?\s*m$</span>
 <span class="w">  </span><span class="nt">heavy_metals</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">heavy_metals</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Heavy</span><span class="nv"> </span><span class="s">metals</span><span class="nv"> </span><span class="s">present</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">concentration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span>
@@ -1327,28 +1388,40 @@
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">microbial_biomass</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microbial_biomass</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'The</span><span class="nv"> </span><span class="s">part</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">organic</span><span class="nv"> </span><span class="s">matter</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">soil</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">constitutes</span><span class="nv"> </span><span class="s">living</span>
 <span class="w">      </span><span class="s">microorganisms</span><span class="nv"> </span><span class="s">smaller</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">5-10</span><span class="nv"> </span><span class="s">micrometer.</span><span class="nv"> </span><span class="s">If</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">keep</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">would</span><span class="nv"> </span><span class="s">need</span>
 <span class="w">      </span><span class="s">to</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">correction</span><span class="nv"> </span><span class="s">factors</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">conversion</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">final</span><span class="nv"> </span><span class="s">units.</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">g/kg</span>
 <span class="w">      </span><span class="s">soil</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">ug/g</span><span class="nv"> </span><span class="s">dry</span><span class="nv"> </span><span class="s">soil)'</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$</span>
 <span class="w">  </span><span class="nt">non_microb_biomass</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">non_microb_biomass</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Amount</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">non-microbial</span><span class="nv"> </span><span class="s">biomass</span><span class="nv"> </span><span class="s">measured.</span><span class="nv"> </span><span class="s">Include</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">name</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span>
 <span class="w">      </span><span class="s">part</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">biomass</span><span class="nv"> </span><span class="s">measured,</span><span class="nv"> </span><span class="s">e.g.</span><span class="nv"> </span><span class="s">insect,</span><span class="nv"> </span><span class="s">plant,</span><span class="nv"> </span><span class="s">total.</span><span class="nv"> </span><span class="s">Provide</span><span class="nv"> </span><span class="s">value</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">unit,</span>
 <span class="w">      </span><span class="s">any</span><span class="nv"> </span><span class="s">unit</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">valid.</span><span class="nv"> </span><span class="s">(example:</span><span class="nv"> </span><span class="s">insect</span><span class="nv"> </span><span class="s">5mg;</span><span class="nv"> </span><span class="s">plant</span><span class="nv"> </span><span class="s">2ug/mL)'</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$</span>
 <span class="w">  </span><span class="nt">size_frac_low</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">size_frac_low</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*um$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Refers</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mesh/pore</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">retain</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample.</span><span class="nv"> </span><span class="s">Materials</span>
 <span class="w">      </span><span class="s">smaller</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">threshold</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">excluded</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample.</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">um)'</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*um$</span>
 <span class="w">  </span><span class="nt">size_frac_up</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">size_frac_up</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*um$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Refers</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mesh/pore</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">pre-filter/pre-sort</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample.</span>
 <span class="w">      </span><span class="s">Materials</span><span class="nv"> </span><span class="s">larger</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">threshold</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">excluded</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample.</span><span class="nv"> </span><span class="s">(Unit:</span>
 <span class="w">      </span><span class="s">um)'</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*um$</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
@@ -1374,12 +1447,13 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhase</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAOMProduct</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WEOMProduct</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AerosolArmSample</span>
@@ -1418,6 +1492,10 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SynthesizedMaterialSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstancesUsedLink</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingSubstance</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProjectParticipant</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimestampValue</span>
@@ -1472,6 +1550,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">al_sat</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">al_sat</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*percent$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Aluminum</span><span class="nv"> </span><span class="s">saturation</span><span class="nv"> </span><span class="s">(esp.</span><span class="nv"> </span><span class="s">For</span><span class="nv"> </span><span class="s">tropical</span><span class="nv"> </span><span class="s">soils)</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">percent)'</span>
 <span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aluminum saturation</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
@@ -1482,7 +1564,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OtherUndescribedSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*percent$</span>
 <span class="w">  </span><span class="nt">al_sat_meth</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">al_sat_meth</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reference or method used in determining Al saturation</span>
@@ -1503,7 +1584,6 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analysis_type</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessing</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AerosolArmSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AerosolSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2UserSample</span>
@@ -1544,6 +1624,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">bulk_elect_conductivity</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bulk_elect_conductivity</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*mS/cm$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Electrical</span><span class="nv"> </span><span class="s">conductivity</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">measure</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">bulk</span><span class="nv"> </span><span class="s">soil</span><span class="nv"> </span><span class="s">ability</span><span class="nv"> </span><span class="s">to</span>
 <span class="w">      </span><span class="s">carry</span><span class="nv"> </span><span class="s">electric</span><span class="nv"> </span><span class="s">current</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">mostly</span><span class="nv"> </span><span class="s">dictated</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">chemistry</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">amount</span>
 <span class="w">      </span><span class="s">of</span><span class="nv"> </span><span class="s">soil</span><span class="nv"> </span><span class="s">water.</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">mS/cm)'</span>
@@ -1557,7 +1641,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OtherUndescribedSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*mS/cm$</span>
 <span class="w">  </span><span class="nt">chem_administration</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chem_administration</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of chemical compounds administered to the host or site where</span>
@@ -1588,6 +1671,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">depth</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">depth</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?-\d+(\.\d+)?\s*m$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'The</span><span class="nv"> </span><span class="s">vertical</span><span class="nv"> </span><span class="s">distance</span><span class="nv"> </span><span class="s">below</span><span class="nv"> </span><span class="s">local</span><span class="nv"> </span><span class="s">surface.</span><span class="nv"> </span><span class="s">For</span><span class="nv"> </span><span class="s">sediment</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">soil</span>
 <span class="w">      </span><span class="s">samples,</span><span class="nv"> </span><span class="s">depth</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">measured</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">sediment</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">soil</span><span class="nv"> </span><span class="s">surface</span><span class="nv"> </span><span class="s">respectively.</span><span class="nv"> </span><span class="s">Depth</span>
 <span class="w">      </span><span class="s">is</span><span class="nv"> </span><span class="s">required</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">reported</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">interval</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">subsurface</span><span class="nv"> </span><span class="s">samples.</span><span class="nv"> </span><span class="s">(Units:</span><span class="nv"> </span><span class="s">m)'</span>
@@ -1605,9 +1692,12 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?-\d+(\.\d+)?\s*m$</span>
 <span class="w">  </span><span class="nt">env_broad_scale</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">env_broad_scale</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'</span><span class="se">''</span><span class="s">Report</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">major</span><span class="nv"> </span><span class="s">environmental</span><span class="nv"> </span><span class="s">system</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">specimen</span><span class="nv"> </span><span class="s">came</span>
 <span class="w">      </span><span class="s">from.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">system</span><span class="nv"> </span><span class="s">identified</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">coarse</span><span class="nv"> </span><span class="s">spatial</span><span class="nv"> </span><span class="s">grain</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">provide</span><span class="nv"> </span><span class="s">the</span>
 <span class="w">      </span><span class="s">general</span><span class="nv"> </span><span class="s">environmental</span><span class="nv"> </span><span class="s">context</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">where</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sampling</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">done</span><span class="nv"> </span><span class="s">(e.g.</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">desert</span>
@@ -1632,9 +1722,12 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$</span>
 <span class="w">  </span><span class="nt">env_local_scale</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">env_local_scale</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'</span><span class="se">''</span><span class="s">Report</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">entity</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">specimens</span><span class="nv"> </span><span class="s">local</span>
 <span class="w">      </span><span class="s">vicinity</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">believe</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">significant</span><span class="nv"> </span><span class="s">causal</span><span class="nv"> </span><span class="s">influences</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">sample</span>
 <span class="w">      </span><span class="s">or</span><span class="nv"> </span><span class="s">specimen.</span><span class="nv"> </span><span class="s">Please</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">terms</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">present</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">ENVO</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">smaller</span>
@@ -1659,9 +1752,12 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$</span>
 <span class="w">  </span><span class="nt">env_medium</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">env_medium</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'</span><span class="se">''</span><span class="s">Report</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">environmental</span><span class="nv"> </span><span class="s">material</span><span class="nv"> </span><span class="s">immediately</span><span class="nv"> </span><span class="s">surrounding</span><span class="nv"> </span><span class="s">the</span>
 <span class="w">      </span><span class="s">sample</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">specimen</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">sampling.</span><span class="nv"> </span><span class="s">We</span><span class="nv"> </span><span class="s">recommend</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">subclasses</span><span class="nv"> </span><span class="s">of</span>
 <span class="w">      </span><span class="se">''''</span><span class="s">environmental</span><span class="nv"> </span><span class="s">material</span><span class="se">''''</span><span class="nv"> </span><span class="s">(http://purl.obolibrary.org/obo/ENVO_00010483).</span>
@@ -1685,7 +1781,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$</span>
 <span class="w">  </span><span class="nt">experimental_factor</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experimental_factor</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Experimental factors are essentially the variable aspects of an experiment</span>
@@ -1758,6 +1853,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SedimentSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Extraction</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">external_identifiers</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external_identifiers</span>
@@ -2021,6 +2117,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">micro_biomass_c_meth</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OtherUndescribedSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SedimentSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -2033,11 +2130,16 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">micro_biomass_n_meth</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OtherUndescribedSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SedimentSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">microbial_biomass</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microbial_biomass</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'The</span><span class="nv"> </span><span class="s">part</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">organic</span><span class="nv"> </span><span class="s">matter</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">soil</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">constitutes</span><span class="nv"> </span><span class="s">living</span>
 <span class="w">      </span><span class="s">microorganisms</span><span class="nv"> </span><span class="s">smaller</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">5-10</span><span class="nv"> </span><span class="s">micrometer.</span><span class="nv"> </span><span class="s">If</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">keep</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">would</span><span class="nv"> </span><span class="s">need</span>
 <span class="w">      </span><span class="s">to</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">correction</span><span class="nv"> </span><span class="s">factors</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">conversion</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">final</span><span class="nv"> </span><span class="s">units.</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">g/kg</span>
@@ -2052,9 +2154,12 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SedimentSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$</span>
 <span class="w">  </span><span class="nt">microbial_biomass_c</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microbial_biomass_c</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*[\w\s/]+$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The part of the organic matter in the soil that constitutes living</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">microorganisms smaller than 5-10 micrometer. If you keep this, you would need</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">to have correction factors used for conversion to the final units. Provide value</span>
@@ -2069,7 +2174,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SedimentSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*[\w\s/]+$</span>
 <span class="w">  </span><span class="nt">microbial_biomass_meth</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microbial_biomass_meth</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reference or method used in determining microbial biomass</span>
@@ -2085,6 +2189,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">microbial_biomass_n</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microbial_biomass_n</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*[\w\s/]+$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The part of the organic matter in the soil that constitutes living</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">microorganisms smaller than 5-10 micrometer. If you keep this, you would need</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">to have correction factors used for conversion to the final units. Provide value</span>
@@ -2099,7 +2207,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SedimentSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*[\w\s/]+$</span>
 <span class="w">  </span><span class="nt">misc_param</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">misc_param</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Any other measurement performed or parameter collected that is not</span>
@@ -2123,6 +2230,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">non_microb_biomass</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">non_microb_biomass</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Amount</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">non-microbial</span><span class="nv"> </span><span class="s">biomass</span><span class="nv"> </span><span class="s">measured.</span><span class="nv"> </span><span class="s">Include</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">name</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span>
 <span class="w">      </span><span class="s">part</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">biomass</span><span class="nv"> </span><span class="s">measured,</span><span class="nv"> </span><span class="s">e.g.</span><span class="nv"> </span><span class="s">insect,</span><span class="nv"> </span><span class="s">plant,</span><span class="nv"> </span><span class="s">total.</span><span class="nv"> </span><span class="s">Provide</span><span class="nv"> </span><span class="s">value</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">unit,</span>
 <span class="w">      </span><span class="s">any</span><span class="nv"> </span><span class="s">unit</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">valid.</span><span class="nv"> </span><span class="s">(example:</span><span class="nv"> </span><span class="s">insect</span><span class="nv"> </span><span class="s">5mg;</span><span class="nv"> </span><span class="s">plant</span><span class="nv"> </span><span class="s">2ug/mL)'</span>
@@ -2141,7 +2252,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$</span>
 <span class="w">  </span><span class="nt">non_microb_biomass_method</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">non_microb_biomass_method</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reference or method used in determining biomass</span>
@@ -2271,7 +2381,6 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oxygen_status</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HasIncubationConditions</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CommerciallyPurchasedSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CultureEnvironmentalSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FieldDeployedTerraformSample</span>
@@ -2395,6 +2504,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
 <span class="w">  </span><span class="nt">salinity</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">salinity</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*(practical salinity unit|percent)$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Salinity</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">total</span><span class="nv"> </span><span class="s">concentration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">dissolved</span><span class="nv"> </span><span class="s">salts</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">a</span>
 <span class="w">      </span><span class="s">sample.</span><span class="nv"> </span><span class="s">While</span><span class="nv"> </span><span class="s">salinity</span><span class="nv"> </span><span class="s">can</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">measured</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">complete</span><span class="nv"> </span><span class="s">chemical</span><span class="nv"> </span><span class="s">analysis,</span><span class="nv"> </span><span class="s">this</span>
 <span class="w">      </span><span class="s">method</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">difficult</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">consuming.</span><span class="nv"> </span><span class="s">More</span><span class="nv"> </span><span class="s">often</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">instead</span><span class="nv"> </span><span class="s">derived</span><span class="nv"> </span><span class="s">from</span>
@@ -2413,7 +2526,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*(practical salinity unit|percent)$</span>
 <span class="w">  </span><span class="nt">salinity_method</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">salinity_method</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Method used to determine sample salinity</span>
@@ -2598,7 +2710,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SynthesizedMaterialSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SamplingActivity</span>
 <span class="w">  </span><span class="nt">sieving</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sieving</span>
@@ -2616,6 +2727,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">size_frac_low</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">size_frac_low</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*um$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Refers</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mesh/pore</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">retain</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample.</span><span class="nv"> </span><span class="s">Materials</span>
 <span class="w">      </span><span class="s">smaller</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">threshold</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">excluded</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample.</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">um)'</span>
 <span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">size fraction lower threshold</span>
@@ -2630,9 +2745,12 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*um$</span>
 <span class="w">  </span><span class="nt">size_frac_up</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">size_frac_up</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*um$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Refers</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mesh/pore</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">pre-filter/pre-sort</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample.</span>
 <span class="w">      </span><span class="s">Materials</span><span class="nv"> </span><span class="s">larger</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">threshold</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">excluded</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample.</span><span class="nv"> </span><span class="s">(Unit:</span>
 <span class="w">      </span><span class="s">um)'</span>
@@ -2648,7 +2766,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*um$</span>
 <span class="w">  </span><span class="nt">soil_horizon</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">soil_horizon</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Specific layer in the land area which measures parallel to the soil</span>
@@ -2683,6 +2800,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSampleTypeEnum</span>
 <span class="w">  </span><span class="nt">soil_texture</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">soil_texture</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^(\w+:0\.\d+ )*description:[A-Za-z ]+$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The relative proportion of different grain sizes of mineral particles</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">in a soil as described using a standard system; express as decimal percent sand</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">(50 um to 2 mm) silt (2 um to 50 um) and clay (&lt;2 um) with optional textural</span>
@@ -2695,7 +2816,6 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^(\w+:0\.\d+ )*description:[A-Za-z ]+$</span>
 <span class="w">  </span><span class="nt">soil_type</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">soil_type</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Soil series name or other lower-level classification</span>
@@ -2749,6 +2869,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">start_date_inc</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start_date_inc</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Date</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">incubation</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">started.</span><span class="nv"> </span><span class="s">Only</span><span class="nv"> </span><span class="s">relevant</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">incubation</span><span class="nv"> </span><span class="s">samples.</span>
 <span class="w">      </span><span class="s">Format:</span><span class="nv"> </span><span class="s">YYYY-MM-DD'</span>
 <span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">incubation start date</span>
@@ -2768,7 +2892,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$</span>
 <span class="w">  </span><span class="nt">storage_condition</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage_condition</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The storage condition of the sample. This field is NOT multivalued.</span>
@@ -2858,6 +2981,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
 <span class="w">  </span><span class="nt">temp</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temp</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^-?\d+(\.\d+)?\s*C$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Temperature</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">sampling.</span><span class="nv"> </span><span class="s">(Units:</span><span class="nv"> </span><span class="s">C)'</span>
 <span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temperature</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
@@ -2876,7 +3003,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^-?\d+(\.\d+)?\s*C$</span>
 <span class="w">  </span><span class="nt">texture_meth</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">texture_meth</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reference or method used in determining soil texture</span>
@@ -2903,6 +3029,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">tot_nitro_content</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tot_nitro_content</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*[\w\s/]+$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Total nitrogen content of the sample. Provide value and unit any</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">unit is valid</span>
 <span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">total nitrogen content</span>
@@ -2915,7 +3045,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SedimentSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*[\w\s/]+$</span>
 <span class="w">  </span><span class="nt">tot_org_c_meth</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tot_org_c_meth</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reference or method used in determining total organic carbon</span>
@@ -2931,6 +3060,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">tot_org_carb</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tot_org_carb</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*g C/kg$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Total</span><span class="nv"> </span><span class="s">organic</span><span class="nv"> </span><span class="s">carbon</span><span class="nv"> </span><span class="s">content.</span><span class="nv"> </span><span class="s">Provided</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">gram</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Carbon</span><span class="nv"> </span><span class="s">per</span><span class="nv"> </span><span class="s">kg</span>
 <span class="w">      </span><span class="s">of</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">material.</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">g</span><span class="nv"> </span><span class="s">C/kg)'</span>
 <span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">total organic carbon</span>
@@ -2943,9 +3076,12 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SedimentSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*g C/kg$</span>
 <span class="w">  </span><span class="nt">water_content</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">water_content</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*[\w\s/]+$</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Water content measurement. Provide value and unit any unit is valid</span>
 <span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">water content</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
@@ -2960,7 +3096,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*[\w\s/]+$</span>
 <span class="w">  </span><span class="nt">water_content_meth</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">water_content_meth</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reference or method used in determining the water content of soil</span>
@@ -3014,16 +3149,17 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instrument</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OntologyClass</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ContainerAxis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessing</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoftwareControlledTermValue</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -3045,15 +3181,17 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OntologyClass</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ContainerType</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabDevice</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessing</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimestampValue</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TextValue</span>

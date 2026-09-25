@@ -470,6 +470,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -560,26 +571,27 @@ Alias: sample_end_time</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Value</th>
+<th>property</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Regex Pattern</td>
-<td><code>^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$</code></td>
+<td>submission_pattern</td>
+<td>^[12]\d{3}(?:(?:-(?:0[1-9]</td>
 </tr>
 </tbody>
 </table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -606,6 +618,10 @@ Alias: sample_end_time</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_end_time</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Time</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">when</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">collection</span><span class="nv"> </span><span class="s">ends.</span><span class="nv"> </span><span class="s">Required</span><span class="nv"> </span><span class="s">format:</span><span class="nv"> </span><span class="s">HH:MM:SS</span><span class="nv"> </span><span class="s">in</span>
 <span class="w">  </span><span class="s">24-hour</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">format.</span><span class="nv"> </span><span class="s">Don</span><span class="se">&#39;&#39;</span><span class="s">t</span><span class="nv"> </span><span class="s">forget</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">seconds!</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">hh:mm:ss</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">HH:MM:SS)&#39;</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample end time</span>
@@ -613,7 +629,6 @@ Alias: sample_end_time</p>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_end_time</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$</span>
 </code></pre></div>
 </details>
 

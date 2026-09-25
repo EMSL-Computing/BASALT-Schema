@@ -540,6 +540,7 @@
 
 
 <h1 id="slot-acquisition_end_time">Slot: acquisition_end_time</h1>
+<p><em>The time that data collection ended for this activity.</em></p>
 <p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/acquisition_end_time">basalt_schema:acquisition_end_time</a>
 Alias: acquisition_end_time</p>
 <!-- no inheritance hierarchy -->
@@ -555,8 +556,13 @@ Alias: acquisition_end_time</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../XRFDataGenerationActivity/">XRFDataGenerationActivity</a></td>
-<td>X-ray Fluorescence (XRF) elemental analysis activity</td>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td>A lab activity in which DNA or RNA that was extracted from a sample is sequen...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EnzymeActivityDataGenerationActivity/">EnzymeActivityDataGenerationActivity</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
@@ -565,18 +571,53 @@ Alias: acquisition_end_time</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
-<td>Abstract base for any data generation activity (physical to digital)</td>
+<td><a href="../XRayDataGenerationActivity/">XRayDataGenerationActivity</a></td>
+<td>Abstract base class for X-ray analytical methods including XRF (elemental),</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../XRDDataGenerationActivity/">XRDDataGenerationActivity</a></td>
-<td>X-ray Diffraction (XRD) mineralogical analysis activity</td>
+<td><a href="../XCTDataGenerationActivity/">XCTDataGenerationActivity</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EcoplateDataGenerationActivity/">EcoplateDataGenerationActivity</a></td>
-<td>Ecoplate absorbance measurement at a single timepoint</td>
+<td><a href="../TextureDataGenerationActivity/">TextureDataGenerationActivity</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../XASDataGenerationActivity/">XASDataGenerationActivity</a></td>
+<td>X-ray Absorption Spectroscopy (XAS) acquisition activity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../UVDataGenerationActivity/">UVDataGenerationActivity</a></td>
+<td>Ultraviolet spectroscopy acquisition activity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../XRFDataGenerationActivity/">XRFDataGenerationActivity</a></td>
+<td>X-ray Fluorescence (XRF) elemental analysis activity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HydraulicPropertiesDataGenerationActivity/">HydraulicPropertiesDataGenerationActivity</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../GravimetricWaterContentDataGenerationActivity/">GravimetricWaterContentDataGenerationActivity</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BulkDensityDataGenerationActivity/">BulkDensityDataGenerationActivity</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MicrobialBiomassDataGenerationActivity/">MicrobialBiomassDataGenerationActivity</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
@@ -585,8 +626,13 @@ Alias: acquisition_end_time</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MassSpectrometryDataGenerationActivity/">MassSpectrometryDataGenerationActivity</a></td>
-<td>A record of the mass spectrometry run that generates a raw data product</td>
+<td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
+<td>Abstract base for any data generation activity (physical to digital)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PHDataGenerationActivity/">PHDataGenerationActivity</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
@@ -595,13 +641,38 @@ Alias: acquisition_end_time</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../XRayDataGenerationActivity/">XRayDataGenerationActivity</a></td>
-<td>Abstract base class for X-ray analytical methods including XRF (elemental)</td>
+<td><a href="../RIDataGenerationActivity/">RIDataGenerationActivity</a></td>
+<td>Refractive Index (RI) measurement activity</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td>A lab activity in which DNA or RNA that was extracted from a sample is sequen...</td>
+<td><a href="../ElementalAnalysisDataGenerationActivity/">ElementalAnalysisDataGenerationActivity</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometryDataGenerationActivity/">MassSpectrometryDataGenerationActivity</a></td>
+<td>A record of the mass spectrometry run that generates a raw data product</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../XRDDataGenerationActivity/">XRDDataGenerationActivity</a></td>
+<td>X-ray Diffraction (XRD) mineralogical analysis activity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../KuoDataGenerationActivity/">KuoDataGenerationActivity</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TOCTNDataGenerationActivity/">TOCTNDataGenerationActivity</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EcoplateDataGenerationActivity/">EcoplateDataGenerationActivity</a></td>
+<td>Ecoplate absorbance measurement at a single timepoint</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -636,26 +707,8 @@ Alias: acquisition_end_time</p>
 </thead>
 <tbody>
 <tr>
-<td>Required</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>### Slot Characteristics</td>
 <td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Owner</td>
-<td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -686,14 +739,13 @@ Alias: acquisition_end_time</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acquisition_end_time</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The time that data collection ended for this activity.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acquisition_end_time</span>
-<span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datetime</span>
-<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
 

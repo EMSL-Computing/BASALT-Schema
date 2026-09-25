@@ -310,7 +310,17 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-processed-sample-processedsample">Class: Processed Sample (ProcessedSample)</h1>
-<p><em>A sample that has undergone processing or analysis. Processed Sample entities are derived from Activities. The upstream SampleProcessing that produced this ProcessedSample is referenced via sampled_during.</em></p>
+<p><em>A sample that has undergone processing. Processed Sample entities are derived from</em></p>
+<p><em>SampleProcessing activities.</em></p>
+<p>__</p>
+<p><em>This class carries no pointer to the activity that produced it. That edge is the</em></p>
+<p><em>ProcessingSampleLink row with role = output_sample naming this sample, which is</em></p>
+<p><em>the single representation of every sample-to-processing edge in the schema.</em></p>
+<p>__</p>
+<p><em>Note that sampled_during is deliberately NOT reused here the way it is on</em></p>
+<p><em>environmental Sample subclasses. There it points at a SamplingActivity (collection</em></p>
+<p><em>from an environment); the processing edge is a different relationship and lives in</em></p>
+<p><em>ProcessingSampleLink only.</em></p>
 <p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/ProcessedSample">basalt_schema:ProcessedSample</a></p>
 <pre class="mermaid"><code> classDiagram
     class ProcessedSample
@@ -339,17 +349,6 @@
 
       ProcessedSample : replicate
 
-      ProcessedSample : sampled_during
-
-
-
-
-
-        ProcessedSample --&gt; "0..1" SampleProcessing : sampled_during
-        click SampleProcessing href "../SampleProcessing/"
-
-
-
       ProcessedSample : sampled_portion
 
 
@@ -365,7 +364,7 @@
 
       ProcessedSample : total_amount_ug
 
-      ProcessedSample : volume_uL
+      ProcessedSample : volume_ul
 
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
@@ -414,7 +413,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../volume_uL/">volume_uL</a></td>
+<td><a href="../volume_ul/">volume_ul</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>Volume of the entity in microliters</td>
 <td>direct</td>
@@ -423,12 +422,6 @@
 <td><a href="../sampled_portion/">sampled_portion</a></td>
 <td>0..1 <br/> <a href="../SamplePortionEnum/">SamplePortionEnum</a></td>
 <td>The portion of the original sample used in creating this processed sample (e</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../sampled_during/">sampled_during</a></td>
-<td>0..1 <br/> <a href="../SampleProcessing/">SampleProcessing</a></td>
-<td>A reference to the sample processing activity (generally lab work) that gener...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -487,12 +480,6 @@
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 <tr>
-<td><a href="../RespirationDataGenerationActivity/">RespirationDataGenerationActivity</a></td>
-<td><a href="../analyte_id/">analyte_id</a></td>
-<td>range</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
 <td><a href="../XRayDataGenerationActivity/">XRayDataGenerationActivity</a></td>
 <td><a href="../analyte_id/">analyte_id</a></td>
 <td>range</td>
@@ -506,6 +493,24 @@
 </tr>
 <tr>
 <td><a href="../XRDDataGenerationActivity/">XRDDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../XASDataGenerationActivity/">XASDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../RIDataGenerationActivity/">RIDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../UVDataGenerationActivity/">UVDataGenerationActivity</a></td>
 <td><a href="../analyte_id/">analyte_id</a></td>
 <td>range</td>
 <td><a href="./">ProcessedSample</a></td>
@@ -552,6 +557,78 @@
 <td>range</td>
 <td><a href="./">ProcessedSample</a></td>
 </tr>
+<tr>
+<td><a href="../BulkDensityDataGenerationActivity/">BulkDensityDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../ElementalAnalysisDataGenerationActivity/">ElementalAnalysisDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../EnzymeActivityDataGenerationActivity/">EnzymeActivityDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../GravimetricWaterContentDataGenerationActivity/">GravimetricWaterContentDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../HydraulicPropertiesDataGenerationActivity/">HydraulicPropertiesDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../KuoDataGenerationActivity/">KuoDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../MicrobialBiomassDataGenerationActivity/">MicrobialBiomassDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../PHDataGenerationActivity/">PHDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../RespirationDataGenerationActivity/">RespirationDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../TOCTNDataGenerationActivity/">TOCTNDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../TextureDataGenerationActivity/">TextureDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../XCTDataGenerationActivity/">XCTDataGenerationActivity</a></td>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -583,9 +660,27 @@
 <h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A sample that has undergone processing or analysis. Processed Sample</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">entities are derived from Activities. The upstream SampleProcessing that produced</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">this ProcessedSample is referenced via sampled_during.</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'A</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">undergone</span><span class="nv"> </span><span class="s">processing.</span><span class="nv"> </span><span class="s">Processed</span><span class="nv"> </span><span class="s">Sample</span><span class="nv"> </span><span class="s">entities</span><span class="nv"> </span><span class="s">are</span>
+<span class="w">  </span><span class="s">derived</span><span class="nv"> </span><span class="s">from</span>
+
+<span class="w">  </span><span class="s">SampleProcessing</span><span class="nv"> </span><span class="s">activities.</span>
+
+
+<span class="w">  </span><span class="s">This</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">carries</span><span class="nv"> </span><span class="s">no</span><span class="nv"> </span><span class="s">pointer</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">activity</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">produced</span><span class="nv"> </span><span class="s">it.</span><span class="nv"> </span><span class="s">That</span><span class="nv"> </span><span class="s">edge</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span>
+
+<span class="w">  </span><span class="s">ProcessingSampleLink</span><span class="nv"> </span><span class="s">row</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">output_sample</span><span class="nv"> </span><span class="s">naming</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">sample,</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">is</span>
+
+<span class="w">  </span><span class="s">the</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">representation</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">every</span><span class="nv"> </span><span class="s">sample-to-processing</span><span class="nv"> </span><span class="s">edge</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">schema.</span>
+
+
+<span class="w">  </span><span class="s">Note</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">sampled_during</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">deliberately</span><span class="nv"> </span><span class="s">NOT</span><span class="nv"> </span><span class="s">reused</span><span class="nv"> </span><span class="s">here</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">way</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">on</span>
+
+<span class="w">  </span><span class="s">environmental</span><span class="nv"> </span><span class="s">Sample</span><span class="nv"> </span><span class="s">subclasses.</span><span class="nv"> </span><span class="s">There</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">points</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">SamplingActivity</span><span class="nv"> </span><span class="s">(collection</span>
+
+<span class="w">  </span><span class="s">from</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">environment);</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">processing</span><span class="nv"> </span><span class="s">edge</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">different</span><span class="nv"> </span><span class="s">relationship</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">lives</span>
+<span class="w">  </span><span class="s">in</span>
+
+<span class="w">  </span><span class="s">ProcessingSampleLink</span><span class="nv"> </span><span class="s">only.'</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Processed Sample</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
@@ -594,19 +689,13 @@
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">label_text</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">concentration_ug_per_uL</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">total_amount_ug</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_uL</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_ul</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sampled_portion</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sampled_during</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replicate</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">replicate</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replicate</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The TECHNICAL replicate number of the processed sample, if applicable.</span>
-<span class="w">  </span><span class="nt">sampled_during</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sampled_during</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A reference to the sample processing activity (generally lab work)</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">that generated this processed_sample.</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessing</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
@@ -630,12 +719,13 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhase</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAOMProduct</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WEOMProduct</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AerosolArmSample</span>
@@ -674,6 +764,10 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SynthesizedMaterialSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstancesUsedLink</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingSubstance</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProjectParticipant</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimestampValue</span>
@@ -691,9 +785,27 @@
 <h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A sample that has undergone processing or analysis. Processed Sample</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">entities are derived from Activities. The upstream SampleProcessing that produced</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">this ProcessedSample is referenced via sampled_during.</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'A</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">undergone</span><span class="nv"> </span><span class="s">processing.</span><span class="nv"> </span><span class="s">Processed</span><span class="nv"> </span><span class="s">Sample</span><span class="nv"> </span><span class="s">entities</span><span class="nv"> </span><span class="s">are</span>
+<span class="w">  </span><span class="s">derived</span><span class="nv"> </span><span class="s">from</span>
+
+<span class="w">  </span><span class="s">SampleProcessing</span><span class="nv"> </span><span class="s">activities.</span>
+
+
+<span class="w">  </span><span class="s">This</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">carries</span><span class="nv"> </span><span class="s">no</span><span class="nv"> </span><span class="s">pointer</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">activity</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">produced</span><span class="nv"> </span><span class="s">it.</span><span class="nv"> </span><span class="s">That</span><span class="nv"> </span><span class="s">edge</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span>
+
+<span class="w">  </span><span class="s">ProcessingSampleLink</span><span class="nv"> </span><span class="s">row</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">output_sample</span><span class="nv"> </span><span class="s">naming</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">sample,</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">is</span>
+
+<span class="w">  </span><span class="s">the</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">representation</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">every</span><span class="nv"> </span><span class="s">sample-to-processing</span><span class="nv"> </span><span class="s">edge</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">schema.</span>
+
+
+<span class="w">  </span><span class="s">Note</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">sampled_during</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">deliberately</span><span class="nv"> </span><span class="s">NOT</span><span class="nv"> </span><span class="s">reused</span><span class="nv"> </span><span class="s">here</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">way</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">on</span>
+
+<span class="w">  </span><span class="s">environmental</span><span class="nv"> </span><span class="s">Sample</span><span class="nv"> </span><span class="s">subclasses.</span><span class="nv"> </span><span class="s">There</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">points</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">SamplingActivity</span><span class="nv"> </span><span class="s">(collection</span>
+
+<span class="w">  </span><span class="s">from</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">environment);</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">processing</span><span class="nv"> </span><span class="s">edge</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">different</span><span class="nv"> </span><span class="s">relationship</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">lives</span>
+<span class="w">  </span><span class="s">in</span>
+
+<span class="w">  </span><span class="s">ProcessingSampleLink</span><span class="nv"> </span><span class="s">only.'</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Processed Sample</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
@@ -701,11 +813,6 @@
 <span class="w">  </span><span class="nt">replicate</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replicate</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The TECHNICAL replicate number of the processed sample, if applicable.</span>
-<span class="w">  </span><span class="nt">sampled_during</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sampled_during</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A reference to the sample processing activity (generally lab work)</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">that generated this processed_sample.</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessing</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
@@ -731,12 +838,13 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhase</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAOMProduct</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WEOMProduct</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AerosolArmSample</span>
@@ -775,6 +883,10 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SynthesizedMaterialSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstancesUsedLink</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingSubstance</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProjectParticipant</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimestampValue</span>
@@ -817,6 +929,8 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">concentration_ug_per_uL</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UVSpectroscopyProduct</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RIProduct</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
 <span class="w">  </span><span class="nt">total_amount_ug</span><span class="p">:</span>
@@ -829,14 +943,16 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
-<span class="w">  </span><span class="nt">volume_uL</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_uL</span>
+<span class="w">  </span><span class="nt">volume_ul</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_ul</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Volume of the entity in microliters</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_uL</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_ul</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WellReagentAddition</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
 <span class="w">  </span><span class="nt">sampled_portion</span><span class="p">:</span>
@@ -850,32 +966,6 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SamplePortionEnum</span>
-<span class="w">  </span><span class="nt">sampled_during</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sampled_during</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A reference to the sample processing activity (generally lab work)</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">that generated this processed_sample.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sampled_during</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AerosolArmSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AerosolSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CommerciallyPurchasedSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CultureEnvironmentalSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FieldDeployedTerraformSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MixedCultureSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MonetSoilSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OtherUndescribedSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PlantSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PureCultureSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SedimentSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SynthesizedMaterialSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessing</span>
 <span class="w">  </span><span class="nt">replicate</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replicate</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The TECHNICAL replicate number of the processed sample, if applicable.</span>
@@ -908,16 +998,17 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instrument</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OntologyClass</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ContainerAxis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessing</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoftwareControlledTermValue</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -939,15 +1030,17 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OntologyClass</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ContainerType</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabDevice</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessing</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimestampValue</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TextValue</span>

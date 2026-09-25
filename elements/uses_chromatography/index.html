@@ -540,7 +540,7 @@
 
 
 <h1 id="slot-uses_chromatography">Slot: uses_chromatography</h1>
-<p><em>Points to a record of the chromatography used to introduce samples for the mass spectrometry run.</em></p>
+<p><em>Points to a record of the chromatography configuration used to separate analytes.</em></p>
 <p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/uses_chromatography">basalt_schema:uses_chromatography</a>
 Alias: uses_chromatography</p>
 <!-- no inheritance hierarchy -->
@@ -558,6 +558,26 @@ Alias: uses_chromatography</p>
 <tr>
 <td><a href="../MassSpectrometryDataGenerationActivity/">MassSpectrometryDataGenerationActivity</a></td>
 <td>A record of the mass spectrometry run that generates a raw data product</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../UVDataGenerationActivity/">UVDataGenerationActivity</a></td>
+<td>Ultraviolet spectroscopy acquisition activity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SolidPhaseExtractionProcess/">SolidPhaseExtractionProcess</a></td>
+<td>A solid phase extraction (SPE) step (e</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../FractionationProcess/">FractionationProcess</a></td>
+<td>A fractionation process (e</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RIDataGenerationActivity/">RIDataGenerationActivity</a></td>
+<td>Refractive Index (RI) measurement activity</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -578,7 +598,7 @@ Alias: uses_chromatography</p>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../MassSpectrometryDataGenerationActivity/">MassSpectrometryDataGenerationActivity</a></td>
+<td><a href="../RIDataGenerationActivity/">RIDataGenerationActivity</a>, <a href="../UVDataGenerationActivity/">UVDataGenerationActivity</a>, <a href="../MassSpectrometryDataGenerationActivity/">MassSpectrometryDataGenerationActivity</a>, <a href="../FractionationProcess/">FractionationProcess</a>, <a href="../SolidPhaseExtractionProcess/">SolidPhaseExtractionProcess</a></td>
 </tr>
 </tbody>
 </table>
@@ -624,13 +644,17 @@ Alias: uses_chromatography</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uses_chromatography</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Points to a record of the chromatography used to introduce samples for</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">the mass spectrometry run.</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Points to a record of the chromatography configuration used to separate</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">analytes.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uses_chromatography</span>
 <span class="nt">domain_of</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RIDataGenerationActivity</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UVDataGenerationActivity</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryDataGenerationActivity</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FractionationProcess</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SolidPhaseExtractionProcess</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChromatographyConfiguration</span>
 </code></pre></div>
 </details>

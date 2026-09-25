@@ -556,8 +556,23 @@ Alias: wavelength_nm</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../PlateProduct/">PlateProduct</a></td>
+<td>Abstract base for plate measurement data products</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../EcoplateAbsorbanceProduct/">EcoplateAbsorbanceProduct</a></td>
 <td>Ecoplate absorbance measurement product</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../UVChannelConfig/">UVChannelConfig</a></td>
+<td>Configuration for a single UV-Vis detector channel</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AMP2DataGenerationActivity/">AMP2DataGenerationActivity</a></td>
+<td>AMP2 plate measurement (OD, fluorescence, flow cytometry)</td>
 <td>no</td>
 </tr>
 <tr>
@@ -566,18 +581,13 @@ Alias: wavelength_nm</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PlateProduct/">PlateProduct</a></td>
-<td>Abstract base for plate measurement data products</td>
+<td><a href="../RIDataGenerationActivity/">RIDataGenerationActivity</a></td>
+<td>Refractive Index (RI) measurement activity</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../EcoplateDataGenerationActivity/">EcoplateDataGenerationActivity</a></td>
 <td>Ecoplate absorbance measurement at a single timepoint</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AMP2DataGenerationActivity/">AMP2DataGenerationActivity</a></td>
-<td>AMP2 plate measurement (OD, fluorescence, flow cytometry)</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -598,7 +608,7 @@ Alias: wavelength_nm</p>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../AMP2DataGenerationActivity/">AMP2DataGenerationActivity</a>, <a href="../EcoplateDataGenerationActivity/">EcoplateDataGenerationActivity</a>, <a href="../PlateProduct/">PlateProduct</a></td>
+<td><a href="../RIDataGenerationActivity/">RIDataGenerationActivity</a>, <a href="../UVChannelConfig/">UVChannelConfig</a>, <a href="../AMP2DataGenerationActivity/">AMP2DataGenerationActivity</a>, <a href="../EcoplateDataGenerationActivity/">EcoplateDataGenerationActivity</a>, <a href="../PlateProduct/">PlateProduct</a></td>
 </tr>
 </tbody>
 </table>
@@ -649,6 +659,8 @@ Alias: wavelength_nm</p>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wavelength_nm</span>
 <span class="nt">domain_of</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RIDataGenerationActivity</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UVChannelConfig</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2DataGenerationActivity</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EcoplateDataGenerationActivity</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PlateProduct</span>

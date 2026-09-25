@@ -481,6 +481,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -556,13 +567,8 @@ Alias: start_date_inc</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../FieldDeployedTerraformSample/">FieldDeployedTerraformSample</a></td>
-<td>A sample collected from a field-deployed Terraform experiment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AMP2UserSample/">AMP2UserSample</a></td>
-<td>A user-submitted microbial sample for AMP2 workflows</td>
+<td><a href="../WaterSample/">WaterSample</a></td>
+<td>A sample of water collected from the environment</td>
 <td>no</td>
 </tr>
 <tr>
@@ -571,18 +577,18 @@ Alias: start_date_inc</p>
 <td>yes</td>
 </tr>
 <tr>
+<td><a href="../FieldDeployedTerraformSample/">FieldDeployedTerraformSample</a></td>
+<td>A sample collected from a field-deployed Terraform experiment</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MixedCultureSample/">MixedCultureSample</a></td>
+<td>A sample containing multiple cultured organisms</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../PlantSample/">PlantSample</a></td>
 <td>A sample containing plant material</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../WaterSample/">WaterSample</a></td>
-<td>A sample of water collected from the environment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SoilSample/">SoilSample</a></td>
-<td>A sample of soil collected from the environment</td>
 <td>no</td>
 </tr>
 <tr>
@@ -601,9 +607,14 @@ Alias: start_date_inc</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../MixedCultureSample/">MixedCultureSample</a></td>
-<td>A sample containing multiple cultured organisms</td>
-<td>yes</td>
+<td><a href="../AMP2UserSample/">AMP2UserSample</a></td>
+<td>A user-submitted microbial sample for AMP2 workflows</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SoilSample/">SoilSample</a></td>
+<td>A sample of soil collected from the environment</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -637,26 +648,27 @@ Alias: start_date_inc</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Value</th>
+<th>property</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Regex Pattern</td>
-<td><code>^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$</code></td>
+<td>submission_pattern</td>
+<td>^[12]\d{3}(?:(?:-(?:0[1-9]</td>
 </tr>
 </tbody>
 </table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -683,6 +695,10 @@ Alias: start_date_inc</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start_date_inc</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Date</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">incubation</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">started.</span><span class="nv"> </span><span class="s">Only</span><span class="nv"> </span><span class="s">relevant</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">incubation</span><span class="nv"> </span><span class="s">samples.</span>
 <span class="w">  </span><span class="s">Format:</span><span class="nv"> </span><span class="s">YYYY-MM-DD&#39;</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">incubation start date</span>
@@ -701,7 +717,6 @@ Alias: start_date_inc</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$</span>
 </code></pre></div>
 </details>
 

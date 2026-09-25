@@ -477,6 +477,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -523,6 +540,7 @@
 
 
 <h1 id="slot-position">Slot: position</h1>
+<p><em>Motor position value at scan start</em></p>
 <p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/position">basalt_schema:position</a>
 Alias: position</p>
 <!-- no inheritance hierarchy -->
@@ -538,13 +556,18 @@ Alias: position</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../WellReading/">WellReading</a></td>
+<td>Per-well measurement data</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../EcoplateWellMetadata/">EcoplateWellMetadata</a></td>
 <td>Ecoplate-specific per-well metadata</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../WellReading/">WellReading</a></td>
-<td>Per-well measurement data</td>
+<td><a href="../XASMotorPosition/">XASMotorPosition</a></td>
+<td>Motor position recorded at the start of an XAS sweep</td>
 <td>no</td>
 </tr>
 <tr>
@@ -571,11 +594,11 @@ Alias: position</p>
 <tbody>
 <tr>
 <td>Range</td>
-<td><a href="../String/">String</a></td>
+<td><a href="../Float/">Float</a></td>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../WellMetadata/">WellMetadata</a>, <a href="../WellReading/">WellReading</a></td>
+<td><a href="../WellMetadata/">WellMetadata</a>, <a href="../WellReading/">WellReading</a>, <a href="../XASMotorPosition/">XASMotorPosition</a></td>
 </tr>
 </tbody>
 </table>
@@ -595,6 +618,10 @@ Alias: position</p>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -617,11 +644,15 @@ Alias: position</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">position</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Motor position value at scan start</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">position</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WellMetadata</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WellReading</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XASMotorPosition</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
 </code></pre></div>
 </details>
 

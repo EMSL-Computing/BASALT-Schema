@@ -302,7 +302,6 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-amp2odproduct">Class: AMP2ODProduct</h1>
 <p><em>AMP2 optical density measurement product.</em></p>
-<p><em>One row per plate × timepoint.</em></p>
 <p><em>processedData.type = 'amp2_od'</em></p>
 <p>__</p>
 <p><em>v1 origin: plate-general.yaml AMP2ODProduct</em></p>
@@ -430,8 +429,6 @@
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2ODProduct</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'AMP2</span><span class="nv"> </span><span class="s">optical</span><span class="nv"> </span><span class="s">density</span><span class="nv"> </span><span class="s">measurement</span><span class="nv"> </span><span class="s">product.</span>
 
-<span class="w">  </span><span class="s">One</span><span class="nv"> </span><span class="s">row</span><span class="nv"> </span><span class="s">per</span><span class="nv"> </span><span class="s">plate</span><span class="nv"> </span><span class="s">×</span><span class="nv"> </span><span class="s">timepoint.</span>
-
 <span class="w">  </span><span class="s">processedData.type</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="se">''</span><span class="s">amp2_od</span><span class="se">''</span>
 
 
@@ -446,8 +443,6 @@
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2ODProduct</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'AMP2</span><span class="nv"> </span><span class="s">optical</span><span class="nv"> </span><span class="s">density</span><span class="nv"> </span><span class="s">measurement</span><span class="nv"> </span><span class="s">product.</span>
-
-<span class="w">  </span><span class="s">One</span><span class="nv"> </span><span class="s">row</span><span class="nv"> </span><span class="s">per</span><span class="nv"> </span><span class="s">plate</span><span class="nv"> </span><span class="s">×</span><span class="nv"> </span><span class="s">timepoint.</span>
 
 <span class="w">  </span><span class="s">processedData.type</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="se">''</span><span class="s">amp2_od</span><span class="se">''</span>
 
@@ -477,6 +472,8 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wavelength_nm</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2ODProduct</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RIDataGenerationActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UVChannelConfig</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2DataGenerationActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EcoplateDataGenerationActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PlateProduct</span>

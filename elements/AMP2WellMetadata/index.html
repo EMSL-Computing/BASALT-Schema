@@ -302,8 +302,9 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-amp2wellmetadata">Class: AMP2WellMetadata</h1>
 <p><em>AMP2-specific per-well metadata.</em></p>
-<p><em>Minimal   media composition comes from the Media entity referenced via</em></p>
-<p><em>the activity's media_ref slot.  Per-well data is volumes and replicate info.</em></p>
+<p><em>Media composition comes from the Media entity referenced via the activity's</em></p>
+<p><em>media_ref slot.  Per-well reagent additions (nutrients, normalizers, inducers)</em></p>
+<p><em>are captured as structured WellReagentAddition entries in reagent_additions.</em></p>
 <p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/AMP2WellMetadata">basalt_schema:AMP2WellMetadata</a></p>
 <pre class="mermaid"><code> classDiagram
     class AMP2WellMetadata
@@ -328,11 +329,29 @@
 
       AMP2WellMetadata : position
 
+      AMP2WellMetadata : reagent_additions
+
+
+
+
+
+        AMP2WellMetadata --&gt; "*" WellReagentAddition : reagent_additions
+        click WellReagentAddition href "../WellReagentAddition/"
+
+
+
       AMP2WellMetadata : replicate_group
 
       AMP2WellMetadata : sample_id
 
-      AMP2WellMetadata : treatments
+
+
+
+
+        AMP2WellMetadata --&gt; "0..1" Sample : sample_id
+        click Sample href "../Sample/"
+
+
 
       AMP2WellMetadata : well_type
 
@@ -356,6 +375,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../sample_id/">sample_id</a></td>
+<td>0..1 <br/> <a href="../Sample/">Sample</a></td>
+<td>Link back to the originating sample</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../media_ref/">media_ref</a></td>
 <td>0..1 <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
 <td>FK to the prepared media processedSample used in this well</td>
@@ -374,15 +399,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../sample_id/">sample_id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Optional FK to the specific sample in this well, if wells contain</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../treatments/">treatments</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>Per-well treatments if applicable (e</td>
+<td><a href="../reagent_additions/">reagent_additions</a></td>
+<td>* <br/> <a href="../WellReagentAddition/">WellReagentAddition</a></td>
+<td>Per-well reagent additions beyond the base media</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -436,11 +455,15 @@
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'AMP2-specific</span><span class="nv"> </span><span class="s">per-well</span><span class="nv"> </span><span class="s">metadata.</span>
 
-<span class="w">  </span><span class="s">Minimal</span><span class="nv">   </span><span class="s">media</span><span class="nv"> </span><span class="s">composition</span><span class="nv"> </span><span class="s">comes</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Media</span><span class="nv"> </span><span class="s">entity</span><span class="nv"> </span><span class="s">referenced</span><span class="nv"> </span><span class="s">via</span>
+<span class="w">  </span><span class="s">Media</span><span class="nv"> </span><span class="s">composition</span><span class="nv"> </span><span class="s">comes</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Media</span><span class="nv"> </span><span class="s">entity</span><span class="nv"> </span><span class="s">referenced</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">activity</span><span class="se">''</span><span class="s">s</span>
 
-<span class="w">  </span><span class="s">the</span><span class="nv"> </span><span class="s">activity</span><span class="se">''</span><span class="s">s</span><span class="nv"> </span><span class="s">media_ref</span><span class="nv"> </span><span class="s">slot.</span><span class="nv">  </span><span class="s">Per-well</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">volumes</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">replicate</span><span class="nv"> </span><span class="s">info.'</span>
+<span class="w">  </span><span class="s">media_ref</span><span class="nv"> </span><span class="s">slot.</span><span class="nv">  </span><span class="s">Per-well</span><span class="nv"> </span><span class="s">reagent</span><span class="nv"> </span><span class="s">additions</span><span class="nv"> </span><span class="s">(nutrients,</span><span class="nv"> </span><span class="s">normalizers,</span><span class="nv"> </span><span class="s">inducers)</span>
+
+<span class="w">  </span><span class="s">are</span><span class="nv"> </span><span class="s">captured</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">structured</span><span class="nv"> </span><span class="s">WellReagentAddition</span><span class="nv"> </span><span class="s">entries</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">reagent_additions.'</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WellMetadata</span>
+<span class="nt">slots</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_id</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">media_ref</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media_ref</span>
@@ -474,28 +497,24 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">sample_id</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_id</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Optional</span><span class="nv"> </span><span class="s">FK</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">specific</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">well,</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">wells</span><span class="nv"> </span><span class="s">contain</span>
+<span class="w">  </span><span class="nt">reagent_additions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reagent_additions</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Per-well</span><span class="nv"> </span><span class="s">reagent</span><span class="nv"> </span><span class="s">additions</span><span class="nv"> </span><span class="s">beyond</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">base</span><span class="nv"> </span><span class="s">media.</span><span class="nv"> </span><span class="s">Each</span><span class="nv"> </span><span class="s">entry</span><span class="nv"> </span><span class="s">is</span>
+<span class="w">      </span><span class="s">a</span>
 
-<span class="w">      </span><span class="s">different</span><span class="nv"> </span><span class="s">samples.</span><span class="nv">  </span><span class="s">NULL</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">wells</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">same</span><span class="nv"> </span><span class="s">inoculum.'</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedData</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MetagenomicsProduct</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">  </span><span class="nt">treatments</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">treatments</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Per-well</span><span class="nv"> </span><span class="s">treatments</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">applicable</span><span class="nv"> </span><span class="s">(e.g.</span><span class="nv"> </span><span class="s">different</span><span class="nv"> </span><span class="s">mineral</span><span class="nv"> </span><span class="s">concentrations).</span>
+<span class="w">      </span><span class="s">WellReagentAddition</span><span class="nv"> </span><span class="s">capturing</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">compound,</span><span class="nv"> </span><span class="s">its</span><span class="nv"> </span><span class="s">role,</span><span class="nv"> </span><span class="s">dispensed</span>
 
-<span class="w">      </span><span class="s">NULL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">uniform-treatment</span><span class="nv"> </span><span class="s">plates.'</span>
+<span class="w">      </span><span class="s">volume,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">concentrations.</span><span class="nv"> </span><span class="s">Replaces</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">former</span><span class="nv"> </span><span class="s">free-text</span>
+
+<span class="w">      </span><span class="s">treatments</span><span class="nv"> </span><span class="s">slot.'</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WellReagentAddition</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
@@ -503,9 +522,11 @@
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'AMP2-specific</span><span class="nv"> </span><span class="s">per-well</span><span class="nv"> </span><span class="s">metadata.</span>
 
-<span class="w">  </span><span class="s">Minimal</span><span class="nv">   </span><span class="s">media</span><span class="nv"> </span><span class="s">composition</span><span class="nv"> </span><span class="s">comes</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Media</span><span class="nv"> </span><span class="s">entity</span><span class="nv"> </span><span class="s">referenced</span><span class="nv"> </span><span class="s">via</span>
+<span class="w">  </span><span class="s">Media</span><span class="nv"> </span><span class="s">composition</span><span class="nv"> </span><span class="s">comes</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Media</span><span class="nv"> </span><span class="s">entity</span><span class="nv"> </span><span class="s">referenced</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">activity</span><span class="se">''</span><span class="s">s</span>
 
-<span class="w">  </span><span class="s">the</span><span class="nv"> </span><span class="s">activity</span><span class="se">''</span><span class="s">s</span><span class="nv"> </span><span class="s">media_ref</span><span class="nv"> </span><span class="s">slot.</span><span class="nv">  </span><span class="s">Per-well</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">volumes</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">replicate</span><span class="nv"> </span><span class="s">info.'</span>
+<span class="w">  </span><span class="s">media_ref</span><span class="nv"> </span><span class="s">slot.</span><span class="nv">  </span><span class="s">Per-well</span><span class="nv"> </span><span class="s">reagent</span><span class="nv"> </span><span class="s">additions</span><span class="nv"> </span><span class="s">(nutrients,</span><span class="nv"> </span><span class="s">normalizers,</span><span class="nv"> </span><span class="s">inducers)</span>
+
+<span class="w">  </span><span class="s">are</span><span class="nv"> </span><span class="s">captured</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">structured</span><span class="nv"> </span><span class="s">WellReagentAddition</span><span class="nv"> </span><span class="s">entries</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">reagent_additions.'</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WellMetadata</span>
 <span class="nt">attributes</span><span class="p">:</span>
@@ -547,42 +568,50 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">reagent_additions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reagent_additions</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Per-well</span><span class="nv"> </span><span class="s">reagent</span><span class="nv"> </span><span class="s">additions</span><span class="nv"> </span><span class="s">beyond</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">base</span><span class="nv"> </span><span class="s">media.</span><span class="nv"> </span><span class="s">Each</span><span class="nv"> </span><span class="s">entry</span><span class="nv"> </span><span class="s">is</span>
+<span class="w">      </span><span class="s">a</span>
+
+<span class="w">      </span><span class="s">WellReagentAddition</span><span class="nv"> </span><span class="s">capturing</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">compound,</span><span class="nv"> </span><span class="s">its</span><span class="nv"> </span><span class="s">role,</span><span class="nv"> </span><span class="s">dispensed</span>
+
+<span class="w">      </span><span class="s">volume,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">concentrations.</span><span class="nv"> </span><span class="s">Replaces</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">former</span><span class="nv"> </span><span class="s">free-text</span>
+
+<span class="w">      </span><span class="s">treatments</span><span class="nv"> </span><span class="s">slot.'</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reagent_additions</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WellReagentAddition</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">sample_id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_id</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Optional</span><span class="nv"> </span><span class="s">FK</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">specific</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">well,</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">wells</span><span class="nv"> </span><span class="s">contain</span>
-
-<span class="w">      </span><span class="s">different</span><span class="nv"> </span><span class="s">samples.</span><span class="nv">  </span><span class="s">NULL</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">wells</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">same</span><span class="nv"> </span><span class="s">inoculum.'</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Link back to the originating sample</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_id</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedData</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MetagenomicsProduct</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">  </span><span class="nt">treatments</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">treatments</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Per-well</span><span class="nv"> </span><span class="s">treatments</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">applicable</span><span class="nv"> </span><span class="s">(e.g.</span><span class="nv"> </span><span class="s">different</span><span class="nv"> </span><span class="s">mineral</span><span class="nv"> </span><span class="s">concentrations).</span>
-
-<span class="w">      </span><span class="s">NULL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">uniform-treatment</span><span class="nv"> </span><span class="s">plates.'</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">treatments</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">position</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">position</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Well position (e.g. "A01", "H12")</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">position</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WellMetadata</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WellReading</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XASMotorPosition</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">well_type</span><span class="p">:</span>

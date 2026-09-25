@@ -481,6 +481,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -602,26 +613,27 @@ Alias: glucosidase_act</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Value</th>
+<th>property</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Regex Pattern</td>
-<td><code>^\d+(\.\d+)?\s*mol/L/h$</code></td>
+<td>submission_pattern</td>
+<td>^\d+(.\d+)?\s*mol/L/h$</td>
 </tr>
 </tbody>
 </table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -648,6 +660,10 @@ Alias: glucosidase_act</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">glucosidase_act</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*mol/L/h$</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Measurement</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">glucosidase</span><span class="nv"> </span><span class="s">activity</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">mol/L/h)&#39;</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">glucosidase activity</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
@@ -658,7 +674,6 @@ Alias: glucosidase_act</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SedimentSample</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*mol/L/h$</span>
 </code></pre></div>
 </details>
 

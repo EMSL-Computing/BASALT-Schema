@@ -301,9 +301,10 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-xraydatagenerationactivity">Class: XRayDataGenerationActivity</h1>
-<p><em>Abstract base class for X-ray analytical methods including XRF (elemental)</em></p>
-<p><em>and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,</em></p>
-<p><em>protocol_url, analyte_id, and other core metadata from DataGenerationActivity.</em></p>
+<p><em>Abstract base class for X-ray analytical methods including XRF (elemental),</em></p>
+<p><em>XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits</em></p>
+<p><em>acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,</em></p>
+<p><em>analyte_id, and other core metadata from DataGenerationActivity.</em></p>
 <p>__</p>
 <p><em>Concrete subclasses define method-specific measurement parameters.</em></p>
 <p><em>Future X-ray methods (e.g., XCT) can extend this class.</em></p>
@@ -311,6 +312,8 @@
 <p><em>Shared patterns:</em></p>
 <p>_  - Direct instrument output (no computational workflow) is typical for XRF_</p>
 <p>_  - XRD may optionally link to DataProcessingActivity for Rietveld refinement_</p>
+<p>_  - XAS acquires raw sweep files as XASInstrumentData, which are later fitted_</p>
+<p>_    by an XASLCFDataProcessingActivity to yield an XASLCFProduct_</p>
 <p>_  - protocol_url should link to vendor SOP or EMSL internal protocol documentation_</p>
 <ul>
 <li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
@@ -327,6 +330,8 @@
         click XRFDataGenerationActivity href "../XRFDataGenerationActivity/"
       XRayDataGenerationActivity &lt;|-- XRDDataGenerationActivity
         click XRDDataGenerationActivity href "../XRDDataGenerationActivity/"
+      XRayDataGenerationActivity &lt;|-- XASDataGenerationActivity
+        click XASDataGenerationActivity href "../XASDataGenerationActivity/"
 
 
       XRayDataGenerationActivity : acquisition_end_time
@@ -348,13 +353,13 @@
 
       XRayDataGenerationActivity : id
 
-      XRayDataGenerationActivity : instrument_operator_id
+      XRayDataGenerationActivity : instrument_operator
 
 
 
 
 
-        XRayDataGenerationActivity --&gt; "0..1" PersonValue : instrument_operator_id
+        XRayDataGenerationActivity --&gt; "0..1" PersonValue : instrument_operator
         click PersonValue href "../PersonValue/"
 
 
@@ -385,6 +390,7 @@
 <li><strong>XRayDataGenerationActivity</strong><ul>
 <li><a href="../XRFDataGenerationActivity/">XRFDataGenerationActivity</a></li>
 <li><a href="../XRDDataGenerationActivity/">XRDDataGenerationActivity</a></li>
+<li><a href="../XASDataGenerationActivity/">XASDataGenerationActivity</a></li>
 </ul>
 </li>
 </ul>
@@ -420,6 +426,12 @@
 <td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
 </tr>
 <tr>
+<td><a href="../analyte_id/">analyte_id</a></td>
+<td>0..1 <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
+<td>FK reference to a ProcessedSample representing the substance analyzed in this...</td>
+<td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
+</tr>
+<tr>
 <td><a href="../protocol_url/">protocol_url</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>URL pointing to the protocol used in the activity, if applicable</td>
@@ -432,38 +444,32 @@
 <td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
 </tr>
 <tr>
-<td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uuid/">Uuid</a></td>
-<td></td>
-<td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
-</tr>
-<tr>
-<td><a href="../analyte_id/">analyte_id</a></td>
-<td>0..1 <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
-<td></td>
-<td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
-</tr>
-<tr>
 <td><a href="../acquisition_start_time/">acquisition_start_time</a></td>
-<td>1 <br/> <a href="../Datetime/">Datetime</a></td>
-<td></td>
+<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
+<td>The time that data collection started for this activity</td>
 <td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
 </tr>
 <tr>
 <td><a href="../acquisition_end_time/">acquisition_end_time</a></td>
-<td>1 <br/> <a href="../Datetime/">Datetime</a></td>
-<td></td>
+<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
+<td>The time that data collection ended for this activity</td>
 <td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
 </tr>
 <tr>
 <td><a href="../instrument_used/">instrument_used</a></td>
 <td>0..1 <br/> <a href="../Instrument/">Instrument</a></td>
-<td></td>
+<td>Instrument used for the measurement</td>
 <td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
 </tr>
 <tr>
-<td><a href="../instrument_operator_id/">instrument_operator_id</a></td>
+<td><a href="../instrument_operator/">instrument_operator</a></td>
 <td>0..1 <br/> <a href="../PersonValue/">PersonValue</a></td>
+<td>User who operated the instrument</td>
+<td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uuid/">Uuid</a></td>
 <td></td>
 <td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
 </tr>
@@ -498,14 +504,16 @@
 <h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Abstract</span><span class="nv"> </span><span class="s">base</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">X-ray</span><span class="nv"> </span><span class="s">analytical</span><span class="nv"> </span><span class="s">methods</span><span class="nv"> </span><span class="s">including</span><span class="nv"> </span><span class="s">XRF</span><span class="nv"> </span><span class="s">(elemental)\n\</span>
-<span class="w">  </span><span class="s">and</span><span class="nv"> </span><span class="s">XRD</span><span class="nv"> </span><span class="s">(mineralogical)</span><span class="nv"> </span><span class="s">analysis.</span><span class="nv"> </span><span class="s">Inherits</span><span class="nv"> </span><span class="s">acquisition_time,</span><span class="nv"> </span><span class="s">instrument_id,\nprotocol_url,\</span>
-<span class="w">  </span><span class="s">\ analyte_id,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">other</span><span class="nv"> </span><span class="s">core</span><span class="nv"> </span><span class="s">metadata</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">DataGenerationActivity.\n\nConcrete</span><span class="nv"> </span><span class="s">subclasses\</span>
-<span class="w">  </span><span class="s">\ define</span><span class="nv"> </span><span class="s">method-specific</span><span class="nv"> </span><span class="s">measurement</span><span class="nv"> </span><span class="s">parameters.\nFuture</span><span class="nv"> </span><span class="s">X-ray</span><span class="nv"> </span><span class="s">methods</span><span class="nv"> </span><span class="s">(e.g.,</span><span class="nv"> </span><span class="s">XCT)\</span>
-<span class="w">  </span><span class="s">\ can</span><span class="nv"> </span><span class="s">extend</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">class.\n\nShared</span><span class="nv"> </span><span class="s">patterns:\n</span><span class="nv">  </span><span class="s">-</span><span class="nv"> </span><span class="s">Direct</span><span class="nv"> </span><span class="s">instrument</span><span class="nv"> </span><span class="s">output</span><span class="nv"> </span><span class="s">(no</span><span class="nv"> </span><span class="s">computational\</span>
-<span class="w">  </span><span class="s">\ workflow)</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">typical</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">XRF\n</span><span class="nv">  </span><span class="s">-</span><span class="nv"> </span><span class="s">XRD</span><span class="nv"> </span><span class="s">may</span><span class="nv"> </span><span class="s">optionally</span><span class="nv"> </span><span class="s">link</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">DataProcessingActivity\</span>
-<span class="w">  </span><span class="s">\ for</span><span class="nv"> </span><span class="s">Rietveld</span><span class="nv"> </span><span class="s">refinement\n</span><span class="nv">  </span><span class="s">-</span><span class="nv"> </span><span class="s">protocol_url</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">link</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">vendor</span><span class="nv"> </span><span class="s">SOP</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">EMSL</span><span class="nv"> </span><span class="s">internal\</span>
-<span class="w">  </span><span class="s">\ protocol</span><span class="nv"> </span><span class="s">documentation"</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Abstract</span><span class="nv"> </span><span class="s">base</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">X-ray</span><span class="nv"> </span><span class="s">analytical</span><span class="nv"> </span><span class="s">methods</span><span class="nv"> </span><span class="s">including</span><span class="nv"> </span><span class="s">XRF</span><span class="nv"> </span><span class="s">(elemental),\n\</span>
+<span class="w">  </span><span class="s">XRD</span><span class="nv"> </span><span class="s">(mineralogical),</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">XAS</span><span class="nv"> </span><span class="s">(absorption</span><span class="nv"> </span><span class="s">spectroscopy)</span><span class="nv"> </span><span class="s">analysis.</span><span class="nv"> </span><span class="s">Inherits\nacquisition_start_time,\</span>
+<span class="w">  </span><span class="s">\ acquisition_end_time,</span><span class="nv"> </span><span class="s">instrument_used,</span><span class="nv"> </span><span class="s">protocol_url,\nanalyte_id,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">other</span><span class="nv"> </span><span class="s">core\</span>
+<span class="w">  </span><span class="s">\ metadata</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">DataGenerationActivity.\n\nConcrete</span><span class="nv"> </span><span class="s">subclasses</span><span class="nv"> </span><span class="s">define</span><span class="nv"> </span><span class="s">method-specific\</span>
+<span class="w">  </span><span class="s">\ measurement</span><span class="nv"> </span><span class="s">parameters.\nFuture</span><span class="nv"> </span><span class="s">X-ray</span><span class="nv"> </span><span class="s">methods</span><span class="nv"> </span><span class="s">(e.g.,</span><span class="nv"> </span><span class="s">XCT)</span><span class="nv"> </span><span class="s">can</span><span class="nv"> </span><span class="s">extend</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">class.\n\</span>
+<span class="w">  </span><span class="s">\nShared</span><span class="nv"> </span><span class="s">patterns:\n</span><span class="nv">  </span><span class="s">-</span><span class="nv"> </span><span class="s">Direct</span><span class="nv"> </span><span class="s">instrument</span><span class="nv"> </span><span class="s">output</span><span class="nv"> </span><span class="s">(no</span><span class="nv"> </span><span class="s">computational</span><span class="nv"> </span><span class="s">workflow)</span><span class="nv"> </span><span class="s">is\</span>
+<span class="w">  </span><span class="s">\ typical</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">XRF\n</span><span class="nv">  </span><span class="s">-</span><span class="nv"> </span><span class="s">XRD</span><span class="nv"> </span><span class="s">may</span><span class="nv"> </span><span class="s">optionally</span><span class="nv"> </span><span class="s">link</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">DataProcessingActivity</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Rietveld\</span>
+<span class="w">  </span><span class="s">\ refinement\n</span><span class="nv">  </span><span class="s">-</span><span class="nv"> </span><span class="s">XAS</span><span class="nv"> </span><span class="s">acquires</span><span class="nv"> </span><span class="s">raw</span><span class="nv"> </span><span class="s">sweep</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">XASInstrumentData,</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">later\</span>
+<span class="w">  </span><span class="s">\ fitted\n</span><span class="nv">    </span><span class="s">by</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">XASLCFDataProcessingActivity</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">yield</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">XASLCFProduct\n</span><span class="nv">  </span><span class="s">-\</span>
+<span class="w">  </span><span class="s">\ protocol_url</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">link</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">vendor</span><span class="nv"> </span><span class="s">SOP</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">EMSL</span><span class="nv"> </span><span class="s">internal</span><span class="nv"> </span><span class="s">protocol</span><span class="nv"> </span><span class="s">documentation"</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
 <span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -514,14 +522,16 @@
 <h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Abstract</span><span class="nv"> </span><span class="s">base</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">X-ray</span><span class="nv"> </span><span class="s">analytical</span><span class="nv"> </span><span class="s">methods</span><span class="nv"> </span><span class="s">including</span><span class="nv"> </span><span class="s">XRF</span><span class="nv"> </span><span class="s">(elemental)\n\</span>
-<span class="w">  </span><span class="s">and</span><span class="nv"> </span><span class="s">XRD</span><span class="nv"> </span><span class="s">(mineralogical)</span><span class="nv"> </span><span class="s">analysis.</span><span class="nv"> </span><span class="s">Inherits</span><span class="nv"> </span><span class="s">acquisition_time,</span><span class="nv"> </span><span class="s">instrument_id,\nprotocol_url,\</span>
-<span class="w">  </span><span class="s">\ analyte_id,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">other</span><span class="nv"> </span><span class="s">core</span><span class="nv"> </span><span class="s">metadata</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">DataGenerationActivity.\n\nConcrete</span><span class="nv"> </span><span class="s">subclasses\</span>
-<span class="w">  </span><span class="s">\ define</span><span class="nv"> </span><span class="s">method-specific</span><span class="nv"> </span><span class="s">measurement</span><span class="nv"> </span><span class="s">parameters.\nFuture</span><span class="nv"> </span><span class="s">X-ray</span><span class="nv"> </span><span class="s">methods</span><span class="nv"> </span><span class="s">(e.g.,</span><span class="nv"> </span><span class="s">XCT)\</span>
-<span class="w">  </span><span class="s">\ can</span><span class="nv"> </span><span class="s">extend</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">class.\n\nShared</span><span class="nv"> </span><span class="s">patterns:\n</span><span class="nv">  </span><span class="s">-</span><span class="nv"> </span><span class="s">Direct</span><span class="nv"> </span><span class="s">instrument</span><span class="nv"> </span><span class="s">output</span><span class="nv"> </span><span class="s">(no</span><span class="nv"> </span><span class="s">computational\</span>
-<span class="w">  </span><span class="s">\ workflow)</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">typical</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">XRF\n</span><span class="nv">  </span><span class="s">-</span><span class="nv"> </span><span class="s">XRD</span><span class="nv"> </span><span class="s">may</span><span class="nv"> </span><span class="s">optionally</span><span class="nv"> </span><span class="s">link</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">DataProcessingActivity\</span>
-<span class="w">  </span><span class="s">\ for</span><span class="nv"> </span><span class="s">Rietveld</span><span class="nv"> </span><span class="s">refinement\n</span><span class="nv">  </span><span class="s">-</span><span class="nv"> </span><span class="s">protocol_url</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">link</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">vendor</span><span class="nv"> </span><span class="s">SOP</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">EMSL</span><span class="nv"> </span><span class="s">internal\</span>
-<span class="w">  </span><span class="s">\ protocol</span><span class="nv"> </span><span class="s">documentation"</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Abstract</span><span class="nv"> </span><span class="s">base</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">X-ray</span><span class="nv"> </span><span class="s">analytical</span><span class="nv"> </span><span class="s">methods</span><span class="nv"> </span><span class="s">including</span><span class="nv"> </span><span class="s">XRF</span><span class="nv"> </span><span class="s">(elemental),\n\</span>
+<span class="w">  </span><span class="s">XRD</span><span class="nv"> </span><span class="s">(mineralogical),</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">XAS</span><span class="nv"> </span><span class="s">(absorption</span><span class="nv"> </span><span class="s">spectroscopy)</span><span class="nv"> </span><span class="s">analysis.</span><span class="nv"> </span><span class="s">Inherits\nacquisition_start_time,\</span>
+<span class="w">  </span><span class="s">\ acquisition_end_time,</span><span class="nv"> </span><span class="s">instrument_used,</span><span class="nv"> </span><span class="s">protocol_url,\nanalyte_id,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">other</span><span class="nv"> </span><span class="s">core\</span>
+<span class="w">  </span><span class="s">\ metadata</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">DataGenerationActivity.\n\nConcrete</span><span class="nv"> </span><span class="s">subclasses</span><span class="nv"> </span><span class="s">define</span><span class="nv"> </span><span class="s">method-specific\</span>
+<span class="w">  </span><span class="s">\ measurement</span><span class="nv"> </span><span class="s">parameters.\nFuture</span><span class="nv"> </span><span class="s">X-ray</span><span class="nv"> </span><span class="s">methods</span><span class="nv"> </span><span class="s">(e.g.,</span><span class="nv"> </span><span class="s">XCT)</span><span class="nv"> </span><span class="s">can</span><span class="nv"> </span><span class="s">extend</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">class.\n\</span>
+<span class="w">  </span><span class="s">\nShared</span><span class="nv"> </span><span class="s">patterns:\n</span><span class="nv">  </span><span class="s">-</span><span class="nv"> </span><span class="s">Direct</span><span class="nv"> </span><span class="s">instrument</span><span class="nv"> </span><span class="s">output</span><span class="nv"> </span><span class="s">(no</span><span class="nv"> </span><span class="s">computational</span><span class="nv"> </span><span class="s">workflow)</span><span class="nv"> </span><span class="s">is\</span>
+<span class="w">  </span><span class="s">\ typical</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">XRF\n</span><span class="nv">  </span><span class="s">-</span><span class="nv"> </span><span class="s">XRD</span><span class="nv"> </span><span class="s">may</span><span class="nv"> </span><span class="s">optionally</span><span class="nv"> </span><span class="s">link</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">DataProcessingActivity</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Rietveld\</span>
+<span class="w">  </span><span class="s">\ refinement\n</span><span class="nv">  </span><span class="s">-</span><span class="nv"> </span><span class="s">XAS</span><span class="nv"> </span><span class="s">acquires</span><span class="nv"> </span><span class="s">raw</span><span class="nv"> </span><span class="s">sweep</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">XASInstrumentData,</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">later\</span>
+<span class="w">  </span><span class="s">\ fitted\n</span><span class="nv">    </span><span class="s">by</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">XASLCFDataProcessingActivity</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">yield</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">XASLCFProduct\n</span><span class="nv">  </span><span class="s">-\</span>
+<span class="w">  </span><span class="s">\ protocol_url</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">link</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">vendor</span><span class="nv"> </span><span class="s">SOP</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">EMSL</span><span class="nv"> </span><span class="s">internal</span><span class="nv"> </span><span class="s">protocol</span><span class="nv"> </span><span class="s">documentation"</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
 <span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -555,16 +565,17 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instrument</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OntologyClass</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ContainerAxis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessing</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoftwareControlledTermValue</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -586,15 +597,17 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OntologyClass</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ContainerType</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabDevice</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessing</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimestampValue</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TextValue</span>
@@ -602,6 +615,17 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ControlledTermValue</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QuantityValue</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">analyte_id</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analyte_id</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FK reference to a ProcessedSample representing the substance analyzed</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">in this activity.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analyte_id</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
 <span class="w">  </span><span class="nt">protocol_url</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protocol_url</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URL pointing to the protocol used in the activity, if applicable.</span>
@@ -611,7 +635,7 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessing</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">protocol_version</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protocol_version</span>
@@ -622,8 +646,48 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessing</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">acquisition_start_time</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acquisition_start_time</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The time that data collection started for this activity.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acquisition_start_time</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datetime</span>
+<span class="w">  </span><span class="nt">acquisition_end_time</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acquisition_end_time</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The time that data collection ended for this activity.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acquisition_end_time</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datetime</span>
+<span class="w">  </span><span class="nt">instrument_used</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument_used</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instrument used for the measurement</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument_used</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instrument</span>
+<span class="w">  </span><span class="nt">instrument_operator</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument_operator</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">User who operated the instrument</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument_operator</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersonValue</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
@@ -648,12 +712,13 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhase</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAOMProduct</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WEOMProduct</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AerosolArmSample</span>
@@ -692,6 +757,10 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SynthesizedMaterialSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstancesUsedLink</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingSubstance</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProjectParticipant</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimestampValue</span>
@@ -704,53 +773,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zipDownload</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uuid</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">analyte_id</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analyte_id</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analyte_id</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedSample</span>
-<span class="w">  </span><span class="nt">acquisition_start_time</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acquisition_start_time</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acquisition_start_time</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datetime</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">acquisition_end_time</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acquisition_end_time</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acquisition_end_time</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datetime</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">instrument_used</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument_used</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument_used</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instrument</span>
-<span class="w">  </span><span class="nt">instrument_operator_id</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument_operator_id</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument_operator_id</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRayDataGenerationActivity</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersonValue</span>
 </code></pre></div>
 </details>
 </article>

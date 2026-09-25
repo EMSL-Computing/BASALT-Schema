@@ -481,6 +481,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -592,26 +603,27 @@ Alias: slope_aspect</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Value</th>
+<th>property</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Regex Pattern</td>
-<td><code>^\d+(\.\d+)?\s*degrees$</code></td>
+<td>submission_pattern</td>
+<td>^\d+(.\d+)?\s*degrees$</td>
 </tr>
 </tbody>
 </table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -638,6 +650,10 @@ Alias: slope_aspect</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slope_aspect</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*degrees$</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;The</span><span class="nv"> </span><span class="s">direction</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">slope</span><span class="nv"> </span><span class="s">faces.</span><span class="nv"> </span><span class="s">While</span><span class="nv"> </span><span class="s">looking</span><span class="nv"> </span><span class="s">down</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">slope</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">compass</span>
 <span class="w">  </span><span class="s">to</span><span class="nv"> </span><span class="s">record</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">direction</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">facing</span><span class="nv"> </span><span class="s">(degrees);</span><span class="nv"> </span><span class="s">e.g.</span><span class="nv"> </span><span class="s">315</span><span class="nv"> </span><span class="s">degrees.</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">measure</span>
 <span class="w">  </span><span class="s">provides</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">indication</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">sun</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">wind</span><span class="nv"> </span><span class="s">exposure</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">influence</span><span class="nv"> </span><span class="s">soil</span><span class="nv"> </span><span class="s">temperature</span>
@@ -649,7 +665,6 @@ Alias: slope_aspect</p>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*degrees$</span>
 </code></pre></div>
 </details>
 

@@ -556,23 +556,23 @@ Alias: temperature_celsius</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../HasIncubationConditions/">HasIncubationConditions</a></td>
+<td>Mixin for activities/setups that involve controlled incubation</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CultureGrowth/">CultureGrowth</a></td>
+<td>Abstract activity for growing cultures from samples or other cultures</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EcoplatePlateSetupActivity/">EcoplatePlateSetupActivity</a></td>
+<td>Ecoplate-specific plate setup</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ExperimentalCulture/">ExperimentalCulture</a></td>
 <td>Growth of an experimental culture for downstream analysis</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChromatographyConfiguration/">ChromatographyConfiguration</a></td>
-<td>Configuration and settings for a chromatography run</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AMP2PlateSetupActivity/">AMP2PlateSetupActivity</a></td>
-<td>AMP2-specific plate setup</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../StockCulturePreparation/">StockCulturePreparation</a></td>
-<td>Preparation of a stock culture from user samples for long-term storage</td>
 <td>no</td>
 </tr>
 <tr>
@@ -586,23 +586,33 @@ Alias: temperature_celsius</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../HasIncubationConditions/">HasIncubationConditions</a></td>
-<td>Mixin for activities/setups that involve controlled incubation</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EcoplatePlateSetupActivity/">EcoplatePlateSetupActivity</a></td>
-<td>Ecoplate-specific plate setup</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../CultureGrowth/">CultureGrowth</a></td>
-<td>Abstract activity for growing cultures from samples or other cultures</td>
+<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td>A chemical conversion process used in sample preparation</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../StrainPurity/">StrainPurity</a></td>
 <td>Purity check of a strain culture</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AMP2PlateSetupActivity/">AMP2PlateSetupActivity</a></td>
+<td>AMP2-specific plate setup</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../StockCulturePreparation/">StockCulturePreparation</a></td>
+<td>Preparation of a stock culture from user samples for long-term storage</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RIDataGenerationActivity/">RIDataGenerationActivity</a></td>
+<td>Refractive Index (RI) measurement activity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChromatographyConfiguration/">ChromatographyConfiguration</a></td>
+<td>Configuration and settings for a chromatography run</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -623,7 +633,7 @@ Alias: temperature_celsius</p>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../ChromatographyConfiguration/">ChromatographyConfiguration</a>, <a href="../HasIncubationConditions/">HasIncubationConditions</a></td>
+<td><a href="../RIDataGenerationActivity/">RIDataGenerationActivity</a>, <a href="../ChromatographyConfiguration/">ChromatographyConfiguration</a>, <a href="../HasIncubationConditions/">HasIncubationConditions</a>, <a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
 </tr>
 </tbody>
 </table>
@@ -674,8 +684,10 @@ Alias: temperature_celsius</p>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temperature_celsius</span>
 <span class="nt">domain_of</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RIDataGenerationActivity</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChromatographyConfiguration</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HasIncubationConditions</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalConversionProcess</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
 </code></pre></div>
 </details>

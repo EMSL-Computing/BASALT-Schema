@@ -245,6 +245,15 @@
 </nav>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#comments">
+<span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       
@@ -314,14 +323,43 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-processingsamplelink">Class: ProcessingSampleLink</h1>
-<p><em>A link between a processed sample and the sample processing activity that produced it.</em></p>
-<p><em>This class captures the relationship between a processed sample and the sample processing</em></p>
-<p><em>activity that generated it, including the step number and role of the sample in the process.</em></p>
+<p><em>The authoritative record of what a SampleProcessing step consumed and produced.</em></p>
+<p><em>One row is one directed edge between a Sample and a processing activity.</em></p>
+<p>__</p>
+<p><em>This class is the ONLY place sample-to-processing edges are stored. No sample</em></p>
+<p><em>or activity class carries a scalar pointer to its counterpart, so there is</em></p>
+<p><em>exactly one representation of the lineage graph and no way for two encodings</em></p>
+<p><em>to disagree.</em></p>
+<p>__</p>
+<p><em>Direction is carried by role:</em></p>
+<p>_  role = input_sample   -&gt;  sample_id was consumed by processing_id_</p>
+<p>_  role = output_sample  -&gt;  sample_id (a ProcessedSample) was produced by it_</p>
+<p>__</p>
+<p><em>A minimal step is therefore two rows: one input edge and one output edge.</em></p>
+<p><em>Because role is per-row rather than per-activity, fan-in and fan-out are</em></p>
+<p><em>expressed natively -- a PoolingProcess is N input rows to 1 output row, and a</em></p>
+<p><em>FractionationProcess is 1 input row to N output rows. Lineage is a DAG, not a</em></p>
+<p><em>chain, and this table is what makes that representable.</em></p>
+<p>__</p>
+<p><em>step_number is the position of the step within its chain. It is only meaningful</em></p>
+<p><em>relative to in_run, which names the chain the edge belongs to; see</em></p>
+<p><em>SampleProcessingRun.</em></p>
 <p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/ProcessingSampleLink">basalt_schema:ProcessingSampleLink</a></p>
 <pre class="mermaid"><code> classDiagram
     class ProcessingSampleLink
     click ProcessingSampleLink href "../ProcessingSampleLink/"
       ProcessingSampleLink : id
+
+      ProcessingSampleLink : in_run
+
+
+
+
+
+        ProcessingSampleLink --&gt; "0..1" SampleProcessingRun : in_run
+        click SampleProcessingRun href "../SampleProcessingRun/"
+
+
 
       ProcessingSampleLink : processing_id
 
@@ -345,13 +383,13 @@
 
 
 
-      ProcessingSampleLink : sample_base_id
+      ProcessingSampleLink : sample_id
 
 
 
 
 
-        ProcessingSampleLink --&gt; "1" Sample : sample_base_id
+        ProcessingSampleLink --&gt; "1" Sample : sample_id
         click Sample href "../Sample/"
 
 
@@ -372,14 +410,14 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uuid/">Uuid</a></td>
-<td></td>
+<td><a href="../in_run/">in_run</a></td>
+<td>0..1 <br/> <a href="../SampleProcessingRun/">SampleProcessingRun</a></td>
+<td>The SampleProcessingRun (one concrete execution) that this edge belongs to</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../sample_base_id/">sample_base_id</a></td>
-<td>1 <br/> <a href="../Sample/">Sample</a></td>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uuid/">Uuid</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -396,16 +434,26 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../sample_id/">sample_id</a></td>
+<td>1 <br/> <a href="../Sample/">Sample</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../role/">role</a></td>
 <td>1 <br/> <a href="../SampleRole/">SampleRole</a></td>
-<td></td>
+<td>Whether sample_id was consumed by (input_sample) or produced by (output_sampl...</td>
 <td>direct</td>
 </tr>
 </tbody>
 </table>
 <h2 id="unique-keys">Unique Keys</h2>
 <h3 id="unique_sample_process_step">unique_sample_process_step</h3>
-<p><strong>Unique key slots:</strong> sample_base_id, processing_id, step_number, role</p>
+<p><strong>Unique key slots:</strong> sample_id, processing_id, step_number, role</p>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Invariant not expressible in LinkML: all rows sharing a processing_id must agree on in_run, since a step belongs to exactly one run. Enforce with a database-level check or a validation rule.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -435,14 +483,27 @@
 <h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'A</span><span class="nv"> </span><span class="s">link</span><span class="nv"> </span><span class="s">between</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">processed</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">processing</span><span class="nv"> </span><span class="s">activity</span>
-<span class="w">  </span><span class="s">that</span><span class="nv"> </span><span class="s">produced</span><span class="nv"> </span><span class="s">it.</span>
-
-<span class="w">  </span><span class="s">This</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">captures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">relationship</span><span class="nv"> </span><span class="s">between</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">processed</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">processing</span>
-
-<span class="w">  </span><span class="s">activity</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">generated</span><span class="nv"> </span><span class="s">it,</span><span class="nv"> </span><span class="s">including</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">in</span>
-<span class="w">  </span><span class="s">the</span><span class="nv"> </span><span class="s">process.'</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"The</span><span class="nv"> </span><span class="s">authoritative</span><span class="nv"> </span><span class="s">record</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">what</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">SampleProcessing</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">consumed</span><span class="nv"> </span><span class="s">and\</span>
+<span class="w">  </span><span class="s">\ produced.\nOne</span><span class="nv"> </span><span class="s">row</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">directed</span><span class="nv"> </span><span class="s">edge</span><span class="nv"> </span><span class="s">between</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">Sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">processing</span><span class="nv"> </span><span class="s">activity.\n\</span>
+<span class="w">  </span><span class="s">\nThis</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">ONLY</span><span class="nv"> </span><span class="s">place</span><span class="nv"> </span><span class="s">sample-to-processing</span><span class="nv"> </span><span class="s">edges</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">stored.</span><span class="nv"> </span><span class="s">No</span><span class="nv"> </span><span class="s">sample\n\</span>
+<span class="w">  </span><span class="s">or</span><span class="nv"> </span><span class="s">activity</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">carries</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">scalar</span><span class="nv"> </span><span class="s">pointer</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">its</span><span class="nv"> </span><span class="s">counterpart,</span><span class="nv"> </span><span class="s">so</span><span class="nv"> </span><span class="s">there</span><span class="nv"> </span><span class="s">is\nexactly\</span>
+<span class="w">  </span><span class="s">\ one</span><span class="nv"> </span><span class="s">representation</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">lineage</span><span class="nv"> </span><span class="s">graph</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">no</span><span class="nv"> </span><span class="s">way</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">two</span><span class="nv"> </span><span class="s">encodings\nto</span><span class="nv"> </span><span class="s">disagree.\n\</span>
+<span class="w">  </span><span class="s">\nDirection</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">carried</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">role:\n</span><span class="nv">  </span><span class="s">role</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">input_sample</span><span class="nv">   </span><span class="s">-&gt;</span><span class="nv">  </span><span class="s">sample_id</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">consumed\</span>
+<span class="w">  </span><span class="s">\ by</span><span class="nv"> </span><span class="s">processing_id\n</span><span class="nv">  </span><span class="s">role</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">output_sample</span><span class="nv">  </span><span class="s">-&gt;</span><span class="nv">  </span><span class="s">sample_id</span><span class="nv"> </span><span class="s">(a</span><span class="nv"> </span><span class="s">ProcessedSample)</span><span class="nv"> </span><span class="s">was\</span>
+<span class="w">  </span><span class="s">\ produced</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">it\n\nA</span><span class="nv"> </span><span class="s">minimal</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">therefore</span><span class="nv"> </span><span class="s">two</span><span class="nv"> </span><span class="s">rows:</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">input</span><span class="nv"> </span><span class="s">edge</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">one\</span>
+<span class="w">  </span><span class="s">\ output</span><span class="nv"> </span><span class="s">edge.\nBecause</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">per-row</span><span class="nv"> </span><span class="s">rather</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">per-activity,</span><span class="nv"> </span><span class="s">fan-in</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">fan-out\</span>
+<span class="w">  </span><span class="s">\ are\nexpressed</span><span class="nv"> </span><span class="s">natively</span><span class="nv"> </span><span class="s">--</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">PoolingProcess</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">N</span><span class="nv"> </span><span class="s">input</span><span class="nv"> </span><span class="s">rows</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">output</span><span class="nv"> </span><span class="s">row,</span><span class="nv"> </span><span class="s">and\</span>
+<span class="w">  </span><span class="s">\ a\nFractionationProcess</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">input</span><span class="nv"> </span><span class="s">row</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">N</span><span class="nv"> </span><span class="s">output</span><span class="nv"> </span><span class="s">rows.</span><span class="nv"> </span><span class="s">Lineage</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">DAG,</span><span class="nv"> </span><span class="s">not\</span>
+<span class="w">  </span><span class="s">\ a\nchain,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">table</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">what</span><span class="nv"> </span><span class="s">makes</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">representable.\n\nstep_number</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the\</span>
+<span class="w">  </span><span class="s">\ position</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">its</span><span class="nv"> </span><span class="s">chain.</span><span class="nv"> </span><span class="s">It</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">only</span><span class="nv"> </span><span class="s">meaningful\nrelative</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">in_run,\</span>
+<span class="w">  </span><span class="s">\ which</span><span class="nv"> </span><span class="s">names</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">chain</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">edge</span><span class="nv"> </span><span class="s">belongs</span><span class="nv"> </span><span class="s">to;</span><span class="nv"> </span><span class="s">see\nSampleProcessingRun."</span>
+<span class="nt">comments</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'Invariant</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">expressible</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">LinkML:</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">rows</span><span class="nv"> </span><span class="s">sharing</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">processing_id</span><span class="nv"> </span><span class="s">must</span><span class="nv"> </span><span class="s">agree</span>
+<span class="w">  </span><span class="s">on</span><span class="nv"> </span><span class="s">in_run,</span><span class="nv"> </span><span class="s">since</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">belongs</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">exactly</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">run.</span><span class="nv"> </span><span class="s">Enforce</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">database-level</span>
+<span class="w">  </span><span class="s">check</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">validation</span><span class="nv"> </span><span class="s">rule.'</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
+<span class="nt">slots</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">in_run</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
@@ -466,12 +527,13 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhase</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAOMProduct</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WEOMProduct</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AerosolArmSample</span>
@@ -510,6 +572,10 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SynthesizedMaterialSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstancesUsedLink</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingSubstance</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProjectParticipant</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimestampValue</span>
@@ -522,14 +588,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zipDownload</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uuid</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">sample_base_id</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_base_id</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">processing_id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">processing_id</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
@@ -541,13 +599,25 @@
 <span class="w">  </span><span class="nt">step_number</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">step_number</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">sample_id</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_id</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedData</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MetagenomicsProduct</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">role</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">role</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Whether sample_id was consumed by (input_sample) or produced by (output_sample)</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">processing_id.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
@@ -559,7 +629,7 @@
 <span class="w">  </span><span class="nt">unique_sample_process_step</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">unique_key_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unique_sample_process_step</span>
 <span class="w">    </span><span class="nt">unique_key_slots</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_base_id</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_id</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">processing_id</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">step_number</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">role</span>
@@ -568,13 +638,24 @@
 <h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'A</span><span class="nv"> </span><span class="s">link</span><span class="nv"> </span><span class="s">between</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">processed</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">processing</span><span class="nv"> </span><span class="s">activity</span>
-<span class="w">  </span><span class="s">that</span><span class="nv"> </span><span class="s">produced</span><span class="nv"> </span><span class="s">it.</span>
-
-<span class="w">  </span><span class="s">This</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">captures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">relationship</span><span class="nv"> </span><span class="s">between</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">processed</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">processing</span>
-
-<span class="w">  </span><span class="s">activity</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">generated</span><span class="nv"> </span><span class="s">it,</span><span class="nv"> </span><span class="s">including</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">in</span>
-<span class="w">  </span><span class="s">the</span><span class="nv"> </span><span class="s">process.'</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"The</span><span class="nv"> </span><span class="s">authoritative</span><span class="nv"> </span><span class="s">record</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">what</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">SampleProcessing</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">consumed</span><span class="nv"> </span><span class="s">and\</span>
+<span class="w">  </span><span class="s">\ produced.\nOne</span><span class="nv"> </span><span class="s">row</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">directed</span><span class="nv"> </span><span class="s">edge</span><span class="nv"> </span><span class="s">between</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">Sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">processing</span><span class="nv"> </span><span class="s">activity.\n\</span>
+<span class="w">  </span><span class="s">\nThis</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">ONLY</span><span class="nv"> </span><span class="s">place</span><span class="nv"> </span><span class="s">sample-to-processing</span><span class="nv"> </span><span class="s">edges</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">stored.</span><span class="nv"> </span><span class="s">No</span><span class="nv"> </span><span class="s">sample\n\</span>
+<span class="w">  </span><span class="s">or</span><span class="nv"> </span><span class="s">activity</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">carries</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">scalar</span><span class="nv"> </span><span class="s">pointer</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">its</span><span class="nv"> </span><span class="s">counterpart,</span><span class="nv"> </span><span class="s">so</span><span class="nv"> </span><span class="s">there</span><span class="nv"> </span><span class="s">is\nexactly\</span>
+<span class="w">  </span><span class="s">\ one</span><span class="nv"> </span><span class="s">representation</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">lineage</span><span class="nv"> </span><span class="s">graph</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">no</span><span class="nv"> </span><span class="s">way</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">two</span><span class="nv"> </span><span class="s">encodings\nto</span><span class="nv"> </span><span class="s">disagree.\n\</span>
+<span class="w">  </span><span class="s">\nDirection</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">carried</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">role:\n</span><span class="nv">  </span><span class="s">role</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">input_sample</span><span class="nv">   </span><span class="s">-&gt;</span><span class="nv">  </span><span class="s">sample_id</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">consumed\</span>
+<span class="w">  </span><span class="s">\ by</span><span class="nv"> </span><span class="s">processing_id\n</span><span class="nv">  </span><span class="s">role</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">output_sample</span><span class="nv">  </span><span class="s">-&gt;</span><span class="nv">  </span><span class="s">sample_id</span><span class="nv"> </span><span class="s">(a</span><span class="nv"> </span><span class="s">ProcessedSample)</span><span class="nv"> </span><span class="s">was\</span>
+<span class="w">  </span><span class="s">\ produced</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">it\n\nA</span><span class="nv"> </span><span class="s">minimal</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">therefore</span><span class="nv"> </span><span class="s">two</span><span class="nv"> </span><span class="s">rows:</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">input</span><span class="nv"> </span><span class="s">edge</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">one\</span>
+<span class="w">  </span><span class="s">\ output</span><span class="nv"> </span><span class="s">edge.\nBecause</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">per-row</span><span class="nv"> </span><span class="s">rather</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">per-activity,</span><span class="nv"> </span><span class="s">fan-in</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">fan-out\</span>
+<span class="w">  </span><span class="s">\ are\nexpressed</span><span class="nv"> </span><span class="s">natively</span><span class="nv"> </span><span class="s">--</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">PoolingProcess</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">N</span><span class="nv"> </span><span class="s">input</span><span class="nv"> </span><span class="s">rows</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">output</span><span class="nv"> </span><span class="s">row,</span><span class="nv"> </span><span class="s">and\</span>
+<span class="w">  </span><span class="s">\ a\nFractionationProcess</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">input</span><span class="nv"> </span><span class="s">row</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">N</span><span class="nv"> </span><span class="s">output</span><span class="nv"> </span><span class="s">rows.</span><span class="nv"> </span><span class="s">Lineage</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">DAG,</span><span class="nv"> </span><span class="s">not\</span>
+<span class="w">  </span><span class="s">\ a\nchain,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">table</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">what</span><span class="nv"> </span><span class="s">makes</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">representable.\n\nstep_number</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the\</span>
+<span class="w">  </span><span class="s">\ position</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">its</span><span class="nv"> </span><span class="s">chain.</span><span class="nv"> </span><span class="s">It</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">only</span><span class="nv"> </span><span class="s">meaningful\nrelative</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">in_run,\</span>
+<span class="w">  </span><span class="s">\ which</span><span class="nv"> </span><span class="s">names</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">chain</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">edge</span><span class="nv"> </span><span class="s">belongs</span><span class="nv"> </span><span class="s">to;</span><span class="nv"> </span><span class="s">see\nSampleProcessingRun."</span>
+<span class="nt">comments</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'Invariant</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">expressible</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">LinkML:</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">rows</span><span class="nv"> </span><span class="s">sharing</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">processing_id</span><span class="nv"> </span><span class="s">must</span><span class="nv"> </span><span class="s">agree</span>
+<span class="w">  </span><span class="s">on</span><span class="nv"> </span><span class="s">in_run,</span><span class="nv"> </span><span class="s">since</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">belongs</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">exactly</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">run.</span><span class="nv"> </span><span class="s">Enforce</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">database-level</span>
+<span class="w">  </span><span class="s">check</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">validation</span><span class="nv"> </span><span class="s">rule.'</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
@@ -601,12 +682,13 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometryStandardRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhase</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CalibrationStandardRun</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PurchasedMaterial</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LabProcessingActivity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAOMProduct</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WEOMProduct</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organism</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AerosolArmSample</span>
@@ -645,6 +727,10 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SynthesizedMaterialSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSamplingActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSamplingActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingProtocol</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstancesUsedLink</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingSubstance</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Study</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProjectParticipant</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimestampValue</span>
@@ -656,16 +742,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConditioningValue</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zipDownload</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uuid</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">sample_base_id</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_base_id</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_base_id</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">processing_id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">processing_id</span>
@@ -680,15 +756,29 @@
 <span class="w">  </span><span class="nt">step_number</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">step_number</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">step_number</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">sample_id</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_id</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_id</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedData</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2WellMetadata</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MetagenomicsProduct</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">role</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">role</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Whether sample_id was consumed by (input_sample) or produced by (output_sample)</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">processing_id.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">role</span>
@@ -698,11 +788,25 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProjectParticipant</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleRole</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">in_run</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">in_run</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'The</span><span class="nv"> </span><span class="s">SampleProcessingRun</span><span class="nv"> </span><span class="s">(one</span><span class="nv"> </span><span class="s">concrete</span><span class="nv"> </span><span class="s">execution)</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">edge</span>
+<span class="w">      </span><span class="s">belongs</span><span class="nv"> </span><span class="s">to.</span><span class="nv"> </span><span class="s">All</span><span class="nv"> </span><span class="s">ProcessingSampleLink</span><span class="nv"> </span><span class="s">rows</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">chain</span><span class="nv"> </span><span class="s">share</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">value,</span><span class="nv"> </span><span class="s">which</span>
+<span class="w">      </span><span class="s">is</span><span class="nv"> </span><span class="s">what</span><span class="nv"> </span><span class="s">makes</span><span class="nv"> </span><span class="s">"give</span><span class="nv"> </span><span class="s">me</span><span class="nv"> </span><span class="s">every</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">chain"</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">indexed</span><span class="nv"> </span><span class="s">query</span><span class="nv"> </span><span class="s">and</span>
+<span class="w">      </span><span class="s">what</span><span class="nv"> </span><span class="s">anchors</span><span class="nv"> </span><span class="s">step_number.</span><span class="nv"> </span><span class="s">Optional:</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">standalone</span><span class="nv"> </span><span class="s">StandardSampleProcessing</span><span class="nv"> </span><span class="s">needs</span>
+<span class="w">      </span><span class="s">no</span><span class="nv"> </span><span class="s">run,</span><span class="nv"> </span><span class="s">because</span><span class="nv"> </span><span class="s">its</span><span class="nv"> </span><span class="s">processing_id</span><span class="nv"> </span><span class="s">already</span><span class="nv"> </span><span class="s">identifies</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">whole</span><span class="nv"> </span><span class="s">group.'</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">in_run</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SampleProcessingRun</span>
 <span class="nt">unique_keys</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">unique_sample_process_step</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">unique_key_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unique_sample_process_step</span>
 <span class="w">    </span><span class="nt">unique_key_slots</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_base_id</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_id</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">processing_id</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">step_number</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">role</span>

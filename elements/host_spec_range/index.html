@@ -481,6 +481,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -556,18 +567,18 @@ Alias: host_spec_range</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../FieldDeployedTerraformSample/">FieldDeployedTerraformSample</a></td>
-<td>A sample collected from a field-deployed Terraform experiment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TerraformSample/">TerraformSample</a></td>
-<td>A sample collected from a Terraform experiment</td>
+<td><a href="../MixedCultureSample/">MixedCultureSample</a></td>
+<td>A sample containing multiple cultured organisms</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../CultureEnvironmentalSample/">CultureEnvironmentalSample</a></td>
 <td>A sample containing organisms cultured from an environmental sample</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../FieldDeployedTerraformSample/">FieldDeployedTerraformSample</a></td>
+<td>A sample collected from a field-deployed Terraform experiment</td>
 <td>no</td>
 </tr>
 <tr>
@@ -586,8 +597,8 @@ Alias: host_spec_range</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MixedCultureSample/">MixedCultureSample</a></td>
-<td>A sample containing multiple cultured organisms</td>
+<td><a href="../TerraformSample/">TerraformSample</a></td>
+<td>A sample collected from a Terraform experiment</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -622,26 +633,27 @@ Alias: host_spec_range</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Value</th>
+<th>property</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Regex Pattern</td>
-<td><code>NCBITaxon:\d+</code></td>
+<td>submission_pattern</td>
+<td>NCBITaxon:\d+</td>
 </tr>
 </tbody>
 </table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -668,6 +680,10 @@ Alias: host_spec_range</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host_spec_range</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCBITaxon:\d+</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The range and diversity of host species that an organism is capable of</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host specificity or range</span>
@@ -683,7 +699,6 @@ Alias: host_spec_range</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PureCultureSample</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSample</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCBITaxon:\d+</span>
 </code></pre></div>
 </details>
 

@@ -481,6 +481,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -556,9 +567,9 @@ Alias: depth</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../FieldDeployedTerraformSample/">FieldDeployedTerraformSample</a></td>
-<td>A sample collected from a field-deployed Terraform experiment</td>
-<td>no</td>
+<td><a href="../MonetSoilSample/">MonetSoilSample</a></td>
+<td>A soil sample that has been collected according to the MONet soil sampling pr...</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../WaterSample/">WaterSample</a></td>
@@ -566,9 +577,9 @@ Alias: depth</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../SoilSample/">SoilSample</a></td>
-<td>A sample of soil collected from the environment</td>
-<td>yes</td>
+<td><a href="../FieldDeployedTerraformSample/">FieldDeployedTerraformSample</a></td>
+<td>A sample collected from a field-deployed Terraform experiment</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../SedimentSample/">SedimentSample</a></td>
@@ -581,8 +592,8 @@ Alias: depth</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MonetSoilSample/">MonetSoilSample</a></td>
-<td>A soil sample that has been collected according to the MONet soil sampling pr...</td>
+<td><a href="../SoilSample/">SoilSample</a></td>
+<td>A sample of soil collected from the environment</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -617,26 +628,27 @@ Alias: depth</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Value</th>
+<th>property</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Regex Pattern</td>
-<td><code>^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$</code></td>
+<td>submission_pattern</td>
+<td>^\d+(.\d+)?(-\d+(.\d+)?)?\s*m$</td>
 </tr>
 </tbody>
 </table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -663,6 +675,10 @@ Alias: depth</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">depth</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;The</span><span class="nv"> </span><span class="s">vertical</span><span class="nv"> </span><span class="s">distance</span><span class="nv"> </span><span class="s">below</span><span class="nv"> </span><span class="s">local</span><span class="nv"> </span><span class="s">surface.</span><span class="nv"> </span><span class="s">For</span><span class="nv"> </span><span class="s">sediment</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">soil</span><span class="nv"> </span><span class="s">samples,</span>
 <span class="w">  </span><span class="s">depth</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">measured</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">sediment</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">soil</span><span class="nv"> </span><span class="s">surface</span><span class="nv"> </span><span class="s">respectively.</span><span class="nv"> </span><span class="s">Depth</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">required</span>
 <span class="w">  </span><span class="s">to</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">reported</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">interval</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">subsurface</span><span class="nv"> </span><span class="s">samples.</span><span class="nv"> </span><span class="s">(Units:</span><span class="nv"> </span><span class="s">m)&#39;</span>
@@ -678,7 +694,6 @@ Alias: depth</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SoilSample</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSample</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$</span>
 </code></pre></div>
 </details>
 

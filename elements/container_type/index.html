@@ -540,7 +540,7 @@
 
 
 <h1 id="slot-container_type">Slot: container_type</h1>
-<p><em>Physical container used for the culture (flask, tube, plate, etc.)</em></p>
+<p><em>Physical container used for the culture or sample (flask, tube, plate, etc.)</em></p>
 <p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/container_type">basalt_schema:container_type</a>
 Alias: container_type</p>
 <!-- no inheritance hierarchy -->
@@ -556,13 +556,18 @@ Alias: container_type</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../CultureGrowth/">CultureGrowth</a></td>
+<td>Abstract activity for growing cultures from samples or other cultures</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ExperimentalCulture/">ExperimentalCulture</a></td>
 <td>Growth of an experimental culture for downstream analysis</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../StockCulturePreparation/">StockCulturePreparation</a></td>
-<td>Preparation of a stock culture from user samples for long-term storage</td>
+<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
+<td>The process of segregation of phases; e</td>
 <td>no</td>
 </tr>
 <tr>
@@ -571,18 +576,18 @@ Alias: container_type</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../StrainPurity/">StrainPurity</a></td>
+<td>Purity check of a strain culture</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ContainerType/">ContainerType</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../CultureGrowth/">CultureGrowth</a></td>
-<td>Abstract activity for growing cultures from samples or other cultures</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../StrainPurity/">StrainPurity</a></td>
-<td>Purity check of a strain culture</td>
+<td><a href="../StockCulturePreparation/">StockCulturePreparation</a></td>
+<td>Preparation of a stock culture from user samples for long-term storage</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -603,7 +608,7 @@ Alias: container_type</p>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../ContainerType/">ContainerType</a>, <a href="../CultureGrowth/">CultureGrowth</a></td>
+<td><a href="../ContainerType/">ContainerType</a>, <a href="../CultureGrowth/">CultureGrowth</a>, <a href="../FiltrationProcess/">FiltrationProcess</a></td>
 </tr>
 </tbody>
 </table>
@@ -649,13 +654,15 @@ Alias: container_type</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">container_type</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Physical container used for the culture (flask, tube, plate, etc.)</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Physical container used for the culture or sample (flask, tube, plate,</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">etc.)</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">container_type</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ContainerType</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CultureGrowth</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FiltrationProcess</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 </code></pre></div>
 </details>

@@ -481,6 +481,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -592,26 +603,27 @@ Alias: alt</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Value</th>
+<th>property</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Regex Pattern</td>
-<td><code>^\d+(\.\d+)?m(?:-\d+(\.\d+)?m)?$</code></td>
+<td>submission_pattern</td>
+<td>^\d+(.\d+)?m(?:-\d+(.\d+)?m)?$</td>
 </tr>
 </tbody>
 </table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -638,6 +650,10 @@ Alias: alt</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alt</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?m(?:-\d+(\.\d+)?m)?$</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Heights</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">objects</span><span class="nv"> </span><span class="s">such</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">airplanes,</span><span class="nv"> </span><span class="s">space</span><span class="nv"> </span><span class="s">shuttles,</span><span class="nv"> </span><span class="s">rockets,</span><span class="nv"> </span><span class="s">atmospheric</span>
 <span class="w">  </span><span class="s">balloons</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">heights</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">places</span><span class="nv"> </span><span class="s">such</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">atmospheric</span><span class="nv"> </span><span class="s">layers</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">clouds.</span><span class="nv"> </span><span class="s">It</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">used</span>
 <span class="w">  </span><span class="s">to</span><span class="nv"> </span><span class="s">measure</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">height</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">object</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">above</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">earth</span><span class="se">&#39;&#39;</span><span class="s">s</span><span class="nv"> </span><span class="s">surface.</span><span class="nv"> </span><span class="s">In</span><span class="nv"> </span><span class="s">this</span>
@@ -651,7 +667,6 @@ Alias: alt</p>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?m(?:-\d+(\.\d+)?m)?$</span>
 </code></pre></div>
 </details>
 

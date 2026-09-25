@@ -430,6 +430,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -528,6 +539,11 @@
 <td></td>
 </tr>
 <tr>
+<td>ammonium_sulfate</td>
+<td>CHEBI:62946</td>
+<td></td>
+</tr>
+<tr>
 <td>amitriptyline</td>
 <td>CHEBI:2666</td>
 <td></td>
@@ -553,8 +569,18 @@
 <td></td>
 </tr>
 <tr>
+<td>deionized_water</td>
+<td>CHEBI:15377</td>
+<td></td>
+</tr>
+<tr>
 <td>ethanol</td>
 <td>CHEBI:16236</td>
+<td></td>
+</tr>
+<tr>
+<td>ferric_chloride</td>
+<td>CHEBI:30808</td>
 <td></td>
 </tr>
 <tr>
@@ -580,6 +606,11 @@
 <tr>
 <td>isopropyl_alcohol</td>
 <td>CHEBI:17824</td>
+<td></td>
+</tr>
+<tr>
+<td>iptg</td>
+<td>CHEBI:61448</td>
 <td></td>
 </tr>
 <tr>
@@ -634,6 +665,33 @@
 </tr>
 </tbody>
 </table>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../compound_name/">compound_name</a></td>
+<td>The common name of the material</td>
+</tr>
+<tr>
+<td><a href="../substance/">substance</a></td>
+<td>The chemical substance used in the mobile phase</td>
+</tr>
+<tr>
+<td><a href="../compound/">compound</a></td>
+<td>Identity of the reagent added</td>
+</tr>
+<tr>
+<td><a href="../known_as/">known_as</a></td>
+<td>Common name or identifier for the substance</td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -664,6 +722,11 @@
 <span class="w">  </span><span class="nt">ammonium_bicarbonate</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ammonium_bicarbonate</span>
 <span class="w">    </span><span class="nt">meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:184335</span>
+<span class="w">  </span><span class="nt">ammonium_sulfate</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ammonium_sulfate</span>
+<span class="w">    </span><span class="nt">meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:62946</span>
+<span class="w">    </span><span class="nt">comments</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(NH4)2SO4; common nitrogen source in microbial growth experiments.</span>
 <span class="w">  </span><span class="nt">amitriptyline</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amitriptyline</span>
 <span class="w">    </span><span class="nt">meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:2666</span>
@@ -688,9 +751,20 @@
 <span class="w">    </span><span class="nt">comments</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan,</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">leucine, tyrosine, and phenylalanine.</span>
+<span class="w">  </span><span class="nt">deionized_water</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deionized_water</span>
+<span class="w">    </span><span class="nt">meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:15377</span>
+<span class="w">    </span><span class="nt">comments</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deionized water used as a volume normalizer or diluent. Distinct from the general</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;water&quot; entry to mark its specific role in automated dispensing workflows.</span>
 <span class="w">  </span><span class="nt">ethanol</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ethanol</span>
 <span class="w">    </span><span class="nt">meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:16236</span>
+<span class="w">  </span><span class="nt">ferric_chloride</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ferric_chloride</span>
+<span class="w">    </span><span class="nt">meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:30808</span>
+<span class="w">    </span><span class="nt">comments</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FeCl3; iron source in microbial growth experiments.</span>
 <span class="w">  </span><span class="nt">formic_acid</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">formic_acid</span>
 <span class="w">    </span><span class="nt">meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:30751</span>
@@ -714,6 +788,12 @@
 <span class="w">  </span><span class="nt">isopropyl_alcohol</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">isopropyl_alcohol</span>
 <span class="w">    </span><span class="nt">meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:17824</span>
+<span class="w">  </span><span class="nt">iptg</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iptg</span>
+<span class="w">    </span><span class="nt">meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:61448</span>
+<span class="w">    </span><span class="nt">comments</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Isopropyl beta-D-1-thiogalactopyranoside; commonly used inducer of lac operon</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">expression in bacterial systems.</span>
 <span class="w">  </span><span class="nt">Lys-C</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lys-C</span>
 <span class="w">    </span><span class="nt">meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MS:1001309</span>

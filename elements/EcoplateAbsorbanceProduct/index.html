@@ -302,7 +302,6 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-ecoplateabsorbanceproduct">Class: EcoplateAbsorbanceProduct</h1>
 <p><em>Ecoplate absorbance measurement product.</em></p>
-<p><em>One row per plate × timepoint.</em></p>
 <p><em>processedData.type = 'ecoplate_absorbance'</em></p>
 <p>__</p>
 <p><em>v1 origin: plate-general.yaml EcoplateAbsorbanceProduct</em></p>
@@ -446,8 +445,6 @@
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EcoplateAbsorbanceProduct</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Ecoplate</span><span class="nv"> </span><span class="s">absorbance</span><span class="nv"> </span><span class="s">measurement</span><span class="nv"> </span><span class="s">product.</span>
 
-<span class="w">  </span><span class="s">One</span><span class="nv"> </span><span class="s">row</span><span class="nv"> </span><span class="s">per</span><span class="nv"> </span><span class="s">plate</span><span class="nv"> </span><span class="s">×</span><span class="nv"> </span><span class="s">timepoint.</span>
-
 <span class="w">  </span><span class="s">processedData.type</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="se">''</span><span class="s">ecoplate_absorbance</span><span class="se">''</span>
 
 
@@ -464,8 +461,6 @@
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EcoplateAbsorbanceProduct</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Ecoplate</span><span class="nv"> </span><span class="s">absorbance</span><span class="nv"> </span><span class="s">measurement</span><span class="nv"> </span><span class="s">product.</span>
-
-<span class="w">  </span><span class="s">One</span><span class="nv"> </span><span class="s">row</span><span class="nv"> </span><span class="s">per</span><span class="nv"> </span><span class="s">plate</span><span class="nv"> </span><span class="s">×</span><span class="nv"> </span><span class="s">timepoint.</span>
 
 <span class="w">  </span><span class="s">processedData.type</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="se">''</span><span class="s">ecoplate_absorbance</span><span class="se">''</span>
 
@@ -517,6 +512,8 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wavelength_nm</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EcoplateAbsorbanceProduct</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RIDataGenerationActivity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UVChannelConfig</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMP2DataGenerationActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EcoplateDataGenerationActivity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PlateProduct</span>

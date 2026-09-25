@@ -492,6 +492,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -603,22 +614,8 @@ Alias: season_precpt</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
 <td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Regex Pattern</td>
-<td><code>^\d+(\.\d+)?\s*mm$</code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -627,6 +624,21 @@ Alias: season_precpt</p>
 <li>average seasonal precipitation</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>submission_pattern</td>
+<td>^\d+(.\d+)?\s*mm$</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -653,6 +665,10 @@ Alias: season_precpt</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">season_precpt</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*mm$</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;The</span><span class="nv"> </span><span class="s">average</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">seasonal</span><span class="nv"> </span><span class="s">precipitation</span><span class="nv"> </span><span class="s">values</span><span class="nv"> </span><span class="s">known</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">estimated</span>
 <span class="w">  </span><span class="s">equivalent</span><span class="nv"> </span><span class="s">value</span><span class="nv"> </span><span class="s">derived</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">such</span><span class="nv"> </span><span class="s">methods</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">regional</span><span class="nv"> </span><span class="s">indexes</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">Isohyetal</span><span class="nv"> </span><span class="s">maps.</span>
 <span class="w">  </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">mm)&#39;</span>
@@ -665,7 +681,6 @@ Alias: season_precpt</p>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*mm$</span>
 </code></pre></div>
 </details>
 

@@ -481,6 +481,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -592,26 +603,27 @@ Alias: elev</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Value</th>
+<th>property</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Regex Pattern</td>
-<td><code>^\d+(\.\d+)?\s*m$</code></td>
+<td>submission_pattern</td>
+<td>^\d+(.\d+)?\s*m$</td>
 </tr>
 </tbody>
 </table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -638,6 +650,10 @@ Alias: elev</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">elev</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*m$</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Elevation</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sampling</span><span class="nv"> </span><span class="s">site</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">its</span><span class="nv"> </span><span class="s">height</span><span class="nv"> </span><span class="s">above</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">fixed</span><span class="nv"> </span><span class="s">reference</span>
 <span class="w">  </span><span class="s">point,</span><span class="nv"> </span><span class="s">most</span><span class="nv"> </span><span class="s">commonly</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mean</span><span class="nv"> </span><span class="s">sea</span><span class="nv"> </span><span class="s">level.</span><span class="nv"> </span><span class="s">Elevation</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">mainly</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">when</span><span class="nv"> </span><span class="s">referring</span>
 <span class="w">  </span><span class="s">to</span><span class="nv"> </span><span class="s">points</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">earth</span><span class="se">&#39;&#39;</span><span class="s">s</span><span class="nv"> </span><span class="s">surface.</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">m).&#39;</span>
@@ -648,7 +664,6 @@ Alias: elev</p>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Site</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*m$</span>
 </code></pre></div>
 </details>
 

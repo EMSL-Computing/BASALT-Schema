@@ -477,6 +477,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -523,6 +540,7 @@
 
 
 <h1 id="slot-flag">Slot: flag</h1>
+<p><em>A flag indicating the QC status of the data.</em></p>
 <p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/flag">basalt_schema:flag</a>
 Alias: flag</p>
 <!-- no inheritance hierarchy -->
@@ -538,21 +556,6 @@ Alias: flag</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../PHProduct/">PHProduct</a></td>
-<td>Soil pH analysis product, typically derived via pH meter or similar instrumen...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RespirationProduct/">RespirationProduct</a></td>
-<td>Soil respiration analysis product</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PhosphorusAnalysisProduct/">PhosphorusAnalysisProduct</a></td>
-<td>Phosphorus analysis product, typically derived via colorimetric assay of soil...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../WellReading/">WellReading</a></td>
 <td>Per-well measurement data</td>
 <td>no</td>
@@ -563,13 +566,38 @@ Alias: flag</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../RIProduct/">RIProduct</a></td>
+<td>A compound and its measurements resulting from a</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../HydraulicPropertiesProduct/">HydraulicPropertiesProduct</a></td>
 <td>Soil hydraulic parameters derived from HYPROP evaporation-experiment data</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../TextureProduct/">TextureProduct</a></td>
-<td>Soil texture analysis product, typically derived via hydrometer or similar in...</td>
+<td><a href="../PhosphorusAnalysisProduct/">PhosphorusAnalysisProduct</a></td>
+<td>Phosphorus analysis product, typically derived via colorimetric assay of soil...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RespirationProduct/">RespirationProduct</a></td>
+<td>Soil respiration analysis product</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EnzymeProduct/">EnzymeProduct</a></td>
+<td>Enzyme activity analysis product, typically derived via colorimetric assay of...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PHProduct/">PHProduct</a></td>
+<td>Soil pH analysis product, typically derived via pH meter or similar instrumen...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../UVSpectroscopyProduct/">UVSpectroscopyProduct</a></td>
+<td>A compound and its measurements resulting from a</td>
 <td>no</td>
 </tr>
 <tr>
@@ -578,8 +606,8 @@ Alias: flag</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EnzymeProduct/">EnzymeProduct</a></td>
-<td>Enzyme activity analysis product, typically derived via colorimetric assay of...</td>
+<td><a href="../TextureProduct/">TextureProduct</a></td>
+<td>Soil texture analysis product, typically derived via hydrometer or similar in...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -596,11 +624,11 @@ Alias: flag</p>
 <tbody>
 <tr>
 <td>Range</td>
-<td><a href="../String/">String</a></td>
+<td><a href="../ProcessedDataFlag/">ProcessedDataFlag</a></td>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../WellReading/">WellReading</a>, <a href="../BulkDensityProduct/">BulkDensityProduct</a>, <a href="../EnzymeProduct/">EnzymeProduct</a>, <a href="../GWCMoistureProduct/">GWCMoistureProduct</a>, <a href="../HydraulicPropertiesProduct/">HydraulicPropertiesProduct</a>, <a href="../PhosphorusAnalysisProduct/">PhosphorusAnalysisProduct</a>, <a href="../RespirationProduct/">RespirationProduct</a>, <a href="../TextureProduct/">TextureProduct</a>, <a href="../PHProduct/">PHProduct</a></td>
+<td><a href="../WellReading/">WellReading</a>, <a href="../BulkDensityProduct/">BulkDensityProduct</a>, <a href="../EnzymeProduct/">EnzymeProduct</a>, <a href="../GWCMoistureProduct/">GWCMoistureProduct</a>, <a href="../HydraulicPropertiesProduct/">HydraulicPropertiesProduct</a>, <a href="../PhosphorusAnalysisProduct/">PhosphorusAnalysisProduct</a>, <a href="../RespirationProduct/">RespirationProduct</a>, <a href="../TextureProduct/">TextureProduct</a>, <a href="../PHProduct/">PHProduct</a>, <a href="../UVSpectroscopyProduct/">UVSpectroscopyProduct</a>, <a href="../RIProduct/">RIProduct</a></td>
 </tr>
 </tbody>
 </table>
@@ -620,6 +648,10 @@ Alias: flag</p>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -642,6 +674,9 @@ Alias: flag</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flag</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A flag indicating the QC status of the data.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flag</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WellReading</span>
@@ -653,7 +688,9 @@ Alias: flag</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RespirationProduct</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TextureProduct</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pHProduct</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UVSpectroscopyProduct</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RIProduct</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessedDataFlag</span>
 </code></pre></div>
 </details>
 

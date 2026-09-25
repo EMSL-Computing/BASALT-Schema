@@ -540,6 +540,8 @@
 
 
 <h1 id="slot-step_number">Slot: step_number</h1>
+<p><em>Integer ordering within a multi-step process for the same analyte.</em></p>
+<p><em>Lower = earlier in process.</em></p>
 <p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/step_number">basalt_schema:step_number</a>
 Alias: step_number</p>
 <!-- no inheritance hierarchy -->
@@ -556,7 +558,12 @@ Alias: step_number</p>
 <tbody>
 <tr>
 <td><a href="../ProcessingSampleLink/">ProcessingSampleLink</a></td>
-<td>A link between a processed sample and the sample processing activity that pro...</td>
+<td>The authoritative record of what a SampleProcessing step consumed and produce...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MobilePhaseSegment/">MobilePhaseSegment</a></td>
+<td>A segment of the mobile phase sequence used in a chromatographic separation</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -577,7 +584,7 @@ Alias: step_number</p>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../ProcessingSampleLink/">ProcessingSampleLink</a></td>
+<td><a href="../ProcessingSampleLink/">ProcessingSampleLink</a>, <a href="../MobilePhaseSegment/">MobilePhaseSegment</a></td>
 </tr>
 </tbody>
 </table>
@@ -591,26 +598,8 @@ Alias: step_number</p>
 </thead>
 <tbody>
 <tr>
-<td>Required</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>### Slot Characteristics</td>
 <td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Owner</td>
-<td><a href="../ProcessingSampleLink/">ProcessingSampleLink</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -641,14 +630,16 @@ Alias: step_number</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">step_number</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Integer</span><span class="nv"> </span><span class="s">ordering</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">multi-step</span><span class="nv"> </span><span class="s">process</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">same</span><span class="nv"> </span><span class="s">analyte.</span>
+
+<span class="w">  </span><span class="s">Lower</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">earlier</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">process.&#39;</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">step_number</span>
-<span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcessingSampleLink</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MobilePhaseSegment</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
-<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
 

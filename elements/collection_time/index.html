@@ -481,6 +481,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -556,28 +567,8 @@ Alias: collection_time</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../FieldDeployedTerraformSamplingActivity/">FieldDeployedTerraformSamplingActivity</a></td>
-<td>Collection of samples from a field-deployed Terraform device</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MonetSoilSamplingActivity/">MonetSoilSamplingActivity</a></td>
-<td>Collection of soil cores according to the MONet soil sampling protocol</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../PlantSamplingActivity/">PlantSamplingActivity</a></td>
-<td>Collection of samples associated with plants</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SedimentSamplingActivity/">SedimentSamplingActivity</a></td>
-<td>Collection of sediment samples from the environment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SoilSamplingActivity/">SoilSamplingActivity</a></td>
-<td>Collection of soil samples from the environment</td>
+<td><a href="../AerosolSamplingActivity/">AerosolSamplingActivity</a></td>
+<td>A sampling activity where aerosol samples were collected</td>
 <td>no</td>
 </tr>
 <tr>
@@ -586,13 +577,13 @@ Alias: collection_time</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../TerraformSamplingActivity/">TerraformSamplingActivity</a></td>
-<td>Collection of samples from a Terraform device</td>
+<td><a href="../FieldDeployedTerraformSamplingActivity/">FieldDeployedTerraformSamplingActivity</a></td>
+<td>Collection of samples from a field-deployed Terraform device</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AerosolSamplingActivity/">AerosolSamplingActivity</a></td>
-<td>A sampling activity where aerosol samples were collected</td>
+<td><a href="../PlantSamplingActivity/">PlantSamplingActivity</a></td>
+<td>Collection of samples associated with plants</td>
 <td>no</td>
 </tr>
 <tr>
@@ -601,19 +592,39 @@ Alias: collection_time</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MixedCultureSamplingActivity/">MixedCultureSamplingActivity</a></td>
-<td>Collection of samples from a mixed culture</td>
+<td><a href="../WaterSamplingActivity/">WaterSamplingActivity</a></td>
+<td>Collection of water samples</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../WaterSamplingActivity/">WaterSamplingActivity</a></td>
-<td>Collection of water samples</td>
+<td><a href="../MixedCultureSamplingActivity/">MixedCultureSamplingActivity</a></td>
+<td>Collection of samples from a mixed culture</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../OtherUndescribedSamplingActivity/">OtherUndescribedSamplingActivity</a></td>
 <td>Collection of samples from source that does not fit into any of the other cat...</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../SoilSamplingActivity/">SoilSamplingActivity</a></td>
+<td>Collection of soil samples from the environment</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TerraformSamplingActivity/">TerraformSamplingActivity</a></td>
+<td>Collection of samples from a Terraform device</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SedimentSamplingActivity/">SedimentSamplingActivity</a></td>
+<td>Collection of sediment samples from the environment</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MonetSoilSamplingActivity/">MonetSoilSamplingActivity</a></td>
+<td>Collection of soil cores according to the MONet soil sampling protocol</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -647,26 +658,27 @@ Alias: collection_time</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Value</th>
+<th>property</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Regex Pattern</td>
-<td><code>^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$</code></td>
+<td>submission_pattern</td>
+<td>^(0[0-9]</td>
 </tr>
 </tbody>
 </table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -693,6 +705,10 @@ Alias: collection_time</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">collection_time</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;The</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">sampling</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">instance</span><span class="nv"> </span><span class="s">(single</span><span class="nv"> </span><span class="s">point).</span><span class="nv"> </span><span class="s">Required</span><span class="nv"> </span><span class="s">format:</span>
 <span class="w">  </span><span class="s">HH:MM:SS</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">24-hour</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">format.</span><span class="nv"> </span><span class="s">Don</span><span class="se">&#39;&#39;</span><span class="s">t</span><span class="nv"> </span><span class="s">forget</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">second!</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">hh:mm:ss</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">HH:MM:SS)&#39;</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">collection time</span>
@@ -713,7 +729,6 @@ Alias: collection_time</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSamplingActivity</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSamplingActivity</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$</span>
 </code></pre></div>
 </details>
 

@@ -625,6 +625,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
+<td><a href="CalibrationStandardRun/">CalibrationStandardRun</a></td>
+<td>A record of a standard run with a batch of samples, which is used for calibra...</td>
+</tr>
+<tr>
 <td><a href="Changelog/">Changelog</a></td>
 <td></td>
 </tr>
@@ -643,6 +647,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MassSpectrometryConfiguration/">MassSpectrometryConfiguration</a></td>
 <td>Instrument configuration and setup for a mass spectrometry run</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="UVChannelConfig/">UVChannelConfig</a></td>
+<td>Configuration for a single UV-Vis detector channel</td>
 </tr>
 <tr>
 <td><a href="ContainerAxis/">ContainerAxis</a></td>
@@ -665,12 +673,44 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Abstract base for any data generation activity (physical to digital)</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BulkDensityDataGenerationActivity/">BulkDensityDataGenerationActivity</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ElementalAnalysisDataGenerationActivity/">ElementalAnalysisDataGenerationActivity</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EnzymeActivityDataGenerationActivity/">EnzymeActivityDataGenerationActivity</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GravimetricWaterContentDataGenerationActivity/">GravimetricWaterContentDataGenerationActivity</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HydraulicPropertiesDataGenerationActivity/">HydraulicPropertiesDataGenerationActivity</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="KuoDataGenerationActivity/">KuoDataGenerationActivity</a></td>
+<td></td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MassSpectrometryDataGenerationActivity/">MassSpectrometryDataGenerationActivity</a></td>
 <td>A record of the mass spectrometry run that generates a raw data product</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MicrobialBiomassDataGenerationActivity/">MicrobialBiomassDataGenerationActivity</a></td>
+<td></td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NucleotideSequencing/">NucleotideSequencing</a></td>
 <td>A lab activity in which DNA or RNA that was extracted from a sample is sequen...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PHDataGenerationActivity/">PHDataGenerationActivity</a></td>
+<td></td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PlateDataGenerationActivity/">PlateDataGenerationActivity</a></td>
@@ -689,8 +729,32 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Data generation activity for soil respiration analysis</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RIDataGenerationActivity/">RIDataGenerationActivity</a></td>
+<td>Refractive Index (RI) measurement activity</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TextureDataGenerationActivity/">TextureDataGenerationActivity</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TOCTNDataGenerationActivity/">TOCTNDataGenerationActivity</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="UVDataGenerationActivity/">UVDataGenerationActivity</a></td>
+<td>Ultraviolet spectroscopy acquisition activity</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XCTDataGenerationActivity/">XCTDataGenerationActivity</a></td>
+<td></td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRayDataGenerationActivity/">XRayDataGenerationActivity</a></td>
-<td>Abstract base class for X-ray analytical methods including XRF (elemental)</td>
+<td>Abstract base class for X-ray analytical methods including XRF (elemental),</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XASDataGenerationActivity/">XASDataGenerationActivity</a></td>
+<td>X-ray Absorption Spectroscopy (XAS) acquisition activity</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRDDataGenerationActivity/">XRDDataGenerationActivity</a></td>
@@ -713,6 +777,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Concrete metagenomics workflow run</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XASLCFDataProcessingActivity/">XASLCFDataProcessingActivity</a></td>
+<td>Athena or Larch Linear Combination Fitting (LCF) processing activity for</td>
+</tr>
+<tr>
 <td><a href="DataProduct/">DataProduct</a></td>
 <td>Abstract base class for raw or processed data accessible in S3 storage</td>
 </tr>
@@ -727,6 +795,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NucleotideSequencingInstrumentData/">NucleotideSequencingInstrumentData</a></td>
 <td>Data generated by a nucleotide sequencing instrument (e</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XASInstrumentData/">XASInstrumentData</a></td>
+<td>Raw XAS sweep file (</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProcessedData/">ProcessedData</a></td>
@@ -762,7 +834,7 @@ and analytical products as the canonical source of truth for BASALT consumers
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MetaproteomicsProduct/">MetaproteomicsProduct</a></td>
-<td>Abstract parent class for processed metaproteomics data</td>
+<td>A tabular data file containing peptide-level, protein-level, or aggregation r...</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MolecularIdentificationProduct/">MolecularIdentificationProduct</a></td>
@@ -809,16 +881,28 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Soil respiration analysis product</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RIProduct/">RIProduct</a></td>
+<td>A compound and its measurements resulting from a</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TextureProduct/">TextureProduct</a></td>
 <td>Soil texture analysis product, typically derived via hydrometer or similar in...</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TomographyProduct/">TomographyProduct</a></td>
-<td>Soil tomography analysis product, typically derived via X-ray computed tomogr...</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="UVSpectroscopyProduct/">UVSpectroscopyProduct</a></td>
+<td>A compound and its measurements resulting from a</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRayDataProduct/">XRayDataProduct</a></td>
 <td>Abstract base class for X-ray analytical data products</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XASLCFProduct/">XASLCFProduct</a></td>
+<td>XAS Linear Combination Fitting (LCF) processed result</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XCTProduct/">XCTProduct</a></td>
+<td>X-ray computed tomography (XCT) analysis product for pore geometry and flow p...</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRDPhaseProduct/">XRDPhaseProduct</a></td>
@@ -865,72 +949,24 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>A lab device is a physical instrument or equipment used in a laboratory setti...</td>
 </tr>
 <tr>
-<td><a href="LabProcessingActivity/">LabProcessingActivity</a></td>
-<td>[NEW ABSTRACT CLASS] Higher-level abstract base for any activity that</td>
+<td><a href="LinkageCache/">LinkageCache</a></td>
+<td>Pre-computed provenance closure table</td>
 </tr>
 <tr>
 <td><a href="MAOMProduct/">MAOMProduct</a></td>
 <td>Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ...</td>
 </tr>
 <tr>
-<td><a href="MassSpectrometryStandardRun/">MassSpectrometryStandardRun</a></td>
-<td>A record of a mass spectrometry standard run with a batch of samples, which i...</td>
-</tr>
-<tr>
-<td><a href="Method/">Method</a></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BulkDensityMethod/">BulkDensityMethod</a></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ElementalAnalysisMethod/">ElementalAnalysisMethod</a></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EnzymeActivityMethod/">EnzymeActivityMethod</a></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GravimetricWaterContentMethod/">GravimetricWaterContentMethod</a></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HydraulicPropertiesMethod/">HydraulicPropertiesMethod</a></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="KuoMethod/">KuoMethod</a></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MicrobialBiomassMethod/">MicrobialBiomassMethod</a></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PHMethod/">PHMethod</a></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RespirationMethod/">RespirationMethod</a></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TextureMethod/">TextureMethod</a></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TOCTNMethod/">TOCTNMethod</a></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XrayComputedTomographyMethod/">XrayComputedTomographyMethod</a></td>
-<td></td>
+<td><a href="MobilePhase/">MobilePhase</a></td>
+<td>Link between a set of substances used in a mobile phase, and the use of that ...</td>
 </tr>
 <tr>
 <td><a href="MobilePhaseSegment/">MobilePhaseSegment</a></td>
-<td>A segment of the mobile phase used in chromatography during mass spectrometry</td>
+<td>A segment of the mobile phase sequence used in a chromatographic separation</td>
+</tr>
+<tr>
+<td><a href="MobilePhaseSubstance/">MobilePhaseSubstance</a></td>
+<td>A representation of a single chemical and its concentration used in a mobile ...</td>
 </tr>
 <tr>
 <td><a href="OntologyClass/">OntologyClass</a></td>
@@ -958,7 +994,7 @@ and analytical products as the canonical source of truth for BASALT consumers
 </tr>
 <tr>
 <td><a href="ProcessingSampleLink/">ProcessingSampleLink</a></td>
-<td>A link between a processed sample and the sample processing activity that pro...</td>
+<td>The authoritative record of what a SampleProcessing step consumed and produce...</td>
 </tr>
 <tr>
 <td><a href="ProjectParticipant/">ProjectParticipant</a></td>
@@ -1022,7 +1058,7 @@ and analytical products as the canonical source of truth for BASALT consumers
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProcessedSample/">ProcessedSample</a></td>
-<td>A sample that has undergone processing or analysis</td>
+<td>A sample that has undergone processing</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CoreSection/">CoreSection</a></td>
@@ -1054,7 +1090,11 @@ and analytical products as the canonical source of truth for BASALT consumers
 </tr>
 <tr>
 <td><a href="SampleProcessing/">SampleProcessing</a></td>
-<td>Abstract base for any sample processing activity (physical to physical)</td>
+<td>Abstract base for any sample processing activity (physical to physical): one</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td>A chemical conversion process used in sample preparation</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CultureGrowth/">CultureGrowth</a></td>
@@ -1077,8 +1117,24 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Purity check of a strain culture</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Extraction/">Extraction</a></td>
+<td>The removal and isolation of a desired analyte from other material  in a samp...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FiltrationProcess/">FiltrationProcess</a></td>
+<td>The process of segregation of phases; e</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FractionationProcess/">FractionationProcess</a></td>
+<td>A fractionation process (e</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MediaPreparation/">MediaPreparation</a></td>
 <td>Activity that prepares a batch of growth media</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NormalizationProcess/">NormalizationProcess</a></td>
+<td>A process that adjusts sample amounts (e</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PlateSetupActivity/">PlateSetupActivity</a></td>
@@ -1091,6 +1147,42 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EcoplatePlateSetupActivity/">EcoplatePlateSetupActivity</a></td>
 <td>Ecoplate-specific plate setup</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PoolingProcess/">PoolingProcess</a></td>
+<td>A laboratory pooling process that physically mixes multiple input samples int...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProteinQuantification/">ProteinQuantification</a></td>
+<td>A protein quantification assay (e</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ResuspensionProcess/">ResuspensionProcess</a></td>
+<td>Resuspension of an analyte (e</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SolidPhaseExtractionProcess/">SolidPhaseExtractionProcess</a></td>
+<td>A solid phase extraction (SPE) step (e</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="StandardSampleProcessing/">StandardSampleProcessing</a></td>
+<td>A concrete SampleProcessing subclass for well-documented standard protocols t...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SubsamplingProcess/">SubsamplingProcess</a></td>
+<td>A laboratory subsampling process that takes a portion of an existing  sample ...</td>
+</tr>
+<tr>
+<td><a href="SampleProcessingProtocol/">SampleProcessingProtocol</a></td>
+<td>A sample processing protocol: the recipe, not an execution of it</td>
+</tr>
+<tr>
+<td><a href="SampleProcessingRun/">SampleProcessingRun</a></td>
+<td>One concrete execution of a sample processing chain: the instance-level count...</td>
+</tr>
+<tr>
+<td><a href="SampleProcessingSubstance/">SampleProcessingSubstance</a></td>
+<td>A portion of a substance with specific characteristics, as used in a  SampleP...</td>
 </tr>
 <tr>
 <td><a href="SamplingActivity/">SamplingActivity</a></td>
@@ -1173,6 +1265,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>A study or research project, typically associated with a proposal and a set o...</td>
 </tr>
 <tr>
+<td><a href="SubstancesUsedLink/">SubstancesUsedLink</a></td>
+<td>A link between a SampleProcessing activity and a PortionOfSubstance that was ...</td>
+</tr>
+<tr>
 <td><a href="TextValue/">TextValue</a></td>
 <td>A text value with optional description and language</td>
 </tr>
@@ -1197,12 +1293,48 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Per-well measurement data</td>
 </tr>
 <tr>
+<td><a href="WellReagentAddition/">WellReagentAddition</a></td>
+<td>One reagent addition to one well</td>
+</tr>
+<tr>
 <td><a href="WEOMProduct/">WEOMProduct</a></td>
 <td>Water Extractable Organic Matter (WEOM) analysis product, typically derived v...</td>
 </tr>
 <tr>
 <td><a href="WorkflowExecutionFunctionalAnnotation/">WorkflowExecutionFunctionalAnnotation</a></td>
 <td>A link between a workflow execution and a functional annotation identifier</td>
+</tr>
+<tr>
+<td><a href="XASAmplifier/">XASAmplifier</a></td>
+<td>Amplifier sensitivity entry for one signal channel in an XAS sweep</td>
+</tr>
+<tr>
+<td><a href="XASDataRow/">XASDataRow</a></td>
+<td>One data point from an XAS sweep scan</td>
+</tr>
+<tr>
+<td><a href="XASIonChamber/">XASIonChamber</a></td>
+<td>Ion chamber gas mixture component for one chamber in an XAS sweep</td>
+</tr>
+<tr>
+<td><a href="XASLCFDataRow/">XASLCFDataRow</a></td>
+<td>One point from the LCF fit output, enabling reconstruction and plotting</td>
+</tr>
+<tr>
+<td><a href="XASLCFSpeciesProportion/">XASLCFSpeciesProportion</a></td>
+<td>Derived species proportion reported in the LC XANES analysis section</td>
+</tr>
+<tr>
+<td><a href="XASLCFStandard/">XASLCFStandard</a></td>
+<td>One reference standard (spectral component) used in an LCF fit</td>
+</tr>
+<tr>
+<td><a href="XASMotorPosition/">XASMotorPosition</a></td>
+<td>Motor position recorded at the start of an XAS sweep</td>
+</tr>
+<tr>
+<td><a href="XASSignalColumn/">XASSignalColumn</a></td>
+<td>Detector signal name / EPICS PV pair for one data column in an XAS sweep</td>
 </tr>
 <tr>
 <td><a href="ZipDownload/">ZipDownload</a></td>
@@ -1221,11 +1353,11 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tbody>
 <tr>
 <td><a href="acquisition_end_time/">acquisition_end_time</a></td>
-<td></td>
+<td>The time that data collection ended for this activity</td>
 </tr>
 <tr>
 <td><a href="acquisition_start_time/">acquisition_start_time</a></td>
-<td></td>
+<td>The time that data collection started for this activity</td>
 </tr>
 <tr>
 <td><a href="acquisition_strategy/">acquisition_strategy</a></td>
@@ -1238,6 +1370,14 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="activity_time_id/">activity_time_id</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="actual_concentration/">actual_concentration</a></td>
+<td>Achieved final concentration of this reagent in the well after</td>
+</tr>
+<tr>
+<td><a href="addition_time/">addition_time</a></td>
+<td>When this reagent was added, relative to the start of the</td>
 </tr>
 <tr>
 <td><a href="additional_information/">additional_information</a></td>
@@ -1324,6 +1464,18 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Concentration of ammonium in the sample</td>
 </tr>
 <tr>
+<td><a href="amp_index/">amp_index</a></td>
+<td>1-based amplifier index (aligns with Amplifier_Gain_N)</td>
+</tr>
+<tr>
+<td><a href="amplifiers/">amplifiers</a></td>
+<td>Amplifier sensitivity entries (one per signal channel)</td>
+</tr>
+<tr>
+<td><a href="analysis_code/">analysis_code</a></td>
+<td>Athena or Larch internal code from the</td>
+</tr>
+<tr>
 <td><a href="analysis_type/">analysis_type</a></td>
 <td>The type(s) of analysis planned for this sample</td>
 </tr>
@@ -1333,15 +1485,19 @@ and analytical products as the canonical source of truth for BASALT consumers
 </tr>
 <tr>
 <td><a href="analyte_id/">analyte_id</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="analytic/">analytic</a></td>
-<td></td>
+<td>FK reference to a ProcessedSample representing the substance analyzed in this...</td>
 </tr>
 <tr>
 <td><a href="ances_data/">ances_data</a></td>
 <td>Information about either pedigree or other ancestral information description</td>
+</tr>
+<tr>
+<td><a href="ancestor_id/">ancestor_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ancestor_type/">ancestor_type</a></td>
+<td>Class/table name of the ancestor node</td>
 </tr>
 <tr>
 <td><a href="annotation_database/">annotation_database</a></td>
@@ -1398,6 +1554,18 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="bacteria_carb_prod/">bacteria_carb_prod</a></td>
 <td>Measurement of bacterial carbon production</td>
+</tr>
+<tr>
+<td><a href="beam_attenuation_material/">beam_attenuation_material</a></td>
+<td>Attenuator material (e</td>
+</tr>
+<tr>
+<td><a href="beam_attenuation_um/">beam_attenuation_um</a></td>
+<td>Attenuator thickness in microns</td>
+</tr>
+<tr>
+<td><a href="beamline/">beamline</a></td>
+<td>Beamline identifier (e</td>
 </tr>
 <tr>
 <td><a href="beta_glucosidase_ug_pnp_per_g_per_h_id/">beta_glucosidase_ug_pnp_per_g_per_h_id</a></td>
@@ -1508,8 +1676,20 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Cerium concentration in mg/kg</td>
 </tr>
 <tr>
+<td><a href="chamber_index/">chamber_index</a></td>
+<td>Ion chamber index (1=I0, 2=It, 3=Iref)</td>
+</tr>
+<tr>
+<td><a href="chamber_length_mm/">chamber_length_mm</a></td>
+<td>Physical ion chamber length in mm</td>
+</tr>
+<tr>
 <td><a href="changelog/">changelog</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="channel_number/">channel_number</a></td>
+<td>The index of the detector channel within the instrument run</td>
 </tr>
 <tr>
 <td><a href="check_standard_spacing/">check_standard_spacing</a></td>
@@ -1526,6 +1706,14 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="chem_oxygen_dem/">chem_oxygen_dem</a></td>
 <td>a measure of the relative oxygen-depletion effect of a waste contaminant</td>
+</tr>
+<tr>
+<td><a href="chemical_conversion_category/">chemical_conversion_category</a></td>
+<td>The category of chemical conversion process</td>
+</tr>
+<tr>
+<td><a href="chi_square/">chi_square</a></td>
+<td>Chi-square statistic from the LCF fit</td>
 </tr>
 <tr>
 <td><a href="chloride/">chloride</a></td>
@@ -1550,6 +1738,14 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="clay_pct_id/">clay_pct_id</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="col_index/">col_index</a></td>
+<td>1-based column index (aligns with Analog_In_Signal_Type_N)</td>
+</tr>
+<tr>
+<td><a href="col_name/">col_name</a></td>
+<td>Detector column name (e</td>
 </tr>
 <tr>
 <td><a href="collaborating_institution/">collaborating_institution</a></td>
@@ -1596,16 +1792,32 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Provide a one-to-three word name based on the component</td>
 </tr>
 <tr>
+<td><a href="compound/">compound</a></td>
+<td>Identity of the reagent added</td>
+</tr>
+<tr>
 <td><a href="compound_name/">compound_name</a></td>
-<td>The name of the purchased material</td>
+<td>The common name of the material</td>
 </tr>
 <tr>
 <td><a href="compression_type/">compression_type</a></td>
 <td></td>
 </tr>
 <tr>
+<td><a href="computed_at/">computed_at</a></td>
+<td>Timestamp when this row was last computed by the refresh job</td>
+</tr>
+<tr>
+<td><a href="concentration/">concentration</a></td>
+<td>Concentration of the chemical, string for now because LC protocols specify th...</td>
+</tr>
+<tr>
 <td><a href="concentration_ug_per_uL/">concentration_ug_per_uL</a></td>
 <td>Concentration of the substance in micrograms per microliter</td>
+</tr>
+<tr>
+<td><a href="concentration_unit/">concentration_unit</a></td>
+<td>Unit for stock_concentration, requested_concentration, and</td>
 </tr>
 <tr>
 <td><a href="condition_received/">condition_received</a></td>
@@ -1620,8 +1832,8 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Whether receipt of the sample was confirmed</td>
 </tr>
 <tr>
-<td><a href="connected_pores/">connected_pores</a></td>
-<td></td>
+<td><a href="connected_pores_fraction/">connected_pores_fraction</a></td>
+<td>Fraction of connected pore volume out of total volume (unitless)</td>
 </tr>
 <tr>
 <td><a href="construct_component/">construct_component</a></td>
@@ -1632,8 +1844,12 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
+<td><a href="container_size_ml/">container_size_ml</a></td>
+<td>The volume of the container an analyte is stored in or an activity takes plac...</td>
+</tr>
+<tr>
 <td><a href="container_type/">container_type</a></td>
-<td>Physical container used for the culture (flask, tube, plate, etc</td>
+<td>Physical container used for the culture or sample (flask, tube, plate, etc</td>
 </tr>
 <tr>
 <td><a href="contains/">contains</a></td>
@@ -1676,6 +1892,18 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Whether or not crop is rotated, and if yes, rotation schedule</td>
 </tr>
 <tr>
+<td><a href="crystal/">crystal</a></td>
+<td>Monochromator crystal material (e</td>
+</tr>
+<tr>
+<td><a href="crystal_cut/">crystal_cut</a></td>
+<td>Crystal reflection (e</td>
+</tr>
+<tr>
+<td><a href="crystal_detune_pct/">crystal_detune_pct</a></td>
+<td>Crystal detuning percentage for harmonic rejection</td>
+</tr>
+<tr>
 <td><a href="cs_mg_per_kg/">cs_mg_per_kg</a></td>
 <td>Cesium concentration in mg/kg</td>
 </tr>
@@ -1712,6 +1940,18 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Coefficient of variation across technical replicates</td>
 </tr>
 <tr>
+<td><a href="cycle_id/">cycle_id</a></td>
+<td>Integer identifying the Design-Build-Test-Learn iteration this plate belongs ...</td>
+</tr>
+<tr>
+<td><a href="data_rows/">data_rows</a></td>
+<td>Per-energy-point representative fluorescence or transmission values</td>
+</tr>
+<tr>
+<td><a href="data_val/">data_val</a></td>
+<td>Measured normalised spectrum value at this point</td>
+</tr>
+<tr>
 <td><a href="database/">database</a></td>
 <td></td>
 </tr>
@@ -1732,6 +1972,14 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The vertical distance below local surface</td>
 </tr>
 <tr>
+<td><a href="descendant_id/">descendant_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="descendant_type/">descendant_type</a></td>
+<td>Class/table name of the descendant node (same vocabulary as ancestor_type)</td>
+</tr>
+<tr>
 <td><a href="description/">description</a></td>
 <td>Human-readable description for the entity or activity</td>
 </tr>
@@ -1750,6 +1998,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="diether_lipids/">diether_lipids</a></td>
 <td>Concentration of diether lipids; can include multiple types of diether lipids...</td>
+</tr>
+<tr>
+<td><a href="digestion_method/">digestion_method</a></td>
+<td>Named digestion method applied, when the category is protease_cleavage</td>
 </tr>
 <tr>
 <td><a href="diss_carb_dioxide/">diss_carb_dioxide</a></td>
@@ -1812,8 +2064,24 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>how long something took, in minutes</td>
 </tr>
 <tr>
+<td><a href="e0_ev/">e0_ev</a></td>
+<td>Absorption edge energy E0 in eV</td>
+</tr>
+<tr>
+<td><a href="e0_shift_used/">e0_shift_used</a></td>
+<td>Whether an overall E0 energy shift was applied</td>
+</tr>
+<tr>
+<td><a href="edge/">edge</a></td>
+<td>Absorption edge measured (e</td>
+</tr>
+<tr>
 <td><a href="efficiency_percent/">efficiency_percent</a></td>
 <td>percentage of volatile solids removed from the anaerobic digestor</td>
+</tr>
+<tr>
+<td><a href="element/">element</a></td>
+<td>Target element (e</td>
 </tr>
 <tr>
 <td><a href="elev/">elev</a></td>
@@ -1838,6 +2106,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="ended_at_time/">ended_at_time</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="enrichment_type/">enrichment_type</a></td>
+<td>Type of enrichment performed, when this process is an enrichment step</td>
 </tr>
 <tr>
 <td><a href="env_broad_scale/">env_broad_scale</a></td>
@@ -1880,8 +2152,16 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>If you (the user) performed an extraction preparation or processing before se...</td>
 </tr>
 <tr>
+<td><a href="extraction_target/">extraction_target</a></td>
+<td>The target analyte(s) or compound class(es) for the extraction process</td>
+</tr>
+<tr>
 <td><a href="extreme_event/">extreme_event</a></td>
 <td>Unusual physical events that may have affected microbial populations</td>
+</tr>
+<tr>
+<td><a href="facility/">facility</a></td>
+<td>Synchrotron facility name (e</td>
 </tr>
 <tr>
 <td><a href="fao_class/">fao_class</a></td>
@@ -1912,8 +2192,28 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Size of the file in bytes</td>
 </tr>
 <tr>
+<td><a href="filter_material/">filter_material</a></td>
+<td>The porous material on which solid particles present in the fluid which flows...</td>
+</tr>
+<tr>
 <td><a href="filter_method/">filter_method</a></td>
 <td>Type of filter used or how the sample was filtered</td>
+</tr>
+<tr>
+<td><a href="filter_pore_size_um/">filter_pore_size_um</a></td>
+<td>The pore size of the filter used in the filtration process, in micrometers</td>
+</tr>
+<tr>
+<td><a href="final_concentration_mg_per_ml/">final_concentration_mg_per_ml</a></td>
+<td>The concentration of the sample or analyte in the processedSample resulting f...</td>
+</tr>
+<tr>
+<td><a href="final_mass_mg/">final_mass_mg</a></td>
+<td>The mass of sample or analyte in the processedSample resulting from this acti...</td>
+</tr>
+<tr>
+<td><a href="final_vol_ml/">final_vol_ml</a></td>
+<td>The volume of sample resulting from this activity, in milliliters</td>
 </tr>
 <tr>
 <td><a href="fire/">fire</a></td>
@@ -1936,12 +2236,32 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
+<td><a href="fit_label/">fit_label</a></td>
+<td>Iteration label for EXAFS fits extracted from filename</td>
+</tr>
+<tr>
+<td><a href="fit_range_max/">fit_range_max</a></td>
+<td>Upper bound of fit range (eV for XANES, A^-1 for EXAFS)</td>
+</tr>
+<tr>
+<td><a href="fit_range_min/">fit_range_min</a></td>
+<td>Lower bound of fit range (eV for XANES, A^-1 for EXAFS)</td>
+</tr>
+<tr>
+<td><a href="fit_range_unit/">fit_range_unit</a></td>
+<td>Unit of fit range (eV for XANES, A^-1 for EXAFS)</td>
+</tr>
+<tr>
+<td><a href="fit_val/">fit_val</a></td>
+<td>LCF fitted curve value at this point</td>
+</tr>
+<tr>
 <td><a href="fitting_model/">fitting_model</a></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="flag/">flag</a></td>
-<td>QC flag   "ok", "blank", "outlier", "contaminated"</td>
+<td>A flag indicating the QC status of the data</td>
 </tr>
 <tr>
 <td><a href="flag_ag/">flag_ag</a></td>
@@ -2197,7 +2517,7 @@ and analytical products as the canonical source of truth for BASALT consumers
 </tr>
 <tr>
 <td><a href="flag_xct/">flag_xct</a></td>
-<td></td>
+<td>Data quality flag for the XCT analysis</td>
 </tr>
 <tr>
 <td><a href="flag_y/">flag_y</a></td>
@@ -2220,16 +2540,16 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Flow rate of the mobile phase, in microliters per minute</td>
 </tr>
 <tr>
-<td><a href="flow_rate_x/">flow_rate_x</a></td>
-<td></td>
+<td><a href="flow_rate_x_mm3_per_sec/">flow_rate_x_mm3_per_sec</a></td>
+<td>Total flow rate from pore network model in X direction (mm^3/s)</td>
 </tr>
 <tr>
-<td><a href="flow_rate_y/">flow_rate_y</a></td>
-<td></td>
+<td><a href="flow_rate_y_mm3_per_sec/">flow_rate_y_mm3_per_sec</a></td>
+<td>Total flow rate from pore network model in Y direction (mm^3/s)</td>
 </tr>
 <tr>
-<td><a href="flow_rate_z/">flow_rate_z</a></td>
-<td></td>
+<td><a href="flow_rate_z_mm3_per_sec/">flow_rate_z_mm3_per_sec</a></td>
+<td>Total flow rate from pore network model in Z direction (mm^3/s)</td>
 </tr>
 <tr>
 <td><a href="fluor/">fluor</a></td>
@@ -2260,12 +2580,44 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Information about treatment involving use of fungicides; should include the n...</td>
 </tr>
 <tr>
+<td><a href="fy_channel_num/">fy_channel_num</a></td>
+<td>Number of active fluorescence detector channels</td>
+</tr>
+<tr>
+<td><a href="fy_electronics/">fy_electronics</a></td>
+<td>Fluorescence detector electronics model (e</td>
+</tr>
+<tr>
+<td><a href="fy_element/">fy_element</a></td>
+<td>Target element detected by fluorescence detector (e</td>
+</tr>
+<tr>
+<td><a href="fy_transition/">fy_transition</a></td>
+<td>X-ray transition detected (e</td>
+</tr>
+<tr>
 <td><a href="ga_mg_per_kg/">ga_mg_per_kg</a></td>
 <td>Gallium concentration in mg/kg</td>
 </tr>
 <tr>
+<td><a href="gain/">gain</a></td>
+<td>Amplifier gain value</td>
+</tr>
+<tr>
+<td><a href="gain_unit/">gain_unit</a></td>
+<td>Gain unit as written in file (e</td>
+</tr>
+<tr>
 <td><a href="gas/">gas</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="gas_index/">gas_index</a></td>
+<td>1-based gas component index within the chamber mixture</td>
+</tr>
+<tr>
+<td><a href="gas_name/">gas_name</a></td>
+<td>Fill gas name (e</td>
 </tr>
 <tr>
 <td><a href="gaseous_environment/">gaseous_environment</a></td>
@@ -2380,6 +2732,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Information about treatment involving use of herbicides; information about tr...</td>
 </tr>
 <tr>
+<td><a href="hop_depth/">hop_depth</a></td>
+<td>Number of hops between ancestor and descendant (1 = direct parent)</td>
+</tr>
+<tr>
 <td><a href="horizon_meth/">horizon_meth</a></td>
 <td>Reference or method used in determining the horizon</td>
 </tr>
@@ -2476,6 +2832,18 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Indium concentration in mg/kg</td>
 </tr>
 <tr>
+<td><a href="in_mobile_phase/">in_mobile_phase</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="in_protocol/">in_protocol</a></td>
+<td>The SampleProcessingProtocol (the recipe) that this step follows</td>
+</tr>
+<tr>
+<td><a href="in_run/">in_run</a></td>
+<td>The SampleProcessingRun (one concrete execution) that this edge belongs to</td>
+</tr>
+<tr>
 <td><a href="incubation_temp_c/">incubation_temp_c</a></td>
 <td></td>
 </tr>
@@ -2502,6 +2870,14 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="infiltration_notes/">infiltration_notes</a></td>
 <td>Provide any details, issues, or context needed to understand the infiltration...</td>
+</tr>
+<tr>
+<td><a href="inhutch_mirror_coating/">inhutch_mirror_coating</a></td>
+<td>In-hutch focusing mirror coating material</td>
+</tr>
+<tr>
+<td><a href="inhutch_mirror_cutoff_kev/">inhutch_mirror_cutoff_kev</a></td>
+<td>In-hutch mirror cutoff energy in keV</td>
 </tr>
 <tr>
 <td><a href="initiation_date_inoculation/">initiation_date_inoculation</a></td>
@@ -2532,6 +2908,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>concentration of particles such as sand, grit, metal particles, ceramics, etc</td>
 </tr>
 <tr>
+<td><a href="insertion_device/">insertion_device</a></td>
+<td>Insertion device description (wiggler, undulator, bending magnet)</td>
+</tr>
+<tr>
 <td><a href="inspection_method/">inspection_method</a></td>
 <td>Method used to inspect or verify purity (visual, sequencing, etc</td>
 </tr>
@@ -2548,8 +2928,8 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
-<td><a href="instrument_operator_id/">instrument_operator_id</a></td>
-<td></td>
+<td><a href="instrument_operator/">instrument_operator</a></td>
+<td>User who operated the instrument</td>
 </tr>
 <tr>
 <td><a href="instrument_parameters/">instrument_parameters</a></td>
@@ -2557,11 +2937,19 @@ and analytical products as the canonical source of truth for BASALT consumers
 </tr>
 <tr>
 <td><a href="instrument_used/">instrument_used</a></td>
-<td></td>
+<td>Instrument used for the measurement</td>
+</tr>
+<tr>
+<td><a href="integration_times/">integration_times</a></td>
+<td>Integration times string as written in file header</td>
 </tr>
 <tr>
 <td><a href="internal_calibration/">internal_calibration</a></td>
 <td>Whether internal calibration was used</td>
+</tr>
+<tr>
+<td><a href="ion_chambers/">ion_chambers</a></td>
+<td>Ion chamber gas mixture components parsed from user comment</td>
 </tr>
 <tr>
 <td><a href="ionization/">ionization</a></td>
@@ -2570,6 +2958,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="iron_id/">iron_id</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="is_pressurized/">is_pressurized</a></td>
+<td>Whether or not pressure was applied to a thing or process</td>
 </tr>
 <tr>
 <td><a href="isol_growth_condt/">isol_growth_condt</a></td>
@@ -2592,6 +2984,14 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Kaolinite (Al2Si2O5(OH)4) weight percent</td>
 </tr>
 <tr>
+<td><a href="known_as/">known_as</a></td>
+<td>Common name or identifier for the substance</td>
+</tr>
+<tr>
+<td><a href="kwgt/">kwgt</a></td>
+<td>k-weighting exponent used in EXAFS region</td>
+</tr>
+<tr>
 <td><a href="la_mg_per_kg/">la_mg_per_kg</a></td>
 <td>Lanthanum concentration in mg/kg</td>
 </tr>
@@ -2604,6 +3004,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The label on the stored processed sample, if applicable (e</td>
 </tr>
 <tr>
+<td><a href="labeling_method/">labeling_method</a></td>
+<td>Chemical labeling strategy applied in this process (e</td>
+</tr>
+<tr>
 <td><a href="language/">language</a></td>
 <td></td>
 </tr>
@@ -2614,6 +3018,14 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="latitude/">latitude</a></td>
 <td>Latitude coordinate of the sampling site in WSG 84 format</td>
+</tr>
+<tr>
+<td><a href="lcf_data_rows/">lcf_data_rows</a></td>
+<td>Per-point fit curve data for plotting</td>
+</tr>
+<tr>
+<td><a href="lcf_type/">lcf_type</a></td>
+<td>LCF analysis subtype, XANES or EXAFS</td>
 </tr>
 <tr>
 <td><a href="light_intensity/">light_intensity</a></td>
@@ -2674,6 +3086,18 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="loop_count/">loop_count</a></td>
 <td>Number of MS2 scans to be acquired between each full MS scan</td>
+</tr>
+<tr>
+<td><a href="m0_coating/">m0_coating</a></td>
+<td>M0 mirror coating material (e</td>
+</tr>
+<tr>
+<td><a href="m0_cutoff_kev/">m0_cutoff_kev</a></td>
+<td>M0 mirror X-ray cutoff energy in keV</td>
+</tr>
+<tr>
+<td><a href="m1_coating/">m1_coating</a></td>
+<td>M1 mirror coating material</td>
 </tr>
 <tr>
 <td><a href="magnesium/">magnesium</a></td>
@@ -2780,40 +3204,24 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The category of metaproteomics analysis being performed, if applicable</td>
 </tr>
 <tr>
-<td><a href="methane/">methane</a></td>
-<td>Methane (gas) amount or concentration at the time of sampling</td>
+<td><a href="metaproteomics_result_type/">metaproteomics_result_type</a></td>
+<td>The type of metaproteomics results file</td>
 </tr>
 <tr>
-<td><a href="method/">method</a></td>
-<td></td>
+<td><a href="methane/">methane</a></td>
+<td>Methane (gas) amount or concentration at the time of sampling</td>
 </tr>
 <tr>
 <td><a href="method_development/">method_development</a></td>
 <td>If your samples are TEST sample ONLY, please provide information on what you'...</td>
 </tr>
 <tr>
-<td><a href="method_id/">method_id</a></td>
-<td>Reference to the RespirationMethod used for this run</td>
-</tr>
-<tr>
-<td><a href="method_name/">method_name</a></td>
-<td></td>
-</tr>
-<tr>
 <td><a href="mg_workflow_step/">mg_workflow_step</a></td>
 <td>Metagenomics workflow step that produced this product (e</td>
 </tr>
 <tr>
-<td><a href="micro_biomass_C_meth/">micro_biomass_C_meth</a></td>
-<td>Reference or method used in determining microbial biomass</td>
-</tr>
-<tr>
 <td><a href="micro_biomass_c_meth/">micro_biomass_c_meth</a></td>
 <td>Reference or method used in determining microbial biomass</td>
-</tr>
-<tr>
-<td><a href="micro_biomass_N_meth/">micro_biomass_N_meth</a></td>
-<td>Reference or method used in determining microbial biomass nitrogen</td>
 </tr>
 <tr>
 <td><a href="micro_biomass_n_meth/">micro_biomass_n_meth</a></td>
@@ -2848,6 +3256,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Information about treatment involving the use of mineral supplements; should ...</td>
 </tr>
 <tr>
+<td><a href="mirror_angle_mrad/">mirror_angle_mrad</a></td>
+<td>M0 mirror angle in mrad</td>
+</tr>
+<tr>
 <td><a href="misc_param/">misc_param</a></td>
 <td>Any other measurement performed or parameter collected that is not listed her...</td>
 </tr>
@@ -2856,8 +3268,12 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Molybdenum concentration in mg/kg</td>
 </tr>
 <tr>
-<td><a href="mobile_phases/">mobile_phases</a></td>
-<td>Description of the mobile phases used in the chromatography method (e</td>
+<td><a href="mobile_phase/">mobile_phase</a></td>
+<td>Description of a mobile phase used in a chromatography method (e</td>
+</tr>
+<tr>
+<td><a href="mobile_phase_percentage/">mobile_phase_percentage</a></td>
+<td>The proportion of the mobile phase segment in the overall mobile phase sequen...</td>
 </tr>
 <tr>
 <td><a href="mode/">mode</a></td>
@@ -2870,6 +3286,34 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="modification_method/">modification_method</a></td>
 <td>Select the method used to insert your construct into the genome of</td>
+</tr>
+<tr>
+<td><a href="mono_2nd_xtal_mm/">mono_2nd_xtal_mm</a></td>
+<td>Second crystal gap position in mm (Crystal_Gap)</td>
+</tr>
+<tr>
+<td><a href="mono_angle_deg/">mono_angle_deg</a></td>
+<td>Monochromator Bragg angle in degrees (Crystal_Phi)</td>
+</tr>
+<tr>
+<td><a href="mono_energy_encoder_ev/">mono_energy_encoder_ev</a></td>
+<td>Monochromator energy from independent encoder in eV</td>
+</tr>
+<tr>
+<td><a href="mono_energy_motor_ev/">mono_energy_motor_ev</a></td>
+<td>Monochromator energy from motor encoder in eV</td>
+</tr>
+<tr>
+<td><a href="motor_index/">motor_index</a></td>
+<td>1-based motor index (aligns with Motor_N_Pos)</td>
+</tr>
+<tr>
+<td><a href="motor_name/">motor_name</a></td>
+<td>Motor name (e</td>
+</tr>
+<tr>
+<td><a href="motors/">motors</a></td>
+<td>Motor positions recorded at scan start</td>
 </tr>
 <tr>
 <td><a href="ms_raw_file_type/">ms_raw_file_type</a></td>
@@ -2888,12 +3332,36 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Concentration of n-alkanes; can include multiple n-alkanes (Unit: ug/mL)</td>
 </tr>
 <tr>
+<td><a href="n_data_points/">n_data_points</a></td>
+<td>Number of data points included in the fit</td>
+</tr>
+<tr>
+<td><a href="n_data_rows/">n_data_rows</a></td>
+<td>Number of data rows in the file</td>
+</tr>
+<tr>
+<td><a href="n_points/">n_points</a></td>
+<td>Number of scan points</td>
+</tr>
+<tr>
+<td><a href="n_standards/">n_standards</a></td>
+<td>Number of reference standards used in the linear combination</td>
+</tr>
+<tr>
+<td><a href="n_variables/">n_variables</a></td>
+<td>Number of free variables in the fit</td>
+</tr>
+<tr>
 <td><a href="name/">name</a></td>
 <td>Human-readable name for the entity or activity</td>
 </tr>
 <tr>
 <td><a href="nb_mg_per_kg/">nb_mg_per_kg</a></td>
 <td>Niobium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="negative_absorbance_margin_au/">negative_absorbance_margin_au</a></td>
+<td>Spectrophotometer setting defining the allowed margin below zero</td>
 </tr>
 <tr>
 <td><a href="neon_domain/">neon_domain</a></td>
@@ -2940,6 +3408,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
+<td><a href="noise_added/">noise_added</a></td>
+<td>Statistical noise added to data before fitting (0 if none)</td>
+</tr>
+<tr>
 <td><a href="non_microb_biomass/">non_microb_biomass</a></td>
 <td>Amount of biomass; should include the name for the part of biomass measured, ...</td>
 </tr>
@@ -2950,6 +3422,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="non_min_nutr_regm/">non_min_nutr_regm</a></td>
 <td>Information about treatment involving the exposure of plant to non-mineral nu...</td>
+</tr>
+<tr>
+<td><a href="normalization_method/">normalization_method</a></td>
+<td>The strategy used for normalization (equal mass, equal volume, etc</td>
 </tr>
 <tr>
 <td><a href="nucleotide_sequencing_category/">nucleotide_sequencing_category</a></td>
@@ -3032,6 +3508,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The relationship of the sample to oxygen, such as aerobic or anaerobic</td>
 </tr>
 <tr>
+<td><a href="oxygen_saturation_pct/">oxygen_saturation_pct</a></td>
+<td>Percent saturation of oxygen in the incubation atmosphere (0–100)</td>
+</tr>
+<tr>
 <td><a href="packages/">packages</a></td>
 <td></td>
 </tr>
@@ -3052,6 +3532,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Particles are classified based on their size into six general categories: cla...</td>
 </tr>
 <tr>
+<td><a href="path/">path</a></td>
+<td>Optional debug string representing the full chain (e</td>
+</tr>
+<tr>
 <td><a href="pathogenicity/">pathogenicity</a></td>
 <td>To what is the entity pathogenic, e</td>
 </tr>
@@ -3060,16 +3544,28 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Lead concentration in mg/kg</td>
 </tr>
 <tr>
-<td><a href="permeability_x/">permeability_x</a></td>
-<td></td>
+<td><a href="peak_area/">peak_area</a></td>
+<td>The area under the peak in a chromatogram or mass spectrum, which is proporti...</td>
 </tr>
 <tr>
-<td><a href="permeability_y/">permeability_y</a></td>
-<td></td>
+<td><a href="peak_height/">peak_height</a></td>
+<td>The height of the peak in a chromatogram or mass spectrum, which can be used ...</td>
 </tr>
 <tr>
-<td><a href="permeability_z/">permeability_z</a></td>
-<td></td>
+<td><a href="peak_percent_area/">peak_percent_area</a></td>
+<td>The percentage of the total area that a specific peak represents in a chromat...</td>
+</tr>
+<tr>
+<td><a href="permeability_x_um2/">permeability_x_um2</a></td>
+<td>Absolute permeability from pore network model in X direction (um^2)</td>
+</tr>
+<tr>
+<td><a href="permeability_y_um2/">permeability_y_um2</a></td>
+<td>Absolute permeability from pore network model in Y direction (um^2)</td>
+</tr>
+<tr>
+<td><a href="permeability_z_um2/">permeability_z_um2</a></td>
+<td>Absolute permeability from pore network model in Z direction (um^2)</td>
 </tr>
 <tr>
 <td><a href="person/">person</a></td>
@@ -3216,36 +3712,84 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Polarity setting used in the mass spectrometry method</td>
 </tr>
 <tr>
-<td><a href="pore_diameter_max/">pore_diameter_max</a></td>
-<td></td>
+<td><a href="pore_area_max_mm2/">pore_area_max_mm2</a></td>
+<td>Maximum area of pores (mm^2)</td>
 </tr>
 <tr>
-<td><a href="pore_diameter_mean/">pore_diameter_mean</a></td>
-<td></td>
+<td><a href="pore_area_mean_mm2/">pore_area_mean_mm2</a></td>
+<td>Mean area of pores (mm^2)</td>
 </tr>
 <tr>
-<td><a href="pore_diameter_median/">pore_diameter_median</a></td>
-<td></td>
+<td><a href="pore_area_median_mm2/">pore_area_median_mm2</a></td>
+<td>Median area of pores (mm^2)</td>
 </tr>
 <tr>
-<td><a href="pore_diameter_min/">pore_diameter_min</a></td>
-<td></td>
+<td><a href="pore_area_min_mm2/">pore_area_min_mm2</a></td>
+<td>Minimum area of pores (mm^2)</td>
 </tr>
 <tr>
-<td><a href="pore_diameter_variance/">pore_diameter_variance</a></td>
-<td></td>
+<td><a href="pore_area_variance_mm4/">pore_area_variance_mm4</a></td>
+<td>Variance of area of pores (mm^4)</td>
 </tr>
 <tr>
-<td><a href="pore_volume_mean/">pore_volume_mean</a></td>
-<td></td>
+<td><a href="pore_connectivity_percent/">pore_connectivity_percent</a></td>
+<td>Percentage of connected pore volume to all pore volume (%)</td>
+</tr>
+<tr>
+<td><a href="pore_equivalent_diameter_max_mm/">pore_equivalent_diameter_max_mm</a></td>
+<td>Maximum equivalent pore diameter (mm)</td>
+</tr>
+<tr>
+<td><a href="pore_equivalent_diameter_mean_mm/">pore_equivalent_diameter_mean_mm</a></td>
+<td>Mean equivalent pore diameter (mm)</td>
+</tr>
+<tr>
+<td><a href="pore_equivalent_diameter_median_mm/">pore_equivalent_diameter_median_mm</a></td>
+<td>Median equivalent pore diameter (mm)</td>
+</tr>
+<tr>
+<td><a href="pore_equivalent_diameter_min_mm/">pore_equivalent_diameter_min_mm</a></td>
+<td>Minimum equivalent pore diameter (mm)</td>
+</tr>
+<tr>
+<td><a href="pore_equivalent_diameter_variance_mm2/">pore_equivalent_diameter_variance_mm2</a></td>
+<td>Variance of equivalent pore diameter (mm^2)</td>
+</tr>
+<tr>
+<td><a href="pore_volume_max_mm3/">pore_volume_max_mm3</a></td>
+<td>Maximum volume of pores (mm^3)</td>
+</tr>
+<tr>
+<td><a href="pore_volume_mean_mm3/">pore_volume_mean_mm3</a></td>
+<td>Mean volume of pores (mm^3)</td>
+</tr>
+<tr>
+<td><a href="pore_volume_median_mm3/">pore_volume_median_mm3</a></td>
+<td>Median volume of pores (mm^3)</td>
+</tr>
+<tr>
+<td><a href="pore_volume_min_mm3/">pore_volume_min_mm3</a></td>
+<td>Minimum volume of pores (mm^3)</td>
+</tr>
+<tr>
+<td><a href="pore_volume_variance_mm6/">pore_volume_variance_mm6</a></td>
+<td>Variance of volume of pores (mm^6)</td>
 </tr>
 <tr>
 <td><a href="porosity/">porosity</a></td>
 <td>Porosity of deposited sediment is volume of voids divided by the total volume...</td>
 </tr>
 <tr>
+<td><a href="porosity_percent/">porosity_percent</a></td>
+<td>Percentage of total pore volume to total volume of ROI (%)</td>
+</tr>
+<tr>
 <td><a href="position/">position</a></td>
-<td>Well position (e</td>
+<td>Motor position value at scan start</td>
+</tr>
+<tr>
+<td><a href="positioner/">positioner</a></td>
+<td>Primary positioner name (e</td>
 </tr>
 <tr>
 <td><a href="potassium/">potassium</a></td>
@@ -3266,6 +3810,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="pressure/">pressure</a></td>
 <td>Pressure to which the sample is subject, in atmospheres (Unit: atm)</td>
+</tr>
+<tr>
+<td><a href="pressure_bar/">pressure_bar</a></td>
+<td>Gas fill pressure in bar</td>
 </tr>
 <tr>
 <td><a href="pressure_control/">pressure_control</a></td>
@@ -3304,16 +3852,24 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The institution where the activity took place</td>
 </tr>
 <tr>
-<td><a href="processing_steps/">processing_steps</a></td>
-<td></td>
-</tr>
-<tr>
 <td><a href="produced_by_ms_run/">produced_by_ms_run</a></td>
 <td>a reference to the data generation activity that produced instrument data</td>
 </tr>
 <tr>
+<td><a href="produced_by_ri_run/">produced_by_ri_run</a></td>
+<td>a reference to the data generation activity that produced this measurement</td>
+</tr>
+<tr>
 <td><a href="produced_by_sequencing_activity/">produced_by_sequencing_activity</a></td>
 <td>Link back to the NucleotideSequencing activity that produced this data</td>
+</tr>
+<tr>
+<td><a href="produced_by_uv_run/">produced_by_uv_run</a></td>
+<td>a reference to the data generation activity that produced this measurement</td>
+</tr>
+<tr>
+<td><a href="produced_by_xas_run/">produced_by_xas_run</a></td>
+<td>Reference to the XAS data generation activity that produced this raw file</td>
 </tr>
 <tr>
 <td><a href="product_name/">product_name</a></td>
@@ -3356,8 +3912,16 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The type of reproduction from the parent stock</td>
 </tr>
 <tr>
+<td><a href="proportion/">proportion</a></td>
+<td>Species proportion in sample (fraction 0-1)</td>
+</tr>
+<tr>
 <td><a href="proposal_abstract/">proposal_abstract</a></td>
 <td>The abstract submitted with the research proposal</td>
+</tr>
+<tr>
+<td><a href="protein_assay_type/">protein_assay_type</a></td>
+<td>The type of protein assay (Coomassie, BCA, etc</td>
 </tr>
 <tr>
 <td><a href="protocol_link/">protocol_link</a></td>
@@ -3380,12 +3944,20 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Discriminator for purchasedMaterial subtype (e</td>
 </tr>
 <tr>
+<td><a href="pv/">pv</a></td>
+<td>EPICS process variable name (e</td>
+</tr>
+<tr>
 <td><a href="pyrite_percent/">pyrite_percent</a></td>
 <td>Pyrite (FeS2) weight percent</td>
 </tr>
 <tr>
 <td><a href="quartz_percent/">quartz_percent</a></td>
 <td>Quartz (SiO2) weight percent</td>
+</tr>
+<tr>
+<td><a href="r_factor/">r_factor</a></td>
+<td>R-factor goodness-of-fit statistic</td>
 </tr>
 <tr>
 <td><a href="radiation_regm/">radiation_regm</a></td>
@@ -3408,12 +3980,24 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>anaerobic digesters can be designed and engineered to operate using a number ...</td>
 </tr>
 <tr>
+<td><a href="reagent_additions/">reagent_additions</a></td>
+<td>Per-well reagent additions beyond the base media</td>
+</tr>
+<tr>
 <td><a href="redox_potential/">redox_potential</a></td>
 <td>Redox potential measured relative to a hydrogen cell indicating oxidation or ...</td>
 </tr>
 <tr>
+<td><a href="reduced_chi_square/">reduced_chi_square</a></td>
+<td>Reduced chi-square statistic</td>
+</tr>
+<tr>
 <td><a href="ref_biomaterial/">ref_biomaterial</a></td>
 <td>Primary publication if isolated before genome publication; otherwise primary ...</td>
+</tr>
+<tr>
+<td><a href="reference_material/">reference_material</a></td>
+<td>Reference standard material name</td>
 </tr>
 <tr>
 <td><a href="renderer/">renderer</a></td>
@@ -3440,8 +4024,20 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The technical replicate number of the sample or measurement, if applicable</td>
 </tr>
 <tr>
+<td><a href="requested_concentration/">requested_concentration</a></td>
+<td>Target final concentration of this reagent in the well, as specified</td>
+</tr>
+<tr>
+<td><a href="residual/">residual</a></td>
+<td>Fit residual at this point (data_val - fit_val)</td>
+</tr>
+<tr>
 <td><a href="resolution/">resolution</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="resolution_nm/">resolution_nm</a></td>
+<td>Spectral resolution of the detector, in nanometers</td>
 </tr>
 <tr>
 <td><a href="respiration_co2_c_ug_per_g/">respiration_co2_c_ug_per_g</a></td>
@@ -3452,12 +4048,36 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>a reference to the mass spec data processing activity that produced this data...</td>
 </tr>
 <tr>
-<td><a href="roi_volume_voxel/">roi_volume_voxel</a></td>
-<td></td>
+<td><a href="results_from_xas_processing/">results_from_xas_processing</a></td>
+<td>Reference to the XAS LCF processing activity that produced this processed pro...</td>
+</tr>
+<tr>
+<td><a href="retention_time_min/">retention_time_min</a></td>
+<td>Retention time of the analyte in the chromatography method, in minutes</td>
+</tr>
+<tr>
+<td><a href="ring_current_ma/">ring_current_ma</a></td>
+<td>Storage ring current in mA at scan start</td>
+</tr>
+<tr>
+<td><a href="ring_energy_gev/">ring_energy_gev</a></td>
+<td>Storage ring energy in GeV</td>
+</tr>
+<tr>
+<td><a href="roi_x_voxel/">roi_x_voxel</a></td>
+<td>Number of voxels in X direction of ROI</td>
+</tr>
+<tr>
+<td><a href="roi_y_voxel/">roi_y_voxel</a></td>
+<td>Number of voxels in Y direction of ROI</td>
+</tr>
+<tr>
+<td><a href="roi_z_voxel/">roi_z_voxel</a></td>
+<td>Number of voxels in Z direction of ROI</td>
 </tr>
 <tr>
 <td><a href="role/">role</a></td>
-<td></td>
+<td>Whether sample_id was consumed by (input_sample) or produced by (output_sampl...</td>
 </tr>
 <tr>
 <td><a href="root_cond/">root_cond</a></td>
@@ -3496,6 +4116,18 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
+<td><a href="row_num/">row_num</a></td>
+<td>1-based row index within the sweep file</td>
+</tr>
+<tr>
+<td><a href="row_val/">row_val</a></td>
+<td>Representative value at this scan point</td>
+</tr>
+<tr>
+<td><a href="run_label/">run_label</a></td>
+<td>Analysis run variant label extracted from filename</td>
+</tr>
+<tr>
 <td><a href="s3_base_url/">s3_base_url</a></td>
 <td></td>
 </tr>
@@ -3532,10 +4164,6 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The temperature at which your samples should be stored upon arrival</td>
 </tr>
 <tr>
-<td><a href="sample_base_id/">sample_base_id</a></td>
-<td></td>
-</tr>
-<tr>
 <td><a href="sample_collected/">sample_collected</a></td>
 <td>This refers to the TOTAL amount of sample collected from the experiment</td>
 </tr>
@@ -3548,8 +4176,24 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The method used to collect an environmental sample</td>
 </tr>
 <tr>
+<td><a href="sample_detector_distance_mm/">sample_detector_distance_mm</a></td>
+<td>Sample-to-detector distance in mm</td>
+</tr>
+<tr>
+<td><a href="sample_doi/">sample_doi</a></td>
+<td>DOI or persistent identifier for the sample</td>
+</tr>
+<tr>
 <td><a href="sample_end_time/">sample_end_time</a></td>
 <td>Time of when the sample collection ends</td>
+</tr>
+<tr>
+<td><a href="sample_format/">sample_format</a></td>
+<td>Physical sample format (e</td>
+</tr>
+<tr>
+<td><a href="sample_holder/">sample_holder</a></td>
+<td>Holder/position identifier (e</td>
 </tr>
 <tr>
 <td><a href="sample_id/">sample_id</a></td>
@@ -3564,12 +4208,28 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The name or label that is present on the shipped sample</td>
 </tr>
 <tr>
+<td><a href="sample_nor_file/">sample_nor_file</a></td>
+<td>Normalised spectrum filename recorded in the LCF header</td>
+</tr>
+<tr>
+<td><a href="sample_orientation_deg/">sample_orientation_deg</a></td>
+<td>Sample orientation angle in degrees</td>
+</tr>
+<tr>
 <td><a href="sample_processing/">sample_processing</a></td>
 <td>A brief description of any processing applied to the sample during or after r...</td>
 </tr>
 <tr>
+<td><a href="sample_processing_substance/">sample_processing_substance</a></td>
+<td>A substance that was used in the SampleProcessing activity</td>
+</tr>
+<tr>
 <td><a href="sample_start_time/">sample_start_time</a></td>
 <td>Time of when the sample collection starts</td>
+</tr>
+<tr>
+<td><a href="sample_temperature_k/">sample_temperature_k</a></td>
+<td>Sample temperature in Kelvin</td>
 </tr>
 <tr>
 <td><a href="sample_type/">sample_type</a></td>
@@ -3596,6 +4256,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The difference between sample start and sample end time in seconds</td>
 </tr>
 <tr>
+<td><a href="sampling_rate_hz/">sampling_rate_hz</a></td>
+<td>Rate at which data points are acquired during the run, in Hertz</td>
+</tr>
+<tr>
 <td><a href="sampling_set/">sampling_set</a></td>
 <td>Sampling set number for grouping related samples collected together</td>
 </tr>
@@ -3606,6 +4270,26 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="sb_mg_per_kg/">sb_mg_per_kg</a></td>
 <td>Antimony concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="scan_bounds/">scan_bounds</a></td>
+<td>Scan boundary string as written in file header</td>
+</tr>
+<tr>
+<td><a href="scan_datetime/">scan_datetime</a></td>
+<td>Date and time at scan start</td>
+</tr>
+<tr>
+<td><a href="scan_steps/">scan_steps</a></td>
+<td>Step sizes string as written in file header</td>
+</tr>
+<tr>
+<td><a href="scan_subtype/">scan_subtype</a></td>
+<td>Scan type, energy (XAS) or motor (alignment)</td>
+</tr>
+<tr>
+<td><a href="scan_time_sec/">scan_time_sec</a></td>
+<td>Total scan duration in seconds</td>
 </tr>
 <tr>
 <td><a href="se_mg_per_kg/">se_mg_per_kg</a></td>
@@ -3648,8 +4332,8 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Information about the sediment type based on major constituents</td>
 </tr>
 <tr>
-<td><a href="segment_order/">segment_order</a></td>
-<td>The order of this segment in the overall chromatography protocol</td>
+<td><a href="separation_method/">separation_method</a></td>
+<td>The method used to separate phases during the filtration process (e</td>
 </tr>
 <tr>
 <td><a href="sequence_order/">sequence_order</a></td>
@@ -3684,6 +4368,14 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Collection design of pooled samples and/or sieve size and amount of sample si...</td>
 </tr>
 <tr>
+<td><a href="signal_columns/">signal_columns</a></td>
+<td>Detector signal name / EPICS PV pairs</td>
+</tr>
+<tr>
+<td><a href="signal_name/">signal_name</a></td>
+<td>Signal channel name (e</td>
+</tr>
+<tr>
 <td><a href="silicate/">silicate</a></td>
 <td>Concentration of silicate (Unit: umol/L)</td>
 </tr>
@@ -3702,6 +4394,22 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="size_frac_up/">size_frac_up</a></td>
 <td>Refers to the mesh/pore size used to retain the sample</td>
+</tr>
+<tr>
+<td><a href="slit_center_h/">slit_center_h</a></td>
+<td>Horizontal slit center position (mm)</td>
+</tr>
+<tr>
+<td><a href="slit_center_v/">slit_center_v</a></td>
+<td>Vertical slit center position (mm)</td>
+</tr>
+<tr>
+<td><a href="slit_size_h_um/">slit_size_h_um</a></td>
+<td>Horizontal slit size in microns</td>
+</tr>
+<tr>
+<td><a href="slit_size_v_um/">slit_size_v_um</a></td>
+<td>Vertical slit size in microns</td>
 </tr>
 <tr>
 <td><a href="slope_aspect/">slope_aspect</a></td>
@@ -3780,6 +4488,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Concentration of soluble reactive phosphorus</td>
 </tr>
 <tr>
+<td><a href="source_concentration_mg_per_ml/">source_concentration_mg_per_ml</a></td>
+<td>Concentration of the substance before it is added to the experiment,  in mill...</td>
+</tr>
+<tr>
 <td><a href="source_mat_id/">source_mat_id</a></td>
 <td>A unique identifier assigned to an original material sample collected or to a...</td>
 </tr>
@@ -3788,12 +4500,24 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
+<td><a href="species_name/">species_name</a></td>
+<td>Chemical species or oxidation state name from the LCF report</td>
+</tr>
+<tr>
+<td><a href="species_proportions/">species_proportions</a></td>
+<td>Derived species proportion results (XANES only)</td>
+</tr>
+<tr>
 <td><a href="specific_host/">specific_host</a></td>
 <td>If there is a host involved please provide its taxid (or environmental if not...</td>
 </tr>
 <tr>
 <td><a href="sr_mg_per_kg/">sr_mg_per_kg</a></td>
 <td>Strontium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="standards/">standards</a></td>
+<td>Reference standards used in the linear combination fit</td>
 </tr>
 <tr>
 <td><a href="standing_water_regm/">standing_water_regm</a></td>
@@ -3808,16 +4532,32 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
+<td><a href="starting_mass_mg/">starting_mass_mg</a></td>
+<td>The mass of sample or analyte used in the first step of the process, in milli...</td>
+</tr>
+<tr>
 <td><a href="stationary_phase/">stationary_phase</a></td>
 <td>Description of the stationary phase used in the chromatography method (e</td>
 </tr>
 <tr>
+<td><a href="std_index/">std_index</a></td>
+<td>1-based index of the reference standard in the fit</td>
+</tr>
+<tr>
+<td><a href="std_name/">std_name</a></td>
+<td>Reference standard name as written in the Athena or Larch project</td>
+</tr>
+<tr>
 <td><a href="step_number/">step_number</a></td>
-<td></td>
+<td>Integer ordering within a multi-step process for the same analyte</td>
 </tr>
 <tr>
 <td><a href="sterilization_method/">sterilization_method</a></td>
 <td>Method used to sterilize the entity (autoclave, filter, UV, etc</td>
+</tr>
+<tr>
+<td><a href="stock_concentration/">stock_concentration</a></td>
+<td>Concentration of the stock solution from which this reagent was drawn</td>
 </tr>
 <tr>
 <td><a href="storage_condition/">storage_condition</a></td>
@@ -3869,7 +4609,15 @@ and analytical products as the canonical source of truth for BASALT consumers
 </tr>
 <tr>
 <td><a href="substance/">substance</a></td>
-<td>The name of the substance used in this mobile phase segment</td>
+<td>The chemical substance used in the mobile phase</td>
+</tr>
+<tr>
+<td><a href="substance_role/">substance_role</a></td>
+<td>Role of this reagent in the experiment (nutrient, normalizer, inducer, etc</td>
+</tr>
+<tr>
+<td><a href="substances_used/">substances_used</a></td>
+<td>A reference to substances used in a SampleProcessing activity</td>
 </tr>
 <tr>
 <td><a href="sulfate/">sulfate</a></td>
@@ -3894,6 +4642,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="suspend_solids/">suspend_solids</a></td>
 <td>concentration of substances including a wide variety of material such as silt...</td>
+</tr>
+<tr>
+<td><a href="sweep_number/">sweep_number</a></td>
+<td>1-based sweep index within the measurement session</td>
 </tr>
 <tr>
 <td><a href="synth_env_assembly/">synth_env_assembly</a></td>
@@ -3932,8 +4684,16 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Provide the date the sample was transferred to the synthetic environment</td>
 </tr>
 <tr>
+<td><a href="target_mass_mg/">target_mass_mg</a></td>
+<td>Target volume of analyte per sample after normalization,  in milligrams, if a...</td>
+</tr>
+<tr>
 <td><a href="target_strain/">target_strain</a></td>
 <td>Target strain identifier for purity checks</td>
+</tr>
+<tr>
+<td><a href="target_vol_ul/">target_vol_ul</a></td>
+<td>Target volume of analyte per sample after normalization,  in microliters, if ...</td>
 </tr>
 <tr>
 <td><a href="taxonomy_id/">taxonomy_id</a></td>
@@ -4017,15 +4777,15 @@ and analytical products as the canonical source of truth for BASALT consumers
 </tr>
 <tr>
 <td><a href="tortuosity_x/">tortuosity_x</a></td>
-<td></td>
+<td>Tortuosity from pore network model in X direction (unitless)</td>
 </tr>
 <tr>
 <td><a href="tortuosity_y/">tortuosity_y</a></td>
-<td></td>
+<td>Tortuosity from pore network model in Y direction (unitless)</td>
 </tr>
 <tr>
 <td><a href="tortuosity_z/">tortuosity_z</a></td>
-<td></td>
+<td>Tortuosity from pore network model in Z direction (unitless)</td>
 </tr>
 <tr>
 <td><a href="tot_carb/">tot_carb</a></td>
@@ -4108,10 +4868,6 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
-<td><a href="total_pore_volume/">total_pore_volume</a></td>
-<td></td>
-</tr>
-<tr>
 <td><a href="total_projections_collected/">total_projections_collected</a></td>
 <td></td>
 </tr>
@@ -4136,10 +4892,6 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Type of treatment applied in experimental culture growth</td>
 </tr>
 <tr>
-<td><a href="treatments/">treatments</a></td>
-<td>Per-well treatments if applicable (e</td>
-</tr>
-<tr>
 <td><a href="trophic_level/">trophic_level</a></td>
 <td>Trophic levels are the feeding position in a food chain</td>
 </tr>
@@ -4152,12 +4904,24 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Uranium concentration in mg/kg</td>
 </tr>
 <tr>
+<td><a href="uncertainty/">uncertainty</a></td>
+<td>Uncertainty on the species proportion (fraction)</td>
+</tr>
+<tr>
 <td><a href="uninoculated_mean/">uninoculated_mean</a></td>
 <td>Mean measurement of uninoculated control wells (baseline for Ecoplate)</td>
 </tr>
 <tr>
+<td><a href="used_in_chromatography_config/">used_in_chromatography_config</a></td>
+<td>The chromatography configuration in which this mobile phase segment is used</td>
+</tr>
+<tr>
 <td><a href="user/">user</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="user_comment/">user_comment</a></td>
+<td>Free-text user comment from scan header</td>
 </tr>
 <tr>
 <td><a href="uses_calibration/">uses_calibration</a></td>
@@ -4165,7 +4929,7 @@ and analytical products as the canonical source of truth for BASALT consumers
 </tr>
 <tr>
 <td><a href="uses_chromatography/">uses_chromatography</a></td>
-<td>Points to a record of the chromatography used to introduce samples for the ma...</td>
+<td>Points to a record of the chromatography configuration used to separate analy...</td>
 </tr>
 <tr>
 <td><a href="uses_ms_configuration/">uses_ms_configuration</a></td>
@@ -4176,8 +4940,24 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The raw data file, output by a mass spectrometer, that was analyzed in  this ...</td>
 </tr>
 <tr>
-<td><a href="uses_sample/">uses_sample</a></td>
-<td></td>
+<td><a href="uses_raw_ri_data/">uses_raw_ri_data</a></td>
+<td>The raw data file, output by a RI detector, that was analyzed in this data pr...</td>
+</tr>
+<tr>
+<td><a href="uses_raw_uv_data/">uses_raw_uv_data</a></td>
+<td>The raw data file, output by a UV-Vis detector, that was analyzed in this dat...</td>
+</tr>
+<tr>
+<td><a href="uses_xas_raw_data/">uses_xas_raw_data</a></td>
+<td>Raw XAS instrument data inputs consumed by this LCF processing activity</td>
+</tr>
+<tr>
+<td><a href="uv_datagen_run/">uv_datagen_run</a></td>
+<td>Reference to the UV-Vis data generation activity that this channel configurat...</td>
+</tr>
+<tr>
+<td><a href="uv_detector_type/">uv_detector_type</a></td>
+<td>Type of UV detector used in the chromatography method</td>
 </tr>
 <tr>
 <td><a href="v_mg_per_kg/">v_mg_per_kg</a></td>
@@ -4204,16 +4984,24 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Volatile organic compounds are organic chemicals that have a high vapour pres...</td>
 </tr>
 <tr>
+<td><a href="voltage_end/">voltage_end</a></td>
+<td>Analog input voltage at scan end (V)</td>
+</tr>
+<tr>
+<td><a href="voltage_start/">voltage_start</a></td>
+<td>Analog input voltage at scan start (V)</td>
+</tr>
+<tr>
 <td><a href="volume_ml/">volume_ml</a></td>
 <td>Volume of the entity in milliliters</td>
 </tr>
 <tr>
-<td><a href="volume_uL/">volume_uL</a></td>
+<td><a href="volume_ul/">volume_ul</a></td>
 <td>Volume of the entity in microliters</td>
 </tr>
 <tr>
-<td><a href="voxel_size/">voxel_size</a></td>
-<td></td>
+<td><a href="voxel_size_mm_per_voxel/">voxel_size_mm_per_voxel</a></td>
+<td>Linear dimension of a voxel (mm/voxel)</td>
 </tr>
 <tr>
 <td><a href="wastewater_type/">wastewater_type</a></td>
@@ -4248,12 +5036,40 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Measurement wavelength in nanometres (e</td>
 </tr>
 <tr>
+<td><a href="wavelength_nm_max/">wavelength_nm_max</a></td>
+<td>Maximum wavelength of the detection range, in nanometers</td>
+</tr>
+<tr>
+<td><a href="wavelength_nm_min/">wavelength_nm_min</a></td>
+<td>Minimum wavelength of the detection range, in nanometers</td>
+</tr>
+<tr>
 <td><a href="weather/">weather</a></td>
 <td>The state of the atmosphere at a given time and place with respect to variabl...</td>
 </tr>
 <tr>
 <td><a href="websites/">websites</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="weight/">weight</a></td>
+<td>Fitted weight (fraction) for this standard component</td>
+</tr>
+<tr>
+<td><a href="weight_percent/">weight_percent</a></td>
+<td>Weight percent of the entity in the sample</td>
+</tr>
+<tr>
+<td><a href="weights_bounded/">weights_bounded</a></td>
+<td>Whether component weights were bounded between 0 and 1</td>
+</tr>
+<tr>
+<td><a href="weights_sum/">weights_sum</a></td>
+<td>Actual sum of fitted component weights</td>
+</tr>
+<tr>
+<td><a href="weights_sum_to_1/">weights_sum_to_1</a></td>
+<td>Whether component weights were constrained to sum to 1</td>
 </tr>
 <tr>
 <td><a href="well_metadata/">well_metadata</a></td>
@@ -4288,8 +5104,28 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Per-run workflow parameters</td>
 </tr>
 <tr>
+<td><a href="x_first/">x_first</a></td>
+<td>First positioner value in the scan (eV or mm)</td>
+</tr>
+<tr>
+<td><a href="x_last/">x_last</a></td>
+<td>Last positioner value in the scan (eV or mm)</td>
+</tr>
+<tr>
 <td><a href="x_ray_power/">x_ray_power</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="x_val/">x_val</a></td>
+<td>Positioner value at this data point (energy in eV or k in A^-1)</td>
+</tr>
+<tr>
+<td><a href="xas_filename/">xas_filename</a></td>
+<td>Measurement filename stem linking LCF results to source XAS data</td>
+</tr>
+<tr>
+<td><a href="xas_sample_type/">xas_sample_type</a></td>
+<td>Sample type descriptor (e</td>
 </tr>
 <tr>
 <td><a href="y_mg_per_kg/">y_mg_per_kg</a></td>
@@ -4355,6 +5191,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
+<td><a href="ChemicalConversionCategoryEnum/">ChemicalConversionCategoryEnum</a></td>
+<td></td>
+</tr>
+<tr>
 <td><a href="ChemicalEntityEnum/">ChemicalEntityEnum</a></td>
 <td>Common names or identifiers for chemical entities</td>
 </tr>
@@ -4383,6 +5223,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
+<td><a href="DigestionMethodEnum/">DigestionMethodEnum</a></td>
+<td>Named protein digestion methods used in sample preparation</td>
+</tr>
+<tr>
 <td><a href="DoiCategoryEnum/">DoiCategoryEnum</a></td>
 <td>The authority, or organization, the DOI is associated with</td>
 </tr>
@@ -4399,8 +5243,16 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The method used to introduce the eluent into the mass spectrometer</td>
 </tr>
 <tr>
+<td><a href="EnrichmentTypeEnum/">EnrichmentTypeEnum</a></td>
+<td>Type of targeted peptide or protein enrichment performed</td>
+</tr>
+<tr>
 <td><a href="ExecutionResourceEnum/">ExecutionResourceEnum</a></td>
 <td>The computing resource or facility where the processing was executed</td>
+</tr>
+<tr>
+<td><a href="ExtractionMethodEnum/">ExtractionMethodEnum</a></td>
+<td>A short name for the extraction method applied to the sample</td>
 </tr>
 <tr>
 <td><a href="FAOClassEnum/">FAOClassEnum</a></td>
@@ -4447,6 +5299,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
+<td><a href="LabelingMethodEnum/">LabelingMethodEnum</a></td>
+<td>The chemical labeling strategy applied to peptides or proteins</td>
+</tr>
+<tr>
 <td><a href="LandUseEnum/">LandUseEnum</a></td>
 <td>Land use classifications</td>
 </tr>
@@ -4483,8 +5339,8 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>The category of metaproteomics analysis being performed</td>
 </tr>
 <tr>
-<td><a href="MethodNameEnum/">MethodNameEnum</a></td>
-<td></td>
+<td><a href="MetaproteomicsResultTypeEnum/">MetaproteomicsResultTypeEnum</a></td>
+<td>The type of metaproteomics results file</td>
 </tr>
 <tr>
 <td><a href="ModelEnum/">ModelEnum</a></td>
@@ -4505,6 +5361,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <tr>
 <td><a href="NexusRoleEnum/">NexusRoleEnum</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="NormalizationMethodEnum/">NormalizationMethodEnum</a></td>
+<td>The strategy used to normalize sample amounts or intensities</td>
 </tr>
 <tr>
 <td><a href="NucleotideSequencingEnum/">NucleotideSequencingEnum</a></td>
@@ -4551,8 +5411,8 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td></td>
 </tr>
 <tr>
-<td><a href="RouteMethodEnum/">RouteMethodEnum</a></td>
-<td></td>
+<td><a href="ProteinAssayTypeEnum/">ProteinAssayTypeEnum</a></td>
+<td>Type of protein quantification assay performed</td>
 </tr>
 <tr>
 <td><a href="SampleBaseType/">SampleBaseType</a></td>
@@ -4564,7 +5424,7 @@ and analytical products as the canonical source of truth for BASALT consumers
 </tr>
 <tr>
 <td><a href="SampleRole/">SampleRole</a></td>
-<td></td>
+<td>The direction in which a Sample participates in a SampleProcessing activity</td>
 </tr>
 <tr>
 <td><a href="SampleStoreTempEnum/">SampleStoreTempEnum</a></td>
@@ -4615,6 +5475,10 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Types of microbial strains/organisms</td>
 </tr>
 <tr>
+<td><a href="SubstanceRoleEnum/">SubstanceRoleEnum</a></td>
+<td>The role or function of the substance in the context of its use</td>
+</tr>
+<tr>
 <td><a href="SyntheticEnvironmentEnum/">SyntheticEnvironmentEnum</a></td>
 <td></td>
 </tr>
@@ -4631,8 +5495,20 @@ and analytical products as the canonical source of truth for BASALT consumers
 <td>Enumeration of trophic levels for organisms</td>
 </tr>
 <tr>
+<td><a href="UVDetectorEnum/">UVDetectorEnum</a></td>
+<td>UV detector types used in chromatography</td>
+</tr>
+<tr>
 <td><a href="VendorEnum/">VendorEnum</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="XASLCFType/">XASLCFType</a></td>
+<td>LCF analysis subtype</td>
+</tr>
+<tr>
+<td><a href="XASScanSubtype/">XASScanSubtype</a></td>
+<td>XAS scan subtype detected from primary positioner column</td>
 </tr>
 <tr>
 <td><a href="YesNoEnum/">YesNoEnum</a></td>

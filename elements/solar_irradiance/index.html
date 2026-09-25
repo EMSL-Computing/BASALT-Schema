@@ -481,6 +481,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -556,13 +567,13 @@ Alias: solar_irradiance</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../OtherUndescribedSample/">OtherUndescribedSample</a></td>
-<td>A sample that does not fit into any of the other described sample types</td>
+<td><a href="../AerosolSample/">AerosolSample</a></td>
+<td>An aerosol sample collected from the environment</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AerosolSample/">AerosolSample</a></td>
-<td>An aerosol sample collected from the environment</td>
+<td><a href="../OtherUndescribedSample/">OtherUndescribedSample</a></td>
+<td>A sample that does not fit into any of the other described sample types</td>
 <td>no</td>
 </tr>
 <tr>
@@ -602,26 +613,27 @@ Alias: solar_irradiance</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Value</th>
+<th>property</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Regex Pattern</td>
-<td><code>^\d+(\.\d+)?\s*(kW/m2/d|erg/cm2/s)$</code></td>
+<td>submission_pattern</td>
+<td>^\d+(.\d+)?\s*(kW/m2/d</td>
 </tr>
 </tbody>
 </table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -648,6 +660,10 @@ Alias: solar_irradiance</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">solar_irradiance</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*(kW/m2/d|erg/cm2/s)$</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Solar</span><span class="nv"> </span><span class="s">irradiance</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">per</span><span class="nv"> </span><span class="s">unit</span><span class="nv"> </span><span class="s">area</span><span class="nv"> </span><span class="s">(surface</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">density)</span>
 <span class="w">  </span><span class="s">received</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Sun</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">form</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">electromagnetic</span><span class="nv"> </span><span class="s">radiation</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">wavelength</span>
 <span class="w">  </span><span class="s">range</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">measuring</span><span class="nv"> </span><span class="s">instrument.</span><span class="nv"> </span><span class="s">(Unit:</span><span class="nv"> </span><span class="s">kW/m2/d</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">erg/cm2/s&#39;</span>
@@ -660,7 +676,6 @@ Alias: solar_irradiance</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AerosolSample</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OtherUndescribedSample</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*(kW/m2/d|erg/cm2/s)$</span>
 </code></pre></div>
 </details>
 

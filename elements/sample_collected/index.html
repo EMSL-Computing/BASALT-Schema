@@ -481,6 +481,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -556,6 +567,16 @@ Alias: sample_collected</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../AerosolSamplingActivity/">AerosolSamplingActivity</a></td>
+<td>A sampling activity where aerosol samples were collected</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CultureEnvironmentalSamplingActivity/">CultureEnvironmentalSamplingActivity</a></td>
+<td>Collection of samples from a culture of organisms taken from the environment</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../FieldDeployedTerraformSamplingActivity/">FieldDeployedTerraformSamplingActivity</a></td>
 <td>Collection of samples from a field-deployed Terraform device</td>
 <td>no</td>
@@ -571,43 +592,8 @@ Alias: sample_collected</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../CommerciallyPurchasedSamplingActivity/">CommerciallyPurchasedSamplingActivity</a></td>
-<td>Collection of samples that were purchased by the user</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SedimentSamplingActivity/">SedimentSamplingActivity</a></td>
-<td>Collection of sediment samples from the environment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SoilSamplingActivity/">SoilSamplingActivity</a></td>
-<td>Collection of soil samples from the environment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../CultureEnvironmentalSamplingActivity/">CultureEnvironmentalSamplingActivity</a></td>
-<td>Collection of samples from a culture of organisms taken from the environment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TerraformSamplingActivity/">TerraformSamplingActivity</a></td>
-<td>Collection of samples from a Terraform device</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AerosolSamplingActivity/">AerosolSamplingActivity</a></td>
-<td>A sampling activity where aerosol samples were collected</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../PureCultureSamplingActivity/">PureCultureSamplingActivity</a></td>
 <td>Collection of samples from a culture containing a single organism</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MixedCultureSamplingActivity/">MixedCultureSamplingActivity</a></td>
-<td>Collection of samples from a mixed culture</td>
 <td>no</td>
 </tr>
 <tr>
@@ -616,8 +602,33 @@ Alias: sample_collected</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../MixedCultureSamplingActivity/">MixedCultureSamplingActivity</a></td>
+<td>Collection of samples from a mixed culture</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../OtherUndescribedSamplingActivity/">OtherUndescribedSamplingActivity</a></td>
 <td>Collection of samples from source that does not fit into any of the other cat...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CommerciallyPurchasedSamplingActivity/">CommerciallyPurchasedSamplingActivity</a></td>
+<td>Collection of samples that were purchased by the user</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SoilSamplingActivity/">SoilSamplingActivity</a></td>
+<td>Collection of soil samples from the environment</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TerraformSamplingActivity/">TerraformSamplingActivity</a></td>
+<td>Collection of samples from a Terraform device</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SedimentSamplingActivity/">SedimentSamplingActivity</a></td>
+<td>Collection of sediment samples from the environment</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -652,26 +663,27 @@ Alias: sample_collected</p>
 </thead>
 <tbody>
 <tr>
-<td>### Value Constraints</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Value</th>
+<th>property</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Regex Pattern</td>
-<td><code>^\d+(\.\d+)?\s*[\w\s/]+$</code></td>
+<td>submission_pattern</td>
+<td>^\d+(.\d+)?\s*[\w\s/]+$</td>
 </tr>
 </tbody>
 </table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
@@ -698,6 +710,10 @@ Alias: sample_collected</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_collected</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submission_pattern</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submission_pattern</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*[\w\s/]+$</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This refers to the TOTAL amount of sample collected from the experiment.</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">NOT the amount sent to EMSL or collected for a specific analysis. Provide value</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">and unit, any unit is valid</span>
@@ -720,7 +736,6 @@ Alias: sample_collected</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerraformSamplingActivity</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaterSamplingActivity</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^\d+(\.\d+)?\s*[\w\s/]+$</span>
 </code></pre></div>
 </details>
 
