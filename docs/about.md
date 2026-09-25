@@ -6,7 +6,7 @@ The BASALT schema is a [LinkML](https://linkml.io)-based data model for MONet/EM
 
 | | |
 | --- | --- |
-| **Schema version** | `0.1.0` |
+| **Schema version** | `0.2.0` |
 | **Repository** | https://github.com/EMSL-Computing/BASALT-Schema |
 | **Docs** | https://emsl-computing.github.io/BASALT-Schema |
 | **Canonical URI** | https://emsl-computing.github.io/BASALT-Schema |
