@@ -385,6 +385,52 @@ for i, (sname, org_id, rep) in enumerate(SAMPLE_SPEC, start=1):
 SAMPLE_BY_ID = {s["id"]: s for s in SAMPLES}
 
 # ---------------------------------------------------------------------------
+# SampleProcessingProtocol records (type-level recipes, not executions)
+# ---------------------------------------------------------------------------
+
+PROTOCOLS = [
+    {"id": "urn:amp2:protocol:media-prep-v1",
+     "name": "AMP2 media preparation SOP",
+     "description": "Standard operating procedure for AMP2 growth media preparation",
+     "protocol_url": "https://protocols.io/view/amp2-media-preparation-v1",
+     "protocol_version": "1.0"},
+    {"id": "urn:amp2:protocol:strain-purity-v1",
+     "name": "AMP2 strain purity check SOP",
+     "description": "Standard operating procedure for strain purity verification",
+     "protocol_url": "https://protocols.io/view/amp2-strain-purity-v1",
+     "protocol_version": "1.0"},
+    {"id": "urn:amp2:protocol:stock-culture-v1",
+     "name": "AMP2 stock culture preparation SOP",
+     "description": "Standard operating procedure for glycerol stock preparation",
+     "protocol_url": "https://protocols.io/view/amp2-stock-culture-v1",
+     "protocol_version": "1.0"},
+    {"id": "urn:amp2:protocol:preculture-v1",
+     "name": "AMP2 pre-culture growth SOP",
+     "description": "Standard operating procedure for pre-culture inoculation and growth",
+     "protocol_url": "https://protocols.io/view/amp2-preculture-v1",
+     "protocol_version": "1.0"},
+    {"id": "urn:amp2:protocol:experimental-culture-v1",
+     "name": "AMP2 experimental culture SOP",
+     "description": "Standard operating procedure for experimental culture growth",
+     "protocol_url": "https://protocols.io/view/amp2-experimental-culture-v1",
+     "protocol_version": "1.0"},
+    {"id": "urn:amp2:protocol:plate-setup-v1",
+     "name": "AMP2 96-well plate setup SOP",
+     "description": "Standard operating procedure for AMP2 96-well plate inoculation and setup",
+     "protocol_url": "https://protocols.io/view/amp2-plate-setup-v1",
+     "protocol_version": "1.0"},
+]
+
+PROTOCOL_FOR_ACTIVITY_TYPE = {
+    "MediaPreparation": "urn:amp2:protocol:media-prep-v1",
+    "StrainPurity": "urn:amp2:protocol:strain-purity-v1",
+    "StockCulturePreparation": "urn:amp2:protocol:stock-culture-v1",
+    "PreCultureGrowth": "urn:amp2:protocol:preculture-v1",
+    "ExperimentalCulture": "urn:amp2:protocol:experimental-culture-v1",
+    "AMP2PlateSetupActivity": "urn:amp2:protocol:plate-setup-v1",
+}
+
+# ---------------------------------------------------------------------------
 # Media preparations -> prepared_media ProcessedSamples
 # ---------------------------------------------------------------------------
 
@@ -604,6 +650,7 @@ for s in SAMPLES:
     culture_activities.append({
         "id": purity_id,
         "activity_type": "StrainPurity",
+        "in_protocol": PROTOCOL_FOR_ACTIVITY_TYPE["StrainPurity"],
         "name": "%s strain purity check" % sname,
         "description": ("First streak showed mixed colony morphology; sample "
                         "was re-streaked from the original vial and passed on "
@@ -617,7 +664,7 @@ for s in SAMPLES:
         "incubation_time_hours": 48.0 if fungal else 24.0,
         "temperature_celsius": temp,
         "agitation_speed_rpm": None,
-        "oxygen_relationship": "aerobic",
+        "oxygen_saturation_pct": 20.9,
         "container_type": "petri_dish",
         "inspection_method": "visual colony morphology + 16S colony PCR"
                              if not fungal else
@@ -639,6 +686,7 @@ for s in SAMPLES:
     culture_activities.append({
         "id": stock_id,
         "activity_type": "StockCulturePreparation",
+        "in_protocol": PROTOCOL_FOR_ACTIVITY_TYPE["StockCulturePreparation"],
         "name": "%s glycerol stock preparation" % sname,
         "description": "Overnight culture mixed 1:1 with cryostock medium and "
                        "banked at -80 C.",
@@ -648,7 +696,7 @@ for s in SAMPLES:
         "incubation_time_hours": 24.0 if fungal else 16.0,
         "temperature_celsius": temp,
         "agitation_speed_rpm": 200,
-        "oxygen_relationship": "aerobic",
+        "oxygen_saturation_pct": 20.9,
         "container_type": "culture_tube",
         "inspection_method": None,
         "target_strain": None,
@@ -677,6 +725,7 @@ for s in SAMPLES:
     culture_activities.append({
         "id": pre_id,
         "activity_type": "PreCultureGrowth",
+        "in_protocol": PROTOCOL_FOR_ACTIVITY_TYPE["PreCultureGrowth"],
         "name": "%s pre-culture" % sname,
         "description": "Stock scraped into pre-culture medium to establish "
                        "viable inoculum.",
@@ -686,7 +735,7 @@ for s in SAMPLES:
         "incubation_time_hours": 18.0 if fungal else 12.0,
         "temperature_celsius": temp,
         "agitation_speed_rpm": 200,
-        "oxygen_relationship": "aerobic",
+        "oxygen_saturation_pct": 20.9,
         "container_type": "baffled_flask",
         "inspection_method": None,
         "target_strain": None,
@@ -719,6 +768,7 @@ for s in SAMPLES:
     culture_activities.append({
         "id": exp_id,
         "activity_type": "ExperimentalCulture",
+        "in_protocol": PROTOCOL_FOR_ACTIVITY_TYPE["ExperimentalCulture"],
         "name": "%s experimental culture" % sname,
         "description": "Terminal culture step; back-diluted to OD600 0.05 and "
                        "grown to mid-exponential before plating.",
@@ -728,7 +778,7 @@ for s in SAMPLES:
         "incubation_time_hours": 6.0 if fungal else 4.0,
         "temperature_celsius": temp,
         "agitation_speed_rpm": 220,
-        "oxygen_relationship": "aerobic",
+        "oxygen_saturation_pct": 20.9,
         "container_type": "baffled_flask",
         "inspection_method": None,
         "target_strain": None,
@@ -849,10 +899,12 @@ PLATES.append({
     "operator": "urn:amp2:person:kapu336",
     "setup_instrument": "manual",
     "sealing_method": "BreathEasy_membrane",
+    "cycle_id": 1,
+    "in_protocol": PROTOCOL_FOR_ACTIVITY_TYPE["AMP2PlateSetupActivity"],
     "default_media": "LB",
     "temperature_celsius": 30.0,
     "agitation_speed_rpm": 180,
-    "oxygen_relationship": "aerobic",
+    "oxygen_saturation_pct": 20.9,
     "instrument": "urn:amp2:instrument:plate-reader-001",
     "reader_model": "BioTek Epoch2",
     "read_operator": "urn:amp2:person:elga519",
@@ -918,10 +970,12 @@ PLATES.append({
     "operator": "urn:amp2:person:navi204",
     "setup_instrument": "Hamilton_Microlab_STAR",
     "sealing_method": "BreathEasy_membrane",
+    "cycle_id": 1,
+    "in_protocol": PROTOCOL_FOR_ACTIVITY_TYPE["AMP2PlateSetupActivity"],
     "default_media": "LBVAN",
     "temperature_celsius": 30.0,
     "agitation_speed_rpm": 180,
-    "oxygen_relationship": "aerobic",
+    "oxygen_saturation_pct": 20.9,
     "instrument": "urn:amp2:instrument:plate-reader-001",
     "reader_model": "BioTek Epoch2",
     "read_operator": "urn:amp2:person:elga519",
@@ -995,10 +1049,12 @@ PLATES.append({
     "operator": "urn:amp2:person:navi204",
     "setup_instrument": "Hamilton_Microlab_STAR",
     "sealing_method": "optically_clear_adhesive_film",
+    "cycle_id": 1,
+    "in_protocol": PROTOCOL_FOR_ACTIVITY_TYPE["AMP2PlateSetupActivity"],
     "default_media": "LB",
     "temperature_celsius": 28.0,
     "agitation_speed_rpm": 150,
-    "oxygen_relationship": "aerobic",
+    "oxygen_saturation_pct": 20.9,
     "instrument": "urn:amp2:instrument:plate-reader-002",
     "reader_model": "Tecan Spark 10M",
     "read_operator": "urn:amp2:person:kapu336",
@@ -1348,8 +1404,8 @@ A("#     strain_identifier, genotype_segment_*, component_*, trait,")
 A("#     phenotype, trophic_level, pathogenicity, propagation.")
 A("#   * StrainPurity is a pass/fail QC gate and emits no processed sample,")
 A("#     per media_strain_culture_plate.yaml.")
-A("#   * oxygen_relationship is the canonical slot name (oxygen_status is an")
-A("#     alias).")
+A("#   * oxygen_saturation_pct replaces the former oxygen_relationship enum")
+A("#     with a float (percent O2 saturation).")
 A("#")
 A("# Deliberate data conditions (all schema-valid; none are schema violations)")
 A("#   * AMP2-0013 fails its first purity streak (contaminant_strains set),")
@@ -1450,6 +1506,20 @@ for s in SAMPLES:
         first = False
     A("")
 
+# --- sample processing protocols ------------------------------------------
+A("# ---------------------------------------------------------------------------")
+A("# sample_processing_protocols  (class: SampleProcessingProtocol)")
+A("#   Type-level recipe records. Activities reference these via in_protocol.")
+A("# ---------------------------------------------------------------------------")
+A("sample_processing_protocols:")
+for p in PROTOCOLS:
+    A("  - id: %s" % q(p["id"]))
+    A("    name: %s" % q(p["name"]))
+    A("    description: %s" % q(p["description"]))
+    A("    protocol_url: %s" % q(p["protocol_url"]))
+    A("    protocol_version: %s" % q(p["protocol_version"]))
+    A("")
+
 # --- media ----------------------------------------------------------------
 A("# ---------------------------------------------------------------------------")
 A("# media_preparations  (class: MediaPreparation, is_a SampleProcessing)")
@@ -1459,6 +1529,7 @@ A("# ---------------------------------------------------------------------------
 A("media_preparations:")
 for m in MEDIA:
     A("  - id: %s" % q(m["act_id"]))
+    A("    in_protocol: %s" % q(PROTOCOL_FOR_ACTIVITY_TYPE["MediaPreparation"]))
     A("    name: %s" % q(m["name"]))
     A("    media_type: %s" % q(m["media_type"]))
     A("    volume_ml: %s" % q(m["volume_ml"]))
@@ -1483,10 +1554,10 @@ A("#   Four per user sample. Inputs/outputs live in processing_sample_links.")
 A("#   StrainPurity is a QC gate and produces no processed sample.")
 A("# ---------------------------------------------------------------------------")
 A("culture_growth_activities:")
-CULT_FIELDS = ["id", "activity_type", "name", "description", "organism_ref",
+CULT_FIELDS = ["id", "activity_type", "in_protocol", "name", "description", "organism_ref",
                "media_ref", "growth_medium", "incubation_time_hours",
                "temperature_celsius", "agitation_speed_rpm",
-               "oxygen_relationship", "container_type", "processing_steps",
+               "oxygen_saturation_pct", "container_type", "processing_steps",
                "inspection_method", "target_strain", "contaminant_strains",
                "preparation_date", "treatment_type", "growth_time"]
 for a in culture_activities:
@@ -1527,6 +1598,7 @@ A("plate_setup_activities:")
 for plate in plate_setups:
     A("  - id: %s" % q(plate["activity_id"]))
     A("    activity_type: \"AMP2PlateSetupActivity\"")
+    A("    in_protocol: %s" % q(PROTOCOL_FOR_ACTIVITY_TYPE["AMP2PlateSetupActivity"]))
     A("    name: %s" % q("%s plate setup" % plate["barcode"]))
     A("    description: %s" % q(plate["description"]))
     A("    plate_type: %s" % q(plate["plate_type"]))
@@ -1537,9 +1609,10 @@ for plate in plate_setups:
     A("    setup_operator_id: %s" % q(plate["operator"]))
     A("    setup_instrument: %s" % q(plate["setup_instrument"]))
     A("    sealing_method: %s" % q(plate["sealing_method"]))
+    A("    cycle_id: %d" % plate["cycle_id"])
     A("    temperature_celsius: %s" % q(plate["temperature_celsius"]))
     A("    agitation_speed_rpm: %s" % q(plate["agitation_speed_rpm"]))
-    A("    oxygen_relationship: %s" % q(plate["oxygen_relationship"]))
+    A("    oxygen_saturation_pct: %s" % plate["oxygen_saturation_pct"])
     A("    processing_steps: %s"
       % q("dispense media; dispense inoculum; seal; load reader"))
     A("    media_ref: %s" % q(MEDIA_BY_KEY[plate["default_media"]]["ps_id"]))
@@ -1691,11 +1764,12 @@ write_csv("02_amp2_user_samples.csv", SAMPLE_FIELDS,
 
 # 03 media -----------------------------------------------------------------
 write_csv("03_media_preparations.csv", [
-    "id", "name", "media_type", "volume_ml", "media_recipe",
+    "id", "in_protocol", "name", "media_type", "volume_ml", "media_recipe",
     "media_formulation", "commercial_media_catalog", "sterilization_method",
     "ph_adjustment", "ph_target", "exposure_sensitivity", "media_additions",
     "storage_temperature", "creation_date", "output_processed_sample_id"],
-    [[m["act_id"], m["name"], m["media_type"], m["volume_ml"],
+    [[m["act_id"], PROTOCOL_FOR_ACTIVITY_TYPE["MediaPreparation"],
+      m["name"], m["media_type"], m["volume_ml"],
       m["media_recipe"], m["media_formulation"],
       m["commercial_media_catalog"], m["sterilization_method"],
       m["ph_adjustment"], m["ph_target"], joinlist(m["exposure_sensitivity"]),
@@ -1718,16 +1792,17 @@ write_csv("05_processed_samples.csv", [
 
 # 06 plate setup -----------------------------------------------------------
 write_csv("06_plate_setup_activities.csv", [
-    "id", "activity_type", "name", "plate_type", "plate_barcode",
+    "id", "activity_type", "in_protocol", "name", "plate_type", "plate_barcode",
     "plate_format", "well_count", "setup_date", "setup_operator_id",
-    "setup_instrument", "sealing_method", "temperature_celsius",
-    "agitation_speed_rpm", "oxygen_relationship", "media_ref",
+    "setup_instrument", "sealing_method", "cycle_id", "temperature_celsius",
+    "agitation_speed_rpm", "oxygen_saturation_pct", "media_ref",
     "output_plate_processed_sample_id", "description"],
-    [[p["activity_id"], "AMP2PlateSetupActivity",
+    [[p["activity_id"], "AMP2PlateSetupActivity", p["in_protocol"],
       "%s plate setup" % p["barcode"], p["plate_type"], p["barcode"],
       p["plate_format"], p["well_count"], p["setup_date"], p["operator"],
-      p["setup_instrument"], p["sealing_method"], p["temperature_celsius"],
-      p["agitation_speed_rpm"], p["oxygen_relationship"],
+      p["setup_instrument"], p["sealing_method"], p["cycle_id"],
+      p["temperature_celsius"],
+      p["agitation_speed_rpm"], p["oxygen_saturation_pct"],
       MEDIA_BY_KEY[p["default_media"]]["ps_id"], p["plate_ps_id"],
       p["description"]] for p in plate_setups])
 
@@ -1945,12 +2020,13 @@ Flag tallies across all {n_read} readings: {flagtally}.
   `phenotype`, `trophic_level`, `pathogenicity` and `propagation`. Values for
   the CRISPRi strains follow `CRISPRi_Pp_11strains.csv` from the AMP2 Data
   Model Campaign folder.
-* `oxygen_relationship` is the canonical slot name; `oxygen_status` is an alias.
+* `oxygen_saturation_pct` is a float (percent O2 saturation in the incubation
+  atmosphere, e.g. 20.9 for ambient air).
 * Enum-ranged fields use permissible values from `enums.yaml`
   (`StrainTypeEnum`, `ModificationMethodEnum`, `IntendedTraitEnum`,
   `TrophicLevelEnum`, `GenotypeSegmentEnum`, `ConstructComponentEnum`,
   `MediaTypeEnum`, `FormulationEnum`, `StorageConditionEnum`,
-  `GrowthFacilityEnum`, `OxygenStatusEnum`, `SampleRole`).
+  `GrowthFacilityEnum`, `SampleRole`).
 * Multivalued slots are pipe-delimited (`|`) in CSV and real YAML lists in the
   YAML document.
 """.format(

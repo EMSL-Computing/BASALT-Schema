@@ -147,6 +147,8 @@ enums:
         - RT
       retention_index:
         text: retention_index
+      refractive_index:
+        text: refractive_index
         aliases:
         - RI
 
@@ -164,6 +166,26 @@ enums:
       west:
       north_west:
         aliases: ["north west"]
+
+  ChemicalConversionCategoryEnum:
+    permissible_values:
+      addition:
+        text: addition
+      substitution:
+        text: substitution
+      acid_base:
+        text: acid_base
+      reduction_oxidation:
+        text: reduction_oxidation
+      combustion:
+        text: combustion
+      decomposition:
+        text: decomposition
+      protease_cleavage:
+        text: protease_cleavage
+        description: an enzymatic cleavage which relies on an enzyme with protease activity
+          to act on proteins and to produce polypeptides (protein fragments).
+        meaning: OBI:0600056
 
   ChemicalEntityEnum:
     description: Common names or identifiers for chemical entities.
@@ -186,6 +208,11 @@ enums:
       ammonium_bicarbonate:
         text: ammonium_bicarbonate
         meaning: CHEBI:184335
+      ammonium_sulfate:
+        text: ammonium_sulfate
+        meaning: CHEBI:62946
+        comments:
+        - (NH4)2SO4; common nitrogen source in microbial growth experiments.
       amitriptyline:
         text: amitriptyline
         meaning: CHEBI:2666
@@ -210,9 +237,21 @@ enums:
         comments:
         - A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan,
           leucine, tyrosine, and phenylalanine.
+      deionized_water:
+        text: deionized_water
+        meaning: CHEBI:15377
+        comments:
+        - Deionized water used as a volume normalizer or diluent.
+          Distinct from the general "water" entry to mark its specific role
+          in automated dispensing workflows.
       ethanol:
         text: ethanol
         meaning: CHEBI:16236
+      ferric_chloride:
+        text: ferric_chloride
+        meaning: CHEBI:30808
+        comments:
+        - FeCl3; iron source in microbial growth experiments.
       formic_acid:
         text: formic_acid
         meaning: CHEBI:30751
@@ -236,6 +275,12 @@ enums:
       isopropyl_alcohol:
         text: isopropyl_alcohol
         meaning: CHEBI:17824
+      iptg:
+        text: iptg
+        meaning: CHEBI:61448
+        comments:
+        - Isopropyl beta-D-1-thiogalactopyranoside; commonly used inducer of
+          lac operon expression in bacterial systems.
       Lys-C:
         text: Lys-C
         meaning: MS:1001309
@@ -296,6 +341,10 @@ enums:
         text: solid_phase_extraction
         aliases:
         - SPE
+      high_performance_liquid_chromatography:
+        text: high_performance_liquid_chromatography
+        aliases:
+        - HPLC
 
   ColorCodeEnum:
     permissible_values:
@@ -349,6 +398,22 @@ enums:
     permissible_values:
       orbital_shaker:
       thermomixer:
+
+  DigestionMethodEnum:
+    description: Named protein digestion methods used in sample preparation.
+    permissible_values:
+      urea:
+        text: urea
+        description: Urea-based in-solution digestion.
+      s_trap:
+        text: s_trap
+        description: S-Trap-based digestion.
+      fasp:
+        text: fasp
+        description: Filter-Aided Sample Preparation (FASP) digestion.
+      other:
+        text: other
+        description: Other digestion method not otherwise specified.
 
   DoiCategoryEnum:
     description: The authority, or organization, the DOI is associated with
@@ -460,6 +525,22 @@ enums:
       direct_infusion_autosampler:
         description: Direct infusion using an autosampler
 
+  EnrichmentTypeEnum:
+    description: Type of targeted peptide or protein enrichment performed.
+    permissible_values:
+      phosphopeptide:
+        text: phosphopeptide
+        description: Enrichment of phosphopeptides.
+      acetyl_peptide:
+        text: acetyl_peptide
+        description: Enrichment of acetylated peptides.
+      ubiquitin_peptide:
+        text: ubiquitin_peptide
+        description: Enrichment of ubiquitinated peptides or diGly-modified peptides.
+      other:
+        text: other
+        description: Other enrichment type not otherwise specified.
+
   ExecutionResourceEnum:
     description: The computing resource or facility where the processing was executed.
     permissible_values:
@@ -475,6 +556,25 @@ enums:
       emsl_tahoma:
         description: Environmental Molecular Sciences Laboratory Tahoma cluster
         aliases: [Tahoma]
+
+  ExtractionMethodEnum:
+    description: A short name for the extraction method applied to the sample.
+    permissible_values:
+      mplex:
+        text: mplex
+        description: MPLEx (Metabolite, Protein, and Lipid Extraction) protocol.
+      bead_beating:
+        text: bead_beating
+        description: Bead beating mechanical lysis and extraction.
+      tca_acetone_precipitation:
+        text: tca_acetone_precipitation
+        description: TCA/Acetone protein precipitation.
+      cell_lysis_s_trap:
+        text: cell_lysis_s_trap
+        description: Cell lysis and S-Trap extraction.
+      other:
+        text: other
+        description: Other extraction method not otherwise specified.
 
   FAOClassEnum:
     description: FAO soil classification system
@@ -549,6 +649,8 @@ enums:
       SMART_Annotation_GFF:
       Pfam_Annotation_GFF:
       Direct_Infusion_FT_ICR_MS_Raw_Data:
+      XAS_Raw_Sweep_File:
+      XAS_LCF_Output:
 
   FormulationEnum:
     description: |-
@@ -686,6 +788,22 @@ enums:
         text: electron_ionization
         aliases:
         - EI
+
+  LabelingMethodEnum:
+    description: The chemical labeling strategy applied to peptides or proteins.
+    permissible_values:
+      tmt:
+        text: tmt
+        description: Tandem Mass Tag (TMT) isobaric labeling.
+      itraq:
+        text: itraq
+        description: iTRAQ isobaric labeling.
+      label_free:
+        text: label_free
+        description: No chemical labeling (label-free quantification).
+      other:
+        text: other
+        description: Other labeling method not otherwise specified.
 
   LandUseEnum:
     description: Land use classifications
@@ -870,11 +988,16 @@ enums:
       in_silico_metagenome:
         description: A metaproteomics analysis matched to an in silico generated metagenome.
       WITHDRAWN:
-
-  MethodNameEnum:
+  
+  MetaproteomicsResultTypeEnum:
+    description: The type of metaproteomics results file.
     permissible_values:
-      MAOM:
-      WOEM:
+      peptide_level:
+        description: A tabular data file containing peptide-level results.
+      protein_level:
+        description: A tabular data file containing protein-level results.
+      aggregation:
+        description: A tabular data file containing aggregated results.
 
   ModelEnum:
     permissible_values:
@@ -1146,6 +1269,8 @@ enums:
       toc_lcsh:
       sr_1:
       xth320:
+      aps_20bm:
+      xmap12b:
 
   ModificationMethodEnum:
     description: |-
@@ -1261,6 +1386,22 @@ enums:
       Science POC:
     todos:
       - delete this or get a real list from NEXUS
+
+  NormalizationMethodEnum:
+    description: The strategy used to normalize sample amounts or intensities.
+    permissible_values:
+      equal_mass:
+        text: equal_mass
+        description: Normalization to an equal total protein mass per sample.
+      equal_volume:
+        text: equal_volume
+        description: Normalization by volume.
+      spike_in_standard:
+        text: spike_in_standard
+        description: Normalization using an internal spike-in standard.
+      other:
+        text: other
+        description: Other normalization approach not otherwise specified.
 
   NucleotideSequencingEnum:
     permissible_values:
@@ -1428,27 +1569,18 @@ enums:
       ACCEPTED:
       WITHDRAWN:
 
-  RouteMethodEnum:
+  ProteinAssayTypeEnum:
+    description: Type of protein quantification assay performed.
     permissible_values:
-      analysis_activity:
-      lcms_metabolomics_method:
-      fticr_acquisition_method:
-      gravimetric_water_content_method:
-      ph_method:
-      hydraulic_properties_method:
-      microbial_biomass_method:
-      xray_computed_tomography_method:
-      REGEN:
-      KUO:
-      respiration_method:
-      texture_method:
-      enzyme_activity_method:
-      elemental_analysis_method:
-      toc_tn_method:
-      bulk_density_method:
-      metagenomics_method:
-      xrf_analysis:
-      xrd_analysis:
+      coomassie:
+        text: coomassie
+        description: Coomassie (Bradford-like) protein assay.
+      bca:
+        text: bca
+        description: Bicinchoninic Acid (BCA) protein assay.
+      other:
+        text: other
+        description: Other protein assay not otherwise specified.
 
   SampleBaseType:
     description: Base types for sample entities
@@ -1494,9 +1626,18 @@ enums:
         title: Methanol layer
 
   SampleRole:
+    description: >-
+      The direction in which a Sample participates in a SampleProcessing activity.
+      Recorded on ProcessingSampleLink, which is the authoritative record of what
+      each processing step consumed and produced.
     permissible_values:
       input_sample:
+        text: input_sample
+        description: The sample was consumed by the processing activity.
       output_sample:
+        text: output_sample
+        description: >-
+          The sample (always a ProcessedSample) was produced by the processing activity.
 
   SampleStoreTempEnum:
     description: Sample storage temperature conditions
@@ -1774,6 +1915,53 @@ enums:
       other:
         description: Other organism type
 
+  SubstanceRoleEnum:
+    description: The role or function of the substance in the context of its use.
+    permissible_values:
+      buffer:
+        text: buffer
+        description: Maintains the pH of the solution within a specific range to stabilize
+          analytes or reactions.
+        meaning: CHEBI:35225
+      acid:
+        text: acid
+        description: Donates a proton or accepts an electron pair in a chemical reaction.
+        meaning: CHEBI:37527
+      base:
+        text: base
+        description: Accepts a proton or donates an electron pair in a chemical reaction.
+        meaning: CHEBI:22695
+      ms_proteolytic_enzyme:
+        text: ms_proteolytic_enzyme
+        description: Enzyme that catalyzes the hydrolysis of proteins and is used in mass
+          spectrometry based proteomics
+        meaning: MS:1002986
+      solvent:
+        text: solvent
+        description: Dissolves the sample or reagents to facilitate reactions or extraction.
+        meaning: CHEBI:46787
+      surfactant:
+        text: surfactant
+        description: Reduces surface tension and aids in the solubilization of substances.
+        meaning: CHEBI:35195
+      derivatizing_agent:
+        text: derivatizing_agent
+        description: Chemically modifies analytes to improve detection or separation.
+      solubilizing_agent:
+        text: solubilizing_agent
+      nutrient:
+        text: nutrient
+        description: A compound added as an experimental nutrient variable (e.g. nitrogen
+          or iron source at a controlled concentration).
+      normalizer:
+        text: normalizer
+        description: An inert diluent (e.g. DI water) added to bring the well to a
+          target total volume without changing the experimental chemistry.
+      inducer:
+        text: inducer
+        description: A compound added mid-experiment to trigger gene expression or a
+          biological response (e.g. IPTG, arabinose).
+
   SyntheticEnvironmentEnum:
     permissible_values:
       pore_scale_micromodels:
@@ -1892,6 +2080,19 @@ enums:
       phototroph:
         description: Organism using light as energy source
 
+  UVDetectorEnum:
+    description: UV detector types used in chromatography.
+    permissible_values:
+      photodiode_array:
+        text: photodiode_array
+        description: Diode Array Detector (DAD)
+      variable_wavelength:
+        text: variable_wavelength
+        description: Variable Wavelength Detector
+      fixed_wavelength:
+        text: fixed_wavelength
+        description: Fixed Wavelength Detector
+
   VendorEnum:
     permissible_values:
       waters:
@@ -1908,6 +2109,25 @@ enums:
       kuo:
       rigaku:
       panalytical:
+      aps_anl:
+
+  XASLCFType:
+    description: LCF analysis subtype
+    permissible_values:
+      XANES:
+        description: Normalised mu(E) vs energy fit
+      EXAFS:
+        description: chi(k) vs k fit
+
+  XASScanSubtype:
+    description: XAS scan subtype detected from primary positioner column
+    permissible_values:
+      energy:
+        description: Energy scan; primary positioner is mono energy
+      motor:
+        description: Motor scan; primary positioner is a physical motor
+      unknown:
+        description: Scan subtype could not be determined from file header
 
   YesNoEnum:
     permissible_values:

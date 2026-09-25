@@ -98,20 +98,20 @@ be specified on workflow subclasses.
     sequence_order = Column(Integer())
     name = Column(Text(), nullable=False )
     description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     protocol_url = Column(Text())
     protocol_version = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
-    acquisition_start_time = Column(DateTime(), nullable=False )
-    acquisition_end_time = Column(DateTime(), nullable=False )
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
     instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
-    instrument_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"DataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},)"
+        return f"DataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -200,8 +200,8 @@ otherwise, it is a generic standin for an instrument model.
 
     id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
-    vendor = Column(Enum('waters', 'agilent', 'bruker', 'thermo_fisher', 'perkin_elmer', 'scientific_industries', 'illumina', 'nikon', 'fia_lab', 'shimadzu', 'regen_ag_lab', 'kuo', 'rigaku', 'panalytical', name='VendorEnum'))
-    model = Column(Enum('exploris_21T', 'exploris_240', 'exploris_480', 'ltq_orbitrap_velos', 'orbitrap_fusion_lumos', 'orbitrap_eclipse_tribid', 'orbitrap_q_exactive', 'orbitrap_iqx_tribrid', 'orbitrap_exploris_120', 'solarix_7T', 'solarix_12T', 'solarix_15T', 'agilent_8890A', 'agilent_7980A', 'vortex_genie_2', 'novaseq', 'novaseq_6000', 'novaseq_x', 'hiseq', 'hiseq_1000', 'hiseq_1500', 'hiseq_2000', 'hiseq_2500', 'hiseq_3000', 'hiseq_4000', 'hiseq_x_ten', 'miniseq', 'miseq', 'nextseq_1000', 'nextseq', 'nextseq_500', 'nextseq_550', 'gridion', 'minion', 'promethion', 'rs_II', 'sequel', 'sequel_II', 'revio', 'scimax', 'ed_400_with_rs_422', 'mettler_toledo_30029066', 'mettler_toledo_30266628', 'ums_hyprop2_020210', 'fialyzer_1000', 'fialyzer_1001', 'fialyzer_1002', 'orbitrap_q_exactive_plus', 'toc_5000A', 'toc_lcsh', 'sr_1', 'xth320', name='ModelEnum'))
+    vendor = Column(Enum('waters', 'agilent', 'bruker', 'thermo_fisher', 'perkin_elmer', 'scientific_industries', 'illumina', 'nikon', 'fia_lab', 'shimadzu', 'regen_ag_lab', 'kuo', 'rigaku', 'panalytical', 'aps_anl', name='VendorEnum'))
+    model = Column(Enum('exploris_21T', 'exploris_240', 'exploris_480', 'ltq_orbitrap_velos', 'orbitrap_fusion_lumos', 'orbitrap_eclipse_tribid', 'orbitrap_q_exactive', 'orbitrap_iqx_tribrid', 'orbitrap_exploris_120', 'solarix_7T', 'solarix_12T', 'solarix_15T', 'agilent_8890A', 'agilent_7980A', 'vortex_genie_2', 'novaseq', 'novaseq_6000', 'novaseq_x', 'hiseq', 'hiseq_1000', 'hiseq_1500', 'hiseq_2000', 'hiseq_2500', 'hiseq_3000', 'hiseq_4000', 'hiseq_x_ten', 'miniseq', 'miseq', 'nextseq_1000', 'nextseq', 'nextseq_500', 'nextseq_550', 'gridion', 'minion', 'promethion', 'rs_II', 'sequel', 'sequel_II', 'revio', 'scimax', 'ed_400_with_rs_422', 'mettler_toledo_30029066', 'mettler_toledo_30266628', 'ums_hyprop2_020210', 'fialyzer_1000', 'fialyzer_1001', 'fialyzer_1002', 'orbitrap_q_exactive_plus', 'toc_5000A', 'toc_lcsh', 'sr_1', 'xth320', 'aps_20bm', 'xmap12b', name='ModelEnum'))
     serial_number = Column(Text())
     lims_resource_id = Column(Integer())
     location = Column(Text())
@@ -370,24 +370,30 @@ class LabDevice(Base):
 
 class SampleProcessing(Base):
     """
-    Abstract base for any sample processing activity (physical to physical). Input data should 
-be specified on workflow subclasses.
+    Abstract base for any sample processing activity (physical to physical): one
+laboratory step that consumes one or more Samples and produces one or more
+ProcessedSamples. Concrete protocol-specific subclasses use is_a: SampleProcessing.
+
+This class deliberately carries NO pointers to the samples it consumed or
+produced. Those edges live exclusively in ProcessingSampleLink, which records
+direction via its role slot. See that class for the rationale.
+
+Protocol identity (URL, version) is likewise NOT stored here. A step points at
+a SampleProcessingProtocol record via in_protocol, which is the single home for
+protocol_url and protocol_version.
     """
     __tablename__ = 'SampleProcessing'
 
-    protocol_url = Column(Text())
-    protocol_version = Column(Text())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    analysis_type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='RouteMethodEnum'))
-    method_name = Column(Enum('MAOM', 'WOEM', name='MethodNameEnum'))
-    processing_steps = Column(Text(), nullable=False )
-    uses_sample = Column(UUID(), ForeignKey('Sample.id'))
     
 
     
 
     def __repr__(self):
-        return f"SampleProcessing(protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"SampleProcessing(name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -396,28 +402,47 @@ be specified on workflow subclasses.
 
 class ProcessingSampleLink(Base):
     """
-    A link between a processed sample and the sample processing activity that produced it.
-This class captures the relationship between a processed sample and the sample processing
-activity that generated it, including the step number and role of the sample in the process.
+    The authoritative record of what a SampleProcessing step consumed and produced.
+One row is one directed edge between a Sample and a processing activity.
+
+This class is the ONLY place sample-to-processing edges are stored. No sample
+or activity class carries a scalar pointer to its counterpart, so there is
+exactly one representation of the lineage graph and no way for two encodings
+to disagree.
+
+Direction is carried by role:
+  role = input_sample   ->  sample_id was consumed by processing_id
+  role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
+
+A minimal step is therefore two rows: one input edge and one output edge.
+Because role is per-row rather than per-activity, fan-in and fan-out are
+expressed natively -- a PoolingProcess is N input rows to 1 output row, and a
+FractionationProcess is 1 input row to N output rows. Lineage is a DAG, not a
+chain, and this table is what makes that representable.
+
+step_number is the position of the step within its chain. It is only meaningful
+relative to in_run, which names the chain the edge belongs to; see
+SampleProcessingRun.
     """
     __tablename__ = 'ProcessingSampleLink'
 
+    in_run = Column(UUID(), ForeignKey('SampleProcessingRun.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    sample_base_id = Column(UUID(), ForeignKey('Sample.id'), nullable=False )
     processing_id = Column(UUID(), ForeignKey('SampleProcessing.id'), nullable=False )
     step_number = Column(Integer(), nullable=False )
+    sample_id = Column(UUID(), ForeignKey('Sample.id'), nullable=False )
     role = Column(Enum('input_sample', 'output_sample', name='SampleRole'), nullable=False )
     
 
     
     # Unique constraints
     __table_args__ = (
-        UniqueConstraint('sample_base_id', 'processing_id', 'step_number', 'role'),
+        UniqueConstraint('sample_id', 'processing_id', 'step_number', 'role'),
     )
     
 
     def __repr__(self):
-        return f"ProcessingSampleLink(id={self.id},sample_base_id={self.sample_base_id},processing_id={self.processing_id},step_number={self.step_number},role={self.role},)"
+        return f"ProcessingSampleLink(in_run={self.in_run},id={self.id},processing_id={self.processing_id},step_number={self.step_number},sample_id={self.sample_id},role={self.role},)"
 
 
 
@@ -515,46 +540,91 @@ class Configuration(Base):
 
 class MobilePhaseSegment(Base):
     """
-    A segment of the mobile phase used in chromatography during mass spectrometry.
+    A segment of the mobile phase sequence used in a chromatographic separation.
     """
     __tablename__ = 'MobilePhaseSegment'
 
-    name = Column(Text(), nullable=False )
     duration_min = Column(Float())
+    mobile_phase = Column(UUID(), ForeignKey('MobilePhase.id'))
+    flow_rate_ul_min = Column(Float())
+    step_number = Column(Integer())
     id = Column(UUID(), primary_key=True, nullable=False )
-    segment_order = Column(Integer())
-    substance = Column(Text())
+    mobile_phase_percentage = Column(Float())
+    used_in_chromatography_config_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'))
+    used_in_chromatography_config = relationship("ChromatographyConfiguration", uselist=False, foreign_keys=[used_in_chromatography_config_uid])
     
 
     
 
     def __repr__(self):
-        return f"MobilePhaseSegment(name={self.name},duration_min={self.duration_min},id={self.id},segment_order={self.segment_order},substance={self.substance},)"
+        return f"MobilePhaseSegment(duration_min={self.duration_min},mobile_phase={self.mobile_phase},flow_rate_ul_min={self.flow_rate_ul_min},step_number={self.step_number},id={self.id},mobile_phase_percentage={self.mobile_phase_percentage},used_in_chromatography_config_uid={self.used_in_chromatography_config_uid},)"
 
 
 
     
 
 
-class MassSpectrometryStandardRun(Base):
+class MobilePhase(Base):
     """
-    A record of a mass spectrometry standard run with a batch of samples, which is used for calibration and quality control.
+    Link between a set of substances used in a mobile phase, and the use of that mobile phase in a sequence of flow segments.
     """
-    __tablename__ = 'MassSpectrometryStandardRun'
+    __tablename__ = 'MobilePhase'
+
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"MobilePhase(id={self.id},)"
+
+
+
+    
+
+
+class MobilePhaseSubstance(Base):
+    """
+    A representation of a single chemical and its concentration used in a mobile phase in a chromatography protocol.
+    """
+    __tablename__ = 'MobilePhaseSubstance'
+
+    volume_ul = Column(Float())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    in_mobile_phase = Column(UUID(), ForeignKey('MobilePhase.id'))
+    substance = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    concentration = Column(Text())
+    
+
+    
+
+    def __repr__(self):
+        return f"MobilePhaseSubstance(volume_ul={self.volume_ul},id={self.id},in_mobile_phase={self.in_mobile_phase},substance={self.substance},concentration={self.concentration},)"
+
+
+
+    
+
+
+class CalibrationStandardRun(Base):
+    """
+    A record of a standard run with a batch of samples, which is used for calibration and quality control.
+    """
+    __tablename__ = 'CalibrationStandardRun'
 
     name = Column(Text(), nullable=False )
     description = Column(Text())
     internal_calibration = Column(Boolean())
-    calibration_target = Column(Enum('mass_charge_ratio', 'retention_time', 'retention_index', name='CalibrationTargetEnum'))
+    calibration_target = Column(Enum('mass_charge_ratio', 'retention_time', 'retention_index', 'refractive_index', name='CalibrationTargetEnum'))
     calibration_standard = Column(UUID(), ForeignKey('PurchasedMaterial.id'))
-    calibration_data = Column(UUID(), ForeignKey('MassSpectrometryInstrumentData.id'))
+    calibration_data = Column(UUID(), ForeignKey('InstrumentData.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"MassSpectrometryStandardRun(name={self.name},description={self.description},internal_calibration={self.internal_calibration},calibration_target={self.calibration_target},calibration_standard={self.calibration_standard},calibration_data={self.calibration_data},id={self.id},)"
+        return f"CalibrationStandardRun(name={self.name},description={self.description},internal_calibration={self.internal_calibration},calibration_target={self.calibration_target},calibration_standard={self.calibration_standard},calibration_data={self.calibration_data},id={self.id},)"
 
 
 
@@ -573,13 +643,13 @@ of the sampleProcessing is_a tree.
     id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
+    oxygen_saturation_pct = Column(Float())
     
 
     
 
     def __repr__(self):
-        return f"HasIncubationConditions(id={self.id},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},)"
+        return f"HasIncubationConditions(id={self.id},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},)"
 
 
 
@@ -604,36 +674,6 @@ Activities reference Strain via the strain_ref FK slot.
 
     def __repr__(self):
         return f"PurchasedMaterial(purchased_material_type={self.purchased_material_type},name={self.name},description={self.description},id={self.id},)"
-
-
-
-    
-
-
-class LabProcessingActivity(Base):
-    """
-    [NEW ABSTRACT CLASS] Higher-level abstract base for any activity that
-transforms or creates physical lab materials.
-
-sampleProcessing inherits from this via is_a.  This class provides the
-common identity layer, allowing future extensions (e.g. non-sample
-consuming activities) without forcing them into the sampleProcessing branch.
-
-NOTE: In the live schema, sampleProcessing should gain
-  is_a: labProcessingActivity
-and its existing id attribute can be retained or removed (inherited).
-    """
-    __tablename__ = 'LabProcessingActivity'
-
-    id = Column(UUID(), primary_key=True, nullable=False )
-    name = Column(Text())
-    description = Column(Text())
-    
-
-    
-
-    def __repr__(self):
-        return f"LabProcessingActivity(id={self.id},name={self.name},description={self.description},)"
 
 
 
@@ -701,6 +741,45 @@ Subclasses add type-specific fields.
     
 
 
+class WellReagentAddition(Base):
+    """
+    One reagent addition to one well. Captures the compound identity, its role
+in the experiment, dispensed volume, and both the requested and achieved
+concentrations. NOT a standalone database table; embedded structured entries
+under AMP2WellMetadata.reagent_additions.
+
+For reagents dispensed at plate setup time, addition_time is null.
+For mid-experiment perturbations (e.g. inducer added at hour 23 of a 24h
+time-series), addition_time records when the addition occurred.
+
+Borrows compound and substance_role from SampleProcessingSubstance /
+PortionOfSubstance; adds requested-vs-actual concentration split and
+addition_time for the inducer scenario.
+    """
+    __tablename__ = 'WellReagentAddition'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    compound = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'), nullable=False )
+    substance_role = Column(Enum('buffer', 'acid', 'base', 'ms_proteolytic_enzyme', 'solvent', 'surfactant', 'derivatizing_agent', 'solubilizing_agent', 'nutrient', 'normalizer', 'inducer', name='SubstanceRoleEnum'), nullable=False )
+    volume_ul = Column(Float(), nullable=False )
+    stock_concentration = Column(Float())
+    requested_concentration = Column(Float())
+    actual_concentration = Column(Float())
+    concentration_unit = Column(Text())
+    addition_time = Column(Text())
+    AMP2WellMetadata_id = Column(Integer(), ForeignKey('AMP2WellMetadata.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"WellReagentAddition(id={self.id},compound={self.compound},substance_role={self.substance_role},volume_ul={self.volume_ul},stock_concentration={self.stock_concentration},requested_concentration={self.requested_concentration},actual_concentration={self.actual_concentration},concentration_unit={self.concentration_unit},addition_time={self.addition_time},AMP2WellMetadata_id={self.AMP2WellMetadata_id},)"
+
+
+
+    
+
+
 class WellReading(Base):
     """
     Per-well measurement data. NOT a standalone database table; embedded structured entries under
@@ -727,20 +806,273 @@ PlateProduct.well_readings.
     
 
 
-class Method(Base):
+class MAOMProduct(Base):
     """
-    
+    Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
+Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
     """
-    __tablename__ = 'Method'
+    __tablename__ = 'MAOMProduct'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    analytic = Column(Text(), nullable=False )
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    replicate = Column(Integer())
+    id = Column(UUID(), ForeignKey('ProcessedData.id'), primary_key=True, nullable=False )
+    total_organic_carbon_id = Column(UUID(), ForeignKey('QuantityValue.id'))
+    total_organic_carbon_avg = Column(Float())
+    total_nitrogen_id = Column(UUID(), ForeignKey('QuantityValue.id'))
+    total_nitrogen_avg = Column(Float())
+    flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_toc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_tn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     
 
     
 
     def __repr__(self):
-        return f"Method(id={self.id},analytic={self.analytic},)"
+        return f"MAOMProduct(measure_type={self.measure_type},replicate={self.replicate},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
+
+
+
+    
+
+
+class WEOMProduct(Base):
+    """
+    Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
+Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
+    __tablename__ = 'WEOMProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    replicate = Column(Integer())
+    id = Column(UUID(), ForeignKey('ProcessedData.id'), primary_key=True, nullable=False )
+    total_organic_carbon_id = Column(UUID(), ForeignKey('QuantityValue.id'))
+    total_organic_carbon_avg = Column(Float())
+    total_nitrogen_id = Column(UUID(), ForeignKey('QuantityValue.id'))
+    total_nitrogen_avg = Column(Float())
+    flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_toc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_tn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    
+
+    
+
+    def __repr__(self):
+        return f"WEOMProduct(measure_type={self.measure_type},replicate={self.replicate},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
+
+
+
+    
+
+
+class XASAmplifier(Base):
+    """
+    Amplifier sensitivity entry for one signal channel in an XAS sweep.
+Corresponds to one row in LAM_XAS_AMPS (Amplifier_Gain_N / Analog_In_Offset_N).
+    """
+    __tablename__ = 'XASAmplifier'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    amp_index = Column(Integer(), nullable=False )
+    signal_name = Column(Text())
+    gain = Column(Float())
+    gain_unit = Column(Text())
+    voltage_start = Column(Float())
+    voltage_end = Column(Float())
+    XASInstrumentData_id = Column(UUID(), ForeignKey('XASInstrumentData.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASAmplifier(id={self.id},amp_index={self.amp_index},signal_name={self.signal_name},gain={self.gain},gain_unit={self.gain_unit},voltage_start={self.voltage_start},voltage_end={self.voltage_end},XASInstrumentData_id={self.XASInstrumentData_id},)"
+
+
+
+    
+
+
+class XASMotorPosition(Base):
+    """
+    Motor position recorded at the start of an XAS sweep.
+Corresponds to one row in LAM_XAS_MOTS (Motor_N_Pos header fields).
+    """
+    __tablename__ = 'XASMotorPosition'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    motor_index = Column(Integer(), nullable=False )
+    motor_name = Column(Text())
+    pv = Column(Text())
+    position = Column(Float())
+    XASInstrumentData_id = Column(UUID(), ForeignKey('XASInstrumentData.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASMotorPosition(id={self.id},motor_index={self.motor_index},motor_name={self.motor_name},pv={self.pv},position={self.position},XASInstrumentData_id={self.XASInstrumentData_id},)"
+
+
+
+    
+
+
+class XASSignalColumn(Base):
+    """
+    Detector signal name / EPICS PV pair for one data column in an XAS sweep.
+Corresponds to one row in LAM_XAS_COLS (Analog_In_Signal_Type_N).
+    """
+    __tablename__ = 'XASSignalColumn'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    col_index = Column(Integer(), nullable=False )
+    col_name = Column(Text())
+    pv = Column(Text())
+    XASInstrumentData_id = Column(UUID(), ForeignKey('XASInstrumentData.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASSignalColumn(id={self.id},col_index={self.col_index},col_name={self.col_name},pv={self.pv},XASInstrumentData_id={self.XASInstrumentData_id},)"
+
+
+
+    
+
+
+class XASDataRow(Base):
+    """
+    One data point from an XAS sweep scan.
+row_val holds the representative fluorescence or transmission value at
+each energy step (e.g. FeKa_Sum count, or I0 if FY detector absent).
+Corresponds to one row in LAM_XAS_DROWS.
+    """
+    __tablename__ = 'XASDataRow'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    row_num = Column(Integer(), nullable=False )
+    row_val = Column(Float())
+    XASInstrumentData_id = Column(UUID(), ForeignKey('XASInstrumentData.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASDataRow(id={self.id},row_num={self.row_num},row_val={self.row_val},XASInstrumentData_id={self.XASInstrumentData_id},)"
+
+
+
+    
+
+
+class XASIonChamber(Base):
+    """
+    Ion chamber gas mixture component for one chamber in an XAS sweep.
+Parsed from the user comment (e.g. 'i0 = 30%N2, 70%He. It and Iref = N2').
+Corresponds to one row in LAM_XAS_ICS.
+    """
+    __tablename__ = 'XASIonChamber'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    chamber_index = Column(Integer(), nullable=False )
+    gas_index = Column(Integer(), nullable=False )
+    gas_name = Column(Text())
+    chamber_length_mm = Column(Float())
+    pressure_bar = Column(Float())
+    XASInstrumentData_id = Column(UUID(), ForeignKey('XASInstrumentData.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASIonChamber(id={self.id},chamber_index={self.chamber_index},gas_index={self.gas_index},gas_name={self.gas_name},chamber_length_mm={self.chamber_length_mm},pressure_bar={self.pressure_bar},XASInstrumentData_id={self.XASInstrumentData_id},)"
+
+
+
+    
+
+
+class XASLCFStandard(Base):
+    """
+    One reference standard (spectral component) used in an LCF fit.
+The fitted weight represents this standard's fractional contribution
+to the measured sample spectrum.
+Corresponds to one row in LAM_XAS_LCF_STDS.
+    """
+    __tablename__ = 'XASLCFStandard'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    std_index = Column(Integer(), nullable=False )
+    std_name = Column(Text(), nullable=False )
+    weight = Column(Float())
+    XASLCFProduct_id = Column(UUID(), ForeignKey('XASLCFProduct.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASLCFStandard(id={self.id},std_index={self.std_index},std_name={self.std_name},weight={self.weight},XASLCFProduct_id={self.XASLCFProduct_id},)"
+
+
+
+    
+
+
+class XASLCFSpeciesProportion(Base):
+    """
+    Derived species proportion reported in the LC XANES analysis section.
+For Fe XAS these are typically Fe(II) and Fe(III) proportions; the
+generalised design supports any element or oxidation state.
+
+Proportions are derived by summing weights of standards associated with
+each oxidation state, as reported by Athena or Larch:
+  'Fe(III) proportion in sample: 0.44 (+/-0.05)'
+
+Corresponds to one row in LAM_XAS_LCF_PROPS.
+    """
+    __tablename__ = 'XASLCFSpeciesProportion'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    species_name = Column(Text(), nullable=False )
+    proportion = Column(Float(), nullable=False )
+    uncertainty = Column(Float())
+    XASLCFProduct_id = Column(UUID(), ForeignKey('XASLCFProduct.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASLCFSpeciesProportion(id={self.id},species_name={self.species_name},proportion={self.proportion},uncertainty={self.uncertainty},XASLCFProduct_id={self.XASLCFProduct_id},)"
+
+
+
+    
+
+
+class XASLCFDataRow(Base):
+    """
+    One point from the LCF fit output, enabling reconstruction and plotting
+of the measured spectrum, fitted curve, and residual without accessing
+the raw .lcf file.
+Corresponds to one row in LAM_XAS_LCF_DROWS.
+    """
+    __tablename__ = 'XASLCFDataRow'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    row_num = Column(Integer(), nullable=False )
+    x_val = Column(Float(), nullable=False )
+    data_val = Column(Float())
+    fit_val = Column(Float())
+    residual = Column(Float())
+    XASLCFProduct_id = Column(UUID(), ForeignKey('XASLCFProduct.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASLCFDataRow(id={self.id},row_num={self.row_num},x_val={self.x_val},data_val={self.data_val},fit_val={self.fit_val},residual={self.residual},XASLCFProduct_id={self.XASLCFProduct_id},)"
 
 
 
@@ -799,68 +1131,6 @@ Relationship to samples:
 
     def __repr__(self):
         return f"organism(name={self.name},description={self.description},strain_identifier={self.strain_identifier},organism_name={self.organism_name},taxonomy_id={self.taxonomy_id},host_common_name={self.host_common_name},host_taxid={self.host_taxid},strain_source={self.strain_source},strain_type={self.strain_type},modification_method={self.modification_method},strain_description={self.strain_description},strain_mutation={self.strain_mutation},phenotype={self.phenotype},trait={self.trait},encoded_traits={self.encoded_traits},genotype_segment_category={self.genotype_segment_category},genotype_segment_name={self.genotype_segment_name},component_name={self.component_name},construct_component={self.construct_component},donor_organism={self.donor_organism},component_description={self.component_description},trophic_level={self.trophic_level},pathogenicity={self.pathogenicity},host_spec_range={self.host_spec_range},propagation={self.propagation},id={self.id},)"
-
-
-
-    
-
-
-class MAOMProduct(Base):
-    """
-    Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
-One row per sample with columns for total organic carbon and total nitrogen.
-Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
-    """
-    __tablename__ = 'MAOMProduct'
-
-    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    replicate = Column(Integer())
-    id = Column(UUID(), ForeignKey('ProcessedData.id'), primary_key=True, nullable=False )
-    total_organic_carbon_id = Column(UUID(), ForeignKey('QuantityValue.id'))
-    total_organic_carbon_avg = Column(Float())
-    total_nitrogen_id = Column(UUID(), ForeignKey('QuantityValue.id'))
-    total_nitrogen_avg = Column(Float())
-    flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_toc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    
-
-    
-
-    def __repr__(self):
-        return f"MAOMProduct(measure_type={self.measure_type},replicate={self.replicate},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
-
-
-
-    
-
-
-class WEOMProduct(Base):
-    """
-    Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
-One row per sample with columns for total organic carbon and total nitrogen.
-Individual QC flags for each measurement using ProcessedDataFlag enum.
-    """
-    __tablename__ = 'WEOMProduct'
-
-    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    replicate = Column(Integer())
-    id = Column(UUID(), ForeignKey('ProcessedData.id'), primary_key=True, nullable=False )
-    total_organic_carbon_id = Column(UUID(), ForeignKey('QuantityValue.id'))
-    total_organic_carbon_avg = Column(Float())
-    total_nitrogen_id = Column(UUID(), ForeignKey('QuantityValue.id'))
-    total_nitrogen_avg = Column(Float())
-    flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_toc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    
-
-    
-
-    def __repr__(self):
-        return f"WEOMProduct(measure_type={self.measure_type},replicate={self.replicate},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
 
 
 
@@ -964,6 +1234,96 @@ class SamplingActivity(Base):
 
     def __repr__(self):
         return f"SamplingActivity(name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
+
+
+
+    
+
+
+class SampleProcessingProtocol(Base):
+    """
+    A sample processing protocol: the recipe, not an execution of it. This is the single home for protocol_url and protocol_version anywhere in sample processing; no SampleProcessing subclass stores them directly. Type-level, so many runs and many samples reference the same record. For "which steps actually ran together", see SampleProcessingRun.
+    """
+    __tablename__ = 'SampleProcessingProtocol'
+
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"SampleProcessingProtocol(name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},)"
+
+
+
+    
+
+
+class SampleProcessingRun(Base):
+    """
+    One concrete execution of a sample processing chain: the instance-level counterpart to SampleProcessingProtocol. It is a pure grouping token, deliberately holding no protocol or sample data of its own, so there is nothing here that can contradict the steps or the edges.
+Every ProcessingSampleLink in one chain carries the same in_run. This is what makes "all steps in this chain" a single indexed query on one concrete table, and it is what gives step_number something to be a position within.
+A run may cover several starting samples (a PoolingProcess run) or produce several final analytes (a FractionationProcess run), which is why the run rather than a single "starting sample" pointer is the grouping key -- an ancestor column would be ambiguous the moment anything is pooled.
+    """
+    __tablename__ = 'SampleProcessingRun'
+
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"SampleProcessingRun(name={self.name},description={self.description},id={self.id},)"
+
+
+
+    
+
+
+class SubstancesUsedLink(Base):
+    """
+    A link between a SampleProcessing activity and a PortionOfSubstance that was used in it.
+    """
+    __tablename__ = 'SubstancesUsedLink'
+
+    id = Column(UUID(), primary_key=True, nullable=False )
+    sample_processing_substance = Column(UUID(), ForeignKey('SampleProcessingSubstance.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"SubstancesUsedLink(id={self.id},sample_processing_substance={self.sample_processing_substance},)"
+
+
+
+    
+
+
+class SampleProcessingSubstance(Base):
+    """
+    A portion of a substance with specific characteristics, as used in a  SampleProcessing activity. Multiple substances may be used in a single  SampleProcessing activity, and the same substance may be used in multiple  SampleProcessing activities.
+    """
+    __tablename__ = 'SampleProcessingSubstance'
+
+    volume_ml = Column(Float())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    known_as = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    substance_role = Column(Enum('buffer', 'acid', 'base', 'ms_proteolytic_enzyme', 'solvent', 'surfactant', 'derivatizing_agent', 'solubilizing_agent', 'nutrient', 'normalizer', 'inducer', name='SubstanceRoleEnum'))
+    source_concentration_mg_per_ml = Column(Float())
+    final_concentration_mg_per_ml = Column(Float())
+    
+
+    
+
+    def __repr__(self):
+        return f"SampleProcessingSubstance(volume_ml={self.volume_ml},id={self.id},known_as={self.known_as},substance_role={self.substance_role},source_concentration_mg_per_ml={self.source_concentration_mg_per_ml},final_concentration_mg_per_ml={self.final_concentration_mg_per_ml},)"
 
 
 
@@ -1255,6 +1615,64 @@ class ZipDownload(Base):
     
 
 
+class LinkageCache(Base):
+    """
+    Pre-computed provenance closure table.
+Stores every (ancestor, descendant) pair across all chain types with hop_depth.
+Refreshed on a schedule; not real-time (acceptable for daily batch cadence).
+
+DDL:
+  CREATE TABLE linkage_cache (
+    ancestor_id      UUID NOT NULL,
+    descendant_id    UUID NOT NULL,
+    ancestor_type    VARCHAR(64),    -- 'sample' | 'processedSample' |
+                                    --  'DataProcessingActivity' | 'processedData'
+    descendant_type  VARCHAR(64),
+    hop_depth        INTEGER NOT NULL,  -- 1 = direct parent
+    path             TEXT,
+    computed_at      TIMESTAMP DEFAULT now(),
+    PRIMARY KEY (ancestor_id, descendant_id)
+  );
+  CREATE INDEX ON linkage_cache (descendant_id);  -- reverse lookup
+
+Example — all products from sample S1:
+  SELECT pd.*
+  FROM linkage_cache lc
+  JOIN "processedData" pd ON pd.id = lc.descendant_id
+  WHERE lc.ancestor_id = 'S1-uuid'
+    AND lc.descendant_type = 'processedData';
+
+NOTE: ancestor_id + descendant_id form a composite PK in the DDL.
+LinkML does not natively express composite PKs; a unique_key is defined
+below as the closest equivalent.
+    """
+    __tablename__ = 'LinkageCache'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    ancestor_type = Column(Text())
+    descendant_type = Column(Text())
+    hop_depth = Column(Integer(), nullable=False )
+    path = Column(Text())
+    computed_at = Column(DateTime())
+    ancestor_id = Column(UUID(), nullable=False )
+    descendant_id = Column(UUID(), nullable=False )
+    
+
+    
+    # Unique constraints
+    __table_args__ = (
+        UniqueConstraint('ancestor_id', 'descendant_id'),
+    )
+    
+
+    def __repr__(self):
+        return f"LinkageCache(id={self.id},ancestor_type={self.ancestor_type},descendant_type={self.descendant_type},hop_depth={self.hop_depth},path={self.path},computed_at={self.computed_at},ancestor_id={self.ancestor_id},descendant_id={self.descendant_id},)"
+
+
+
+    
+
+
 class ContainerType_axes(Base):
     """
     
@@ -1315,20 +1733,20 @@ class ContainerAxis_values(Base):
     
 
 
-class ChromatographyConfiguration_mobile_phases(Base):
+class XASLCFDataProcessingActivity_uses_xas_raw_data(Base):
     """
     
     """
-    __tablename__ = 'ChromatographyConfiguration_mobile_phases'
+    __tablename__ = 'XASLCFDataProcessingActivity_uses_xas_raw_data'
 
-    ChromatographyConfiguration_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'), primary_key=True)
-    mobile_phases_id = Column(UUID(), ForeignKey('MobilePhaseSegment.id'), primary_key=True)
+    XASLCFDataProcessingActivity_id = Column(UUID(), ForeignKey('XASLCFDataProcessingActivity.id'), primary_key=True)
+    uses_xas_raw_data_id = Column(UUID(), ForeignKey('XASInstrumentData.id'), primary_key=True)
     
 
     
 
     def __repr__(self):
-        return f"ChromatographyConfiguration_mobile_phases(ChromatographyConfiguration_uid={self.ChromatographyConfiguration_uid},mobile_phases_id={self.mobile_phases_id},)"
+        return f"XASLCFDataProcessingActivity_uses_xas_raw_data(XASLCFDataProcessingActivity_id={self.XASLCFDataProcessingActivity_id},uses_xas_raw_data_id={self.uses_xas_raw_data_id},)"
 
 
 
@@ -1369,26 +1787,6 @@ class MediaPreparation_media_additions(Base):
 
     def __repr__(self):
         return f"MediaPreparation_media_additions(MediaPreparation_id={self.MediaPreparation_id},media_additions={self.media_additions},)"
-
-
-
-    
-
-
-class AMP2WellMetadata_treatments(Base):
-    """
-    
-    """
-    __tablename__ = 'AMP2WellMetadata_treatments'
-
-    AMP2WellMetadata_id = Column(Integer(), ForeignKey('AMP2WellMetadata.id'), primary_key=True)
-    treatments = Column(Text(), primary_key=True)
-    
-
-    
-
-    def __repr__(self):
-        return f"AMP2WellMetadata_treatments(AMP2WellMetadata_id={self.AMP2WellMetadata_id},treatments={self.treatments},)"
 
 
 
@@ -1735,6 +2133,26 @@ class WaterSample_external_identifiers(Base):
     
 
 
+class Extraction_extraction_target(Base):
+    """
+    
+    """
+    __tablename__ = 'Extraction_extraction_target'
+
+    Extraction_id = Column(UUID(), ForeignKey('Extraction.id'), primary_key=True)
+    extraction_target = Column(Enum('dna', 'rna', 'protein', 'metabolite', 'lipid', 'natural_organic_matter', 'unknown', name='AnalyteCategoryEnum'), primary_key=True)
+    
+
+    
+
+    def __repr__(self):
+        return f"Extraction_extraction_target(Extraction_id={self.Extraction_id},extraction_target={self.extraction_target},)"
+
+
+
+    
+
+
 class Study_external_identifiers(Base):
     """
     
@@ -1855,14 +2273,14 @@ class ProcessedData(DataProduct):
 
 class InstrumentData(DataProduct):
     """
-    An abstract parent class for raw data files generated by different kinds  of instruments. All subclasses must have a slot pointing upstream that  specifies the analysisActivity subclass which created them.
+    An abstract parent class for raw data files generated by different kinds  of instruments. All subclasses must have a slot pointing upstream that  specifies the DataGenerationActivity subclass which created them.
     """
     __tablename__ = 'InstrumentData'
 
     file_curie = Column(Text())
     alternative_identifiers = Column(Text())
     compression_type = Column(Text())
-    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', name='FileTypeEnum'))
+    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', 'XAS_Raw_Sweep_File', 'XAS_LCF_Output', name='FileTypeEnum'))
     software_version = Column(Text())
     name = Column(Text(), nullable=False )
     description = Column(Text(), nullable=False )
@@ -1896,7 +2314,7 @@ class InstrumentData(DataProduct):
 class SitePhoto(DataProduct):
     """
     A data product representing a photo of a site, typically taken during sampling.
-One row per photo with metadata about the photo type and when it was taken.
+Carries metadata about the photo type and when it was taken.
     """
     __tablename__ = 'SitePhoto'
 
@@ -1931,32 +2349,42 @@ One row per photo with metadata about the photo type and when it was taken.
     
 
 
-class RespirationDataGenerationActivity(DataGenerationActivity):
+class XRayDataGenerationActivity(DataGenerationActivity):
     """
-    Data generation activity for soil respiration analysis.
-Captures CO2-C efflux measured per gram of soil.
+    Abstract base class for X-ray analytical methods including XRF (elemental),
+XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits
+acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,
+analyte_id, and other core metadata from DataGenerationActivity.
+
+Concrete subclasses define method-specific measurement parameters.
+Future X-ray methods (e.g., XCT) can extend this class.
+
+Shared patterns:
+  - Direct instrument output (no computational workflow) is typical for XRF
+  - XRD may optionally link to DataProcessingActivity for Rietveld refinement
+  - XAS acquires raw sweep files as XASInstrumentData, which are later fitted
+    by an XASLCFDataProcessingActivity to yield an XASLCFProduct
+  - protocol_url should link to vendor SOP or EMSL internal protocol documentation
     """
-    __tablename__ = 'RespirationDataGenerationActivity'
+    __tablename__ = 'XRayDataGenerationActivity'
 
     sequence_order = Column(Integer())
     name = Column(Text(), nullable=False )
     description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     protocol_url = Column(Text())
     protocol_version = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
-    acquisition_start_time = Column(DateTime(), nullable=False )
-    acquisition_end_time = Column(DateTime(), nullable=False )
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
     instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
-    instrument_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
-    method_id_id = Column(Integer(), ForeignKey('RespirationMethod.id'))
-    method_id = relationship("RespirationMethod", uselist=False, foreign_keys=[method_id_id])
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"RespirationDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},method_id_id={self.method_id_id},)"
+        return f"XRayDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -1968,39 +2396,169 @@ Captures CO2-C efflux measured per gram of soil.
     
 
 
-class XRayDataGenerationActivity(DataGenerationActivity):
+class XASLCFDataProcessingActivity(DataProcessingActivity):
     """
-    Abstract base class for X-ray analytical methods including XRF (elemental)
-and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,
-protocol_url, analyte_id, and other core metadata from DataGenerationActivity.
-
-Concrete subclasses define method-specific measurement parameters.
-Future X-ray methods (e.g., XCT) can extend this class.
-
-Shared patterns:
-  - Direct instrument output (no computational workflow) is typical for XRF
-  - XRD may optionally link to DataProcessingActivity for Rietveld refinement
-  - protocol_url should link to vendor SOP or EMSL internal protocol documentation
+    Athena or Larch Linear Combination Fitting (LCF) processing activity for
+XAS data. One instance represents a single .lcf fit run.
     """
-    __tablename__ = 'XRayDataGenerationActivity'
+    __tablename__ = 'XASLCFDataProcessingActivity'
 
-    sequence_order = Column(Integer())
-    name = Column(Text(), nullable=False )
+    xas_filename = Column(Text())
+    lcf_type = Column(Enum('XANES', 'EXAFS', name='XASLCFType'))
+    run_label = Column(Text())
+    fit_label = Column(Text())
+    analysis_code = Column(Text())
+    sample_nor_file = Column(Text())
+    fit_range_min = Column(Float())
+    fit_range_max = Column(Float())
+    fit_range_unit = Column(Text())
+    n_data_points = Column(Integer())
+    n_variables = Column(Integer())
+    n_standards = Column(Integer())
+    weights_sum_to_1 = Column(Text())
+    weights_bounded = Column(Text())
+    e0_shift_used = Column(Text())
+    noise_added = Column(Float())
+    r_factor = Column(Float())
+    chi_square = Column(Float())
+    reduced_chi_square = Column(Float())
+    weights_sum = Column(Float())
+    parent_workflow_id = Column(UUID(), ForeignKey('DataProcessingActivity.id'))
+    workflow_steps = Column(Text())
     description = Column(Text())
-    protocol_url = Column(Text())
-    protocol_version = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
-    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
-    acquisition_start_time = Column(DateTime(), nullable=False )
-    acquisition_end_time = Column(DateTime(), nullable=False )
-    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
-    instrument_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
+    started_at_time = Column(DateTime(), nullable=False )
+    ended_at_time = Column(DateTime())
+    software_url = Column(Text())
+    software_version = Column(Text())
+    software_poc = Column(Text())
+    execution_resource = Column(Enum('nersc_cori', 'nersc_perlmutter', 'emsl_rzr', 'emsl_tahoma', name='ExecutionResourceEnum'))
+    
+    
+    # ManyToMany
+    uses_xas_raw_data = relationship( "XASInstrumentData", secondary="XASLCFDataProcessingActivity_uses_xas_raw_data")
     
 
     
 
     def __repr__(self):
-        return f"XRayDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},)"
+        return f"XASLCFDataProcessingActivity(xas_filename={self.xas_filename},lcf_type={self.lcf_type},run_label={self.run_label},fit_label={self.fit_label},analysis_code={self.analysis_code},sample_nor_file={self.sample_nor_file},fit_range_min={self.fit_range_min},fit_range_max={self.fit_range_max},fit_range_unit={self.fit_range_unit},n_data_points={self.n_data_points},n_variables={self.n_variables},n_standards={self.n_standards},weights_sum_to_1={self.weights_sum_to_1},weights_bounded={self.weights_bounded},e0_shift_used={self.e0_shift_used},noise_added={self.noise_added},r_factor={self.r_factor},chi_square={self.chi_square},reduced_chi_square={self.reduced_chi_square},weights_sum={self.weights_sum},parent_workflow_id={self.parent_workflow_id},workflow_steps={self.workflow_steps},description={self.description},id={self.id},started_at_time={self.started_at_time},ended_at_time={self.ended_at_time},software_url={self.software_url},software_version={self.software_version},software_poc={self.software_poc},execution_resource={self.execution_resource},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class RIDataGenerationActivity(DataGenerationActivity):
+    """
+    Refractive Index (RI) measurement activity.
+Represents one measurement session for a sample using a RI detector.
+    """
+    __tablename__ = 'RIDataGenerationActivity'
+
+    wavelength_nm = Column(Integer(), nullable=False )
+    temperature_celsius = Column(Float())
+    calibration_standard = Column(UUID(), ForeignKey('PurchasedMaterial.id'))
+    uses_calibration = Column(UUID(), ForeignKey('CalibrationStandardRun.id'))
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    uses_chromatography_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'))
+    uses_chromatography = relationship("ChromatographyConfiguration", uselist=False, foreign_keys=[uses_chromatography_uid])
+    
+
+    
+
+    def __repr__(self):
+        return f"RIDataGenerationActivity(wavelength_nm={self.wavelength_nm},temperature_celsius={self.temperature_celsius},calibration_standard={self.calibration_standard},uses_calibration={self.uses_calibration},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},uses_chromatography_uid={self.uses_chromatography_uid},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class UVDataGenerationActivity(DataGenerationActivity):
+    """
+    Ultraviolet spectroscopy acquisition activity.
+Represents one measurement session for a sample using UV spectroscopy.
+    """
+    __tablename__ = 'UVDataGenerationActivity'
+
+    uv_detector_type = Column(Enum('photodiode_array', 'variable_wavelength', 'fixed_wavelength', name='UVDetectorEnum'))
+    wavelength_nm_max = Column(Float())
+    wavelength_nm_min = Column(Float())
+    resolution_nm = Column(Float())
+    sampling_rate_hz = Column(Float())
+    negative_absorbance_margin_au = Column(Float())
+    uses_calibration = Column(UUID(), ForeignKey('CalibrationStandardRun.id'))
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    uses_chromatography_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'))
+    uses_chromatography = relationship("ChromatographyConfiguration", uselist=False, foreign_keys=[uses_chromatography_uid])
+    
+
+    
+
+    def __repr__(self):
+        return f"UVDataGenerationActivity(uv_detector_type={self.uv_detector_type},wavelength_nm_max={self.wavelength_nm_max},wavelength_nm_min={self.wavelength_nm_min},resolution_nm={self.resolution_nm},sampling_rate_hz={self.sampling_rate_hz},negative_absorbance_margin_au={self.negative_absorbance_margin_au},uses_calibration={self.uses_calibration},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},uses_chromatography_uid={self.uses_chromatography_uid},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class UVChannelConfig(Configuration):
+    """
+    Configuration for a single UV-Vis detector channel.
+    """
+    __tablename__ = 'UVChannelConfig'
+
+    uid = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    uv_datagen_run = Column(UUID(), ForeignKey('UVDataGenerationActivity.id'))
+    channel_number = Column(Integer())
+    wavelength_nm = Column(Integer(), nullable=False )
+    resolution_nm = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    id = Column(UUID(), nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"UVChannelConfig(uid={self.uid},uv_datagen_run={self.uv_datagen_run},channel_number={self.channel_number},wavelength_nm={self.wavelength_nm},resolution_nm={self.resolution_nm},name={self.name},description={self.description},id={self.id},)"
 
 
 
@@ -2022,14 +2580,14 @@ class MassSpectrometryDataGenerationActivity(DataGenerationActivity):
     sequence_order = Column(Integer())
     name = Column(Text(), nullable=False )
     description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     protocol_url = Column(Text())
     protocol_version = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     acquisition_start_time = Column(DateTime(), nullable=False )
     acquisition_end_time = Column(DateTime(), nullable=False )
     instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
-    instrument_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     uses_ms_configuration_uid = Column(Integer(), ForeignKey('MassSpectrometryConfiguration.uid'), nullable=False )
     uses_ms_configuration = relationship("MassSpectrometryConfiguration", uselist=False, foreign_keys=[uses_ms_configuration_uid])
     uses_chromatography_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'))
@@ -2039,7 +2597,7 @@ class MassSpectrometryDataGenerationActivity(DataGenerationActivity):
     
 
     def __repr__(self):
-        return f"MassSpectrometryDataGenerationActivity(analyte_category={self.analyte_category},sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},uses_ms_configuration_uid={self.uses_ms_configuration_uid},uses_chromatography_uid={self.uses_chromatography_uid},)"
+        return f"MassSpectrometryDataGenerationActivity(analyte_category={self.analyte_category},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},uses_ms_configuration_uid={self.uses_ms_configuration_uid},uses_chromatography_uid={self.uses_chromatography_uid},)"
 
 
 
@@ -2101,7 +2659,7 @@ class ChromatographyConfiguration(Configuration):
     column = Column(Text())
     column_dimensions = Column(Text())
     column_manufacturer = Column(Text())
-    chromatography_type = Column(Enum('liquid_chromatography', 'gas_chromatography', 'solid_phase_extraction', name='ChromatographyCategoryEnum'), nullable=False )
+    chromatography_type = Column(Enum('liquid_chromatography', 'gas_chromatography', 'solid_phase_extraction', 'high_performance_liquid_chromatography', name='ChromatographyCategoryEnum'), nullable=False )
     stationary_phase = Column(Text())
     temperature_celsius = Column(Float())
     duration_min = Column(Float())
@@ -2110,10 +2668,6 @@ class ChromatographyConfiguration(Configuration):
     name = Column(Text(), nullable=False )
     description = Column(Text())
     id = Column(UUID(), nullable=False )
-    
-    
-    # ManyToMany
-    mobile_phases = relationship( "MobilePhaseSegment", secondary="ChromatographyConfiguration_mobile_phases")
     
 
     
@@ -2138,7 +2692,7 @@ slots including used_software and version.
     """
     __tablename__ = 'MassSpectrometryDataProcessingActivity'
 
-    uses_calibration = Column(UUID(), ForeignKey('MassSpectrometryStandardRun.id'))
+    uses_calibration = Column(UUID(), ForeignKey('CalibrationStandardRun.id'))
     uses_raw_ms_data = Column(UUID(), ForeignKey('MassSpectrometryInstrumentData.id'))
     lims_task_instance_id = Column(Integer())
     metaproteomics_analysis_category = Column(Enum('matched_metagenome', 'in_silico_metagenome', 'WITHDRAWN', name='MetaproteomicsAnalysisCategoryEnum'))
@@ -2198,13 +2752,10 @@ Lifecycle:
     ph_target = Column(Float())
     storage_temperature = Column(Text())
     creation_date = Column(Date())
-    protocol_url = Column(Text())
-    protocol_version = Column(Text())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    analysis_type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='RouteMethodEnum'))
-    method_name = Column(Enum('MAOM', 'WOEM', name='MethodNameEnum'))
-    processing_steps = Column(Text(), nullable=False )
-    uses_sample = Column(UUID(), ForeignKey('Sample.id'))
     
     
     exposure_sensitivity_rel = relationship( "MediaPreparation_exposure_sensitivity" )
@@ -2220,7 +2771,7 @@ Lifecycle:
     
 
     def __repr__(self):
-        return f"MediaPreparation(media_type={self.media_type},volume_ml={self.volume_ml},media_recipe={self.media_recipe},media_formulation={self.media_formulation},commercial_media_catalog={self.commercial_media_catalog},sterilization_method={self.sterilization_method},ph_adjustment={self.ph_adjustment},ph_target={self.ph_target},storage_temperature={self.storage_temperature},creation_date={self.creation_date},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"MediaPreparation(media_type={self.media_type},volume_ml={self.volume_ml},media_recipe={self.media_recipe},media_formulation={self.media_formulation},commercial_media_catalog={self.commercial_media_catalog},sterilization_method={self.sterilization_method},ph_adjustment={self.ph_adjustment},ph_target={self.ph_target},storage_temperature={self.storage_temperature},creation_date={self.creation_date},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -2235,7 +2786,6 @@ Lifecycle:
 class CultureGrowth(SampleProcessing):
     """
     Abstract activity for growing cultures from samples or other cultures.
-
 Concrete subclasses: StrainPurity, StockCulturePreparation, 
 PreCultureGrowth, ExperimentalCulture.
     """
@@ -2247,20 +2797,17 @@ PreCultureGrowth, ExperimentalCulture.
     container_type = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
-    protocol_url = Column(Text())
-    protocol_version = Column(Text())
+    oxygen_saturation_pct = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    analysis_type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='RouteMethodEnum'))
-    method_name = Column(Enum('MAOM', 'WOEM', name='MethodNameEnum'))
-    processing_steps = Column(Text(), nullable=False )
-    uses_sample = Column(UUID(), ForeignKey('Sample.id'))
     
 
     
 
     def __repr__(self):
-        return f"CultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"CultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -2294,14 +2841,11 @@ v1 origin: plate-general.yaml PlateSetupActivity
     sealing_method = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
-    protocol_url = Column(Text())
-    protocol_version = Column(Text())
+    oxygen_saturation_pct = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    analysis_type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='RouteMethodEnum'))
-    method_name = Column(Enum('MAOM', 'WOEM', name='MethodNameEnum'))
-    processing_steps = Column(Text(), nullable=False )
-    uses_sample = Column(UUID(), ForeignKey('Sample.id'))
     
     
     # One-To-Many: OneToAnyMapping(source_class='PlateSetupActivity', source_slot='well_metadata', mapping_type=None, target_class='WellMetadata', target_slot='PlateSetupActivity_id', join_class=None, uses_join_table=None, multivalued=False)
@@ -2311,7 +2855,7 @@ v1 origin: plate-general.yaml PlateSetupActivity
     
 
     def __repr__(self):
-        return f"PlateSetupActivity(plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"PlateSetupActivity(plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -2334,20 +2878,20 @@ Adds timepoint_label for repeated-measurement series
     sequence_order = Column(Integer())
     name = Column(Text(), nullable=False )
     description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     protocol_url = Column(Text())
     protocol_version = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
-    acquisition_start_time = Column(DateTime(), nullable=False )
-    acquisition_end_time = Column(DateTime(), nullable=False )
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
     instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
-    instrument_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"PlateDataGenerationActivity(timepoint_label={self.timepoint_label},sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},)"
+        return f"PlateDataGenerationActivity(timepoint_label={self.timepoint_label},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2362,7 +2906,6 @@ Adds timepoint_label for repeated-measurement series
 class AMP2ODProduct(PlateProduct):
     """
     AMP2 optical density measurement product.
-One row per plate × timepoint.
 processedData.type = 'amp2_od'
 
 v1 origin: plate-general.yaml AMP2ODProduct
@@ -2400,7 +2943,6 @@ v1 origin: plate-general.yaml AMP2ODProduct
 class EcoplateAbsorbanceProduct(PlateProduct):
     """
     Ecoplate absorbance measurement product.
-One row per plate × timepoint.
 processedData.type = 'ecoplate_absorbance'
 
 v1 origin: plate-general.yaml EcoplateAbsorbanceProduct
@@ -2440,30 +2982,30 @@ v1 origin: plate-general.yaml EcoplateAbsorbanceProduct
 class AMP2WellMetadata(WellMetadata):
     """
     AMP2-specific per-well metadata.
-Minimal   media composition comes from the Media entity referenced via
-the activity's media_ref slot.  Per-well data is volumes and replicate info.
+Media composition comes from the Media entity referenced via the activity's
+media_ref slot.  Per-well reagent additions (nutrients, normalizers, inducers)
+are captured as structured WellReagentAddition entries in reagent_additions.
     """
     __tablename__ = 'AMP2WellMetadata'
 
     id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
     media_ref = Column(UUID(), ForeignKey('ProcessedSample.id'))
     media_volume_ul = Column(Float(), nullable=False )
     inoculum_volume_ul = Column(Float(), nullable=False )
-    sample_id = Column(Text())
     position = Column(Text(), nullable=False )
     well_type = Column(Text())
     replicate_group = Column(Text())
     
     
-    treatments_rel = relationship( "AMP2WellMetadata_treatments" )
-    treatments = association_proxy("treatments_rel", "treatments",
-                                  creator=lambda x_: AMP2WellMetadata_treatments(treatments=x_))
+    # One-To-Many: OneToAnyMapping(source_class='AMP2WellMetadata', source_slot='reagent_additions', mapping_type=None, target_class='WellReagentAddition', target_slot='AMP2WellMetadata_id', join_class=None, uses_join_table=None, multivalued=False)
+    reagent_additions = relationship( "WellReagentAddition", foreign_keys="[WellReagentAddition.AMP2WellMetadata_id]")
     
 
     
 
     def __repr__(self):
-        return f"AMP2WellMetadata(id={self.id},media_ref={self.media_ref},media_volume_ul={self.media_volume_ul},inoculum_volume_ul={self.inoculum_volume_ul},sample_id={self.sample_id},position={self.position},well_type={self.well_type},replicate_group={self.replicate_group},)"
+        return f"AMP2WellMetadata(id={self.id},sample_id={self.sample_id},media_ref={self.media_ref},media_volume_ul={self.media_volume_ul},inoculum_volume_ul={self.inoculum_volume_ul},position={self.position},well_type={self.well_type},replicate_group={self.replicate_group},)"
 
 
 
@@ -2520,14 +3062,14 @@ class NucleotideSequencing(DataGenerationActivity):
     sequence_order = Column(Integer())
     name = Column(Text(), nullable=False )
     description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     protocol_url = Column(Text())
     protocol_version = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
-    acquisition_start_time = Column(DateTime(), nullable=False )
-    acquisition_end_time = Column(DateTime(), nullable=False )
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
     instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
-    instrument_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "NucleotideSequencing_external_identifiers" )
@@ -2538,7 +3080,7 @@ class NucleotideSequencing(DataGenerationActivity):
     
 
     def __repr__(self):
-        return f"NucleotideSequencing(nucleotide_sequencing_category={self.nucleotide_sequencing_category},sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},)"
+        return f"NucleotideSequencing(nucleotide_sequencing_category={self.nucleotide_sequencing_category},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2587,20 +3129,29 @@ inherited type attribute (string); expected values:
     
 
 
-class BulkDensityMethod(Method):
+class BulkDensityDataGenerationActivity(DataGenerationActivity):
     """
     
     """
-    __tablename__ = 'BulkDensityMethod'
+    __tablename__ = 'BulkDensityDataGenerationActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    analytic = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"BulkDensityMethod(id={self.id},analytic={self.analytic},)"
+        return f"BulkDensityDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2612,20 +3163,29 @@ class BulkDensityMethod(Method):
     
 
 
-class ElementalAnalysisMethod(Method):
+class ElementalAnalysisDataGenerationActivity(DataGenerationActivity):
     """
     
     """
-    __tablename__ = 'ElementalAnalysisMethod'
+    __tablename__ = 'ElementalAnalysisDataGenerationActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    analytic = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"ElementalAnalysisMethod(id={self.id},analytic={self.analytic},)"
+        return f"ElementalAnalysisDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2637,24 +3197,32 @@ class ElementalAnalysisMethod(Method):
     
 
 
-class EnzymeActivityMethod(Method):
+class EnzymeActivityDataGenerationActivity(DataGenerationActivity):
     """
     
     """
-    __tablename__ = 'EnzymeActivityMethod'
+    __tablename__ = 'EnzymeActivityDataGenerationActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    location = Column(Text(), nullable=False )
     incubation_temp_c = Column(Float())
     incubation_time = Column(Text())
     wavelength = Column(Float())
-    analytic = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"EnzymeActivityMethod(id={self.id},location={self.location},incubation_temp_c={self.incubation_temp_c},incubation_time={self.incubation_time},wavelength={self.wavelength},analytic={self.analytic},)"
+        return f"EnzymeActivityDataGenerationActivity(incubation_temp_c={self.incubation_temp_c},incubation_time={self.incubation_time},wavelength={self.wavelength},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2666,21 +3234,29 @@ class EnzymeActivityMethod(Method):
     
 
 
-class GravimetricWaterContentMethod(Method):
+class GravimetricWaterContentDataGenerationActivity(DataGenerationActivity):
     """
     
     """
-    __tablename__ = 'GravimetricWaterContentMethod'
+    __tablename__ = 'GravimetricWaterContentDataGenerationActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    location = Column(Text(), nullable=False )
-    analytic = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"GravimetricWaterContentMethod(id={self.id},location={self.location},analytic={self.analytic},)"
+        return f"GravimetricWaterContentDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2692,22 +3268,30 @@ class GravimetricWaterContentMethod(Method):
     
 
 
-class HydraulicPropertiesMethod(Method):
+class HydraulicPropertiesDataGenerationActivity(DataGenerationActivity):
     """
     
     """
-    __tablename__ = 'HydraulicPropertiesMethod'
+    __tablename__ = 'HydraulicPropertiesDataGenerationActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    location = Column(Text(), nullable=False )
     fitting_model = Column(Text(), nullable=False )
-    analytic = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"HydraulicPropertiesMethod(id={self.id},location={self.location},fitting_model={self.fitting_model},analytic={self.analytic},)"
+        return f"HydraulicPropertiesDataGenerationActivity(fitting_model={self.fitting_model},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2719,24 +3303,31 @@ class HydraulicPropertiesMethod(Method):
     
 
 
-class KuoMethod(Method):
+class KuoDataGenerationActivity(DataGenerationActivity):
     """
     
     """
-    __tablename__ = 'KuoMethod'
+    __tablename__ = 'KuoDataGenerationActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    location = Column(Text(), nullable=False )
-    method = Column(Text())
     detection_limit = Column(Text(), nullable=False )
     wavelength = Column(Text())
-    analytic = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"KuoMethod(id={self.id},location={self.location},method={self.method},detection_limit={self.detection_limit},wavelength={self.wavelength},analytic={self.analytic},)"
+        return f"KuoDataGenerationActivity(detection_limit={self.detection_limit},wavelength={self.wavelength},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2748,27 +3339,35 @@ class KuoMethod(Method):
     
 
 
-class MicrobialBiomassMethod(Method):
+class MicrobialBiomassDataGenerationActivity(DataGenerationActivity):
     """
     
     """
-    __tablename__ = 'MicrobialBiomassMethod'
+    __tablename__ = 'MicrobialBiomassDataGenerationActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    location = Column(Text(), nullable=False )
     detector = Column(Text(), nullable=False )
     mode = Column(Text())
     injection_volume = Column(Text(), nullable=False )
     sample_volume = Column(Text(), nullable=False )
     number_of_injections = Column(Float(), nullable=False )
     check_standard_spacing = Column(Text(), nullable=False )
-    analytic = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"MicrobialBiomassMethod(id={self.id},location={self.location},detector={self.detector},mode={self.mode},injection_volume={self.injection_volume},sample_volume={self.sample_volume},number_of_injections={self.number_of_injections},check_standard_spacing={self.check_standard_spacing},analytic={self.analytic},)"
+        return f"MicrobialBiomassDataGenerationActivity(detector={self.detector},mode={self.mode},injection_volume={self.injection_volume},sample_volume={self.sample_volume},number_of_injections={self.number_of_injections},check_standard_spacing={self.check_standard_spacing},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2780,22 +3379,30 @@ class MicrobialBiomassMethod(Method):
     
 
 
-class PH_Method(Method):
+class PH_DataGenerationActivity(DataGenerationActivity):
     """
     
     """
-    __tablename__ = 'PH_Method'
+    __tablename__ = 'PH_DataGenerationActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    location = Column(Text(), nullable=False )
     calibration = Column(Text(), nullable=False )
-    analytic = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"PH_Method(id={self.id},location={self.location},calibration={self.calibration},analytic={self.analytic},)"
+        return f"PH_DataGenerationActivity(calibration={self.calibration},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2807,20 +3414,30 @@ class PH_Method(Method):
     
 
 
-class RespirationMethod(Method):
+class RespirationDataGenerationActivity(DataGenerationActivity):
     """
-    
+    Data generation activity for soil respiration analysis.
+Captures CO2-C efflux measured per gram of soil.
     """
-    __tablename__ = 'RespirationMethod'
+    __tablename__ = 'RespirationDataGenerationActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    analytic = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"RespirationMethod(id={self.id},analytic={self.analytic},)"
+        return f"RespirationDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2832,14 +3449,12 @@ class RespirationMethod(Method):
     
 
 
-class TOC_TN_Method(Method):
+class TOC_TN_DataGenerationActivity(DataGenerationActivity):
     """
     
     """
-    __tablename__ = 'TOC_TN_Method'
+    __tablename__ = 'TOC_TN_DataGenerationActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    location = Column(Text(), nullable=False )
     column = Column(Text())
     mode = Column(Text())
     detector = Column(Text(), nullable=False )
@@ -2847,13 +3462,23 @@ class TOC_TN_Method(Method):
     sample_volume = Column(Text(), nullable=False )
     number_of_injections = Column(Float(), nullable=False )
     check_standard_spacing = Column(Text())
-    analytic = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"TOC_TN_Method(id={self.id},location={self.location},column={self.column},mode={self.mode},detector={self.detector},injection_volume={self.injection_volume},sample_volume={self.sample_volume},number_of_injections={self.number_of_injections},check_standard_spacing={self.check_standard_spacing},analytic={self.analytic},)"
+        return f"TOC_TN_DataGenerationActivity(column={self.column},mode={self.mode},detector={self.detector},injection_volume={self.injection_volume},sample_volume={self.sample_volume},number_of_injections={self.number_of_injections},check_standard_spacing={self.check_standard_spacing},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2865,22 +3490,29 @@ class TOC_TN_Method(Method):
     
 
 
-class TextureMethod(Method):
+class TextureDataGenerationActivity(DataGenerationActivity):
     """
     
     """
-    __tablename__ = 'TextureMethod'
+    __tablename__ = 'TextureDataGenerationActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    location = Column(Text(), nullable=False )
-    method = Column(Text())
-    analytic = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"TextureMethod(id={self.id},location={self.location},method={self.method},analytic={self.analytic},)"
+        return f"TextureDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -2892,14 +3524,12 @@ class TextureMethod(Method):
     
 
 
-class XrayComputedTomographyMethod(Method):
+class XCTDataGenerationActivity(DataGenerationActivity):
     """
     
     """
-    __tablename__ = 'XrayComputedTomographyMethod'
+    __tablename__ = 'XCTDataGenerationActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    location = Column(Text(), nullable=False )
     x_ray_power = Column(Text(), nullable=False )
     cu_filter = Column(Text(), nullable=False )
     total_projections_collected = Column(Float(), nullable=False )
@@ -2907,13 +3537,23 @@ class XrayComputedTomographyMethod(Method):
     frames_recording_per_projection = Column(Float(), nullable=False )
     exposure_time_per_frame = Column(Text(), nullable=False )
     image_voxel_size_is = Column(Text(), nullable=False )
-    analytic = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"XrayComputedTomographyMethod(id={self.id},location={self.location},x_ray_power={self.x_ray_power},cu_filter={self.cu_filter},total_projections_collected={self.total_projections_collected},rotation={self.rotation},frames_recording_per_projection={self.frames_recording_per_projection},exposure_time_per_frame={self.exposure_time_per_frame},image_voxel_size_is={self.image_voxel_size_is},analytic={self.analytic},)"
+        return f"XCTDataGenerationActivity(x_ray_power={self.x_ray_power},cu_filter={self.cu_filter},total_projections_collected={self.total_projections_collected},rotation={self.rotation},frames_recording_per_projection={self.frames_recording_per_projection},exposure_time_per_frame={self.exposure_time_per_frame},image_voxel_size_is={self.image_voxel_size_is},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -3146,7 +3786,7 @@ class CommerciallyPurchasedSample(Sample):
 
     analysis_type = Column(Text(), nullable=False )
     cas = Column(Text())
-    compound_name = Column(Text(), nullable=False )
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'), nullable=False )
     experimental_factor = Column(Text())
     experimental_factor_other = Column(Text())
     item_number = Column(Text())
@@ -3610,7 +4250,7 @@ class OtherUndescribedSample(Sample):
     chem_oxygen_dem = Column(Text())
     chloride = Column(Text())
     chlorophyll = Column(Text())
-    compound_name = Column(Text())
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
     conduc = Column(Text())
     density = Column(Text())
     depth = Column(Text())
@@ -3680,8 +4320,8 @@ class OtherUndescribedSample(Sample):
     mechanical_damage = Column(Text())
     method_development = Column(Text())
     methane = Column(Text())
-    micro_biomass_C_meth = Column(Text())
-    micro_biomass_N_meth = Column(Text())
+    micro_biomass_c_meth = Column(Text())
+    micro_biomass_n_meth = Column(Text())
     microbial_biomass = Column(Text())
     microbial_biomass_c = Column(Text())
     microbial_biomass_n = Column(Text())
@@ -3817,7 +4457,7 @@ class OtherUndescribedSample(Sample):
     
 
     def __repr__(self):
-        return f"OtherUndescribedSample(agrochem_addition={self.agrochem_addition},air_temp_regm={self.air_temp_regm},al_sat={self.al_sat},al_sat_meth={self.al_sat_meth},alkalinity={self.alkalinity},alkalinity_method={self.alkalinity_method},alkyl_diethers={self.alkyl_diethers},aminopept_act={self.aminopept_act},ammonium={self.ammonium},analysis_type={self.analysis_type},ances_data={self.ances_data},antibiotic_regm={self.antibiotic_regm},bac_prod={self.bac_prod},bac_resp={self.bac_resp},bacteria_carb_prod={self.bacteria_carb_prod},biochem_oxygen_dem={self.biochem_oxygen_dem},biol_stat={self.biol_stat},biotic_regm={self.biotic_regm},bishomohopanol={self.bishomohopanol},bromide={self.bromide},bulk_elect_conductivity={self.bulk_elect_conductivity},calcium={self.calcium},carb_dioxide={self.carb_dioxide},carb_monoxide={self.carb_monoxide},carb_nitro_ratio={self.carb_nitro_ratio},cas={self.cas},chem_administration={self.chem_administration},chem_mutagen={self.chem_mutagen},chem_oxygen_dem={self.chem_oxygen_dem},chloride={self.chloride},chlorophyll={self.chlorophyll},compound_name={self.compound_name},conduc={self.conduc},density={self.density},depth={self.depth},diether_lipids={self.diether_lipids},diss_carb_dioxide={self.diss_carb_dioxide},diss_hydrogen={self.diss_hydrogen},diss_inorg_carb={self.diss_inorg_carb},diss_inorg_nitro={self.diss_inorg_nitro},diss_inorg_phosp={self.diss_inorg_phosp},diss_org_carb={self.diss_org_carb},diss_org_nitro={self.diss_org_nitro},diss_oxygen={self.diss_oxygen},down_par={self.down_par},efficiency_percent={self.efficiency_percent},emulsions={self.emulsions},encoded_traits={self.encoded_traits},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},fertilizer_regm={self.fertilizer_regm},filter_method={self.filter_method},fluor={self.fluor},fungicide_regm={self.fungicide_regm},gaseous_environment={self.gaseous_environment},gaseous_substances={self.gaseous_substances},genetic_mod={self.genetic_mod},glucosidase_act={self.glucosidase_act},gravity={self.gravity},growth_habit={self.growth_habit},growth_hormone_regm={self.growth_hormone_regm},growth_medium={self.growth_medium},heavy_metals={self.heavy_metals},heavy_metals_meth={self.heavy_metals_meth},herbicide_regm={self.herbicide_regm},host_age={self.host_age},host_common_name={self.host_common_name},host_disease_stat={self.host_disease_stat},host_dry_mass={self.host_dry_mass},host_height={self.host_height},host_infra_spec_name={self.host_infra_spec_name},host_infra_spec_rank={self.host_infra_spec_rank},host_length={self.host_length},host_life_stage={self.host_life_stage},host_phenotype={self.host_phenotype},host_spec_range={self.host_spec_range},host_symbiont={self.host_symbiont},host_taxid={self.host_taxid},host_tot_mass={self.host_tot_mass},host_wet_mass={self.host_wet_mass},humidity_regm={self.humidity_regm},indust_eff_percent={self.indust_eff_percent},inorg_particles={self.inorg_particles},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},item_number={self.item_number},latitude={self.latitude},longitude={self.longitude},light_intensity={self.light_intensity},light_regm={self.light_regm},link_addit_analys={self.link_addit_analys},magnesium={self.magnesium},mean_frict_vel={self.mean_frict_vel},mean_peak_frict_vel={self.mean_peak_frict_vel},mechanical_damage={self.mechanical_damage},method_development={self.method_development},methane={self.methane},micro_biomass_C_meth={self.micro_biomass_C_meth},micro_biomass_N_meth={self.micro_biomass_N_meth},microbial_biomass={self.microbial_biomass},microbial_biomass_c={self.microbial_biomass_c},microbial_biomass_n={self.microbial_biomass_n},microbial_biomass_meth={self.microbial_biomass_meth},mineral_nutr_regm={self.mineral_nutr_regm},misc_param={self.misc_param},n_alkanes={self.n_alkanes},nitrate={self.nitrate},nitrite={self.nitrite},nitro={self.nitro},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},non_min_nutr_regm={self.non_min_nutr_regm},org_carb={self.org_carb},org_matter={self.org_matter},org_nitro={self.org_nitro},org_nitro_method={self.org_nitro_method},org_particles={self.org_particles},organism_count={self.organism_count},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_treatment={self.other_treatment},oxygen={self.oxygen},oxygen_status={self.oxygen_status},part_org_carb={self.part_org_carb},part_org_nitro={self.part_org_nitro},particle_class={self.particle_class},pathogenicity={self.pathogenicity},perturbation={self.perturbation},pesticide_regm={self.pesticide_regm},petroleum_hydrocarb={self.petroleum_hydrocarb},ph={self.ph},ph_meth={self.ph_meth},ph_regm={self.ph_regm},phaeopigments={self.phaeopigments},phosphate={self.phosphate},phosplipid_fatt_acid={self.phosplipid_fatt_acid},photochemical_exposure={self.photochemical_exposure},photon_flux={self.photon_flux},porosity={self.porosity},potassium={self.potassium},pre_treatment={self.pre_treatment},pressure={self.pressure},pressure_control={self.pressure_control},primary_prod={self.primary_prod},primary_treatment={self.primary_treatment},priority_order={self.priority_order},production_method={self.production_method},project={self.project},propagation={self.propagation},radiation_regm={self.radiation_regm},rainfall_regm={self.rainfall_regm},reactor_type={self.reactor_type},redox_potential={self.redox_potential},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},salinity={self.salinity},salinity_method={self.salinity_method},salt_regm={self.salt_regm},biotic_relationship={self.biotic_relationship},samp_capt_status={self.samp_capt_status},samp_dis_stage={self.samp_dis_stage},samp_store_temp={self.samp_store_temp},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sample_type={self.sample_type},sampled_during={self.sampled_during},season_environment={self.season_environment},secondary_treatment={self.secondary_treatment},sewage_type={self.sewage_type},sieving={self.sieving},silicate={self.silicate},size_frac_low={self.size_frac_low},size_frac_up={self.size_frac_up},sludge_retent_time={self.sludge_retent_time},sodium={self.sodium},solar_irradiance={self.solar_irradiance},soluble_inorg_mat={self.soluble_inorg_mat},soluble_org_mat={self.soluble_org_mat},soluble_react_phosp={self.soluble_react_phosp},source_mat_id={self.source_mat_id},standing_water_regm={self.standing_water_regm},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},subspecf_gen_lin={self.subspecf_gen_lin},sulfate={self.sulfate},sulfide={self.sulfide},suspend_part_matter={self.suspend_part_matter},suspend_solids={self.suspend_solids},synth_instrument={self.synth_instrument},synth_process={self.synth_process},synth_reagents={self.synth_reagents},technical_reps={self.technical_reps},temp={self.temp},temperature_exposure={self.temperature_exposure},tertiary_treatment={self.tertiary_treatment},tidal_stage={self.tidal_stage},tiss_cult_growth_med={self.tiss_cult_growth_med},tot_carb={self.tot_carb},tot_depth_water_col={self.tot_depth_water_col},tot_diss_nitro={self.tot_diss_nitro},tot_inorg_nitro={self.tot_inorg_nitro},tot_nitro={self.tot_nitro},tot_nitro_cont_meth={self.tot_nitro_cont_meth},tot_nitro_content={self.tot_nitro_content},tot_org_c_meth={self.tot_org_c_meth},tot_org_carb={self.tot_org_carb},tot_part_carb={self.tot_part_carb},tot_phosp={self.tot_phosp},tot_phosphate={self.tot_phosphate},trophic_level={self.trophic_level},turbidity={self.turbidity},volatile_org_comp={self.volatile_org_comp},wastewater_type={self.wastewater_type},water_content={self.water_content},water_current={self.water_current},water_temp_regm={self.water_temp_regm},watering_regm={self.watering_regm},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"OtherUndescribedSample(agrochem_addition={self.agrochem_addition},air_temp_regm={self.air_temp_regm},al_sat={self.al_sat},al_sat_meth={self.al_sat_meth},alkalinity={self.alkalinity},alkalinity_method={self.alkalinity_method},alkyl_diethers={self.alkyl_diethers},aminopept_act={self.aminopept_act},ammonium={self.ammonium},analysis_type={self.analysis_type},ances_data={self.ances_data},antibiotic_regm={self.antibiotic_regm},bac_prod={self.bac_prod},bac_resp={self.bac_resp},bacteria_carb_prod={self.bacteria_carb_prod},biochem_oxygen_dem={self.biochem_oxygen_dem},biol_stat={self.biol_stat},biotic_regm={self.biotic_regm},bishomohopanol={self.bishomohopanol},bromide={self.bromide},bulk_elect_conductivity={self.bulk_elect_conductivity},calcium={self.calcium},carb_dioxide={self.carb_dioxide},carb_monoxide={self.carb_monoxide},carb_nitro_ratio={self.carb_nitro_ratio},cas={self.cas},chem_administration={self.chem_administration},chem_mutagen={self.chem_mutagen},chem_oxygen_dem={self.chem_oxygen_dem},chloride={self.chloride},chlorophyll={self.chlorophyll},compound_name={self.compound_name},conduc={self.conduc},density={self.density},depth={self.depth},diether_lipids={self.diether_lipids},diss_carb_dioxide={self.diss_carb_dioxide},diss_hydrogen={self.diss_hydrogen},diss_inorg_carb={self.diss_inorg_carb},diss_inorg_nitro={self.diss_inorg_nitro},diss_inorg_phosp={self.diss_inorg_phosp},diss_org_carb={self.diss_org_carb},diss_org_nitro={self.diss_org_nitro},diss_oxygen={self.diss_oxygen},down_par={self.down_par},efficiency_percent={self.efficiency_percent},emulsions={self.emulsions},encoded_traits={self.encoded_traits},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},fertilizer_regm={self.fertilizer_regm},filter_method={self.filter_method},fluor={self.fluor},fungicide_regm={self.fungicide_regm},gaseous_environment={self.gaseous_environment},gaseous_substances={self.gaseous_substances},genetic_mod={self.genetic_mod},glucosidase_act={self.glucosidase_act},gravity={self.gravity},growth_habit={self.growth_habit},growth_hormone_regm={self.growth_hormone_regm},growth_medium={self.growth_medium},heavy_metals={self.heavy_metals},heavy_metals_meth={self.heavy_metals_meth},herbicide_regm={self.herbicide_regm},host_age={self.host_age},host_common_name={self.host_common_name},host_disease_stat={self.host_disease_stat},host_dry_mass={self.host_dry_mass},host_height={self.host_height},host_infra_spec_name={self.host_infra_spec_name},host_infra_spec_rank={self.host_infra_spec_rank},host_length={self.host_length},host_life_stage={self.host_life_stage},host_phenotype={self.host_phenotype},host_spec_range={self.host_spec_range},host_symbiont={self.host_symbiont},host_taxid={self.host_taxid},host_tot_mass={self.host_tot_mass},host_wet_mass={self.host_wet_mass},humidity_regm={self.humidity_regm},indust_eff_percent={self.indust_eff_percent},inorg_particles={self.inorg_particles},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},item_number={self.item_number},latitude={self.latitude},longitude={self.longitude},light_intensity={self.light_intensity},light_regm={self.light_regm},link_addit_analys={self.link_addit_analys},magnesium={self.magnesium},mean_frict_vel={self.mean_frict_vel},mean_peak_frict_vel={self.mean_peak_frict_vel},mechanical_damage={self.mechanical_damage},method_development={self.method_development},methane={self.methane},micro_biomass_c_meth={self.micro_biomass_c_meth},micro_biomass_n_meth={self.micro_biomass_n_meth},microbial_biomass={self.microbial_biomass},microbial_biomass_c={self.microbial_biomass_c},microbial_biomass_n={self.microbial_biomass_n},microbial_biomass_meth={self.microbial_biomass_meth},mineral_nutr_regm={self.mineral_nutr_regm},misc_param={self.misc_param},n_alkanes={self.n_alkanes},nitrate={self.nitrate},nitrite={self.nitrite},nitro={self.nitro},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},non_min_nutr_regm={self.non_min_nutr_regm},org_carb={self.org_carb},org_matter={self.org_matter},org_nitro={self.org_nitro},org_nitro_method={self.org_nitro_method},org_particles={self.org_particles},organism_count={self.organism_count},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_treatment={self.other_treatment},oxygen={self.oxygen},oxygen_status={self.oxygen_status},part_org_carb={self.part_org_carb},part_org_nitro={self.part_org_nitro},particle_class={self.particle_class},pathogenicity={self.pathogenicity},perturbation={self.perturbation},pesticide_regm={self.pesticide_regm},petroleum_hydrocarb={self.petroleum_hydrocarb},ph={self.ph},ph_meth={self.ph_meth},ph_regm={self.ph_regm},phaeopigments={self.phaeopigments},phosphate={self.phosphate},phosplipid_fatt_acid={self.phosplipid_fatt_acid},photochemical_exposure={self.photochemical_exposure},photon_flux={self.photon_flux},porosity={self.porosity},potassium={self.potassium},pre_treatment={self.pre_treatment},pressure={self.pressure},pressure_control={self.pressure_control},primary_prod={self.primary_prod},primary_treatment={self.primary_treatment},priority_order={self.priority_order},production_method={self.production_method},project={self.project},propagation={self.propagation},radiation_regm={self.radiation_regm},rainfall_regm={self.rainfall_regm},reactor_type={self.reactor_type},redox_potential={self.redox_potential},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},salinity={self.salinity},salinity_method={self.salinity_method},salt_regm={self.salt_regm},biotic_relationship={self.biotic_relationship},samp_capt_status={self.samp_capt_status},samp_dis_stage={self.samp_dis_stage},samp_store_temp={self.samp_store_temp},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sample_type={self.sample_type},sampled_during={self.sampled_during},season_environment={self.season_environment},secondary_treatment={self.secondary_treatment},sewage_type={self.sewage_type},sieving={self.sieving},silicate={self.silicate},size_frac_low={self.size_frac_low},size_frac_up={self.size_frac_up},sludge_retent_time={self.sludge_retent_time},sodium={self.sodium},solar_irradiance={self.solar_irradiance},soluble_inorg_mat={self.soluble_inorg_mat},soluble_org_mat={self.soluble_org_mat},soluble_react_phosp={self.soluble_react_phosp},source_mat_id={self.source_mat_id},standing_water_regm={self.standing_water_regm},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},subspecf_gen_lin={self.subspecf_gen_lin},sulfate={self.sulfate},sulfide={self.sulfide},suspend_part_matter={self.suspend_part_matter},suspend_solids={self.suspend_solids},synth_instrument={self.synth_instrument},synth_process={self.synth_process},synth_reagents={self.synth_reagents},technical_reps={self.technical_reps},temp={self.temp},temperature_exposure={self.temperature_exposure},tertiary_treatment={self.tertiary_treatment},tidal_stage={self.tidal_stage},tiss_cult_growth_med={self.tiss_cult_growth_med},tot_carb={self.tot_carb},tot_depth_water_col={self.tot_depth_water_col},tot_diss_nitro={self.tot_diss_nitro},tot_inorg_nitro={self.tot_inorg_nitro},tot_nitro={self.tot_nitro},tot_nitro_cont_meth={self.tot_nitro_cont_meth},tot_nitro_content={self.tot_nitro_content},tot_org_c_meth={self.tot_org_c_meth},tot_org_carb={self.tot_org_carb},tot_part_carb={self.tot_part_carb},tot_phosp={self.tot_phosp},tot_phosphate={self.tot_phosphate},trophic_level={self.trophic_level},turbidity={self.turbidity},volatile_org_comp={self.volatile_org_comp},wastewater_type={self.wastewater_type},water_content={self.water_content},water_current={self.water_current},water_temp_regm={self.water_temp_regm},watering_regm={self.watering_regm},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
 
 
 
@@ -4285,7 +4925,7 @@ class SynthesizedMaterialSample(Sample):
 
     analysis_type = Column(Text(), nullable=False )
     cas = Column(Text())
-    compound_name = Column(Text())
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
     experimental_factor = Column(Text())
     experimental_factor_other = Column(Text())
     genetic_mod = Column(Text())
@@ -4589,7 +5229,17 @@ class WaterSample(Sample):
 
 class ProcessedSample(Sample):
     """
-    A sample that has undergone processing or analysis. Processed Sample entities are derived from Activities. The upstream SampleProcessing that produced this ProcessedSample is referenced via sampled_during.
+    A sample that has undergone processing. Processed Sample entities are derived from
+SampleProcessing activities.
+
+This class carries no pointer to the activity that produced it. That edge is the
+ProcessingSampleLink row with role = output_sample naming this sample, which is
+the single representation of every sample-to-processing edge in the schema.
+
+Note that sampled_during is deliberately NOT reused here the way it is on
+environmental Sample subclasses. There it points at a SamplingActivity (collection
+from an environment); the processing edge is a different relationship and lives in
+ProcessingSampleLink only.
     """
     __tablename__ = 'ProcessedSample'
 
@@ -4597,9 +5247,8 @@ class ProcessedSample(Sample):
     label_text = Column(Text())
     concentration_ug_per_uL = Column(Float())
     total_amount_ug = Column(Float())
-    volume_uL = Column(Float())
+    volume_ul = Column(Float())
     sampled_portion = Column(Enum('supernatant', 'pellet', 'organic_layer', 'aqueous_layer', 'interlayer', 'chloroform_layer', 'methanol_layer', name='SamplePortionEnum'))
-    sampled_during = Column(UUID(), ForeignKey('SampleProcessing.id'))
     replicate = Column(Integer())
     id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
@@ -4611,7 +5260,7 @@ class ProcessedSample(Sample):
     
 
     def __repr__(self):
-        return f"ProcessedSample(storage_location={self.storage_location},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_uL={self.volume_uL},sampled_portion={self.sampled_portion},sampled_during={self.sampled_during},replicate={self.replicate},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"ProcessedSample(storage_location={self.storage_location},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_ul={self.volume_ul},sampled_portion={self.sampled_portion},replicate={self.replicate},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
 
 
 
@@ -5185,6 +5834,346 @@ class WaterSamplingActivity(SamplingActivity):
     
 
 
+class StandardSampleProcessing(SampleProcessing):
+    """
+    A concrete SampleProcessing subclass for well-documented standard protocols that are used repeatedly and whose internal steps are not worth modelling individually. It adds no attributes of its own: everything it needs is the inherited in_protocol pointer to a SampleProcessingProtocol, which carries the protocol URL and version.
+This is not an escape hatch from the chained representation -- it is a chain of length one. It produces the same two ProcessingSampleLink rows (one input_sample, one output_sample) at step_number 1 that any other step produces, so downstream queries and provenance traversal never have to branch on which of the two modelling styles was used, and a protocol can be upgraded from standard to fully-stepped later without migrating anything that reads it.
+    """
+    __tablename__ = 'StandardSampleProcessing'
+
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"StandardSampleProcessing(name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class ChemicalConversionProcess(SampleProcessing):
+    """
+    A chemical conversion process used in sample preparation. A process that  results in the interconversion of chemical species by a reaction to  transform the reagents into products.
+    """
+    __tablename__ = 'ChemicalConversionProcess'
+
+    duration_min = Column(Float())
+    temperature_celsius = Column(Float())
+    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
+    chemical_conversion_category = Column(Enum('addition', 'substitution', 'acid_base', 'reduction_oxidation', 'combustion', 'decomposition', 'protease_cleavage', name='ChemicalConversionCategoryEnum'))
+    digestion_method = Column(Enum('urea', 's_trap', 'fasp', 'other', name='DigestionMethodEnum'))
+    enrichment_type = Column(Enum('phosphopeptide', 'acetyl_peptide', 'ubiquitin_peptide', 'other', name='EnrichmentTypeEnum'))
+    labeling_method = Column(Enum('tmt', 'itraq', 'label_free', 'other', name='LabelingMethodEnum'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"ChemicalConversionProcess(duration_min={self.duration_min},temperature_celsius={self.temperature_celsius},substances_used={self.substances_used},chemical_conversion_category={self.chemical_conversion_category},digestion_method={self.digestion_method},enrichment_type={self.enrichment_type},labeling_method={self.labeling_method},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class Extraction(SampleProcessing):
+    """
+    The removal and isolation of a desired analyte from other material  in a sample.
+    """
+    __tablename__ = 'Extraction'
+
+    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
+    starting_mass_mg = Column(Float())
+    extraction_method = Column(Enum('mplex', 'bead_beating', 'tca_acetone_precipitation', 'cell_lysis_s_trap', 'other', name='ExtractionMethodEnum'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+    
+    extraction_target_rel = relationship( "Extraction_extraction_target" )
+    extraction_target = association_proxy("extraction_target_rel", "extraction_target",
+                                  creator=lambda x_: Extraction_extraction_target(extraction_target=x_))
+    
+
+    
+
+    def __repr__(self):
+        return f"Extraction(substances_used={self.substances_used},starting_mass_mg={self.starting_mass_mg},extraction_method={self.extraction_method},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class FiltrationProcess(SampleProcessing):
+    """
+    The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
+    """
+    __tablename__ = 'FiltrationProcess'
+
+    container_size_ml = Column(Float())
+    container_type = Column(Text())
+    filter_material = Column(Text())
+    filter_pore_size_um = Column(Float())
+    is_pressurized = Column(Boolean())
+    separation_method = Column(Text())
+    volume_ml = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"FiltrationProcess(container_size_ml={self.container_size_ml},container_type={self.container_type},filter_material={self.filter_material},filter_pore_size_um={self.filter_pore_size_um},is_pressurized={self.is_pressurized},separation_method={self.separation_method},volume_ml={self.volume_ml},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class FractionationProcess(SampleProcessing):
+    """
+    A fractionation process (e.g., off-line high pH fractionation, SCX, etc.) that splits an input sample into multiple fractions for downstream LC-MS/MS.
+
+    """
+    __tablename__ = 'FractionationProcess'
+
+    lims_protocol_instance_id = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    uses_chromatography_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'))
+    uses_chromatography = relationship("ChromatographyConfiguration", uselist=False, foreign_keys=[uses_chromatography_uid])
+    
+
+    
+
+    def __repr__(self):
+        return f"FractionationProcess(lims_protocol_instance_id={self.lims_protocol_instance_id},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},uses_chromatography_uid={self.uses_chromatography_uid},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class NormalizationProcess(SampleProcessing):
+    """
+    A process that adjusts sample amounts (e.g., protein mass or volume) to a common level across samples, prior to downstream processing.
+    """
+    __tablename__ = 'NormalizationProcess'
+
+    normalization_method = Column(Enum('equal_mass', 'equal_volume', 'spike_in_standard', 'other', name='NormalizationMethodEnum'))
+    target_mass_mg = Column(Float())
+    target_vol_ul = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"NormalizationProcess(normalization_method={self.normalization_method},target_mass_mg={self.target_mass_mg},target_vol_ul={self.target_vol_ul},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class PoolingProcess(SampleProcessing):
+    """
+    A laboratory pooling process that physically mixes multiple input samples into a single pooled processed sample for downstream analysis. Typically corresponds to the L7 "Sample Pooling" / "Pooling" protocols.
+    """
+    __tablename__ = 'PoolingProcess'
+
+    final_mass_mg = Column(Float())
+    final_vol_ml = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"PoolingProcess(final_mass_mg={self.final_mass_mg},final_vol_ml={self.final_vol_ml},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class ProteinQuantification(SampleProcessing):
+    """
+    A protein quantification assay (e.g., Coomassie or BCA) performed on a sample to determine protein concentration prior to downstream processing.
+    """
+    __tablename__ = 'ProteinQuantification'
+
+    lims_protocol_instance_id = Column(Integer())
+    final_concentration_mg_per_ml = Column(Float())
+    protein_assay_type = Column(Enum('coomassie', 'bca', 'other', name='ProteinAssayTypeEnum'), nullable=False )
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"ProteinQuantification(lims_protocol_instance_id={self.lims_protocol_instance_id},final_concentration_mg_per_ml={self.final_concentration_mg_per_ml},protein_assay_type={self.protein_assay_type},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class ResuspensionProcess(SampleProcessing):
+    """
+    Resuspension of an analyte (e.g., drying and resolubilizing peptides in LC buffer).
+    """
+    __tablename__ = 'ResuspensionProcess'
+
+    lims_protocol_instance_id = Column(Integer())
+    final_vol_ml = Column(Float())
+    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"ResuspensionProcess(lims_protocol_instance_id={self.lims_protocol_instance_id},final_vol_ml={self.final_vol_ml},substances_used={self.substances_used},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class SolidPhaseExtractionProcess(SampleProcessing):
+    """
+    A solid phase extraction (SPE) step (e.g., C18 desalting) performed as sample preparation.
+    """
+    __tablename__ = 'SolidPhaseExtractionProcess'
+
+    lims_protocol_instance_id = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    uses_chromatography_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'))
+    uses_chromatography = relationship("ChromatographyConfiguration", uselist=False, foreign_keys=[uses_chromatography_uid])
+    
+
+    
+
+    def __repr__(self):
+        return f"SolidPhaseExtractionProcess(lims_protocol_instance_id={self.lims_protocol_instance_id},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},uses_chromatography_uid={self.uses_chromatography_uid},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class SubsamplingProcess(SampleProcessing):
+    """
+    A laboratory subsampling process that takes a portion of an existing  sample and produces a derived (processed) sample for downstream  analysis. (Separating a sample aliquot from the starting material for  downstream activity.)
+    """
+    __tablename__ = 'SubsamplingProcess'
+
+    final_mass_mg = Column(Float())
+    final_vol_ml = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"SubsamplingProcess(final_mass_mg={self.final_mass_mg},final_vol_ml={self.final_vol_ml},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
 class XRFDataGenerationActivity(XRayDataGenerationActivity):
     """
     X-ray Fluorescence (XRF) elemental analysis activity.
@@ -5193,7 +6182,7 @@ XRF measures elemental composition by detecting characteristic X-ray emissions
 from a sample bombarded with high-energy X-rays. Typical output: concentrations
 of 10-30 elements per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).
 
-Data product: XRFElementalProduct (one row per element per sample)
+Data product: XRFElementalProduct
 
 Workflow pattern: Direct instrument output (no computational processing step)
   processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
@@ -5216,20 +6205,20 @@ Required enum additions to enums.yaml:
     sequence_order = Column(Integer())
     name = Column(Text(), nullable=False )
     description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     protocol_url = Column(Text())
     protocol_version = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
-    acquisition_start_time = Column(DateTime(), nullable=False )
-    acquisition_end_time = Column(DateTime(), nullable=False )
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
     instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
-    instrument_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"XRFDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},)"
+        return f"XRFDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -5248,7 +6237,7 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
 XRD identifies crystalline mineral phases by measuring diffraction patterns.
 Output: mineral phase names and quantitative abundances (weight %).
 
-Data product: XRDPhaseProduct (one row per mineral phase per sample)
+Data product: XRDPhaseProduct
 
 Workflow patterns:
   1. Direct/semi-quantitative: 
@@ -5275,20 +6264,98 @@ Required enum additions to enums.yaml:
     sequence_order = Column(Integer())
     name = Column(Text(), nullable=False )
     description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     protocol_url = Column(Text())
     protocol_version = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
-    acquisition_start_time = Column(DateTime(), nullable=False )
-    acquisition_end_time = Column(DateTime(), nullable=False )
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
     instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
-    instrument_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"XRDDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},)"
+        return f"XRDDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class XASDataGenerationActivity(XRayDataGenerationActivity):
+    """
+    X-ray Absorption Spectroscopy (XAS) acquisition activity.
+Represents one beamline measurement session for a sample.
+
+Unlike XRF and XRD, acquisition does not yield a product directly: each
+sweep is captured as XASInstrumentData, and an XASLCFDataProcessingActivity
+fits those sweeps to produce an XASLCFProduct.
+    """
+    __tablename__ = 'XASDataGenerationActivity'
+
+    facility = Column(Text())
+    beamline = Column(Text())
+    ring_energy_gev = Column(Float())
+    ring_current_ma = Column(Float())
+    insertion_device = Column(Text())
+    element = Column(Text())
+    edge = Column(Text())
+    reference_material = Column(Text())
+    xas_sample_type = Column(Text())
+    sample_format = Column(Text())
+    sample_holder = Column(Text())
+    sample_temperature_k = Column(Float())
+    sample_orientation_deg = Column(Float())
+    sample_detector_distance_mm = Column(Float())
+    sample_doi = Column(Text())
+    crystal = Column(Text())
+    crystal_cut = Column(Text())
+    crystal_detune_pct = Column(Float())
+    mono_angle_deg = Column(Float())
+    mono_2nd_xtal_mm = Column(Float())
+    mono_energy_motor_ev = Column(Float())
+    mono_energy_encoder_ev = Column(Float())
+    mirror_angle_mrad = Column(Float())
+    m0_coating = Column(Text())
+    m0_cutoff_kev = Column(Float())
+    m1_coating = Column(Text())
+    inhutch_mirror_coating = Column(Text())
+    inhutch_mirror_cutoff_kev = Column(Float())
+    slit_size_h_um = Column(Float())
+    slit_size_v_um = Column(Float())
+    slit_center_h = Column(Float())
+    slit_center_v = Column(Float())
+    beam_attenuation_um = Column(Float())
+    beam_attenuation_material = Column(Text())
+    fy_electronics = Column(Text())
+    fy_channel_num = Column(Integer())
+    fy_element = Column(Text())
+    fy_transition = Column(Text())
+    user_comment = Column(Text())
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"XASDataGenerationActivity(facility={self.facility},beamline={self.beamline},ring_energy_gev={self.ring_energy_gev},ring_current_ma={self.ring_current_ma},insertion_device={self.insertion_device},element={self.element},edge={self.edge},reference_material={self.reference_material},xas_sample_type={self.xas_sample_type},sample_format={self.sample_format},sample_holder={self.sample_holder},sample_temperature_k={self.sample_temperature_k},sample_orientation_deg={self.sample_orientation_deg},sample_detector_distance_mm={self.sample_detector_distance_mm},sample_doi={self.sample_doi},crystal={self.crystal},crystal_cut={self.crystal_cut},crystal_detune_pct={self.crystal_detune_pct},mono_angle_deg={self.mono_angle_deg},mono_2nd_xtal_mm={self.mono_2nd_xtal_mm},mono_energy_motor_ev={self.mono_energy_motor_ev},mono_energy_encoder_ev={self.mono_energy_encoder_ev},mirror_angle_mrad={self.mirror_angle_mrad},m0_coating={self.m0_coating},m0_cutoff_kev={self.m0_cutoff_kev},m1_coating={self.m1_coating},inhutch_mirror_coating={self.inhutch_mirror_coating},inhutch_mirror_cutoff_kev={self.inhutch_mirror_cutoff_kev},slit_size_h_um={self.slit_size_h_um},slit_size_v_um={self.slit_size_v_um},slit_center_h={self.slit_center_h},slit_center_v={self.slit_center_v},beam_attenuation_um={self.beam_attenuation_um},beam_attenuation_material={self.beam_attenuation_material},fy_electronics={self.fy_electronics},fy_channel_num={self.fy_channel_num},fy_element={self.fy_element},fy_transition={self.fy_transition},user_comment={self.user_comment},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -5312,7 +6379,7 @@ class MassSpectrometryInstrumentData(InstrumentData):
     file_curie = Column(Text())
     alternative_identifiers = Column(Text())
     compression_type = Column(Text())
-    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', name='FileTypeEnum'))
+    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', 'XAS_Raw_Sweep_File', 'XAS_LCF_Output', name='FileTypeEnum'))
     software_version = Column(Text())
     name = Column(Text(), nullable=False )
     description = Column(Text(), nullable=False )
@@ -5403,20 +6470,17 @@ Refs:   Media (growth medium), Strain (target organism)
     container_type = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
-    protocol_url = Column(Text())
-    protocol_version = Column(Text())
+    oxygen_saturation_pct = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    analysis_type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='RouteMethodEnum'))
-    method_name = Column(Enum('MAOM', 'WOEM', name='MethodNameEnum'))
-    processing_steps = Column(Text(), nullable=False )
-    uses_sample = Column(UUID(), ForeignKey('Sample.id'))
     
 
     
 
     def __repr__(self):
-        return f"StrainPurity(inspection_method={self.inspection_method},target_strain={self.target_strain},contaminant_strains={self.contaminant_strains},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"StrainPurity(inspection_method={self.inspection_method},target_strain={self.target_strain},contaminant_strains={self.contaminant_strains},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5445,20 +6509,17 @@ Refs:   Media (growth medium), Strain
     container_type = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
-    protocol_url = Column(Text())
-    protocol_version = Column(Text())
+    oxygen_saturation_pct = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    analysis_type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='RouteMethodEnum'))
-    method_name = Column(Enum('MAOM', 'WOEM', name='MethodNameEnum'))
-    processing_steps = Column(Text(), nullable=False )
-    uses_sample = Column(UUID(), ForeignKey('Sample.id'))
     
 
     
 
     def __repr__(self):
-        return f"StockCulturePreparation(preparation_date={self.preparation_date},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"StockCulturePreparation(preparation_date={self.preparation_date},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5487,20 +6548,17 @@ Refs:   Media (growth medium), Strain
     container_type = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
-    protocol_url = Column(Text())
-    protocol_version = Column(Text())
+    oxygen_saturation_pct = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    analysis_type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='RouteMethodEnum'))
-    method_name = Column(Enum('MAOM', 'WOEM', name='MethodNameEnum'))
-    processing_steps = Column(Text(), nullable=False )
-    uses_sample = Column(UUID(), ForeignKey('Sample.id'))
     
 
     
 
     def __repr__(self):
-        return f"PreCultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"PreCultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5531,20 +6589,17 @@ Refs:   Media (growth medium), Strain
     container_type = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
-    protocol_url = Column(Text())
-    protocol_version = Column(Text())
+    oxygen_saturation_pct = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    analysis_type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='RouteMethodEnum'))
-    method_name = Column(Enum('MAOM', 'WOEM', name='MethodNameEnum'))
-    processing_steps = Column(Text(), nullable=False )
-    uses_sample = Column(UUID(), ForeignKey('Sample.id'))
     
 
     
 
     def __repr__(self):
-        return f"ExperimentalCulture(treatment_type={self.treatment_type},growth_time={self.growth_time},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"ExperimentalCulture(treatment_type={self.treatment_type},growth_time={self.growth_time},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5575,6 +6630,7 @@ v2 change: media_ref directly on class (no UsesMedia mixin);
     __tablename__ = 'AMP2PlateSetupActivity'
 
     media_ref = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    cycle_id = Column(Integer())
     plate_type = Column(Text(), nullable=False )
     plate_barcode = Column(Text())
     setup_date = Column(DateTime(), nullable=False )
@@ -5583,14 +6639,11 @@ v2 change: media_ref directly on class (no UsesMedia mixin);
     sealing_method = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
-    protocol_url = Column(Text())
-    protocol_version = Column(Text())
+    oxygen_saturation_pct = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    analysis_type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='RouteMethodEnum'))
-    method_name = Column(Enum('MAOM', 'WOEM', name='MethodNameEnum'))
-    processing_steps = Column(Text(), nullable=False )
-    uses_sample = Column(UUID(), ForeignKey('Sample.id'))
     
     
     # One-To-Many: OneToAnyMapping(source_class='AMP2PlateSetupActivity', source_slot='well_metadata', mapping_type=None, target_class='WellMetadata', target_slot='AMP2PlateSetupActivity_id', join_class=None, uses_join_table=None, multivalued=False)
@@ -5600,7 +6653,7 @@ v2 change: media_ref directly on class (no UsesMedia mixin);
     
 
     def __repr__(self):
-        return f"AMP2PlateSetupActivity(media_ref={self.media_ref},plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"AMP2PlateSetupActivity(media_ref={self.media_ref},cycle_id={self.cycle_id},plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5633,14 +6686,11 @@ v1 origin: plate-general.yaml EcoplatePlateSetupActivity
     sealing_method = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
-    protocol_url = Column(Text())
-    protocol_version = Column(Text())
+    oxygen_saturation_pct = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    analysis_type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='RouteMethodEnum'))
-    method_name = Column(Enum('MAOM', 'WOEM', name='MethodNameEnum'))
-    processing_steps = Column(Text(), nullable=False )
-    uses_sample = Column(UUID(), ForeignKey('Sample.id'))
     
     
     # One-To-Many: OneToAnyMapping(source_class='EcoplatePlateSetupActivity', source_slot='well_metadata', mapping_type=None, target_class='WellMetadata', target_slot='EcoplatePlateSetupActivity_id', join_class=None, uses_join_table=None, multivalued=False)
@@ -5650,7 +6700,7 @@ v1 origin: plate-general.yaml EcoplatePlateSetupActivity
     
 
     def __repr__(self):
-        return f"EcoplatePlateSetupActivity(plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"EcoplatePlateSetupActivity(plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5680,20 +6730,20 @@ v1 origin: plate-general.yaml AMP2DataGenerationActivity
     sequence_order = Column(Integer())
     name = Column(Text(), nullable=False )
     description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     protocol_url = Column(Text())
     protocol_version = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
-    acquisition_start_time = Column(DateTime(), nullable=False )
-    acquisition_end_time = Column(DateTime(), nullable=False )
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
     instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
-    instrument_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"AMP2DataGenerationActivity(measurement_type={self.measurement_type},wavelength_nm={self.wavelength_nm},timepoint_label={self.timepoint_label},sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},)"
+        return f"AMP2DataGenerationActivity(measurement_type={self.measurement_type},wavelength_nm={self.wavelength_nm},timepoint_label={self.timepoint_label},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -5720,20 +6770,20 @@ v1 origin: plate-general.yaml EcoplateDataGenerationActivity
     sequence_order = Column(Integer())
     name = Column(Text(), nullable=False )
     description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     protocol_url = Column(Text())
     protocol_version = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
-    acquisition_start_time = Column(DateTime(), nullable=False )
-    acquisition_end_time = Column(DateTime(), nullable=False )
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
     instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
-    instrument_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"EcoplateDataGenerationActivity(wavelength_nm={self.wavelength_nm},timepoint_label={self.timepoint_label},sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},)"
+        return f"EcoplateDataGenerationActivity(wavelength_nm={self.wavelength_nm},timepoint_label={self.timepoint_label},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -5755,7 +6805,7 @@ class NucleotideSequencingInstrumentData(InstrumentData):
     file_curie = Column(Text())
     alternative_identifiers = Column(Text())
     compression_type = Column(Text())
-    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', name='FileTypeEnum'))
+    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', 'XAS_Raw_Sweep_File', 'XAS_LCF_Output', name='FileTypeEnum'))
     software_version = Column(Text())
     name = Column(Text(), nullable=False )
     description = Column(Text(), nullable=False )
@@ -5834,7 +6884,6 @@ and add only their type-specific slots.
 class BulkDensityProduct(ProcessedData):
     """
     Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
-One row per sample with columns for bulk density and QC flag.
     """
     __tablename__ = 'BulkDensityProduct'
 
@@ -5876,7 +6925,6 @@ One row per sample with columns for bulk density and QC flag.
 class ElementalAnalysisProduct(ProcessedData):
     """
     Elemental analysis product, typically derived via combustion or similar instrument.
-One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'ElementalAnalysisProduct'
@@ -5925,7 +6973,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class EnzymeProduct(ProcessedData):
     """
     Enzyme activity analysis product, typically derived via colorimetric assay of soil extracts.
-One row per sample with columns for beta-glucosidase activity and QC flag.
     """
     __tablename__ = 'EnzymeProduct'
 
@@ -5967,7 +7014,6 @@ One row per sample with columns for beta-glucosidase activity and QC flag.
 class GWCMoistureProduct(ProcessedData):
     """
     Gravimetric water content (GWC) analysis product, typically derived via oven-drying and weighing of a known mass of soil.
-One row per sample with columns for GWC and QC flag.
     """
     __tablename__ = 'GWCMoistureProduct'
 
@@ -6008,7 +7054,7 @@ One row per sample with columns for GWC and QC flag.
 
 class HydraulicPropertiesProduct(ProcessedData):
     """
-    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
+    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. The four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
     """
     __tablename__ = 'HydraulicPropertiesProduct'
 
@@ -6053,7 +7099,6 @@ class HydraulicPropertiesProduct(ProcessedData):
 class IonsAnalysisProduct(ProcessedData):
     """
     Ions analysis product, typically derived via ICP-OES or similar instrument.
-One row per sample with columns for each ion measured.
 Individual QC flags for each ion using ProcessedDataFlag enum.
     """
     __tablename__ = 'IonsAnalysisProduct'
@@ -6118,7 +7163,6 @@ Individual QC flags for each ion using ProcessedDataFlag enum.
 class MicrobialBiomassProduct(ProcessedData):
     """
     Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar instrument.
-One row per sample with columns for microbial biomass carbon and nitrogen.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'MicrobialBiomassProduct'
@@ -6168,7 +7212,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class NitrogenAnalysisProduct(ProcessedData):
     """
     Nitrogen analysis product, typically derived via colorimetric assay of soil extracts.
-One row per sample with columns for nitrate and ammonium concentrations.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'NitrogenAnalysisProduct'
@@ -6218,7 +7261,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class PhosphorusAnalysisProduct(ProcessedData):
     """
     Phosphorus analysis product, typically derived via colorimetric assay of soil extracts.
-One row per sample with columns for phosphorus concentration.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'PhosphorusAnalysisProduct'
@@ -6265,7 +7307,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class RespirationProduct(ProcessedData):
     """
     Soil respiration analysis product.
-One row per sample with columns for soil respiration and QC flag.
     """
     __tablename__ = 'RespirationProduct'
 
@@ -6307,7 +7348,6 @@ One row per sample with columns for soil respiration and QC flag.
 class TextureProduct(ProcessedData):
     """
     Soil texture analysis product, typically derived via hydrometer or similar instrument.
-One row per sample with columns for sand, silt, and clay percentages.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'TextureProduct'
@@ -6349,70 +7389,9 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     
 
 
-class TomographyProduct(ProcessedData):
-    """
-    Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
-One row per sample with columns for pore structure metrics and QC flag.
-    """
-    __tablename__ = 'TomographyProduct'
-
-    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    roi_volume_voxel = Column(Float())
-    voxel_size = Column(Float())
-    connected_pores = Column(Float())
-    pore_diameter_min = Column(Float())
-    pore_diameter_max = Column(Float())
-    pore_diameter_mean = Column(Float())
-    pore_diameter_median = Column(Float())
-    pore_diameter_variance = Column(Float())
-    pore_volume_mean = Column(Float())
-    total_pore_volume = Column(Float())
-    permeability_x = Column(Float())
-    flow_rate_x = Column(Float())
-    tortuosity_x = Column(Float())
-    permeability_y = Column(Float())
-    flow_rate_y = Column(Float())
-    tortuosity_y = Column(Float())
-    permeability_z = Column(Float())
-    flow_rate_z = Column(Float())
-    tortuosity_z = Column(Float())
-    flag_xct = Column(Text())
-    summary_metrics = Column(Text())
-    lims_barcode = Column(Text())
-    sample_id = Column(UUID(), ForeignKey('Sample.id'))
-    name = Column(Text(), nullable=False )
-    description = Column(Text())
-    project = Column(Integer())
-    sampling_set = Column(Integer())
-    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
-    sample_name = Column(Text())
-    s3_base_url = Column(Text())
-    s3_bucket = Column(Text())
-    s3_key = Column(Text(), nullable=False )
-    filesize = Column(Integer())
-    md5checksum = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    
-
-    
-
-    def __repr__(self):
-        return f"TomographyProduct(measure_type={self.measure_type},roi_volume_voxel={self.roi_volume_voxel},voxel_size={self.voxel_size},connected_pores={self.connected_pores},pore_diameter_min={self.pore_diameter_min},pore_diameter_max={self.pore_diameter_max},pore_diameter_mean={self.pore_diameter_mean},pore_diameter_median={self.pore_diameter_median},pore_diameter_variance={self.pore_diameter_variance},pore_volume_mean={self.pore_volume_mean},total_pore_volume={self.total_pore_volume},permeability_x={self.permeability_x},flow_rate_x={self.flow_rate_x},tortuosity_x={self.tortuosity_x},permeability_y={self.permeability_y},flow_rate_y={self.flow_rate_y},tortuosity_y={self.tortuosity_y},permeability_z={self.permeability_z},flow_rate_z={self.flow_rate_z},tortuosity_z={self.tortuosity_z},flag_xct={self.flag_xct},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
-
-
-
-    
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
-    
-
-
 class PHProduct(ProcessedData):
     """
     Soil pH analysis product, typically derived via pH meter or similar instrument.
-One row per sample with columns for pH and QC flag.
     """
     __tablename__ = 'pHProduct'
 
@@ -6457,16 +7436,21 @@ class XRayDataProduct(ProcessedData):
 Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
 
 Concrete subclasses:
-  - XRFElementalProduct: elemental concentrations (one row per sample)
-  - XRDPhaseProduct: mineral phases (one row per sample)
+  - XCTProduct: pore geometry and flow properties (X-ray computed tomography)
+  - XRFElementalProduct: elemental concentrations
+  - XRDPhaseProduct: mineral phases
+  - XASLCFProduct: linear combination fitting results
 
 Common patterns:
-  - s3_key points to raw spectrum/diffractogram file in MinIO
+  - s3_key points to the raw or processed X-ray data file in MinIO
   - summary_metrics provides lightweight queryable summaries:
+      XCT: {"connected_pores":1842, "total_pore_volume":3.2e6, "tortuosity_z":1.47}
       XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
       XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
-  - workflow_id is NULL for direct instrument output (XRF typical)
-  - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld) 
+      XAS: {"r_factor":0.000975, "lcf_type":"XANES", "n_standards":3}
+  - direct outputs may not have a processing link (XRF typical)
+  - computational outputs should use a typed processing reference slot
+    (XRD Rietveld refinement, XAS LCF fitting)
     """
     __tablename__ = 'XRayDataProduct'
 
@@ -6502,6 +7486,178 @@ Common patterns:
     
 
 
+class XASInstrumentData(InstrumentData):
+    """
+    Raw XAS sweep file (.0001, .0002, ...) produced at acquisition time.
+Stores file pointer metadata and key per-sweep scan header fields.
+    """
+    __tablename__ = 'XASInstrumentData'
+
+    produced_by_xas_run = Column(UUID(), ForeignKey('XASDataGenerationActivity.id'))
+    sweep_number = Column(Integer())
+    scan_datetime = Column(DateTime())
+    scan_time_sec = Column(Integer())
+    scan_subtype = Column(Enum('energy', 'motor', 'unknown', name='XASScanSubtype'))
+    positioner = Column(Text())
+    e0_ev = Column(Float())
+    n_points = Column(Integer())
+    n_data_rows = Column(Integer())
+    x_first = Column(Float())
+    x_last = Column(Float())
+    scan_bounds = Column(Text())
+    scan_steps = Column(Text())
+    integration_times = Column(Text())
+    kwgt = Column(Float())
+    fy_element = Column(Text())
+    fy_transition = Column(Text())
+    file_curie = Column(Text())
+    alternative_identifiers = Column(Text())
+    compression_type = Column(Text())
+    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', 'XAS_Raw_Sweep_File', 'XAS_LCF_Output', name='FileTypeEnum'))
+    software_version = Column(Text())
+    name = Column(Text(), nullable=False )
+    description = Column(Text(), nullable=False )
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASInstrumentData', source_slot='amplifiers', mapping_type=None, target_class='XASAmplifier', target_slot='XASInstrumentData_id', join_class=None, uses_join_table=None, multivalued=False)
+    amplifiers = relationship( "XASAmplifier", foreign_keys="[XASAmplifier.XASInstrumentData_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASInstrumentData', source_slot='motors', mapping_type=None, target_class='XASMotorPosition', target_slot='XASInstrumentData_id', join_class=None, uses_join_table=None, multivalued=False)
+    motors = relationship( "XASMotorPosition", foreign_keys="[XASMotorPosition.XASInstrumentData_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASInstrumentData', source_slot='signal_columns', mapping_type=None, target_class='XASSignalColumn', target_slot='XASInstrumentData_id', join_class=None, uses_join_table=None, multivalued=False)
+    signal_columns = relationship( "XASSignalColumn", foreign_keys="[XASSignalColumn.XASInstrumentData_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASInstrumentData', source_slot='data_rows', mapping_type=None, target_class='XASDataRow', target_slot='XASInstrumentData_id', join_class=None, uses_join_table=None, multivalued=False)
+    data_rows = relationship( "XASDataRow", foreign_keys="[XASDataRow.XASInstrumentData_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASInstrumentData', source_slot='ion_chambers', mapping_type=None, target_class='XASIonChamber', target_slot='XASInstrumentData_id', join_class=None, uses_join_table=None, multivalued=False)
+    ion_chambers = relationship( "XASIonChamber", foreign_keys="[XASIonChamber.XASInstrumentData_id]")
+    
+
+    
+
+    def __repr__(self):
+        return f"XASInstrumentData(produced_by_xas_run={self.produced_by_xas_run},sweep_number={self.sweep_number},scan_datetime={self.scan_datetime},scan_time_sec={self.scan_time_sec},scan_subtype={self.scan_subtype},positioner={self.positioner},e0_ev={self.e0_ev},n_points={self.n_points},n_data_rows={self.n_data_rows},x_first={self.x_first},x_last={self.x_last},scan_bounds={self.scan_bounds},scan_steps={self.scan_steps},integration_times={self.integration_times},kwgt={self.kwgt},fy_element={self.fy_element},fy_transition={self.fy_transition},file_curie={self.file_curie},alternative_identifiers={self.alternative_identifiers},compression_type={self.compression_type},file_type={self.file_type},software_version={self.software_version},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class UVSpectroscopyProduct(ProcessedData):
+    """
+    A compound and its measurements resulting from a 
+UVDataGenerationActivity.One UVDataGenerationActivity may have many 
+"products" representing all compounds detected in the sample.
+    """
+    __tablename__ = 'UVSpectroscopyProduct'
+
+    produced_by_uv_run = Column(UUID(), ForeignKey('UVDataGenerationActivity.id'))
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    retention_time_min = Column(Float())
+    peak_area = Column(Float())
+    peak_percent_area = Column(Float())
+    peak_height = Column(Float())
+    weight_percent = Column(Float())
+    concentration_ug_per_uL = Column(Float())
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"UVSpectroscopyProduct(produced_by_uv_run={self.produced_by_uv_run},compound_name={self.compound_name},retention_time_min={self.retention_time_min},peak_area={self.peak_area},peak_percent_area={self.peak_percent_area},peak_height={self.peak_height},weight_percent={self.weight_percent},concentration_ug_per_uL={self.concentration_ug_per_uL},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class RIProduct(ProcessedData):
+    """
+    A compound and its measurements resulting from a 
+RIDataGenerationActivity.One RIDataGenerationActivity may have many 
+"products" representing all compounds detected in the sample.
+    """
+    __tablename__ = 'RIProduct'
+
+    produced_by_ri_run = Column(UUID(), ForeignKey('RIDataGenerationActivity.id'))
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    weight_percent = Column(Float())
+    concentration_ug_per_uL = Column(Float())
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"RIProduct(produced_by_ri_run={self.produced_by_ri_run},compound_name={self.compound_name},weight_percent={self.weight_percent},concentration_ug_per_uL={self.concentration_ug_per_uL},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
 class CoreSection(ProcessedSample):
     """
     A section of a core sample (TOP, MID, BTM).
@@ -6514,9 +7670,8 @@ class CoreSection(ProcessedSample):
     label_text = Column(Text())
     concentration_ug_per_uL = Column(Float())
     total_amount_ug = Column(Float())
-    volume_uL = Column(Float())
+    volume_ul = Column(Float())
     sampled_portion = Column(Enum('supernatant', 'pellet', 'organic_layer', 'aqueous_layer', 'interlayer', 'chloroform_layer', 'methanol_layer', name='SamplePortionEnum'))
-    sampled_during = Column(UUID(), ForeignKey('SampleProcessing.id'))
     replicate = Column(Integer())
     name = Column(Text(), nullable=False )
     description = Column(Text())
@@ -6527,7 +7682,7 @@ class CoreSection(ProcessedSample):
     
 
     def __repr__(self):
-        return f"CoreSection(core_section={self.core_section},id={self.id},storage_location={self.storage_location},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_uL={self.volume_uL},sampled_portion={self.sampled_portion},sampled_during={self.sampled_during},replicate={self.replicate},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"CoreSection(core_section={self.core_section},id={self.id},storage_location={self.storage_location},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_ul={self.volume_ul},sampled_portion={self.sampled_portion},replicate={self.replicate},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
 
 
 
@@ -6619,10 +7774,11 @@ class MolecularIdentificationProduct(MassSpectrometryDataProduct):
 
 class MetaproteomicsProduct(MassSpectrometryDataProduct):
     """
-    Abstract parent class for processed metaproteomics data. Details and subclasses TBD.
+    A tabular data file containing peptide-level, protein-level, or aggregation results.
     """
     __tablename__ = 'MetaproteomicsProduct'
 
+    metaproteomics_result_type = Column(Enum('peptide_level', 'protein_level', 'aggregation', name='MetaproteomicsResultTypeEnum'))
     results_from_ms_processing = Column(UUID(), ForeignKey('MassSpectrometryDataProcessingActivity.id'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
@@ -6644,7 +7800,7 @@ class MetaproteomicsProduct(MassSpectrometryDataProduct):
     
 
     def __repr__(self):
-        return f"MetaproteomicsProduct(results_from_ms_processing={self.results_from_ms_processing},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"MetaproteomicsProduct(metaproteomics_result_type={self.metaproteomics_result_type},results_from_ms_processing={self.results_from_ms_processing},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
 
 
 
@@ -6787,10 +7943,80 @@ Inherits all MetagenomicsProduct and dataProduct slots.
     
 
 
+class XCTProduct(XRayDataProduct):
+    """
+    X-ray computed tomography (XCT) analysis product for pore geometry and flow properties of intact soil cores.
+    """
+    __tablename__ = 'XCTProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    roi_x_voxel = Column(Float())
+    roi_y_voxel = Column(Float())
+    roi_z_voxel = Column(Float())
+    voxel_size_mm_per_voxel = Column(Float())
+    porosity_percent = Column(Float())
+    connected_pores_fraction = Column(Float())
+    pore_connectivity_percent = Column(Float())
+    pore_equivalent_diameter_min_mm = Column(Float())
+    pore_equivalent_diameter_max_mm = Column(Float())
+    pore_equivalent_diameter_mean_mm = Column(Float())
+    pore_equivalent_diameter_median_mm = Column(Float())
+    pore_equivalent_diameter_variance_mm2 = Column(Float())
+    pore_volume_min_mm3 = Column(Float())
+    pore_volume_max_mm3 = Column(Float())
+    pore_volume_mean_mm3 = Column(Float())
+    pore_volume_median_mm3 = Column(Float())
+    pore_volume_variance_mm6 = Column(Float())
+    pore_area_min_mm2 = Column(Float())
+    pore_area_max_mm2 = Column(Float())
+    pore_area_mean_mm2 = Column(Float())
+    pore_area_median_mm2 = Column(Float())
+    pore_area_variance_mm4 = Column(Float())
+    permeability_x_um2 = Column(Float())
+    flow_rate_x_mm3_per_sec = Column(Float())
+    tortuosity_x = Column(Float())
+    permeability_y_um2 = Column(Float())
+    flow_rate_y_mm3_per_sec = Column(Float())
+    tortuosity_y = Column(Float())
+    permeability_z_um2 = Column(Float())
+    flow_rate_z_mm3_per_sec = Column(Float())
+    tortuosity_z = Column(Float())
+    flag_xct = Column(Text())
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"XCTProduct(measure_type={self.measure_type},roi_x_voxel={self.roi_x_voxel},roi_y_voxel={self.roi_y_voxel},roi_z_voxel={self.roi_z_voxel},voxel_size_mm_per_voxel={self.voxel_size_mm_per_voxel},porosity_percent={self.porosity_percent},connected_pores_fraction={self.connected_pores_fraction},pore_connectivity_percent={self.pore_connectivity_percent},pore_equivalent_diameter_min_mm={self.pore_equivalent_diameter_min_mm},pore_equivalent_diameter_max_mm={self.pore_equivalent_diameter_max_mm},pore_equivalent_diameter_mean_mm={self.pore_equivalent_diameter_mean_mm},pore_equivalent_diameter_median_mm={self.pore_equivalent_diameter_median_mm},pore_equivalent_diameter_variance_mm2={self.pore_equivalent_diameter_variance_mm2},pore_volume_min_mm3={self.pore_volume_min_mm3},pore_volume_max_mm3={self.pore_volume_max_mm3},pore_volume_mean_mm3={self.pore_volume_mean_mm3},pore_volume_median_mm3={self.pore_volume_median_mm3},pore_volume_variance_mm6={self.pore_volume_variance_mm6},pore_area_min_mm2={self.pore_area_min_mm2},pore_area_max_mm2={self.pore_area_max_mm2},pore_area_mean_mm2={self.pore_area_mean_mm2},pore_area_median_mm2={self.pore_area_median_mm2},pore_area_variance_mm4={self.pore_area_variance_mm4},permeability_x_um2={self.permeability_x_um2},flow_rate_x_mm3_per_sec={self.flow_rate_x_mm3_per_sec},tortuosity_x={self.tortuosity_x},permeability_y_um2={self.permeability_y_um2},flow_rate_y_mm3_per_sec={self.flow_rate_y_mm3_per_sec},tortuosity_y={self.tortuosity_y},permeability_z_um2={self.permeability_z_um2},flow_rate_z_mm3_per_sec={self.flow_rate_z_mm3_per_sec},tortuosity_z={self.tortuosity_z},flag_xct={self.flag_xct},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
 class XRFElementalProduct(XRayDataProduct):
     """
     X-ray Fluorescence (XRF) elemental concentration data.
-One row per sample with columns for each element measured.
 
 Follows the wide-format pattern established by IonsAnalysisProduct.
 Element concentrations in mg/kg (parts per million dry weight basis) as float values.
@@ -6799,7 +8025,7 @@ Individual QC flags for each element using ProcessedDataFlag enum.
 Relationship to core tables:
   - id: FK -> processedData.id (1:1 linkage)
   - processedData.type = 'XRFElementalProduct'
-  - processedData.workflow_id = NULL (direct acquisition; no computational WEA)
+  - direct acquisition; no computational processing link required
   - processedData.summary_metrics = {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, ...}
   - processedData.s3_key = path to raw spectrum or calibrated CSV in MinIO
 
@@ -6903,7 +8129,6 @@ Required enum additions to enums.yaml:
 class XRDPhaseProduct(XRayDataProduct):
     """
     X-ray Diffraction (XRD) mineral phase identification and quantification data.
-One row per sample with columns for each mineral phase identified.
 
 Follows the wide-format pattern with individual weight percent columns.
 Individual QC flags for each mineral using ProcessedDataFlag enum.
@@ -6911,8 +8136,7 @@ Individual QC flags for each mineral using ProcessedDataFlag enum.
 Relationship to core tables:
   - id: FK -> processedData.id (1:1 linkage)
   - processedData.type = 'XRDPhaseProduct'
-  - processedData.workflow_id -> DataProcessingActivity if Rietveld refinement
-    is computational; NULL if manual/semi-quantitative
+  - optional typed processing reference when Rietveld refinement is used
   - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
   - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
 
@@ -6931,12 +8155,8 @@ Computational processing workflow (if applicable):
   XRDDataGenerationActivity acquires raw diffractogram ->
   DataProcessingActivity (type='xrd_rietveld_refinement') processes with
   HighScore Plus, GSAS-II, or FullProf ->
-  XRDPhaseProduct (workflow_id points to refinement WEA)
-  
-  workflow_steps JSONB example:
-    {"software": "HighScore_Plus", "version": "5.1", "method": "Rietveld",
-     "r_factor": 0.042, "gof": 1.8, "amorphous_content_pct": 12}
-
+  XRDPhaseProduct (typed processing reference points to refinement activity)
+     
 Required enum additions to enums.yaml:
   product:
     XRDPhaseProduct:  # Add to product permissible_values
@@ -6985,6 +8205,80 @@ Required enum additions to enums.yaml:
 
     def __repr__(self):
         return f"XRDPhaseProduct(measure_type={self.measure_type},quartz_percent={self.quartz_percent},albite_percent={self.albite_percent},microcline_percent={self.microcline_percent},muscovite_percent={self.muscovite_percent},kaolinite_percent={self.kaolinite_percent},chlorite_percent={self.chlorite_percent},hornblende_percent={self.hornblende_percent},pyrite_percent={self.pyrite_percent},halite_percent={self.halite_percent},gypsum_percent={self.gypsum_percent},flag_quartz={self.flag_quartz},flag_albite={self.flag_albite},flag_microcline={self.flag_microcline},flag_muscovite={self.flag_muscovite},flag_kaolinite={self.flag_kaolinite},flag_chlorite={self.flag_chlorite},flag_hornblende={self.flag_hornblende},flag_pyrite={self.flag_pyrite},flag_halite={self.flag_halite},flag_gypsum={self.flag_gypsum},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class XASLCFProduct(XRayDataProduct):
+    """
+    XAS Linear Combination Fitting (LCF) processed result.
+One instance per .lcf file and linked to an XASLCFDataProcessingActivity
+through a typed processing slot.
+    """
+    __tablename__ = 'XASLCFProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    results_from_xas_processing = Column(UUID(), ForeignKey('XASLCFDataProcessingActivity.id'))
+    xas_filename = Column(Text())
+    lcf_type = Column(Enum('XANES', 'EXAFS', name='XASLCFType'))
+    run_label = Column(Text())
+    fit_label = Column(Text())
+    analysis_code = Column(Text())
+    sample_nor_file = Column(Text())
+    fit_range_min = Column(Float())
+    fit_range_max = Column(Float())
+    fit_range_unit = Column(Text())
+    n_data_points = Column(Integer())
+    n_variables = Column(Integer())
+    n_standards = Column(Integer())
+    weights_sum_to_1 = Column(Text())
+    weights_bounded = Column(Text())
+    e0_shift_used = Column(Text())
+    noise_added = Column(Float())
+    r_factor = Column(Float())
+    chi_square = Column(Float())
+    reduced_chi_square = Column(Float())
+    weights_sum = Column(Float())
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASLCFProduct', source_slot='standards', mapping_type=None, target_class='XASLCFStandard', target_slot='XASLCFProduct_id', join_class=None, uses_join_table=None, multivalued=False)
+    standards = relationship( "XASLCFStandard", foreign_keys="[XASLCFStandard.XASLCFProduct_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASLCFProduct', source_slot='species_proportions', mapping_type=None, target_class='XASLCFSpeciesProportion', target_slot='XASLCFProduct_id', join_class=None, uses_join_table=None, multivalued=False)
+    species_proportions = relationship( "XASLCFSpeciesProportion", foreign_keys="[XASLCFSpeciesProportion.XASLCFProduct_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASLCFProduct', source_slot='lcf_data_rows', mapping_type=None, target_class='XASLCFDataRow', target_slot='XASLCFProduct_id', join_class=None, uses_join_table=None, multivalued=False)
+    lcf_data_rows = relationship( "XASLCFDataRow", foreign_keys="[XASLCFDataRow.XASLCFProduct_id]")
+    
+
+    
+
+    def __repr__(self):
+        return f"XASLCFProduct(measure_type={self.measure_type},results_from_xas_processing={self.results_from_xas_processing},xas_filename={self.xas_filename},lcf_type={self.lcf_type},run_label={self.run_label},fit_label={self.fit_label},analysis_code={self.analysis_code},sample_nor_file={self.sample_nor_file},fit_range_min={self.fit_range_min},fit_range_max={self.fit_range_max},fit_range_unit={self.fit_range_unit},n_data_points={self.n_data_points},n_variables={self.n_variables},n_standards={self.n_standards},weights_sum_to_1={self.weights_sum_to_1},weights_bounded={self.weights_bounded},e0_shift_used={self.e0_shift_used},noise_added={self.noise_added},r_factor={self.r_factor},chi_square={self.chi_square},reduced_chi_square={self.reduced_chi_square},weights_sum={self.weights_sum},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
 
 
 

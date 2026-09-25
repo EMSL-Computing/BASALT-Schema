@@ -1,0 +1,340 @@
+---
+# =============================================================================
+# XCT Product Schema
+# =============================================================================
+#
+# CONTEXT and Purpose:
+# - Validation schema for XCTProduct   pore geometry and flow properties
+#   derived from X-ray computed tomography (XCT / micro-CT) of intact soil cores
+# - Source: XCTProduct class in src/basalt_schema/schema/products.yaml
+# - NOT currently in Soil_BioChemical_properties.csv (published in separate XCT deliverable)
+# - This schema covers the API-level ingest contract for rapid validation
+#
+# NOTE on flag:
+# - flag_xct is currently typed as string in the operational schema (commented-out
+#   processeddataflag range). Reflected here as-is with a comment.
+# - Renamed to XCT for consistency.
+#
+# Attribute groupings for readability:
+#   ROI geometry          roi_x_voxel, roi_y_voxel, roi_z_voxel, voxel_size_mm_per_voxel
+#   Porosity              porosity_percent, connected_pores_fraction, pore_connectivity_percent
+#   Pore diameter stats   pore_equivalent_diameter_min/max/mean/median/variance
+#   Pore volume           pore_volume_min/max/mean/median/variance
+#   Pore area             pore_area_min/max/mean/median/variance
+#   Flow (x/y/z axes)     permeability, flow_rate, tortuosity per axis
+#
+# Relationship to broader schema:
+# - analysis_type key in LIMSProcessedData envelope: "xct"
+# - xray_computed_tomography_method exists in routemethod enum (enums.yaml)
+# - Proposal_ID, sampling_set, core_section inherited from LIMSProcessedData envelope
+#
+# Last Updated:  2026-09-09
+# =============================================================================
+
+id: https://emsl-computing.github.io/BASALT-Schema/xct
+name: xct_schema
+title: MONet XCT Product Schema
+description: |-
+  Validation schema for XCTProduct   pore geometry statistics and
+  computed flow properties derived from X-ray computed tomography (micro-CT)
+  of intact soil cores.
+
+  Pore metrics are computed from image segmentation of the 3D volume.
+  Flow properties (permeability, tortuosity) are computed via lattice-Boltzmann
+  or similar simulation on the segmented pore network.
+license: MIT
+
+prefixes:
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: xct_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProductMeasureTypeEnum:
+    description: |-
+      Measurement level for this product record.
+      Mirrors productmeasuretype in enums.yaml.
+    permissible_values:
+      Single:
+        description: Single measurement (no replicates)
+      Replicate:
+        description: Individual replicate measurement
+      Average:
+        description: Average across replicates
+
+slots:
+
+  measure_type:
+    description: Measurement level (Single, Replicate, or Average).
+    range: ProductMeasureTypeEnum
+    required: false
+
+classes:
+
+  XCTProduct:
+    description: |-
+      Pore geometry and computed flow properties from XCT analysis of a soil core section.
+      One record per core section.
+
+      Proposal_ID, sampling_set, and core_section are inherited from the
+      LIMSProcessedData envelope (see lims_processed_data_schema.yaml).
+    slots:
+      - measure_type
+    slot_usage:
+      measure_type:
+        description: |-
+          Measurement level: Single, Replicate, or Average.
+          Mirrors the measure_type slot from the operational schema.
+    attributes:
+
+      # -----------------------------------------------------------------------
+      # ROI Geometry
+      # -----------------------------------------------------------------------
+
+      roi_x_voxel:
+        description: |-
+          Number of voxels in X direction of the region of interest (ROI).
+          Previously roi_volume_voxel.
+        range: double
+        required: false
+
+      roi_y_voxel:
+        description: |-
+          Number of voxels in Y direction of the region of interest (ROI).
+        range: double
+        required: false
+
+      roi_z_voxel:
+        description: |-
+          Number of voxels in Z direction of the region of interest (ROI).
+        range: double
+        required: false
+
+      voxel_size_mm_per_voxel:
+        description: |-
+          Linear dimension of a single voxel (mm/voxel).
+          Sets the spatial resolution of all subsequent measurements.
+          Previously voxel_size.
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Porosity
+      # -----------------------------------------------------------------------
+
+      porosity_percent:
+        description: |-
+          Percentage of total pore volume to the total volume of the ROI (%).
+          Previously total_pore_volume.
+        range: double
+        required: false
+
+      connected_pores_fraction:
+        description: |-
+          Fraction of connected pore volume out of total volume (unitless).
+        range: double
+        required: false
+
+      pore_connectivity_percent:
+        description: |-
+          Percentage of connected pore volume to all pore volume (%).
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Pore Diameter Statistics
+      # -----------------------------------------------------------------------
+
+      pore_equivalent_diameter_min_mm:
+        description: |-
+          Minimum equivalent pore diameter in the segmented pore network (mm).
+          Previously pore_diameter_min.
+        range: double
+        required: false
+
+      pore_equivalent_diameter_max_mm:
+        description: |-
+          Maximum equivalent pore diameter in the segmented pore network (mm).
+          Previously pore_diameter_max.
+        range: double
+        required: false
+
+      pore_equivalent_diameter_mean_mm:
+        description: |-
+          Mean equivalent pore diameter across all segmented pores (mm).
+          Previously pore_diameter_mean.
+        range: double
+        required: false
+
+      pore_equivalent_diameter_median_mm:
+        description: |-
+          Median equivalent pore diameter across all segmented pores (mm).
+          Previously pore_diameter_median.
+        range: double
+        required: false
+
+      pore_equivalent_diameter_variance_mm2:
+        description: |-
+          Variance of equivalent pore diameter across all segmented pores (mm^2).
+          Previously pore_diameter_variance.
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Pore Volume
+      # -----------------------------------------------------------------------
+
+      pore_volume_min_mm3:
+        description: |-
+          Minimum volume of pores (mm^3).
+        range: double
+        required: false
+
+      pore_volume_max_mm3:
+        description: |-
+          Maximum volume of pores (mm^3).
+        range: double
+        required: false
+
+      pore_volume_mean_mm3:
+        description: |-
+          Mean volume of pores (mm^3).
+          Previously pore_volume_mean.
+        range: double
+        required: false
+
+      pore_volume_median_mm3:
+        description: |-
+          Median volume of pores (mm^3).
+        range: double
+        required: false
+
+      pore_volume_variance_mm6:
+        description: |-
+          Variance of volume of pores (mm^6).
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Pore Area
+      # -----------------------------------------------------------------------
+
+      pore_area_min_mm2:
+        description: |-
+          Minimum area of pores (mm^2).
+        range: double
+        required: false
+
+      pore_area_max_mm2:
+        description: |-
+          Maximum area of pores (mm^2).
+        range: double
+        required: false
+
+      pore_area_mean_mm2:
+        description: |-
+          Mean area of pores (mm^2).
+        range: double
+        required: false
+
+      pore_area_median_mm2:
+        description: |-
+          Median area of pores (mm^2).
+        range: double
+        required: false
+
+      pore_area_variance_mm4:
+        description: |-
+          Variance of area of pores (mm^4).
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Flow Properties   X axis
+      # -----------------------------------------------------------------------
+
+      permeability_x_um2:
+        description: |-
+          Absolute permeability from pore network model in X direction (um^2).
+          Previously permeability_x.
+        range: double
+        required: false
+
+      flow_rate_x_mm3_per_sec:
+        description: |-
+          Total flow rate from pore network model in X direction (mm^3/s).
+          Previously flow_rate_x.
+        range: double
+        required: false
+
+      tortuosity_x:
+        description: |-
+          Tortuosity from pore network model in X direction (unitless).
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Flow Properties   Y axis
+      # -----------------------------------------------------------------------
+
+      permeability_y_um2:
+        description: |-
+          Absolute permeability from pore network model in Y direction (um^2).
+          Previously permeability_y.
+        range: double
+        required: false
+
+      flow_rate_y_mm3_per_sec:
+        description: |-
+          Total flow rate from pore network model in Y direction (mm^3/s).
+          Previously flow_rate_y.
+        range: double
+        required: false
+
+      tortuosity_y:
+        description: |-
+          Tortuosity from pore network model in Y direction (unitless).
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Flow Properties   Z axis
+      # -----------------------------------------------------------------------
+
+      permeability_z_um2:
+        description: |-
+          Absolute permeability from pore network model in Z direction (um^2).
+          Previously permeability_z.
+        range: double
+        required: false
+
+      flow_rate_z_mm3_per_sec:
+        description: |-
+          Total flow rate from pore network model in Z direction (mm^3/s).
+          Previously flow_rate_z.
+        range: double
+        required: false
+
+      tortuosity_z:
+        description: |-
+          Tortuosity from pore network model in Z direction (unitless).
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Data Quality
+      # -----------------------------------------------------------------------
+
+      flag_xct:
+        description: |-
+          Data quality flag for the XCT analysis.
+          NOTE: currently typed as string in the operational schema (flag_xct).
+          TODO: migrate to processeddataflag enum once standardized.
+        range: string
+        required: false

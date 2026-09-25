@@ -251,9 +251,12 @@ _test-examples: _ensure_examples_output
     --schema {{source_schema_path}} > examples/output/README.md
 
 # Add the merged model to docs/schema.
+# Uses util/gen_yaml.py (not stock gen-yaml) to work around a LinkML crash
+# serializing JsonObj annotations on slot_usage-materialized slots. The script
+# writes the file itself, so a mid-run crash no longer truncates the output.
 _gen-yaml:
   -mkdir -p {{distrib_schema_path}}
-  uv run gen-yaml {{source_schema_path}} > {{distrib_schema_path}}/{{schema_name}}.yaml
+  uv run python util/gen_yaml.py {{source_schema_path}} {{distrib_schema_path}}/{{schema_name}}.yaml
 
 # Overridable recipe to add project-specific artifacts to the distribution schema path
 _add-artifacts: gen-viz

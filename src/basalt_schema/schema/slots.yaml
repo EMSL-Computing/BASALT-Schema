@@ -27,6 +27,14 @@ slots:
   # id: is left as an attribute with range: uuid and identifier: true
   # everywhere, for now, for (some kind of database reason).
 
+  acquisition_end_time:
+    description: The time that data collection ended for this activity.
+    range: datetime
+
+  acquisition_start_time:
+    description: The time that data collection started for this activity.
+    range: datetime
+
   acquisition_strategy:
     range: MassSpectrometryAcquisitionStrategyEnum
     description: The acquisition strategy used in the mass spectrometry run.
@@ -69,9 +77,10 @@ slots:
   alkalinity:
     description: 'The ability of a solution to neutralize acids to the equivalence
       point of carbonate or bicarbonate (Unit: mg/L or meq/L)'
-    pattern: ^\d+(\.\d+)?\s*(mg|meq)/L$
     range: string
     title: alkalinity
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(mg|meq)/L$
 
   alkalinity_method:
     description: Method used for alkalinity measurement
@@ -81,29 +90,33 @@ slots:
   alkyl_diethers:
     description: Concentration of alkyl diethers. Provide value and unit, any unit is
       valid
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: alkyl diethers
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
 
   alt:
     description: >-
       Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air. For ARM this can be a range. (Unit: m)
-    pattern: '^\d+(\.\d+)?m(?:-\d+(\.\d+)?m)?$'
     range: string
     title: altitude
+    annotations:
+      submission_pattern: '^\d+(\.\d+)?m(?:-\d+(\.\d+)?m)?$'
 
   aminopept_act:
     description: 'Measurement of aminopeptidase activity (Unit: mol/L/h)'
-    pattern: '^\d+(\.\d+)?\s*mol/L/h$'
     range: string
     title: aminopeptidase activity
+    annotations:
+      submission_pattern: '^\d+(\.\d+)?\s*mol/L/h$'
     
   ammonium:
     description: 'Concentration of ammonium in the sample. (Units: umol/L or mg/Liter
       or ppm)'
-    pattern: '^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'
     range: string
     title: ammonium
+    annotations:
+      submission_pattern: '^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'
 
   analysis_type:
     description: |-
@@ -113,11 +126,11 @@ slots:
   analyte_category:
     description: omics type for easier search, optional
     range: AnalyteCategoryEnum
-
-  analytic:
-    range: string
-    required: true
-    todos: what does this mean
+  
+  analyte_id:
+    description: |-
+      FK reference to a ProcessedSample representing the substance analyzed in this activity.
+    range: ProcessedSample
 
   ances_data:
     description: Information about either pedigree or other ancestral information description
@@ -133,15 +146,17 @@ slots:
     description: 'The average of all annual precipitation values known or an estimated
       equivalent value derived by such methods as regional indexes or Isohyetal maps.
       (Unit: mm)'
-    pattern: '^\d+(\.\d+)?\s*mm$'
     range: string
     title: mean annual precipitation
     aliases:
       - average annual precipitation
+    annotations:
+      submission_pattern: '^\d+(\.\d+)?\s*mm$'
 
   annual_temp:
     description: 'Mean annual temperature (Unit: C)'
-    pattern: '^-?\d+(\.\d+)?\s*C$'
+    annotations:
+      submission_pattern: '^-?\d+(\.\d+)?\s*C$'
     range: string
     title: mean annual temperature
     aliases:
@@ -172,19 +187,22 @@ slots:
 
   bac_prod:
     description: Bacterial production in the water column measured by isotope uptake. Provide value and unit, any unit is valid. 
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: bacterial production
 
   bac_resp:
     description: Measurement of bacterial respiration in the water column. Provide value and unit,any unit is valid.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: bacterial respiration
 
   bacteria_carb_prod:
     description: Measurement of bacterial carbon production. Provide value and unit, any unit is valid
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: bacterial carbon production
 
@@ -219,7 +237,8 @@ slots:
   
   bishomohopanol:
     description: 'Concentration of bishomohopanol. (Unit: ug/L or ug/g)'
-    pattern: ^\d+(\.\d+)?\s*(ug/L|ug/g)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(ug/L|ug/g)$
     range: string
     title: bishomohopanol
 
@@ -230,7 +249,8 @@ slots:
 
   bromide:
     description: 'Concentration of bromide (Unit: ppm)'
-    pattern: ^\d+(\.\d+)?\s*ppm$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*ppm$
     range: string
     title: bromide
 
@@ -238,19 +258,21 @@ slots:
     description: 'Electrical conductivity is a measure of the bulk soil ability to carry
       electric current which is mostly dictated by the chemistry of and amount of soil
       water. (Unit: mS/cm)'
-    pattern: ^\d+(\.\d+)?\s*mS/cm$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*mS/cm$
     range: string
     title: bulk electrical conductivity
 
   calcium:
     description: 'Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)'
-    pattern: ^\d+(\.\d+)?\s*(mg/L|umol/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(mg/L|umol/L|ppm)$
     range: string
     title: calcium
 
   calibration_data:
     description: Reference to the raw instrument data file used for calibration
-    range: MassSpectrometryInstrumentData
+    range: InstrumentData
 
   calibration_standard:
     description: The reference standard used for calibration
@@ -263,14 +285,16 @@ slots:
   carb_dioxide:
     description: 'Amount of carbon dioxide measured in the air the day of sampling.
       (Unit: umol/L or ppm)'
-    pattern: ^\d+(\.\d+)?\s*(umol/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/L|ppm)$
     range: string
     title: carbon dioxide
 
   carb_monoxide:
     description: 'Amount of carbon monoxide measured in the air the day of sampling.
       (Unit: umol/L or ppm)'
-    pattern: ^\d+(\.\d+)?\s*(umol/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/L|ppm)$
     range: string
     title: carbon monoxide
 
@@ -296,6 +320,11 @@ slots:
     aliases:
       - CBI
 
+  channel_number:
+    description: The index of the detector channel within the instrument run.
+    range: integer
+    title: channel number
+
   chem_administration:
     title: chemical administration
     description: List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
@@ -318,13 +347,15 @@ slots:
 
   chloride:
     description: 'Concentration of chloride in the sample (Unit: mg/L or ppm)'
-    pattern: ^\d+(\.\d+)?\s*(mg/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(mg/L|ppm)$
     range: string
     title: chloride
 
   chlorophyll:
     description: 'Concentration of chlorophyll (Unit: mg/m3 or ug/L)'
-    pattern: ^\d+(\.\d+)?\s*(mg/m3|ug/L)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(mg/m3|ug/L)$
     range: string
     title: chlorophyll
 
@@ -337,7 +368,8 @@ slots:
     description: |-
       'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
       (YYYY-MM)'
-    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
+    annotations:
+      submission_pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
     title: collection date
     range: date
 
@@ -349,7 +381,8 @@ slots:
     description: 'The time of sampling as an instance (single point). Required format:
       HH:MM:SS in 24-hour time format. Don''t forget the second! (Unit: hh:mm:ss or
       HH:MM:SS)'
-    pattern: ^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$
+    annotations:
+      submission_pattern: ^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$
     range: string
     title: collection time
 
@@ -392,9 +425,9 @@ slots:
     title: construct component name
 
   compound_name:
-    description: The name of the purchased material. A substance formed by chemical
+    description: The common name of the material. A substance formed by chemical
       union of two or more elements or ingredients in definite proportion by weight.
-    range: string
+    range: ChemicalEntityEnum
     title: compound name
 
   concentration_ug_per_uL:
@@ -410,7 +443,8 @@ slots:
 
   conduc:
     description: Electrical conductivity of water. Provide value and unit, any unit is valid.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: conductivity
 
@@ -424,8 +458,13 @@ slots:
     range: ConstructComponentEnum
     title: construct component
 
+  container_size_ml:
+    description: The volume of the container an analyte is stored in or an activity
+      takes place in, in milliliters.
+    range: float
+
   container_type:
-    description: Physical container used for the culture (flask, tube, plate, etc.)
+    description: Physical container used for the culture or sample (flask, tube, plate, etc.)
     range: string
 
   contaminant_strains:
@@ -488,6 +527,14 @@ slots:
     description: Coefficient of variation across technical replicates
     range: float
 
+  cycle_id:
+    title: DBTL cycle number
+    description: >-
+      Integer identifying the Design-Build-Test-Learn iteration this plate
+      belongs to. Together with the originating sample_id it uniquely
+      identifies an experiment design across repeated cycles.
+    range: integer
+
   date_received:
     description: |-
       The date the sample was received.
@@ -504,7 +551,8 @@ slots:
   density:
     description: 'Density of the sample, which is its mass per unit volume (aka volumetric
       mass density) (Unit: g/m3 or g/cm3)'
-    pattern: ^\d+(\.\d+)?\s*(g/m3|g/cm3)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(g/m3|g/cm3)$
     range: string
     title: density
 
@@ -512,7 +560,8 @@ slots:
     description: 'The vertical distance below local surface. For sediment or soil samples,
       depth is measured from sediment or soil surface respectively. Depth is required
       to be reported as an interval for subsurface samples. (Units: m)'
-    pattern: ^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$
     range: string
     title: depth
 
@@ -524,20 +573,23 @@ slots:
   diether_lipids:
     description: 'Concentration of diether lipids; can include multiple types of diether
       lipids (Unit: ng/L)'
-    pattern: ^\d+(\.\d+)?\s*ng/L$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*ng/L$
     range: string
     title: diether lipids
 
   diss_carb_dioxide:
     description: 'Concentration of dissolved carbon dioxide in the sample or liquid
       portion of the sample (Unit: umol/L or mg/L)'
-    pattern: ^\d+(\.\d+)?\s*(umol|mg)/L$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol|mg)/L$
     range: string
     title: dissolved carbon dioxide
 
   diss_hydrogen:
     description: 'Concentration of dissolved hydrogens (Unit: umol/L)'
-    pattern: '^\d+(\.\d+)?\s*umol/L$'
+    annotations:
+      submission_pattern: '^\d+(\.\d+)?\s*umol/L$'
     range: string
     title: dissolved hydrogen
 
@@ -545,39 +597,45 @@ slots:
     description: 'Dissolved inorganic carbon concentration in the sample, typically measured
       after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L or mg/L
       or ppm)'
-    pattern: ^\d+(\.\d+)?\s*(ug/L|mg/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(ug/L|mg/L|ppm)$
     range: string
     title: dissolved inorganic carbon
 
   diss_inorg_nitro:
     description: 'Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)'
-    pattern: ^\d+(\.\d+)?\s*(umol/L|ug/L)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/L|ug/L)$
     range: string
     title: dissolved inorganic nitrogen
 
   diss_inorg_phosp:
     description: Concentration of dissolved inorganic phosphorus in the sample. Provide value and unit, any unit is valid.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: dissolved inorganic phosphate
 
   diss_org_carb:
     description: 'Concentration of dissolved organic carbon in the sample, liquid portion
       of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)'
-    pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L)$
     range: string
     title: dissolved organic carbon
 
   diss_org_nitro:
     description: 'Dissolved organic nitrogen concentration measured as: total dissolved
       nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid'
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: dissolved organic nitrogen
 
   diss_oxygen:
     description: 'Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)'
-    pattern: ^\d+(\.\d+)?\s*(umol/kg|mg/L)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/kg|mg/L)$
     range: string
     title: dissolved oxygen
 
@@ -590,7 +648,8 @@ slots:
 
   down_par:
     description: Visible waveband radiance and irradiance measurements in the water column. Provide value and unit, any unit is valid.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: downward PAR
 
@@ -612,7 +671,8 @@ slots:
     description: 'Elevation of the sampling site is its height above a fixed reference
       point, most commonly the mean sea level. Elevation is mainly used when referring
       to points on the earth''s surface. (Unit: m).'
-    pattern: ^\d+(\.\d+)?\s*m$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*m$
     range: string
     title: elevation
 
@@ -650,7 +710,8 @@ slots:
       general environmental context of where the sampling was done (e.g. in the desert
       or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
-    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
+    annotations:
+      submission_pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
     range: string
     title: broad-scale environmental context
 
@@ -661,7 +722,8 @@ slots:
       Please use terms that are present in ENVO and which are of smaller spatial grain
       than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker
       identified here: http://www.obofoundry.org/ontology/envo.html'
-    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
+    annotations:
+      submission_pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
     range: string
     title: local environmental context
 
@@ -671,7 +733,8 @@ slots:
       or specimen at the time of sampling. We recommend using subclasses of ''environmental
       material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation
       about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'
-    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
+    annotations:
+      submission_pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
     range: string
     title: environmental medium
 
@@ -713,7 +776,8 @@ slots:
   extreme_event:
     description: 'Unusual physical events that may have affected microbial populations.
       Format: YYYY-MM-DD'
-    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
+    annotations:
+      submission_pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
     range: string
     title: extreme event
 
@@ -745,14 +809,35 @@ slots:
     description: Size of the file in bytes
     range: integer
 
+  filter_material:
+    description: The porous material on which solid particles present in the fluid which flows through it are largely caught and retained.
+    range: string
+
   filter_method:
     description: Type of filter used or how the sample was filtered
     range: string
     title: filter method
 
+  filter_pore_size_um:
+    description: The pore size of the filter used in the filtration process, in micrometers.
+    range: float
+
+  final_concentration_mg_per_ml:
+    range: float
+    description: The concentration of the sample or analyte in the processedSample resulting from this activity, in milligrams per milliliter.
+
+  final_mass_mg:
+    range: float
+    description: The mass of sample or analyte in the processedSample resulting from this activity.
+
+  final_vol_ml:
+    range: float
+    description: The volume of sample resulting from this activity, in milliliters.
+
   fire:
     description: 'Historical and/or physical evidence of fire. Format: YYYY-MM-DD'
-    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
+    annotations:
+      submission_pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
     range: string
     title: fire
 
@@ -773,9 +858,14 @@ slots:
     range: float
     title: first cloud base height
 
+  flag:
+    description: A flag indicating the QC status of the data.
+    range: ProcessedDataFlag
+
   flooding:
     description: 'Historical and/or physical evidence of flooding. Format: YYYY-MM-DD'
-    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
+    annotations:
+      submission_pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
     range: string
     title: flooding
 
@@ -786,7 +876,8 @@ slots:
   
   fluor:
     description: Raw or converted fluorescence of water. Provide value and unit, any unit is valid.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: fluorescence
 
@@ -847,13 +938,15 @@ slots:
     description: 'The geographical origin of the sample as defined by the country or
       sea name followed by specific region name and site. Formatted as [Country or sea
       names: region or state, site]'
-    pattern: ^([^\s-]{12}|[^\s-]+.+[^\s-]+):\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)$
+    annotations:
+      submission_pattern: ^([^\s-]{12}|[^\s-]+.+[^\s-]+):\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)$
     range: string
     title: geographic location name
 
   glucosidase_act:
     description: 'Measurement of glucosidase activity (Unit: mol/L/h)'
-    pattern: ^\d+(\.\d+)?\s*mol/L/h$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*mol/L/h$
     range: string
     title: glucosidase activity
 
@@ -934,7 +1027,8 @@ slots:
     description: 'Age of host at the time of sampling; relevant scale depends on species
       and study, e.g. Could be seconds for amoebae or centuries for trees. (Unit: a (year)
       or d (day) or h (hour). Do not include the additional information in ().)'
-    pattern: ^\d+(\.\d+)?\s*(a|d|h)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(a|d|h)$
     range: string
     title: host age
 
@@ -957,7 +1051,8 @@ slots:
 
   host_dry_mass:
     description: 'Measurement of dry mass. (Unit: kg or g)'
-    pattern: ^\d+(\.\d+)?\s*(kg|g)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(kg|g)$
     range: string
     title: host dry mass
 
@@ -968,7 +1063,8 @@ slots:
 
   host_height:
     description: 'The height of subject. (Unit: cm or mm or m)'
-    pattern: ^\d+(\.\d+)?\s*(cm|mm|m)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(cm|mm|m)$
     range: string
     title: host height
 
@@ -1003,7 +1099,8 @@ slots:
   host_spec_range:
     description: The range and diversity of host species that an organism is capable
       of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####
-    pattern: NCBITaxon:\d+
+    annotations:
+      submission_pattern: NCBITaxon:\d+
     range: string
     title: host specificity or range
 
@@ -1015,7 +1112,8 @@ slots:
 
   host_taxid:
     description: NCBI taxon ID. Format with prefix NCBITaxon:####
-    pattern: NCBITaxon:\d+
+    annotations:
+      submission_pattern: NCBITaxon:\d+
     range: string
     title: host taxonomy identifier
     aliases:
@@ -1025,20 +1123,23 @@ slots:
 
   host_tot_mass:
     description: 'Total mass of the host at collection. (Unit: kg or g)'
-    pattern: ^\d+(\.\d+)?\s*(kg|g)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(kg|g)$
     range: string
     title: host total mass
 
   host_wet_mass:
     description: 'Measurement of wet mass. (Unit: kg or g)'
-    pattern: ^\d+(\.\d+)?\s*(kg|g)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(kg|g)$
     range: string
     title: host wet mass
 
   humidity:
     description: Amount of water vapor measured in the air the day of sampling. Provide
       value and unit, any unit is valid
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: humidity
 
@@ -1051,6 +1152,23 @@ slots:
   iat:
     description: Ion accumulation time setting used in the mass spectrometry method.
     range: double
+  
+  in_protocol:
+    description: >-
+      The SampleProcessingProtocol (the recipe) that this step follows. Type-level,
+      not instance-level: every execution of the same SOP points at the same record,
+      so this does NOT identify a particular chain. Use in_run for that. A chain may
+      mix protocols, so this is recorded per step rather than per run.
+    range: SampleProcessingProtocol
+
+  in_run:
+    description: >-
+      The SampleProcessingRun (one concrete execution) that this edge belongs to.
+      All ProcessingSampleLink rows in one chain share this value, which is what makes
+      "give me every step of this chain" a single indexed query and what anchors
+      step_number. Optional: a standalone StandardSampleProcessing needs no run,
+      because its processing_id already identifies the whole group.
+    range: SampleProcessingRun
 
   incubation_time_hours:
     description: Incubation duration in hours
@@ -1067,7 +1185,8 @@ slots:
       If infiltration time was started and unsuccessful enter ''failed'' if infiltration
       time was not attempted enter ''did not collect''. Units and format of mm:ss required.
       (Example: 15:20 mm:ss)'
-    pattern: ^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$
+    annotations:
+      submission_pattern: ^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$
     range: string
     title: first infiltration time
 
@@ -1076,7 +1195,8 @@ slots:
       If infiltration time was started and unsuccessful enter ''failed'' if infiltration
       time was not attempted enter ''did not collect''. Units and format of mm:ss required.
       (Example: 15:20 mm:ss)'
-    pattern: ^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)
+    annotations:
+      submission_pattern: ^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)
     range: string
     title: second infiltration time
 
@@ -1090,7 +1210,8 @@ slots:
     description: The date the sample was inoculated. This can be the date of inoculation,
       isolation, etc. If providing a sequential initiation, the sample should be linked
       to the sample it originated from. Formatted as YYYY-MM-DD
-    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
+    annotations:
+      submission_pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
     range: string
     title: initiation date of inoculation
 
@@ -1098,7 +1219,8 @@ slots:
     description: The date the plant part of the sample was initiated. This can be the
       date of germination or propagation. If providing a sequential initiation (propagation),
       the sample should be linked to the sample it originated from. Formatted as YYYY-MM-DD
-    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
+    annotations:
+      submission_pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
     range: string
     title: initiation date of plant
 
@@ -1121,6 +1243,14 @@ slots:
     description: Method used to inspect or verify purity (visual, sequencing, etc.)
     range: string
 
+  instrument_operator:
+    description: User who operated the instrument
+    range: PersonValue
+
+  instrument_used:
+    description: Instrument used for the measurement
+    range: Instrument
+
   internal_calibration:
     description: Whether internal calibration was used
     range: boolean
@@ -1129,7 +1259,11 @@ slots:
     description: Type of ionization used in the mass spectrometry method
     range: IonizationSourceEnum
     required: true
-  
+
+  is_pressurized:
+    description: Whether or not pressure was applied to a thing or process.
+    range: boolean
+
   isol_growth_condt:
     description: |-
       Publication reference in the form of pubmed ID (PMID), digital object
@@ -1165,7 +1299,8 @@ slots:
 
   light_intensity:
     description: Measurement of light intensity. Provide value and unit, any unit is valid.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: light intensity
 
@@ -1183,7 +1318,8 @@ slots:
   lims_id:
     description: An EMSL internal LIMS identifier for your sample. This will be provided
       by the MPOC and should not be edited.
-    pattern: ^INGEST_SAMPLE_\d{9}$
+    annotations:
+      submission_pattern: ^INGEST_SAMPLE_\d{9}$
     range: string
     title: LIMS ID
 
@@ -1220,11 +1356,6 @@ slots:
     range: string
     title: local soil classification method
 
-  location:
-    range: string
-    required: true
-    todos: used on many method classes. no description. what was this meant to mean?
-
   longitude:
     title: longitude
     description: Longitude coordinate of the sampling site in WSG 84 format.
@@ -1240,7 +1371,8 @@ slots:
   magnesium:
     description: 'Concentration of magnesium in the sample (Unit: umol/kg or mol/L or
       mg/L or ppm)'
-    pattern: ^\d+(\.\d+)?\s*(umol/kg|mol/L|mg/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/kg|mol/L|mg/L|ppm)$
     range: string
     title: magnesium
 
@@ -1257,13 +1389,15 @@ slots:
 
   mean_frict_vel:
     description: 'Measurement of mean friction velocity (Unit: m/s)'
-    pattern: ^\d+(\.\d+)?\s*m/s$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*m/s$
     range: string
     title: mean friction velocity
 
   mean_peak_frict_vel:
     description: 'Measurement of mean peak friction velocity (Unit: m/s)'
-    pattern: ^\d+(\.\d+)?\s*m/s$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*m/s$
     range: string
     title: mean peak friction velocity
 
@@ -1330,17 +1464,18 @@ slots:
   metaproteomics_analysis_category:
     range: MetaproteomicsAnalysisCategoryEnum
     description: The category of metaproteomics analysis being performed, if applicable.
+  
+  metaproteomics_result_type:
+    range: MetaproteomicsResultTypeEnum
+    description: The type of metaproteomics results file.
 
   methane:
     description: 'Methane (gas) amount or concentration at the time of sampling. (Unit:
       umol/L or ppb or ppm)'
-    pattern: ^\d+(\.\d+)?\s*(umol/L|ppm|ppb)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/L|ppm|ppb)$
     range: string
     title: methane
-
-  method:
-    range: string
-    todos: what does this mean
 
   method_development:
     description: If your samples are TEST sample ONLY, please provide information on
@@ -1353,20 +1488,10 @@ slots:
     range: MetagenomicsSteps
     required: false
 
-  micro_biomass_C_meth:
-    description: Reference or method used in determining microbial biomass
-    range: string
-    title: microbial biomass carbon method
-
   micro_biomass_c_meth:
     description: Reference or method used in determining microbial biomass
     range: string
     title: microbial biomass carbon method
-
-  micro_biomass_N_meth:
-    description: Reference or method used in determining microbial biomass nitrogen
-    range: string
-    title: microbial biomass nitrogen method
 
   micro_biomass_n_meth:
     description: Reference or method used in determining microbial biomass nitrogen
@@ -1385,7 +1510,8 @@ slots:
       microorganisms smaller than 5-10 micrometer. If you keep this, you would need to
       have correction factors used for conversion to the final units. Provide value
       and unit, any unit is valid
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: microbial biomass carbon
 
@@ -1399,7 +1525,8 @@ slots:
       microorganisms smaller than 5-10 micrometer. If you keep this, you would need to
       have correction factors used for conversion to the final units. Provide value
       and unit, any unit is valid
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: microbial biomass nitrogen
 
@@ -1418,10 +1545,9 @@ slots:
     range: string
     title: miscellaneous parameter
 
-  mobile_phases:
-    description: Description of the mobile phases used in the chromatography method (e.g., solvents, gradients)
-    range: MobilePhaseSegment
-    multivalued: true
+  mobile_phase:
+    description: Description of a mobile phase used in a chromatography method (e.g., solvents, gradients)
+    range: MobilePhase
 
   modification_method:
     description: |-
@@ -1448,6 +1574,14 @@ slots:
     range: string
     required: true
 
+  negative_absorbance_margin_au:
+    description: |-
+      Spectrophotometer setting defining the allowed margin below zero 
+      absorbance before a reading is considered invalid, set to manage detector
+      noise/baseline drift, given in absorbance units.
+    range: float
+    title: negative absorbance margin
+
   neon_domain:
     description: 'Areas where ecosystems (and the type quality and quantity of environmental
       resources) are generally similar. A map of these regions can be found at https://www.neonscience.org/field-sites/about-field-sites.
@@ -1463,7 +1597,8 @@ slots:
     description: 'When sampling from a NEON site provide the plot ID from which you
       sampled. This includes the 4 letter site code followed by the 3 digit ID (Example:
       DEJU_048). If you do not have your NEON site use the code SITE_999.'
-    pattern: ^[A-Z]{4}_\d{3}$
+    annotations:
+      submission_pattern: ^[A-Z]{4}_\d{3}$
     range: string
     title: neon plot identifier
     todos: 
@@ -1471,25 +1606,29 @@ slots:
 
   neon_site_code:
     description: 'When sampling from a NEON site provide the 4 letter site code (Example: DEJU). If you do not have your NEON site use the code SITE_999.'
-    pattern: ^[A-Z]{4}$
+    annotations:
+      submission_pattern: ^[A-Z]{4}$
     range: string
     title: neon site code
 
   nitrate:
     description: 'Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)'
-    pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
     range: string
     title: nitrate
 
   nitrite:
     description: 'Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)'
-    pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
     range: string
     title: nitrite
 
   nitro:
     description: 'Concentration of nitrogen (total) (Unit: umol/L)'
-    pattern: ^\d+(\.\d+)?\s*umol/L$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*umol/L$
     range: string
     title: nitrogen
 
@@ -1520,20 +1659,23 @@ slots:
   org_carb:
     description: Concentration of organic carbon. Provide value and unit any unit is
       valid
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: organic carbon
 
   org_matter:
     description: 'Concentration of organic matter (Unit: mg/L)'
-    pattern: ^\d+(\.\d+)?\s*mg/L$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*mg/L$
     range: string
     title: organic matter
 
   org_nitro:
     description: Concentration of organic nitrogen. Provide value and unit any unit
       is valid
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: organic nitrogen
 
@@ -1614,7 +1756,8 @@ slots:
     description: 'Amount of oxygen measured in the air the day of sampling. (Unit: mg/L
       or ppm)'
     range: string
-    pattern: ^\d+(\.\d+)?\s*(mg/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(mg/L|ppm)$
     title: oxygen
 
   oxygen_relationship:
@@ -1624,6 +1767,13 @@ slots:
     exact_mappings:
       - MIXS:0000015
     alias: oxygen_status
+
+  oxygen_saturation_pct:
+    title: oxygen saturation percent
+    description: >-
+      Percent saturation of oxygen in the incubation atmosphere (0–100).
+      For example, ambient air is approximately 20.9%.
+    range: float
 
   parent_workflow_id:
     description: |-
@@ -1641,13 +1791,15 @@ slots:
   part_org_carb:
     description: Concentration of particulate organic carbon. Provide value and unit,
       any unit is valid.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: particulate organic carbon
 
   part_org_nitro:
     description: 'Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)'
-    pattern: ^\d+(\.\d+)?\s*(umol/L|ug/L)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/L|ug/L)$
     range: string
     title: particulate organic nitrogen
 
@@ -1664,6 +1816,18 @@ slots:
       To what is the entity pathogenic, e.g., humans, animals, plants, or specific tissues.
     range: string
     title: pathogenicity
+
+  peak_area:
+    description: The area under the peak in a chromatogram or mass spectrum, which is proportional to the amount of analyte present.
+    range: float
+  
+  peak_percent_area:
+    description: The percentage of the total area that a specific peak represents in a chromatogram or mass spectrum.
+    range: float
+
+  peak_height:
+    description: The height of the peak in a chromatogram or mass spectrum, which can be used to assess the concentration of the analyte.
+    range: float
 
   perturbation:
     description: Type of perturbation, e.g. chemical administration, physical disturbance,
@@ -1683,7 +1847,8 @@ slots:
 
   petroleum_hydrocarb:
     description: 'Concentration of petroleum hydrocarbon (Unit: umol/L)'
-    pattern: ^\d+(\.\d+)?\s*umol/L$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*umol/L$
     range: string
     title: petroleum hydrocarbon
 
@@ -1719,7 +1884,8 @@ slots:
   phaeopigments:
     description: 'Concentration of phaeopigments; can include multiple phaeopigments
       separated by a `;` (Unit: mg/cm3)'
-    pattern: ^\d+(\.\d+)?\s*mg/cm3(;\s*\d+(\.\d+)?\s*mg/cm3)*$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*mg/cm3(;\s*\d+(\.\d+)?\s*mg/cm3)*$
     range: string
     title: phaeopigments
 
@@ -1732,7 +1898,8 @@ slots:
 
   phosphate:
     description: 'Concentration of phosphate (Unit: umol/L)'
-    pattern: ^\d+(\.\d+)?\s*umol/L$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*umol/L$
     range: string
     title: phosphate
 
@@ -1750,13 +1917,15 @@ slots:
 
   photon_flux:
     description: Measurement of photon flux. Provide value and unit, any unit is valid.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: photon flux
 
   plant_age:
     description: Age of plant at the time of sampling. Must provide unit
-    pattern: ^\d+(\.\d+)?\s*\w+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*\w+$
     range: string
     title: plant age
 
@@ -1773,7 +1942,8 @@ slots:
 
   plant_dry_mass:
     description: 'Measurement of dry mass. (Unit: kg or g)'
-    pattern: ^\d+(\.\d+)?\s*(kg|g)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(kg|g)$
     range: string
     title: plant dry mass
 
@@ -1786,7 +1956,8 @@ slots:
     description: Specification of the media for growing the plants or tissue cultured
       samples e.g. soil, aeroponic, hydroponic, in vitro, solid culture medium, in vitro,
       liquid culture medium. Value is required to be a subclass from the PECO ontology (http://purl.bioontology.org/ontology/PECO). The value should be formatted as the name of the media followed by the PECO identifier in brackets, e.g. aeroponic plant growth media exposure [PECO:0001073]
-    pattern: ^_*\s*[a-zA-Z\s]+\[PECO:\d+\]$
+    annotations:
+      submission_pattern: ^_*\s*[a-zA-Z\s]+\[PECO:\d+\]$
     range: string
     title: plant growth medium
 
@@ -1815,7 +1986,8 @@ slots:
 
   plant_wet_mass:
     description: 'Measurement of wet mass. (Unit: kg or g)'
-    pattern: ^\d+(\.\d+)?\s*(kg|g)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(kg|g)$
     range: string
     title: plant wet mass
 
@@ -1850,13 +2022,15 @@ slots:
   porosity:
     description: 'Porosity of deposited sediment is volume of voids divided by the
       total volume of sample. (Unit: percent)'
-    pattern: ^\d+(\.\d+)?\s*percent$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*percent$
     range: string
     title: porosity
 
   potassium:
     description: 'Concentration of potassium in the sample (Unit: mg/L)'
-    pattern: ^\d+(\.\d+)?\s*(mg/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(mg/L|ppm)$
     range: string
     title: potassium
 
@@ -1872,14 +2046,16 @@ slots:
 
   pressure:
     description: 'Pressure to which the sample is subject, in atmospheres (Unit: atm)'
-    pattern: ^\d+(\.\d+)?\s*atm$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*atm$
     range: string
     title: pressure
 
   pressure_control:
     description: 'Measurment of pressure applied to the sample during experimentation
       (Unit: Pa)'
-    pattern: ^\d+(\.\d+)?\s*Pa$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*Pa$
     range: string
     title: pressure control
 
@@ -1895,7 +2071,8 @@ slots:
 
   primary_prod:
     description: Measurement of primary production generally measured as isotope uptake. Provide value and unit, any unit is valid.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: primary production
 
@@ -1917,6 +2094,14 @@ slots:
   produced_by_sequencing_activity:
     description: Link back to the NucleotideSequencing activity that produced this data.
     range: NucleotideSequencing
+
+  produced_by_ri_run:
+    description: a reference to the data generation activity that produced this measurement.
+    range: RIDataGenerationActivity
+
+  produced_by_uv_run:
+    description: a reference to the data generation activity that produced this measurement.
+    range: UVDataGenerationActivity
 
   product_name:
     description: Provide the name of the product used to create the synthetic material.
@@ -2003,7 +2188,8 @@ slots:
   redox_potential:
     description: 'Redox potential measured relative to a hydrogen cell indicating oxidation
       or reduction potential (Unit: mV)'
-    pattern: ^\d+(\.\d+)?\s*mV$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*mV$
     range: string
     title: redox potential
 
@@ -2037,9 +2223,18 @@ slots:
     range: MassSpecResolutionEnum
     required: true
 
+  resolution_nm:
+    description: Spectral resolution of the detector, in nanometers.
+    range: float
+    title: resolution
+
   results_from_ms_processing:
     description: a reference to the mass spec data processing activity that produced this data product
     range: MassSpectrometryDataProcessingActivity
+
+  retention_time_min:
+    description: Retention time of the analyte in the chromatography method, in minutes.
+    range: float
 
   root_cond:
     description: Relevant rooting conditions such as field plot size, sowing density,
@@ -2104,7 +2299,8 @@ slots:
       the conductivity measurement. This is known as practical salinity. These derivations
       compare the specific conductance of the sample to a salinity standard such
       as seawater (Unit: practical salinity unit or percent)'
-    pattern: ^\d+(\.\d+)?\s*(practical salinity unit|percent)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(practical salinity unit|percent)$
     range: string
     title: salinity
 
@@ -2147,7 +2343,8 @@ slots:
     description: This refers to the TOTAL amount of sample collected from the experiment.
       NOT the amount sent to EMSL or collected for a specific analysis. Provide value
       and unit, any unit is valid
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: sample collected
 
@@ -2165,7 +2362,8 @@ slots:
   sample_end_time:
     description: 'Time of when the sample collection ends. Required format: HH:MM:SS
       in 24-hour time format. Don''t forget the seconds! (Unit: hh:mm:ss or HH:MM:SS)'
-    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
+    annotations:
+      submission_pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
     range: string
     title: sample end time
 
@@ -2206,14 +2404,16 @@ slots:
   sample_start_time:
     description: 'Time of when the sample collection starts. Required format: HH:MM:SS
       in 24-hour time format. Don''t forget the seconds! (Unit: hh:mm:ss or HH:MM:SS)'
-    pattern: ^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$
+    annotations:
+      submission_pattern: ^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$
     range: string
     title: sample start time
 
   sample_type:
     description: 'Requires a standardized ontology term to describe what your sample
       is. Please search for your sample type via Ontology Lookup Sevice at https://www.ebi.ac.uk/ols4/ '
-    pattern: ^_*\s*[a-zA-Z\-]+\s\[[a-zA-Z]+:\d+\]$
+    annotations:
+      submission_pattern: ^_*\s*[a-zA-Z\-]+\s\[[a-zA-Z]+:\d+\]$
     range: string
     title: sample type
   
@@ -2232,9 +2432,15 @@ slots:
   sampling_duration:
     description: 'The difference between sample start and sample end time in seconds.
       (Unit: s)'
-    pattern: ^\d+(\.\d+)?\s*s$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*s$
     range: string
     title: sampling duration
+
+  sampling_rate_hz:
+    description: Rate at which data points are acquired during the run, in Hertz.
+    range: float
+    title: sampling rate
 
   sampling_set:
     title: sampling set
@@ -2260,7 +2466,8 @@ slots:
     description: 'The average of all seasonal precipitation values known or an estimated
       equivalent value derived by such methods as regional indexes or Isohyetal maps.
       (Unit: mm)'
-    pattern: ^\d+(\.\d+)?\s*mm$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*mm$
     range: string
     title: mean seasonal precipitation
     aliases:
@@ -2268,7 +2475,8 @@ slots:
 
   season_temp:
     description: 'Mean seasonal temperature (Unit: C)'
-    pattern: ^-?\d+(\.\d+)?\s*C$
+    annotations:
+      submission_pattern: ^-?\d+(\.\d+)?\s*C$
     range: string
     title: mean seasonal temperature
     aliases:
@@ -2302,6 +2510,10 @@ slots:
     range: SedimentTypeEnum
     title: sediment type
 
+  separation_method:
+    description: The method used to separate phases during the filtration process (e.g., vacuum filtration, centrifugal filtration, syringe).
+    range: string
+
   sequence_order:
     description: |-
       Integer ordering within a temporal series for the same analyte.
@@ -2311,6 +2523,428 @@ slots:
              ADD COLUMN sequence_order INTEGER;
     range: integer
     required: false
+
+  facility:
+    description: Synchrotron facility name (e.g. APS, SSRL, NSLS-II)
+    range: string
+
+  beamline:
+    description: Beamline identifier (e.g. 20-BM, 20-ID)
+    range: string
+
+  ring_energy_gev:
+    description: Storage ring energy in GeV
+    range: float
+
+  ring_current_ma:
+    description: Storage ring current in mA at scan start
+    range: float
+
+  insertion_device:
+    description: Insertion device description (wiggler, undulator, bending magnet)
+    range: string
+
+  element:
+    description: Target element (e.g. Fe, Mn, Cu)
+    range: string
+
+  edge:
+    description: Absorption edge measured (e.g. K, L1, L3)
+    range: string
+
+  reference_material:
+    description: Reference standard material name
+    range: string
+
+  xas_sample_type:
+    description: Sample type descriptor (e.g. powder, solution, thin_film)
+    range: string
+
+  sample_format:
+    description: Physical sample format (e.g. pellet, paste)
+    range: string
+
+  sample_holder:
+    description: Holder/position identifier (e.g. 1002_1)
+    range: string
+
+  sample_temperature_k:
+    description: Sample temperature in Kelvin
+    range: float
+
+  sample_orientation_deg:
+    description: Sample orientation angle in degrees
+    range: float
+
+  sample_detector_distance_mm:
+    description: Sample-to-detector distance in mm
+    range: float
+
+  sample_doi:
+    description: DOI or persistent identifier for the sample
+    range: string
+
+  crystal:
+    description: Monochromator crystal material (e.g. Si)
+    range: string
+
+  crystal_cut:
+    description: Crystal reflection (e.g. 111, 311)
+    range: string
+
+  crystal_detune_pct:
+    description: Crystal detuning percentage for harmonic rejection
+    range: float
+
+  mono_angle_deg:
+    description: Monochromator Bragg angle in degrees (Crystal_Phi)
+    range: float
+
+  mono_2nd_xtal_mm:
+    description: Second crystal gap position in mm (Crystal_Gap)
+    range: float
+
+  mono_energy_motor_ev:
+    description: Monochromator energy from motor encoder in eV
+    range: float
+
+  mono_energy_encoder_ev:
+    description: Monochromator energy from independent encoder in eV
+    range: float
+
+  mirror_angle_mrad:
+    description: M0 mirror angle in mrad
+    range: float
+
+  m0_coating:
+    description: M0 mirror coating material (e.g. Rh, Pt)
+    range: string
+
+  m0_cutoff_kev:
+    description: M0 mirror X-ray cutoff energy in keV
+    range: float
+
+  m1_coating:
+    description: M1 mirror coating material
+    range: string
+
+  inhutch_mirror_coating:
+    description: In-hutch focusing mirror coating material
+    range: string
+
+  inhutch_mirror_cutoff_kev:
+    description: In-hutch mirror cutoff energy in keV
+    range: float
+
+  slit_size_h_um:
+    description: Horizontal slit size in microns
+    range: float
+
+  slit_size_v_um:
+    description: Vertical slit size in microns
+    range: float
+
+  slit_center_h:
+    description: Horizontal slit center position (mm)
+    range: float
+
+  slit_center_v:
+    description: Vertical slit center position (mm)
+    range: float
+
+  beam_attenuation_um:
+    description: Attenuator thickness in microns
+    range: float
+
+  beam_attenuation_material:
+    description: Attenuator material (e.g. Al)
+    range: string
+
+  sweep_number:
+    description: 1-based sweep index within the measurement session
+    range: integer
+
+  scan_subtype:
+    description: Scan type, energy (XAS) or motor (alignment)
+    range: XASScanSubtype
+
+  positioner:
+    description: Primary positioner name (e.g. Mono Energy)
+    range: string
+
+  e0_ev:
+    description: Absorption edge energy E0 in eV
+    range: float
+
+  n_points:
+    description: Number of scan points
+    range: integer
+
+  n_data_rows:
+    description: Number of data rows in the file
+    range: integer
+
+  x_first:
+    description: First positioner value in the scan (eV or mm)
+    range: float
+
+  x_last:
+    description: Last positioner value in the scan (eV or mm)
+    range: float
+
+  scan_bounds:
+    description: Scan boundary string as written in file header
+    range: string
+
+  scan_steps:
+    description: Step sizes string as written in file header
+    range: string
+
+  integration_times:
+    description: Integration times string as written in file header
+    range: string
+
+  kwgt:
+    description: k-weighting exponent used in EXAFS region
+    range: float
+
+  scan_time_sec:
+    description: Total scan duration in seconds
+    range: integer
+
+  scan_datetime:
+    description: Date and time at scan start
+    range: datetime
+
+  fy_electronics:
+    description: Fluorescence detector electronics model (e.g. XMAP12B)
+    range: string
+
+  fy_channel_num:
+    description: Number of active fluorescence detector channels
+    range: integer
+
+  fy_element:
+    description: Target element detected by fluorescence detector (e.g. Fe)
+    range: string
+
+  fy_transition:
+    description: X-ray transition detected (e.g. Ka, Kb)
+    range: string
+
+  user_comment:
+    description: Free-text user comment from scan header
+    range: string
+
+  amp_index:
+    description: 1-based amplifier index (aligns with Amplifier_Gain_N)
+    range: integer
+
+  signal_name:
+    description: Signal channel name (e.g. I0, It, Iref)
+    range: string
+
+  gain:
+    description: Amplifier gain value
+    range: float
+
+  gain_unit:
+    description: Gain unit as written in file (e.g. nA/V, pA/V)
+    range: string
+
+  voltage_start:
+    description: Analog input voltage at scan start (V)
+    range: float
+
+  voltage_end:
+    description: Analog input voltage at scan end (V)
+    range: float
+
+  motor_index:
+    description: 1-based motor index (aligns with Motor_N_Pos)
+    range: integer
+
+  motor_name:
+    description: Motor name (e.g. Disp_V_polycold)
+    range: string
+
+  pv:
+    description: EPICS process variable name (e.g. 20bm:m28)
+    range: string
+
+  position:
+    description: Motor position value at scan start
+    range: float
+
+  col_index:
+    description: 1-based column index (aligns with Analog_In_Signal_Type_N)
+    range: integer
+
+  col_name:
+    description: Detector column name (e.g. XMAP12B:FeKa_Sum)
+    range: string
+
+  row_num:
+    description: 1-based row index within the sweep file
+    range: integer
+
+  row_val:
+    description: Representative value at this scan point
+    range: float
+
+  chamber_index:
+    description: Ion chamber index (1=I0, 2=It, 3=Iref)
+    range: integer
+
+  gas_index:
+    description: 1-based gas component index within the chamber mixture
+    range: integer
+
+  gas_name:
+    description: Fill gas name (e.g. Nitrogen, Helium, Argon)
+    range: string
+
+  chamber_length_mm:
+    description: Physical ion chamber length in mm
+    range: float
+
+  pressure_bar:
+    description: Gas fill pressure in bar
+    range: float
+
+  xas_filename:
+    description: Measurement filename stem linking LCF results to source XAS data
+    range: string
+
+  lcf_type:
+    description: LCF analysis subtype, XANES or EXAFS
+    range: XASLCFType
+
+  run_label:
+    description: Analysis run variant label extracted from filename
+    range: string
+
+  fit_label:
+    description: Iteration label for EXAFS fits extracted from filename
+    range: string
+
+  analysis_code:
+    description: Athena or Larch internal code from the .lcf filename
+    range: string
+
+  sample_nor_file:
+    description: Normalised spectrum filename recorded in the LCF header
+    range: string
+
+  fit_range_min:
+    description: Lower bound of fit range (eV for XANES, A^-1 for EXAFS)
+    range: float
+
+  fit_range_max:
+    description: Upper bound of fit range (eV for XANES, A^-1 for EXAFS)
+    range: float
+
+  fit_range_unit:
+    description: Unit of fit range (eV for XANES, A^-1 for EXAFS)
+    range: string
+
+  n_data_points:
+    description: Number of data points included in the fit
+    range: integer
+
+  n_variables:
+    description: Number of free variables in the fit
+    range: integer
+
+  n_standards:
+    description: Number of reference standards used in the linear combination
+    range: integer
+
+  weights_sum_to_1:
+    description: Whether component weights were constrained to sum to 1.0
+    range: string
+
+  weights_bounded:
+    description: Whether component weights were bounded between 0 and 1
+    range: string
+
+  e0_shift_used:
+    description: Whether an overall E0 energy shift was applied
+    range: string
+
+  noise_added:
+    description: Statistical noise added to data before fitting (0 if none)
+    range: float
+
+  r_factor:
+    description: R-factor goodness-of-fit statistic
+    range: float
+
+  chi_square:
+    description: Chi-square statistic from the LCF fit
+    range: float
+
+  reduced_chi_square:
+    description: Reduced chi-square statistic
+    range: float
+
+  weights_sum:
+    description: Actual sum of fitted component weights
+    range: float
+
+  std_index:
+    description: 1-based index of the reference standard in the fit
+    range: integer
+
+  std_name:
+    description: Reference standard name as written in the Athena or Larch project
+    range: string
+
+  weight:
+    description: Fitted weight (fraction) for this standard component
+    range: float
+
+  species_name:
+    description: Chemical species or oxidation state name from the LCF report
+    range: string
+
+  proportion:
+    description: Species proportion in sample (fraction 0-1)
+    range: float
+
+  uncertainty:
+    description: Uncertainty on the species proportion (fraction)
+    range: float
+
+  x_val:
+    description: Positioner value at this data point (energy in eV or k in A^-1)
+    range: float
+
+  data_val:
+    description: Measured normalised spectrum value at this point
+    range: float
+
+  fit_val:
+    description: LCF fitted curve value at this point
+    range: float
+
+  residual:
+    description: Fit residual at this point (data_val - fit_val)
+    range: float
+
+  produced_by_xas_run:
+    description: Reference to the XAS data generation activity that produced this raw file
+    range: XASDataGenerationActivity
+
+  uses_xas_raw_data:
+    description: Raw XAS instrument data inputs consumed by this LCF processing activity
+    range: XASInstrumentData
+    multivalued: true
+    inlined: false
+
+  results_from_xas_processing:
+    description: Reference to the XAS LCF processing activity that produced this processed product
+    range: XASLCFDataProcessingActivity
 
   setup_date:
     description: When the plate was physically set up
@@ -2332,7 +2966,8 @@ slots:
 
   shipped_sample_size:
     description: Total amount of sample sent to EMSL. Must include units.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: shipped sample size
 
@@ -2344,7 +2979,8 @@ slots:
 
   silicate:
     description: 'Concentration of silicate (Unit: umol/L)'
-    pattern: ^\d+(\.\d+)?\s*umol/L$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*umol/L$
     range: string
     title: silicate
 
@@ -2365,7 +3001,8 @@ slots:
       to record the direction you are facing (degrees); e.g. 315 degrees. This measure
       provides an indication of sun and wind exposure that will influence soil temperature
       and evapotranspiration. (Unit: degrees)'
-    pattern: ^\d+(\.\d+)?\s*degrees$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*degrees$
     range: string
     title: slope aspect
 
@@ -2374,7 +3011,8 @@ slots:
       horizontal line (in percent). This is the direction that overland water would
       flow. This measure is usually taken with a hand level meter or clinometer. (Unit:
       percent)'
-    pattern: ^\d+(\.\d+)?\s*percent$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*percent$
     range: string
     title: slope gradient
 
@@ -2385,7 +3023,8 @@ slots:
 
   sodium:
     description: 'Sodium concentration in the sample (Unit: ug/mL)'
-    pattern: ^\d+(\.\d+)?\s*ug/mL$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*ug/mL$
     range: string
     title: sodium
 
@@ -2409,7 +3048,8 @@ slots:
       in a soil as described using a standard system; express as decimal percent sand
       (50 um to 2 mm) silt (2 um to 50 um) and clay (<2 um) with optional textural name
       (e.g. sand:0.20 silt:0.25 clay:0.55 description:silty clay loam).
-    pattern: ^(\w+:0\.\d+ )*description:[A-Za-z ]+$
+    annotations:
+      submission_pattern: ^(\w+:0\.\d+ )*description:[A-Za-z ]+$
     range: string
     title: soil texture
 
@@ -2428,7 +3068,8 @@ slots:
     description: 'Solar irradiance is the power per unit area (surface power density)
       received from the Sun in the form of electromagnetic radiation in the wavelength
       range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s'
-    pattern: ^\d+(\.\d+)?\s*(kW/m2/d|erg/cm2/s)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(kW/m2/d|erg/cm2/s)$
     range: string
     title: solar irradiance
 
@@ -2447,7 +3088,8 @@ slots:
   soluble_react_phosp:
     description: 'Concentration of soluble reactive phosphorus. (Unit: umol/L or
       mg/L or ppm)'
-    pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
     range: string
     title: soluble reactive phosphorus
 
@@ -2477,13 +3119,24 @@ slots:
   start_date_inc:
     description: 'Date the incubation was started. Only relevant for incubation samples.
       Format: YYYY-MM-DD'
-    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
+    annotations:
+      submission_pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
     range: string
     title: incubation start date
+
+  starting_mass_mg:
+    range: float
+    description: The mass of sample or analyte used in the first step of the process, in milligrams.
 
   stationary_phase:
     description: Description of the stationary phase used in the chromatography method (e.g., column type)
     range: string
+  
+  step_number:
+    description: |-
+      Integer ordering within a multi-step process for the same analyte.
+      Lower = earlier in process.
+    range: integer
 
   sterilization_method:
     description: Method used to sterilize the entity (autoclave, filter, UV, etc.)
@@ -2579,15 +3232,21 @@ slots:
     todos: 
       - make this inlined/multivalued?
 
+  substances_used:
+    range: SubstancesUsedLink
+    description: A reference to substances used in a SampleProcessing activity.
+
   sulfate:
     description: 'Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)'
-    pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
     range: string
     title: sulfate
     
   sulfide:
     description: 'Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)'
-    pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
     range: string
     title: sulfide
 
@@ -2606,7 +3265,8 @@ slots:
 
   suspend_part_matter:
     description: 'Concentration of suspended particulate matter. (Unit: mg/L)'
-    pattern: ^\d+(\.\d+)?\s*(mg/L)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(mg/L)$
     range: string
     title: suspended particulate matter
 
@@ -2660,7 +3320,8 @@ slots:
   synth_start_date:
     description: Provide the date the sample was transferred to the synthetic environment.
       Formatted as YYYY-MM-DD
-    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
+    annotations:
+      submission_pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
     range: string
     title: synthetic environment start date
 
@@ -2684,7 +3345,8 @@ slots:
 
   temp:
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
-    pattern: ^-?\d+(\.\d+)?\s*C$
+    annotations:
+      submission_pattern: ^-?\d+(\.\d+)?\s*C$
     range: string
     title: temperature
 
@@ -2745,26 +3407,30 @@ slots:
 
   tot_carb:
     description: Total carbon content. Provide value and unit, any unit is valid
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: total carbon content
 
   tot_depth_water_col:
     description: 'Measurement of total depth of water column (Unit: m)'
-    pattern: ^\d+(\.\d+)?\s*m$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*m$
     range: string
     title: total depth of water column
 
   tot_diss_nitro:
     description: 'Total dissolved nitrogen concentration reported as nitrogen measured
       by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen. (Unit: ug/L)'
-    pattern: ^\d+(\.\d+)?\s*(ug/L)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(ug/L)$
     range: string
     title: total dissolved nitrogen
 
   tot_inorg_nitro:
     description: 'Total inorganic nitrogen content. (Unit: ug/L)'
-    pattern: ^\d+(\.\d+)?\s*(ug/L)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(ug/L)$
     range: string
     title: total inorganic nitrogen
 
@@ -2772,7 +3438,8 @@ slots:
     description: 'Total nitrogen concentration of water samples calculated by: total
       nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured
       without filtering reported as nitrogen. (Unit: ug/L or umol/L or mg/L)'
-    pattern: ^\d+(\.\d+)?\s*(ug/L|umol/L|mg/L)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(ug/L|umol/L|mg/L)$
     range: string
     title: total nitrogen
 
@@ -2784,7 +3451,8 @@ slots:
   tot_nitro_content:
     description: Total nitrogen content of the sample. Provide value and unit any unit
       is valid
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: total nitrogen content
 
@@ -2796,13 +3464,15 @@ slots:
   tot_org_carb:
     description: 'Total organic carbon content. Provided as gram of Carbon per kg of
       your sample material. (Unit: g C/kg)'
-    pattern: ^\d+(\.\d+)?\s*g C/kg$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*g C/kg$
     range: string
     title: total organic carbon
 
   tot_part_carb:
     description: 'Total particulate carbon content. (Unit: ug/L or umol/L)'
-    pattern: ^\d+(\.\d+)?\s*(ug/L|umol/L)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(ug/L|umol/L)$
     range: string
     title: total particulate carbon
 
@@ -2810,7 +3480,8 @@ slots:
     description: 'Total phosphorus concentration in the sample calculated by: total
       phosphorus = total dissolved phosphorus + particulate phosphorus. (Unit: ug/L
       or umol/L)'
-    pattern: ^\d+(\.\d+)?\s*(ug/L|umol/L)$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*(ug/L|umol/L)$
     range: string
     title: total phosphorus
 
@@ -2843,7 +3514,8 @@ slots:
   turbidity:
     description: Measure of the amount of cloudiness or haziness in water caused by
       individual particles. Provide value and unit any unit is valid.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: turbidity
     todos:
@@ -2857,10 +3529,10 @@ slots:
   uses_calibration:
     description: >- 
       Reference to the raw data file from the standard which was run with a batch of samples that was used as calibration for this data processing workflow run.
-    range: MassSpectrometryStandardRun
+    range: CalibrationStandardRun
 
   uses_chromatography:
-    description: Points to a record of the chromatography used to introduce samples for the mass spectrometry run.
+    description: Points to a record of the chromatography configuration used to separate analytes.
     range: ChromatographyConfiguration
 
   uses_ms_configuration:
@@ -2874,6 +3546,28 @@ slots:
       The raw data file, output by a mass spectrometer, that was analyzed in 
       this data processing workflow run.
 
+  uses_raw_ri_data:
+    range: InstrumentData
+    description: >-
+      The raw data file, output by a RI detector, that was analyzed in
+      this data processing workflow run.
+    todos: replace range with a RI-specific InstrumentData subclass once defined
+
+  uses_raw_uv_data:
+    range: InstrumentData
+    description: >-
+      The raw data file, output by a UV-Vis detector, that was analyzed in
+      this data processing workflow run.
+    todos: replace range with a UV-Vis-specific InstrumentData subclass once defined
+
+  uv_datagen_run:
+    description: Reference to the UV-Vis data generation activity that this channel configuration belongs to.
+    range: UVDataGenerationActivity
+
+  uv_detector_type:
+    description: Type of UV detector used in the chromatography method
+    range: UVDetectorEnum
+  
   version:
     description: String indicating the version of the software or protocol
     range: string
@@ -2889,7 +3583,7 @@ slots:
     description: Volume of the entity in milliliters
     range: float
 
-  volume_uL:
+  volume_ul:
     range: float
     description: Volume of the entity in microliters
 
@@ -2901,7 +3595,8 @@ slots:
 
   water_content:
     description: Water content measurement. Provide value and unit any unit is valid
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: water content
 
@@ -2913,7 +3608,8 @@ slots:
   water_current:
     description: Measurement of magnitude and direction of flow within a fluid.
       Provide value and unit, any unit is valid.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: water current
 
@@ -2938,11 +3634,25 @@ slots:
     range: integer
     required: true
 
+  wavelength_nm_max:
+    description: Maximum wavelength of the detection range, in nanometers
+    range: float
+    title: maximum wavelength
+
+  wavelength_nm_min:
+    description: Minimum wavelength of the detection range, in nanometers
+    range: float
+    title: minimum wavelength
+
   weather:
     description: The state of the atmosphere at a given time and place with respect
       to variables such as temperature, moisture, wind velocity, and barometric pressure.
     range: string
     title: weather
+
+  weight_percent:
+    description: Weight percent of the entity in the sample
+    range: float
 
   well_metadata:
     description: |-
@@ -2967,18 +3677,17 @@ slots:
     todos:
       - decide how to represent in backend (normalized child table with FK to PlateSetupActivity, array column, or other)
 
-
   wind_direction:
     description: Direction of the wind on the day of sampling. Collected via anemometer.
       Provide cardinal direction.
     range: CardinalDirectionEnum
     title: wind direction
-    required: false
 
   wind_speed:
     description: Wind speed describes how fast the air is moving past a certain point
       during sampling time. Collected via anemometer. Provide value and unit, any unit is valid.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    annotations:
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: wind speed
     

@@ -57,8 +57,34 @@ processed_samples:
     sample_base_type: "processed_sample"
     processed_sample_type: "amp2_96well_plate"
 
+sample_processing_protocols:
+  - id: "urn:amp2:protocol:media-prep-v1"
+    name: "AMP2 media preparation SOP"
+    description: "Standard operating procedure for AMP2 growth media preparation"
+    protocol_url: "https://protocols.io/view/amp2-media-preparation-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:preculture-v1"
+    name: "AMP2 pre-culture growth SOP"
+    description: "Standard operating procedure for pre-culture inoculation and growth"
+    protocol_url: "https://protocols.io/view/amp2-preculture-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:experimental-culture-v1"
+    name: "AMP2 experimental culture SOP"
+    description: "Standard operating procedure for experimental culture growth"
+    protocol_url: "https://protocols.io/view/amp2-experimental-culture-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:plate-setup-v1"
+    name: "AMP2 96-well plate setup SOP"
+    description: "Standard operating procedure for AMP2 96-well plate inoculation and setup"
+    protocol_url: "https://protocols.io/view/amp2-plate-setup-v1"
+    protocol_version: "1.0"
+
 media_preparations:
   - id: "urn:amp2:act:media-prep-M9-002"
+    in_protocol: "urn:amp2:protocol:media-prep-v1"
     name: "M9 + 1% glucose preparation (complex)"
     media_type: "pre_culture"
     volume_ml: 500.0
@@ -71,6 +97,7 @@ media_preparations:
     output_sample_id: "urn:amp2:ps:M9-glucose-batch-002"
 
   - id: "urn:amp2:act:media-prep-LB-001"
+    in_protocol: "urn:amp2:protocol:media-prep-v1"
     name: "LB broth preparation"
     media_type: "experimental_batch"   # [C1] "experimental_batch" not in MediaTypeEnum
     volume_ml: 300.0
@@ -84,6 +111,7 @@ media_preparations:
 
 culture_growth_activities:
   - id: "urn:amp2:act:complex-kt2440-preculture"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     activity_type: "PreCultureGrowth"
     name: "KT2440 pre-culture (complex)"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
@@ -91,12 +119,13 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_status: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "flask"
     input_sample_id: null
     output_sample_id: "urn:amp2:ps:KT2440-exp-output-complex"
 
   - id: "urn:amp2:act:complex-kt2440-experimental"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     activity_type: "ExperimentalCulture"
     name: "KT2440 experimental culture — nickel stress 0.5 mM"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
@@ -104,7 +133,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_status: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "flask"
     treatment_type: "nickel_stress"
     growth_time: "4 hours"
@@ -112,6 +141,7 @@ culture_growth_activities:
     output_sample_id: "urn:amp2:ps:KT2440-exp-output-complex"
 
   - id: "urn:amp2:act:complex-bl21-experimental"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     activity_type: "ExperimentalCulture"
     name: "BL21-DE3 experimental culture — nickel stress 0.5 mM"
     strain_ref: "urn:amp2:strain:BL21-DE3"
@@ -119,7 +149,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 37.0
     agitation_speed_rpm: 220
-    oxygen_status: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "flask"
     treatment_type: "nickel_stress"
     growth_time: "4 hours"
@@ -128,6 +158,7 @@ culture_growth_activities:
 
 plate_setup_activities:
   - id: "urn:amp2:act:plate-setup-complex-001"
+    in_protocol: "urn:amp2:protocol:plate-setup-v1"
     activity_type: "AMP2PlateSetupActivity"
     name: "EPix1-complex plate setup — dual-strain, per-well media"
     plate_type: "Greiner_96well_flat_bottom"
@@ -136,6 +167,7 @@ plate_setup_activities:
     setup_operator_id: "kapu336"
     setup_instrument: "manual"
     sealing_method: "BreathEasy_membrane"
+    cycle_id: 1
     # No plate-level media_ref — per-well overrides used instead
     input_sample_id: "urn:amp2:ps:KT2440-exp-output-complex"
     output_sample_id: "urn:amp2:ps:EPix1-complex-plate-001"

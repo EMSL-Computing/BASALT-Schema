@@ -11,182 +11,65 @@ default_prefix: basalt_schema
 imports:
   - linkml:types
   - basalt_schema
-
-enums:
-
-  ChemicalConversionCategoryEnum:
-    permissible_values:
-      addition:
-        text: addition
-      substitution:
-        text: substitution
-      acid_base:
-        text: acid_base
-      reduction_oxidation:
-        text: reduction_oxidation
-      combustion:
-        text: combustion
-      decomposition:
-        text: decomposition
-      protease_cleavage:
-        text: protease_cleavage
-        description: an enzymatic cleavage which relies on an enzyme with protease activity
-          to act on proteins and to produce polypeptides (protein fragments).
-        meaning: OBI:0600056
-
-  DigestionMethodEnum:
-    description: Named protein digestion methods used in sample preparation.
-    permissible_values:
-      urea:
-        text: urea
-        description: Urea-based in-solution digestion.
-      s_trap:
-        text: s_trap
-        description: S-Trap-based digestion.
-      fasp:
-        text: fasp
-        description: Filter-Aided Sample Preparation (FASP) digestion.
-      other:
-        text: other
-        description: Other digestion method not otherwise specified.
-
-  EnrichmentTypeEnum:
-    description: Type of targeted peptide or protein enrichment performed.
-    permissible_values:
-      phosphopeptide:
-        text: phosphopeptide
-        description: Enrichment of phosphopeptides.
-      acetyl_peptide:
-        text: acetyl_peptide
-        description: Enrichment of acetylated peptides.
-      ubiquitin_peptide:
-        text: ubiquitin_peptide
-        description: Enrichment of ubiquitinated peptides or diGly-modified peptides.
-      other:
-        text: other
-        description: Other enrichment type not otherwise specified.
-
-  ExtractionMethodEnum:
-    description: A short name for the extraction method applied to the sample.
-    permissible_values:
-      mplex:
-        text: mplex
-        description: MPLEx (Metabolite, Protein, and Lipid Extraction) protocol.
-      bead_beating:
-        text: bead_beating
-        description: Bead beating mechanical lysis and extraction.
-      tca_acetone_precipitation:
-        text: tca_acetone_precipitation
-        description: TCA/Acetone protein precipitation.
-      cell_lysis_s_trap:
-        text: cell_lysis_s_trap
-        description: Cell lysis and S-Trap extraction.
-      other:
-        text: other
-        description: Other extraction method not otherwise specified.
-
-  LabelingMethodEnum:
-    description: The chemical labeling strategy applied to peptides or proteins.
-    permissible_values:
-      tmt:
-        text: tmt
-        description: Tandem Mass Tag (TMT) isobaric labeling.
-      itraq:
-        text: itraq
-        description: iTRAQ isobaric labeling.
-      label_free:
-        text: label_free
-        description: No chemical labeling (label-free quantification).
-      other:
-        text: other
-        description: Other labeling method not otherwise specified.
-  
-  NormalizationMethodEnum:
-    description: The strategy used to normalize sample amounts or intensities.
-    permissible_values:
-      equal_mass:
-        text: equal_mass
-        description: Normalization to an equal total protein mass per sample.
-      equal_volume:
-        text: equal_volume
-        description: Normalization by volume.
-      spike_in_standard:
-        text: spike_in_standard
-        description: Normalization using an internal spike-in standard.
-      other:
-        text: other
-        description: Other normalization approach not otherwise specified.
-
-  ProteinAssayTypeEnum:
-    description: Type of protein quantification assay performed.
-    permissible_values:
-      coomassie:
-        text: coomassie
-        description: Coomassie (Bradford-like) protein assay.
-      bca:
-        text: bca
-        description: Bicinchoninic Acid (BCA) protein assay.
-      other:
-        text: other
-        description: Other protein assay not otherwise specified.
-
-  SubstanceRoleEnum:
-    description: The role or function of the substance in the context of its use.
-    permissible_values:
-      buffer:
-        text: buffer
-        description: Maintains the pH of the solution within a specific range to stabilize
-          analytes or reactions.
-        meaning: CHEBI:35225
-      acid:
-        text: acid
-        description: Donates a proton or accepts an electron pair in a chemical reaction.
-        meaning: CHEBI:37527
-      base:
-        text: base
-        description: Accepts a proton or donates an electron pair in a chemical reaction.
-        meaning: CHEBI:22695
-      ms_proteolytic_enzyme:
-        text: ms_proteolytic_enzyme
-        description: Enzyme that catalyzes the hydrolysis of proteins and is used in mass
-          spectrometry based proteomics
-        meaning: MS:1002986
-      solvent:
-        text: solvent
-        description: Dissolves the sample or reagents to facilitate reactions or extraction.
-        meaning: CHEBI:46787
-      surfactant:
-        text: surfactant
-        description: Reduces surface tension and aids in the solubilization of substances.
-        meaning: CHEBI:35195
-      derivatizing_agent:
-        text: derivatizing_agent
-        description: Chemically modifies analytes to improve detection or separation.
-      solubilizing_agent:
-        text: solubilizing_agent
-
-slots:
-  
-  substances_used:
-    range: PortionOfSubstance
-    multivalued: true
-    description: The substances used in the process.
-    todos: is it possible to have this be multivalued?
-  
-  starting_mass_mg:
-    range: float
-    description: The mass of sample or analyte used in the first step of the process, in milligrams.
-  
-  final_mass_mg:
-    range: float
-    description: The mass of sample or analyte in the processedSample resulting from this activity.
-
-  final_concentration_mg_per_ml:
-    range: float
-    description: The concentration of the sample or analyte in the processedSample resulting from this activity, in milligrams per milliliter.
+  - slots
+  - enums
 
 classes:
-  # revisit sampleProcessing vs. Methods
+
+  StandardSampleProcessing:
+    is_a: SampleProcessing
+    description: >-
+      A concrete SampleProcessing subclass for well-documented standard protocols that
+      are used repeatedly and whose internal steps are not worth modelling individually.
+      It adds no attributes of its own: everything it needs is the inherited in_protocol
+      pointer to a SampleProcessingProtocol, which carries the protocol URL and version.
+
+      This is not an escape hatch from the chained representation -- it is a chain of
+      length one. It produces the same two ProcessingSampleLink rows (one input_sample,
+      one output_sample) at step_number 1 that any other step produces, so downstream
+      queries and provenance traversal never have to branch on which of the two
+      modelling styles was used, and a protocol can be upgraded from standard to
+      fully-stepped later without migrating anything that reads it.
+
+  SampleProcessingProtocol:
+    description: >-
+      A sample processing protocol: the recipe, not an execution of it. This is the
+      single home for protocol_url and protocol_version anywhere in sample processing;
+      no SampleProcessing subclass stores them directly. Type-level, so many runs and
+      many samples reference the same record. For "which steps actually ran together",
+      see SampleProcessingRun.
+    slots:
+      - name
+      - description
+      - protocol_url
+      - protocol_version
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+
+  SampleProcessingRun:
+    description: >-
+      One concrete execution of a sample processing chain: the instance-level counterpart
+      to SampleProcessingProtocol. It is a pure grouping token, deliberately holding no
+      protocol or sample data of its own, so there is nothing here that can contradict
+      the steps or the edges.
+
+      Every ProcessingSampleLink in one chain carries the same in_run. This is what makes
+      "all steps in this chain" a single indexed query on one concrete table, and it is
+      what gives step_number something to be a position within.
+
+      A run may cover several starting samples (a PoolingProcess run) or produce several
+      final analytes (a FractionationProcess run), which is why the run rather than a
+      single "starting sample" pointer is the grouping key -- an ancestor column would be
+      ambiguous the moment anything is pooled.
+    slots:
+      - name
+      - description
+    attributes:
+      id:
+        identifier: true
+        range: uuid
 
   ChemicalConversionProcess: 
     is_a: SampleProcessing 
@@ -228,7 +111,25 @@ classes:
       extraction_method:
         range: ExtractionMethodEnum
         description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
-      
+
+  FiltrationProcess:
+    is_a: SampleProcessing
+    description: >-
+      The process of segregation of phases; e.g. the separation of suspended
+      solids from a liquid or gas, usually by forcing a carrier gas or liquid through
+      a porous medium.
+    slots:
+      - container_size_ml
+      - container_type
+      - filter_material
+      - filter_pore_size_um
+      - is_pressurized
+      - separation_method
+      - volume_ml
+    slot_usage:
+      volume_ml:
+        description: The volume of the sample that was filtered, in milliliters.
+
   FractionationProcess:
     is_a: SampleProcessing
     description: >
@@ -236,6 +137,7 @@ classes:
       an input sample into multiple fractions for downstream LC-MS/MS.
     slots:
       - lims_protocol_instance_id
+      - uses_chromatography
       
   NormalizationProcess:
     is_a: SampleProcessing
@@ -265,19 +167,37 @@ classes:
       Typically corresponds to the L7 "Sample Pooling" / "Pooling" protocols.
     slots:
       - final_mass_mg
+      - final_vol_ml
 
-  PortionOfSubstance:
-    description: A portion of a substance with specific characteristics.
+  SubstancesUsedLink:
+    description: >-
+      A link between a SampleProcessing activity and a PortionOfSubstance that was used in it.
     attributes:
+      id:
+        identifier: true
+        range: uuid
+      sample_processing_substance:
+        range: SampleProcessingSubstance
+        description: A substance that was used in the SampleProcessing activity.
+
+  SampleProcessingSubstance:
+    description: >-
+      A portion of a substance with specific characteristics, as used in a 
+      SampleProcessing activity. Multiple substances may be used in a single 
+      SampleProcessing activity, and the same substance may be used in multiple 
+      SampleProcessing activities.
+    slots:
+      - volume_ml
+    attributes:
+      id:
+        identifier: true
+        range: uuid
       known_as:
         range: ChemicalEntityEnum
         description: Common name or identifier for the substance.
       substance_role:
         range: SubstanceRoleEnum
         description: The role or function of the substance in the context of its use.
-      volume_mL:
-        range: float
-        description: The volume of the portion of the substance, in milliliters.
       source_concentration_mg_per_ml:
         range: float
         description: >-
@@ -310,6 +230,8 @@ classes:
       Resuspension of an analyte (e.g., drying and resolubilizing peptides in LC buffer).
     slots:
       - lims_protocol_instance_id
+      - final_vol_ml
+      - substances_used
 
   SolidPhaseExtractionProcess:
     is_a: SampleProcessing
@@ -319,7 +241,7 @@ classes:
       - lims_protocol_instance_id
       - uses_chromatography
       
-  SubSamplingProcess:
+  SubsamplingProcess:
     is_a: SampleProcessing
     description: >-
       A laboratory subsampling process that takes a portion of an existing 
@@ -328,3 +250,5 @@ classes:
       downstream activity.)
     slots:
       - final_mass_mg
+      - final_vol_ml
+

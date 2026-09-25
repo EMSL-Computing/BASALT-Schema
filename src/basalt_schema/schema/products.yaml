@@ -2,7 +2,7 @@ id: https://emsl-computing.github.io/BASALT-Schema/products
 name: basalt-schema-products
 title: BASALT Schema - Products
 description: |-
-  Enumerated values used throughout the BASALT Schema
+  Data products generated from lab analyses and data processing workflows.
 license: MIT
 
 prefixes:
@@ -23,7 +23,6 @@ classes:
     is_a: ProcessedData
     description: |-
       Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
-      One row per sample with columns for bulk density and QC flag.
     slots:
       - measure_type
     attributes:
@@ -36,7 +35,6 @@ classes:
     is_a: ProcessedData
     description: |-
       Elemental analysis product, typically derived via combustion or similar instrument.
-      One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur.
       Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
@@ -62,7 +60,6 @@ classes:
     is_a: ProcessedData
     description: |-
       Enzyme activity analysis product, typically derived via colorimetric assay of soil extracts.
-      One row per sample with columns for beta-glucosidase activity and QC flag.
     slots:
       - measure_type
     attributes:
@@ -75,7 +72,6 @@ classes:
     is_a: ProcessedData
     description: |-
       Gravimetric water content (GWC) analysis product, typically derived via oven-drying and weighing of a known mass of soil.
-      One row per sample with columns for GWC and QC flag.
     slots:
       - measure_type
     attributes:
@@ -88,7 +84,7 @@ classes:
   HydraulicPropertiesProduct:
     is_a: ProcessedData
     description: >-
-      Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four
+      Soil hydraulic parameters derived from HYPROP evaporation-experiment data. The four
       attributes are the four VGM model parameters.  Proposal_ID, sampling_set,
       and core_section are inherited from the parent processedData record.
     slots:
@@ -122,7 +118,6 @@ classes:
     is_a: ProcessedData
     description: |-
       Ions analysis product, typically derived via ICP-OES or similar instrument.
-      One row per sample with columns for each ion measured.
       Individual QC flags for each ion using ProcessedDataFlag enum.
     slots:
       - measure_type
@@ -179,7 +174,6 @@ classes:
   MAOMProduct:
     description: |-
       Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
-      One row per sample with columns for total organic carbon and total nitrogen.
       Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
     slots:
       - measure_type
@@ -209,7 +203,6 @@ classes:
     is_a: ProcessedData
     description: |-
       Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar instrument.
-      One row per sample with columns for microbial biomass carbon and nitrogen.
       Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
@@ -236,7 +229,6 @@ classes:
     is_a: ProcessedData
     description: |-
       Nitrogen analysis product, typically derived via colorimetric assay of soil extracts.
-      One row per sample with columns for nitrate and ammonium concentrations.
       Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
@@ -263,7 +255,6 @@ classes:
     is_a: ProcessedData
     description: |-
       Phosphorus analysis product, typically derived via colorimetric assay of soil extracts.
-      One row per sample with columns for phosphorus concentration.
       Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
@@ -284,7 +275,6 @@ classes:
     is_a: ProcessedData
     description: |-
       Soil respiration analysis product.
-      One row per sample with columns for soil respiration and QC flag.
     slots:
       - measure_type
     attributes:
@@ -297,7 +287,6 @@ classes:
   TextureProduct:
     description: |-
       Soil texture analysis product, typically derived via hydrometer or similar instrument.
-      One row per sample with columns for sand, silt, and clay percentages.
       Individual QC flags for each measurement using ProcessedDataFlag enum.
     is_a: ProcessedData
     slots:
@@ -312,60 +301,9 @@ classes:
       flag:
         range: ProcessedDataFlag
 
-  TomographyProduct:
-    description: |-
-      Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
-      One row per sample with columns for pore structure metrics and QC flag.
-    is_a: ProcessedData
-    slots:
-      - measure_type
-    attributes:
-      roi_volume_voxel:
-        range: double
-      voxel_size:
-        range: double
-      connected_pores:
-        range: double
-      pore_diameter_min:
-        range: double
-      pore_diameter_max:
-        range: double
-      pore_diameter_mean:
-        range: double
-      pore_diameter_median:
-        range: double
-      pore_diameter_variance:
-        range: double
-      pore_volume_mean:
-        range: double
-      total_pore_volume:
-        range: double
-      permeability_x:
-        range: double
-      flow_rate_x:
-        range: double
-      tortuosity_x:
-        range: double
-      permeability_y:
-        range: double
-      flow_rate_y:
-        range: double
-      tortuosity_y:
-        range: double
-      permeability_z:
-        range: double
-      flow_rate_z:
-        range: double
-      tortuosity_z:
-        range: double
-      flag_xct:
-        # range: ProcessedDataFlag
-        range: string
-
   WEOMProduct:
     description: |-
       Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
-      One row per sample with columns for total organic carbon and total nitrogen.
       Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
@@ -395,7 +333,6 @@ classes:
     is_a: ProcessedData
     description: |-
       Soil pH analysis product, typically derived via pH meter or similar instrument.
-      One row per sample with columns for pH and QC flag.
     slots:
       - measure_type
     attributes:
@@ -410,18 +347,131 @@ classes:
     description: |-
       Abstract base class for X-ray analytical data products.
       Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
-      
+
       Concrete subclasses:
-        - XRFElementalProduct: elemental concentrations (one row per sample)
-        - XRDPhaseProduct: mineral phases (one row per sample)
-      
+        - XCTProduct: pore geometry and flow properties (X-ray computed tomography)
+        - XRFElementalProduct: elemental concentrations
+        - XRDPhaseProduct: mineral phases
+        - XASLCFProduct: linear combination fitting results
+
       Common patterns:
-        - s3_key points to raw spectrum/diffractogram file in MinIO
+        - s3_key points to the raw or processed X-ray data file in MinIO
         - summary_metrics provides lightweight queryable summaries:
+            XCT: {"connected_pores":1842, "total_pore_volume":3.2e6, "tortuosity_z":1.47}
             XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
             XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
-        - workflow_id is NULL for direct instrument output (XRF typical)
-        - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld) 
+            XAS: {"r_factor":0.000975, "lcf_type":"XANES", "n_standards":3}
+        - direct outputs may not have a processing link (XRF typical)
+        - computational outputs should use a typed processing reference slot
+          (XRD Rietveld refinement, XAS LCF fitting)
+
+
+  # ---------------------------------------------------------------------------
+  # XCTProduct   X-ray Computed Tomography Pore/Flow Data
+  # ---------------------------------------------------------------------------
+  XCTProduct:
+    is_a: XRayDataProduct
+    description: |-
+      X-ray computed tomography (XCT) analysis product for pore geometry and flow properties of intact soil cores.
+    slots:
+      - measure_type
+    attributes:
+      roi_x_voxel:
+        description: Number of voxels in X direction of ROI. Previously roi_volume_voxel.
+        range: double
+      roi_y_voxel:
+        description: Number of voxels in Y direction of ROI.
+        range: double
+      roi_z_voxel:
+        description: Number of voxels in Z direction of ROI.
+        range: double
+      voxel_size_mm_per_voxel:
+        description: Linear dimension of a voxel (mm/voxel). Previously voxel_size.
+        range: double
+      porosity_percent:
+        description: Percentage of total pore volume to total volume of ROI (%). Previously total_pore_volume.
+        range: double
+      connected_pores_fraction:
+        description: Fraction of connected pore volume out of total volume (unitless).
+        range: double
+      pore_connectivity_percent:
+        description: Percentage of connected pore volume to all pore volume (%).
+        range: double
+      pore_equivalent_diameter_min_mm:
+        description: Minimum equivalent pore diameter (mm). Previously pore_diameter_min.
+        range: double
+      pore_equivalent_diameter_max_mm:
+        description: Maximum equivalent pore diameter (mm). Previously pore_diameter_max.
+        range: double
+      pore_equivalent_diameter_mean_mm:
+        description: Mean equivalent pore diameter (mm). Previously pore_diameter_mean.
+        range: double
+      pore_equivalent_diameter_median_mm:
+        description: Median equivalent pore diameter (mm). Previously pore_diameter_median.
+        range: double
+      pore_equivalent_diameter_variance_mm2:
+        description: Variance of equivalent pore diameter (mm^2). Previously pore_diameter_variance.
+        range: double
+      pore_volume_min_mm3:
+        description: Minimum volume of pores (mm^3).
+        range: double
+      pore_volume_max_mm3:
+        description: Maximum volume of pores (mm^3).
+        range: double
+      pore_volume_mean_mm3:
+        description: Mean volume of pores (mm^3). Previously pore_volume_mean.
+        range: double
+      pore_volume_median_mm3:
+        description: Median volume of pores (mm^3).
+        range: double
+      pore_volume_variance_mm6:
+        description: Variance of volume of pores (mm^6).
+        range: double
+      pore_area_min_mm2:
+        description: Minimum area of pores (mm^2).
+        range: double
+      pore_area_max_mm2:
+        description: Maximum area of pores (mm^2).
+        range: double
+      pore_area_mean_mm2:
+        description: Mean area of pores (mm^2).
+        range: double
+      pore_area_median_mm2:
+        description: Median area of pores (mm^2).
+        range: double
+      pore_area_variance_mm4:
+        description: Variance of area of pores (mm^4).
+        range: double
+      permeability_x_um2:
+        description: Absolute permeability from pore network model in X direction (um^2). Previously permeability_x.
+        range: double
+      flow_rate_x_mm3_per_sec:
+        description: Total flow rate from pore network model in X direction (mm^3/s). Previously flow_rate_x.
+        range: double
+      tortuosity_x:
+        description: Tortuosity from pore network model in X direction (unitless).
+        range: double
+      permeability_y_um2:
+        description: Absolute permeability from pore network model in Y direction (um^2). Previously permeability_y.
+        range: double
+      flow_rate_y_mm3_per_sec:
+        description: Total flow rate from pore network model in Y direction (mm^3/s). Previously flow_rate_y.
+        range: double
+      tortuosity_y:
+        description: Tortuosity from pore network model in Y direction (unitless).
+        range: double
+      permeability_z_um2:
+        description: Absolute permeability from pore network model in Z direction (um^2). Previously permeability_z.
+        range: double
+      flow_rate_z_mm3_per_sec:
+        description: Total flow rate from pore network model in Z direction (mm^3/s). Previously flow_rate_z.
+        range: double
+      tortuosity_z:
+        description: Tortuosity from pore network model in Z direction (unitless).
+        range: double
+      flag_xct:
+        description: Data quality flag for the XCT analysis.
+        range: string
 
 
   # ---------------------------------------------------------------------------
@@ -431,7 +481,6 @@ classes:
     is_a: XRayDataProduct
     description: |-
       X-ray Fluorescence (XRF) elemental concentration data.
-      One row per sample with columns for each element measured.
       
       Follows the wide-format pattern established by IonsAnalysisProduct.
       Element concentrations in mg/kg (parts per million dry weight basis) as float values.
@@ -440,7 +489,7 @@ classes:
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRFElementalProduct'
-        - processedData.workflow_id = NULL (direct acquisition; no computational WEA)
+        - direct acquisition; no computational processing link required
         - processedData.summary_metrics = {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, ...}
         - processedData.s3_key = path to raw spectrum or calibrated CSV in MinIO
       
@@ -600,7 +649,6 @@ classes:
     is_a: XRayDataProduct
     description: |-
       X-ray Diffraction (XRD) mineral phase identification and quantification data.
-      One row per sample with columns for each mineral phase identified.
       
       Follows the wide-format pattern with individual weight percent columns.
       Individual QC flags for each mineral using ProcessedDataFlag enum.
@@ -608,8 +656,7 @@ classes:
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRDPhaseProduct'
-        - processedData.workflow_id -> DataProcessingActivity if Rietveld refinement
-          is computational; NULL if manual/semi-quantitative
+        - optional typed processing reference when Rietveld refinement is used
         - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
         - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
       
@@ -628,12 +675,8 @@ classes:
         XRDDataGenerationActivity acquires raw diffractogram ->
         DataProcessingActivity (type='xrd_rietveld_refinement') processes with
         HighScore Plus, GSAS-II, or FullProf ->
-        XRDPhaseProduct (workflow_id points to refinement WEA)
-        
-        workflow_steps JSONB example:
-          {"software": "HighScore_Plus", "version": "5.1", "method": "Rietveld",
-           "r_factor": 0.042, "gof": 1.8, "amorphous_content_pct": 12}
-      
+        XRDPhaseProduct (typed processing reference points to refinement activity)
+           
       Required enum additions to enums.yaml:
         product:
           XRDPhaseProduct:  # Add to product permissible_values
@@ -692,3 +735,270 @@ classes:
         range: ProcessedDataFlag
       flag_gypsum:
         range: ProcessedDataFlag
+
+
+  # ---------------------------------------------------------------------------
+  # XASInstrumentData -- one raw sweep file from an XAS measurement session
+  # ---------------------------------------------------------------------------
+  XASInstrumentData:
+    is_a: InstrumentData
+    description: |-
+      Raw XAS sweep file (.0001, .0002, ...) produced at acquisition time.
+      Stores file pointer metadata and key per-sweep scan header fields.
+    slots:
+      - produced_by_xas_run
+      - sweep_number
+      - scan_datetime
+      - scan_time_sec
+      - scan_subtype
+      - positioner
+      - e0_ev
+      - n_points
+      - n_data_rows
+      - x_first
+      - x_last
+      - scan_bounds
+      - scan_steps
+      - integration_times
+      - kwgt
+      - fy_element
+      - fy_transition
+    attributes:
+      amplifiers:
+        range: XASAmplifier
+        multivalued: true
+        inlined_as_list: true
+        description: Amplifier sensitivity entries (one per signal channel)
+      motors:
+        range: XASMotorPosition
+        multivalued: true
+        inlined_as_list: true
+        description: Motor positions recorded at scan start
+      signal_columns:
+        range: XASSignalColumn
+        multivalued: true
+        inlined_as_list: true
+        description: Detector signal name / EPICS PV pairs
+      data_rows:
+        range: XASDataRow
+        multivalued: true
+        inlined_as_list: true
+        description: Per-energy-point representative fluorescence or transmission values
+      ion_chambers:
+        range: XASIonChamber
+        multivalued: true
+        inlined_as_list: true
+        description: Ion chamber gas mixture components parsed from user comment
+
+
+  # ---------------------------------------------------------------------------
+  # XAS sweep child records -- one instance per child row of XASInstrumentData
+  # ---------------------------------------------------------------------------
+  XASAmplifier:
+    description: |-
+      Amplifier sensitivity entry for one signal channel in an XAS sweep.
+      Corresponds to one row in LAM_XAS_AMPS (Amplifier_Gain_N / Analog_In_Offset_N).
+    slots:
+      - amp_index
+      - signal_name
+      - gain
+      - gain_unit
+      - voltage_start
+      - voltage_end
+    slot_usage:
+      amp_index:
+        required: true
+
+  XASMotorPosition:
+    description: |-
+      Motor position recorded at the start of an XAS sweep.
+      Corresponds to one row in LAM_XAS_MOTS (Motor_N_Pos header fields).
+    slots:
+      - motor_index
+      - motor_name
+      - pv
+      - position
+    slot_usage:
+      motor_index:
+        required: true
+
+  XASSignalColumn:
+    description: |-
+      Detector signal name / EPICS PV pair for one data column in an XAS sweep.
+      Corresponds to one row in LAM_XAS_COLS (Analog_In_Signal_Type_N).
+    slots:
+      - col_index
+      - col_name
+      - pv
+    slot_usage:
+      col_index:
+        required: true
+
+  XASDataRow:
+    description: |-
+      One data point from an XAS sweep scan.
+      row_val holds the representative fluorescence or transmission value at
+      each energy step (e.g. FeKa_Sum count, or I0 if FY detector absent).
+      Corresponds to one row in LAM_XAS_DROWS.
+    slots:
+      - row_num
+      - row_val
+    slot_usage:
+      row_num:
+        required: true
+
+  XASIonChamber:
+    description: |-
+      Ion chamber gas mixture component for one chamber in an XAS sweep.
+      Parsed from the user comment (e.g. 'i0 = 30%N2, 70%He. It and Iref = N2').
+      Corresponds to one row in LAM_XAS_ICS.
+    slots:
+      - chamber_index
+      - gas_index
+      - gas_name
+      - chamber_length_mm
+      - pressure_bar
+    slot_usage:
+      chamber_index:
+        required: true
+      gas_index:
+        required: true
+
+
+  # ---------------------------------------------------------------------------
+  # XASLCFProduct -- LCF analysis result summary, one per .lcf file
+  # ---------------------------------------------------------------------------
+  XASLCFProduct:
+    is_a: XRayDataProduct
+    description: |-
+      XAS Linear Combination Fitting (LCF) processed result.
+      One instance per .lcf file and linked to an XASLCFDataProcessingActivity
+      through a typed processing slot.
+    slots:
+      - measure_type
+      - results_from_xas_processing
+      - xas_filename
+      - lcf_type
+      - run_label
+      - fit_label
+      - analysis_code
+      - sample_nor_file
+      - fit_range_min
+      - fit_range_max
+      - fit_range_unit
+      - n_data_points
+      - n_variables
+      - n_standards
+      - weights_sum_to_1
+      - weights_bounded
+      - e0_shift_used
+      - noise_added
+      - r_factor
+      - chi_square
+      - reduced_chi_square
+      - weights_sum
+    attributes:
+      standards:
+        range: XASLCFStandard
+        multivalued: true
+        inlined_as_list: true
+        description: Reference standards used in the linear combination fit
+      species_proportions:
+        range: XASLCFSpeciesProportion
+        multivalued: true
+        inlined_as_list: true
+        description: Derived species proportion results (XANES only)
+      lcf_data_rows:
+        range: XASLCFDataRow
+        multivalued: true
+        inlined_as_list: true
+        description: Per-point fit curve data for plotting
+
+
+  # ---------------------------------------------------------------------------
+  # XAS LCF child records -- one instance per child row of XASLCFProduct
+  # ---------------------------------------------------------------------------
+  XASLCFStandard:
+    description: |-
+      One reference standard (spectral component) used in an LCF fit.
+      The fitted weight represents this standard's fractional contribution
+      to the measured sample spectrum.
+      Corresponds to one row in LAM_XAS_LCF_STDS.
+    slots:
+      - std_index
+      - std_name
+      - weight
+    slot_usage:
+      std_index:
+        required: true
+      std_name:
+        required: true
+
+  XASLCFSpeciesProportion:
+    description: |-
+      Derived species proportion reported in the LC XANES analysis section.
+      For Fe XAS these are typically Fe(II) and Fe(III) proportions; the
+      generalised design supports any element or oxidation state.
+
+      Proportions are derived by summing weights of standards associated with
+      each oxidation state, as reported by Athena or Larch:
+        'Fe(III) proportion in sample: 0.44 (+/-0.05)'
+
+      Corresponds to one row in LAM_XAS_LCF_PROPS.
+    slots:
+      - species_name
+      - proportion
+      - uncertainty
+    slot_usage:
+      species_name:
+        required: true
+      proportion:
+        required: true
+
+  XASLCFDataRow:
+    description: |-
+      One point from the LCF fit output, enabling reconstruction and plotting
+      of the measured spectrum, fitted curve, and residual without accessing
+      the raw .lcf file.
+      Corresponds to one row in LAM_XAS_LCF_DROWS.
+    slots:
+      - row_num
+      - x_val
+      - data_val
+      - fit_val
+      - residual
+    slot_usage:
+      row_num:
+        required: true
+      x_val:
+        required: true
+
+  UVSpectroscopyProduct:
+    is_a: ProcessedData
+    description: |-
+      A compound and its measurements resulting from a 
+      UVDataGenerationActivity.One UVDataGenerationActivity may have many 
+      "products" representing all compounds detected in the sample.
+    slots:
+      - produced_by_uv_run
+      - compound_name
+      - retention_time_min
+      - peak_area
+      - peak_percent_area
+      - peak_height
+      - weight_percent
+      - concentration_ug_per_uL
+      - flag
+
+  RIProduct:
+    is_a: ProcessedData
+    description: |-
+      A compound and its measurements resulting from a 
+      RIDataGenerationActivity.One RIDataGenerationActivity may have many 
+      "products" representing all compounds detected in the sample.
+    slots:
+      - produced_by_ri_run
+      - compound_name
+      - weight_percent
+      - concentration_ug_per_uL
+      - flag
