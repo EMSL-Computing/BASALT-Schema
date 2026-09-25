@@ -2,7 +2,7 @@
 
 **BASALT** — Broad Analytical Schema for Samples and Laboratory Techniques
 
-The BASALT schema is a [LinkML](https://linkml.io)-based data model for MONet/EMSL scientific data across biogeochemical, biological, and environmental domains. It defines canonical structures for samples, provenance, laboratory activities, analytical products, site metadata, and related entities used by BASALT consumers (Analysis API, database models, and tooling).
+The BASALT schema is a [LinkML](https://linkml.io)-based data model for MONet/EMSL scientific data across biogeochemical, biological, and environmental domains. It defines canonical structures for samples, provenance, laboratory activities, analytical products, site metadata, and related entities used by BASALT consumers.
 
 | | |
 | --- | --- |

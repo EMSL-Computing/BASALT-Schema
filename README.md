@@ -9,7 +9,7 @@
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-informational.svg)](https://emsl-computing.github.io/BASALT-Schema)
 [![DOI](https://zenodo.org/badge/1330063141.svg)](https://doi.org/10.5281/zenodo.21893601)
 
-LinkML schema for MONet/EMSL scientific data across **biogeochemical**, **biological**, and **environmental** domains. Canonical source of truth for samples, provenance, laboratory activities, and analytical products used by the Analysis API and database models.
+LinkML schema for MONet/EMSL scientific data across **biogeochemical**, **biological**, and **environmental** domains. 
 
 Formerly `analysis-api-schema`.
 
