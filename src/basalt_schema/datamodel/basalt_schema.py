@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-14T14:45:16
+# Generation date: 2026-09-25T08:51:10
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -188,6 +188,14 @@ class XASLCFDataProcessingActivityId(DataProcessingActivityId):
     pass
 
 
+class RIDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class UVDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
 class ChangelogVersion(extended_str):
     pass
 
@@ -232,7 +240,7 @@ class MassSpectrometryDataProcessingActivityId(DataProcessingActivityId):
     pass
 
 
-class MassSpectrometryStandardRunId(Uuid):
+class CalibrationStandardRunId(Uuid):
     pass
 
 
@@ -316,6 +324,54 @@ class MetagenomicsDataProcessingActivityId(DataProcessingActivityId):
     pass
 
 
+class BulkDensityDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class ElementalAnalysisDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class EnzymeActivityDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class GravimetricWaterContentDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class HydraulicPropertiesDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class KuoDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class MicrobialBiomassDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class PHDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class RespirationDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class TOCTNDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class TextureDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class XCTDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
 class BulkDensityProductId(ProcessedDataId):
     pass
 
@@ -393,6 +449,14 @@ class XASInstrumentDataId(InstrumentDataId):
 
 
 class XASLCFProductId(XRayDataProductId):
+    pass
+
+
+class UVSpectroscopyProductId(ProcessedDataId):
+    pass
+
+
+class RIProductId(ProcessedDataId):
     pass
 
 
@@ -1997,6 +2061,110 @@ class XASLCFDataProcessingActivity(DataProcessingActivity):
 
 
 @dataclass(repr=False)
+class RIDataGenerationActivity(DataGenerationActivity):
+    """
+    Refractive Index (RI) measurement activity.
+    Represents one measurement session for a sample using a RI detector.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RIDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RIDataGenerationActivity"
+    class_name: ClassVar[str] = "RIDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RIDataGenerationActivity
+
+    id: Union[str, RIDataGenerationActivityId] = None
+    name: str = None
+    wavelength_nm: int = None
+    temperature_celsius: Optional[float] = None
+    calibration_standard: Optional[Union[str, PurchasedMaterialId]] = None
+    uses_chromatography: Optional[Union[dict, "ChromatographyConfiguration"]] = None
+    uses_calibration: Optional[Union[str, CalibrationStandardRunId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RIDataGenerationActivityId):
+            self.id = RIDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.wavelength_nm):
+            self.MissingRequiredField("wavelength_nm")
+        if not isinstance(self.wavelength_nm, int):
+            self.wavelength_nm = int(self.wavelength_nm)
+
+        if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
+            self.temperature_celsius = float(self.temperature_celsius)
+
+        if self.calibration_standard is not None and not isinstance(self.calibration_standard, PurchasedMaterialId):
+            self.calibration_standard = PurchasedMaterialId(self.calibration_standard)
+
+        if self.uses_chromatography is not None and not isinstance(self.uses_chromatography, ChromatographyConfiguration):
+            self.uses_chromatography = ChromatographyConfiguration(**as_dict(self.uses_chromatography))
+
+        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationStandardRunId):
+            self.uses_calibration = CalibrationStandardRunId(self.uses_calibration)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class UVDataGenerationActivity(DataGenerationActivity):
+    """
+    Ultraviolet spectroscopy acquisition activity.
+    Represents one measurement session for a sample using UV spectroscopy.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["UVDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:UVDataGenerationActivity"
+    class_name: ClassVar[str] = "UVDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.UVDataGenerationActivity
+
+    id: Union[str, UVDataGenerationActivityId] = None
+    name: str = None
+    uv_detector_type: Optional[Union[str, "UVDetectorEnum"]] = None
+    wavelength_nm_max: Optional[float] = None
+    wavelength_nm_min: Optional[float] = None
+    resolution_nm: Optional[float] = None
+    sampling_rate_hz: Optional[float] = None
+    negative_absorbance_margin_au: Optional[float] = None
+    uses_chromatography: Optional[Union[dict, "ChromatographyConfiguration"]] = None
+    uses_calibration: Optional[Union[str, CalibrationStandardRunId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, UVDataGenerationActivityId):
+            self.id = UVDataGenerationActivityId(self.id)
+
+        if self.uv_detector_type is not None and not isinstance(self.uv_detector_type, UVDetectorEnum):
+            self.uv_detector_type = UVDetectorEnum(self.uv_detector_type)
+
+        if self.wavelength_nm_max is not None and not isinstance(self.wavelength_nm_max, float):
+            self.wavelength_nm_max = float(self.wavelength_nm_max)
+
+        if self.wavelength_nm_min is not None and not isinstance(self.wavelength_nm_min, float):
+            self.wavelength_nm_min = float(self.wavelength_nm_min)
+
+        if self.resolution_nm is not None and not isinstance(self.resolution_nm, float):
+            self.resolution_nm = float(self.resolution_nm)
+
+        if self.sampling_rate_hz is not None and not isinstance(self.sampling_rate_hz, float):
+            self.sampling_rate_hz = float(self.sampling_rate_hz)
+
+        if self.negative_absorbance_margin_au is not None and not isinstance(self.negative_absorbance_margin_au, float):
+            self.negative_absorbance_margin_au = float(self.negative_absorbance_margin_au)
+
+        if self.uses_chromatography is not None and not isinstance(self.uses_chromatography, ChromatographyConfiguration):
+            self.uses_chromatography = ChromatographyConfiguration(**as_dict(self.uses_chromatography))
+
+        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationStandardRunId):
+            self.uses_calibration = CalibrationStandardRunId(self.uses_calibration)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Changelog(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2245,6 +2413,43 @@ class Configuration(YAMLRoot):
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class UVChannelConfig(Configuration):
+    """
+    Configuration for a single UV-Vis detector channel.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["UVChannelConfig"]
+    class_class_curie: ClassVar[str] = "basalt_schema:UVChannelConfig"
+    class_name: ClassVar[str] = "UVChannelConfig"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.UVChannelConfig
+
+    name: str = None
+    id: Union[str, Uuid] = None
+    wavelength_nm: int = None
+    uv_datagen_run: Optional[Union[str, UVDataGenerationActivityId]] = None
+    channel_number: Optional[int] = None
+    resolution_nm: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.wavelength_nm):
+            self.MissingRequiredField("wavelength_nm")
+        if not isinstance(self.wavelength_nm, int):
+            self.wavelength_nm = int(self.wavelength_nm)
+
+        if self.uv_datagen_run is not None and not isinstance(self.uv_datagen_run, UVDataGenerationActivityId):
+            self.uv_datagen_run = UVDataGenerationActivityId(self.uv_datagen_run)
+
+        if self.channel_number is not None and not isinstance(self.channel_number, int):
+            self.channel_number = int(self.channel_number)
+
+        if self.resolution_nm is not None and not isinstance(self.resolution_nm, float):
+            self.resolution_nm = float(self.resolution_nm)
 
         super().__post_init__(**kwargs)
 
@@ -2514,7 +2719,7 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
 
     id: Union[str, MassSpectrometryDataProcessingActivityId] = None
     started_at_time: Union[str, XSDDateTime] = None
-    uses_calibration: Optional[Union[str, MassSpectrometryStandardRunId]] = None
+    uses_calibration: Optional[Union[str, CalibrationStandardRunId]] = None
     uses_raw_ms_data: Optional[Union[str, MassSpectrometryInstrumentDataId]] = None
     lims_task_instance_id: Optional[int] = None
     metaproteomics_analysis_category: Optional[Union[str, "MetaproteomicsAnalysisCategoryEnum"]] = None
@@ -2525,8 +2730,8 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
         if not isinstance(self.id, MassSpectrometryDataProcessingActivityId):
             self.id = MassSpectrometryDataProcessingActivityId(self.id)
 
-        if self.uses_calibration is not None and not isinstance(self.uses_calibration, MassSpectrometryStandardRunId):
-            self.uses_calibration = MassSpectrometryStandardRunId(self.uses_calibration)
+        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationStandardRunId):
+            self.uses_calibration = CalibrationStandardRunId(self.uses_calibration)
 
         if self.uses_raw_ms_data is not None and not isinstance(self.uses_raw_ms_data, MassSpectrometryInstrumentDataId):
             self.uses_raw_ms_data = MassSpectrometryInstrumentDataId(self.uses_raw_ms_data)
@@ -2541,31 +2746,30 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
 
 
 @dataclass(repr=False)
-class MassSpectrometryStandardRun(YAMLRoot):
+class CalibrationStandardRun(YAMLRoot):
     """
-    A record of a mass spectrometry standard run with a batch of samples, which is used for calibration and quality
-    control.
+    A record of a standard run with a batch of samples, which is used for calibration and quality control.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MassSpectrometryStandardRun"]
-    class_class_curie: ClassVar[str] = "basalt_schema:MassSpectrometryStandardRun"
-    class_name: ClassVar[str] = "MassSpectrometryStandardRun"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MassSpectrometryStandardRun
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["CalibrationStandardRun"]
+    class_class_curie: ClassVar[str] = "basalt_schema:CalibrationStandardRun"
+    class_name: ClassVar[str] = "CalibrationStandardRun"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.CalibrationStandardRun
 
-    id: Union[str, MassSpectrometryStandardRunId] = None
+    id: Union[str, CalibrationStandardRunId] = None
     name: str = None
     description: Optional[str] = None
     internal_calibration: Optional[Union[bool, Bool]] = None
     calibration_target: Optional[Union[str, "CalibrationTargetEnum"]] = None
     calibration_standard: Optional[Union[str, PurchasedMaterialId]] = None
-    calibration_data: Optional[Union[str, MassSpectrometryInstrumentDataId]] = None
+    calibration_data: Optional[Union[str, InstrumentDataId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, MassSpectrometryStandardRunId):
-            self.id = MassSpectrometryStandardRunId(self.id)
+        if not isinstance(self.id, CalibrationStandardRunId):
+            self.id = CalibrationStandardRunId(self.id)
 
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
@@ -2584,8 +2788,8 @@ class MassSpectrometryStandardRun(YAMLRoot):
         if self.calibration_standard is not None and not isinstance(self.calibration_standard, PurchasedMaterialId):
             self.calibration_standard = PurchasedMaterialId(self.calibration_standard)
 
-        if self.calibration_data is not None and not isinstance(self.calibration_data, MassSpectrometryInstrumentDataId):
-            self.calibration_data = MassSpectrometryInstrumentDataId(self.calibration_data)
+        if self.calibration_data is not None and not isinstance(self.calibration_data, InstrumentDataId):
+            self.calibration_data = InstrumentDataId(self.calibration_data)
 
         super().__post_init__(**kwargs)
 
@@ -3734,6 +3938,408 @@ class MetagenomicsDataProcessingActivity(DataProcessingActivity):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MetagenomicsDataProcessingActivityId):
             self.id = MetagenomicsDataProcessingActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class BulkDensityDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["BulkDensityDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:BulkDensityDataGenerationActivity"
+    class_name: ClassVar[str] = "BulkDensityDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.BulkDensityDataGenerationActivity
+
+    id: Union[str, BulkDensityDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, BulkDensityDataGenerationActivityId):
+            self.id = BulkDensityDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ElementalAnalysisDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ElementalAnalysisDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ElementalAnalysisDataGenerationActivity"
+    class_name: ClassVar[str] = "ElementalAnalysisDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ElementalAnalysisDataGenerationActivity
+
+    id: Union[str, ElementalAnalysisDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ElementalAnalysisDataGenerationActivityId):
+            self.id = ElementalAnalysisDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class EnzymeActivityDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["EnzymeActivityDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:EnzymeActivityDataGenerationActivity"
+    class_name: ClassVar[str] = "EnzymeActivityDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.EnzymeActivityDataGenerationActivity
+
+    id: Union[str, EnzymeActivityDataGenerationActivityId] = None
+    name: str = None
+    incubation_temp_c: Optional[float] = None
+    incubation_time: Optional[str] = None
+    wavelength: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, EnzymeActivityDataGenerationActivityId):
+            self.id = EnzymeActivityDataGenerationActivityId(self.id)
+
+        if self.incubation_temp_c is not None and not isinstance(self.incubation_temp_c, float):
+            self.incubation_temp_c = float(self.incubation_temp_c)
+
+        if self.incubation_time is not None and not isinstance(self.incubation_time, str):
+            self.incubation_time = str(self.incubation_time)
+
+        if self.wavelength is not None and not isinstance(self.wavelength, float):
+            self.wavelength = float(self.wavelength)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class GravimetricWaterContentDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["GravimetricWaterContentDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:GravimetricWaterContentDataGenerationActivity"
+    class_name: ClassVar[str] = "GravimetricWaterContentDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.GravimetricWaterContentDataGenerationActivity
+
+    id: Union[str, GravimetricWaterContentDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, GravimetricWaterContentDataGenerationActivityId):
+            self.id = GravimetricWaterContentDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class HydraulicPropertiesDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["HydraulicPropertiesDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:HydraulicPropertiesDataGenerationActivity"
+    class_name: ClassVar[str] = "HydraulicPropertiesDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.HydraulicPropertiesDataGenerationActivity
+
+    id: Union[str, HydraulicPropertiesDataGenerationActivityId] = None
+    name: str = None
+    fitting_model: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, HydraulicPropertiesDataGenerationActivityId):
+            self.id = HydraulicPropertiesDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.fitting_model):
+            self.MissingRequiredField("fitting_model")
+        if not isinstance(self.fitting_model, str):
+            self.fitting_model = str(self.fitting_model)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class KuoDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["KuoDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:KuoDataGenerationActivity"
+    class_name: ClassVar[str] = "KuoDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.KuoDataGenerationActivity
+
+    id: Union[str, KuoDataGenerationActivityId] = None
+    name: str = None
+    detection_limit: str = None
+    wavelength: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, KuoDataGenerationActivityId):
+            self.id = KuoDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.detection_limit):
+            self.MissingRequiredField("detection_limit")
+        if not isinstance(self.detection_limit, str):
+            self.detection_limit = str(self.detection_limit)
+
+        if self.wavelength is not None and not isinstance(self.wavelength, str):
+            self.wavelength = str(self.wavelength)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MicrobialBiomassDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MicrobialBiomassDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MicrobialBiomassDataGenerationActivity"
+    class_name: ClassVar[str] = "MicrobialBiomassDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MicrobialBiomassDataGenerationActivity
+
+    id: Union[str, MicrobialBiomassDataGenerationActivityId] = None
+    name: str = None
+    detector: str = None
+    injection_volume: str = None
+    sample_volume: str = None
+    number_of_injections: float = None
+    check_standard_spacing: str = None
+    mode: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MicrobialBiomassDataGenerationActivityId):
+            self.id = MicrobialBiomassDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.detector):
+            self.MissingRequiredField("detector")
+        if not isinstance(self.detector, str):
+            self.detector = str(self.detector)
+
+        if self._is_empty(self.injection_volume):
+            self.MissingRequiredField("injection_volume")
+        if not isinstance(self.injection_volume, str):
+            self.injection_volume = str(self.injection_volume)
+
+        if self._is_empty(self.sample_volume):
+            self.MissingRequiredField("sample_volume")
+        if not isinstance(self.sample_volume, str):
+            self.sample_volume = str(self.sample_volume)
+
+        if self._is_empty(self.number_of_injections):
+            self.MissingRequiredField("number_of_injections")
+        if not isinstance(self.number_of_injections, float):
+            self.number_of_injections = float(self.number_of_injections)
+
+        if self._is_empty(self.check_standard_spacing):
+            self.MissingRequiredField("check_standard_spacing")
+        if not isinstance(self.check_standard_spacing, str):
+            self.check_standard_spacing = str(self.check_standard_spacing)
+
+        if self.mode is not None and not isinstance(self.mode, str):
+            self.mode = str(self.mode)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PHDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PHDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PHDataGenerationActivity"
+    class_name: ClassVar[str] = "PH_DataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PHDataGenerationActivity
+
+    id: Union[str, PHDataGenerationActivityId] = None
+    name: str = None
+    calibration: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PHDataGenerationActivityId):
+            self.id = PHDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.calibration):
+            self.MissingRequiredField("calibration")
+        if not isinstance(self.calibration, str):
+            self.calibration = str(self.calibration)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class RespirationDataGenerationActivity(DataGenerationActivity):
+    """
+    Data generation activity for soil respiration analysis.
+    Captures CO2-C efflux measured per gram of soil.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RespirationDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RespirationDataGenerationActivity"
+    class_name: ClassVar[str] = "RespirationDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RespirationDataGenerationActivity
+
+    id: Union[str, RespirationDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RespirationDataGenerationActivityId):
+            self.id = RespirationDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class TOCTNDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TOCTNDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TOCTNDataGenerationActivity"
+    class_name: ClassVar[str] = "TOC_TN_DataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TOCTNDataGenerationActivity
+
+    id: Union[str, TOCTNDataGenerationActivityId] = None
+    name: str = None
+    detector: str = None
+    injection_volume: str = None
+    sample_volume: str = None
+    number_of_injections: float = None
+    column: Optional[str] = None
+    mode: Optional[str] = None
+    check_standard_spacing: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TOCTNDataGenerationActivityId):
+            self.id = TOCTNDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.detector):
+            self.MissingRequiredField("detector")
+        if not isinstance(self.detector, str):
+            self.detector = str(self.detector)
+
+        if self._is_empty(self.injection_volume):
+            self.MissingRequiredField("injection_volume")
+        if not isinstance(self.injection_volume, str):
+            self.injection_volume = str(self.injection_volume)
+
+        if self._is_empty(self.sample_volume):
+            self.MissingRequiredField("sample_volume")
+        if not isinstance(self.sample_volume, str):
+            self.sample_volume = str(self.sample_volume)
+
+        if self._is_empty(self.number_of_injections):
+            self.MissingRequiredField("number_of_injections")
+        if not isinstance(self.number_of_injections, float):
+            self.number_of_injections = float(self.number_of_injections)
+
+        if self.column is not None and not isinstance(self.column, str):
+            self.column = str(self.column)
+
+        if self.mode is not None and not isinstance(self.mode, str):
+            self.mode = str(self.mode)
+
+        if self.check_standard_spacing is not None and not isinstance(self.check_standard_spacing, str):
+            self.check_standard_spacing = str(self.check_standard_spacing)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class TextureDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TextureDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TextureDataGenerationActivity"
+    class_name: ClassVar[str] = "TextureDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TextureDataGenerationActivity
+
+    id: Union[str, TextureDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TextureDataGenerationActivityId):
+            self.id = TextureDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XCTDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XCTDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XCTDataGenerationActivity"
+    class_name: ClassVar[str] = "XCTDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XCTDataGenerationActivity
+
+    id: Union[str, XCTDataGenerationActivityId] = None
+    name: str = None
+    x_ray_power: str = None
+    cu_filter: str = None
+    total_projections_collected: float = None
+    rotation: str = None
+    frames_recording_per_projection: float = None
+    exposure_time_per_frame: str = None
+    image_voxel_size_is: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, XCTDataGenerationActivityId):
+            self.id = XCTDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.x_ray_power):
+            self.MissingRequiredField("x_ray_power")
+        if not isinstance(self.x_ray_power, str):
+            self.x_ray_power = str(self.x_ray_power)
+
+        if self._is_empty(self.cu_filter):
+            self.MissingRequiredField("cu_filter")
+        if not isinstance(self.cu_filter, str):
+            self.cu_filter = str(self.cu_filter)
+
+        if self._is_empty(self.total_projections_collected):
+            self.MissingRequiredField("total_projections_collected")
+        if not isinstance(self.total_projections_collected, float):
+            self.total_projections_collected = float(self.total_projections_collected)
+
+        if self._is_empty(self.rotation):
+            self.MissingRequiredField("rotation")
+        if not isinstance(self.rotation, str):
+            self.rotation = str(self.rotation)
+
+        if self._is_empty(self.frames_recording_per_projection):
+            self.MissingRequiredField("frames_recording_per_projection")
+        if not isinstance(self.frames_recording_per_projection, float):
+            self.frames_recording_per_projection = float(self.frames_recording_per_projection)
+
+        if self._is_empty(self.exposure_time_per_frame):
+            self.MissingRequiredField("exposure_time_per_frame")
+        if not isinstance(self.exposure_time_per_frame, str):
+            self.exposure_time_per_frame = str(self.exposure_time_per_frame)
+
+        if self._is_empty(self.image_voxel_size_is):
+            self.MissingRequiredField("image_voxel_size_is")
+        if not isinstance(self.image_voxel_size_is, str):
+            self.image_voxel_size_is = str(self.image_voxel_size_is)
 
         super().__post_init__(**kwargs)
 
@@ -5661,6 +6267,116 @@ class XASLCFDataRow(YAMLRoot):
 
 
 @dataclass(repr=False)
+class UVSpectroscopyProduct(ProcessedData):
+    """
+    A compound and its measurements resulting from a
+    UVDataGenerationActivity.One UVDataGenerationActivity may have many
+    "products" representing all compounds detected in the sample.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["UVSpectroscopyProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:UVSpectroscopyProduct"
+    class_name: ClassVar[str] = "UVSpectroscopyProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.UVSpectroscopyProduct
+
+    id: Union[str, UVSpectroscopyProductId] = None
+    name: str = None
+    s3_key: str = None
+    produced_by_uv_run: Optional[Union[str, UVDataGenerationActivityId]] = None
+    compound_name: Optional[Union[str, "ChemicalEntityEnum"]] = None
+    retention_time_min: Optional[float] = None
+    peak_area: Optional[float] = None
+    peak_percent_area: Optional[float] = None
+    peak_height: Optional[float] = None
+    weight_percent: Optional[float] = None
+    concentration_ug_per_uL: Optional[float] = None
+    flag: Optional[Union[str, "ProcessedDataFlag"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, UVSpectroscopyProductId):
+            self.id = UVSpectroscopyProductId(self.id)
+
+        if self.produced_by_uv_run is not None and not isinstance(self.produced_by_uv_run, UVDataGenerationActivityId):
+            self.produced_by_uv_run = UVDataGenerationActivityId(self.produced_by_uv_run)
+
+        if self.compound_name is not None and not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
+
+        if self.retention_time_min is not None and not isinstance(self.retention_time_min, float):
+            self.retention_time_min = float(self.retention_time_min)
+
+        if self.peak_area is not None and not isinstance(self.peak_area, float):
+            self.peak_area = float(self.peak_area)
+
+        if self.peak_percent_area is not None and not isinstance(self.peak_percent_area, float):
+            self.peak_percent_area = float(self.peak_percent_area)
+
+        if self.peak_height is not None and not isinstance(self.peak_height, float):
+            self.peak_height = float(self.peak_height)
+
+        if self.weight_percent is not None and not isinstance(self.weight_percent, float):
+            self.weight_percent = float(self.weight_percent)
+
+        if self.concentration_ug_per_uL is not None and not isinstance(self.concentration_ug_per_uL, float):
+            self.concentration_ug_per_uL = float(self.concentration_ug_per_uL)
+
+        if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
+            self.flag = ProcessedDataFlag(self.flag)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class RIProduct(ProcessedData):
+    """
+    A compound and its measurements resulting from a
+    RIDataGenerationActivity.One RIDataGenerationActivity may have many
+    "products" representing all compounds detected in the sample.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RIProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RIProduct"
+    class_name: ClassVar[str] = "RIProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RIProduct
+
+    id: Union[str, RIProductId] = None
+    name: str = None
+    s3_key: str = None
+    produced_by_ri_run: Optional[Union[str, RIDataGenerationActivityId]] = None
+    compound_name: Optional[Union[str, "ChemicalEntityEnum"]] = None
+    weight_percent: Optional[float] = None
+    concentration_ug_per_uL: Optional[float] = None
+    flag: Optional[Union[str, "ProcessedDataFlag"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RIProductId):
+            self.id = RIProductId(self.id)
+
+        if self.produced_by_ri_run is not None and not isinstance(self.produced_by_ri_run, RIDataGenerationActivityId):
+            self.produced_by_ri_run = RIDataGenerationActivityId(self.produced_by_ri_run)
+
+        if self.compound_name is not None and not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
+
+        if self.weight_percent is not None and not isinstance(self.weight_percent, float):
+            self.weight_percent = float(self.weight_percent)
+
+        if self.concentration_ug_per_uL is not None and not isinstance(self.concentration_ug_per_uL, float):
+            self.concentration_ug_per_uL = float(self.concentration_ug_per_uL)
+
+        if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
+            self.flag = ProcessedDataFlag(self.flag)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Organism(YAMLRoot):
     """
     Reference data representing a biological identity (strain, isolate,
@@ -6565,7 +7281,7 @@ class CommerciallyPurchasedSample(Sample):
     id: Union[str, CommerciallyPurchasedSampleId] = None
     name: str = None
     analysis_type: str = None
-    compound_name: str = None
+    compound_name: Union[str, "ChemicalEntityEnum"] = None
     cas: Optional[str] = None
     experimental_factor: Optional[str] = None
     experimental_factor_other: Optional[str] = None
@@ -6604,8 +7320,8 @@ class CommerciallyPurchasedSample(Sample):
 
         if self._is_empty(self.compound_name):
             self.MissingRequiredField("compound_name")
-        if not isinstance(self.compound_name, str):
-            self.compound_name = str(self.compound_name)
+        if not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
 
         if self.cas is not None and not isinstance(self.cas, str):
             self.cas = str(self.cas)
@@ -7788,7 +8504,7 @@ class OtherUndescribedSample(Sample):
     chem_oxygen_dem: Optional[str] = None
     chloride: Optional[str] = None
     chlorophyll: Optional[str] = None
-    compound_name: Optional[str] = None
+    compound_name: Optional[Union[str, "ChemicalEntityEnum"]] = None
     conduc: Optional[str] = None
     density: Optional[str] = None
     depth: Optional[str] = None
@@ -8095,8 +8811,8 @@ class OtherUndescribedSample(Sample):
         if self.chlorophyll is not None and not isinstance(self.chlorophyll, str):
             self.chlorophyll = str(self.chlorophyll)
 
-        if self.compound_name is not None and not isinstance(self.compound_name, str):
-            self.compound_name = str(self.compound_name)
+        if self.compound_name is not None and not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
 
         if self.conduc is not None and not isinstance(self.conduc, str):
             self.conduc = str(self.conduc)
@@ -10107,7 +10823,7 @@ class SynthesizedMaterialSample(Sample):
     synth_instrument: str = None
     synth_reagents: str = None
     cas: Optional[str] = None
-    compound_name: Optional[str] = None
+    compound_name: Optional[Union[str, "ChemicalEntityEnum"]] = None
     experimental_factor: Optional[str] = None
     experimental_factor_other: Optional[str] = None
     external_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
@@ -10157,8 +10873,8 @@ class SynthesizedMaterialSample(Sample):
         if self.cas is not None and not isinstance(self.cas, str):
             self.cas = str(self.cas)
 
-        if self.compound_name is not None and not isinstance(self.compound_name, str):
-            self.compound_name = str(self.compound_name)
+        if self.compound_name is not None and not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
 
         if self.experimental_factor is not None and not isinstance(self.experimental_factor, str):
             self.experimental_factor = str(self.experimental_factor)
@@ -13174,6 +13890,7 @@ class CalibrationTargetEnum(EnumDefinitionImpl):
         title="m/z")
     retention_time = PermissibleValue(text="retention_time")
     retention_index = PermissibleValue(text="retention_index")
+    refractive_index = PermissibleValue(text="refractive_index")
 
     _defn = EnumDefinition(
         name="CalibrationTargetEnum",
@@ -13325,6 +14042,7 @@ class ChromatographyCategoryEnum(EnumDefinitionImpl):
     liquid_chromatography = PermissibleValue(text="liquid_chromatography")
     gas_chromatography = PermissibleValue(text="gas_chromatography")
     solid_phase_extraction = PermissibleValue(text="solid_phase_extraction")
+    high_performance_liquid_chromatography = PermissibleValue(text="high_performance_liquid_chromatography")
 
     _defn = EnumDefinition(
         name="ChromatographyCategoryEnum",
@@ -15405,6 +16123,25 @@ class TrophicLevelEnum(EnumDefinitionImpl):
         description="Enumeration of trophic levels for organisms.",
     )
 
+class UVDetectorEnum(EnumDefinitionImpl):
+    """
+    UV detector types used in chromatography.
+    """
+    photodiode_array = PermissibleValue(
+        text="photodiode_array",
+        description="Diode Array Detector (DAD)")
+    variable_wavelength = PermissibleValue(
+        text="variable_wavelength",
+        description="Variable Wavelength Detector")
+    fixed_wavelength = PermissibleValue(
+        text="fixed_wavelength",
+        description="Fixed Wavelength Detector")
+
+    _defn = EnumDefinition(
+        name="UVDetectorEnum",
+        description="UV detector types used in chromatography.",
+    )
+
 class VendorEnum(EnumDefinitionImpl):
 
     waters = PermissibleValue(text="waters")
@@ -15597,7 +16334,7 @@ slots.calcium = Slot(uri=BASALT_SCHEMA.calcium, name="calcium", curie=BASALT_SCH
                    model_uri=BASALT_SCHEMA.calcium, domain=None, range=Optional[str])
 
 slots.calibration_data = Slot(uri=BASALT_SCHEMA.calibration_data, name="calibration_data", curie=BASALT_SCHEMA.curie('calibration_data'),
-                   model_uri=BASALT_SCHEMA.calibration_data, domain=None, range=Optional[Union[str, MassSpectrometryInstrumentDataId]])
+                   model_uri=BASALT_SCHEMA.calibration_data, domain=None, range=Optional[Union[str, InstrumentDataId]])
 
 slots.calibration_standard = Slot(uri=BASALT_SCHEMA.calibration_standard, name="calibration_standard", curie=BASALT_SCHEMA.curie('calibration_standard'),
                    model_uri=BASALT_SCHEMA.calibration_standard, domain=None, range=Optional[Union[str, PurchasedMaterialId]])
@@ -15619,6 +16356,9 @@ slots.cas = Slot(uri=BASALT_SCHEMA.cas, name="cas", curie=BASALT_SCHEMA.curie('c
 
 slots.cbi = Slot(uri=BASALT_SCHEMA.cbi, name="cbi", curie=BASALT_SCHEMA.curie('cbi'),
                    model_uri=BASALT_SCHEMA.cbi, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.channel_number = Slot(uri=BASALT_SCHEMA.channel_number, name="channel_number", curie=BASALT_SCHEMA.curie('channel_number'),
+                   model_uri=BASALT_SCHEMA.channel_number, domain=None, range=Optional[int])
 
 slots.chem_administration = Slot(uri=BASALT_SCHEMA.chem_administration, name="chem_administration", curie=BASALT_SCHEMA.curie('chem_administration'),
                    model_uri=BASALT_SCHEMA.chem_administration, domain=None, range=Optional[str])
@@ -15669,7 +16409,7 @@ slots.component_name = Slot(uri=BASALT_SCHEMA.component_name, name="component_na
                    model_uri=BASALT_SCHEMA.component_name, domain=None, range=Optional[str])
 
 slots.compound_name = Slot(uri=BASALT_SCHEMA.compound_name, name="compound_name", curie=BASALT_SCHEMA.curie('compound_name'),
-                   model_uri=BASALT_SCHEMA.compound_name, domain=None, range=Optional[str])
+                   model_uri=BASALT_SCHEMA.compound_name, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
 
 slots.concentration_ug_per_uL = Slot(uri=BASALT_SCHEMA.concentration_ug_per_uL, name="concentration_ug_per_uL", curie=BASALT_SCHEMA.curie('concentration_ug_per_uL'),
                    model_uri=BASALT_SCHEMA.concentration_ug_per_uL, domain=None, range=Optional[float])
@@ -15868,6 +16608,9 @@ slots.first_blh_quality_index = Slot(uri=BASALT_SCHEMA.first_blh_quality_index, 
 
 slots.first_cbh = Slot(uri=BASALT_SCHEMA.first_cbh, name="first_cbh", curie=BASALT_SCHEMA.curie('first_cbh'),
                    model_uri=BASALT_SCHEMA.first_cbh, domain=None, range=Optional[float])
+
+slots.flag = Slot(uri=BASALT_SCHEMA.flag, name="flag", curie=BASALT_SCHEMA.curie('flag'),
+                   model_uri=BASALT_SCHEMA.flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.flooding = Slot(uri=BASALT_SCHEMA.flooding, name="flooding", curie=BASALT_SCHEMA.curie('flooding'),
                    model_uri=BASALT_SCHEMA.flooding, domain=None, range=Optional[str])
@@ -16211,6 +16954,9 @@ slots.n_alkanes = Slot(uri=BASALT_SCHEMA.n_alkanes, name="n_alkanes", curie=BASA
 slots.name = Slot(uri=BASALT_SCHEMA.name, name="name", curie=BASALT_SCHEMA.curie('name'),
                    model_uri=BASALT_SCHEMA.name, domain=None, range=str)
 
+slots.negative_absorbance_margin_au = Slot(uri=BASALT_SCHEMA.negative_absorbance_margin_au, name="negative_absorbance_margin_au", curie=BASALT_SCHEMA.curie('negative_absorbance_margin_au'),
+                   model_uri=BASALT_SCHEMA.negative_absorbance_margin_au, domain=None, range=Optional[float])
+
 slots.neon_domain = Slot(uri=BASALT_SCHEMA.neon_domain, name="neon_domain", curie=BASALT_SCHEMA.curie('neon_domain'),
                    model_uri=BASALT_SCHEMA.neon_domain, domain=None, range=Optional[Union[str, "NEONDomainEnum"]])
 
@@ -16306,6 +17052,15 @@ slots.particle_class = Slot(uri=BASALT_SCHEMA.particle_class, name="particle_cla
 
 slots.pathogenicity = Slot(uri=BASALT_SCHEMA.pathogenicity, name="pathogenicity", curie=BASALT_SCHEMA.curie('pathogenicity'),
                    model_uri=BASALT_SCHEMA.pathogenicity, domain=None, range=Optional[str])
+
+slots.peak_area = Slot(uri=BASALT_SCHEMA.peak_area, name="peak_area", curie=BASALT_SCHEMA.curie('peak_area'),
+                   model_uri=BASALT_SCHEMA.peak_area, domain=None, range=Optional[float])
+
+slots.peak_percent_area = Slot(uri=BASALT_SCHEMA.peak_percent_area, name="peak_percent_area", curie=BASALT_SCHEMA.curie('peak_percent_area'),
+                   model_uri=BASALT_SCHEMA.peak_percent_area, domain=None, range=Optional[float])
+
+slots.peak_height = Slot(uri=BASALT_SCHEMA.peak_height, name="peak_height", curie=BASALT_SCHEMA.curie('peak_height'),
+                   model_uri=BASALT_SCHEMA.peak_height, domain=None, range=Optional[float])
 
 slots.perturbation = Slot(uri=BASALT_SCHEMA.perturbation, name="perturbation", curie=BASALT_SCHEMA.curie('perturbation'),
                    model_uri=BASALT_SCHEMA.perturbation, domain=None, range=Optional[str])
@@ -16439,6 +17194,12 @@ slots.produced_by_ms_run = Slot(uri=BASALT_SCHEMA.produced_by_ms_run, name="prod
 slots.produced_by_sequencing_activity = Slot(uri=BASALT_SCHEMA.produced_by_sequencing_activity, name="produced_by_sequencing_activity", curie=BASALT_SCHEMA.curie('produced_by_sequencing_activity'),
                    model_uri=BASALT_SCHEMA.produced_by_sequencing_activity, domain=None, range=Optional[Union[str, NucleotideSequencingId]])
 
+slots.produced_by_ri_run = Slot(uri=BASALT_SCHEMA.produced_by_ri_run, name="produced_by_ri_run", curie=BASALT_SCHEMA.curie('produced_by_ri_run'),
+                   model_uri=BASALT_SCHEMA.produced_by_ri_run, domain=None, range=Optional[Union[str, RIDataGenerationActivityId]])
+
+slots.produced_by_uv_run = Slot(uri=BASALT_SCHEMA.produced_by_uv_run, name="produced_by_uv_run", curie=BASALT_SCHEMA.curie('produced_by_uv_run'),
+                   model_uri=BASALT_SCHEMA.produced_by_uv_run, domain=None, range=Optional[Union[str, UVDataGenerationActivityId]])
+
 slots.product_name = Slot(uri=BASALT_SCHEMA.product_name, name="product_name", curie=BASALT_SCHEMA.curie('product_name'),
                    model_uri=BASALT_SCHEMA.product_name, domain=None, range=Optional[str])
 
@@ -16499,8 +17260,14 @@ slots.replicate_tech = Slot(uri=BASALT_SCHEMA.replicate_tech, name="replicate_te
 slots.resolution = Slot(uri=BASALT_SCHEMA.resolution, name="resolution", curie=BASALT_SCHEMA.curie('resolution'),
                    model_uri=BASALT_SCHEMA.resolution, domain=None, range=Union[str, "MassSpecResolutionEnum"])
 
+slots.resolution_nm = Slot(uri=BASALT_SCHEMA.resolution_nm, name="resolution_nm", curie=BASALT_SCHEMA.curie('resolution_nm'),
+                   model_uri=BASALT_SCHEMA.resolution_nm, domain=None, range=Optional[float])
+
 slots.results_from_ms_processing = Slot(uri=BASALT_SCHEMA.results_from_ms_processing, name="results_from_ms_processing", curie=BASALT_SCHEMA.curie('results_from_ms_processing'),
                    model_uri=BASALT_SCHEMA.results_from_ms_processing, domain=None, range=Optional[Union[str, MassSpectrometryDataProcessingActivityId]])
+
+slots.retention_time_min = Slot(uri=BASALT_SCHEMA.retention_time_min, name="retention_time_min", curie=BASALT_SCHEMA.curie('retention_time_min'),
+                   model_uri=BASALT_SCHEMA.retention_time_min, domain=None, range=Optional[float])
 
 slots.root_cond = Slot(uri=BASALT_SCHEMA.root_cond, name="root_cond", curie=BASALT_SCHEMA.curie('root_cond'),
                    model_uri=BASALT_SCHEMA.root_cond, domain=None, range=Optional[str])
@@ -16594,6 +17361,9 @@ slots.sampled_portion = Slot(uri=BASALT_SCHEMA.sampled_portion, name="sampled_po
 
 slots.sampling_duration = Slot(uri=BASALT_SCHEMA.sampling_duration, name="sampling_duration", curie=BASALT_SCHEMA.curie('sampling_duration'),
                    model_uri=BASALT_SCHEMA.sampling_duration, domain=None, range=Optional[str])
+
+slots.sampling_rate_hz = Slot(uri=BASALT_SCHEMA.sampling_rate_hz, name="sampling_rate_hz", curie=BASALT_SCHEMA.curie('sampling_rate_hz'),
+                   model_uri=BASALT_SCHEMA.sampling_rate_hz, domain=None, range=Optional[float])
 
 slots.sampling_set = Slot(uri=BASALT_SCHEMA.sampling_set, name="sampling_set", curie=BASALT_SCHEMA.curie('sampling_set'),
                    model_uri=BASALT_SCHEMA.sampling_set, domain=None, range=Optional[int])
@@ -17214,7 +17984,7 @@ slots.uninoculated_mean = Slot(uri=BASALT_SCHEMA.uninoculated_mean, name="uninoc
                    model_uri=BASALT_SCHEMA.uninoculated_mean, domain=None, range=Optional[float])
 
 slots.uses_calibration = Slot(uri=BASALT_SCHEMA.uses_calibration, name="uses_calibration", curie=BASALT_SCHEMA.curie('uses_calibration'),
-                   model_uri=BASALT_SCHEMA.uses_calibration, domain=None, range=Optional[Union[str, MassSpectrometryStandardRunId]])
+                   model_uri=BASALT_SCHEMA.uses_calibration, domain=None, range=Optional[Union[str, CalibrationStandardRunId]])
 
 slots.uses_chromatography = Slot(uri=BASALT_SCHEMA.uses_chromatography, name="uses_chromatography", curie=BASALT_SCHEMA.curie('uses_chromatography'),
                    model_uri=BASALT_SCHEMA.uses_chromatography, domain=None, range=Optional[Union[dict, ChromatographyConfiguration]])
@@ -17224,6 +17994,18 @@ slots.uses_ms_configuration = Slot(uri=BASALT_SCHEMA.uses_ms_configuration, name
 
 slots.uses_raw_ms_data = Slot(uri=BASALT_SCHEMA.uses_raw_ms_data, name="uses_raw_ms_data", curie=BASALT_SCHEMA.curie('uses_raw_ms_data'),
                    model_uri=BASALT_SCHEMA.uses_raw_ms_data, domain=None, range=Optional[Union[str, MassSpectrometryInstrumentDataId]])
+
+slots.uses_raw_ri_data = Slot(uri=BASALT_SCHEMA.uses_raw_ri_data, name="uses_raw_ri_data", curie=BASALT_SCHEMA.curie('uses_raw_ri_data'),
+                   model_uri=BASALT_SCHEMA.uses_raw_ri_data, domain=None, range=Optional[Union[str, InstrumentDataId]])
+
+slots.uses_raw_uv_data = Slot(uri=BASALT_SCHEMA.uses_raw_uv_data, name="uses_raw_uv_data", curie=BASALT_SCHEMA.curie('uses_raw_uv_data'),
+                   model_uri=BASALT_SCHEMA.uses_raw_uv_data, domain=None, range=Optional[Union[str, InstrumentDataId]])
+
+slots.uv_datagen_run = Slot(uri=BASALT_SCHEMA.uv_datagen_run, name="uv_datagen_run", curie=BASALT_SCHEMA.curie('uv_datagen_run'),
+                   model_uri=BASALT_SCHEMA.uv_datagen_run, domain=None, range=Optional[Union[str, UVDataGenerationActivityId]])
+
+slots.uv_detector_type = Slot(uri=BASALT_SCHEMA.uv_detector_type, name="uv_detector_type", curie=BASALT_SCHEMA.curie('uv_detector_type'),
+                   model_uri=BASALT_SCHEMA.uv_detector_type, domain=None, range=Optional[Union[str, "UVDetectorEnum"]])
 
 slots.version = Slot(uri=BASALT_SCHEMA.version, name="version", curie=BASALT_SCHEMA.curie('version'),
                    model_uri=BASALT_SCHEMA.version, domain=None, range=str)
@@ -17258,8 +18040,17 @@ slots.watering_regm = Slot(uri=BASALT_SCHEMA.watering_regm, name="watering_regm"
 slots.wavelength_nm = Slot(uri=BASALT_SCHEMA.wavelength_nm, name="wavelength_nm", curie=BASALT_SCHEMA.curie('wavelength_nm'),
                    model_uri=BASALT_SCHEMA.wavelength_nm, domain=None, range=int)
 
+slots.wavelength_nm_max = Slot(uri=BASALT_SCHEMA.wavelength_nm_max, name="wavelength_nm_max", curie=BASALT_SCHEMA.curie('wavelength_nm_max'),
+                   model_uri=BASALT_SCHEMA.wavelength_nm_max, domain=None, range=Optional[float])
+
+slots.wavelength_nm_min = Slot(uri=BASALT_SCHEMA.wavelength_nm_min, name="wavelength_nm_min", curie=BASALT_SCHEMA.curie('wavelength_nm_min'),
+                   model_uri=BASALT_SCHEMA.wavelength_nm_min, domain=None, range=Optional[float])
+
 slots.weather = Slot(uri=BASALT_SCHEMA.weather, name="weather", curie=BASALT_SCHEMA.curie('weather'),
                    model_uri=BASALT_SCHEMA.weather, domain=None, range=Optional[str])
+
+slots.weight_percent = Slot(uri=BASALT_SCHEMA.weight_percent, name="weight_percent", curie=BASALT_SCHEMA.curie('weight_percent'),
+                   model_uri=BASALT_SCHEMA.weight_percent, domain=None, range=Optional[float])
 
 slots.well_metadata = Slot(uri=BASALT_SCHEMA.well_metadata, name="well_metadata", curie=BASALT_SCHEMA.curie('well_metadata'),
                    model_uri=BASALT_SCHEMA.well_metadata, domain=None, range=Optional[Union[Union[dict, WellMetadata], list[Union[dict, WellMetadata]]]])
@@ -17555,8 +18346,8 @@ slots.mobilePhaseSubstance__substance = Slot(uri=BASALT_SCHEMA.substance, name="
 slots.mobilePhaseSubstance__concentration = Slot(uri=BASALT_SCHEMA.concentration, name="mobilePhaseSubstance__concentration", curie=BASALT_SCHEMA.curie('concentration'),
                    model_uri=BASALT_SCHEMA.mobilePhaseSubstance__concentration, domain=None, range=Optional[str])
 
-slots.massSpectrometryStandardRun__id = Slot(uri=BASALT_SCHEMA.id, name="massSpectrometryStandardRun__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.massSpectrometryStandardRun__id, domain=None, range=URIRef)
+slots.calibrationStandardRun__id = Slot(uri=BASALT_SCHEMA.id, name="calibrationStandardRun__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.calibrationStandardRun__id, domain=None, range=URIRef)
 
 slots.purchasedMaterial__id = Slot(uri=BASALT_SCHEMA.id, name="purchasedMaterial__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.purchasedMaterial__id, domain=None, range=URIRef)
@@ -17626,6 +18417,87 @@ slots.wellReading__value = Slot(uri=BASALT_SCHEMA.value, name="wellReading__valu
 
 slots.wellReading__flag = Slot(uri=BASALT_SCHEMA.flag, name="wellReading__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.wellReading__flag, domain=None, range=Optional[str])
+
+slots.enzymeActivityDataGenerationActivity__incubation_temp_c = Slot(uri=BASALT_SCHEMA.incubation_temp_c, name="enzymeActivityDataGenerationActivity__incubation_temp_c", curie=BASALT_SCHEMA.curie('incubation_temp_c'),
+                   model_uri=BASALT_SCHEMA.enzymeActivityDataGenerationActivity__incubation_temp_c, domain=None, range=Optional[float])
+
+slots.enzymeActivityDataGenerationActivity__incubation_time = Slot(uri=BASALT_SCHEMA.incubation_time, name="enzymeActivityDataGenerationActivity__incubation_time", curie=BASALT_SCHEMA.curie('incubation_time'),
+                   model_uri=BASALT_SCHEMA.enzymeActivityDataGenerationActivity__incubation_time, domain=None, range=Optional[str])
+
+slots.enzymeActivityDataGenerationActivity__wavelength = Slot(uri=BASALT_SCHEMA.wavelength, name="enzymeActivityDataGenerationActivity__wavelength", curie=BASALT_SCHEMA.curie('wavelength'),
+                   model_uri=BASALT_SCHEMA.enzymeActivityDataGenerationActivity__wavelength, domain=None, range=Optional[float])
+
+slots.hydraulicPropertiesDataGenerationActivity__fitting_model = Slot(uri=BASALT_SCHEMA.fitting_model, name="hydraulicPropertiesDataGenerationActivity__fitting_model", curie=BASALT_SCHEMA.curie('fitting_model'),
+                   model_uri=BASALT_SCHEMA.hydraulicPropertiesDataGenerationActivity__fitting_model, domain=None, range=str)
+
+slots.kuoDataGenerationActivity__detection_limit = Slot(uri=BASALT_SCHEMA.detection_limit, name="kuoDataGenerationActivity__detection_limit", curie=BASALT_SCHEMA.curie('detection_limit'),
+                   model_uri=BASALT_SCHEMA.kuoDataGenerationActivity__detection_limit, domain=None, range=str)
+
+slots.kuoDataGenerationActivity__wavelength = Slot(uri=BASALT_SCHEMA.wavelength, name="kuoDataGenerationActivity__wavelength", curie=BASALT_SCHEMA.curie('wavelength'),
+                   model_uri=BASALT_SCHEMA.kuoDataGenerationActivity__wavelength, domain=None, range=Optional[str])
+
+slots.microbialBiomassDataGenerationActivity__detector = Slot(uri=BASALT_SCHEMA.detector, name="microbialBiomassDataGenerationActivity__detector", curie=BASALT_SCHEMA.curie('detector'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__detector, domain=None, range=str)
+
+slots.microbialBiomassDataGenerationActivity__mode = Slot(uri=BASALT_SCHEMA.mode, name="microbialBiomassDataGenerationActivity__mode", curie=BASALT_SCHEMA.curie('mode'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__mode, domain=None, range=Optional[str])
+
+slots.microbialBiomassDataGenerationActivity__injection_volume = Slot(uri=BASALT_SCHEMA.injection_volume, name="microbialBiomassDataGenerationActivity__injection_volume", curie=BASALT_SCHEMA.curie('injection_volume'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__injection_volume, domain=None, range=str)
+
+slots.microbialBiomassDataGenerationActivity__sample_volume = Slot(uri=BASALT_SCHEMA.sample_volume, name="microbialBiomassDataGenerationActivity__sample_volume", curie=BASALT_SCHEMA.curie('sample_volume'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__sample_volume, domain=None, range=str)
+
+slots.microbialBiomassDataGenerationActivity__number_of_injections = Slot(uri=BASALT_SCHEMA.number_of_injections, name="microbialBiomassDataGenerationActivity__number_of_injections", curie=BASALT_SCHEMA.curie('number_of_injections'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__number_of_injections, domain=None, range=float)
+
+slots.microbialBiomassDataGenerationActivity__check_standard_spacing = Slot(uri=BASALT_SCHEMA.check_standard_spacing, name="microbialBiomassDataGenerationActivity__check_standard_spacing", curie=BASALT_SCHEMA.curie('check_standard_spacing'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__check_standard_spacing, domain=None, range=str)
+
+slots.pHDataGenerationActivity__calibration = Slot(uri=BASALT_SCHEMA.calibration, name="pHDataGenerationActivity__calibration", curie=BASALT_SCHEMA.curie('calibration'),
+                   model_uri=BASALT_SCHEMA.pHDataGenerationActivity__calibration, domain=None, range=str)
+
+slots.tOCTNDataGenerationActivity__column = Slot(uri=BASALT_SCHEMA.column, name="tOCTNDataGenerationActivity__column", curie=BASALT_SCHEMA.curie('column'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__column, domain=None, range=Optional[str])
+
+slots.tOCTNDataGenerationActivity__mode = Slot(uri=BASALT_SCHEMA.mode, name="tOCTNDataGenerationActivity__mode", curie=BASALT_SCHEMA.curie('mode'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__mode, domain=None, range=Optional[str])
+
+slots.tOCTNDataGenerationActivity__detector = Slot(uri=BASALT_SCHEMA.detector, name="tOCTNDataGenerationActivity__detector", curie=BASALT_SCHEMA.curie('detector'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__detector, domain=None, range=str)
+
+slots.tOCTNDataGenerationActivity__injection_volume = Slot(uri=BASALT_SCHEMA.injection_volume, name="tOCTNDataGenerationActivity__injection_volume", curie=BASALT_SCHEMA.curie('injection_volume'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__injection_volume, domain=None, range=str)
+
+slots.tOCTNDataGenerationActivity__sample_volume = Slot(uri=BASALT_SCHEMA.sample_volume, name="tOCTNDataGenerationActivity__sample_volume", curie=BASALT_SCHEMA.curie('sample_volume'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__sample_volume, domain=None, range=str)
+
+slots.tOCTNDataGenerationActivity__number_of_injections = Slot(uri=BASALT_SCHEMA.number_of_injections, name="tOCTNDataGenerationActivity__number_of_injections", curie=BASALT_SCHEMA.curie('number_of_injections'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__number_of_injections, domain=None, range=float)
+
+slots.tOCTNDataGenerationActivity__check_standard_spacing = Slot(uri=BASALT_SCHEMA.check_standard_spacing, name="tOCTNDataGenerationActivity__check_standard_spacing", curie=BASALT_SCHEMA.curie('check_standard_spacing'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__check_standard_spacing, domain=None, range=Optional[str])
+
+slots.xCTDataGenerationActivity__x_ray_power = Slot(uri=BASALT_SCHEMA.x_ray_power, name="xCTDataGenerationActivity__x_ray_power", curie=BASALT_SCHEMA.curie('x_ray_power'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__x_ray_power, domain=None, range=str)
+
+slots.xCTDataGenerationActivity__cu_filter = Slot(uri=BASALT_SCHEMA.cu_filter, name="xCTDataGenerationActivity__cu_filter", curie=BASALT_SCHEMA.curie('cu_filter'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__cu_filter, domain=None, range=str)
+
+slots.xCTDataGenerationActivity__total_projections_collected = Slot(uri=BASALT_SCHEMA.total_projections_collected, name="xCTDataGenerationActivity__total_projections_collected", curie=BASALT_SCHEMA.curie('total_projections_collected'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__total_projections_collected, domain=None, range=float)
+
+slots.xCTDataGenerationActivity__rotation = Slot(uri=BASALT_SCHEMA.rotation, name="xCTDataGenerationActivity__rotation", curie=BASALT_SCHEMA.curie('rotation'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__rotation, domain=None, range=str)
+
+slots.xCTDataGenerationActivity__frames_recording_per_projection = Slot(uri=BASALT_SCHEMA.frames_recording_per_projection, name="xCTDataGenerationActivity__frames_recording_per_projection", curie=BASALT_SCHEMA.curie('frames_recording_per_projection'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__frames_recording_per_projection, domain=None, range=float)
+
+slots.xCTDataGenerationActivity__exposure_time_per_frame = Slot(uri=BASALT_SCHEMA.exposure_time_per_frame, name="xCTDataGenerationActivity__exposure_time_per_frame", curie=BASALT_SCHEMA.curie('exposure_time_per_frame'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__exposure_time_per_frame, domain=None, range=str)
+
+slots.xCTDataGenerationActivity__image_voxel_size_is = Slot(uri=BASALT_SCHEMA.image_voxel_size_is, name="xCTDataGenerationActivity__image_voxel_size_is", curie=BASALT_SCHEMA.curie('image_voxel_size_is'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__image_voxel_size_is, domain=None, range=str)
 
 slots.bulkDensityProduct__bulk_density_id = Slot(uri=BASALT_SCHEMA.bulk_density_id, name="bulkDensityProduct__bulk_density_id", curie=BASALT_SCHEMA.curie('bulk_density_id'),
                    model_uri=BASALT_SCHEMA.bulkDensityProduct__bulk_density_id, domain=None, range=Optional[Union[str, QuantityValueId]])
@@ -18732,7 +19604,7 @@ slots.CommerciallyPurchasedSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysi
                    model_uri=BASALT_SCHEMA.CommerciallyPurchasedSample_analysis_type, domain=CommerciallyPurchasedSample, range=str)
 
 slots.CommerciallyPurchasedSample_compound_name = Slot(uri=BASALT_SCHEMA.compound_name, name="CommerciallyPurchasedSample_compound_name", curie=BASALT_SCHEMA.curie('compound_name'),
-                   model_uri=BASALT_SCHEMA.CommerciallyPurchasedSample_compound_name, domain=CommerciallyPurchasedSample, range=str)
+                   model_uri=BASALT_SCHEMA.CommerciallyPurchasedSample_compound_name, domain=CommerciallyPurchasedSample, range=Union[str, "ChemicalEntityEnum"])
 
 slots.CultureEnvironmentalSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="CultureEnvironmentalSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_analysis_type, domain=CultureEnvironmentalSample, range=str)

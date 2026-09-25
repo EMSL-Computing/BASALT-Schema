@@ -606,25 +606,25 @@ class MobilePhaseSubstance(Base):
     
 
 
-class MassSpectrometryStandardRun(Base):
+class CalibrationStandardRun(Base):
     """
-    A record of a mass spectrometry standard run with a batch of samples, which is used for calibration and quality control.
+    A record of a standard run with a batch of samples, which is used for calibration and quality control.
     """
-    __tablename__ = 'MassSpectrometryStandardRun'
+    __tablename__ = 'CalibrationStandardRun'
 
     name = Column(Text(), nullable=False )
     description = Column(Text())
     internal_calibration = Column(Boolean())
-    calibration_target = Column(Enum('mass_charge_ratio', 'retention_time', 'retention_index', name='CalibrationTargetEnum'))
+    calibration_target = Column(Enum('mass_charge_ratio', 'retention_time', 'retention_index', 'refractive_index', name='CalibrationTargetEnum'))
     calibration_standard = Column(UUID(), ForeignKey('PurchasedMaterial.id'))
-    calibration_data = Column(UUID(), ForeignKey('MassSpectrometryInstrumentData.id'))
+    calibration_data = Column(UUID(), ForeignKey('InstrumentData.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"MassSpectrometryStandardRun(name={self.name},description={self.description},internal_calibration={self.internal_calibration},calibration_target={self.calibration_target},calibration_standard={self.calibration_standard},calibration_data={self.calibration_data},id={self.id},)"
+        return f"CalibrationStandardRun(name={self.name},description={self.description},internal_calibration={self.internal_calibration},calibration_target={self.calibration_target},calibration_standard={self.calibration_standard},calibration_data={self.calibration_data},id={self.id},)"
 
 
 
@@ -2454,6 +2454,122 @@ XAS data. One instance represents a single .lcf fit run.
     
 
 
+class RIDataGenerationActivity(DataGenerationActivity):
+    """
+    Refractive Index (RI) measurement activity.
+Represents one measurement session for a sample using a RI detector.
+    """
+    __tablename__ = 'RIDataGenerationActivity'
+
+    wavelength_nm = Column(Integer(), nullable=False )
+    temperature_celsius = Column(Float())
+    calibration_standard = Column(UUID(), ForeignKey('PurchasedMaterial.id'))
+    uses_calibration = Column(UUID(), ForeignKey('CalibrationStandardRun.id'))
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    uses_chromatography_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'))
+    uses_chromatography = relationship("ChromatographyConfiguration", uselist=False, foreign_keys=[uses_chromatography_uid])
+    
+
+    
+
+    def __repr__(self):
+        return f"RIDataGenerationActivity(wavelength_nm={self.wavelength_nm},temperature_celsius={self.temperature_celsius},calibration_standard={self.calibration_standard},uses_calibration={self.uses_calibration},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},uses_chromatography_uid={self.uses_chromatography_uid},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class UVDataGenerationActivity(DataGenerationActivity):
+    """
+    Ultraviolet spectroscopy acquisition activity.
+Represents one measurement session for a sample using UV spectroscopy.
+    """
+    __tablename__ = 'UVDataGenerationActivity'
+
+    uv_detector_type = Column(Enum('photodiode_array', 'variable_wavelength', 'fixed_wavelength', name='UVDetectorEnum'))
+    wavelength_nm_max = Column(Float())
+    wavelength_nm_min = Column(Float())
+    resolution_nm = Column(Float())
+    sampling_rate_hz = Column(Float())
+    negative_absorbance_margin_au = Column(Float())
+    uses_calibration = Column(UUID(), ForeignKey('CalibrationStandardRun.id'))
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    uses_chromatography_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'))
+    uses_chromatography = relationship("ChromatographyConfiguration", uselist=False, foreign_keys=[uses_chromatography_uid])
+    
+
+    
+
+    def __repr__(self):
+        return f"UVDataGenerationActivity(uv_detector_type={self.uv_detector_type},wavelength_nm_max={self.wavelength_nm_max},wavelength_nm_min={self.wavelength_nm_min},resolution_nm={self.resolution_nm},sampling_rate_hz={self.sampling_rate_hz},negative_absorbance_margin_au={self.negative_absorbance_margin_au},uses_calibration={self.uses_calibration},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},uses_chromatography_uid={self.uses_chromatography_uid},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class UVChannelConfig(Configuration):
+    """
+    Configuration for a single UV-Vis detector channel.
+    """
+    __tablename__ = 'UVChannelConfig'
+
+    uid = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    uv_datagen_run = Column(UUID(), ForeignKey('UVDataGenerationActivity.id'))
+    channel_number = Column(Integer())
+    wavelength_nm = Column(Integer(), nullable=False )
+    resolution_nm = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    id = Column(UUID(), nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"UVChannelConfig(uid={self.uid},uv_datagen_run={self.uv_datagen_run},channel_number={self.channel_number},wavelength_nm={self.wavelength_nm},resolution_nm={self.resolution_nm},name={self.name},description={self.description},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
 class MassSpectrometryDataGenerationActivity(DataGenerationActivity):
     """
     A record of the mass spectrometry run that generates a raw data product.
@@ -2543,7 +2659,7 @@ class ChromatographyConfiguration(Configuration):
     column = Column(Text())
     column_dimensions = Column(Text())
     column_manufacturer = Column(Text())
-    chromatography_type = Column(Enum('liquid_chromatography', 'gas_chromatography', 'solid_phase_extraction', name='ChromatographyCategoryEnum'), nullable=False )
+    chromatography_type = Column(Enum('liquid_chromatography', 'gas_chromatography', 'solid_phase_extraction', 'high_performance_liquid_chromatography', name='ChromatographyCategoryEnum'), nullable=False )
     stationary_phase = Column(Text())
     temperature_celsius = Column(Float())
     duration_min = Column(Float())
@@ -2576,7 +2692,7 @@ slots including used_software and version.
     """
     __tablename__ = 'MassSpectrometryDataProcessingActivity'
 
-    uses_calibration = Column(UUID(), ForeignKey('MassSpectrometryStandardRun.id'))
+    uses_calibration = Column(UUID(), ForeignKey('CalibrationStandardRun.id'))
     uses_raw_ms_data = Column(UUID(), ForeignKey('MassSpectrometryInstrumentData.id'))
     lims_task_instance_id = Column(Integer())
     metaproteomics_analysis_category = Column(Enum('matched_metagenome', 'in_silico_metagenome', 'WITHDRAWN', name='MetaproteomicsAnalysisCategoryEnum'))
@@ -3013,6 +3129,442 @@ inherited type attribute (string); expected values:
     
 
 
+class BulkDensityDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'BulkDensityDataGenerationActivity'
+
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"BulkDensityDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class ElementalAnalysisDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'ElementalAnalysisDataGenerationActivity'
+
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"ElementalAnalysisDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class EnzymeActivityDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'EnzymeActivityDataGenerationActivity'
+
+    incubation_temp_c = Column(Float())
+    incubation_time = Column(Text())
+    wavelength = Column(Float())
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"EnzymeActivityDataGenerationActivity(incubation_temp_c={self.incubation_temp_c},incubation_time={self.incubation_time},wavelength={self.wavelength},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class GravimetricWaterContentDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'GravimetricWaterContentDataGenerationActivity'
+
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"GravimetricWaterContentDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class HydraulicPropertiesDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'HydraulicPropertiesDataGenerationActivity'
+
+    fitting_model = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"HydraulicPropertiesDataGenerationActivity(fitting_model={self.fitting_model},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class KuoDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'KuoDataGenerationActivity'
+
+    detection_limit = Column(Text(), nullable=False )
+    wavelength = Column(Text())
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"KuoDataGenerationActivity(detection_limit={self.detection_limit},wavelength={self.wavelength},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class MicrobialBiomassDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'MicrobialBiomassDataGenerationActivity'
+
+    detector = Column(Text(), nullable=False )
+    mode = Column(Text())
+    injection_volume = Column(Text(), nullable=False )
+    sample_volume = Column(Text(), nullable=False )
+    number_of_injections = Column(Float(), nullable=False )
+    check_standard_spacing = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"MicrobialBiomassDataGenerationActivity(detector={self.detector},mode={self.mode},injection_volume={self.injection_volume},sample_volume={self.sample_volume},number_of_injections={self.number_of_injections},check_standard_spacing={self.check_standard_spacing},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class PH_DataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'PH_DataGenerationActivity'
+
+    calibration = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"PH_DataGenerationActivity(calibration={self.calibration},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class RespirationDataGenerationActivity(DataGenerationActivity):
+    """
+    Data generation activity for soil respiration analysis.
+Captures CO2-C efflux measured per gram of soil.
+    """
+    __tablename__ = 'RespirationDataGenerationActivity'
+
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"RespirationDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class TOC_TN_DataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'TOC_TN_DataGenerationActivity'
+
+    column = Column(Text())
+    mode = Column(Text())
+    detector = Column(Text(), nullable=False )
+    injection_volume = Column(Text(), nullable=False )
+    sample_volume = Column(Text(), nullable=False )
+    number_of_injections = Column(Float(), nullable=False )
+    check_standard_spacing = Column(Text())
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"TOC_TN_DataGenerationActivity(column={self.column},mode={self.mode},detector={self.detector},injection_volume={self.injection_volume},sample_volume={self.sample_volume},number_of_injections={self.number_of_injections},check_standard_spacing={self.check_standard_spacing},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class TextureDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'TextureDataGenerationActivity'
+
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"TextureDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class XCTDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'XCTDataGenerationActivity'
+
+    x_ray_power = Column(Text(), nullable=False )
+    cu_filter = Column(Text(), nullable=False )
+    total_projections_collected = Column(Float(), nullable=False )
+    rotation = Column(Text(), nullable=False )
+    frames_recording_per_projection = Column(Float(), nullable=False )
+    exposure_time_per_frame = Column(Text(), nullable=False )
+    image_voxel_size_is = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"XCTDataGenerationActivity(x_ray_power={self.x_ray_power},cu_filter={self.cu_filter},total_projections_collected={self.total_projections_collected},rotation={self.rotation},frames_recording_per_projection={self.frames_recording_per_projection},exposure_time_per_frame={self.exposure_time_per_frame},image_voxel_size_is={self.image_voxel_size_is},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
 class AerosolArmSample(Sample):
     """
     An aerosol sample collected by the ARM facility.
@@ -3234,7 +3786,7 @@ class CommerciallyPurchasedSample(Sample):
 
     analysis_type = Column(Text(), nullable=False )
     cas = Column(Text())
-    compound_name = Column(Text(), nullable=False )
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'), nullable=False )
     experimental_factor = Column(Text())
     experimental_factor_other = Column(Text())
     item_number = Column(Text())
@@ -3698,7 +4250,7 @@ class OtherUndescribedSample(Sample):
     chem_oxygen_dem = Column(Text())
     chloride = Column(Text())
     chlorophyll = Column(Text())
-    compound_name = Column(Text())
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
     conduc = Column(Text())
     density = Column(Text())
     depth = Column(Text())
@@ -4373,7 +4925,7 @@ class SynthesizedMaterialSample(Sample):
 
     analysis_type = Column(Text(), nullable=False )
     cas = Column(Text())
-    compound_name = Column(Text())
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
     experimental_factor = Column(Text())
     experimental_factor_other = Column(Text())
     genetic_mod = Column(Text())
@@ -7001,6 +7553,100 @@ Stores file pointer metadata and key per-sweep scan header fields.
 
     def __repr__(self):
         return f"XASInstrumentData(produced_by_xas_run={self.produced_by_xas_run},sweep_number={self.sweep_number},scan_datetime={self.scan_datetime},scan_time_sec={self.scan_time_sec},scan_subtype={self.scan_subtype},positioner={self.positioner},e0_ev={self.e0_ev},n_points={self.n_points},n_data_rows={self.n_data_rows},x_first={self.x_first},x_last={self.x_last},scan_bounds={self.scan_bounds},scan_steps={self.scan_steps},integration_times={self.integration_times},kwgt={self.kwgt},fy_element={self.fy_element},fy_transition={self.fy_transition},file_curie={self.file_curie},alternative_identifiers={self.alternative_identifiers},compression_type={self.compression_type},file_type={self.file_type},software_version={self.software_version},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class UVSpectroscopyProduct(ProcessedData):
+    """
+    A compound and its measurements resulting from a 
+UVDataGenerationActivity.One UVDataGenerationActivity may have many 
+"products" representing all compounds detected in the sample.
+    """
+    __tablename__ = 'UVSpectroscopyProduct'
+
+    produced_by_uv_run = Column(UUID(), ForeignKey('UVDataGenerationActivity.id'))
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    retention_time_min = Column(Float())
+    peak_area = Column(Float())
+    peak_percent_area = Column(Float())
+    peak_height = Column(Float())
+    weight_percent = Column(Float())
+    concentration_ug_per_uL = Column(Float())
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"UVSpectroscopyProduct(produced_by_uv_run={self.produced_by_uv_run},compound_name={self.compound_name},retention_time_min={self.retention_time_min},peak_area={self.peak_area},peak_percent_area={self.peak_percent_area},peak_height={self.peak_height},weight_percent={self.weight_percent},concentration_ug_per_uL={self.concentration_ug_per_uL},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class RIProduct(ProcessedData):
+    """
+    A compound and its measurements resulting from a 
+RIDataGenerationActivity.One RIDataGenerationActivity may have many 
+"products" representing all compounds detected in the sample.
+    """
+    __tablename__ = 'RIProduct'
+
+    produced_by_ri_run = Column(UUID(), ForeignKey('RIDataGenerationActivity.id'))
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    weight_percent = Column(Float())
+    concentration_ug_per_uL = Column(Float())
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"RIProduct(produced_by_ri_run={self.produced_by_ri_run},compound_name={self.compound_name},weight_percent={self.weight_percent},concentration_ug_per_uL={self.concentration_ug_per_uL},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
 
 
 
