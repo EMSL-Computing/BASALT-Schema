@@ -27578,6 +27578,6 @@ classes:
         - descendant_id
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-09-25T18:57:37'
+source_file_date: '2026-09-28T19:39:21'
 source_file_size: 21285
-generation_date: '2026-09-25T18:57:47'
+generation_date: '2026-09-28T19:39:30'
