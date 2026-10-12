@@ -582,6 +582,13 @@ slots:
     description: Factor by which the sample was diluted.
     range: float
 
+  dilution_analyte:
+    description: The analyte or compound whose concentration is being adjusted.
+    range: 
+      any_of:
+        - AnalyteCategoryEnum
+        - ChemicalEntityEnum
+
   diss_carb_dioxide:
     description: 'Concentration of dissolved carbon dioxide in the sample or liquid
       portion of the sample (Unit: umol/L or mg/L)'
@@ -1209,6 +1216,10 @@ slots:
       activity
     range: string
     title: infiltration notes
+  
+  informed_by_result:
+    description: A DataProduct that includes information used in this activity. For example, a dilution volume may be calculated from a concentration measurement included in a DataProduct. 
+    range: DataProduct
 
   initiation_date_inoculation:
     description: The date the sample was inoculated. This can be the date of inoculation,
@@ -1655,10 +1666,6 @@ slots:
       entire treatment; can include multiple non-mineral nutrient regimens
     range: string
     title: non mineral nutrient regimen
-
-  normalization_target:
-    description: The analyte or compound whose concentration is being adjusted.
-    range: AnalyteCategoryEnum
 
   nucleotide_sequencing_category:
     description: The category of nucleotide sequencing performed (e.g., amplicon, shotgun).
@@ -3332,6 +3339,10 @@ slots:
       submission_pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
     range: string
     title: synthetic environment start date
+
+  target_concentration_ug_per_ul:
+    description: The desired final concentration of the analyte or compound after dilution, in micrograms per microliter.
+    range: float
 
   target_strain:
     description: Target strain identifier for purity checks
