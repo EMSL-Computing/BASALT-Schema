@@ -451,7 +451,7 @@ MEDIA = [
         "ph_target": None,
         "exposure_sensitivity": None,
         "media_additions": [],
-        "storage_temperature": "4 C",
+        "storage_nominal": "4 C",
         "creation_date": "2026-04-27",
     },
     {
@@ -470,7 +470,7 @@ MEDIA = [
         "ph_target": 7.0,
         "exposure_sensitivity": None,
         "media_additions": ["0.4% glucose (w/v)", "2 mM MgSO4", "0.1 mM CaCl2"],
-        "storage_temperature": "4 C",
+        "storage_nominal": "4 C",
         "creation_date": "2026-04-27",
     },
     {
@@ -489,7 +489,7 @@ MEDIA = [
         "ph_target": 7.2,
         "exposure_sensitivity": ["light-sensitive"],
         "media_additions": ["20 mM sodium benzoate", "2 mM MgSO4"],
-        "storage_temperature": "4 C",
+        "storage_nominal": "4 C",
         "creation_date": "2026-04-28",
     },
     {
@@ -508,7 +508,7 @@ MEDIA = [
         "ph_target": None,
         "exposure_sensitivity": None,
         "media_additions": [],
-        "storage_temperature": "room temperature",
+        "storage_nominal": "room temperature",
         "creation_date": "2026-04-28",
     },
     {
@@ -527,7 +527,7 @@ MEDIA = [
         "ph_target": None,
         "exposure_sensitivity": ["light-sensitive", "temperature-sensitive"],
         "media_additions": ["50 ug/mL apramycin", "vanillate added per well"],
-        "storage_temperature": "4 C",
+        "storage_nominal": "4 C",
         "creation_date": "2026-04-29",
     },
     {
@@ -545,7 +545,7 @@ MEDIA = [
         "ph_target": None,
         "exposure_sensitivity": None,
         "media_additions": ["15 g/L agar"],
-        "storage_temperature": "4 C",
+        "storage_nominal": "4 C",
         "creation_date": "2026-04-20",
     },
     {
@@ -563,7 +563,7 @@ MEDIA = [
         "ph_target": None,
         "exposure_sensitivity": None,
         "media_additions": ["25% glycerol (v/v)"],
-        "storage_temperature": "-20 C",
+        "storage_nominal": "-20 C",
         "creation_date": "2026-04-21",
     },
 ]
@@ -603,8 +603,7 @@ def add_link(sample_id, processing_id, step_number, role):
 
 
 def add_processed_sample(ps_id, name, ps_type, sampled_during, description,
-                         volume_uL=None, replicate=None, storage_location=None,
-                         label_text=None):
+                         volume_uL=None, replicate=None, label_text=None):
     processed_samples.append({
         "id": ps_id,
         "name": name,
@@ -613,10 +612,40 @@ def add_processed_sample(ps_id, name, ps_type, sampled_during, description,
         "description": description,
         "volume_uL": volume_uL,
         "replicate": replicate,
-        "storage_location": storage_location,
         "label_text": label_text,
     })
 
+
+# SampleStorage rows: storage is a record on a sample, not a processing step,
+# so it never mints a new sample id or a ProcessingSampleLink.
+sample_storage = []
+
+# nominal label -> (temperature_celsius, temperature_category, storage_condition)
+STORAGE_BY_NOMINAL = {
+    "-80 C": (-80.0, "frozen_minus80", "frozen"),
+    "-20 C": (-20.0, "frozen_minus20", "frozen"),
+    "4 C": (4.0, "refrigerated", "fresh"),
+    # category only: no measured value recorded for room temperature
+    "room temperature": (None, "room_temperature", "fresh"),
+}
+
+
+def add_storage(sample_id, nominal, hold_start_time):
+    temp_c, category, condition = STORAGE_BY_NOMINAL[nominal]
+    sample_storage.append({
+        "id": "urn:amp2:sample-storage:%04d" % (len(sample_storage) + 1),
+        "sample_id": sample_id,
+        "storage_condition": condition,
+        "temperature_celsius": temp_c,
+        "temperature_category": category,
+        "hold_start_time": hold_start_time,
+        "hold_end_time": None,
+    })
+
+
+# User samples arrive frozen and are held at -80 C on receipt.
+for s in SAMPLES:
+    add_storage(s["id"], "-80 C", "%sT09:00:00" % s["collection_date"])
 
 # Media preparation activities each emit one prepared_media processed sample.
 for m in MEDIA:
@@ -624,10 +653,11 @@ for m in MEDIA:
         m["ps_id"], m["name"], "prepared_media", m["act_id"],
         "Physical media batch produced by %s." % m["act_id"],
         volume_uL=m["volume_ml"] * 1000.0,
-        storage_location="Cold room 2 / shelf B",
         label_text=m["name"],
     )
     add_link(m["ps_id"], m["act_id"], 1, "output_sample")
+    add_storage(m["ps_id"], m["storage_nominal"],
+                "%sT16:00:00" % m["creation_date"])
 
 # Per-sample four-step chain.
 # The one deliberate QC wrinkle: AMP2-0013 fails its first purity check,
@@ -661,7 +691,7 @@ for s in SAMPLES:
         "organism_ref": s["organism_ref"],
         "media_ref": MEDIA_BY_KEY["LBAGAR"]["ps_id"],
         "growth_medium": "LB agar purity plate",
-        "incubation_time_hours": 48.0 if fungal else 24.0,
+        "duration_hours": 48.0 if fungal else 24.0,
         "temperature_celsius": temp,
         "agitation_speed_rpm": None,
         "oxygen_saturation_pct": 20.9,
@@ -674,7 +704,6 @@ for s in SAMPLES:
                                "re-streak)" if contaminated else None,
         "preparation_date": None,
         "treatment_type": None,
-        "growth_time": None,
         "processing_steps": "streak; incubate; inspect; colony PCR",
         "sample_name": sname,
     })
@@ -693,7 +722,7 @@ for s in SAMPLES:
         "organism_ref": s["organism_ref"],
         "media_ref": MEDIA_BY_KEY["GLYC"]["ps_id"],
         "growth_medium": "LB + 25% glycerol",
-        "incubation_time_hours": 24.0 if fungal else 16.0,
+        "duration_hours": 24.0 if fungal else 16.0,
         "temperature_celsius": temp,
         "agitation_speed_rpm": 200,
         "oxygen_saturation_pct": 20.9,
@@ -703,7 +732,6 @@ for s in SAMPLES:
         "contaminant_strains": None,
         "preparation_date": "2026-04-30",
         "treatment_type": None,
-        "growth_time": None,
         "processing_steps": "inoculate; incubate; mix with glycerol; aliquot; "
                             "freeze",
         "sample_name": sname,
@@ -715,9 +743,9 @@ for s in SAMPLES:
         "Cryobanked stock culture derived from user sample %s (%s)."
         % (sname, s["id"]),
         volume_uL=1000.0, replicate=1,
-        storage_location="Freezer -80 C / rack A%02d" % ((n - 1) // 5 + 1),
         label_text="%s STOCK" % sname,
     )
+    add_storage(stock_ps, "-80 C", "2026-04-30T17:00:00")
 
     # --- 3. PreCultureGrowth ---------------------------------------------
     pre_id = "urn:amp2:activity:pre-culture-%04d" % n
@@ -732,7 +760,7 @@ for s in SAMPLES:
         "organism_ref": s["organism_ref"],
         "media_ref": MEDIA_BY_KEY[pre_media]["ps_id"],
         "growth_medium": MEDIA_BY_KEY[pre_media]["name"],
-        "incubation_time_hours": 18.0 if fungal else 12.0,
+        "duration_hours": 18.0 if fungal else 12.0,
         "temperature_celsius": temp,
         "agitation_speed_rpm": 200,
         "oxygen_saturation_pct": 20.9,
@@ -742,7 +770,6 @@ for s in SAMPLES:
         "contaminant_strains": None,
         "preparation_date": None,
         "treatment_type": None,
-        "growth_time": None,
         "processing_steps": "thaw; inoculate; incubate; check OD600",
         "sample_name": sname,
     })
@@ -753,7 +780,6 @@ for s in SAMPLES:
         "Pre-culture inoculum derived from user sample %s (%s)."
         % (sname, s["id"]),
         volume_uL=25000.0, replicate=1,
-        storage_location="Incubator 3 / shaker deck",
         label_text="%s PRE" % sname,
     )
 
@@ -775,7 +801,7 @@ for s in SAMPLES:
         "organism_ref": s["organism_ref"],
         "media_ref": MEDIA_BY_KEY[pre_media]["ps_id"],
         "growth_medium": MEDIA_BY_KEY[pre_media]["name"],
-        "incubation_time_hours": 6.0 if fungal else 4.0,
+        "duration_hours": 6.0 if fungal else 4.0,
         "temperature_celsius": temp,
         "agitation_speed_rpm": 220,
         "oxygen_saturation_pct": 20.9,
@@ -785,7 +811,6 @@ for s in SAMPLES:
         "contaminant_strains": None,
         "preparation_date": None,
         "treatment_type": treatment,
-        "growth_time": "6 hours" if fungal else "4 hours",
         "processing_steps": "back-dilute; incubate; measure OD600; normalise "
                             "to OD600 0.10",
         "sample_name": sname,
@@ -798,7 +823,6 @@ for s in SAMPLES:
         "Normalised experimental culture loaded into plate wells. Traces back "
         "to user sample %s (%s)." % (sname, s["id"]),
         volume_uL=12000.0, replicate=1,
-        storage_location="Incubator 3 / shaker deck",
         label_text="%s EXP" % sname,
     )
     s["stock_ps"] = stock_ps
@@ -1320,7 +1344,6 @@ for plate in PLATES:
         % plate["activity_id"],
         volume_uL=sum(w["media_volume_ul"] + w["inoculum_volume_ul"]
                       for w in plate["wells"]),
-        storage_location="Incubator 5 / stack 2",
         label_text=plate["barcode"],
     )
     plate_setups.append(plate)
@@ -1439,6 +1462,7 @@ A("    data_generation_activities: %d" % len(dga))
 A("    od_products: %d" % len(products))
 A("    well_readings: %d" % len(readings))
 A("    processing_sample_links: %d" % len(links))
+A("    sample_storage: %d" % len(sample_storage))
 A("")
 
 # --- people / instruments -------------------------------------------------
@@ -1541,7 +1565,6 @@ for m in MEDIA:
     A("    ph_target: %s" % q(m["ph_target"]))
     blk(L, "exposure_sensitivity", m["exposure_sensitivity"], 4)
     blk(L, "media_additions", m["media_additions"], 4)
-    A("    storage_temperature: %s" % q(m["storage_temperature"]))
     A("    creation_date: %s" % q(m["creation_date"]))
     A("    processing_steps: %s" % q("weigh; dissolve; sterilise; QC; store"))
     A("    # output prepared_media processed sample: %s" % m["ps_id"])
@@ -1555,11 +1578,11 @@ A("#   StrainPurity is a QC gate and produces no processed sample.")
 A("# ---------------------------------------------------------------------------")
 A("culture_growth_activities:")
 CULT_FIELDS = ["id", "activity_type", "in_protocol", "name", "description", "organism_ref",
-               "media_ref", "growth_medium", "incubation_time_hours",
+               "media_ref", "growth_medium", "duration_hours",
                "temperature_celsius", "agitation_speed_rpm",
                "oxygen_saturation_pct", "container_type", "processing_steps",
                "inspection_method", "target_strain", "contaminant_strains",
-               "preparation_date", "treatment_type", "growth_time"]
+               "preparation_date", "treatment_type"]
 for a in culture_activities:
     A("  # user sample: %s" % a["sample_name"])
     first = True
@@ -1583,8 +1606,24 @@ for ps in processed_samples:
     A("    description: %s" % q(ps["description"]))
     A("    volume_uL: %s" % q(ps["volume_uL"]))
     A("    replicate: %s" % q(ps["replicate"]))
-    A("    storage_location: %s" % q(ps["storage_location"]))
     A("    label_text: %s" % q(ps["label_text"]))
+A("")
+
+# --- sample storage -------------------------------------------------------
+A("# ---------------------------------------------------------------------------")
+A("# sample_storage  (class: SampleStorage, mixin HasTemperatureHold)")
+A("#   A record on a sample, not a SampleProcessing step: storing or freezing")
+A("#   never mints a new sample id or a processing_sample_link.")
+A("# ---------------------------------------------------------------------------")
+A("sample_storage:")
+STORAGE_FIELDS = ["id", "sample_id", "storage_condition", "temperature_celsius",
+                  "temperature_category", "hold_start_time", "hold_end_time"]
+for st in sample_storage:
+    first = True
+    for f in STORAGE_FIELDS:
+        prefix = "  - " if first else "    "
+        A("%s%s: %s" % (prefix, f, q(st[f])))
+        first = False
 A("")
 
 # --- plate setups ---------------------------------------------------------
@@ -1767,13 +1806,13 @@ write_csv("03_media_preparations.csv", [
     "id", "in_protocol", "name", "media_type", "volume_ml", "media_recipe",
     "media_formulation", "commercial_media_catalog", "sterilization_method",
     "ph_adjustment", "ph_target", "exposure_sensitivity", "media_additions",
-    "storage_temperature", "creation_date", "output_processed_sample_id"],
+    "creation_date", "output_processed_sample_id"],
     [[m["act_id"], PROTOCOL_FOR_ACTIVITY_TYPE["MediaPreparation"],
       m["name"], m["media_type"], m["volume_ml"],
       m["media_recipe"], m["media_formulation"],
       m["commercial_media_catalog"], m["sterilization_method"],
       m["ph_adjustment"], m["ph_target"], joinlist(m["exposure_sensitivity"]),
-      joinlist(m["media_additions"]), m["storage_temperature"],
+      joinlist(m["media_additions"]),
       m["creation_date"], m["ps_id"]] for m in MEDIA])
 
 # 04 culture activities ----------------------------------------------------
@@ -1785,10 +1824,10 @@ write_csv("04_culture_growth_activities.csv",
 # 05 processed samples -----------------------------------------------------
 write_csv("05_processed_samples.csv", [
     "id", "name", "processed_sample_type", "sampled_during", "description",
-    "volume_uL", "replicate", "storage_location", "label_text"],
+    "volume_uL", "replicate", "label_text"],
     [[p["id"], p["name"], p["processed_sample_type"], p["sampled_during"],
       p["description"], p["volume_uL"], p["replicate"],
-      p["storage_location"], p["label_text"]] for p in processed_samples])
+      p["label_text"]] for p in processed_samples])
 
 # 06 plate setup -----------------------------------------------------------
 write_csv("06_plate_setup_activities.csv", [
@@ -1851,6 +1890,10 @@ write_csv("11_processing_sample_links.csv", [
     [[lk["id"], lk["sample_base_id"], lk["processing_id"], lk["step_number"],
       lk["role"]] for lk in links])
 
+# 12 sample storage --------------------------------------------------------
+write_csv("12_sample_storage.csv", STORAGE_FIELDS,
+          [[st[f] for f in STORAGE_FIELDS] for st in sample_storage])
+
 # ---------------------------------------------------------------------------
 # Bundle README
 # ---------------------------------------------------------------------------
@@ -1882,6 +1925,7 @@ The companion single-document view of the same data is
 | OD products (`AMP2ODProduct`) | {n_prod} |
 | well readings (`WellReading`) | {n_read} |
 | sample↔activity edges (`ProcessingSampleLink`) | {n_link} |
+| storage records (`SampleStorage`) | {n_store} |
 
 Fifteen user samples, each carried through the complete workflow
 
@@ -1942,6 +1986,7 @@ sample so you can check either path at a glance.
 | `09_od_products.csv` | `AMP2ODProduct` plate-level summaries |
 | `10_well_readings.csv` | `WellReading`, one row per well × timepoint |
 | `11_processing_sample_links.csv` | `ProcessingSampleLink` — the authoritative input/output edges |
+| `12_sample_storage.csv` | `SampleStorage` — where user samples, media batches and glycerol stocks are held, and at what temperature |
 
 `07_well_metadata.csv` carries two convenience columns that are **not** schema
 slots, marked as such by their names:
@@ -2020,12 +2065,19 @@ Flag tallies across all {n_read} readings: {flagtally}.
   `phenotype`, `trophic_level`, `pathogenicity` and `propagation`. Values for
   the CRISPRi strains follow `CRISPRi_Pp_11strains.csv` from the AMP2 Data
   Model Campaign folder.
+* Storage is a `SampleStorage` record on a sample (user sample, prepared
+  media, glycerol stock), not a processing step, so it adds no
+  `ProcessingSampleLink` rows and no new sample ids. Temperature is
+  `temperature_celsius` plus `temperature_category`; room-temperature media
+  carries the category only. Culture durations use the shared
+  `duration_hours` slot from `HasTemperatureHold`.
 * `oxygen_saturation_pct` is a float (percent O2 saturation in the incubation
   atmosphere, e.g. 20.9 for ambient air).
 * Enum-ranged fields use permissible values from `enums.yaml`
   (`StrainTypeEnum`, `ModificationMethodEnum`, `IntendedTraitEnum`,
   `TrophicLevelEnum`, `GenotypeSegmentEnum`, `ConstructComponentEnum`,
   `MediaTypeEnum`, `FormulationEnum`, `StorageConditionEnum`,
+  `TemperatureCategoryEnum`,
   `GrowthFacilityEnum`, `SampleRole`).
 * Multivalued slots are pipe-delimited (`|`) in CSV and real YAML lists in the
   YAML document.
@@ -2034,6 +2086,7 @@ Flag tallies across all {n_read} readings: {flagtally}.
     n_cult=len(culture_activities), n_plate=len(PLATES),
     n_well=sum(len(p["wells"]) for p in PLATES), n_dga=len(dga),
     n_prod=len(products), n_read=len(readings), n_link=len(links),
+    n_store=len(sample_storage),
     flagtally=", ".join("`%s` %d" % (k, n_flag[k]) for k in
                         ("ok", "blank", "outlier", "contaminated", "failed")),
 )

@@ -85,7 +85,7 @@ enums:
       weom_toctn:
         description: Water Extractable Organic Matter   TOC and TN
       maom_toctn:
-        description: Mineral Associated Organic Matter (HClExtOM)   TOC and TN
+        description: Mineral Associated Organic Matter (HClExtOM, formerly MAOM)   TOC and TN
       hyprop:
         description: >-
           HYPROP hydraulic properties   Van Genuchten model parameters (alpha, n, theta_r, theta_s).
@@ -122,7 +122,7 @@ classes:
       replicate:
         description: |-
           Replicate number (integer). Present when the analysis produces
-          replicate-level (L1) data (e.g. biomass, nitrogen, GWC, WEOM, MAOM).
+          replicate-level (L1) data (e.g. biomass, nitrogen, GWC, WEOM, HClExtOM (formerly MAOM)).
           Omit for single-measurement analyses (pH, texture, bulk density, etc.).
         range: integer
         required: false

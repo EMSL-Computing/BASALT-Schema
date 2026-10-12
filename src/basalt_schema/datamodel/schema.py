@@ -400,6 +400,35 @@ protocol_url and protocol_version.
     
 
 
+class HasTemperatureHold(Base):
+    """
+    Mixin for anything that holds material at a temperature for a period of time:
+storage (SampleStorage), incubation and culture growth (HasIncubationConditions),
+chemical reactions (ChemicalConversionProcess), and assay incubations. It shares
+the vocabulary only; the purpose of the hold (preservation vs. experimental
+treatment) is carried by the class that uses it, so class-specific required
+fields (e.g., organism, media) stay enforceable.
+    """
+    __tablename__ = 'HasTemperatureHold'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
+    
+
+    
+
+    def __repr__(self):
+        return f"HasTemperatureHold(id={self.id},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
+
+
+
+    
+
+
 class ProcessingSampleLink(Base):
     """
     The authoritative record of what a SampleProcessing step consumed and produced.
@@ -637,19 +666,24 @@ class HasIncubationConditions(Base):
 Used by CultureGrowth activities AND PlateSetupActivity, which share
 temperature and agitation parameters but live in different branches
 of the sampleProcessing is_a tree.
+Temperature and duration come from HasTemperatureHold.
     """
     __tablename__ = 'HasIncubationConditions'
 
     id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
     oxygen_saturation_pct = Column(Float())
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
     
 
     
 
     def __repr__(self):
-        return f"HasIncubationConditions(id={self.id},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},)"
+        return f"HasIncubationConditions(id={self.id},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
 
 
 
@@ -800,66 +834,6 @@ PlateProduct.well_readings.
 
     def __repr__(self):
         return f"WellReading(id={self.id},position={self.position},value={self.value},flag={self.flag},PlateProduct_id={self.PlateProduct_id},AMP2ODProduct_id={self.AMP2ODProduct_id},EcoplateAbsorbanceProduct_id={self.EcoplateAbsorbanceProduct_id},)"
-
-
-
-    
-
-
-class MAOMProduct(Base):
-    """
-    Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
-Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
-    """
-    __tablename__ = 'MAOMProduct'
-
-    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    replicate = Column(Integer())
-    id = Column(UUID(), ForeignKey('ProcessedData.id'), primary_key=True, nullable=False )
-    total_organic_carbon_id = Column(UUID(), ForeignKey('QuantityValue.id'))
-    total_organic_carbon_avg = Column(Float())
-    total_nitrogen_id = Column(UUID(), ForeignKey('QuantityValue.id'))
-    total_nitrogen_avg = Column(Float())
-    flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_toc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    
-
-    
-
-    def __repr__(self):
-        return f"MAOMProduct(measure_type={self.measure_type},replicate={self.replicate},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
-
-
-
-    
-
-
-class WEOMProduct(Base):
-    """
-    Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
-Individual QC flags for each measurement using ProcessedDataFlag enum.
-    """
-    __tablename__ = 'WEOMProduct'
-
-    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    replicate = Column(Integer())
-    id = Column(UUID(), ForeignKey('ProcessedData.id'), primary_key=True, nullable=False )
-    total_organic_carbon_id = Column(UUID(), ForeignKey('QuantityValue.id'))
-    total_organic_carbon_avg = Column(Float())
-    total_nitrogen_id = Column(UUID(), ForeignKey('QuantityValue.id'))
-    total_nitrogen_avg = Column(Float())
-    flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_toc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    
-
-    
-
-    def __repr__(self):
-        return f"WEOMProduct(measure_type={self.measure_type},replicate={self.replicate},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
 
 
 
@@ -1208,6 +1182,49 @@ class Sample(Base):
 
     def __repr__(self):
         return f"Sample(name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
+
+
+
+    
+
+
+class SampleStorage(Base):
+    """
+    A record of a sample being held in storage at a temperature. One sample can
+have many SampleStorage rows (e.g., received at 4 C, then moved to -80 C).
+
+This is NOT a SampleProcessing step and does not go through
+ProcessingSampleLink: storing, freezing, or thawing a sample does not change
+its identity, so no new sample ID is issued. Freezing or drying that changes
+the material (e.g., lyophilization, preparing a glycerol stock) is modelled
+as SampleProcessing instead, and the resulting ProcessedSample can then have
+its own SampleStorage rows.
+
+This records storage at EMSL. It is separate from the submission metadata
+on the sample itself (samp_store_temp, storage_condition, etc.), which
+records what the submitter reported and requested.
+
+Temperature and timing come from the HasTemperatureHold mixin, shared with
+incubation, culture growth, and reaction steps.
+    """
+    __tablename__ = 'SampleStorage'
+
+    sample_id = Column(UUID(), ForeignKey('Sample.id'), nullable=False )
+    storage_condition = Column(Enum('fresh', 'frozen', 'lyophilized', 'other', name='StorageConditionEnum'))
+    storage_condition_other = Column(Text())
+    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
+    
+
+    
+
+    def __repr__(self):
+        return f"SampleStorage(sample_id={self.sample_id},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},substances_used={self.substances_used},id={self.id},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
 
 
 
@@ -2739,6 +2756,10 @@ Lifecycle:
     -> processingSampleLink(role=output_sample)
     -> processedSample(type='prepared_media'); media_ref points here
     -> CultureGrowth / AMP2PlateSetupActivity.media_ref
+
+Storage of the prepared media batch is recorded as SampleStorage rows on the
+prepared_media processedSample (storage_condition from StorageConditionEnum,
+temperature via temperature_celsius / temperature_category).
     """
     __tablename__ = 'MediaPreparation'
 
@@ -2750,7 +2771,6 @@ Lifecycle:
     sterilization_method = Column(Enum('autoclave', 'filter', 'uv', 'none', name='SterilizationMethodEnum'))
     ph_adjustment = Column(Boolean())
     ph_target = Column(Float())
-    storage_temperature = Column(Text())
     creation_date = Column(Date())
     name = Column(Text(), nullable=False )
     description = Column(Text())
@@ -2771,7 +2791,7 @@ Lifecycle:
     
 
     def __repr__(self):
-        return f"MediaPreparation(media_type={self.media_type},volume_ml={self.volume_ml},media_recipe={self.media_recipe},media_formulation={self.media_formulation},commercial_media_catalog={self.commercial_media_catalog},sterilization_method={self.sterilization_method},ph_adjustment={self.ph_adjustment},ph_target={self.ph_target},storage_temperature={self.storage_temperature},creation_date={self.creation_date},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"MediaPreparation(media_type={self.media_type},volume_ml={self.volume_ml},media_recipe={self.media_recipe},media_formulation={self.media_formulation},commercial_media_catalog={self.commercial_media_catalog},sterilization_method={self.sterilization_method},ph_adjustment={self.ph_adjustment},ph_target={self.ph_target},creation_date={self.creation_date},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -2793,21 +2813,24 @@ PreCultureGrowth, ExperimentalCulture.
 
     organism_ref = Column(UUID(), ForeignKey('organism.id'))
     growth_medium = Column(Text())
-    incubation_time_hours = Column(Float())
     container_type = Column(Text())
-    temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
     oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
     
 
     
 
     def __repr__(self):
-        return f"CultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"CultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},container_type={self.container_type},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
 
 
 
@@ -2839,13 +2862,17 @@ v1 origin: plate-general.yaml PlateSetupActivity
     setup_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
     setup_instrument = Column(Text())
     sealing_method = Column(Text())
-    temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
     oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
     
     
     # One-To-Many: OneToAnyMapping(source_class='PlateSetupActivity', source_slot='well_metadata', mapping_type=None, target_class='WellMetadata', target_slot='PlateSetupActivity_id', join_class=None, uses_join_table=None, multivalued=False)
@@ -2855,7 +2882,7 @@ v1 origin: plate-general.yaml PlateSetupActivity
     
 
     def __repr__(self):
-        return f"PlateSetupActivity(plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"PlateSetupActivity(plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
 
 
 
@@ -3203,9 +3230,12 @@ class EnzymeActivityDataGenerationActivity(DataGenerationActivity):
     """
     __tablename__ = 'EnzymeActivityDataGenerationActivity'
 
-    incubation_temp_c = Column(Float())
-    incubation_time = Column(Text())
     wavelength = Column(Float())
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
     sequence_order = Column(Integer())
     name = Column(Text(), nullable=False )
     description = Column(Text())
@@ -3222,7 +3252,7 @@ class EnzymeActivityDataGenerationActivity(DataGenerationActivity):
     
 
     def __repr__(self):
-        return f"EnzymeActivityDataGenerationActivity(incubation_temp_c={self.incubation_temp_c},incubation_time={self.incubation_time},wavelength={self.wavelength},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+        return f"EnzymeActivityDataGenerationActivity(wavelength={self.wavelength},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -5243,7 +5273,6 @@ ProcessingSampleLink only.
     """
     __tablename__ = 'ProcessedSample'
 
-    storage_location = Column(Text())
     label_text = Column(Text())
     concentration_ug_per_uL = Column(Float())
     total_amount_ug = Column(Float())
@@ -5260,7 +5289,7 @@ ProcessingSampleLink only.
     
 
     def __repr__(self):
-        return f"ProcessedSample(storage_location={self.storage_location},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_ul={self.volume_ul},sampled_portion={self.sampled_portion},replicate={self.replicate},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"ProcessedSample(label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_ul={self.volume_ul},sampled_portion={self.sampled_portion},replicate={self.replicate},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
 
 
 
@@ -5868,13 +5897,16 @@ class ChemicalConversionProcess(SampleProcessing):
     """
     __tablename__ = 'ChemicalConversionProcess'
 
-    duration_min = Column(Float())
-    temperature_celsius = Column(Float())
     substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
     chemical_conversion_category = Column(Enum('addition', 'substitution', 'acid_base', 'reduction_oxidation', 'combustion', 'decomposition', 'protease_cleavage', name='ChemicalConversionCategoryEnum'))
     digestion_method = Column(Enum('urea', 's_trap', 'fasp', 'other', name='DigestionMethodEnum'))
     enrichment_type = Column(Enum('phosphopeptide', 'acetyl_peptide', 'ubiquitin_peptide', 'other', name='EnrichmentTypeEnum'))
     labeling_method = Column(Enum('tmt', 'itraq', 'label_free', 'other', name='LabelingMethodEnum'))
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -5884,7 +5916,7 @@ class ChemicalConversionProcess(SampleProcessing):
     
 
     def __repr__(self):
-        return f"ChemicalConversionProcess(duration_min={self.duration_min},temperature_celsius={self.temperature_celsius},substances_used={self.substances_used},chemical_conversion_category={self.chemical_conversion_category},digestion_method={self.digestion_method},enrichment_type={self.enrichment_type},labeling_method={self.labeling_method},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"ChemicalConversionProcess(substances_used={self.substances_used},chemical_conversion_category={self.chemical_conversion_category},digestion_method={self.digestion_method},enrichment_type={self.enrichment_type},labeling_method={self.labeling_method},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5904,7 +5936,7 @@ class Extraction(SampleProcessing):
 
     substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
     starting_mass_mg = Column(Float())
-    extraction_method = Column(Enum('mplex', 'bead_beating', 'tca_acetone_precipitation', 'cell_lysis_s_trap', 'other', name='ExtractionMethodEnum'))
+    extraction_method = Column(Enum('mplex', 'bead_beating', 'tca_acetone_precipitation', 'cell_lysis_s_trap', 'other', 'monet_weom', 'monet_heom', name='ExtractionMethodEnum'))
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -6466,21 +6498,24 @@ Refs:   Media (growth medium), Strain (target organism)
     contaminant_strains = Column(Text())
     organism_ref = Column(UUID(), ForeignKey('organism.id'))
     growth_medium = Column(Text())
-    incubation_time_hours = Column(Float())
     container_type = Column(Text())
-    temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
     oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
     
 
     
 
     def __repr__(self):
-        return f"StrainPurity(inspection_method={self.inspection_method},target_strain={self.target_strain},contaminant_strains={self.contaminant_strains},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"StrainPurity(inspection_method={self.inspection_method},target_strain={self.target_strain},contaminant_strains={self.contaminant_strains},organism_ref={self.organism_ref},growth_medium={self.growth_medium},container_type={self.container_type},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
 
 
 
@@ -6499,27 +6534,33 @@ class StockCulturePreparation(CultureGrowth):
 Input:  sample(s) via processingSampleLink (role: input_sample)
 Output: processedSample(type='stock_culture') via processingSampleLink
 Refs:   Media (growth medium), Strain
+
+Long-term storage of the stock (e.g., -80 C in glycerol) is recorded as a
+SampleStorage row on the stock_culture processedSample, not on this activity.
     """
     __tablename__ = 'StockCulturePreparation'
 
     preparation_date = Column(Date())
     organism_ref = Column(UUID(), ForeignKey('organism.id'))
     growth_medium = Column(Text())
-    incubation_time_hours = Column(Float())
     container_type = Column(Text())
-    temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
     oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
     
 
     
 
     def __repr__(self):
-        return f"StockCulturePreparation(preparation_date={self.preparation_date},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"StockCulturePreparation(preparation_date={self.preparation_date},organism_ref={self.organism_ref},growth_medium={self.growth_medium},container_type={self.container_type},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
 
 
 
@@ -6544,21 +6585,24 @@ Refs:   Media (growth medium), Strain
 
     organism_ref = Column(UUID(), ForeignKey('organism.id'))
     growth_medium = Column(Text())
-    incubation_time_hours = Column(Float())
     container_type = Column(Text())
-    temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
     oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
     
 
     
 
     def __repr__(self):
-        return f"PreCultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"PreCultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},container_type={self.container_type},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
 
 
 
@@ -6582,24 +6626,26 @@ Refs:   Media (growth medium), Strain
     __tablename__ = 'ExperimentalCulture'
 
     treatment_type = Column(Text())
-    growth_time = Column(Text())
     organism_ref = Column(UUID(), ForeignKey('organism.id'))
     growth_medium = Column(Text())
-    incubation_time_hours = Column(Float())
     container_type = Column(Text())
-    temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
     oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
     
 
     
 
     def __repr__(self):
-        return f"ExperimentalCulture(treatment_type={self.treatment_type},growth_time={self.growth_time},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"ExperimentalCulture(treatment_type={self.treatment_type},organism_ref={self.organism_ref},growth_medium={self.growth_medium},container_type={self.container_type},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
 
 
 
@@ -6637,13 +6683,17 @@ v2 change: media_ref directly on class (no UsesMedia mixin);
     setup_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
     setup_instrument = Column(Text())
     sealing_method = Column(Text())
-    temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
     oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
     
     
     # One-To-Many: OneToAnyMapping(source_class='AMP2PlateSetupActivity', source_slot='well_metadata', mapping_type=None, target_class='WellMetadata', target_slot='AMP2PlateSetupActivity_id', join_class=None, uses_join_table=None, multivalued=False)
@@ -6653,7 +6703,7 @@ v2 change: media_ref directly on class (no UsesMedia mixin);
     
 
     def __repr__(self):
-        return f"AMP2PlateSetupActivity(media_ref={self.media_ref},cycle_id={self.cycle_id},plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"AMP2PlateSetupActivity(media_ref={self.media_ref},cycle_id={self.cycle_id},plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
 
 
 
@@ -6684,13 +6734,17 @@ v1 origin: plate-general.yaml EcoplatePlateSetupActivity
     setup_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
     setup_instrument = Column(Text())
     sealing_method = Column(Text())
-    temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
     oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
+    temperature_celsius = Column(Float())
+    temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
+    duration_hours = Column(Float())
+    hold_start_time = Column(DateTime())
+    hold_end_time = Column(DateTime())
     
     
     # One-To-Many: OneToAnyMapping(source_class='EcoplatePlateSetupActivity', source_slot='well_metadata', mapping_type=None, target_class='WellMetadata', target_slot='EcoplatePlateSetupActivity_id', join_class=None, uses_join_table=None, multivalued=False)
@@ -6700,7 +6754,7 @@ v1 origin: plate-general.yaml EcoplatePlateSetupActivity
     
 
     def __repr__(self):
-        return f"EcoplatePlateSetupActivity(plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"EcoplatePlateSetupActivity(plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
 
 
 
@@ -7160,6 +7214,56 @@ Individual QC flags for each ion using ProcessedDataFlag enum.
     
 
 
+class HClExtOMProduct(ProcessedData):
+    """
+    Mineral-Associated Organic Matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
+Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
+    __tablename__ = 'HClExtOMProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    replicate = Column(Integer())
+    produced_by_toctn_run = Column(UUID(), ForeignKey('TOC_TN_DataGenerationActivity.id'))
+    total_organic_carbon_id = Column(UUID(), ForeignKey('QuantityValue.id'))
+    total_organic_carbon_avg = Column(Float())
+    total_nitrogen_id = Column(UUID(), ForeignKey('QuantityValue.id'))
+    total_nitrogen_avg = Column(Float())
+    flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_toc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_tn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"HClExtOMProduct(measure_type={self.measure_type},replicate={self.replicate},produced_by_toctn_run={self.produced_by_toctn_run},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
 class MicrobialBiomassProduct(ProcessedData):
     """
     Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar instrument.
@@ -7378,6 +7482,56 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 
     def __repr__(self):
         return f"TextureProduct(measure_type={self.measure_type},sand_pct_id={self.sand_pct_id},silt_pct_id={self.silt_pct_id},clay_pct_id={self.clay_pct_id},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class WEOMProduct(ProcessedData):
+    """
+    Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
+Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
+    __tablename__ = 'WEOMProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    replicate = Column(Integer())
+    produced_by_toctn_run = Column(UUID(), ForeignKey('TOC_TN_DataGenerationActivity.id'))
+    total_organic_carbon_id = Column(UUID(), ForeignKey('QuantityValue.id'))
+    total_organic_carbon_avg = Column(Float())
+    total_nitrogen_id = Column(UUID(), ForeignKey('QuantityValue.id'))
+    total_nitrogen_avg = Column(Float())
+    flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_toc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_tn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"WEOMProduct(measure_type={self.measure_type},replicate={self.replicate},produced_by_toctn_run={self.produced_by_toctn_run},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
 
 
 
@@ -7666,7 +7820,6 @@ class CoreSection(ProcessedSample):
 
     core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'), nullable=False )
     id = Column(UUID(), primary_key=True, nullable=False )
-    storage_location = Column(Text())
     label_text = Column(Text())
     concentration_ug_per_uL = Column(Float())
     total_amount_ug = Column(Float())
@@ -7682,7 +7835,7 @@ class CoreSection(ProcessedSample):
     
 
     def __repr__(self):
-        return f"CoreSection(core_section={self.core_section},id={self.id},storage_location={self.storage_location},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_ul={self.volume_ul},sampled_portion={self.sampled_portion},replicate={self.replicate},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"CoreSection(core_section={self.core_section},id={self.id},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_ul={self.volume_ul},sampled_portion={self.sampled_portion},replicate={self.replicate},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
 
 
 
