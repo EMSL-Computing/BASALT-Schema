@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-12T11:58:31
+# Generation date: 2026-10-12T12:02:46
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -7279,6 +7279,7 @@ class AMP2UserSample(Sample):
     growth_facil: Optional[Union[str, "GrowthFacilityEnum"]] = None
     isol_growth_condt: Optional[str] = None
     start_date_inc: Optional[str] = None
+    storage_temperature: Optional[str] = None
     shipped_sample_size: Optional[str] = None
     guid_source: Optional[str] = None
     other_guid_source: Optional[str] = None
@@ -7317,6 +7318,9 @@ class AMP2UserSample(Sample):
 
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
+
+        if self.storage_temperature is not None and not isinstance(self.storage_temperature, str):
+            self.storage_temperature = str(self.storage_temperature)
 
         if self.shipped_sample_size is not None and not isinstance(self.shipped_sample_size, str):
             self.shipped_sample_size = str(self.shipped_sample_size)
@@ -7735,6 +7739,7 @@ class EngineeredStrainSample(Sample):
     organism_ref: Optional[Union[str, OrganismId]] = None
     cbi: Optional[Union[bool, Bool]] = None
     storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_temperature: Optional[str] = None
     external_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -7762,9 +7767,15 @@ class EngineeredStrainSample(Sample):
         if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
             self.storage_condition = StorageConditionEnum(self.storage_condition)
 
+        if self.storage_temperature is not None and not isinstance(self.storage_temperature, str):
+            self.storage_temperature = str(self.storage_temperature)
+
         if not isinstance(self.external_identifiers, list):
             self.external_identifiers = [self.external_identifiers] if self.external_identifiers is not None else []
         self.external_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.external_identifiers]
+
+        if self.storage_temperature is not None and not isinstance(self.storage_temperature, str):
+            self.storage_temperature = str(self.storage_temperature)
 
         super().__post_init__(**kwargs)
 
@@ -18003,6 +18014,9 @@ slots.storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="storag
 slots.storage_condition_other = Slot(uri=BASALT_SCHEMA.storage_condition_other, name="storage_condition_other", curie=BASALT_SCHEMA.curie('storage_condition_other'),
                    model_uri=BASALT_SCHEMA.storage_condition_other, domain=None, range=Optional[str])
 
+slots.storage_temperature = Slot(uri=BASALT_SCHEMA.storage_temperature, name="storage_temperature", curie=BASALT_SCHEMA.curie('storage_temperature'),
+                   model_uri=BASALT_SCHEMA.storage_temperature, domain=None, range=Optional[str])
+
 slots.strain_description = Slot(uri=BASALT_SCHEMA.strain_description, name="strain_description", curie=BASALT_SCHEMA.curie('strain_description'),
                    model_uri=BASALT_SCHEMA.strain_description, domain=None, range=Optional[str])
 
@@ -19320,6 +19334,9 @@ slots.engineeredStrainSample__cbi = Slot(uri=BASALT_SCHEMA.cbi, name="engineered
 slots.engineeredStrainSample__storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="engineeredStrainSample__storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
                    model_uri=BASALT_SCHEMA.engineeredStrainSample__storage_condition, domain=None, range=str)
 
+slots.engineeredStrainSample__storage_temperature = Slot(uri=BASALT_SCHEMA.storage_temperature, name="engineeredStrainSample__storage_temperature", curie=BASALT_SCHEMA.curie('storage_temperature'),
+                   model_uri=BASALT_SCHEMA.engineeredStrainSample__storage_temperature, domain=None, range=Optional[str])
+
 slots.fieldDeployedTerraformSample__id = Slot(uri=BASALT_SCHEMA.id, name="fieldDeployedTerraformSample__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.fieldDeployedTerraformSample__id, domain=None, range=URIRef)
 
@@ -19763,6 +19780,9 @@ slots.AMP2UserSample_organism_ref = Slot(uri=BASALT_SCHEMA.organism_ref, name="A
 
 slots.AMP2UserSample_storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="AMP2UserSample_storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
                    model_uri=BASALT_SCHEMA.AMP2UserSample_storage_condition, domain=AMP2UserSample, range=Union[str, "StorageConditionEnum"])
+
+slots.AMP2UserSample_storage_temperature = Slot(uri=BASALT_SCHEMA.storage_temperature, name="AMP2UserSample_storage_temperature", curie=BASALT_SCHEMA.curie('storage_temperature'),
+                   model_uri=BASALT_SCHEMA.AMP2UserSample_storage_temperature, domain=AMP2UserSample, range=Optional[str])
 
 slots.AMP2UserSample_name = Slot(uri=BASALT_SCHEMA.name, name="AMP2UserSample_name", curie=BASALT_SCHEMA.curie('name'),
                    model_uri=BASALT_SCHEMA.AMP2UserSample_name, domain=AMP2UserSample, range=str)

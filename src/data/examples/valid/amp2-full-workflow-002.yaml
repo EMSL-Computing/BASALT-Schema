@@ -348,6 +348,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -366,6 +367,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -384,6 +386,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -402,6 +405,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -420,6 +424,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -438,6 +443,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -456,6 +462,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -474,6 +481,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -492,6 +500,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -510,6 +519,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -528,6 +538,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -546,6 +557,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -564,6 +576,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.5 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -582,6 +595,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.0 mL"
     guid_source: "LIMS"
     other_guid_source: null
@@ -600,6 +614,7 @@ amp2_user_samples:
     isol_growth_condt: "DOI: 10.1126/sciadv.ade1285"
     start_date_inc: "2026-04-16"
     storage_condition: "frozen"
+    storage_temperature: "-80 C"
     shipped_sample_size: "1.0 mL"
     guid_source: "LIMS"
     other_guid_source: null

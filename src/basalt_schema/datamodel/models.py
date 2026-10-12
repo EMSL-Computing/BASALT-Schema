@@ -5414,7 +5414,13 @@ class AMP2UserSample(Sample):
                                                              'storage_cond, '
                                                              'storage_condt',
                                               'name': 'storage_condition',
-                                              'required': True}}})
+                                              'required': True},
+                        'storage_temperature': {'description': 'Storage temperature '
+                                                               'for this sample (e.g., '
+                                                               '"-80 C").\n'
+                                                               'Aliases: '
+                                                               'samp_store_temp',
+                                                'name': 'storage_temperature'}}})
 
     organism_ref: str = Field(default=..., alias="organism_ref", description="""FK to organism representing the biological identity this sample instantiates.
 Required - every AMP2UserSample must reference an organism.""", json_schema_extra = { "linkml_meta": {'aliases': ['strain_ref', 'strain_id'],
@@ -5468,6 +5474,8 @@ Aliases: samp_store_cond, storage_cond, storage_condt""", json_schema_extra = { 
                        'WaterSample',
                        'SampleStorage'],
          'exact_mappings': ['MIXS:0000327']} })
+    storage_temperature: Optional[str] = Field(default=None, alias="storage_temperature", description="""Storage temperature for this sample (e.g., \"-80 C\").
+Aliases: samp_store_temp""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'EngineeredStrainSample']} })
     shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
@@ -6908,6 +6916,8 @@ Aliases: samp_store_cond, storage_cond, storage_condt""", json_schema_extra = { 
                        'TerraformSample',
                        'WaterSample',
                        'SampleStorage']} })
+    storage_temperature: Optional[str] = Field(default=None, alias="storage_temperature", description="""Storage temperature for this sample (e.g., \"-80 C\").
+Aliases: samp_store_temp""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'EngineeredStrainSample']} })
     external_identifiers: Optional[list[str]] = Field(default=None, alias="external_identifiers", description="""List of external identifiers associated with this entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NucleotideSequencing',
                        'AerosolArmSample',
                        'AerosolSample',

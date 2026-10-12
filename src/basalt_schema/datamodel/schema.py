@@ -3780,6 +3780,7 @@ Workflow integration:
     isol_growth_condt = Column(Text())
     start_date_inc = Column(Text())
     storage_condition = Column(Enum('fresh', 'frozen', 'lyophilized', 'other', name='StorageConditionEnum'), nullable=False )
+    storage_temperature = Column(Text())
     shipped_sample_size = Column(Text())
     guid_source = Column(Text())
     other_guid_source = Column(Text())
@@ -3795,7 +3796,7 @@ Workflow integration:
     
 
     def __repr__(self):
-        return f"AMP2UserSample(organism_ref={self.organism_ref},collection_date={self.collection_date},growth_facil={self.growth_facil},isol_growth_condt={self.isol_growth_condt},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},shipped_sample_size={self.shipped_sample_size},guid_source={self.guid_source},other_guid_source={self.other_guid_source},analysis_type={self.analysis_type},cbi={self.cbi},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"AMP2UserSample(organism_ref={self.organism_ref},collection_date={self.collection_date},growth_facil={self.growth_facil},isol_growth_condt={self.isol_growth_condt},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_temperature={self.storage_temperature},shipped_sample_size={self.shipped_sample_size},guid_source={self.guid_source},other_guid_source={self.other_guid_source},analysis_type={self.analysis_type},cbi={self.cbi},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
 
 
 
@@ -3963,6 +3964,7 @@ and carries only sample-instance-specific slots.
     organism_ref = Column(UUID(), ForeignKey('organism.id'))
     cbi = Column(Text(), nullable=False )
     storage_condition = Column(Text(), nullable=False )
+    storage_temperature = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
@@ -3978,7 +3980,7 @@ and carries only sample-instance-specific slots.
     
 
     def __repr__(self):
-        return f"EngineeredStrainSample(organism_ref={self.organism_ref},cbi={self.cbi},storage_condition={self.storage_condition},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"EngineeredStrainSample(organism_ref={self.organism_ref},cbi={self.cbi},storage_condition={self.storage_condition},storage_temperature={self.storage_temperature},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
 
 
 
