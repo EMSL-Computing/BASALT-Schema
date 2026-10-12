@@ -138,11 +138,13 @@ classes:
       - misc_param
       - other
       - other_treatment
+      - other_samp_store_temp
       - photochemical_exposure
       - pressure_control
       - priority_order
       - project
       - replicate_number
+      - samp_store_temp
       - sample_link
       - sample_name
       - sample_processing
@@ -154,6 +156,8 @@ classes:
       - size_frac_up
       - solar_irradiance
       - source_mat_id
+      - storage_condition
+      - storage_condition_other
       - technical_reps
       - third_blh
       - third_blh_quality
@@ -214,6 +218,8 @@ classes:
       - method_development
       - misc_param
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - other_treatment
       - oxygen
       - photochemical_exposure
@@ -225,10 +231,13 @@ classes:
       - sample_name
       - sample_processing
       - sampled_during
+      - samp_store_temp
       - size_frac_low
       - size_frac_up
       - solar_irradiance
       - source_mat_id
+      - storage_condition
+      - storage_condition_other
       - technical_reps
       - temperature_exposure
       - volatile_org_comp
@@ -277,7 +286,10 @@ classes:
       - growth_facil
       - isol_growth_condt
       - start_date_inc
-
+      
+      # Storage (submission metadata)
+      - storage_condition
+      
       # Shipping/logistics
       - shipped_sample_size
       - guid_source
@@ -295,6 +307,12 @@ classes:
         description: |-
           FK to organism representing the biological identity this sample instantiates.
           Required - every AMP2UserSample must reference an organism.
+      storage_condition:
+        required: true
+        description: |-
+          Storage condition for this sample (frozen, fresh, etc.).
+          Required for AMP2UserSample.
+          Aliases: samp_store_cond, storage_cond, storage_condt
       name:
         description: |-
           Sample identifier/name (e.g., "PP_0055").
@@ -334,6 +352,8 @@ classes:
       - item_number
       - method_development
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - production_method
@@ -342,8 +362,11 @@ classes:
       - sample_link
       - sample_name
       - sample_processing
+      - samp_store_temp
       - sampled_during
       - source_mat_id
+      - storage_condition
+      - storage_condition_other
       - technical_reps
       - temp
     slot_usage:
@@ -391,6 +414,8 @@ classes:
       - non_microb_biomass
       - non_microb_biomass_method
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - pathogenicity
@@ -399,12 +424,15 @@ classes:
       - ref_biomaterial
       - replicate_number
       - biotic_relationship
+      - samp_store_temp
       - sample_link
       - sample_name
       - sample_processing
       - sampled_during
       - source_mat_id
       - start_date_inc
+      - storage_condition
+      - storage_condition_other
       - subspecf_gen_lin
       - technical_reps
       - trophic_level
@@ -443,6 +471,7 @@ classes:
 
       # Sample-instance-specific slots
       - cbi
+      - storage_condition
       - external_identifiers
       
     attributes:
@@ -454,6 +483,11 @@ classes:
         required: true
         description: |-
           Controlled Biological Information flag (yes/no).
+      storage_condition:
+        required: true
+        description: |-
+          Storage condition for this sample (frozen, fresh, etc.).
+          Aliases: samp_store_cond, storage_cond, storage_condt
 
   FieldDeployedTerraformSample:
     attributes:
@@ -502,6 +536,8 @@ classes:
       - misc_param
       - non_min_nutr_regm
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - plant_growth_med
@@ -523,9 +559,12 @@ classes:
       - sample_name
       - sample_processing
       - biotic_relationship
+      - samp_store_temp
       - sampled_during
       - source_mat_id
       - start_date_inc
+      - storage_condition
+      - storage_condition_other
       - synth_env_assembly
       - synth_env_design
       - synth_env_design_method
@@ -594,6 +633,8 @@ classes:
       - method_development
       - non_microb_biomass
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - pathogenicity
@@ -606,9 +647,12 @@ classes:
       - sample_name
       - sample_processing
       - sampled_during
+      - samp_store_temp
       - source_mat_id
       - specific_host
       - start_date_inc
+      - storage_condition
+      - storage_condition_other
       - subspecf_gen_lin
       - technical_reps
       - trophic_level
@@ -657,14 +701,19 @@ classes:
       - lims_id
       - misc_param
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - other_treatment
       - project
       - sample_name
+      - samp_store_temp
       - sampled_during
       - sampling_set
       - soil_sample_type
       - soil_type
       - soil_type_meth
+      - storage_condition
+      - storage_condition_other
       - temp
       - water_content
       - water_content_meth
@@ -847,6 +896,7 @@ classes:
       - org_particles
       - organism_count
       - other
+      - other_samp_store_temp
       - other_treatment
       - oxygen
       - oxygen_relationship
@@ -888,6 +938,7 @@ classes:
       - biotic_relationship
       - samp_capt_status
       - samp_dis_stage
+      - samp_store_temp
       - sample_link
       - sample_name
       - sample_processing
@@ -909,6 +960,8 @@ classes:
       - source_mat_id
       - standing_water_regm
       - start_date_inc
+      - storage_condition
+      - storage_condition_other
       - subspecf_gen_lin
       - sulfate
       - sulfide
@@ -1016,6 +1069,8 @@ classes:
       - non_microb_biomass_method
       - non_min_nutr_regm
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - other_treatment
       - pesticide_regm
       - ph_regm
@@ -1046,10 +1101,13 @@ classes:
       - sample_link
       - sample_name
       - sample_processing
+      - samp_store_temp
       - sampled_during
       - source_mat_id
       - standing_water_regm
       - start_date_inc
+      - storage_condition
+      - storage_condition_other
       - technical_reps
       - temp
       - water_temp_regm
@@ -1116,6 +1174,8 @@ classes:
       - non_microb_biomass
       - non_microb_biomass_method
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - pathogenicity
@@ -1124,12 +1184,15 @@ classes:
       - ref_biomaterial
       - replicate_number
       - biotic_relationship
+      - samp_store_temp
       - sample_link
       - sample_name
       - sample_processing
       - sampled_during
       - source_mat_id
       - start_date_inc
+      - storage_condition
+      - storage_condition_other
       - subspecf_gen_lin
       - technical_reps
       - trophic_level
@@ -1223,6 +1286,8 @@ classes:
       - org_nitro
       - org_nitro_method
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - part_org_carb
@@ -1246,6 +1311,7 @@ classes:
       - sample_name
       - sample_processing
       - biotic_relationship
+      - samp_store_temp
       - sampled_during
       - sediment_type
       - sieving
@@ -1253,6 +1319,8 @@ classes:
       - sodium
       - source_mat_id
       - start_date_inc
+      - storage_condition
+      - storage_condition_other
       - sulfate
       - sulfide
       - technical_reps
@@ -1345,6 +1413,8 @@ classes:
       - non_microb_biomass
       - non_microb_biomass_method
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - perturbation
@@ -1355,6 +1425,7 @@ classes:
       - salinity
       - salinity_method
       - biotic_relationship
+      - samp_store_temp
       - sample_link
       - sample_name
       - sample_processing
@@ -1369,6 +1440,8 @@ classes:
       - soil_type_meth
       - source_mat_id
       - start_date_inc
+      - storage_condition
+      - storage_condition_other
       - technical_reps
       - temp
       - texture_meth
@@ -1442,6 +1515,8 @@ classes:
       - genetic_mod
       - item_number
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - oxygen_relationship
       - product_name
       - production_method
@@ -1450,8 +1525,11 @@ classes:
       - sample_link
       - sample_name
       - sample_processing
+      - samp_store_temp
       - sampled_during
       - source_mat_id
+      - storage_condition
+      - storage_condition_other
       - synth_instrument
       - synth_process
       - synth_reagents
@@ -1509,6 +1587,8 @@ classes:
       - misc_param
       - non_min_nutr_regm
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - plant_growth_med
@@ -1530,8 +1610,11 @@ classes:
       - sample_name
       - sample_processing
       - biotic_relationship
+      - samp_store_temp
       - sampled_during
       - source_mat_id
+      - storage_condition
+      - storage_condition_other
       - synth_env_assembly
       - synth_env_design
       - synth_env_design_method
@@ -1636,6 +1719,8 @@ classes:
       - org_nitro
       - org_nitro_method
       - other
+      - other_samp_store_temp
+      - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - part_org_carb
@@ -1666,8 +1751,11 @@ classes:
       - soluble_react_phosp
       - source_mat_id
       - start_date_inc
+      - storage_condition
+      - storage_condition_other
       - sulfate
       - sulfide
+      - samp_store_temp
       - suspend_part_matter
       - technical_reps
       - temp
@@ -1755,6 +1843,10 @@ classes:
       as SampleProcessing instead, and the resulting ProcessedSample can then have
       its own SampleStorage rows.
 
+      This records storage at EMSL. It is separate from the submission metadata
+      on the sample itself (samp_store_temp, storage_condition, etc.), which
+      records what the submitter reported and requested.
+
       Temperature and timing come from the HasTemperatureHold mixin, shared with
       incubation, culture growth, and reaction steps.
     mixins:
@@ -1769,6 +1861,8 @@ classes:
       - storage_condition_other
       - substances_used
     slot_usage:
+      storage_condition:
+        description: Physical state of the sample during this storage period.
       sample_id:
         required: true
         description: The sample being stored.
@@ -1804,7 +1898,7 @@ classes:
       - shipped_sample_size
       - sampled_at_site
     todos:
-      - is this for individual samples or can it be the activity of collecting multiple samples from one site? would need to change shipped_sample_size if so (storage is recorded per sample via SampleStorage).
+      - is this for individual samples or can it be the activity of collecting multiple samples from one site? would need to change shipped_sample_size and storage_condt if so.
       - does project number go here? how do we connect Sample/SamplingActivity to a project/Study?
 
   AerosolArmSamplingActivity:

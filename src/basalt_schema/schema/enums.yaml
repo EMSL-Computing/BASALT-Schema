@@ -1646,6 +1646,24 @@ enums:
         description: >-
           The sample (always a ProcessedSample) was produced by the processing activity.
 
+  SampleStoreTempEnum:
+    description: Sample storage temperature conditions
+    permissible_values:
+      fresh4:
+        description: Fresh storage at 4°C
+        aliases: ["4 C"]
+      freshroom:
+        description: Fresh storage at room temperature
+        aliases: ["room temperature"]
+      frozen20:
+        description: Frozen storage at -20°C
+        aliases: ["-20 C"]
+      frozen80:
+        description: Frozen storage at -80°C
+        aliases: ["-80 C"]
+      other:
+        description: Other storage temperature
+
   SampleType:
     description: Types of samples that can be collected
     permissible_values:
@@ -1861,9 +1879,7 @@ enums:
         description: Not sterilised (used as-is)
 
   StorageConditionEnum:
-    description: |-
-      Physical state of a sample in storage. Temperature is recorded separately
-      via temperature_celsius / temperature_category on SampleStorage.
+    description: Sample storage conditions
     permissible_values:
       fresh:
         description: Fresh sample
@@ -1970,7 +1986,7 @@ enums:
     description: |-
       Nominal temperature conditions for a temperature hold (storage, incubation,
       reaction). Use with temperature_category; record the numeric value in
-      temperature_celsius when known. Replaces SampleStoreTempEnum.
+      temperature_celsius when known.
     permissible_values:
       room_temperature:
         description: Room temperature (~20-25°C)

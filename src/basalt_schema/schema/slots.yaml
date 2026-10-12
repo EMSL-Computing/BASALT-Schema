@@ -1742,6 +1742,17 @@ slots:
       Description of GUID source if guid_source = "other".
     range: string
 
+  other_samp_store_temp:
+    description: Please specify sample storage temperature if you selected 'other'
+    range: string
+    title: other sample storage temperature
+
+  other_storage_condt:
+    description: Please specify your storage conditions if you selected 'other' and the available
+      values are not appropriate
+    range: string
+    title: other storage condition
+
   other_treatment:
     description: Many sample treatment descriptor columns are available. If a treatment
       is applied to your samples and the provided treatment terms do not satisfy please
@@ -2329,6 +2340,16 @@ slots:
       penetration, infection, growth and reproduction, dissemination of pathogen.
     range: string
     title: sample disease stage
+
+  samp_store_temp:
+    description: The temperature at which your samples should be stored upon arrival.
+      This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
+      attribute to provide additional detail.
+    range: SampleStoreTempEnum
+    title: sample storage temperature
+    aliases:
+      - sample_storage_temperature
+      - storage_temperature
 
   sample_collected:
     description: This refers to the TOTAL amount of sample collected from the experiment.
@@ -3136,7 +3157,7 @@ slots:
 
   storage_condition:
     title: storage condition
-    description: The storage condition of the sample. This field is NOT multivalued. If selecting other add the `storage_condition_other` attribute to provide additional detail. Records physical state only; temperature is captured by temperature_celsius / temperature_category on SampleStorage.
+    description: The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.
     range: StorageConditionEnum
     exact_mappings:
       - MIXS:0000327
