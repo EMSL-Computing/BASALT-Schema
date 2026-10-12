@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-12T12:02:46
+# Generation date: 2026-10-12T13:48:42
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -63,7 +63,7 @@ from linkml_runtime.linkml_model.types import Boolean, Date, Datetime, Double, F
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDate, XSDDateTime
 
 metamodel_version = "1.7.0"
-version = "0.1.0"
+version = "0.2.0"
 
 # Namespaces
 BTO = CurieNamespace('BTO', 'http://purl.obolibrary.org/obo/BTO_')

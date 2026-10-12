@@ -1,0 +1,23 @@
+{#-
+  Override of Material's partials/source.html.
+
+  Material's stock partial carries `data-md-component="source"`, which is the
+  hook its bundled JS uses to fetch the repository's latest *GitHub Release*
+  (via /releases/latest -> tag_name) and inject the stars/forks/version facts.
+  This project tags versions without always cutting a Release, so that value
+  lagged behind the newest tag.
+
+  We drop the `data-md-component="source"` attribute so Material never runs that
+  fetch, and render the facts ourselves from the latest git *tag* in
+  docs/js/latest-tag.js. Keep this file in sync with the upstream markup when
+  bumping mkdocs-material.
+-#}
+<a href="{{ config.repo_url }}" title="{{ lang.t('source') }}" class="md-source">
+  <div class="md-source__icon md-icon">
+    {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
+    {% include ".icons/" ~ icon ~ ".svg" %}
+  </div>
+  <div class="md-source__repository">
+    {{ config.repo_name }}
+  </div>
+</a>
