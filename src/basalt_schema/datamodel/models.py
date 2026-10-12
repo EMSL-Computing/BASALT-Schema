@@ -33202,6 +33202,7 @@ class SampleStorage(HasTemperatureHold):
                        'SampleStorage']} })
     substances_used: Optional[str] = Field(default=None, alias="substances_used", description="""Cryoprotectants or preservatives the sample is stored in (e.g., glycerol, DMSO, RNAlater).""", json_schema_extra = { "linkml_meta": {'domain_of': ['SampleStorage',
                        'ChemicalConversionProcess',
+                       'Dilution',
                        'Extraction',
                        'ResuspensionProcess']} })
     id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
@@ -35100,6 +35101,7 @@ class ChemicalConversionProcess(HasTemperatureHold, SampleProcessing):
 
     substances_used: Optional[str] = Field(default=None, alias="substances_used", description="""A reference to substances used in a SampleProcessing activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SampleStorage',
                        'ChemicalConversionProcess',
+                       'Dilution',
                        'Extraction',
                        'ResuspensionProcess']} })
     chemical_conversion_category: Optional[ChemicalConversionCategoryEnum] = Field(default=None, alias="chemical_conversion_category", description="""The category of chemical conversion process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalConversionProcess']} })
@@ -35240,6 +35242,150 @@ reaction, or storage), in hours. Shared by all HasTemperatureHold classes.""", j
                        'zipDownload']} })
 
 
+class Dilution(SampleProcessing):
+    """
+    A process that reduces the concentration of a target analyte in a sample by adding a diluent (e.g., water, buffer, etc.). All slots may be populated; generally either starting/final concentration or dilution factor is provided.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-processing',
+         'slot_usage': {'dilution_analyte': {'name': 'dilution_analyte',
+                                             'required': True}}})
+
+    dilution_analyte: str = Field(default=..., alias="dilution_analyte", description="""The analyte or compound whose concentration is being adjusted.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dilution']} })
+    target_concentration_ug_per_ul: Optional[float] = Field(default=None, alias="target_concentration_ug_per_ul", description="""The desired final concentration of the analyte or compound after dilution, in micrograms per microliter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dilution']} })
+    starting_concentration_mg_per_ml: Optional[float] = Field(default=None, alias="starting_concentration_mg_per_ml", description="""The concentration of the sample or analyte in the input sample before this activity, in milligrams per milliliter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dilution']} })
+    final_concentration_mg_per_ml: Optional[float] = Field(default=None, alias="final_concentration_mg_per_ml", description="""The concentration of the sample or analyte in the processedSample resulting from this activity, in milligrams per milliliter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dilution',
+                       'SampleProcessingSubstance',
+                       'ProteinQuantification']} })
+    dilution_factor: Optional[float] = Field(default=None, alias="dilution_factor", description="""Factor by which the sample was diluted.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dilution']} })
+    substances_used: Optional[str] = Field(default=None, alias="substances_used", description="""A reference to substances used in a SampleProcessing activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SampleStorage',
+                       'ChemicalConversionProcess',
+                       'Dilution',
+                       'Extraction',
+                       'ResuspensionProcess']} })
+    informed_by_result: Optional[str] = Field(default=None, alias="informed_by_result", description="""A DataProduct that includes information used in this activity. For example, a dilution volume may be calculated from a concentration measurement included in a DataProduct.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dilution']} })
+    name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, alias="description", title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    in_protocol: Optional[str] = Field(default=None, alias="in_protocol", description="""The SampleProcessingProtocol (the recipe) that this step follows. Type-level, not instance-level: every execution of the same SOP points at the same record, so this does NOT identify a particular chain. Use in_run for that. A chain may mix protocols, so this is recorded per step rather than per run.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SampleProcessing']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'AerosolArmSample',
+                       'AerosolSample',
+                       'AMP2UserSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'EngineeredStrainSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'ProcessedSample',
+                       'SampleStorage',
+                       'CoreSection',
+                       'SamplingActivity',
+                       'AerosolArmSamplingActivity',
+                       'AerosolSamplingActivity',
+                       'CommerciallyPurchasedSamplingActivity',
+                       'CultureEnvironmentalSamplingActivity',
+                       'EngineeredStrainSamplingActivity',
+                       'FieldDeployedTerraformSamplingActivity',
+                       'MixedCultureSamplingActivity',
+                       'MonetSoilSamplingActivity',
+                       'OtherUndescribedSamplingActivity',
+                       'PlantSamplingActivity',
+                       'PureCultureSamplingActivity',
+                       'SedimentSamplingActivity',
+                       'SoilSamplingActivity',
+                       'SynthesizedMaterialSamplingActivity',
+                       'TerraformSamplingActivity',
+                       'WaterSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'PersonValue',
+                       'QuantityValue',
+                       'ConditioningValue',
+                       'zipDownload']} })
+
+
 class Extraction(SampleProcessing):
     """
     The removal and isolation of a desired analyte from other material  in a sample.
@@ -35248,6 +35394,7 @@ class Extraction(SampleProcessing):
 
     substances_used: Optional[str] = Field(default=None, alias="substances_used", description="""A reference to substances used in a SampleProcessing activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SampleStorage',
                        'ChemicalConversionProcess',
+                       'Dilution',
                        'Extraction',
                        'ResuspensionProcess']} })
     starting_mass_mg: Optional[float] = Field(default=None, alias="starting_mass_mg", description="""The mass of sample or analyte used in the first step of the process, in milligrams.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Extraction']} })
@@ -36102,7 +36249,9 @@ class SampleProcessingSubstance(ConfiguredBaseModel):
     known_as: Optional[ChemicalEntityEnum] = Field(default=None, alias="known_as", description="""Common name or identifier for the substance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SampleProcessingSubstance']} })
     substance_role: Optional[SubstanceRoleEnum] = Field(default=None, alias="substance_role", description="""The role or function of the substance in the context of its use.""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReagentAddition', 'SampleProcessingSubstance']} })
     source_concentration_mg_per_ml: Optional[float] = Field(default=None, alias="source_concentration_mg_per_ml", description="""Concentration of the substance before it is added to the experiment,  in milligrams per milliliter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SampleProcessingSubstance']} })
-    final_concentration_mg_per_ml: Optional[float] = Field(default=None, alias="final_concentration_mg_per_ml", description="""Concentration of the substance in the combined tube/experimental  container after everything in this step is added, in milligrams  per milliliter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SampleProcessingSubstance', 'ProteinQuantification']} })
+    final_concentration_mg_per_ml: Optional[float] = Field(default=None, alias="final_concentration_mg_per_ml", description="""Concentration of the substance in the combined tube/experimental  container after everything in this step is added, in milligrams  per milliliter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dilution',
+                       'SampleProcessingSubstance',
+                       'ProteinQuantification']} })
 
 
 class ProteinQuantification(SampleProcessing):
@@ -36116,7 +36265,9 @@ class ProteinQuantification(SampleProcessing):
                        'ProteinQuantification',
                        'ResuspensionProcess',
                        'SolidPhaseExtractionProcess']} })
-    final_concentration_mg_per_ml: Optional[float] = Field(default=None, alias="final_concentration_mg_per_ml", description="""The concentration of the sample or analyte in the processedSample resulting from this activity, in milligrams per milliliter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SampleProcessingSubstance', 'ProteinQuantification']} })
+    final_concentration_mg_per_ml: Optional[float] = Field(default=None, alias="final_concentration_mg_per_ml", description="""The concentration of the sample or analyte in the processedSample resulting from this activity, in milligrams per milliliter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dilution',
+                       'SampleProcessingSubstance',
+                       'ProteinQuantification']} })
     protein_assay_type: ProteinAssayTypeEnum = Field(default=..., alias="protein_assay_type", description="""The type of protein assay (Coomassie, BCA, etc.).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProteinQuantification']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -36255,6 +36406,7 @@ class ResuspensionProcess(SampleProcessing):
     final_vol_ml: Optional[float] = Field(default=None, alias="final_vol_ml", description="""The volume of sample resulting from this activity, in milliliters.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PoolingProcess', 'ResuspensionProcess', 'SubsamplingProcess']} })
     substances_used: Optional[str] = Field(default=None, alias="substances_used", description="""A reference to substances used in a SampleProcessing activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SampleStorage',
                        'ChemicalConversionProcess',
+                       'Dilution',
                        'Extraction',
                        'ResuspensionProcess']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
@@ -37986,6 +38138,7 @@ StandardSampleProcessing.model_rebuild()
 SampleProcessingProtocol.model_rebuild()
 SampleProcessingRun.model_rebuild()
 ChemicalConversionProcess.model_rebuild()
+Dilution.model_rebuild()
 Extraction.model_rebuild()
 FiltrationProcess.model_rebuild()
 FractionationProcess.model_rebuild()

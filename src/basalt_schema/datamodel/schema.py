@@ -5928,6 +5928,40 @@ class ChemicalConversionProcess(SampleProcessing):
     
 
 
+class Dilution(SampleProcessing):
+    """
+    A process that reduces the concentration of a target analyte in a sample by adding a diluent (e.g., water, buffer, etc.). All slots may be populated; generally either starting/final concentration or dilution factor is provided.
+    """
+    __tablename__ = 'Dilution'
+
+    dilution_analyte = Column(Text(), nullable=False )
+    target_concentration_ug_per_ul = Column(Float())
+    starting_concentration_mg_per_ml = Column(Float())
+    final_concentration_mg_per_ml = Column(Float())
+    dilution_factor = Column(Float())
+    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
+    informed_by_result = Column(UUID(), ForeignKey('DataProduct.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"Dilution(dilution_analyte={self.dilution_analyte},target_concentration_ug_per_ul={self.target_concentration_ug_per_ul},starting_concentration_mg_per_ml={self.starting_concentration_mg_per_ml},final_concentration_mg_per_ml={self.final_concentration_mg_per_ml},dilution_factor={self.dilution_factor},substances_used={self.substances_used},informed_by_result={self.informed_by_result},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
 class Extraction(SampleProcessing):
     """
     The removal and isolation of a desired analyte from other material  in a sample.

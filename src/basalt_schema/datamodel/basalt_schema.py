@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-12T13:48:42
+# Generation date: 2026-10-12T16:03:50
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -633,6 +633,10 @@ class SampleProcessingRunId(Uuid):
 
 
 class ChemicalConversionProcessId(SampleProcessingId):
+    pass
+
+
+class DilutionId(SampleProcessingId):
     pass
 
 
@@ -12919,6 +12923,61 @@ class ChemicalConversionProcess(SampleProcessing):
 
 
 @dataclass(repr=False)
+class Dilution(SampleProcessing):
+    """
+    A process that reduces the concentration of a target analyte in a sample by adding a diluent (e.g., water, buffer,
+    etc.). All slots may be populated; generally either starting/final concentration or dilution factor is provided.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Dilution"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Dilution"
+    class_name: ClassVar[str] = "Dilution"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Dilution
+
+    id: Union[str, DilutionId] = None
+    name: str = None
+    dilution_analyte: str = None
+    target_concentration_ug_per_ul: Optional[float] = None
+    starting_concentration_mg_per_ml: Optional[float] = None
+    final_concentration_mg_per_ml: Optional[float] = None
+    dilution_factor: Optional[float] = None
+    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
+    informed_by_result: Optional[Union[str, DataProductId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DilutionId):
+            self.id = DilutionId(self.id)
+
+        if self._is_empty(self.dilution_analyte):
+            self.MissingRequiredField("dilution_analyte")
+        if not isinstance(self.dilution_analyte, str):
+            self.dilution_analyte = str(self.dilution_analyte)
+
+        if self.target_concentration_ug_per_ul is not None and not isinstance(self.target_concentration_ug_per_ul, float):
+            self.target_concentration_ug_per_ul = float(self.target_concentration_ug_per_ul)
+
+        if self.starting_concentration_mg_per_ml is not None and not isinstance(self.starting_concentration_mg_per_ml, float):
+            self.starting_concentration_mg_per_ml = float(self.starting_concentration_mg_per_ml)
+
+        if self.final_concentration_mg_per_ml is not None and not isinstance(self.final_concentration_mg_per_ml, float):
+            self.final_concentration_mg_per_ml = float(self.final_concentration_mg_per_ml)
+
+        if self.dilution_factor is not None and not isinstance(self.dilution_factor, float):
+            self.dilution_factor = float(self.dilution_factor)
+
+        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
+            self.substances_used = SubstancesUsedLinkId(self.substances_used)
+
+        if self.informed_by_result is not None and not isinstance(self.informed_by_result, DataProductId):
+            self.informed_by_result = DataProductId(self.informed_by_result)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Extraction(SampleProcessing):
     """
     The removal and isolation of a desired analyte from other material  in a sample.
@@ -16679,6 +16738,12 @@ slots.description = Slot(uri=BASALT_SCHEMA.description, name="description", curi
 slots.diether_lipids = Slot(uri=BASALT_SCHEMA.diether_lipids, name="diether_lipids", curie=BASALT_SCHEMA.curie('diether_lipids'),
                    model_uri=BASALT_SCHEMA.diether_lipids, domain=None, range=Optional[str])
 
+slots.dilution_factor = Slot(uri=BASALT_SCHEMA.dilution_factor, name="dilution_factor", curie=BASALT_SCHEMA.curie('dilution_factor'),
+                   model_uri=BASALT_SCHEMA.dilution_factor, domain=None, range=Optional[float])
+
+slots.dilution_analyte = Slot(uri=BASALT_SCHEMA.dilution_analyte, name="dilution_analyte", curie=BASALT_SCHEMA.curie('dilution_analyte'),
+                   model_uri=BASALT_SCHEMA.dilution_analyte, domain=None, range=Optional[str])
+
 slots.diss_carb_dioxide = Slot(uri=BASALT_SCHEMA.diss_carb_dioxide, name="diss_carb_dioxide", curie=BASALT_SCHEMA.curie('diss_carb_dioxide'),
                    model_uri=BASALT_SCHEMA.diss_carb_dioxide, domain=None, range=Optional[str])
 
@@ -16960,6 +17025,9 @@ slots.infiltration_2 = Slot(uri=BASALT_SCHEMA.infiltration_2, name="infiltration
 
 slots.infiltration_notes = Slot(uri=BASALT_SCHEMA.infiltration_notes, name="infiltration_notes", curie=BASALT_SCHEMA.curie('infiltration_notes'),
                    model_uri=BASALT_SCHEMA.infiltration_notes, domain=None, range=Optional[str])
+
+slots.informed_by_result = Slot(uri=BASALT_SCHEMA.informed_by_result, name="informed_by_result", curie=BASALT_SCHEMA.curie('informed_by_result'),
+                   model_uri=BASALT_SCHEMA.informed_by_result, domain=None, range=Optional[Union[str, DataProductId]])
 
 slots.initiation_date_inoculation = Slot(uri=BASALT_SCHEMA.initiation_date_inoculation, name="initiation_date_inoculation", curie=BASALT_SCHEMA.curie('initiation_date_inoculation'),
                    model_uri=BASALT_SCHEMA.initiation_date_inoculation, domain=None, range=Optional[str])
@@ -18008,6 +18076,9 @@ slots.step_number = Slot(uri=BASALT_SCHEMA.step_number, name="step_number", curi
 slots.sterilization_method = Slot(uri=BASALT_SCHEMA.sterilization_method, name="sterilization_method", curie=BASALT_SCHEMA.curie('sterilization_method'),
                    model_uri=BASALT_SCHEMA.sterilization_method, domain=None, range=Optional[Union[str, "SterilizationMethodEnum"]])
 
+slots.starting_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.starting_concentration_mg_per_ml, name="starting_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('starting_concentration_mg_per_ml'),
+                   model_uri=BASALT_SCHEMA.starting_concentration_mg_per_ml, domain=None, range=Optional[float])
+
 slots.storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
                    model_uri=BASALT_SCHEMA.storage_condition, domain=None, range=Optional[Union[str, "StorageConditionEnum"]])
 
@@ -18085,6 +18156,9 @@ slots.synth_reagents = Slot(uri=BASALT_SCHEMA.synth_reagents, name="synth_reagen
 
 slots.synth_start_date = Slot(uri=BASALT_SCHEMA.synth_start_date, name="synth_start_date", curie=BASALT_SCHEMA.curie('synth_start_date'),
                    model_uri=BASALT_SCHEMA.synth_start_date, domain=None, range=Optional[str])
+
+slots.target_concentration_ug_per_ul = Slot(uri=BASALT_SCHEMA.target_concentration_ug_per_ul, name="target_concentration_ug_per_ul", curie=BASALT_SCHEMA.curie('target_concentration_ug_per_ul'),
+                   model_uri=BASALT_SCHEMA.target_concentration_ug_per_ul, domain=None, range=Optional[float])
 
 slots.target_strain = Slot(uri=BASALT_SCHEMA.target_strain, name="target_strain", curie=BASALT_SCHEMA.curie('target_strain'),
                    model_uri=BASALT_SCHEMA.target_strain, domain=None, range=Optional[str])
@@ -20128,6 +20202,9 @@ slots.WaterSamplingActivity_sample_collection_dev = Slot(uri=BASALT_SCHEMA.sampl
 
 slots.WaterSamplingActivity_sample_collection_method = Slot(uri=BASALT_SCHEMA.sample_collection_method, name="WaterSamplingActivity_sample_collection_method", curie=BASALT_SCHEMA.curie('sample_collection_method'),
                    model_uri=BASALT_SCHEMA.WaterSamplingActivity_sample_collection_method, domain=WaterSamplingActivity, range=str)
+
+slots.Dilution_dilution_analyte = Slot(uri=BASALT_SCHEMA.dilution_analyte, name="Dilution_dilution_analyte", curie=BASALT_SCHEMA.curie('dilution_analyte'),
+                   model_uri=BASALT_SCHEMA.Dilution_dilution_analyte, domain=Dilution, range=str)
 
 slots.FiltrationProcess_volume_ml = Slot(uri=BASALT_SCHEMA.volume_ml, name="FiltrationProcess_volume_ml", curie=BASALT_SCHEMA.curie('volume_ml'),
                    model_uri=BASALT_SCHEMA.FiltrationProcess_volume_ml, domain=FiltrationProcess, range=Optional[float])

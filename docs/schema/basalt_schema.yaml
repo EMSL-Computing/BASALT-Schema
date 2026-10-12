@@ -4582,6 +4582,26 @@ slots:
     - SedimentSample
     - WaterSample
     range: string
+  dilution_factor:
+    name: dilution_factor
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/dilution_factor
+    description: Factor by which the sample was diluted.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:dilution_factor
+    owner: Dilution
+    domain_of:
+    - Dilution
+    range: float
+  dilution_analyte:
+    name: dilution_analyte
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/dilution_analyte
+    description: The analyte or compound whose concentration is being adjusted.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:dilution_analyte
+    owner: Dilution
+    domain_of:
+    - Dilution
+    range: string
   diss_carb_dioxide:
     name: diss_carb_dioxide
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/diss_carb_dioxide
@@ -5202,6 +5222,7 @@ slots:
     slot_uri: basalt_schema:final_concentration_mg_per_ml
     owner: ProteinQuantification
     domain_of:
+    - Dilution
     - ProteinQuantification
     range: float
   final_mass_mg:
@@ -6047,6 +6068,18 @@ slots:
     - MonetSoilSamplingActivity
     - SoilSamplingActivity
     range: string
+  informed_by_result:
+    name: informed_by_result
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/informed_by_result
+    description: A DataProduct that includes information used in this activity. For
+      example, a dilution volume may be calculated from a concentration measurement
+      included in a DataProduct.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:informed_by_result
+    owner: Dilution
+    domain_of:
+    - Dilution
+    range: DataProduct
   initiation_date_inoculation:
     name: initiation_date_inoculation
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/initiation_date_inoculation
@@ -10756,6 +10789,17 @@ slots:
     - MediaPreparation
     range: SterilizationMethodEnum
     required: false
+  starting_concentration_mg_per_ml:
+    name: starting_concentration_mg_per_ml
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/starting_concentration_mg_per_ml
+    description: The concentration of the sample or analyte in the input sample before
+      this activity, in milligrams per milliliter.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:starting_concentration_mg_per_ml
+    owner: Dilution
+    domain_of:
+    - Dilution
+    range: float
   storage_condition:
     name: storage_condition
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/storage_condition
@@ -10948,6 +10992,7 @@ slots:
     domain_of:
     - SampleStorage
     - ChemicalConversionProcess
+    - Dilution
     - Extraction
     - ResuspensionProcess
     range: SubstancesUsedLink
@@ -11148,6 +11193,17 @@ slots:
     - FieldDeployedTerraformSample
     - TerraformSample
     range: string
+  target_concentration_ug_per_ul:
+    name: target_concentration_ug_per_ul
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/target_concentration_ug_per_ul
+    description: The desired final concentration of the analyte or compound after
+      dilution, in micrograms per microliter.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:target_concentration_ug_per_ul
+    owner: Dilution
+    domain_of:
+    - Dilution
+    range: float
   target_strain:
     name: target_strain
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/target_strain
@@ -19768,6 +19824,22 @@ slots:
     usage_slot_name: sample_collection_method
     range: string
     required: true
+  Dilution_dilution_analyte:
+    name: Dilution_dilution_analyte
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/dilution_analyte
+    description: The analyte or compound whose concentration is being adjusted.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: dilution_analyte
+    domain: Dilution
+    slot_uri: basalt_schema:dilution_analyte
+    alias: dilution_analyte
+    owner: Dilution
+    domain_of:
+    - Dilution
+    is_usage_slot: true
+    usage_slot_name: dilution_analyte
+    range: string
+    required: true
   FiltrationProcess_volume_ml:
     name: FiltrationProcess_volume_ml
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/volume_ml
@@ -27174,6 +27246,31 @@ classes:
         description: Chemical labeling strategy applied in this process (e.g., TMT).
         range: LabelingMethodEnum
     class_uri: basalt_schema:ChemicalConversionProcess
+  Dilution:
+    name: Dilution
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Dilution
+    description: A process that reduces the concentration of a target analyte in a
+      sample by adding a diluent (e.g., water, buffer, etc.). All slots may be populated;
+      generally either starting/final concentration or dilution factor is provided.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    is_a: SampleProcessing
+    slots:
+    - name
+    - description
+    - in_protocol
+    - sampleProcessing__id
+    - Dilution_dilution_analyte
+    - target_concentration_ug_per_ul
+    - starting_concentration_mg_per_ml
+    - final_concentration_mg_per_ml
+    - dilution_factor
+    - substances_used
+    - informed_by_result
+    slot_usage:
+      dilution_analyte:
+        name: dilution_analyte
+        required: true
+    class_uri: basalt_schema:Dilution
   Extraction:
     name: Extraction
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Extraction
@@ -27843,6 +27940,6 @@ classes:
         - descendant_id
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-10-12T13:47:57'
+source_file_date: '2026-10-12T16:01:08'
 source_file_size: 21959
-generation_date: '2026-10-12T13:48:26'
+generation_date: '2026-10-12T16:03:34'
