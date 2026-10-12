@@ -371,6 +371,7 @@ for i, (sname, org_id, rep) in enumerate(SAMPLE_SPEC, start=1):
         "growth_facil": "lab_incubation",
         "isol_growth_condt": "DOI: 10.1126/sciadv.ade1285",
         "start_date_inc": "2026-04-16",
+        "storage_condition": "frozen",
         "shipped_sample_size": "1.5 mL" if not yeast else "1.0 mL",
         "guid_source": "LIMS",
         "other_guid_source": None,
@@ -1516,6 +1517,7 @@ A("# ---------------------------------------------------------------------------
 A("amp2_user_samples:")
 SAMPLE_FIELDS = ["id", "name", "description", "organism_ref", "collection_date",
                  "growth_facil", "isol_growth_condt", "start_date_inc",
+                 "storage_condition",
                  "shipped_sample_size", "guid_source", "other_guid_source",
                  "analysis_type", "cbi", "lims_barcode", "emsl_activity",
                  "replicate_number"]

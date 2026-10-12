@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-12T11:16:34
+# Generation date: 2026-10-12T11:58:31
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -6846,11 +6846,13 @@ class AerosolArmSample(Sample):
     misc_param: Optional[str] = None
     other: Optional[str] = None
     other_treatment: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
     photochemical_exposure: Optional[Union[str, "PhotochemicalExposureEnum"]] = None
     pressure_control: Optional[str] = None
     priority_order: Optional[float] = None
     project: Optional[int] = None
     replicate_number: Optional[int] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
@@ -6862,6 +6864,8 @@ class AerosolArmSample(Sample):
     size_frac_up: Optional[str] = None
     solar_irradiance: Optional[str] = None
     source_mat_id: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     third_blh: Optional[float] = None
     third_blh_quality: Optional[str] = None
@@ -6962,6 +6966,9 @@ class AerosolArmSample(Sample):
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
         if self.photochemical_exposure is not None and not isinstance(self.photochemical_exposure, PhotochemicalExposureEnum):
             self.photochemical_exposure = PhotochemicalExposureEnum(self.photochemical_exposure)
 
@@ -6976,6 +6983,9 @@ class AerosolArmSample(Sample):
 
         if self.replicate_number is not None and not isinstance(self.replicate_number, int):
             self.replicate_number = int(self.replicate_number)
+
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
 
         if self.sample_link is not None and not isinstance(self.sample_link, str):
             self.sample_link = str(self.sample_link)
@@ -7009,6 +7019,12 @@ class AerosolArmSample(Sample):
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -7060,6 +7076,8 @@ class AerosolSample(Sample):
     method_development: Optional[str] = None
     misc_param: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen: Optional[str] = None
     photochemical_exposure: Optional[Union[str, "PhotochemicalExposureEnum"]] = None
@@ -7071,10 +7089,13 @@ class AerosolSample(Sample):
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     size_frac_low: Optional[str] = None
     size_frac_up: Optional[str] = None
     solar_irradiance: Optional[str] = None
     source_mat_id: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     temperature_exposure: Optional[str] = None
     volatile_org_comp: Optional[str] = None
@@ -7153,6 +7174,12 @@ class AerosolSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -7186,6 +7213,9 @@ class AerosolSample(Sample):
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
+
         if self.size_frac_low is not None and not isinstance(self.size_frac_low, str):
             self.size_frac_low = str(self.size_frac_low)
 
@@ -7197,6 +7227,12 @@ class AerosolSample(Sample):
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -7237,6 +7273,7 @@ class AMP2UserSample(Sample):
 
     id: Union[str, AMP2UserSampleId] = None
     organism_ref: Union[str, OrganismId] = None
+    storage_condition: Union[str, "StorageConditionEnum"] = None
     name: str = None
     collection_date: Optional[Union[str, XSDDate]] = None
     growth_facil: Optional[Union[str, "GrowthFacilityEnum"]] = None
@@ -7258,6 +7295,11 @@ class AMP2UserSample(Sample):
             self.MissingRequiredField("organism_ref")
         if not isinstance(self.organism_ref, OrganismId):
             self.organism_ref = OrganismId(self.organism_ref)
+
+        if self._is_empty(self.storage_condition):
+            self.MissingRequiredField("storage_condition")
+        if not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
 
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
@@ -7317,6 +7359,8 @@ class CommerciallyPurchasedSample(Sample):
     item_number: Optional[str] = None
     method_development: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     production_method: Optional[str] = None
@@ -7325,8 +7369,11 @@ class CommerciallyPurchasedSample(Sample):
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
 
@@ -7368,6 +7415,12 @@ class CommerciallyPurchasedSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -7392,11 +7445,20 @@ class CommerciallyPurchasedSample(Sample):
         if self.sample_processing is not None and not isinstance(self.sample_processing, str):
             self.sample_processing = str(self.sample_processing)
 
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
+
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -7451,6 +7513,8 @@ class CultureEnvironmentalSample(Sample):
     non_microb_biomass: Optional[str] = None
     non_microb_biomass_method: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     pathogenicity: Optional[str] = None
@@ -7459,11 +7523,14 @@ class CultureEnvironmentalSample(Sample):
     ref_biomaterial: Optional[str] = None
     replicate_number: Optional[int] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     subspecf_gen_lin: Optional[str] = None
     technical_reps: Optional[int] = None
     trophic_level: Optional[Union[str, "TrophicLevelEnum"]] = None
@@ -7578,6 +7645,12 @@ class CultureEnvironmentalSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -7602,6 +7675,9 @@ class CultureEnvironmentalSample(Sample):
         if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
             self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
 
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
+
         if self.sample_link is not None and not isinstance(self.sample_link, str):
             self.sample_link = str(self.sample_link)
 
@@ -7616,6 +7692,12 @@ class CultureEnvironmentalSample(Sample):
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.subspecf_gen_lin is not None and not isinstance(self.subspecf_gen_lin, str):
             self.subspecf_gen_lin = str(self.subspecf_gen_lin)
@@ -7652,6 +7734,7 @@ class EngineeredStrainSample(Sample):
     name: str = None
     organism_ref: Optional[Union[str, OrganismId]] = None
     cbi: Optional[Union[bool, Bool]] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
     external_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -7665,11 +7748,19 @@ class EngineeredStrainSample(Sample):
         if not isinstance(self.cbi, str):
             self.cbi = str(self.cbi)
 
+        if self._is_empty(self.storage_condition):
+            self.MissingRequiredField("storage_condition")
+        if not isinstance(self.storage_condition, str):
+            self.storage_condition = str(self.storage_condition)
+
         if self.organism_ref is not None and not isinstance(self.organism_ref, OrganismId):
             self.organism_ref = OrganismId(self.organism_ref)
 
         if self.cbi is not None and not isinstance(self.cbi, Bool):
             self.cbi = Bool(self.cbi)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
 
         if not isinstance(self.external_identifiers, list):
             self.external_identifiers = [self.external_identifiers] if self.external_identifiers is not None else []
@@ -7735,6 +7826,8 @@ class FieldDeployedTerraformSample(Sample):
     misc_param: Optional[str] = None
     non_min_nutr_regm: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     plant_growth_med: Optional[str] = None
@@ -7756,9 +7849,12 @@ class FieldDeployedTerraformSample(Sample):
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
     start_date_inc: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
     tiss_cult_growth_med: Optional[str] = None
@@ -7924,6 +8020,12 @@ class FieldDeployedTerraformSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -7987,6 +8089,9 @@ class FieldDeployedTerraformSample(Sample):
         if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
             self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
 
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
+
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
@@ -7995,6 +8100,12 @@ class FieldDeployedTerraformSample(Sample):
 
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -8054,6 +8165,8 @@ class MixedCultureSample(Sample):
     method_development: Optional[str] = None
     non_microb_biomass: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     pathogenicity: Optional[str] = None
@@ -8066,8 +8179,11 @@ class MixedCultureSample(Sample):
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     source_mat_id: Optional[str] = None
     specific_host: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     subspecf_gen_lin: Optional[str] = None
     technical_reps: Optional[int] = None
     trophic_level: Optional[Union[str, "TrophicLevelEnum"]] = None
@@ -8161,6 +8277,12 @@ class MixedCultureSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -8197,11 +8319,20 @@ class MixedCultureSample(Sample):
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
+
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
 
         if self.specific_host is not None and not isinstance(self.specific_host, str):
             self.specific_host = str(self.specific_host)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.subspecf_gen_lin is not None and not isinstance(self.subspecf_gen_lin, str):
             self.subspecf_gen_lin = str(self.subspecf_gen_lin)
@@ -8253,10 +8384,15 @@ class MonetSoilSample(Sample):
     lims_id: Optional[str] = None
     misc_param: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     project: Optional[int] = None
     sample_name: Optional[str] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     water_content_meth: Optional[str] = None
     watering_regm: Optional[str] = None
 
@@ -8347,6 +8483,12 @@ class MonetSoilSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -8356,8 +8498,17 @@ class MonetSoilSample(Sample):
         if self.sample_name is not None and not isinstance(self.sample_name, str):
             self.sample_name = str(self.sample_name)
 
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
+
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.water_content_meth is not None and not isinstance(self.water_content_meth, str):
             self.water_content_meth = str(self.water_content_meth)
@@ -8507,6 +8658,7 @@ class OtherUndescribedSample(Sample):
     org_particles: Optional[str] = None
     organism_count: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
@@ -8548,6 +8700,7 @@ class OtherUndescribedSample(Sample):
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
     samp_capt_status: Optional[str] = None
     samp_dis_stage: Optional[str] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
@@ -8568,6 +8721,8 @@ class OtherUndescribedSample(Sample):
     source_mat_id: Optional[str] = None
     standing_water_regm: Optional[str] = None
     start_date_inc: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     subspecf_gen_lin: Optional[str] = None
     sulfate: Optional[str] = None
     sulfide: Optional[str] = None
@@ -8993,6 +9148,9 @@ class OtherUndescribedSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -9116,6 +9274,9 @@ class OtherUndescribedSample(Sample):
         if self.samp_dis_stage is not None and not isinstance(self.samp_dis_stage, str):
             self.samp_dis_stage = str(self.samp_dis_stage)
 
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
+
         if self.sample_link is not None and not isinstance(self.sample_link, str):
             self.sample_link = str(self.sample_link)
 
@@ -9175,6 +9336,12 @@ class OtherUndescribedSample(Sample):
 
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.subspecf_gen_lin is not None and not isinstance(self.subspecf_gen_lin, str):
             self.subspecf_gen_lin = str(self.subspecf_gen_lin)
@@ -9336,6 +9503,8 @@ class PlantSample(Sample):
     non_microb_biomass_method: Optional[str] = None
     non_min_nutr_regm: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     pesticide_regm: Optional[str] = None
     ph_regm: Optional[str] = None
@@ -9363,10 +9532,13 @@ class PlantSample(Sample):
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
     standing_water_regm: Optional[str] = None
     start_date_inc: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
     water_temp_regm: Optional[str] = None
@@ -9514,6 +9686,12 @@ class PlantSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -9595,6 +9773,9 @@ class PlantSample(Sample):
         if self.sample_processing is not None and not isinstance(self.sample_processing, str):
             self.sample_processing = str(self.sample_processing)
 
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
+
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
@@ -9606,6 +9787,12 @@ class PlantSample(Sample):
 
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -9664,6 +9851,8 @@ class PureCultureSample(Sample):
     non_microb_biomass: Optional[str] = None
     non_microb_biomass_method: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     pathogenicity: Optional[str] = None
@@ -9672,11 +9861,14 @@ class PureCultureSample(Sample):
     ref_biomaterial: Optional[str] = None
     replicate_number: Optional[int] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     subspecf_gen_lin: Optional[str] = None
     technical_reps: Optional[int] = None
     trophic_level: Optional[Union[str, "TrophicLevelEnum"]] = None
@@ -9785,6 +9977,12 @@ class PureCultureSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -9809,6 +10007,9 @@ class PureCultureSample(Sample):
         if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
             self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
 
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
+
         if self.sample_link is not None and not isinstance(self.sample_link, str):
             self.sample_link = str(self.sample_link)
 
@@ -9823,6 +10024,12 @@ class PureCultureSample(Sample):
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.subspecf_gen_lin is not None and not isinstance(self.subspecf_gen_lin, str):
             self.subspecf_gen_lin = str(self.subspecf_gen_lin)
@@ -9915,6 +10122,8 @@ class SedimentSample(Sample):
     org_nitro: Optional[str] = None
     org_nitro_method: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     part_org_carb: Optional[str] = None
@@ -9938,6 +10147,7 @@ class SedimentSample(Sample):
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     sediment_type: Optional[Union[str, "SedimentTypeEnum"]] = None
     sieving: Optional[str] = None
@@ -9945,6 +10155,8 @@ class SedimentSample(Sample):
     sodium: Optional[str] = None
     source_mat_id: Optional[str] = None
     start_date_inc: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     sulfate: Optional[str] = None
     sulfide: Optional[str] = None
     technical_reps: Optional[int] = None
@@ -10162,6 +10374,12 @@ class SedimentSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -10231,6 +10449,9 @@ class SedimentSample(Sample):
         if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
             self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
 
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
+
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
@@ -10251,6 +10472,12 @@ class SedimentSample(Sample):
 
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.sulfate is not None and not isinstance(self.sulfate, str):
             self.sulfate = str(self.sulfate)
@@ -10352,6 +10579,8 @@ class SoilSample(Sample):
     non_microb_biomass: Optional[str] = None
     non_microb_biomass_method: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     perturbation: Optional[str] = None
@@ -10362,6 +10591,7 @@ class SoilSample(Sample):
     salinity: Optional[str] = None
     salinity_method: Optional[str] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
@@ -10376,6 +10606,8 @@ class SoilSample(Sample):
     soil_type_meth: Optional[str] = None
     source_mat_id: Optional[str] = None
     start_date_inc: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
     texture_meth: Optional[str] = None
@@ -10516,6 +10748,12 @@ class SoilSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -10545,6 +10783,9 @@ class SoilSample(Sample):
 
         if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
             self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
+
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
 
         if self.sample_link is not None and not isinstance(self.sample_link, str):
             self.sample_link = str(self.sample_link)
@@ -10587,6 +10828,12 @@ class SoilSample(Sample):
 
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -10646,6 +10893,8 @@ class SynthesizedMaterialSample(Sample):
     genetic_mod: Optional[str] = None
     item_number: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     product_name: Optional[str] = None
     production_method: Optional[str] = None
@@ -10654,8 +10903,11 @@ class SynthesizedMaterialSample(Sample):
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     synth_process: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
@@ -10706,6 +10958,12 @@ class SynthesizedMaterialSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.oxygen_status is not None and not isinstance(self.oxygen_status, OxygenStatusEnum):
             self.oxygen_status = OxygenStatusEnum(self.oxygen_status)
 
@@ -10730,11 +10988,20 @@ class SynthesizedMaterialSample(Sample):
         if self.sample_processing is not None and not isinstance(self.sample_processing, str):
             self.sample_processing = str(self.sample_processing)
 
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
+
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.synth_process is not None and not isinstance(self.synth_process, str):
             self.synth_process = str(self.synth_process)
@@ -10802,6 +11069,8 @@ class TerraformSample(Sample):
     misc_param: Optional[str] = None
     non_min_nutr_regm: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     plant_growth_med: Optional[str] = None
@@ -10823,8 +11092,11 @@ class TerraformSample(Sample):
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
     tiss_cult_growth_med: Optional[str] = None
@@ -10977,6 +11249,12 @@ class TerraformSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -11040,11 +11318,20 @@ class TerraformSample(Sample):
         if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
             self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
 
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
+
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -11145,6 +11432,8 @@ class WaterSample(Sample):
     org_nitro: Optional[str] = None
     org_nitro_method: Optional[str] = None
     other: Optional[str] = None
+    other_samp_store_temp: Optional[str] = None
+    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     part_org_carb: Optional[str] = None
@@ -11173,8 +11462,11 @@ class WaterSample(Sample):
     soluble_react_phosp: Optional[str] = None
     source_mat_id: Optional[str] = None
     start_date_inc: Optional[str] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
     sulfate: Optional[str] = None
     sulfide: Optional[str] = None
+    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     suspend_part_matter: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
@@ -11401,6 +11693,12 @@ class WaterSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
+        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
+            self.other_samp_store_temp = str(self.other_samp_store_temp)
+
+        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
+            self.other_storage_condt = str(self.other_storage_condt)
+
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -11485,11 +11783,20 @@ class WaterSample(Sample):
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
 
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
+
         if self.sulfate is not None and not isinstance(self.sulfate, str):
             self.sulfate = str(self.sulfate)
 
         if self.sulfide is not None and not isinstance(self.sulfide, str):
             self.sulfide = str(self.sulfide)
+
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
+            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
 
         if self.suspend_part_matter is not None and not isinstance(self.suspend_part_matter, str):
             self.suspend_part_matter = str(self.suspend_part_matter)
@@ -11600,6 +11907,10 @@ class SampleStorage(YAMLRoot):
     the material (e.g., lyophilization, preparing a glycerol stock) is modelled
     as SampleProcessing instead, and the resulting ProcessedSample can then have
     its own SampleStorage rows.
+
+    This records storage at EMSL. It is separate from the submission metadata
+    on the sample itself (samp_store_temp, storage_condition, etc.), which
+    records what the submitter reported and requested.
 
     Temperature and timing come from the HasTemperatureHold mixin, shared with
     incubation, culture growth, and reaction steps.
@@ -15382,6 +15693,31 @@ class SampleRole(EnumDefinitionImpl):
         description="""The direction in which a Sample participates in a SampleProcessing activity. Recorded on ProcessingSampleLink, which is the authoritative record of what each processing step consumed and produced.""",
     )
 
+class SampleStoreTempEnum(EnumDefinitionImpl):
+    """
+    Sample storage temperature conditions
+    """
+    fresh4 = PermissibleValue(
+        text="fresh4",
+        description="Fresh storage at 4°C")
+    freshroom = PermissibleValue(
+        text="freshroom",
+        description="Fresh storage at room temperature")
+    frozen20 = PermissibleValue(
+        text="frozen20",
+        description="Frozen storage at -20°C")
+    frozen80 = PermissibleValue(
+        text="frozen80",
+        description="Frozen storage at -80°C")
+    other = PermissibleValue(
+        text="other",
+        description="Other storage temperature")
+
+    _defn = EnumDefinition(
+        name="SampleStoreTempEnum",
+        description="Sample storage temperature conditions",
+    )
+
 class SampleType(EnumDefinitionImpl):
     """
     Types of samples that can be collected
@@ -15669,8 +16005,7 @@ class SterilizationMethodEnum(EnumDefinitionImpl):
 
 class StorageConditionEnum(EnumDefinitionImpl):
     """
-    Physical state of a sample in storage. Temperature is recorded separately
-    via temperature_celsius / temperature_category on SampleStorage.
+    Sample storage conditions
     """
     fresh = PermissibleValue(
         text="fresh",
@@ -15687,8 +16022,7 @@ class StorageConditionEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="StorageConditionEnum",
-        description="""Physical state of a sample in storage. Temperature is recorded separately
-via temperature_celsius / temperature_category on SampleStorage.""",
+        description="Sample storage conditions",
     )
 
 class StrainTypeEnum(EnumDefinitionImpl):
@@ -15795,7 +16129,7 @@ class TemperatureCategoryEnum(EnumDefinitionImpl):
     """
     Nominal temperature conditions for a temperature hold (storage, incubation,
     reaction). Use with temperature_category; record the numeric value in
-    temperature_celsius when known. Replaces SampleStoreTempEnum.
+    temperature_celsius when known.
     """
     room_temperature = PermissibleValue(
         text="room_temperature",
@@ -15820,7 +16154,7 @@ class TemperatureCategoryEnum(EnumDefinitionImpl):
         name="TemperatureCategoryEnum",
         description="""Nominal temperature conditions for a temperature hold (storage, incubation,
 reaction). Use with temperature_category; record the numeric value in
-temperature_celsius when known. Replaces SampleStoreTempEnum.""",
+temperature_celsius when known.""",
     )
 
 class TidalStageEnum(EnumDefinitionImpl):
@@ -16874,6 +17208,12 @@ slots.other_growth_facil = Slot(uri=BASALT_SCHEMA.other_growth_facil, name="othe
 slots.other_guid_source = Slot(uri=BASALT_SCHEMA.other_guid_source, name="other_guid_source", curie=BASALT_SCHEMA.curie('other_guid_source'),
                    model_uri=BASALT_SCHEMA.other_guid_source, domain=None, range=Optional[str])
 
+slots.other_samp_store_temp = Slot(uri=BASALT_SCHEMA.other_samp_store_temp, name="other_samp_store_temp", curie=BASALT_SCHEMA.curie('other_samp_store_temp'),
+                   model_uri=BASALT_SCHEMA.other_samp_store_temp, domain=None, range=Optional[str])
+
+slots.other_storage_condt = Slot(uri=BASALT_SCHEMA.other_storage_condt, name="other_storage_condt", curie=BASALT_SCHEMA.curie('other_storage_condt'),
+                   model_uri=BASALT_SCHEMA.other_storage_condt, domain=None, range=Optional[str])
+
 slots.other_treatment = Slot(uri=BASALT_SCHEMA.other_treatment, name="other_treatment", curie=BASALT_SCHEMA.curie('other_treatment'),
                    model_uri=BASALT_SCHEMA.other_treatment, domain=None, range=Optional[str])
 
@@ -17167,6 +17507,9 @@ slots.samp_capt_status = Slot(uri=BASALT_SCHEMA.samp_capt_status, name="samp_cap
 
 slots.samp_dis_stage = Slot(uri=BASALT_SCHEMA.samp_dis_stage, name="samp_dis_stage", curie=BASALT_SCHEMA.curie('samp_dis_stage'),
                    model_uri=BASALT_SCHEMA.samp_dis_stage, domain=None, range=Optional[str])
+
+slots.samp_store_temp = Slot(uri=BASALT_SCHEMA.samp_store_temp, name="samp_store_temp", curie=BASALT_SCHEMA.curie('samp_store_temp'),
+                   model_uri=BASALT_SCHEMA.samp_store_temp, domain=None, range=Optional[Union[str, "SampleStoreTempEnum"]])
 
 slots.sample_collected = Slot(uri=BASALT_SCHEMA.sample_collected, name="sample_collected", curie=BASALT_SCHEMA.curie('sample_collected'),
                    model_uri=BASALT_SCHEMA.sample_collected, domain=None, range=Optional[str])
@@ -18974,6 +19317,9 @@ slots.engineeredStrainSample__id = Slot(uri=BASALT_SCHEMA.id, name="engineeredSt
 slots.engineeredStrainSample__cbi = Slot(uri=BASALT_SCHEMA.cbi, name="engineeredStrainSample__cbi", curie=BASALT_SCHEMA.curie('cbi'),
                    model_uri=BASALT_SCHEMA.engineeredStrainSample__cbi, domain=None, range=str)
 
+slots.engineeredStrainSample__storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="engineeredStrainSample__storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
+                   model_uri=BASALT_SCHEMA.engineeredStrainSample__storage_condition, domain=None, range=str)
+
 slots.fieldDeployedTerraformSample__id = Slot(uri=BASALT_SCHEMA.id, name="fieldDeployedTerraformSample__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.fieldDeployedTerraformSample__id, domain=None, range=URIRef)
 
@@ -19415,6 +19761,9 @@ slots.AerosolSample_size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="Ae
 slots.AMP2UserSample_organism_ref = Slot(uri=BASALT_SCHEMA.organism_ref, name="AMP2UserSample_organism_ref", curie=BASALT_SCHEMA.curie('organism_ref'),
                    model_uri=BASALT_SCHEMA.AMP2UserSample_organism_ref, domain=AMP2UserSample, range=Union[str, OrganismId])
 
+slots.AMP2UserSample_storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="AMP2UserSample_storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
+                   model_uri=BASALT_SCHEMA.AMP2UserSample_storage_condition, domain=AMP2UserSample, range=Union[str, "StorageConditionEnum"])
+
 slots.AMP2UserSample_name = Slot(uri=BASALT_SCHEMA.name, name="AMP2UserSample_name", curie=BASALT_SCHEMA.curie('name'),
                    model_uri=BASALT_SCHEMA.AMP2UserSample_name, domain=AMP2UserSample, range=str)
 
@@ -19723,6 +20072,9 @@ slots.WaterSample_size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="Wate
 
 slots.ProcessedSample_replicate = Slot(uri=BASALT_SCHEMA.replicate, name="ProcessedSample_replicate", curie=BASALT_SCHEMA.curie('replicate'),
                    model_uri=BASALT_SCHEMA.ProcessedSample_replicate, domain=ProcessedSample, range=Optional[int])
+
+slots.SampleStorage_storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="SampleStorage_storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
+                   model_uri=BASALT_SCHEMA.SampleStorage_storage_condition, domain=SampleStorage, range=Optional[Union[str, "StorageConditionEnum"]])
 
 slots.SampleStorage_sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="SampleStorage_sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
                    model_uri=BASALT_SCHEMA.SampleStorage_sample_id, domain=SampleStorage, range=Union[str, SampleId])
