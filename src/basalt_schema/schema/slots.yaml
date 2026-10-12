@@ -578,6 +578,10 @@ slots:
     range: string
     title: diether lipids
 
+  dilution_factor:
+    description: Factor by which the sample was diluted.
+    range: float
+
   diss_carb_dioxide:
     description: 'Concentration of dissolved carbon dioxide in the sample or liquid
       portion of the sample (Unit: umol/L or mg/L)'
@@ -1651,6 +1655,10 @@ slots:
       entire treatment; can include multiple non-mineral nutrient regimens
     range: string
     title: non mineral nutrient regimen
+
+  normalization_target:
+    description: The analyte or compound whose concentration is being adjusted.
+    range: AnalyteCategoryEnum
 
   nucleotide_sequencing_category:
     description: The category of nucleotide sequencing performed (e.g., amplicon, shotgun).
