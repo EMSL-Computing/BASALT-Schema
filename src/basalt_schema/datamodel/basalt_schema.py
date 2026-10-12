@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-14T14:45:16
+# Generation date: 2026-10-12T11:16:34
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -188,6 +188,14 @@ class XASLCFDataProcessingActivityId(DataProcessingActivityId):
     pass
 
 
+class RIDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class UVDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
 class ChangelogVersion(extended_str):
     pass
 
@@ -232,7 +240,7 @@ class MassSpectrometryDataProcessingActivityId(DataProcessingActivityId):
     pass
 
 
-class MassSpectrometryStandardRunId(Uuid):
+class CalibrationStandardRunId(Uuid):
     pass
 
 
@@ -316,6 +324,54 @@ class MetagenomicsDataProcessingActivityId(DataProcessingActivityId):
     pass
 
 
+class BulkDensityDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class ElementalAnalysisDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class EnzymeActivityDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class GravimetricWaterContentDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class HydraulicPropertiesDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class KuoDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class MicrobialBiomassDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class PHDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class RespirationDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class TOCTNDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class TextureDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class XCTDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
 class BulkDensityProductId(ProcessedDataId):
     pass
 
@@ -393,6 +449,14 @@ class XASInstrumentDataId(InstrumentDataId):
 
 
 class XASLCFProductId(XRayDataProductId):
+    pass
+
+
+class UVSpectroscopyProductId(ProcessedDataId):
+    pass
+
+
+class RIProductId(ProcessedDataId):
     pass
 
 
@@ -477,6 +541,10 @@ class WaterSampleId(SampleId):
 
 
 class ProcessedSampleId(SampleId):
+    pass
+
+
+class SampleStorageId(Uuid):
     pass
 
 
@@ -1442,6 +1510,48 @@ class SampleProcessing(YAMLRoot):
 
 
 @dataclass(repr=False)
+class HasTemperatureHold(YAMLRoot):
+    """
+    Mixin for anything that holds material at a temperature for a period of time:
+    storage (SampleStorage), incubation and culture growth (HasIncubationConditions),
+    chemical reactions (ChemicalConversionProcess), and assay incubations. It shares
+    the vocabulary only; the purpose of the hold (preservation vs. experimental
+    treatment) is carried by the class that uses it, so class-specific required
+    fields (e.g., organism, media) stay enforceable.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["HasTemperatureHold"]
+    class_class_curie: ClassVar[str] = "basalt_schema:HasTemperatureHold"
+    class_name: ClassVar[str] = "HasTemperatureHold"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.HasTemperatureHold
+
+    temperature_celsius: Optional[float] = None
+    temperature_category: Optional[Union[str, "TemperatureCategoryEnum"]] = None
+    duration_hours: Optional[float] = None
+    hold_start_time: Optional[Union[str, XSDDateTime]] = None
+    hold_end_time: Optional[Union[str, XSDDateTime]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
+            self.temperature_celsius = float(self.temperature_celsius)
+
+        if self.temperature_category is not None and not isinstance(self.temperature_category, TemperatureCategoryEnum):
+            self.temperature_category = TemperatureCategoryEnum(self.temperature_category)
+
+        if self.duration_hours is not None and not isinstance(self.duration_hours, float):
+            self.duration_hours = float(self.duration_hours)
+
+        if self.hold_start_time is not None and not isinstance(self.hold_start_time, XSDDateTime):
+            self.hold_start_time = XSDDateTime(self.hold_start_time)
+
+        if self.hold_end_time is not None and not isinstance(self.hold_end_time, XSDDateTime):
+            self.hold_end_time = XSDDateTime(self.hold_end_time)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class ProcessingSampleLink(YAMLRoot):
     """
     The authoritative record of what a SampleProcessing step consumed and produced.
@@ -1997,6 +2107,110 @@ class XASLCFDataProcessingActivity(DataProcessingActivity):
 
 
 @dataclass(repr=False)
+class RIDataGenerationActivity(DataGenerationActivity):
+    """
+    Refractive Index (RI) measurement activity.
+    Represents one measurement session for a sample using a RI detector.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RIDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RIDataGenerationActivity"
+    class_name: ClassVar[str] = "RIDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RIDataGenerationActivity
+
+    id: Union[str, RIDataGenerationActivityId] = None
+    name: str = None
+    wavelength_nm: int = None
+    temperature_celsius: Optional[float] = None
+    calibration_standard: Optional[Union[str, PurchasedMaterialId]] = None
+    uses_chromatography: Optional[Union[dict, "ChromatographyConfiguration"]] = None
+    uses_calibration: Optional[Union[str, CalibrationStandardRunId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RIDataGenerationActivityId):
+            self.id = RIDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.wavelength_nm):
+            self.MissingRequiredField("wavelength_nm")
+        if not isinstance(self.wavelength_nm, int):
+            self.wavelength_nm = int(self.wavelength_nm)
+
+        if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
+            self.temperature_celsius = float(self.temperature_celsius)
+
+        if self.calibration_standard is not None and not isinstance(self.calibration_standard, PurchasedMaterialId):
+            self.calibration_standard = PurchasedMaterialId(self.calibration_standard)
+
+        if self.uses_chromatography is not None and not isinstance(self.uses_chromatography, ChromatographyConfiguration):
+            self.uses_chromatography = ChromatographyConfiguration(**as_dict(self.uses_chromatography))
+
+        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationStandardRunId):
+            self.uses_calibration = CalibrationStandardRunId(self.uses_calibration)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class UVDataGenerationActivity(DataGenerationActivity):
+    """
+    Ultraviolet spectroscopy acquisition activity.
+    Represents one measurement session for a sample using UV spectroscopy.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["UVDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:UVDataGenerationActivity"
+    class_name: ClassVar[str] = "UVDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.UVDataGenerationActivity
+
+    id: Union[str, UVDataGenerationActivityId] = None
+    name: str = None
+    uv_detector_type: Optional[Union[str, "UVDetectorEnum"]] = None
+    wavelength_nm_max: Optional[float] = None
+    wavelength_nm_min: Optional[float] = None
+    resolution_nm: Optional[float] = None
+    sampling_rate_hz: Optional[float] = None
+    negative_absorbance_margin_au: Optional[float] = None
+    uses_chromatography: Optional[Union[dict, "ChromatographyConfiguration"]] = None
+    uses_calibration: Optional[Union[str, CalibrationStandardRunId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, UVDataGenerationActivityId):
+            self.id = UVDataGenerationActivityId(self.id)
+
+        if self.uv_detector_type is not None and not isinstance(self.uv_detector_type, UVDetectorEnum):
+            self.uv_detector_type = UVDetectorEnum(self.uv_detector_type)
+
+        if self.wavelength_nm_max is not None and not isinstance(self.wavelength_nm_max, float):
+            self.wavelength_nm_max = float(self.wavelength_nm_max)
+
+        if self.wavelength_nm_min is not None and not isinstance(self.wavelength_nm_min, float):
+            self.wavelength_nm_min = float(self.wavelength_nm_min)
+
+        if self.resolution_nm is not None and not isinstance(self.resolution_nm, float):
+            self.resolution_nm = float(self.resolution_nm)
+
+        if self.sampling_rate_hz is not None and not isinstance(self.sampling_rate_hz, float):
+            self.sampling_rate_hz = float(self.sampling_rate_hz)
+
+        if self.negative_absorbance_margin_au is not None and not isinstance(self.negative_absorbance_margin_au, float):
+            self.negative_absorbance_margin_au = float(self.negative_absorbance_margin_au)
+
+        if self.uses_chromatography is not None and not isinstance(self.uses_chromatography, ChromatographyConfiguration):
+            self.uses_chromatography = ChromatographyConfiguration(**as_dict(self.uses_chromatography))
+
+        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationStandardRunId):
+            self.uses_calibration = CalibrationStandardRunId(self.uses_calibration)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Changelog(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2245,6 +2459,43 @@ class Configuration(YAMLRoot):
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class UVChannelConfig(Configuration):
+    """
+    Configuration for a single UV-Vis detector channel.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["UVChannelConfig"]
+    class_class_curie: ClassVar[str] = "basalt_schema:UVChannelConfig"
+    class_name: ClassVar[str] = "UVChannelConfig"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.UVChannelConfig
+
+    name: str = None
+    id: Union[str, Uuid] = None
+    wavelength_nm: int = None
+    uv_datagen_run: Optional[Union[str, UVDataGenerationActivityId]] = None
+    channel_number: Optional[int] = None
+    resolution_nm: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.wavelength_nm):
+            self.MissingRequiredField("wavelength_nm")
+        if not isinstance(self.wavelength_nm, int):
+            self.wavelength_nm = int(self.wavelength_nm)
+
+        if self.uv_datagen_run is not None and not isinstance(self.uv_datagen_run, UVDataGenerationActivityId):
+            self.uv_datagen_run = UVDataGenerationActivityId(self.uv_datagen_run)
+
+        if self.channel_number is not None and not isinstance(self.channel_number, int):
+            self.channel_number = int(self.channel_number)
+
+        if self.resolution_nm is not None and not isinstance(self.resolution_nm, float):
+            self.resolution_nm = float(self.resolution_nm)
 
         super().__post_init__(**kwargs)
 
@@ -2514,7 +2765,7 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
 
     id: Union[str, MassSpectrometryDataProcessingActivityId] = None
     started_at_time: Union[str, XSDDateTime] = None
-    uses_calibration: Optional[Union[str, MassSpectrometryStandardRunId]] = None
+    uses_calibration: Optional[Union[str, CalibrationStandardRunId]] = None
     uses_raw_ms_data: Optional[Union[str, MassSpectrometryInstrumentDataId]] = None
     lims_task_instance_id: Optional[int] = None
     metaproteomics_analysis_category: Optional[Union[str, "MetaproteomicsAnalysisCategoryEnum"]] = None
@@ -2525,8 +2776,8 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
         if not isinstance(self.id, MassSpectrometryDataProcessingActivityId):
             self.id = MassSpectrometryDataProcessingActivityId(self.id)
 
-        if self.uses_calibration is not None and not isinstance(self.uses_calibration, MassSpectrometryStandardRunId):
-            self.uses_calibration = MassSpectrometryStandardRunId(self.uses_calibration)
+        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationStandardRunId):
+            self.uses_calibration = CalibrationStandardRunId(self.uses_calibration)
 
         if self.uses_raw_ms_data is not None and not isinstance(self.uses_raw_ms_data, MassSpectrometryInstrumentDataId):
             self.uses_raw_ms_data = MassSpectrometryInstrumentDataId(self.uses_raw_ms_data)
@@ -2541,31 +2792,30 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
 
 
 @dataclass(repr=False)
-class MassSpectrometryStandardRun(YAMLRoot):
+class CalibrationStandardRun(YAMLRoot):
     """
-    A record of a mass spectrometry standard run with a batch of samples, which is used for calibration and quality
-    control.
+    A record of a standard run with a batch of samples, which is used for calibration and quality control.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MassSpectrometryStandardRun"]
-    class_class_curie: ClassVar[str] = "basalt_schema:MassSpectrometryStandardRun"
-    class_name: ClassVar[str] = "MassSpectrometryStandardRun"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MassSpectrometryStandardRun
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["CalibrationStandardRun"]
+    class_class_curie: ClassVar[str] = "basalt_schema:CalibrationStandardRun"
+    class_name: ClassVar[str] = "CalibrationStandardRun"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.CalibrationStandardRun
 
-    id: Union[str, MassSpectrometryStandardRunId] = None
+    id: Union[str, CalibrationStandardRunId] = None
     name: str = None
     description: Optional[str] = None
     internal_calibration: Optional[Union[bool, Bool]] = None
     calibration_target: Optional[Union[str, "CalibrationTargetEnum"]] = None
     calibration_standard: Optional[Union[str, PurchasedMaterialId]] = None
-    calibration_data: Optional[Union[str, MassSpectrometryInstrumentDataId]] = None
+    calibration_data: Optional[Union[str, InstrumentDataId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, MassSpectrometryStandardRunId):
-            self.id = MassSpectrometryStandardRunId(self.id)
+        if not isinstance(self.id, CalibrationStandardRunId):
+            self.id = CalibrationStandardRunId(self.id)
 
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
@@ -2584,8 +2834,8 @@ class MassSpectrometryStandardRun(YAMLRoot):
         if self.calibration_standard is not None and not isinstance(self.calibration_standard, PurchasedMaterialId):
             self.calibration_standard = PurchasedMaterialId(self.calibration_standard)
 
-        if self.calibration_data is not None and not isinstance(self.calibration_data, MassSpectrometryInstrumentDataId):
-            self.calibration_data = MassSpectrometryInstrumentDataId(self.calibration_data)
+        if self.calibration_data is not None and not isinstance(self.calibration_data, InstrumentDataId):
+            self.calibration_data = InstrumentDataId(self.calibration_data)
 
         super().__post_init__(**kwargs)
 
@@ -2597,6 +2847,7 @@ class HasIncubationConditions(YAMLRoot):
     Used by CultureGrowth activities AND PlateSetupActivity, which share
     temperature and agitation parameters but live in different branches
     of the sampleProcessing is_a tree.
+    Temperature and duration come from HasTemperatureHold.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2605,19 +2856,35 @@ class HasIncubationConditions(YAMLRoot):
     class_name: ClassVar[str] = "HasIncubationConditions"
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.HasIncubationConditions
 
-    temperature_celsius: Optional[float] = None
     agitation_speed_rpm: Optional[int] = None
     oxygen_saturation_pct: Optional[float] = None
+    temperature_celsius: Optional[float] = None
+    temperature_category: Optional[Union[str, "TemperatureCategoryEnum"]] = None
+    duration_hours: Optional[float] = None
+    hold_start_time: Optional[Union[str, XSDDateTime]] = None
+    hold_end_time: Optional[Union[str, XSDDateTime]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
-            self.temperature_celsius = float(self.temperature_celsius)
-
         if self.agitation_speed_rpm is not None and not isinstance(self.agitation_speed_rpm, int):
             self.agitation_speed_rpm = int(self.agitation_speed_rpm)
 
         if self.oxygen_saturation_pct is not None and not isinstance(self.oxygen_saturation_pct, float):
             self.oxygen_saturation_pct = float(self.oxygen_saturation_pct)
+
+        if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
+            self.temperature_celsius = float(self.temperature_celsius)
+
+        if self.temperature_category is not None and not isinstance(self.temperature_category, TemperatureCategoryEnum):
+            self.temperature_category = TemperatureCategoryEnum(self.temperature_category)
+
+        if self.duration_hours is not None and not isinstance(self.duration_hours, float):
+            self.duration_hours = float(self.duration_hours)
+
+        if self.hold_start_time is not None and not isinstance(self.hold_start_time, XSDDateTime):
+            self.hold_start_time = XSDDateTime(self.hold_start_time)
+
+        if self.hold_end_time is not None and not isinstance(self.hold_end_time, XSDDateTime):
+            self.hold_end_time = XSDDateTime(self.hold_end_time)
 
         super().__post_init__(**kwargs)
 
@@ -2680,6 +2947,10 @@ class MediaPreparation(SampleProcessing):
     -> processingSampleLink(role=output_sample)
     -> processedSample(type='prepared_media'); media_ref points here
     -> CultureGrowth / AMP2PlateSetupActivity.media_ref
+
+    Storage of the prepared media batch is recorded as SampleStorage rows on the
+    prepared_media processedSample (storage_condition from StorageConditionEnum,
+    temperature via temperature_celsius / temperature_category).
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2700,7 +2971,6 @@ class MediaPreparation(SampleProcessing):
     ph_target: Optional[float] = None
     exposure_sensitivity: Optional[Union[str, list[str]]] = empty_list()
     media_additions: Optional[Union[str, list[str]]] = empty_list()
-    storage_temperature: Optional[str] = None
     creation_date: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2741,9 +3011,6 @@ class MediaPreparation(SampleProcessing):
             self.media_additions = [self.media_additions] if self.media_additions is not None else []
         self.media_additions = [v if isinstance(v, str) else str(v) for v in self.media_additions]
 
-        if self.storage_temperature is not None and not isinstance(self.storage_temperature, str):
-            self.storage_temperature = str(self.storage_temperature)
-
         if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
             self.creation_date = XSDDate(self.creation_date)
 
@@ -2768,9 +3035,7 @@ class CultureGrowth(SampleProcessing):
     name: str = None
     organism_ref: Optional[Union[str, OrganismId]] = None
     growth_medium: Optional[str] = None
-    incubation_time_hours: Optional[float] = None
     container_type: Optional[str] = None
-    temperature_celsius: Optional[float] = None
     agitation_speed_rpm: Optional[int] = None
     oxygen_saturation_pct: Optional[float] = None
 
@@ -2781,14 +3046,8 @@ class CultureGrowth(SampleProcessing):
         if self.growth_medium is not None and not isinstance(self.growth_medium, str):
             self.growth_medium = str(self.growth_medium)
 
-        if self.incubation_time_hours is not None and not isinstance(self.incubation_time_hours, float):
-            self.incubation_time_hours = float(self.incubation_time_hours)
-
         if self.container_type is not None and not isinstance(self.container_type, str):
             self.container_type = str(self.container_type)
-
-        if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
-            self.temperature_celsius = float(self.temperature_celsius)
 
         if self.agitation_speed_rpm is not None and not isinstance(self.agitation_speed_rpm, int):
             self.agitation_speed_rpm = int(self.agitation_speed_rpm)
@@ -2848,6 +3107,9 @@ class StockCulturePreparation(CultureGrowth):
     Input:  sample(s) via processingSampleLink (role: input_sample)
     Output: processedSample(type='stock_culture') via processingSampleLink
     Refs:   Media (growth medium), Strain
+
+    Long-term storage of the stock (e.g., -80 C in glycerol) is recorded as a
+    SampleStorage row on the stock_culture processedSample, not on this activity.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2921,7 +3183,6 @@ class ExperimentalCulture(CultureGrowth):
     id: Union[str, ExperimentalCultureId] = None
     name: str = None
     treatment_type: Optional[str] = None
-    growth_time: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2931,9 +3192,6 @@ class ExperimentalCulture(CultureGrowth):
 
         if self.treatment_type is not None and not isinstance(self.treatment_type, str):
             self.treatment_type = str(self.treatment_type)
-
-        if self.growth_time is not None and not isinstance(self.growth_time, str):
-            self.growth_time = str(self.growth_time)
 
         super().__post_init__(**kwargs)
 
@@ -2967,7 +3225,6 @@ class PlateSetupActivity(SampleProcessing):
     setup_instrument: Optional[str] = None
     sealing_method: Optional[str] = None
     well_metadata: Optional[Union[Union[dict, "WellMetadata"], list[Union[dict, "WellMetadata"]]]] = empty_list()
-    temperature_celsius: Optional[float] = None
     agitation_speed_rpm: Optional[int] = None
     oxygen_saturation_pct: Optional[float] = None
 
@@ -2995,9 +3252,6 @@ class PlateSetupActivity(SampleProcessing):
             self.sealing_method = str(self.sealing_method)
 
         self._normalize_inlined_as_list(slot_name="well_metadata", slot_type=WellMetadata, key_name="position", keyed=False)
-
-        if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
-            self.temperature_celsius = float(self.temperature_celsius)
 
         if self.agitation_speed_rpm is not None and not isinstance(self.agitation_speed_rpm, int):
             self.agitation_speed_rpm = int(self.agitation_speed_rpm)
@@ -3739,6 +3993,420 @@ class MetagenomicsDataProcessingActivity(DataProcessingActivity):
 
 
 @dataclass(repr=False)
+class BulkDensityDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["BulkDensityDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:BulkDensityDataGenerationActivity"
+    class_name: ClassVar[str] = "BulkDensityDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.BulkDensityDataGenerationActivity
+
+    id: Union[str, BulkDensityDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, BulkDensityDataGenerationActivityId):
+            self.id = BulkDensityDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ElementalAnalysisDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ElementalAnalysisDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ElementalAnalysisDataGenerationActivity"
+    class_name: ClassVar[str] = "ElementalAnalysisDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ElementalAnalysisDataGenerationActivity
+
+    id: Union[str, ElementalAnalysisDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ElementalAnalysisDataGenerationActivityId):
+            self.id = ElementalAnalysisDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class EnzymeActivityDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["EnzymeActivityDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:EnzymeActivityDataGenerationActivity"
+    class_name: ClassVar[str] = "EnzymeActivityDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.EnzymeActivityDataGenerationActivity
+
+    id: Union[str, EnzymeActivityDataGenerationActivityId] = None
+    name: str = None
+    wavelength: Optional[float] = None
+    temperature_celsius: Optional[float] = None
+    temperature_category: Optional[Union[str, "TemperatureCategoryEnum"]] = None
+    duration_hours: Optional[float] = None
+    hold_start_time: Optional[Union[str, XSDDateTime]] = None
+    hold_end_time: Optional[Union[str, XSDDateTime]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, EnzymeActivityDataGenerationActivityId):
+            self.id = EnzymeActivityDataGenerationActivityId(self.id)
+
+        if self.wavelength is not None and not isinstance(self.wavelength, float):
+            self.wavelength = float(self.wavelength)
+
+        if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
+            self.temperature_celsius = float(self.temperature_celsius)
+
+        if self.temperature_category is not None and not isinstance(self.temperature_category, TemperatureCategoryEnum):
+            self.temperature_category = TemperatureCategoryEnum(self.temperature_category)
+
+        if self.duration_hours is not None and not isinstance(self.duration_hours, float):
+            self.duration_hours = float(self.duration_hours)
+
+        if self.hold_start_time is not None and not isinstance(self.hold_start_time, XSDDateTime):
+            self.hold_start_time = XSDDateTime(self.hold_start_time)
+
+        if self.hold_end_time is not None and not isinstance(self.hold_end_time, XSDDateTime):
+            self.hold_end_time = XSDDateTime(self.hold_end_time)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class GravimetricWaterContentDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["GravimetricWaterContentDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:GravimetricWaterContentDataGenerationActivity"
+    class_name: ClassVar[str] = "GravimetricWaterContentDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.GravimetricWaterContentDataGenerationActivity
+
+    id: Union[str, GravimetricWaterContentDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, GravimetricWaterContentDataGenerationActivityId):
+            self.id = GravimetricWaterContentDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class HydraulicPropertiesDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["HydraulicPropertiesDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:HydraulicPropertiesDataGenerationActivity"
+    class_name: ClassVar[str] = "HydraulicPropertiesDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.HydraulicPropertiesDataGenerationActivity
+
+    id: Union[str, HydraulicPropertiesDataGenerationActivityId] = None
+    name: str = None
+    fitting_model: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, HydraulicPropertiesDataGenerationActivityId):
+            self.id = HydraulicPropertiesDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.fitting_model):
+            self.MissingRequiredField("fitting_model")
+        if not isinstance(self.fitting_model, str):
+            self.fitting_model = str(self.fitting_model)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class KuoDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["KuoDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:KuoDataGenerationActivity"
+    class_name: ClassVar[str] = "KuoDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.KuoDataGenerationActivity
+
+    id: Union[str, KuoDataGenerationActivityId] = None
+    name: str = None
+    detection_limit: str = None
+    wavelength: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, KuoDataGenerationActivityId):
+            self.id = KuoDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.detection_limit):
+            self.MissingRequiredField("detection_limit")
+        if not isinstance(self.detection_limit, str):
+            self.detection_limit = str(self.detection_limit)
+
+        if self.wavelength is not None and not isinstance(self.wavelength, str):
+            self.wavelength = str(self.wavelength)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MicrobialBiomassDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MicrobialBiomassDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MicrobialBiomassDataGenerationActivity"
+    class_name: ClassVar[str] = "MicrobialBiomassDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MicrobialBiomassDataGenerationActivity
+
+    id: Union[str, MicrobialBiomassDataGenerationActivityId] = None
+    name: str = None
+    detector: str = None
+    injection_volume: str = None
+    sample_volume: str = None
+    number_of_injections: float = None
+    check_standard_spacing: str = None
+    mode: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MicrobialBiomassDataGenerationActivityId):
+            self.id = MicrobialBiomassDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.detector):
+            self.MissingRequiredField("detector")
+        if not isinstance(self.detector, str):
+            self.detector = str(self.detector)
+
+        if self._is_empty(self.injection_volume):
+            self.MissingRequiredField("injection_volume")
+        if not isinstance(self.injection_volume, str):
+            self.injection_volume = str(self.injection_volume)
+
+        if self._is_empty(self.sample_volume):
+            self.MissingRequiredField("sample_volume")
+        if not isinstance(self.sample_volume, str):
+            self.sample_volume = str(self.sample_volume)
+
+        if self._is_empty(self.number_of_injections):
+            self.MissingRequiredField("number_of_injections")
+        if not isinstance(self.number_of_injections, float):
+            self.number_of_injections = float(self.number_of_injections)
+
+        if self._is_empty(self.check_standard_spacing):
+            self.MissingRequiredField("check_standard_spacing")
+        if not isinstance(self.check_standard_spacing, str):
+            self.check_standard_spacing = str(self.check_standard_spacing)
+
+        if self.mode is not None and not isinstance(self.mode, str):
+            self.mode = str(self.mode)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PHDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PHDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PHDataGenerationActivity"
+    class_name: ClassVar[str] = "PH_DataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PHDataGenerationActivity
+
+    id: Union[str, PHDataGenerationActivityId] = None
+    name: str = None
+    calibration: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PHDataGenerationActivityId):
+            self.id = PHDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.calibration):
+            self.MissingRequiredField("calibration")
+        if not isinstance(self.calibration, str):
+            self.calibration = str(self.calibration)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class RespirationDataGenerationActivity(DataGenerationActivity):
+    """
+    Data generation activity for soil respiration analysis.
+    Captures CO2-C efflux measured per gram of soil.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RespirationDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RespirationDataGenerationActivity"
+    class_name: ClassVar[str] = "RespirationDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RespirationDataGenerationActivity
+
+    id: Union[str, RespirationDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RespirationDataGenerationActivityId):
+            self.id = RespirationDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class TOCTNDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TOCTNDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TOCTNDataGenerationActivity"
+    class_name: ClassVar[str] = "TOC_TN_DataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TOCTNDataGenerationActivity
+
+    id: Union[str, TOCTNDataGenerationActivityId] = None
+    name: str = None
+    detector: str = None
+    injection_volume: str = None
+    sample_volume: str = None
+    number_of_injections: float = None
+    column: Optional[str] = None
+    mode: Optional[str] = None
+    check_standard_spacing: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TOCTNDataGenerationActivityId):
+            self.id = TOCTNDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.detector):
+            self.MissingRequiredField("detector")
+        if not isinstance(self.detector, str):
+            self.detector = str(self.detector)
+
+        if self._is_empty(self.injection_volume):
+            self.MissingRequiredField("injection_volume")
+        if not isinstance(self.injection_volume, str):
+            self.injection_volume = str(self.injection_volume)
+
+        if self._is_empty(self.sample_volume):
+            self.MissingRequiredField("sample_volume")
+        if not isinstance(self.sample_volume, str):
+            self.sample_volume = str(self.sample_volume)
+
+        if self._is_empty(self.number_of_injections):
+            self.MissingRequiredField("number_of_injections")
+        if not isinstance(self.number_of_injections, float):
+            self.number_of_injections = float(self.number_of_injections)
+
+        if self.column is not None and not isinstance(self.column, str):
+            self.column = str(self.column)
+
+        if self.mode is not None and not isinstance(self.mode, str):
+            self.mode = str(self.mode)
+
+        if self.check_standard_spacing is not None and not isinstance(self.check_standard_spacing, str):
+            self.check_standard_spacing = str(self.check_standard_spacing)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class TextureDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TextureDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TextureDataGenerationActivity"
+    class_name: ClassVar[str] = "TextureDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TextureDataGenerationActivity
+
+    id: Union[str, TextureDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TextureDataGenerationActivityId):
+            self.id = TextureDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XCTDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XCTDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XCTDataGenerationActivity"
+    class_name: ClassVar[str] = "XCTDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XCTDataGenerationActivity
+
+    id: Union[str, XCTDataGenerationActivityId] = None
+    name: str = None
+    x_ray_power: str = None
+    cu_filter: str = None
+    total_projections_collected: float = None
+    rotation: str = None
+    frames_recording_per_projection: float = None
+    exposure_time_per_frame: str = None
+    image_voxel_size_is: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, XCTDataGenerationActivityId):
+            self.id = XCTDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.x_ray_power):
+            self.MissingRequiredField("x_ray_power")
+        if not isinstance(self.x_ray_power, str):
+            self.x_ray_power = str(self.x_ray_power)
+
+        if self._is_empty(self.cu_filter):
+            self.MissingRequiredField("cu_filter")
+        if not isinstance(self.cu_filter, str):
+            self.cu_filter = str(self.cu_filter)
+
+        if self._is_empty(self.total_projections_collected):
+            self.MissingRequiredField("total_projections_collected")
+        if not isinstance(self.total_projections_collected, float):
+            self.total_projections_collected = float(self.total_projections_collected)
+
+        if self._is_empty(self.rotation):
+            self.MissingRequiredField("rotation")
+        if not isinstance(self.rotation, str):
+            self.rotation = str(self.rotation)
+
+        if self._is_empty(self.frames_recording_per_projection):
+            self.MissingRequiredField("frames_recording_per_projection")
+        if not isinstance(self.frames_recording_per_projection, float):
+            self.frames_recording_per_projection = float(self.frames_recording_per_projection)
+
+        if self._is_empty(self.exposure_time_per_frame):
+            self.MissingRequiredField("exposure_time_per_frame")
+        if not isinstance(self.exposure_time_per_frame, str):
+            self.exposure_time_per_frame = str(self.exposure_time_per_frame)
+
+        if self._is_empty(self.image_voxel_size_is):
+            self.MissingRequiredField("image_voxel_size_is")
+        if not isinstance(self.image_voxel_size_is, str):
+            self.image_voxel_size_is = str(self.image_voxel_size_is)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class BulkDensityProduct(ProcessedData):
     """
     Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
@@ -4089,7 +4757,7 @@ class IonsAnalysisProduct(ProcessedData):
 
 
 @dataclass(repr=False)
-class HClExtOMProduct(YAMLRoot):
+class HClExtOMProduct(ProcessedData):
     """
     Mineral-Associated Organic Matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN
     measurement.
@@ -4103,8 +4771,11 @@ class HClExtOMProduct(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.HClExtOMProduct
 
     id: Union[str, HClExtOMProductId] = None
+    name: str = None
+    s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
+    produced_by_toctn_run: Optional[Union[str, TOCTNDataGenerationActivityId]] = None
     total_organic_carbon_id: Optional[Union[str, QuantityValueId]] = None
     total_organic_carbon_avg: Optional[float] = None
     total_nitrogen_id: Optional[Union[str, QuantityValueId]] = None
@@ -4125,6 +4796,9 @@ class HClExtOMProduct(YAMLRoot):
 
         if self.replicate is not None and not isinstance(self.replicate, int):
             self.replicate = int(self.replicate)
+
+        if self.produced_by_toctn_run is not None and not isinstance(self.produced_by_toctn_run, TOCTNDataGenerationActivityId):
+            self.produced_by_toctn_run = TOCTNDataGenerationActivityId(self.produced_by_toctn_run)
 
         if self.total_organic_carbon_id is not None and not isinstance(self.total_organic_carbon_id, QuantityValueId):
             self.total_organic_carbon_id = QuantityValueId(self.total_organic_carbon_id)
@@ -4424,7 +5098,7 @@ class TextureProduct(ProcessedData):
 
 
 @dataclass(repr=False)
-class WEOMProduct(YAMLRoot):
+class WEOMProduct(ProcessedData):
     """
     Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar
     instrument.
@@ -4438,8 +5112,11 @@ class WEOMProduct(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.WEOMProduct
 
     id: Union[str, WEOMProductId] = None
+    name: str = None
+    s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
+    produced_by_toctn_run: Optional[Union[str, TOCTNDataGenerationActivityId]] = None
     total_organic_carbon_id: Optional[Union[str, QuantityValueId]] = None
     total_organic_carbon_avg: Optional[float] = None
     total_nitrogen_id: Optional[Union[str, QuantityValueId]] = None
@@ -4460,6 +5137,9 @@ class WEOMProduct(YAMLRoot):
 
         if self.replicate is not None and not isinstance(self.replicate, int):
             self.replicate = int(self.replicate)
+
+        if self.produced_by_toctn_run is not None and not isinstance(self.produced_by_toctn_run, TOCTNDataGenerationActivityId):
+            self.produced_by_toctn_run = TOCTNDataGenerationActivityId(self.produced_by_toctn_run)
 
         if self.total_organic_carbon_id is not None and not isinstance(self.total_organic_carbon_id, QuantityValueId):
             self.total_organic_carbon_id = QuantityValueId(self.total_organic_carbon_id)
@@ -5661,6 +6341,116 @@ class XASLCFDataRow(YAMLRoot):
 
 
 @dataclass(repr=False)
+class UVSpectroscopyProduct(ProcessedData):
+    """
+    A compound and its measurements resulting from a
+    UVDataGenerationActivity.One UVDataGenerationActivity may have many
+    "products" representing all compounds detected in the sample.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["UVSpectroscopyProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:UVSpectroscopyProduct"
+    class_name: ClassVar[str] = "UVSpectroscopyProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.UVSpectroscopyProduct
+
+    id: Union[str, UVSpectroscopyProductId] = None
+    name: str = None
+    s3_key: str = None
+    produced_by_uv_run: Optional[Union[str, UVDataGenerationActivityId]] = None
+    compound_name: Optional[Union[str, "ChemicalEntityEnum"]] = None
+    retention_time_min: Optional[float] = None
+    peak_area: Optional[float] = None
+    peak_percent_area: Optional[float] = None
+    peak_height: Optional[float] = None
+    weight_percent: Optional[float] = None
+    concentration_ug_per_uL: Optional[float] = None
+    flag: Optional[Union[str, "ProcessedDataFlag"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, UVSpectroscopyProductId):
+            self.id = UVSpectroscopyProductId(self.id)
+
+        if self.produced_by_uv_run is not None and not isinstance(self.produced_by_uv_run, UVDataGenerationActivityId):
+            self.produced_by_uv_run = UVDataGenerationActivityId(self.produced_by_uv_run)
+
+        if self.compound_name is not None and not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
+
+        if self.retention_time_min is not None and not isinstance(self.retention_time_min, float):
+            self.retention_time_min = float(self.retention_time_min)
+
+        if self.peak_area is not None and not isinstance(self.peak_area, float):
+            self.peak_area = float(self.peak_area)
+
+        if self.peak_percent_area is not None and not isinstance(self.peak_percent_area, float):
+            self.peak_percent_area = float(self.peak_percent_area)
+
+        if self.peak_height is not None and not isinstance(self.peak_height, float):
+            self.peak_height = float(self.peak_height)
+
+        if self.weight_percent is not None and not isinstance(self.weight_percent, float):
+            self.weight_percent = float(self.weight_percent)
+
+        if self.concentration_ug_per_uL is not None and not isinstance(self.concentration_ug_per_uL, float):
+            self.concentration_ug_per_uL = float(self.concentration_ug_per_uL)
+
+        if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
+            self.flag = ProcessedDataFlag(self.flag)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class RIProduct(ProcessedData):
+    """
+    A compound and its measurements resulting from a
+    RIDataGenerationActivity.One RIDataGenerationActivity may have many
+    "products" representing all compounds detected in the sample.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RIProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RIProduct"
+    class_name: ClassVar[str] = "RIProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RIProduct
+
+    id: Union[str, RIProductId] = None
+    name: str = None
+    s3_key: str = None
+    produced_by_ri_run: Optional[Union[str, RIDataGenerationActivityId]] = None
+    compound_name: Optional[Union[str, "ChemicalEntityEnum"]] = None
+    weight_percent: Optional[float] = None
+    concentration_ug_per_uL: Optional[float] = None
+    flag: Optional[Union[str, "ProcessedDataFlag"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RIProductId):
+            self.id = RIProductId(self.id)
+
+        if self.produced_by_ri_run is not None and not isinstance(self.produced_by_ri_run, RIDataGenerationActivityId):
+            self.produced_by_ri_run = RIDataGenerationActivityId(self.produced_by_ri_run)
+
+        if self.compound_name is not None and not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
+
+        if self.weight_percent is not None and not isinstance(self.weight_percent, float):
+            self.weight_percent = float(self.weight_percent)
+
+        if self.concentration_ug_per_uL is not None and not isinstance(self.concentration_ug_per_uL, float):
+            self.concentration_ug_per_uL = float(self.concentration_ug_per_uL)
+
+        if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
+            self.flag = ProcessedDataFlag(self.flag)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Organism(YAMLRoot):
     """
     Reference data representing a biological identity (strain, isolate,
@@ -6056,13 +6846,11 @@ class AerosolArmSample(Sample):
     misc_param: Optional[str] = None
     other: Optional[str] = None
     other_treatment: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
     photochemical_exposure: Optional[Union[str, "PhotochemicalExposureEnum"]] = None
     pressure_control: Optional[str] = None
     priority_order: Optional[float] = None
     project: Optional[int] = None
     replicate_number: Optional[int] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
@@ -6074,8 +6862,6 @@ class AerosolArmSample(Sample):
     size_frac_up: Optional[str] = None
     solar_irradiance: Optional[str] = None
     source_mat_id: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     third_blh: Optional[float] = None
     third_blh_quality: Optional[str] = None
@@ -6176,9 +6962,6 @@ class AerosolArmSample(Sample):
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
         if self.photochemical_exposure is not None and not isinstance(self.photochemical_exposure, PhotochemicalExposureEnum):
             self.photochemical_exposure = PhotochemicalExposureEnum(self.photochemical_exposure)
 
@@ -6193,9 +6976,6 @@ class AerosolArmSample(Sample):
 
         if self.replicate_number is not None and not isinstance(self.replicate_number, int):
             self.replicate_number = int(self.replicate_number)
-
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
 
         if self.sample_link is not None and not isinstance(self.sample_link, str):
             self.sample_link = str(self.sample_link)
@@ -6229,12 +7009,6 @@ class AerosolArmSample(Sample):
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -6286,8 +7060,6 @@ class AerosolSample(Sample):
     method_development: Optional[str] = None
     misc_param: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen: Optional[str] = None
     photochemical_exposure: Optional[Union[str, "PhotochemicalExposureEnum"]] = None
@@ -6299,13 +7071,10 @@ class AerosolSample(Sample):
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     size_frac_low: Optional[str] = None
     size_frac_up: Optional[str] = None
     solar_irradiance: Optional[str] = None
     source_mat_id: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     temperature_exposure: Optional[str] = None
     volatile_org_comp: Optional[str] = None
@@ -6384,12 +7153,6 @@ class AerosolSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
-
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -6423,9 +7186,6 @@ class AerosolSample(Sample):
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
-
         if self.size_frac_low is not None and not isinstance(self.size_frac_low, str):
             self.size_frac_low = str(self.size_frac_low)
 
@@ -6437,12 +7197,6 @@ class AerosolSample(Sample):
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -6483,13 +7237,11 @@ class AMP2UserSample(Sample):
 
     id: Union[str, AMP2UserSampleId] = None
     organism_ref: Union[str, OrganismId] = None
-    storage_condition: Union[str, "StorageConditionEnum"] = None
     name: str = None
     collection_date: Optional[Union[str, XSDDate]] = None
     growth_facil: Optional[Union[str, "GrowthFacilityEnum"]] = None
     isol_growth_condt: Optional[str] = None
     start_date_inc: Optional[str] = None
-    storage_temperature: Optional[str] = None
     shipped_sample_size: Optional[str] = None
     guid_source: Optional[str] = None
     other_guid_source: Optional[str] = None
@@ -6507,11 +7259,6 @@ class AMP2UserSample(Sample):
         if not isinstance(self.organism_ref, OrganismId):
             self.organism_ref = OrganismId(self.organism_ref)
 
-        if self._is_empty(self.storage_condition):
-            self.MissingRequiredField("storage_condition")
-        if not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
         if not isinstance(self.name, str):
@@ -6528,9 +7275,6 @@ class AMP2UserSample(Sample):
 
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
-
-        if self.storage_temperature is not None and not isinstance(self.storage_temperature, str):
-            self.storage_temperature = str(self.storage_temperature)
 
         if self.shipped_sample_size is not None and not isinstance(self.shipped_sample_size, str):
             self.shipped_sample_size = str(self.shipped_sample_size)
@@ -6565,7 +7309,7 @@ class CommerciallyPurchasedSample(Sample):
     id: Union[str, CommerciallyPurchasedSampleId] = None
     name: str = None
     analysis_type: str = None
-    compound_name: str = None
+    compound_name: Union[str, "ChemicalEntityEnum"] = None
     cas: Optional[str] = None
     experimental_factor: Optional[str] = None
     experimental_factor_other: Optional[str] = None
@@ -6573,8 +7317,6 @@ class CommerciallyPurchasedSample(Sample):
     item_number: Optional[str] = None
     method_development: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     production_method: Optional[str] = None
@@ -6583,11 +7325,8 @@ class CommerciallyPurchasedSample(Sample):
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
 
@@ -6604,8 +7343,8 @@ class CommerciallyPurchasedSample(Sample):
 
         if self._is_empty(self.compound_name):
             self.MissingRequiredField("compound_name")
-        if not isinstance(self.compound_name, str):
-            self.compound_name = str(self.compound_name)
+        if not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
 
         if self.cas is not None and not isinstance(self.cas, str):
             self.cas = str(self.cas)
@@ -6628,12 +7367,6 @@ class CommerciallyPurchasedSample(Sample):
 
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
-
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
 
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
@@ -6659,20 +7392,11 @@ class CommerciallyPurchasedSample(Sample):
         if self.sample_processing is not None and not isinstance(self.sample_processing, str):
             self.sample_processing = str(self.sample_processing)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
-
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -6727,8 +7451,6 @@ class CultureEnvironmentalSample(Sample):
     non_microb_biomass: Optional[str] = None
     non_microb_biomass_method: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     pathogenicity: Optional[str] = None
@@ -6737,14 +7459,11 @@ class CultureEnvironmentalSample(Sample):
     ref_biomaterial: Optional[str] = None
     replicate_number: Optional[int] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     subspecf_gen_lin: Optional[str] = None
     technical_reps: Optional[int] = None
     trophic_level: Optional[Union[str, "TrophicLevelEnum"]] = None
@@ -6859,12 +7578,6 @@ class CultureEnvironmentalSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
-
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -6889,9 +7602,6 @@ class CultureEnvironmentalSample(Sample):
         if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
             self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
-
         if self.sample_link is not None and not isinstance(self.sample_link, str):
             self.sample_link = str(self.sample_link)
 
@@ -6906,12 +7616,6 @@ class CultureEnvironmentalSample(Sample):
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.subspecf_gen_lin is not None and not isinstance(self.subspecf_gen_lin, str):
             self.subspecf_gen_lin = str(self.subspecf_gen_lin)
@@ -6948,8 +7652,6 @@ class EngineeredStrainSample(Sample):
     name: str = None
     organism_ref: Optional[Union[str, OrganismId]] = None
     cbi: Optional[Union[bool, Bool]] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_temperature: Optional[str] = None
     external_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -6963,29 +7665,15 @@ class EngineeredStrainSample(Sample):
         if not isinstance(self.cbi, str):
             self.cbi = str(self.cbi)
 
-        if self._is_empty(self.storage_condition):
-            self.MissingRequiredField("storage_condition")
-        if not isinstance(self.storage_condition, str):
-            self.storage_condition = str(self.storage_condition)
-
         if self.organism_ref is not None and not isinstance(self.organism_ref, OrganismId):
             self.organism_ref = OrganismId(self.organism_ref)
 
         if self.cbi is not None and not isinstance(self.cbi, Bool):
             self.cbi = Bool(self.cbi)
 
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_temperature is not None and not isinstance(self.storage_temperature, str):
-            self.storage_temperature = str(self.storage_temperature)
-
         if not isinstance(self.external_identifiers, list):
             self.external_identifiers = [self.external_identifiers] if self.external_identifiers is not None else []
         self.external_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.external_identifiers]
-
-        if self.storage_temperature is not None and not isinstance(self.storage_temperature, str):
-            self.storage_temperature = str(self.storage_temperature)
 
         super().__post_init__(**kwargs)
 
@@ -7047,8 +7735,6 @@ class FieldDeployedTerraformSample(Sample):
     misc_param: Optional[str] = None
     non_min_nutr_regm: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     plant_growth_med: Optional[str] = None
@@ -7070,12 +7756,9 @@ class FieldDeployedTerraformSample(Sample):
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
     start_date_inc: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
     tiss_cult_growth_med: Optional[str] = None
@@ -7241,12 +7924,6 @@ class FieldDeployedTerraformSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
-
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -7310,9 +7987,6 @@ class FieldDeployedTerraformSample(Sample):
         if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
             self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
-
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
@@ -7321,12 +7995,6 @@ class FieldDeployedTerraformSample(Sample):
 
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -7386,8 +8054,6 @@ class MixedCultureSample(Sample):
     method_development: Optional[str] = None
     non_microb_biomass: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     pathogenicity: Optional[str] = None
@@ -7400,11 +8066,8 @@ class MixedCultureSample(Sample):
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     source_mat_id: Optional[str] = None
     specific_host: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     subspecf_gen_lin: Optional[str] = None
     technical_reps: Optional[int] = None
     trophic_level: Optional[Union[str, "TrophicLevelEnum"]] = None
@@ -7498,12 +8161,6 @@ class MixedCultureSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
-
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -7540,20 +8197,11 @@ class MixedCultureSample(Sample):
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
-
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
 
         if self.specific_host is not None and not isinstance(self.specific_host, str):
             self.specific_host = str(self.specific_host)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.subspecf_gen_lin is not None and not isinstance(self.subspecf_gen_lin, str):
             self.subspecf_gen_lin = str(self.subspecf_gen_lin)
@@ -7605,15 +8253,10 @@ class MonetSoilSample(Sample):
     lims_id: Optional[str] = None
     misc_param: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     project: Optional[int] = None
     sample_name: Optional[str] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     water_content_meth: Optional[str] = None
     watering_regm: Optional[str] = None
 
@@ -7704,12 +8347,6 @@ class MonetSoilSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
-
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -7719,17 +8356,8 @@ class MonetSoilSample(Sample):
         if self.sample_name is not None and not isinstance(self.sample_name, str):
             self.sample_name = str(self.sample_name)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
-
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.water_content_meth is not None and not isinstance(self.water_content_meth, str):
             self.water_content_meth = str(self.water_content_meth)
@@ -7788,7 +8416,7 @@ class OtherUndescribedSample(Sample):
     chem_oxygen_dem: Optional[str] = None
     chloride: Optional[str] = None
     chlorophyll: Optional[str] = None
-    compound_name: Optional[str] = None
+    compound_name: Optional[Union[str, "ChemicalEntityEnum"]] = None
     conduc: Optional[str] = None
     density: Optional[str] = None
     depth: Optional[str] = None
@@ -7879,7 +8507,6 @@ class OtherUndescribedSample(Sample):
     org_particles: Optional[str] = None
     organism_count: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
@@ -7921,7 +8548,6 @@ class OtherUndescribedSample(Sample):
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
     samp_capt_status: Optional[str] = None
     samp_dis_stage: Optional[str] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
@@ -7942,8 +8568,6 @@ class OtherUndescribedSample(Sample):
     source_mat_id: Optional[str] = None
     standing_water_regm: Optional[str] = None
     start_date_inc: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     subspecf_gen_lin: Optional[str] = None
     sulfate: Optional[str] = None
     sulfide: Optional[str] = None
@@ -8095,8 +8719,8 @@ class OtherUndescribedSample(Sample):
         if self.chlorophyll is not None and not isinstance(self.chlorophyll, str):
             self.chlorophyll = str(self.chlorophyll)
 
-        if self.compound_name is not None and not isinstance(self.compound_name, str):
-            self.compound_name = str(self.compound_name)
+        if self.compound_name is not None and not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
 
         if self.conduc is not None and not isinstance(self.conduc, str):
             self.conduc = str(self.conduc)
@@ -8369,9 +8993,6 @@ class OtherUndescribedSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -8495,9 +9116,6 @@ class OtherUndescribedSample(Sample):
         if self.samp_dis_stage is not None and not isinstance(self.samp_dis_stage, str):
             self.samp_dis_stage = str(self.samp_dis_stage)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
-
         if self.sample_link is not None and not isinstance(self.sample_link, str):
             self.sample_link = str(self.sample_link)
 
@@ -8557,12 +9175,6 @@ class OtherUndescribedSample(Sample):
 
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.subspecf_gen_lin is not None and not isinstance(self.subspecf_gen_lin, str):
             self.subspecf_gen_lin = str(self.subspecf_gen_lin)
@@ -8724,8 +9336,6 @@ class PlantSample(Sample):
     non_microb_biomass_method: Optional[str] = None
     non_min_nutr_regm: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     pesticide_regm: Optional[str] = None
     ph_regm: Optional[str] = None
@@ -8753,13 +9363,10 @@ class PlantSample(Sample):
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
     standing_water_regm: Optional[str] = None
     start_date_inc: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
     water_temp_regm: Optional[str] = None
@@ -8907,12 +9514,6 @@ class PlantSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
-
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -8994,9 +9595,6 @@ class PlantSample(Sample):
         if self.sample_processing is not None and not isinstance(self.sample_processing, str):
             self.sample_processing = str(self.sample_processing)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
-
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
@@ -9008,12 +9606,6 @@ class PlantSample(Sample):
 
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -9072,8 +9664,6 @@ class PureCultureSample(Sample):
     non_microb_biomass: Optional[str] = None
     non_microb_biomass_method: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     pathogenicity: Optional[str] = None
@@ -9082,14 +9672,11 @@ class PureCultureSample(Sample):
     ref_biomaterial: Optional[str] = None
     replicate_number: Optional[int] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     subspecf_gen_lin: Optional[str] = None
     technical_reps: Optional[int] = None
     trophic_level: Optional[Union[str, "TrophicLevelEnum"]] = None
@@ -9198,12 +9785,6 @@ class PureCultureSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
-
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -9228,9 +9809,6 @@ class PureCultureSample(Sample):
         if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
             self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
-
         if self.sample_link is not None and not isinstance(self.sample_link, str):
             self.sample_link = str(self.sample_link)
 
@@ -9245,12 +9823,6 @@ class PureCultureSample(Sample):
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.subspecf_gen_lin is not None and not isinstance(self.subspecf_gen_lin, str):
             self.subspecf_gen_lin = str(self.subspecf_gen_lin)
@@ -9343,8 +9915,6 @@ class SedimentSample(Sample):
     org_nitro: Optional[str] = None
     org_nitro_method: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     part_org_carb: Optional[str] = None
@@ -9368,7 +9938,6 @@ class SedimentSample(Sample):
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     sediment_type: Optional[Union[str, "SedimentTypeEnum"]] = None
     sieving: Optional[str] = None
@@ -9376,8 +9945,6 @@ class SedimentSample(Sample):
     sodium: Optional[str] = None
     source_mat_id: Optional[str] = None
     start_date_inc: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     sulfate: Optional[str] = None
     sulfide: Optional[str] = None
     technical_reps: Optional[int] = None
@@ -9595,12 +10162,6 @@ class SedimentSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
-
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -9670,9 +10231,6 @@ class SedimentSample(Sample):
         if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
             self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
-
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
@@ -9693,12 +10251,6 @@ class SedimentSample(Sample):
 
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.sulfate is not None and not isinstance(self.sulfate, str):
             self.sulfate = str(self.sulfate)
@@ -9800,8 +10352,6 @@ class SoilSample(Sample):
     non_microb_biomass: Optional[str] = None
     non_microb_biomass_method: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     perturbation: Optional[str] = None
@@ -9812,7 +10362,6 @@ class SoilSample(Sample):
     salinity: Optional[str] = None
     salinity_method: Optional[str] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
@@ -9827,8 +10376,6 @@ class SoilSample(Sample):
     soil_type_meth: Optional[str] = None
     source_mat_id: Optional[str] = None
     start_date_inc: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
     texture_meth: Optional[str] = None
@@ -9969,12 +10516,6 @@ class SoilSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
-
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -10004,9 +10545,6 @@ class SoilSample(Sample):
 
         if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
             self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
-
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
 
         if self.sample_link is not None and not isinstance(self.sample_link, str):
             self.sample_link = str(self.sample_link)
@@ -10049,12 +10587,6 @@ class SoilSample(Sample):
 
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -10107,15 +10639,13 @@ class SynthesizedMaterialSample(Sample):
     synth_instrument: str = None
     synth_reagents: str = None
     cas: Optional[str] = None
-    compound_name: Optional[str] = None
+    compound_name: Optional[Union[str, "ChemicalEntityEnum"]] = None
     experimental_factor: Optional[str] = None
     experimental_factor_other: Optional[str] = None
     external_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     genetic_mod: Optional[str] = None
     item_number: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     product_name: Optional[str] = None
     production_method: Optional[str] = None
@@ -10124,11 +10654,8 @@ class SynthesizedMaterialSample(Sample):
     sample_link: Optional[str] = None
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     synth_process: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
@@ -10157,8 +10684,8 @@ class SynthesizedMaterialSample(Sample):
         if self.cas is not None and not isinstance(self.cas, str):
             self.cas = str(self.cas)
 
-        if self.compound_name is not None and not isinstance(self.compound_name, str):
-            self.compound_name = str(self.compound_name)
+        if self.compound_name is not None and not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
 
         if self.experimental_factor is not None and not isinstance(self.experimental_factor, str):
             self.experimental_factor = str(self.experimental_factor)
@@ -10178,12 +10705,6 @@ class SynthesizedMaterialSample(Sample):
 
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
-
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
 
         if self.oxygen_status is not None and not isinstance(self.oxygen_status, OxygenStatusEnum):
             self.oxygen_status = OxygenStatusEnum(self.oxygen_status)
@@ -10209,20 +10730,11 @@ class SynthesizedMaterialSample(Sample):
         if self.sample_processing is not None and not isinstance(self.sample_processing, str):
             self.sample_processing = str(self.sample_processing)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
-
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.synth_process is not None and not isinstance(self.synth_process, str):
             self.synth_process = str(self.synth_process)
@@ -10290,8 +10802,6 @@ class TerraformSample(Sample):
     misc_param: Optional[str] = None
     non_min_nutr_regm: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     plant_growth_med: Optional[str] = None
@@ -10313,11 +10823,8 @@ class TerraformSample(Sample):
     sample_name: Optional[str] = None
     sample_processing: Optional[str] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     sampled_during: Optional[Union[str, SamplingActivityId]] = None
     source_mat_id: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
     tiss_cult_growth_med: Optional[str] = None
@@ -10470,12 +10977,6 @@ class TerraformSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
-
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -10539,20 +11040,11 @@ class TerraformSample(Sample):
         if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
             self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
-
         if self.sampled_during is not None and not isinstance(self.sampled_during, SamplingActivityId):
             self.sampled_during = SamplingActivityId(self.sampled_during)
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, str):
             self.source_mat_id = str(self.source_mat_id)
-
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
 
         if self.technical_reps is not None and not isinstance(self.technical_reps, int):
             self.technical_reps = int(self.technical_reps)
@@ -10653,8 +11145,6 @@ class WaterSample(Sample):
     org_nitro: Optional[str] = None
     org_nitro_method: Optional[str] = None
     other: Optional[str] = None
-    other_samp_store_temp: Optional[str] = None
-    other_storage_condt: Optional[str] = None
     other_treatment: Optional[str] = None
     oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
     part_org_carb: Optional[str] = None
@@ -10683,11 +11173,8 @@ class WaterSample(Sample):
     soluble_react_phosp: Optional[str] = None
     source_mat_id: Optional[str] = None
     start_date_inc: Optional[str] = None
-    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
-    storage_condition_other: Optional[str] = None
     sulfate: Optional[str] = None
     sulfide: Optional[str] = None
-    samp_store_temp: Optional[Union[str, "SampleStoreTempEnum"]] = None
     suspend_part_matter: Optional[str] = None
     technical_reps: Optional[int] = None
     temp: Optional[str] = None
@@ -10914,12 +11401,6 @@ class WaterSample(Sample):
         if self.other is not None and not isinstance(self.other, str):
             self.other = str(self.other)
 
-        if self.other_samp_store_temp is not None and not isinstance(self.other_samp_store_temp, str):
-            self.other_samp_store_temp = str(self.other_samp_store_temp)
-
-        if self.other_storage_condt is not None and not isinstance(self.other_storage_condt, str):
-            self.other_storage_condt = str(self.other_storage_condt)
-
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
@@ -11004,20 +11485,11 @@ class WaterSample(Sample):
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
 
-        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
-            self.storage_condition = StorageConditionEnum(self.storage_condition)
-
-        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
-            self.storage_condition_other = str(self.storage_condition_other)
-
         if self.sulfate is not None and not isinstance(self.sulfate, str):
             self.sulfate = str(self.sulfate)
 
         if self.sulfide is not None and not isinstance(self.sulfide, str):
             self.sulfide = str(self.sulfide)
-
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, SampleStoreTempEnum):
-            self.samp_store_temp = SampleStoreTempEnum(self.samp_store_temp)
 
         if self.suspend_part_matter is not None and not isinstance(self.suspend_part_matter, str):
             self.suspend_part_matter = str(self.suspend_part_matter)
@@ -11082,7 +11554,6 @@ class ProcessedSample(Sample):
 
     id: Union[str, ProcessedSampleId] = None
     name: str = None
-    storage_location: Optional[str] = None
     label_text: Optional[str] = None
     concentration_ug_per_uL: Optional[float] = None
     total_amount_ug: Optional[float] = None
@@ -11095,9 +11566,6 @@ class ProcessedSample(Sample):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ProcessedSampleId):
             self.id = ProcessedSampleId(self.id)
-
-        if self.storage_location is not None and not isinstance(self.storage_location, str):
-            self.storage_location = str(self.storage_location)
 
         if self.label_text is not None and not isinstance(self.label_text, str):
             self.label_text = str(self.label_text)
@@ -11116,6 +11584,78 @@ class ProcessedSample(Sample):
 
         if self.replicate is not None and not isinstance(self.replicate, int):
             self.replicate = int(self.replicate)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SampleStorage(YAMLRoot):
+    """
+    A record of a sample being held in storage at a temperature. One sample can
+    have many SampleStorage rows (e.g., received at 4 C, then moved to -80 C).
+
+    This is NOT a SampleProcessing step and does not go through
+    ProcessingSampleLink: storing, freezing, or thawing a sample does not change
+    its identity, so no new sample ID is issued. Freezing or drying that changes
+    the material (e.g., lyophilization, preparing a glycerol stock) is modelled
+    as SampleProcessing instead, and the resulting ProcessedSample can then have
+    its own SampleStorage rows.
+
+    Temperature and timing come from the HasTemperatureHold mixin, shared with
+    incubation, culture growth, and reaction steps.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SampleStorage"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SampleStorage"
+    class_name: ClassVar[str] = "SampleStorage"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SampleStorage
+
+    id: Union[str, SampleStorageId] = None
+    sample_id: Union[str, SampleId] = None
+    storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
+    storage_condition_other: Optional[str] = None
+    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
+    temperature_celsius: Optional[float] = None
+    temperature_category: Optional[Union[str, "TemperatureCategoryEnum"]] = None
+    duration_hours: Optional[float] = None
+    hold_start_time: Optional[Union[str, XSDDateTime]] = None
+    hold_end_time: Optional[Union[str, XSDDateTime]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SampleStorageId):
+            self.id = SampleStorageId(self.id)
+
+        if self._is_empty(self.sample_id):
+            self.MissingRequiredField("sample_id")
+        if not isinstance(self.sample_id, SampleId):
+            self.sample_id = SampleId(self.sample_id)
+
+        if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
+            self.storage_condition = StorageConditionEnum(self.storage_condition)
+
+        if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
+            self.storage_condition_other = str(self.storage_condition_other)
+
+        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
+            self.substances_used = SubstancesUsedLinkId(self.substances_used)
+
+        if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
+            self.temperature_celsius = float(self.temperature_celsius)
+
+        if self.temperature_category is not None and not isinstance(self.temperature_category, TemperatureCategoryEnum):
+            self.temperature_category = TemperatureCategoryEnum(self.temperature_category)
+
+        if self.duration_hours is not None and not isinstance(self.duration_hours, float):
+            self.duration_hours = float(self.duration_hours)
+
+        if self.hold_start_time is not None and not isinstance(self.hold_start_time, XSDDateTime):
+            self.hold_start_time = XSDDateTime(self.hold_start_time)
+
+        if self.hold_end_time is not None and not isinstance(self.hold_end_time, XSDDateTime):
+            self.hold_end_time = XSDDateTime(self.hold_end_time)
 
         super().__post_init__(**kwargs)
 
@@ -12006,25 +12546,22 @@ class ChemicalConversionProcess(SampleProcessing):
 
     id: Union[str, ChemicalConversionProcessId] = None
     name: str = None
-    duration_min: Optional[float] = None
-    temperature_celsius: Optional[float] = None
     substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
     chemical_conversion_category: Optional[Union[str, "ChemicalConversionCategoryEnum"]] = None
     digestion_method: Optional[Union[str, "DigestionMethodEnum"]] = None
     enrichment_type: Optional[Union[str, "EnrichmentTypeEnum"]] = None
     labeling_method: Optional[Union[str, "LabelingMethodEnum"]] = None
+    temperature_celsius: Optional[float] = None
+    temperature_category: Optional[Union[str, "TemperatureCategoryEnum"]] = None
+    duration_hours: Optional[float] = None
+    hold_start_time: Optional[Union[str, XSDDateTime]] = None
+    hold_end_time: Optional[Union[str, XSDDateTime]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ChemicalConversionProcessId):
             self.id = ChemicalConversionProcessId(self.id)
-
-        if self.duration_min is not None and not isinstance(self.duration_min, float):
-            self.duration_min = float(self.duration_min)
-
-        if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
-            self.temperature_celsius = float(self.temperature_celsius)
 
         if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
             self.substances_used = SubstancesUsedLinkId(self.substances_used)
@@ -12040,6 +12577,21 @@ class ChemicalConversionProcess(SampleProcessing):
 
         if self.labeling_method is not None and not isinstance(self.labeling_method, LabelingMethodEnum):
             self.labeling_method = LabelingMethodEnum(self.labeling_method)
+
+        if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
+            self.temperature_celsius = float(self.temperature_celsius)
+
+        if self.temperature_category is not None and not isinstance(self.temperature_category, TemperatureCategoryEnum):
+            self.temperature_category = TemperatureCategoryEnum(self.temperature_category)
+
+        if self.duration_hours is not None and not isinstance(self.duration_hours, float):
+            self.duration_hours = float(self.duration_hours)
+
+        if self.hold_start_time is not None and not isinstance(self.hold_start_time, XSDDateTime):
+            self.hold_start_time = XSDDateTime(self.hold_start_time)
+
+        if self.hold_end_time is not None and not isinstance(self.hold_end_time, XSDDateTime):
+            self.hold_end_time = XSDDateTime(self.hold_end_time)
 
         super().__post_init__(**kwargs)
 
@@ -13174,6 +13726,7 @@ class CalibrationTargetEnum(EnumDefinitionImpl):
         title="m/z")
     retention_time = PermissibleValue(text="retention_time")
     retention_index = PermissibleValue(text="retention_index")
+    refractive_index = PermissibleValue(text="refractive_index")
 
     _defn = EnumDefinition(
         name="CalibrationTargetEnum",
@@ -13325,6 +13878,7 @@ class ChromatographyCategoryEnum(EnumDefinitionImpl):
     liquid_chromatography = PermissibleValue(text="liquid_chromatography")
     gas_chromatography = PermissibleValue(text="gas_chromatography")
     solid_phase_extraction = PermissibleValue(text="solid_phase_extraction")
+    high_performance_liquid_chromatography = PermissibleValue(text="high_performance_liquid_chromatography")
 
     _defn = EnumDefinition(
         name="ChromatographyCategoryEnum",
@@ -13638,6 +14192,12 @@ class ExtractionMethodEnum(EnumDefinitionImpl):
     other = PermissibleValue(
         text="other",
         description="Other extraction method not otherwise specified.")
+    monet_weom = PermissibleValue(
+        text="monet_weom",
+        description="Water extraction method for organic matter used for MONet samples")
+    monet_heom = PermissibleValue(
+        text="monet_heom",
+        description="Hydrochloric acid extraction method for organic matter used for MONet samples")
 
     _defn = EnumDefinition(
         name="ExtractionMethodEnum",
@@ -14822,31 +15382,6 @@ class SampleRole(EnumDefinitionImpl):
         description="""The direction in which a Sample participates in a SampleProcessing activity. Recorded on ProcessingSampleLink, which is the authoritative record of what each processing step consumed and produced.""",
     )
 
-class SampleStoreTempEnum(EnumDefinitionImpl):
-    """
-    Sample storage temperature conditions
-    """
-    fresh4 = PermissibleValue(
-        text="fresh4",
-        description="Fresh storage at 4°C")
-    freshroom = PermissibleValue(
-        text="freshroom",
-        description="Fresh storage at room temperature")
-    frozen20 = PermissibleValue(
-        text="frozen20",
-        description="Frozen storage at -20°C")
-    frozen80 = PermissibleValue(
-        text="frozen80",
-        description="Frozen storage at -80°C")
-    other = PermissibleValue(
-        text="other",
-        description="Other storage temperature")
-
-    _defn = EnumDefinition(
-        name="SampleStoreTempEnum",
-        description="Sample storage temperature conditions",
-    )
-
 class SampleType(EnumDefinitionImpl):
     """
     Types of samples that can be collected
@@ -15134,7 +15669,8 @@ class SterilizationMethodEnum(EnumDefinitionImpl):
 
 class StorageConditionEnum(EnumDefinitionImpl):
     """
-    Sample storage conditions
+    Physical state of a sample in storage. Temperature is recorded separately
+    via temperature_celsius / temperature_category on SampleStorage.
     """
     fresh = PermissibleValue(
         text="fresh",
@@ -15151,7 +15687,8 @@ class StorageConditionEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="StorageConditionEnum",
-        description="Sample storage conditions",
+        description="""Physical state of a sample in storage. Temperature is recorded separately
+via temperature_celsius / temperature_category on SampleStorage.""",
     )
 
 class StrainTypeEnum(EnumDefinitionImpl):
@@ -15252,6 +15789,38 @@ class SyntheticEnvironmentEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="SyntheticEnvironmentEnum",
+    )
+
+class TemperatureCategoryEnum(EnumDefinitionImpl):
+    """
+    Nominal temperature conditions for a temperature hold (storage, incubation,
+    reaction). Use with temperature_category; record the numeric value in
+    temperature_celsius when known. Replaces SampleStoreTempEnum.
+    """
+    room_temperature = PermissibleValue(
+        text="room_temperature",
+        description="Room temperature (~20-25°C)")
+    refrigerated = PermissibleValue(
+        text="refrigerated",
+        description="Refrigerated at 4°C")
+    frozen_minus20 = PermissibleValue(
+        text="frozen_minus20",
+        description="Frozen at -20°C")
+    frozen_minus80 = PermissibleValue(
+        text="frozen_minus80",
+        description="Frozen at -80°C")
+    liquid_nitrogen = PermissibleValue(
+        text="liquid_nitrogen",
+        description="Cryogenic storage in liquid nitrogen (~-196°C)")
+    other = PermissibleValue(
+        text="other",
+        description="Other temperature condition")
+
+    _defn = EnumDefinition(
+        name="TemperatureCategoryEnum",
+        description="""Nominal temperature conditions for a temperature hold (storage, incubation,
+reaction). Use with temperature_category; record the numeric value in
+temperature_celsius when known. Replaces SampleStoreTempEnum.""",
     )
 
 class TidalStageEnum(EnumDefinitionImpl):
@@ -15403,6 +15972,25 @@ class TrophicLevelEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="TrophicLevelEnum",
         description="Enumeration of trophic levels for organisms.",
+    )
+
+class UVDetectorEnum(EnumDefinitionImpl):
+    """
+    UV detector types used in chromatography.
+    """
+    photodiode_array = PermissibleValue(
+        text="photodiode_array",
+        description="Diode Array Detector (DAD)")
+    variable_wavelength = PermissibleValue(
+        text="variable_wavelength",
+        description="Variable Wavelength Detector")
+    fixed_wavelength = PermissibleValue(
+        text="fixed_wavelength",
+        description="Fixed Wavelength Detector")
+
+    _defn = EnumDefinition(
+        name="UVDetectorEnum",
+        description="UV detector types used in chromatography.",
     )
 
 class VendorEnum(EnumDefinitionImpl):
@@ -15597,7 +16185,7 @@ slots.calcium = Slot(uri=BASALT_SCHEMA.calcium, name="calcium", curie=BASALT_SCH
                    model_uri=BASALT_SCHEMA.calcium, domain=None, range=Optional[str])
 
 slots.calibration_data = Slot(uri=BASALT_SCHEMA.calibration_data, name="calibration_data", curie=BASALT_SCHEMA.curie('calibration_data'),
-                   model_uri=BASALT_SCHEMA.calibration_data, domain=None, range=Optional[Union[str, MassSpectrometryInstrumentDataId]])
+                   model_uri=BASALT_SCHEMA.calibration_data, domain=None, range=Optional[Union[str, InstrumentDataId]])
 
 slots.calibration_standard = Slot(uri=BASALT_SCHEMA.calibration_standard, name="calibration_standard", curie=BASALT_SCHEMA.curie('calibration_standard'),
                    model_uri=BASALT_SCHEMA.calibration_standard, domain=None, range=Optional[Union[str, PurchasedMaterialId]])
@@ -15619,6 +16207,9 @@ slots.cas = Slot(uri=BASALT_SCHEMA.cas, name="cas", curie=BASALT_SCHEMA.curie('c
 
 slots.cbi = Slot(uri=BASALT_SCHEMA.cbi, name="cbi", curie=BASALT_SCHEMA.curie('cbi'),
                    model_uri=BASALT_SCHEMA.cbi, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.channel_number = Slot(uri=BASALT_SCHEMA.channel_number, name="channel_number", curie=BASALT_SCHEMA.curie('channel_number'),
+                   model_uri=BASALT_SCHEMA.channel_number, domain=None, range=Optional[int])
 
 slots.chem_administration = Slot(uri=BASALT_SCHEMA.chem_administration, name="chem_administration", curie=BASALT_SCHEMA.curie('chem_administration'),
                    model_uri=BASALT_SCHEMA.chem_administration, domain=None, range=Optional[str])
@@ -15669,7 +16260,7 @@ slots.component_name = Slot(uri=BASALT_SCHEMA.component_name, name="component_na
                    model_uri=BASALT_SCHEMA.component_name, domain=None, range=Optional[str])
 
 slots.compound_name = Slot(uri=BASALT_SCHEMA.compound_name, name="compound_name", curie=BASALT_SCHEMA.curie('compound_name'),
-                   model_uri=BASALT_SCHEMA.compound_name, domain=None, range=Optional[str])
+                   model_uri=BASALT_SCHEMA.compound_name, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
 
 slots.concentration_ug_per_uL = Slot(uri=BASALT_SCHEMA.concentration_ug_per_uL, name="concentration_ug_per_uL", curie=BASALT_SCHEMA.curie('concentration_ug_per_uL'),
                    model_uri=BASALT_SCHEMA.concentration_ug_per_uL, domain=None, range=Optional[float])
@@ -15779,6 +16370,9 @@ slots.drainage_class = Slot(uri=BASALT_SCHEMA.drainage_class, name="drainage_cla
 slots.duration_min = Slot(uri=BASALT_SCHEMA.duration_min, name="duration_min", curie=BASALT_SCHEMA.curie('duration_min'),
                    model_uri=BASALT_SCHEMA.duration_min, domain=None, range=Optional[float])
 
+slots.duration_hours = Slot(uri=BASALT_SCHEMA.duration_hours, name="duration_hours", curie=BASALT_SCHEMA.curie('duration_hours'),
+                   model_uri=BASALT_SCHEMA.duration_hours, domain=None, range=Optional[float])
+
 slots.efficiency_percent = Slot(uri=BASALT_SCHEMA.efficiency_percent, name="efficiency_percent", curie=BASALT_SCHEMA.curie('efficiency_percent'),
                    model_uri=BASALT_SCHEMA.efficiency_percent, domain=None, range=Optional[str])
 
@@ -15869,6 +16463,9 @@ slots.first_blh_quality_index = Slot(uri=BASALT_SCHEMA.first_blh_quality_index, 
 slots.first_cbh = Slot(uri=BASALT_SCHEMA.first_cbh, name="first_cbh", curie=BASALT_SCHEMA.curie('first_cbh'),
                    model_uri=BASALT_SCHEMA.first_cbh, domain=None, range=Optional[float])
 
+slots.flag = Slot(uri=BASALT_SCHEMA.flag, name="flag", curie=BASALT_SCHEMA.curie('flag'),
+                   model_uri=BASALT_SCHEMA.flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
 slots.flooding = Slot(uri=BASALT_SCHEMA.flooding, name="flooding", curie=BASALT_SCHEMA.curie('flooding'),
                    model_uri=BASALT_SCHEMA.flooding, domain=None, range=Optional[str])
 
@@ -15923,9 +16520,6 @@ slots.growth_hormone_regm = Slot(uri=BASALT_SCHEMA.growth_hormone_regm, name="gr
 slots.growth_medium = Slot(uri=BASALT_SCHEMA.growth_medium, name="growth_medium", curie=BASALT_SCHEMA.curie('growth_medium'),
                    model_uri=BASALT_SCHEMA.growth_medium, domain=None, range=Optional[str])
 
-slots.growth_time = Slot(uri=BASALT_SCHEMA.growth_time, name="growth_time", curie=BASALT_SCHEMA.curie('growth_time'),
-                   model_uri=BASALT_SCHEMA.growth_time, domain=None, range=Optional[str])
-
 slots.guid_source = Slot(uri=BASALT_SCHEMA.guid_source, name="guid_source", curie=BASALT_SCHEMA.curie('guid_source'),
                    model_uri=BASALT_SCHEMA.guid_source, domain=None, range=Optional[str])
 
@@ -15937,6 +16531,12 @@ slots.heavy_metals_meth = Slot(uri=BASALT_SCHEMA.heavy_metals_meth, name="heavy_
 
 slots.herbicide_regm = Slot(uri=BASALT_SCHEMA.herbicide_regm, name="herbicide_regm", curie=BASALT_SCHEMA.curie('herbicide_regm'),
                    model_uri=BASALT_SCHEMA.herbicide_regm, domain=None, range=Optional[str])
+
+slots.hold_end_time = Slot(uri=BASALT_SCHEMA.hold_end_time, name="hold_end_time", curie=BASALT_SCHEMA.curie('hold_end_time'),
+                   model_uri=BASALT_SCHEMA.hold_end_time, domain=None, range=Optional[Union[str, XSDDateTime]])
+
+slots.hold_start_time = Slot(uri=BASALT_SCHEMA.hold_start_time, name="hold_start_time", curie=BASALT_SCHEMA.curie('hold_start_time'),
+                   model_uri=BASALT_SCHEMA.hold_start_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
 slots.horizon_meth = Slot(uri=BASALT_SCHEMA.horizon_meth, name="horizon_meth", curie=BASALT_SCHEMA.curie('horizon_meth'),
                    model_uri=BASALT_SCHEMA.horizon_meth, domain=None, range=Optional[str])
@@ -16003,9 +16603,6 @@ slots.in_protocol = Slot(uri=BASALT_SCHEMA.in_protocol, name="in_protocol", curi
 
 slots.in_run = Slot(uri=BASALT_SCHEMA.in_run, name="in_run", curie=BASALT_SCHEMA.curie('in_run'),
                    model_uri=BASALT_SCHEMA.in_run, domain=None, range=Optional[Union[str, SampleProcessingRunId]])
-
-slots.incubation_time_hours = Slot(uri=BASALT_SCHEMA.incubation_time_hours, name="incubation_time_hours", curie=BASALT_SCHEMA.curie('incubation_time_hours'),
-                   model_uri=BASALT_SCHEMA.incubation_time_hours, domain=None, range=Optional[float])
 
 slots.indust_eff_percent = Slot(uri=BASALT_SCHEMA.indust_eff_percent, name="indust_eff_percent", curie=BASALT_SCHEMA.curie('indust_eff_percent'),
                    model_uri=BASALT_SCHEMA.indust_eff_percent, domain=None, range=Optional[str])
@@ -16211,6 +16808,9 @@ slots.n_alkanes = Slot(uri=BASALT_SCHEMA.n_alkanes, name="n_alkanes", curie=BASA
 slots.name = Slot(uri=BASALT_SCHEMA.name, name="name", curie=BASALT_SCHEMA.curie('name'),
                    model_uri=BASALT_SCHEMA.name, domain=None, range=str)
 
+slots.negative_absorbance_margin_au = Slot(uri=BASALT_SCHEMA.negative_absorbance_margin_au, name="negative_absorbance_margin_au", curie=BASALT_SCHEMA.curie('negative_absorbance_margin_au'),
+                   model_uri=BASALT_SCHEMA.negative_absorbance_margin_au, domain=None, range=Optional[float])
+
 slots.neon_domain = Slot(uri=BASALT_SCHEMA.neon_domain, name="neon_domain", curie=BASALT_SCHEMA.curie('neon_domain'),
                    model_uri=BASALT_SCHEMA.neon_domain, domain=None, range=Optional[Union[str, "NEONDomainEnum"]])
 
@@ -16274,12 +16874,6 @@ slots.other_growth_facil = Slot(uri=BASALT_SCHEMA.other_growth_facil, name="othe
 slots.other_guid_source = Slot(uri=BASALT_SCHEMA.other_guid_source, name="other_guid_source", curie=BASALT_SCHEMA.curie('other_guid_source'),
                    model_uri=BASALT_SCHEMA.other_guid_source, domain=None, range=Optional[str])
 
-slots.other_samp_store_temp = Slot(uri=BASALT_SCHEMA.other_samp_store_temp, name="other_samp_store_temp", curie=BASALT_SCHEMA.curie('other_samp_store_temp'),
-                   model_uri=BASALT_SCHEMA.other_samp_store_temp, domain=None, range=Optional[str])
-
-slots.other_storage_condt = Slot(uri=BASALT_SCHEMA.other_storage_condt, name="other_storage_condt", curie=BASALT_SCHEMA.curie('other_storage_condt'),
-                   model_uri=BASALT_SCHEMA.other_storage_condt, domain=None, range=Optional[str])
-
 slots.other_treatment = Slot(uri=BASALT_SCHEMA.other_treatment, name="other_treatment", curie=BASALT_SCHEMA.curie('other_treatment'),
                    model_uri=BASALT_SCHEMA.other_treatment, domain=None, range=Optional[str])
 
@@ -16306,6 +16900,15 @@ slots.particle_class = Slot(uri=BASALT_SCHEMA.particle_class, name="particle_cla
 
 slots.pathogenicity = Slot(uri=BASALT_SCHEMA.pathogenicity, name="pathogenicity", curie=BASALT_SCHEMA.curie('pathogenicity'),
                    model_uri=BASALT_SCHEMA.pathogenicity, domain=None, range=Optional[str])
+
+slots.peak_area = Slot(uri=BASALT_SCHEMA.peak_area, name="peak_area", curie=BASALT_SCHEMA.curie('peak_area'),
+                   model_uri=BASALT_SCHEMA.peak_area, domain=None, range=Optional[float])
+
+slots.peak_percent_area = Slot(uri=BASALT_SCHEMA.peak_percent_area, name="peak_percent_area", curie=BASALT_SCHEMA.curie('peak_percent_area'),
+                   model_uri=BASALT_SCHEMA.peak_percent_area, domain=None, range=Optional[float])
+
+slots.peak_height = Slot(uri=BASALT_SCHEMA.peak_height, name="peak_height", curie=BASALT_SCHEMA.curie('peak_height'),
+                   model_uri=BASALT_SCHEMA.peak_height, domain=None, range=Optional[float])
 
 slots.perturbation = Slot(uri=BASALT_SCHEMA.perturbation, name="perturbation", curie=BASALT_SCHEMA.curie('perturbation'),
                    model_uri=BASALT_SCHEMA.perturbation, domain=None, range=Optional[str])
@@ -16439,6 +17042,15 @@ slots.produced_by_ms_run = Slot(uri=BASALT_SCHEMA.produced_by_ms_run, name="prod
 slots.produced_by_sequencing_activity = Slot(uri=BASALT_SCHEMA.produced_by_sequencing_activity, name="produced_by_sequencing_activity", curie=BASALT_SCHEMA.curie('produced_by_sequencing_activity'),
                    model_uri=BASALT_SCHEMA.produced_by_sequencing_activity, domain=None, range=Optional[Union[str, NucleotideSequencingId]])
 
+slots.produced_by_ri_run = Slot(uri=BASALT_SCHEMA.produced_by_ri_run, name="produced_by_ri_run", curie=BASALT_SCHEMA.curie('produced_by_ri_run'),
+                   model_uri=BASALT_SCHEMA.produced_by_ri_run, domain=None, range=Optional[Union[str, RIDataGenerationActivityId]])
+
+slots.produced_by_uv_run = Slot(uri=BASALT_SCHEMA.produced_by_uv_run, name="produced_by_uv_run", curie=BASALT_SCHEMA.curie('produced_by_uv_run'),
+                   model_uri=BASALT_SCHEMA.produced_by_uv_run, domain=None, range=Optional[Union[str, UVDataGenerationActivityId]])
+
+slots.produced_by_toctn_run = Slot(uri=BASALT_SCHEMA.produced_by_toctn_run, name="produced_by_toctn_run", curie=BASALT_SCHEMA.curie('produced_by_toctn_run'),
+                   model_uri=BASALT_SCHEMA.produced_by_toctn_run, domain=None, range=Optional[Union[str, TOCTNDataGenerationActivityId]])
+
 slots.product_name = Slot(uri=BASALT_SCHEMA.product_name, name="product_name", curie=BASALT_SCHEMA.curie('product_name'),
                    model_uri=BASALT_SCHEMA.product_name, domain=None, range=Optional[str])
 
@@ -16499,8 +17111,14 @@ slots.replicate_tech = Slot(uri=BASALT_SCHEMA.replicate_tech, name="replicate_te
 slots.resolution = Slot(uri=BASALT_SCHEMA.resolution, name="resolution", curie=BASALT_SCHEMA.curie('resolution'),
                    model_uri=BASALT_SCHEMA.resolution, domain=None, range=Union[str, "MassSpecResolutionEnum"])
 
+slots.resolution_nm = Slot(uri=BASALT_SCHEMA.resolution_nm, name="resolution_nm", curie=BASALT_SCHEMA.curie('resolution_nm'),
+                   model_uri=BASALT_SCHEMA.resolution_nm, domain=None, range=Optional[float])
+
 slots.results_from_ms_processing = Slot(uri=BASALT_SCHEMA.results_from_ms_processing, name="results_from_ms_processing", curie=BASALT_SCHEMA.curie('results_from_ms_processing'),
                    model_uri=BASALT_SCHEMA.results_from_ms_processing, domain=None, range=Optional[Union[str, MassSpectrometryDataProcessingActivityId]])
+
+slots.retention_time_min = Slot(uri=BASALT_SCHEMA.retention_time_min, name="retention_time_min", curie=BASALT_SCHEMA.curie('retention_time_min'),
+                   model_uri=BASALT_SCHEMA.retention_time_min, domain=None, range=Optional[float])
 
 slots.root_cond = Slot(uri=BASALT_SCHEMA.root_cond, name="root_cond", curie=BASALT_SCHEMA.curie('root_cond'),
                    model_uri=BASALT_SCHEMA.root_cond, domain=None, range=Optional[str])
@@ -16550,9 +17168,6 @@ slots.samp_capt_status = Slot(uri=BASALT_SCHEMA.samp_capt_status, name="samp_cap
 slots.samp_dis_stage = Slot(uri=BASALT_SCHEMA.samp_dis_stage, name="samp_dis_stage", curie=BASALT_SCHEMA.curie('samp_dis_stage'),
                    model_uri=BASALT_SCHEMA.samp_dis_stage, domain=None, range=Optional[str])
 
-slots.samp_store_temp = Slot(uri=BASALT_SCHEMA.samp_store_temp, name="samp_store_temp", curie=BASALT_SCHEMA.curie('samp_store_temp'),
-                   model_uri=BASALT_SCHEMA.samp_store_temp, domain=None, range=Optional[Union[str, "SampleStoreTempEnum"]])
-
 slots.sample_collected = Slot(uri=BASALT_SCHEMA.sample_collected, name="sample_collected", curie=BASALT_SCHEMA.curie('sample_collected'),
                    model_uri=BASALT_SCHEMA.sample_collected, domain=None, range=Optional[str])
 
@@ -16594,6 +17209,9 @@ slots.sampled_portion = Slot(uri=BASALT_SCHEMA.sampled_portion, name="sampled_po
 
 slots.sampling_duration = Slot(uri=BASALT_SCHEMA.sampling_duration, name="sampling_duration", curie=BASALT_SCHEMA.curie('sampling_duration'),
                    model_uri=BASALT_SCHEMA.sampling_duration, domain=None, range=Optional[str])
+
+slots.sampling_rate_hz = Slot(uri=BASALT_SCHEMA.sampling_rate_hz, name="sampling_rate_hz", curie=BASALT_SCHEMA.curie('sampling_rate_hz'),
+                   model_uri=BASALT_SCHEMA.sampling_rate_hz, domain=None, range=Optional[float])
 
 slots.sampling_set = Slot(uri=BASALT_SCHEMA.sampling_set, name="sampling_set", curie=BASALT_SCHEMA.curie('sampling_set'),
                    model_uri=BASALT_SCHEMA.sampling_set, domain=None, range=Optional[int])
@@ -17042,12 +17660,6 @@ slots.storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="storag
 slots.storage_condition_other = Slot(uri=BASALT_SCHEMA.storage_condition_other, name="storage_condition_other", curie=BASALT_SCHEMA.curie('storage_condition_other'),
                    model_uri=BASALT_SCHEMA.storage_condition_other, domain=None, range=Optional[str])
 
-slots.storage_location = Slot(uri=BASALT_SCHEMA.storage_location, name="storage_location", curie=BASALT_SCHEMA.curie('storage_location'),
-                   model_uri=BASALT_SCHEMA.storage_location, domain=None, range=Optional[str])
-
-slots.storage_temperature = Slot(uri=BASALT_SCHEMA.storage_temperature, name="storage_temperature", curie=BASALT_SCHEMA.curie('storage_temperature'),
-                   model_uri=BASALT_SCHEMA.storage_temperature, domain=None, range=Optional[str])
-
 slots.strain_description = Slot(uri=BASALT_SCHEMA.strain_description, name="strain_description", curie=BASALT_SCHEMA.curie('strain_description'),
                    model_uri=BASALT_SCHEMA.strain_description, domain=None, range=Optional[str])
 
@@ -17128,6 +17740,9 @@ slots.technical_reps = Slot(uri=BASALT_SCHEMA.technical_reps, name="technical_re
 
 slots.temp = Slot(uri=BASALT_SCHEMA.temp, name="temp", curie=BASALT_SCHEMA.curie('temp'),
                    model_uri=BASALT_SCHEMA.temp, domain=None, range=Optional[str])
+
+slots.temperature_category = Slot(uri=BASALT_SCHEMA.temperature_category, name="temperature_category", curie=BASALT_SCHEMA.curie('temperature_category'),
+                   model_uri=BASALT_SCHEMA.temperature_category, domain=None, range=Optional[Union[str, "TemperatureCategoryEnum"]])
 
 slots.temperature_celsius = Slot(uri=BASALT_SCHEMA.temperature_celsius, name="temperature_celsius", curie=BASALT_SCHEMA.curie('temperature_celsius'),
                    model_uri=BASALT_SCHEMA.temperature_celsius, domain=None, range=Optional[float])
@@ -17214,7 +17829,7 @@ slots.uninoculated_mean = Slot(uri=BASALT_SCHEMA.uninoculated_mean, name="uninoc
                    model_uri=BASALT_SCHEMA.uninoculated_mean, domain=None, range=Optional[float])
 
 slots.uses_calibration = Slot(uri=BASALT_SCHEMA.uses_calibration, name="uses_calibration", curie=BASALT_SCHEMA.curie('uses_calibration'),
-                   model_uri=BASALT_SCHEMA.uses_calibration, domain=None, range=Optional[Union[str, MassSpectrometryStandardRunId]])
+                   model_uri=BASALT_SCHEMA.uses_calibration, domain=None, range=Optional[Union[str, CalibrationStandardRunId]])
 
 slots.uses_chromatography = Slot(uri=BASALT_SCHEMA.uses_chromatography, name="uses_chromatography", curie=BASALT_SCHEMA.curie('uses_chromatography'),
                    model_uri=BASALT_SCHEMA.uses_chromatography, domain=None, range=Optional[Union[dict, ChromatographyConfiguration]])
@@ -17224,6 +17839,18 @@ slots.uses_ms_configuration = Slot(uri=BASALT_SCHEMA.uses_ms_configuration, name
 
 slots.uses_raw_ms_data = Slot(uri=BASALT_SCHEMA.uses_raw_ms_data, name="uses_raw_ms_data", curie=BASALT_SCHEMA.curie('uses_raw_ms_data'),
                    model_uri=BASALT_SCHEMA.uses_raw_ms_data, domain=None, range=Optional[Union[str, MassSpectrometryInstrumentDataId]])
+
+slots.uses_raw_ri_data = Slot(uri=BASALT_SCHEMA.uses_raw_ri_data, name="uses_raw_ri_data", curie=BASALT_SCHEMA.curie('uses_raw_ri_data'),
+                   model_uri=BASALT_SCHEMA.uses_raw_ri_data, domain=None, range=Optional[Union[str, InstrumentDataId]])
+
+slots.uses_raw_uv_data = Slot(uri=BASALT_SCHEMA.uses_raw_uv_data, name="uses_raw_uv_data", curie=BASALT_SCHEMA.curie('uses_raw_uv_data'),
+                   model_uri=BASALT_SCHEMA.uses_raw_uv_data, domain=None, range=Optional[Union[str, InstrumentDataId]])
+
+slots.uv_datagen_run = Slot(uri=BASALT_SCHEMA.uv_datagen_run, name="uv_datagen_run", curie=BASALT_SCHEMA.curie('uv_datagen_run'),
+                   model_uri=BASALT_SCHEMA.uv_datagen_run, domain=None, range=Optional[Union[str, UVDataGenerationActivityId]])
+
+slots.uv_detector_type = Slot(uri=BASALT_SCHEMA.uv_detector_type, name="uv_detector_type", curie=BASALT_SCHEMA.curie('uv_detector_type'),
+                   model_uri=BASALT_SCHEMA.uv_detector_type, domain=None, range=Optional[Union[str, "UVDetectorEnum"]])
 
 slots.version = Slot(uri=BASALT_SCHEMA.version, name="version", curie=BASALT_SCHEMA.curie('version'),
                    model_uri=BASALT_SCHEMA.version, domain=None, range=str)
@@ -17258,8 +17885,17 @@ slots.watering_regm = Slot(uri=BASALT_SCHEMA.watering_regm, name="watering_regm"
 slots.wavelength_nm = Slot(uri=BASALT_SCHEMA.wavelength_nm, name="wavelength_nm", curie=BASALT_SCHEMA.curie('wavelength_nm'),
                    model_uri=BASALT_SCHEMA.wavelength_nm, domain=None, range=int)
 
+slots.wavelength_nm_max = Slot(uri=BASALT_SCHEMA.wavelength_nm_max, name="wavelength_nm_max", curie=BASALT_SCHEMA.curie('wavelength_nm_max'),
+                   model_uri=BASALT_SCHEMA.wavelength_nm_max, domain=None, range=Optional[float])
+
+slots.wavelength_nm_min = Slot(uri=BASALT_SCHEMA.wavelength_nm_min, name="wavelength_nm_min", curie=BASALT_SCHEMA.curie('wavelength_nm_min'),
+                   model_uri=BASALT_SCHEMA.wavelength_nm_min, domain=None, range=Optional[float])
+
 slots.weather = Slot(uri=BASALT_SCHEMA.weather, name="weather", curie=BASALT_SCHEMA.curie('weather'),
                    model_uri=BASALT_SCHEMA.weather, domain=None, range=Optional[str])
+
+slots.weight_percent = Slot(uri=BASALT_SCHEMA.weight_percent, name="weight_percent", curie=BASALT_SCHEMA.curie('weight_percent'),
+                   model_uri=BASALT_SCHEMA.weight_percent, domain=None, range=Optional[float])
 
 slots.well_metadata = Slot(uri=BASALT_SCHEMA.well_metadata, name="well_metadata", curie=BASALT_SCHEMA.curie('well_metadata'),
                    model_uri=BASALT_SCHEMA.well_metadata, domain=None, range=Optional[Union[Union[dict, WellMetadata], list[Union[dict, WellMetadata]]]])
@@ -17555,8 +18191,8 @@ slots.mobilePhaseSubstance__substance = Slot(uri=BASALT_SCHEMA.substance, name="
 slots.mobilePhaseSubstance__concentration = Slot(uri=BASALT_SCHEMA.concentration, name="mobilePhaseSubstance__concentration", curie=BASALT_SCHEMA.curie('concentration'),
                    model_uri=BASALT_SCHEMA.mobilePhaseSubstance__concentration, domain=None, range=Optional[str])
 
-slots.massSpectrometryStandardRun__id = Slot(uri=BASALT_SCHEMA.id, name="massSpectrometryStandardRun__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.massSpectrometryStandardRun__id, domain=None, range=URIRef)
+slots.calibrationStandardRun__id = Slot(uri=BASALT_SCHEMA.id, name="calibrationStandardRun__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.calibrationStandardRun__id, domain=None, range=URIRef)
 
 slots.purchasedMaterial__id = Slot(uri=BASALT_SCHEMA.id, name="purchasedMaterial__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.purchasedMaterial__id, domain=None, range=URIRef)
@@ -17626,6 +18262,81 @@ slots.wellReading__value = Slot(uri=BASALT_SCHEMA.value, name="wellReading__valu
 
 slots.wellReading__flag = Slot(uri=BASALT_SCHEMA.flag, name="wellReading__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.wellReading__flag, domain=None, range=Optional[str])
+
+slots.enzymeActivityDataGenerationActivity__wavelength = Slot(uri=BASALT_SCHEMA.wavelength, name="enzymeActivityDataGenerationActivity__wavelength", curie=BASALT_SCHEMA.curie('wavelength'),
+                   model_uri=BASALT_SCHEMA.enzymeActivityDataGenerationActivity__wavelength, domain=None, range=Optional[float])
+
+slots.hydraulicPropertiesDataGenerationActivity__fitting_model = Slot(uri=BASALT_SCHEMA.fitting_model, name="hydraulicPropertiesDataGenerationActivity__fitting_model", curie=BASALT_SCHEMA.curie('fitting_model'),
+                   model_uri=BASALT_SCHEMA.hydraulicPropertiesDataGenerationActivity__fitting_model, domain=None, range=str)
+
+slots.kuoDataGenerationActivity__detection_limit = Slot(uri=BASALT_SCHEMA.detection_limit, name="kuoDataGenerationActivity__detection_limit", curie=BASALT_SCHEMA.curie('detection_limit'),
+                   model_uri=BASALT_SCHEMA.kuoDataGenerationActivity__detection_limit, domain=None, range=str)
+
+slots.kuoDataGenerationActivity__wavelength = Slot(uri=BASALT_SCHEMA.wavelength, name="kuoDataGenerationActivity__wavelength", curie=BASALT_SCHEMA.curie('wavelength'),
+                   model_uri=BASALT_SCHEMA.kuoDataGenerationActivity__wavelength, domain=None, range=Optional[str])
+
+slots.microbialBiomassDataGenerationActivity__detector = Slot(uri=BASALT_SCHEMA.detector, name="microbialBiomassDataGenerationActivity__detector", curie=BASALT_SCHEMA.curie('detector'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__detector, domain=None, range=str)
+
+slots.microbialBiomassDataGenerationActivity__mode = Slot(uri=BASALT_SCHEMA.mode, name="microbialBiomassDataGenerationActivity__mode", curie=BASALT_SCHEMA.curie('mode'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__mode, domain=None, range=Optional[str])
+
+slots.microbialBiomassDataGenerationActivity__injection_volume = Slot(uri=BASALT_SCHEMA.injection_volume, name="microbialBiomassDataGenerationActivity__injection_volume", curie=BASALT_SCHEMA.curie('injection_volume'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__injection_volume, domain=None, range=str)
+
+slots.microbialBiomassDataGenerationActivity__sample_volume = Slot(uri=BASALT_SCHEMA.sample_volume, name="microbialBiomassDataGenerationActivity__sample_volume", curie=BASALT_SCHEMA.curie('sample_volume'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__sample_volume, domain=None, range=str)
+
+slots.microbialBiomassDataGenerationActivity__number_of_injections = Slot(uri=BASALT_SCHEMA.number_of_injections, name="microbialBiomassDataGenerationActivity__number_of_injections", curie=BASALT_SCHEMA.curie('number_of_injections'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__number_of_injections, domain=None, range=float)
+
+slots.microbialBiomassDataGenerationActivity__check_standard_spacing = Slot(uri=BASALT_SCHEMA.check_standard_spacing, name="microbialBiomassDataGenerationActivity__check_standard_spacing", curie=BASALT_SCHEMA.curie('check_standard_spacing'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__check_standard_spacing, domain=None, range=str)
+
+slots.pHDataGenerationActivity__calibration = Slot(uri=BASALT_SCHEMA.calibration, name="pHDataGenerationActivity__calibration", curie=BASALT_SCHEMA.curie('calibration'),
+                   model_uri=BASALT_SCHEMA.pHDataGenerationActivity__calibration, domain=None, range=str)
+
+slots.tOCTNDataGenerationActivity__column = Slot(uri=BASALT_SCHEMA.column, name="tOCTNDataGenerationActivity__column", curie=BASALT_SCHEMA.curie('column'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__column, domain=None, range=Optional[str])
+
+slots.tOCTNDataGenerationActivity__mode = Slot(uri=BASALT_SCHEMA.mode, name="tOCTNDataGenerationActivity__mode", curie=BASALT_SCHEMA.curie('mode'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__mode, domain=None, range=Optional[str])
+
+slots.tOCTNDataGenerationActivity__detector = Slot(uri=BASALT_SCHEMA.detector, name="tOCTNDataGenerationActivity__detector", curie=BASALT_SCHEMA.curie('detector'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__detector, domain=None, range=str)
+
+slots.tOCTNDataGenerationActivity__injection_volume = Slot(uri=BASALT_SCHEMA.injection_volume, name="tOCTNDataGenerationActivity__injection_volume", curie=BASALT_SCHEMA.curie('injection_volume'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__injection_volume, domain=None, range=str)
+
+slots.tOCTNDataGenerationActivity__sample_volume = Slot(uri=BASALT_SCHEMA.sample_volume, name="tOCTNDataGenerationActivity__sample_volume", curie=BASALT_SCHEMA.curie('sample_volume'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__sample_volume, domain=None, range=str)
+
+slots.tOCTNDataGenerationActivity__number_of_injections = Slot(uri=BASALT_SCHEMA.number_of_injections, name="tOCTNDataGenerationActivity__number_of_injections", curie=BASALT_SCHEMA.curie('number_of_injections'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__number_of_injections, domain=None, range=float)
+
+slots.tOCTNDataGenerationActivity__check_standard_spacing = Slot(uri=BASALT_SCHEMA.check_standard_spacing, name="tOCTNDataGenerationActivity__check_standard_spacing", curie=BASALT_SCHEMA.curie('check_standard_spacing'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__check_standard_spacing, domain=None, range=Optional[str])
+
+slots.xCTDataGenerationActivity__x_ray_power = Slot(uri=BASALT_SCHEMA.x_ray_power, name="xCTDataGenerationActivity__x_ray_power", curie=BASALT_SCHEMA.curie('x_ray_power'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__x_ray_power, domain=None, range=str)
+
+slots.xCTDataGenerationActivity__cu_filter = Slot(uri=BASALT_SCHEMA.cu_filter, name="xCTDataGenerationActivity__cu_filter", curie=BASALT_SCHEMA.curie('cu_filter'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__cu_filter, domain=None, range=str)
+
+slots.xCTDataGenerationActivity__total_projections_collected = Slot(uri=BASALT_SCHEMA.total_projections_collected, name="xCTDataGenerationActivity__total_projections_collected", curie=BASALT_SCHEMA.curie('total_projections_collected'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__total_projections_collected, domain=None, range=float)
+
+slots.xCTDataGenerationActivity__rotation = Slot(uri=BASALT_SCHEMA.rotation, name="xCTDataGenerationActivity__rotation", curie=BASALT_SCHEMA.curie('rotation'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__rotation, domain=None, range=str)
+
+slots.xCTDataGenerationActivity__frames_recording_per_projection = Slot(uri=BASALT_SCHEMA.frames_recording_per_projection, name="xCTDataGenerationActivity__frames_recording_per_projection", curie=BASALT_SCHEMA.curie('frames_recording_per_projection'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__frames_recording_per_projection, domain=None, range=float)
+
+slots.xCTDataGenerationActivity__exposure_time_per_frame = Slot(uri=BASALT_SCHEMA.exposure_time_per_frame, name="xCTDataGenerationActivity__exposure_time_per_frame", curie=BASALT_SCHEMA.curie('exposure_time_per_frame'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__exposure_time_per_frame, domain=None, range=str)
+
+slots.xCTDataGenerationActivity__image_voxel_size_is = Slot(uri=BASALT_SCHEMA.image_voxel_size_is, name="xCTDataGenerationActivity__image_voxel_size_is", curie=BASALT_SCHEMA.curie('image_voxel_size_is'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__image_voxel_size_is, domain=None, range=str)
 
 slots.bulkDensityProduct__bulk_density_id = Slot(uri=BASALT_SCHEMA.bulk_density_id, name="bulkDensityProduct__bulk_density_id", curie=BASALT_SCHEMA.curie('bulk_density_id'),
                    model_uri=BASALT_SCHEMA.bulkDensityProduct__bulk_density_id, domain=None, range=Optional[Union[str, QuantityValueId]])
@@ -17756,32 +18467,29 @@ slots.ionsAnalysisProduct__flag_total_bases = Slot(uri=BASALT_SCHEMA.flag_total_
 slots.ionsAnalysisProduct__flag_cec = Slot(uri=BASALT_SCHEMA.flag_cec, name="ionsAnalysisProduct__flag_cec", curie=BASALT_SCHEMA.curie('flag_cec'),
                    model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_cec, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.mAOMProduct__id = Slot(uri=BASALT_SCHEMA.id, name="mAOMProduct__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.mAOMProduct__id, domain=None, range=URIRef)
+slots.hClExtOMProduct__total_organic_carbon_id = Slot(uri=BASALT_SCHEMA.total_organic_carbon_id, name="hClExtOMProduct__total_organic_carbon_id", curie=BASALT_SCHEMA.curie('total_organic_carbon_id'),
+                   model_uri=BASALT_SCHEMA.hClExtOMProduct__total_organic_carbon_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.mAOMProduct__total_organic_carbon_id = Slot(uri=BASALT_SCHEMA.total_organic_carbon_id, name="mAOMProduct__total_organic_carbon_id", curie=BASALT_SCHEMA.curie('total_organic_carbon_id'),
-                   model_uri=BASALT_SCHEMA.mAOMProduct__total_organic_carbon_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.hClExtOMProduct__total_organic_carbon_avg = Slot(uri=BASALT_SCHEMA.total_organic_carbon_avg, name="hClExtOMProduct__total_organic_carbon_avg", curie=BASALT_SCHEMA.curie('total_organic_carbon_avg'),
+                   model_uri=BASALT_SCHEMA.hClExtOMProduct__total_organic_carbon_avg, domain=None, range=Optional[float])
 
-slots.mAOMProduct__total_organic_carbon_avg = Slot(uri=BASALT_SCHEMA.total_organic_carbon_avg, name="mAOMProduct__total_organic_carbon_avg", curie=BASALT_SCHEMA.curie('total_organic_carbon_avg'),
-                   model_uri=BASALT_SCHEMA.mAOMProduct__total_organic_carbon_avg, domain=None, range=Optional[float])
+slots.hClExtOMProduct__total_nitrogen_id = Slot(uri=BASALT_SCHEMA.total_nitrogen_id, name="hClExtOMProduct__total_nitrogen_id", curie=BASALT_SCHEMA.curie('total_nitrogen_id'),
+                   model_uri=BASALT_SCHEMA.hClExtOMProduct__total_nitrogen_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.mAOMProduct__total_nitrogen_id = Slot(uri=BASALT_SCHEMA.total_nitrogen_id, name="mAOMProduct__total_nitrogen_id", curie=BASALT_SCHEMA.curie('total_nitrogen_id'),
-                   model_uri=BASALT_SCHEMA.mAOMProduct__total_nitrogen_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.hClExtOMProduct__total_nitrogen_avg = Slot(uri=BASALT_SCHEMA.total_nitrogen_avg, name="hClExtOMProduct__total_nitrogen_avg", curie=BASALT_SCHEMA.curie('total_nitrogen_avg'),
+                   model_uri=BASALT_SCHEMA.hClExtOMProduct__total_nitrogen_avg, domain=None, range=Optional[float])
 
-slots.mAOMProduct__total_nitrogen_avg = Slot(uri=BASALT_SCHEMA.total_nitrogen_avg, name="mAOMProduct__total_nitrogen_avg", curie=BASALT_SCHEMA.curie('total_nitrogen_avg'),
-                   model_uri=BASALT_SCHEMA.mAOMProduct__total_nitrogen_avg, domain=None, range=Optional[float])
+slots.hClExtOMProduct__flag_toc = Slot(uri=BASALT_SCHEMA.flag_toc, name="hClExtOMProduct__flag_toc", curie=BASALT_SCHEMA.curie('flag_toc'),
+                   model_uri=BASALT_SCHEMA.hClExtOMProduct__flag_toc, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.mAOMProduct__flag_toc = Slot(uri=BASALT_SCHEMA.flag_toc, name="mAOMProduct__flag_toc", curie=BASALT_SCHEMA.curie('flag_toc'),
-                   model_uri=BASALT_SCHEMA.mAOMProduct__flag_toc, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.hClExtOMProduct__flag_tn = Slot(uri=BASALT_SCHEMA.flag_tn, name="hClExtOMProduct__flag_tn", curie=BASALT_SCHEMA.curie('flag_tn'),
+                   model_uri=BASALT_SCHEMA.hClExtOMProduct__flag_tn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.mAOMProduct__flag_tn = Slot(uri=BASALT_SCHEMA.flag_tn, name="mAOMProduct__flag_tn", curie=BASALT_SCHEMA.curie('flag_tn'),
-                   model_uri=BASALT_SCHEMA.mAOMProduct__flag_tn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.hClExtOMProduct__flag_toc_avg = Slot(uri=BASALT_SCHEMA.flag_toc_avg, name="hClExtOMProduct__flag_toc_avg", curie=BASALT_SCHEMA.curie('flag_toc_avg'),
+                   model_uri=BASALT_SCHEMA.hClExtOMProduct__flag_toc_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.mAOMProduct__flag_toc_avg = Slot(uri=BASALT_SCHEMA.flag_toc_avg, name="mAOMProduct__flag_toc_avg", curie=BASALT_SCHEMA.curie('flag_toc_avg'),
-                   model_uri=BASALT_SCHEMA.mAOMProduct__flag_toc_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
-
-slots.mAOMProduct__flag_tn_avg = Slot(uri=BASALT_SCHEMA.flag_tn_avg, name="mAOMProduct__flag_tn_avg", curie=BASALT_SCHEMA.curie('flag_tn_avg'),
-                   model_uri=BASALT_SCHEMA.mAOMProduct__flag_tn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.hClExtOMProduct__flag_tn_avg = Slot(uri=BASALT_SCHEMA.flag_tn_avg, name="hClExtOMProduct__flag_tn_avg", curie=BASALT_SCHEMA.curie('flag_tn_avg'),
+                   model_uri=BASALT_SCHEMA.hClExtOMProduct__flag_tn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.microbialBiomassProduct__mbc_id = Slot(uri=BASALT_SCHEMA.mbc_id, name="microbialBiomassProduct__mbc_id", curie=BASALT_SCHEMA.curie('mbc_id'),
                    model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbc_id, domain=None, range=Optional[Union[str, QuantityValueId]])
@@ -17863,9 +18571,6 @@ slots.textureProduct__clay_pct_id = Slot(uri=BASALT_SCHEMA.clay_pct_id, name="te
 
 slots.textureProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="textureProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.textureProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
-
-slots.wEOMProduct__id = Slot(uri=BASALT_SCHEMA.id, name="wEOMProduct__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.wEOMProduct__id, domain=None, range=URIRef)
 
 slots.wEOMProduct__total_organic_carbon_id = Slot(uri=BASALT_SCHEMA.total_organic_carbon_id, name="wEOMProduct__total_organic_carbon_id", curie=BASALT_SCHEMA.curie('total_organic_carbon_id'),
                    model_uri=BASALT_SCHEMA.wEOMProduct__total_organic_carbon_id, domain=None, range=Optional[Union[str, QuantityValueId]])
@@ -18269,12 +18974,6 @@ slots.engineeredStrainSample__id = Slot(uri=BASALT_SCHEMA.id, name="engineeredSt
 slots.engineeredStrainSample__cbi = Slot(uri=BASALT_SCHEMA.cbi, name="engineeredStrainSample__cbi", curie=BASALT_SCHEMA.curie('cbi'),
                    model_uri=BASALT_SCHEMA.engineeredStrainSample__cbi, domain=None, range=str)
 
-slots.engineeredStrainSample__storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="engineeredStrainSample__storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
-                   model_uri=BASALT_SCHEMA.engineeredStrainSample__storage_condition, domain=None, range=str)
-
-slots.engineeredStrainSample__storage_temperature = Slot(uri=BASALT_SCHEMA.storage_temperature, name="engineeredStrainSample__storage_temperature", curie=BASALT_SCHEMA.curie('storage_temperature'),
-                   model_uri=BASALT_SCHEMA.engineeredStrainSample__storage_temperature, domain=None, range=Optional[str])
-
 slots.fieldDeployedTerraformSample__id = Slot(uri=BASALT_SCHEMA.id, name="fieldDeployedTerraformSample__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.fieldDeployedTerraformSample__id, domain=None, range=URIRef)
 
@@ -18310,6 +19009,9 @@ slots.waterSample__id = Slot(uri=BASALT_SCHEMA.id, name="waterSample__id", curie
 
 slots.processedSample__id = Slot(uri=BASALT_SCHEMA.id, name="processedSample__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.processedSample__id, domain=None, range=URIRef)
+
+slots.sampleStorage__id = Slot(uri=BASALT_SCHEMA.id, name="sampleStorage__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.sampleStorage__id, domain=None, range=URIRef)
 
 slots.coreSection__id = Slot(uri=BASALT_SCHEMA.id, name="coreSection__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.coreSection__id, domain=None, range=URIRef)
@@ -18713,12 +19415,6 @@ slots.AerosolSample_size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="Ae
 slots.AMP2UserSample_organism_ref = Slot(uri=BASALT_SCHEMA.organism_ref, name="AMP2UserSample_organism_ref", curie=BASALT_SCHEMA.curie('organism_ref'),
                    model_uri=BASALT_SCHEMA.AMP2UserSample_organism_ref, domain=AMP2UserSample, range=Union[str, OrganismId])
 
-slots.AMP2UserSample_storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="AMP2UserSample_storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
-                   model_uri=BASALT_SCHEMA.AMP2UserSample_storage_condition, domain=AMP2UserSample, range=Union[str, "StorageConditionEnum"])
-
-slots.AMP2UserSample_storage_temperature = Slot(uri=BASALT_SCHEMA.storage_temperature, name="AMP2UserSample_storage_temperature", curie=BASALT_SCHEMA.curie('storage_temperature'),
-                   model_uri=BASALT_SCHEMA.AMP2UserSample_storage_temperature, domain=AMP2UserSample, range=Optional[str])
-
 slots.AMP2UserSample_name = Slot(uri=BASALT_SCHEMA.name, name="AMP2UserSample_name", curie=BASALT_SCHEMA.curie('name'),
                    model_uri=BASALT_SCHEMA.AMP2UserSample_name, domain=AMP2UserSample, range=str)
 
@@ -18732,7 +19428,7 @@ slots.CommerciallyPurchasedSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysi
                    model_uri=BASALT_SCHEMA.CommerciallyPurchasedSample_analysis_type, domain=CommerciallyPurchasedSample, range=str)
 
 slots.CommerciallyPurchasedSample_compound_name = Slot(uri=BASALT_SCHEMA.compound_name, name="CommerciallyPurchasedSample_compound_name", curie=BASALT_SCHEMA.curie('compound_name'),
-                   model_uri=BASALT_SCHEMA.CommerciallyPurchasedSample_compound_name, domain=CommerciallyPurchasedSample, range=str)
+                   model_uri=BASALT_SCHEMA.CommerciallyPurchasedSample_compound_name, domain=CommerciallyPurchasedSample, range=Union[str, "ChemicalEntityEnum"])
 
 slots.CultureEnvironmentalSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="CultureEnvironmentalSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_analysis_type, domain=CultureEnvironmentalSample, range=str)
@@ -19027,6 +19723,12 @@ slots.WaterSample_size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="Wate
 
 slots.ProcessedSample_replicate = Slot(uri=BASALT_SCHEMA.replicate, name="ProcessedSample_replicate", curie=BASALT_SCHEMA.curie('replicate'),
                    model_uri=BASALT_SCHEMA.ProcessedSample_replicate, domain=ProcessedSample, range=Optional[int])
+
+slots.SampleStorage_sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="SampleStorage_sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
+                   model_uri=BASALT_SCHEMA.SampleStorage_sample_id, domain=SampleStorage, range=Union[str, SampleId])
+
+slots.SampleStorage_substances_used = Slot(uri=BASALT_SCHEMA.substances_used, name="SampleStorage_substances_used", curie=BASALT_SCHEMA.curie('substances_used'),
+                   model_uri=BASALT_SCHEMA.SampleStorage_substances_used, domain=SampleStorage, range=Optional[Union[str, SubstancesUsedLinkId]])
 
 slots.CoreSection_core_section = Slot(uri=BASALT_SCHEMA.core_section, name="CoreSection_core_section", curie=BASALT_SCHEMA.curie('core_section'),
                    model_uri=BASALT_SCHEMA.CoreSection_core_section, domain=CoreSection, range=Union[str, "CoreSectionEnum"])
