@@ -575,6 +575,13 @@ enums:
       other:
         text: other
         description: Other extraction method not otherwise specified.
+      monet_weom:
+        description: Water extraction method for organic matter used for MONet samples
+        aliases: [WEOM]
+      monet_heom:
+        description: Hydrochloric acid extraction method for organic matter used for MONet samples
+        aliases: [HEOM]
+  
 
   FAOClassEnum:
     description: FAO soil classification system
