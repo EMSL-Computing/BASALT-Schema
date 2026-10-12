@@ -1054,6 +1054,17 @@ enums:
       other:
         text: other
         description: Other extraction method not otherwise specified.
+      monet_weom:
+        text: monet_weom
+        description: Water extraction method for organic matter used for MONet samples
+        aliases:
+        - WEOM
+      monet_heom:
+        text: monet_heom
+        description: Hydrochloric acid extraction method for organic matter used for
+          MONet samples
+        aliases:
+        - HEOM
   FAOClassEnum:
     name: FAOClassEnum
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/FAOClassEnum
@@ -2981,6 +2992,50 @@ enums:
       pore2chip:
         text: pore2chip
         title: Pore2Chip
+  TemperatureCategoryEnum:
+    name: TemperatureCategoryEnum
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/TemperatureCategoryEnum
+    description: 'Nominal temperature conditions for a temperature hold (storage,
+      incubation,
+
+      reaction). Use with temperature_category; record the numeric value in
+
+      temperature_celsius when known.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/enums
+    permissible_values:
+      room_temperature:
+        text: room_temperature
+        description: "Room temperature (~20-25\xB0C)"
+        aliases:
+        - room temperature
+        - RT
+        - freshroom
+      refrigerated:
+        text: refrigerated
+        description: "Refrigerated at 4\xB0C"
+        aliases:
+        - 4 C
+        - fresh4
+      frozen_minus20:
+        text: frozen_minus20
+        description: "Frozen at -20\xB0C"
+        aliases:
+        - -20 C
+        - frozen20
+      frozen_minus80:
+        text: frozen_minus80
+        description: "Frozen at -80\xB0C"
+        aliases:
+        - -80 C
+        - frozen80
+      liquid_nitrogen:
+        text: liquid_nitrogen
+        description: "Cryogenic storage in liquid nitrogen (~-196\xB0C)"
+        aliases:
+        - LN2
+      other:
+        text: other
+        description: Other temperature condition
   TidalStageEnum:
     name: TidalStageEnum
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/TidalStageEnum
@@ -4714,11 +4769,27 @@ slots:
     description: how long something took, in minutes
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:duration_min
-    owner: ChemicalConversionProcess
+    owner: MobilePhaseSegment
     domain_of:
     - ChromatographyConfiguration
     - MobilePhaseSegment
-    - ChemicalConversionProcess
+    range: float
+  duration_hours:
+    name: duration_hours
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/duration_hours
+    description: 'How long material was held at a temperature (incubation, culture
+      growth,
+
+      reaction, or storage), in hours. Shared by all HasTemperatureHold classes.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    aliases:
+    - incubation_time_hours
+    - growth_time
+    - incubation_time
+    slot_uri: basalt_schema:duration_hours
+    owner: HasTemperatureHold
+    domain_of:
+    - HasTemperatureHold
     range: float
   efficiency_percent:
     name: efficiency_percent
@@ -5495,18 +5566,6 @@ slots:
     - PureCultureSample
     - TerraformSample
     range: string
-  growth_time:
-    name: growth_time
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/growth_time
-    description: 'Total growth time for the culture.
-
-      Required for ExperimentalCulture activities.'
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:growth_time
-    owner: ExperimentalCulture
-    domain_of:
-    - ExperimentalCulture
-    range: string
   guid_source:
     name: guid_source
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/guid_source
@@ -5558,6 +5617,26 @@ slots:
     - OtherUndescribedSample
     - PlantSample
     range: string
+  hold_end_time:
+    name: hold_end_time
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/hold_end_time
+    description: When the temperature hold (incubation, reaction, or storage) ended.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:hold_end_time
+    owner: HasTemperatureHold
+    domain_of:
+    - HasTemperatureHold
+    range: datetime
+  hold_start_time:
+    name: hold_start_time
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/hold_start_time
+    description: When the temperature hold (incubation, reaction, or storage) started.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:hold_start_time
+    owner: HasTemperatureHold
+    domain_of:
+    - HasTemperatureHold
+    range: datetime
   horizon_meth:
     name: horizon_meth
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/horizon_meth
@@ -5905,16 +5984,6 @@ slots:
     domain_of:
     - ProcessingSampleLink
     range: SampleProcessingRun
-  incubation_time_hours:
-    name: incubation_time_hours
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/incubation_time_hours
-    description: Incubation duration in hours
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:incubation_time_hours
-    owner: CultureGrowth
-    domain_of:
-    - CultureGrowth
-    range: float
   indust_eff_percent:
     name: indust_eff_percent
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/indust_eff_percent
@@ -6507,7 +6576,7 @@ slots:
     - GWCMoistureProduct
     - HydraulicPropertiesProduct
     - IonsAnalysisProduct
-    - MAOMProduct
+    - HClExtOMProduct
     - MicrobialBiomassProduct
     - NitrogenAnalysisProduct
     - PhosphorusAnalysisProduct
@@ -8125,6 +8194,18 @@ slots:
     domain_of:
     - UVSpectroscopyProduct
     range: UVDataGenerationActivity
+  produced_by_toctn_run:
+    name: produced_by_toctn_run
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/produced_by_toctn_run
+    description: a reference to the TOC/TN data generation activity that produced
+      this measurement.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:produced_by_toctn_run
+    owner: WEOMProduct
+    domain_of:
+    - HClExtOMProduct
+    - WEOMProduct
+    range: TOC_TN_DataGenerationActivity
   product_name:
     name: product_name
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/product_name
@@ -8361,7 +8442,7 @@ slots:
     slot_uri: basalt_schema:replicate
     owner: ProcessedSample
     domain_of:
-    - MAOMProduct
+    - HClExtOMProduct
     - MicrobialBiomassProduct
     - NitrogenAnalysisProduct
     - PhosphorusAnalysisProduct
@@ -8791,11 +8872,12 @@ slots:
     description: Link back to the originating sample
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:sample_id
-    owner: MetagenomicsProduct
+    owner: SampleStorage
     domain_of:
     - ProcessedData
     - AMP2WellMetadata
     - MetagenomicsProduct
+    - SampleStorage
     range: Sample
     required: false
   sample_link:
@@ -10689,7 +10771,7 @@ slots:
     exact_mappings:
     - MIXS:0000327
     slot_uri: basalt_schema:storage_condition
-    owner: WaterSample
+    owner: SampleStorage
     domain_of:
     - AerosolArmSample
     - AerosolSample
@@ -10708,6 +10790,7 @@ slots:
     - SynthesizedMaterialSample
     - TerraformSample
     - WaterSample
+    - SampleStorage
     range: StorageConditionEnum
   storage_condition_other:
     name: storage_condition_other
@@ -10719,7 +10802,7 @@ slots:
     - other_storage_condt
     - storage_condt_other
     slot_uri: basalt_schema:storage_condition_other
-    owner: WaterSample
+    owner: SampleStorage
     domain_of:
     - AerosolArmSample
     - AerosolSample
@@ -10736,17 +10819,7 @@ slots:
     - SynthesizedMaterialSample
     - TerraformSample
     - WaterSample
-    range: string
-  storage_location:
-    name: storage_location
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/storage_location
-    description: The physical or digital location where the processed sample is stored
-      (e.g., freezer location, database ID).
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:storage_location
-    owner: ProcessedSample
-    domain_of:
-    - ProcessedSample
+    - SampleStorage
     range: string
   storage_temperature:
     name: storage_temperature
@@ -10756,7 +10829,6 @@ slots:
     slot_uri: basalt_schema:storage_temperature
     owner: EngineeredStrainSample
     domain_of:
-    - MediaPreparation
     - AMP2UserSample
     - EngineeredStrainSample
     range: string
@@ -10874,6 +10946,7 @@ slots:
     slot_uri: basalt_schema:substances_used
     owner: ResuspensionProcess
     domain_of:
+    - SampleStorage
     - ChemicalConversionProcess
     - Extraction
     - ResuspensionProcess
@@ -11148,18 +11221,32 @@ slots:
     - TerraformSample
     - WaterSample
     range: string
+  temperature_category:
+    name: temperature_category
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/temperature_category
+    description: 'Categorical temperature for a hold, for use when only a nominal
+      condition
+
+      (e.g., "-80 C", "room temperature") is known. Record the numeric value in
+
+      temperature_celsius when available.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:temperature_category
+    owner: HasTemperatureHold
+    domain_of:
+    - HasTemperatureHold
+    range: TemperatureCategoryEnum
   temperature_celsius:
     name: temperature_celsius
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/temperature_celsius
     description: Temperature at which the method/process/activity was performed
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:temperature_celsius
-    owner: ChemicalConversionProcess
+    owner: ChromatographyConfiguration
     domain_of:
+    - HasTemperatureHold
     - RIDataGenerationActivity
     - ChromatographyConfiguration
-    - HasIncubationConditions
-    - ChemicalConversionProcess
     range: float
   temperature_exposure:
     name: temperature_exposure
@@ -13174,24 +13261,6 @@ slots:
     domain_of:
     - WellReading
     range: string
-  enzymeActivityDataGenerationActivity__incubation_temp_c:
-    name: enzymeActivityDataGenerationActivity__incubation_temp_c
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
-    slot_uri: basalt_schema:incubation_temp_c
-    alias: incubation_temp_c
-    owner: EnzymeActivityDataGenerationActivity
-    domain_of:
-    - EnzymeActivityDataGenerationActivity
-    range: double
-  enzymeActivityDataGenerationActivity__incubation_time:
-    name: enzymeActivityDataGenerationActivity__incubation_time
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
-    slot_uri: basalt_schema:incubation_time
-    alias: incubation_time
-    owner: EnzymeActivityDataGenerationActivity
-    domain_of:
-    - EnzymeActivityDataGenerationActivity
-    range: string
   enzymeActivityDataGenerationActivity__wavelength:
     name: enzymeActivityDataGenerationActivity__wavelength
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
@@ -13832,88 +13901,77 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: ProcessedDataFlag
-  mAOMProduct__id:
-    name: mAOMProduct__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: MAOMProduct
-    domain_of:
-    - MAOMProduct
-    range: ProcessedData
-    required: true
-  mAOMProduct__total_organic_carbon_id:
-    name: mAOMProduct__total_organic_carbon_id
+  hClExtOMProduct__total_organic_carbon_id:
+    name: hClExtOMProduct__total_organic_carbon_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     slot_uri: basalt_schema:total_organic_carbon_id
     alias: total_organic_carbon_id
-    owner: MAOMProduct
+    owner: HClExtOMProduct
     domain_of:
-    - MAOMProduct
+    - HClExtOMProduct
     range: QuantityValue
-  mAOMProduct__total_organic_carbon_avg:
-    name: mAOMProduct__total_organic_carbon_avg
+  hClExtOMProduct__total_organic_carbon_avg:
+    name: hClExtOMProduct__total_organic_carbon_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     slot_uri: basalt_schema:total_organic_carbon_avg
     alias: total_organic_carbon_avg
-    owner: MAOMProduct
+    owner: HClExtOMProduct
     domain_of:
-    - MAOMProduct
+    - HClExtOMProduct
     range: double
-  mAOMProduct__total_nitrogen_id:
-    name: mAOMProduct__total_nitrogen_id
+  hClExtOMProduct__total_nitrogen_id:
+    name: hClExtOMProduct__total_nitrogen_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     slot_uri: basalt_schema:total_nitrogen_id
     alias: total_nitrogen_id
-    owner: MAOMProduct
+    owner: HClExtOMProduct
     domain_of:
-    - MAOMProduct
+    - HClExtOMProduct
     range: QuantityValue
-  mAOMProduct__total_nitrogen_avg:
-    name: mAOMProduct__total_nitrogen_avg
+  hClExtOMProduct__total_nitrogen_avg:
+    name: hClExtOMProduct__total_nitrogen_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     slot_uri: basalt_schema:total_nitrogen_avg
     alias: total_nitrogen_avg
-    owner: MAOMProduct
+    owner: HClExtOMProduct
     domain_of:
-    - MAOMProduct
+    - HClExtOMProduct
     range: double
-  mAOMProduct__flag_toc:
-    name: mAOMProduct__flag_toc
+  hClExtOMProduct__flag_toc:
+    name: hClExtOMProduct__flag_toc
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     slot_uri: basalt_schema:flag_toc
     alias: flag_toc
-    owner: MAOMProduct
+    owner: HClExtOMProduct
     domain_of:
-    - MAOMProduct
+    - HClExtOMProduct
     range: ProcessedDataFlag
-  mAOMProduct__flag_tn:
-    name: mAOMProduct__flag_tn
+  hClExtOMProduct__flag_tn:
+    name: hClExtOMProduct__flag_tn
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     slot_uri: basalt_schema:flag_tn
     alias: flag_tn
-    owner: MAOMProduct
+    owner: HClExtOMProduct
     domain_of:
-    - MAOMProduct
+    - HClExtOMProduct
     range: ProcessedDataFlag
-  mAOMProduct__flag_toc_avg:
-    name: mAOMProduct__flag_toc_avg
+  hClExtOMProduct__flag_toc_avg:
+    name: hClExtOMProduct__flag_toc_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     slot_uri: basalt_schema:flag_toc_avg
     alias: flag_toc_avg
-    owner: MAOMProduct
+    owner: HClExtOMProduct
     domain_of:
-    - MAOMProduct
+    - HClExtOMProduct
     range: ProcessedDataFlag
-  mAOMProduct__flag_tn_avg:
-    name: mAOMProduct__flag_tn_avg
+  hClExtOMProduct__flag_tn_avg:
+    name: hClExtOMProduct__flag_tn_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     slot_uri: basalt_schema:flag_tn_avg
     alias: flag_tn_avg
-    owner: MAOMProduct
+    owner: HClExtOMProduct
     domain_of:
-    - MAOMProduct
+    - HClExtOMProduct
     range: ProcessedDataFlag
   microbialBiomassProduct__mbc_id:
     name: microbialBiomassProduct__mbc_id
@@ -14159,17 +14217,6 @@ slots:
     domain_of:
     - TextureProduct
     range: ProcessedDataFlag
-  wEOMProduct__id:
-    name: wEOMProduct__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: WEOMProduct
-    domain_of:
-    - WEOMProduct
-    range: ProcessedData
-    required: true
   wEOMProduct__total_organic_carbon_id:
     name: wEOMProduct__total_organic_carbon_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -15659,6 +15706,17 @@ slots:
     owner: ProcessedSample
     domain_of:
     - ProcessedSample
+    range: uuid
+    required: true
+  sampleStorage__id:
+    name: sampleStorage__id
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
+    slot_uri: basalt_schema:id
+    identifier: true
+    alias: id
+    owner: SampleStorage
+    domain_of:
+    - SampleStorage
     range: uuid
     required: true
   coreSection__id:
@@ -17349,7 +17407,7 @@ slots:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/storage_condition
     description: 'Storage condition for this sample (frozen, fresh, etc.).
 
-      Inherited from Sample; required for AMP2UserSample.
+      Required for AMP2UserSample.
 
       Aliases: samp_store_cond, storage_cond, storage_condt'
     title: storage condition
@@ -19458,6 +19516,60 @@ slots:
     is_usage_slot: true
     usage_slot_name: replicate
     range: integer
+  SampleStorage_storage_condition:
+    name: SampleStorage_storage_condition
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/storage_condition
+    description: Physical state of the sample during this storage period.
+    title: storage condition
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    aliases:
+    - samp_store_cond
+    - storage_cond
+    - storage_condt
+    exact_mappings:
+    - MIXS:0000327
+    is_a: storage_condition
+    domain: SampleStorage
+    slot_uri: basalt_schema:storage_condition
+    alias: storage_condition
+    owner: SampleStorage
+    domain_of:
+    - SampleStorage
+    is_usage_slot: true
+    usage_slot_name: storage_condition
+    range: StorageConditionEnum
+  SampleStorage_sample_id:
+    name: SampleStorage_sample_id
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample_id
+    description: The sample being stored.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: sample_id
+    domain: SampleStorage
+    slot_uri: basalt_schema:sample_id
+    alias: sample_id
+    owner: SampleStorage
+    domain_of:
+    - SampleStorage
+    is_usage_slot: true
+    usage_slot_name: sample_id
+    range: Sample
+    required: true
+  SampleStorage_substances_used:
+    name: SampleStorage_substances_used
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/substances_used
+    description: Cryoprotectants or preservatives the sample is stored in (e.g., glycerol,
+      DMSO, RNAlater).
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: substances_used
+    domain: SampleStorage
+    slot_uri: basalt_schema:substances_used
+    alias: substances_used
+    owner: SampleStorage
+    domain_of:
+    - SampleStorage
+    is_usage_slot: true
+    usage_slot_name: substances_used
+    range: SubstancesUsedLink
   CoreSection_core_section:
     name: CoreSection_core_section
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/core_section
@@ -20269,6 +20381,30 @@ classes:
         identifier: true
         range: uuid
     class_uri: basalt_schema:SampleProcessing
+  HasTemperatureHold:
+    name: HasTemperatureHold
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/HasTemperatureHold
+    description: 'Mixin for anything that holds material at a temperature for a period
+      of time:
+
+      storage (SampleStorage), incubation and culture growth (HasIncubationConditions),
+
+      chemical reactions (ChemicalConversionProcess), and assay incubations. It shares
+
+      the vocabulary only; the purpose of the hold (preservation vs. experimental
+
+      treatment) is carried by the class that uses it, so class-specific required
+
+      fields (e.g., organism, media) stay enforceable.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    mixin: true
+    slots:
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
+    class_uri: basalt_schema:HasTemperatureHold
   ProcessingSampleLink:
     name: ProcessingSampleLink
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ProcessingSampleLink
@@ -21019,13 +21155,21 @@ classes:
 
       temperature and agitation parameters but live in different branches
 
-      of the sampleProcessing is_a tree.'
+      of the sampleProcessing is_a tree.
+
+      Temperature and duration come from HasTemperatureHold.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     mixin: true
+    mixins:
+    - HasTemperatureHold
     slots:
-    - temperature_celsius
     - agitation_speed_rpm
     - oxygen_saturation_pct
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
     class_uri: basalt_schema:HasIncubationConditions
   PurchasedMaterial:
     name: PurchasedMaterial
@@ -21061,9 +21205,11 @@ classes:
       \ and AMP2PlateSetupActivity\nactivities reference that processedSample via\
       \ the media_ref FK slot.\n\nLifecycle:\n  MediaPreparation activity\n    ->\
       \ processingSampleLink(role=output_sample)\n    -> processedSample(type='prepared_media');\
-      \ media_ref points here\n    -> CultureGrowth / AMP2PlateSetupActivity.media_ref"
+      \ media_ref points here\n    -> CultureGrowth / AMP2PlateSetupActivity.media_ref\n\
+      \nStorage of the prepared media batch is recorded as SampleStorage rows on the\n\
+      prepared_media processedSample (storage_condition from StorageConditionEnum,\n\
+      temperature via temperature_celsius / temperature_category)."
     todos:
-    - storage_condt as enum?
     - media range?
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: SampleProcessing
@@ -21082,7 +21228,6 @@ classes:
     - ph_target
     - exposure_sensitivity
     - media_additions
-    - storage_temperature
     - creation_date
     class_uri: basalt_schema:MediaPreparation
   CultureGrowth:
@@ -21103,11 +21248,14 @@ classes:
     - sampleProcessing__id
     - organism_ref
     - growth_medium
-    - incubation_time_hours
     - container_type
-    - temperature_celsius
     - agitation_speed_rpm
     - oxygen_saturation_pct
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
     class_uri: basalt_schema:CultureGrowth
   StrainPurity:
     name: StrainPurity
@@ -21134,11 +21282,14 @@ classes:
     - sampleProcessing__id
     - organism_ref
     - growth_medium
-    - incubation_time_hours
     - container_type
-    - temperature_celsius
     - agitation_speed_rpm
     - oxygen_saturation_pct
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
     - inspection_method
     - target_strain
     - contaminant_strains
@@ -21153,7 +21304,12 @@ classes:
 
       Output: processedSample(type=''stock_culture'') via processingSampleLink
 
-      Refs:   Media (growth medium), Strain'
+      Refs:   Media (growth medium), Strain
+
+
+      Long-term storage of the stock (e.g., -80 C in glycerol) is recorded as a
+
+      SampleStorage row on the stock_culture processedSample, not on this activity.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: CultureGrowth
     slots:
@@ -21163,11 +21319,14 @@ classes:
     - sampleProcessing__id
     - organism_ref
     - growth_medium
-    - incubation_time_hours
     - container_type
-    - temperature_celsius
     - agitation_speed_rpm
     - oxygen_saturation_pct
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
     - preparation_date
     class_uri: basalt_schema:StockCulturePreparation
   PreCultureGrowth:
@@ -21194,11 +21353,14 @@ classes:
     - sampleProcessing__id
     - organism_ref
     - growth_medium
-    - incubation_time_hours
     - container_type
-    - temperature_celsius
     - agitation_speed_rpm
     - oxygen_saturation_pct
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
     class_uri: basalt_schema:PreCultureGrowth
   ExperimentalCulture:
     name: ExperimentalCulture
@@ -21222,13 +21384,15 @@ classes:
     - sampleProcessing__id
     - organism_ref
     - growth_medium
-    - incubation_time_hours
     - container_type
-    - temperature_celsius
     - agitation_speed_rpm
     - oxygen_saturation_pct
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
     - treatment_type
-    - growth_time
     class_uri: basalt_schema:ExperimentalCulture
   PlateSetupActivity:
     name: PlateSetupActivity
@@ -21256,9 +21420,13 @@ classes:
     - setup_instrument
     - sealing_method
     - well_metadata
-    - temperature_celsius
     - agitation_speed_rpm
     - oxygen_saturation_pct
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
     class_uri: basalt_schema:PlateSetupActivity
   AMP2PlateSetupActivity:
     name: AMP2PlateSetupActivity
@@ -21286,9 +21454,13 @@ classes:
     - setup_instrument
     - sealing_method
     - well_metadata
-    - temperature_celsius
     - agitation_speed_rpm
     - oxygen_saturation_pct
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
     - media_ref
     - cycle_id
     class_uri: basalt_schema:AMP2PlateSetupActivity
@@ -21322,9 +21494,13 @@ classes:
     - setup_instrument
     - sealing_method
     - well_metadata
-    - temperature_celsius
     - agitation_speed_rpm
     - oxygen_saturation_pct
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
     class_uri: basalt_schema:EcoplatePlateSetupActivity
   PlateDataGenerationActivity:
     name: PlateDataGenerationActivity
@@ -21975,6 +22151,8 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/EnzymeActivityDataGenerationActivity
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
     is_a: DataGenerationActivity
+    mixins:
+    - HasTemperatureHold
     slots:
     - sequence_order
     - name
@@ -21987,16 +22165,13 @@ classes:
     - instrument_used
     - instrument_operator
     - dataGenerationActivity__id
-    - enzymeActivityDataGenerationActivity__incubation_temp_c
-    - enzymeActivityDataGenerationActivity__incubation_time
     - enzymeActivityDataGenerationActivity__wavelength
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
     attributes:
-      incubation_temp_c:
-        name: incubation_temp_c
-        range: double
-      incubation_time:
-        name: incubation_time
-        range: string
       wavelength:
         name: wavelength
         range: double
@@ -22629,32 +22804,43 @@ classes:
         name: flag_cec
         range: ProcessedDataFlag
     class_uri: basalt_schema:IonsAnalysisProduct
-  MAOMProduct:
-    name: MAOMProduct
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/MAOMProduct
-    description: 'Mineral-Associated Organic Matter (MAOM) analysis product, typically
+  HClExtOMProduct:
+    name: HClExtOMProduct
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/HClExtOMProduct
+    description: 'Mineral-Associated Organic Matter (HClExtOM) analysis product, typically
       derived via HCl extraction and TOC/TN measurement.
 
-      Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE
-      RENAMED TO HClExtOMProduct'
+      Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    is_a: ProcessedData
     slots:
+    - name
+    - description
+    - project
+    - sampling_set
+    - core_section
+    - sample_name
+    - s3_base_url
+    - s3_bucket
+    - s3_key
+    - filesize
+    - md5checksum
+    - dataProduct__id
+    - summary_metrics
+    - lims_barcode
+    - sample_id
     - measure_type
     - replicate
-    - mAOMProduct__id
-    - mAOMProduct__total_organic_carbon_id
-    - mAOMProduct__total_organic_carbon_avg
-    - mAOMProduct__total_nitrogen_id
-    - mAOMProduct__total_nitrogen_avg
-    - mAOMProduct__flag_toc
-    - mAOMProduct__flag_tn
-    - mAOMProduct__flag_toc_avg
-    - mAOMProduct__flag_tn_avg
+    - produced_by_toctn_run
+    - hClExtOMProduct__total_organic_carbon_id
+    - hClExtOMProduct__total_organic_carbon_avg
+    - hClExtOMProduct__total_nitrogen_id
+    - hClExtOMProduct__total_nitrogen_avg
+    - hClExtOMProduct__flag_toc
+    - hClExtOMProduct__flag_tn
+    - hClExtOMProduct__flag_toc_avg
+    - hClExtOMProduct__flag_tn_avg
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: ProcessedData
       total_organic_carbon_id:
         name: total_organic_carbon_id
         range: QuantityValue
@@ -22679,7 +22865,7 @@ classes:
       flag_tn_avg:
         name: flag_tn_avg
         range: ProcessedDataFlag
-    class_uri: basalt_schema:MAOMProduct
+    class_uri: basalt_schema:HClExtOMProduct
   MicrobialBiomassProduct:
     name: MicrobialBiomassProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/MicrobialBiomassProduct
@@ -22937,10 +23123,26 @@ classes:
 
       Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    is_a: ProcessedData
     slots:
+    - name
+    - description
+    - project
+    - sampling_set
+    - core_section
+    - sample_name
+    - s3_base_url
+    - s3_bucket
+    - s3_key
+    - filesize
+    - md5checksum
+    - dataProduct__id
+    - summary_metrics
+    - lims_barcode
+    - sample_id
     - measure_type
     - replicate
-    - wEOMProduct__id
+    - produced_by_toctn_run
     - wEOMProduct__total_organic_carbon_id
     - wEOMProduct__total_organic_carbon_avg
     - wEOMProduct__total_nitrogen_id
@@ -22950,10 +23152,6 @@ classes:
     - wEOMProduct__flag_toc_avg
     - wEOMProduct__flag_tn_avg
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: ProcessedData
       total_organic_carbon_id:
         name: total_organic_carbon_id
         range: QuantityValue
@@ -24457,7 +24655,7 @@ classes:
         name: storage_condition
         description: 'Storage condition for this sample (frozen, fresh, etc.).
 
-          Inherited from Sample; required for AMP2UserSample.
+          Required for AMP2UserSample.
 
           Aliases: samp_store_cond, storage_cond, storage_condt'
         required: true
@@ -26286,7 +26484,6 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
-    - storage_location
     - label_text
     - concentration_ug_per_uL
     - total_amount_ug
@@ -26304,6 +26501,70 @@ classes:
         identifier: true
         range: uuid
     class_uri: basalt_schema:ProcessedSample
+  SampleStorage:
+    name: SampleStorage
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SampleStorage
+    description: 'A record of a sample being held in storage at a temperature. One
+      sample can
+
+      have many SampleStorage rows (e.g., received at 4 C, then moved to -80 C).
+
+
+      This is NOT a SampleProcessing step and does not go through
+
+      ProcessingSampleLink: storing, freezing, or thawing a sample does not change
+
+      its identity, so no new sample ID is issued. Freezing or drying that changes
+
+      the material (e.g., lyophilization, preparing a glycerol stock) is modelled
+
+      as SampleProcessing instead, and the resulting ProcessedSample can then have
+
+      its own SampleStorage rows.
+
+
+      This records storage at EMSL. It is separate from the submission metadata
+
+      on the sample itself (samp_store_temp, storage_condition, etc.), which
+
+      records what the submitter reported and requested.
+
+
+      Temperature and timing come from the HasTemperatureHold mixin, shared with
+
+      incubation, culture growth, and reaction steps.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
+    mixins:
+    - HasTemperatureHold
+    slots:
+    - SampleStorage_sample_id
+    - SampleStorage_storage_condition
+    - storage_condition_other
+    - SampleStorage_substances_used
+    - sampleStorage__id
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
+    slot_usage:
+      storage_condition:
+        name: storage_condition
+        description: Physical state of the sample during this storage period.
+      sample_id:
+        name: sample_id
+        description: The sample being stored.
+        required: true
+      substances_used:
+        name: substances_used
+        description: Cryoprotectants or preservatives the sample is stored in (e.g.,
+          glycerol, DMSO, RNAlater).
+    attributes:
+      id:
+        name: id
+        identifier: true
+        range: uuid
+    class_uri: basalt_schema:SampleStorage
   CoreSection:
     name: CoreSection
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/CoreSection
@@ -26315,7 +26576,6 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
-    - storage_location
     - label_text
     - concentration_ug_per_uL
     - total_amount_ug
@@ -26878,18 +27138,23 @@ classes:
       the reagents into products.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
+    mixins:
+    - HasTemperatureHold
     slots:
     - name
     - description
     - in_protocol
     - sampleProcessing__id
-    - duration_min
-    - temperature_celsius
     - substances_used
     - chemicalConversionProcess__chemical_conversion_category
     - chemicalConversionProcess__digestion_method
     - chemicalConversionProcess__enrichment_type
     - chemicalConversionProcess__labeling_method
+    - temperature_celsius
+    - temperature_category
+    - duration_hours
+    - hold_start_time
+    - hold_end_time
     attributes:
       chemical_conversion_category:
         name: chemical_conversion_category
@@ -27578,6 +27843,6 @@ classes:
         - descendant_id
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-09-25T10:21:36'
-source_file_size: 21285
-generation_date: '2026-09-25T10:21:56'
+source_file_date: '2026-10-12T13:47:57'
+source_file_size: 21959
+generation_date: '2026-10-12T13:48:26'

@@ -670,6 +670,16 @@ slots:
     description: how long something took, in minutes
     range: float
 
+  duration_hours:
+    description: |-
+      How long material was held at a temperature (incubation, culture growth,
+      reaction, or storage), in hours. Shared by all HasTemperatureHold classes.
+    range: float
+    aliases:
+      - incubation_time_hours
+      - growth_time
+      - incubation_time
+
   efficiency_percent:
     description: percentage of volatile solids removed from the anaerobic digestor
     range: string
@@ -996,12 +1006,6 @@ slots:
     range: string
     title: growth medium
 
-  growth_time:
-    description: |-
-      Total growth time for the culture.
-      Required for ExperimentalCulture activities.
-    range: string
-
   guid_source:
     description: |-
       Source system for the sample GUID (e.g., "LIMS").
@@ -1025,6 +1029,14 @@ slots:
       treatment; can include multiple regimens
     range: string
     title: herbicide regimen
+
+  hold_end_time:
+    description: When the temperature hold (incubation, reaction, or storage) ended.
+    range: datetime
+
+  hold_start_time:
+    description: When the temperature hold (incubation, reaction, or storage) started.
+    range: datetime
 
   horizon_meth:
     description: Reference or method used in determining the horizon
@@ -1177,10 +1189,6 @@ slots:
       step_number. Optional: a standalone StandardSampleProcessing needs no run,
       because its processing_id already identifies the whole group.
     range: SampleProcessingRun
-
-  incubation_time_hours:
-    description: Incubation duration in hours
-    range: float
 
   indust_eff_percent:
     description: percentage of industrial effluents received by wastewater treatment
@@ -2114,6 +2122,10 @@ slots:
   produced_by_uv_run:
     description: a reference to the data generation activity that produced this measurement.
     range: UVDataGenerationActivity
+
+  produced_by_toctn_run:
+    description: a reference to the TOC/TN data generation activity that produced this measurement.
+    range: TOC_TN_DataGenerationActivity
 
   product_name:
     description: Provide the name of the product used to create the synthetic material.
@@ -3173,10 +3185,6 @@ slots:
       - other_storage_condt
       - storage_condt_other
   
-  storage_location:
-    range: string
-    description: The physical or digital location where the processed sample is stored (e.g., freezer location, database ID).
-
   storage_temperature:
     description: |-
       Storage temperature for the sample (e.g., "-80 C", "4 C").
@@ -3365,6 +3373,13 @@ slots:
       submission_pattern: ^-?\d+(\.\d+)?\s*C$
     range: string
     title: temperature
+
+  temperature_category:
+    description: |-
+      Categorical temperature for a hold, for use when only a nominal condition
+      (e.g., "-80 C", "room temperature") is known. Record the numeric value in
+      temperature_celsius when available.
+    range: TemperatureCategoryEnum
 
   temperature_celsius:
     description: Temperature at which the method/process/activity was performed

@@ -21,6 +21,7 @@ The companion single-document view of the same data is
 | OD products (`AMP2ODProduct`) | 38 |
 | well readings (`WellReading`) | 7392 |
 | sample↔activity edges (`ProcessingSampleLink`) | 146 |
+| storage records (`SampleStorage`) | 37 |
 
 Fifteen user samples, each carried through the complete workflow
 
@@ -81,6 +82,7 @@ sample so you can check either path at a glance.
 | `09_od_products.csv` | `AMP2ODProduct` plate-level summaries |
 | `10_well_readings.csv` | `WellReading`, one row per well × timepoint |
 | `11_processing_sample_links.csv` | `ProcessingSampleLink` — the authoritative input/output edges |
+| `12_sample_storage.csv` | `SampleStorage` — where user samples, media batches and glycerol stocks are held, and at what temperature |
 
 `07_well_metadata.csv` carries two convenience columns that are **not** schema
 slots, marked as such by their names:
@@ -159,12 +161,19 @@ Flag tallies across all 7392 readings: `ok` 7039, `blank` 242, `outlier` 8, `con
   `phenotype`, `trophic_level`, `pathogenicity` and `propagation`. Values for
   the CRISPRi strains follow `CRISPRi_Pp_11strains.csv` from the AMP2 Data
   Model Campaign folder.
+* Storage is a `SampleStorage` record on a sample (user sample, prepared
+  media, glycerol stock), not a processing step, so it adds no
+  `ProcessingSampleLink` rows and no new sample ids. Temperature is
+  `temperature_celsius` plus `temperature_category`; room-temperature media
+  carries the category only. Culture durations use the shared
+  `duration_hours` slot from `HasTemperatureHold`.
 * `oxygen_saturation_pct` is a float (percent O2 saturation in the incubation
   atmosphere, e.g. 20.9 for ambient air).
 * Enum-ranged fields use permissible values from `enums.yaml`
   (`StrainTypeEnum`, `ModificationMethodEnum`, `IntendedTraitEnum`,
   `TrophicLevelEnum`, `GenotypeSegmentEnum`, `ConstructComponentEnum`,
   `MediaTypeEnum`, `FormulationEnum`, `StorageConditionEnum`,
+  `TemperatureCategoryEnum`,
   `GrowthFacilityEnum`, `SampleRole`).
 * Multivalued slots are pipe-delimited (`|`) in CSV and real YAML lists in the
   YAML document.

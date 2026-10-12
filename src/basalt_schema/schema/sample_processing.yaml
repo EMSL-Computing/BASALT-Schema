@@ -77,9 +77,9 @@ classes:
       A chemical conversion process used in sample preparation. A process that 
       results in the interconversion of chemical species by a reaction to 
       transform the reagents into products.
+    mixins:
+      - HasTemperatureHold
     slots:
-      - duration_min
-      - temperature_celsius
       - substances_used
     attributes:
       chemical_conversion_category:

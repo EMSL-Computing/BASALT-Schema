@@ -401,6 +401,22 @@ classes:
         identifier: true
         range: uuid
 
+  HasTemperatureHold:
+    mixin: true
+    description: |-
+      Mixin for anything that holds material at a temperature for a period of time:
+      storage (SampleStorage), incubation and culture growth (HasIncubationConditions),
+      chemical reactions (ChemicalConversionProcess), and assay incubations. It shares
+      the vocabulary only; the purpose of the hold (preservation vs. experimental
+      treatment) is carried by the class that uses it, so class-specific required
+      fields (e.g., organism, media) stay enforceable.
+    slots:
+      - temperature_celsius
+      - temperature_category
+      - duration_hours
+      - hold_start_time
+      - hold_end_time
+
   ProcessingSampleLink:
     description: |-
       The authoritative record of what a SampleProcessing step consumed and produced.

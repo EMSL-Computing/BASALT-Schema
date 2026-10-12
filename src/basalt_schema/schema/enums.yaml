@@ -575,6 +575,13 @@ enums:
       other:
         text: other
         description: Other extraction method not otherwise specified.
+      monet_weom:
+        description: Water extraction method for organic matter used for MONet samples
+        aliases: [WEOM]
+      monet_heom:
+        description: Hydrochloric acid extraction method for organic matter used for MONet samples
+        aliases: [HEOM]
+  
 
   FAOClassEnum:
     description: FAO soil classification system
@@ -1974,6 +1981,30 @@ enums:
         title: 3-D Bioprinted Synthetic Soil Aggregates
       pore2chip:
         title: Pore2Chip
+
+  TemperatureCategoryEnum:
+    description: |-
+      Nominal temperature conditions for a temperature hold (storage, incubation,
+      reaction). Use with temperature_category; record the numeric value in
+      temperature_celsius when known.
+    permissible_values:
+      room_temperature:
+        description: Room temperature (~20-25°C)
+        aliases: ["room temperature", "RT", "freshroom"]
+      refrigerated:
+        description: Refrigerated at 4°C
+        aliases: ["4 C", "fresh4"]
+      frozen_minus20:
+        description: Frozen at -20°C
+        aliases: ["-20 C", "frozen20"]
+      frozen_minus80:
+        description: Frozen at -80°C
+        aliases: ["-80 C", "frozen80"]
+      liquid_nitrogen:
+        description: Cryogenic storage in liquid nitrogen (~-196°C)
+        aliases: ["LN2"]
+      other:
+        description: Other temperature condition
 
   TidalStageEnum:
     permissible_values:
