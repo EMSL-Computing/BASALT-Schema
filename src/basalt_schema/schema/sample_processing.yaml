@@ -108,6 +108,9 @@ classes:
       - dilution_factor
       - substances_used
       - informed_by_result
+    slot_usage:
+      dilution_analyte:
+        required: true
 
   Extraction:
     is_a: SampleProcessing 

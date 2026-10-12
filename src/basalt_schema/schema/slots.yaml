@@ -584,10 +584,7 @@ slots:
 
   dilution_analyte:
     description: The analyte or compound whose concentration is being adjusted.
-    range: 
-      any_of:
-        - AnalyteCategoryEnum
-        - ChemicalEntityEnum
+    range: string
 
   diss_carb_dioxide:
     description: 'Concentration of dissolved carbon dioxide in the sample or liquid
