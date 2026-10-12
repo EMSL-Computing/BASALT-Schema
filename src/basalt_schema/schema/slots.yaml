@@ -578,6 +578,14 @@ slots:
     range: string
     title: diether lipids
 
+  dilution_factor:
+    description: Factor by which the sample was diluted.
+    range: float
+
+  dilution_analyte:
+    description: The analyte or compound whose concentration is being adjusted.
+    range: string
+
   diss_carb_dioxide:
     description: 'Concentration of dissolved carbon dioxide in the sample or liquid
       portion of the sample (Unit: umol/L or mg/L)'
@@ -1213,6 +1221,10 @@ slots:
       activity
     range: string
     title: infiltration notes
+  
+  informed_by_result:
+    description: A DataProduct that includes information used in this activity. For example, a dilution volume may be calculated from a concentration measurement included in a DataProduct. 
+    range: DataProduct
 
   initiation_date_inoculation:
     description: The date the sample was inoculated. This can be the date of inoculation,
@@ -3155,6 +3167,10 @@ slots:
     range: SterilizationMethodEnum
     required: false
 
+  starting_concentration_mg_per_ml:
+    range: float
+    description: The concentration of the sample or analyte in the input sample before this activity, in milligrams per milliliter.
+
   storage_condition:
     title: storage condition
     description: The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.
@@ -3332,6 +3348,10 @@ slots:
       submission_pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
     range: string
     title: synthetic environment start date
+
+  target_concentration_ug_per_ul:
+    description: The desired final concentration of the analyte or compound after dilution, in micrograms per microliter.
+    range: float
 
   target_strain:
     description: Target strain identifier for purity checks

@@ -95,6 +95,23 @@ classes:
         range: LabelingMethodEnum
         description: Chemical labeling strategy applied in this process (e.g., TMT).
 
+  Dilution:
+    is_a: SampleProcessing 
+    description: >-
+      A process that reduces the concentration of a target analyte in a sample by adding
+      a diluent (e.g., water, buffer, etc.). All slots may be populated; generally either starting/final concentration or dilution factor is provided.
+    slots:
+      - dilution_analyte
+      - target_concentration_ug_per_ul
+      - starting_concentration_mg_per_ml
+      - final_concentration_mg_per_ml
+      - dilution_factor
+      - substances_used
+      - informed_by_result
+    slot_usage:
+      dilution_analyte:
+        required: true
+
   Extraction:
     is_a: SampleProcessing 
     description: >-
