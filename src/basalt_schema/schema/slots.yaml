@@ -3173,6 +3173,11 @@ slots:
       - other_storage_condt
       - storage_condt_other
   
+  storage_temperature:
+    description: |-
+      Storage temperature for the sample (e.g., "-80 C", "4 C").
+    range: string
+
   strain_description:
     description: |-
       A brief description of the modifications that comprise this strain

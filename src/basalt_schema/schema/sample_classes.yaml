@@ -289,6 +289,7 @@ classes:
       
       # Storage (submission metadata)
       - storage_condition
+      - storage_temperature
       
       # Shipping/logistics
       - shipped_sample_size
@@ -313,6 +314,10 @@ classes:
           Storage condition for this sample (frozen, fresh, etc.).
           Required for AMP2UserSample.
           Aliases: samp_store_cond, storage_cond, storage_condt
+      storage_temperature:
+        description: |-
+          Storage temperature for this sample (e.g., "-80 C").
+          Aliases: samp_store_temp
       name:
         description: |-
           Sample identifier/name (e.g., "PP_0055").
@@ -332,6 +337,7 @@ classes:
       id:
         range: uuid
         identifier: true
+
 
   CommerciallyPurchasedSample:
     attributes:
@@ -472,6 +478,7 @@ classes:
       # Sample-instance-specific slots
       - cbi
       - storage_condition
+      - storage_temperature
       - external_identifiers
       
     attributes:
@@ -488,6 +495,10 @@ classes:
         description: |-
           Storage condition for this sample (frozen, fresh, etc.).
           Aliases: samp_store_cond, storage_cond, storage_condt
+      storage_temperature:
+        description: |-
+          Storage temperature for this sample (e.g., "-80 C").
+          Aliases: samp_store_temp
 
   FieldDeployedTerraformSample:
     attributes:
