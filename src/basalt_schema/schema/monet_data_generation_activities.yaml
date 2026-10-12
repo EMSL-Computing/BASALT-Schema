@@ -36,12 +36,10 @@ classes:
 
   EnzymeActivityDataGenerationActivity:
     is_a: DataGenerationActivity
+    mixins:
+      - HasTemperatureHold
     slots:
     attributes:
-      incubation_temp_c:
-        range: double
-      incubation_time:
-        range: string
       wavelength:
         range: double
 

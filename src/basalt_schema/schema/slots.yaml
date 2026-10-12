@@ -662,6 +662,16 @@ slots:
     description: how long something took, in minutes
     range: float
 
+  duration_hours:
+    description: |-
+      How long material was held at a temperature (incubation, culture growth,
+      reaction, or storage), in hours. Shared by all HasTemperatureHold classes.
+    range: float
+    aliases:
+      - incubation_time_hours
+      - growth_time
+      - incubation_time
+
   efficiency_percent:
     description: percentage of volatile solids removed from the anaerobic digestor
     range: string
@@ -988,12 +998,6 @@ slots:
     range: string
     title: growth medium
 
-  growth_time:
-    description: |-
-      Total growth time for the culture.
-      Required for ExperimentalCulture activities.
-    range: string
-
   guid_source:
     description: |-
       Source system for the sample GUID (e.g., "LIMS").
@@ -1017,6 +1021,14 @@ slots:
       treatment; can include multiple regimens
     range: string
     title: herbicide regimen
+
+  hold_end_time:
+    description: When the temperature hold (incubation, reaction, or storage) ended.
+    range: datetime
+
+  hold_start_time:
+    description: When the temperature hold (incubation, reaction, or storage) started.
+    range: datetime
 
   horizon_meth:
     description: Reference or method used in determining the horizon
@@ -1169,10 +1181,6 @@ slots:
       step_number. Optional: a standalone StandardSampleProcessing needs no run,
       because its processing_id already identifies the whole group.
     range: SampleProcessingRun
-
-  incubation_time_hours:
-    description: Incubation duration in hours
-    range: float
 
   indust_eff_percent:
     description: percentage of industrial effluents received by wastewater treatment
@@ -1733,17 +1741,6 @@ slots:
     description: |-
       Description of GUID source if guid_source = "other".
     range: string
-
-  other_samp_store_temp:
-    description: Please specify sample storage temperature if you selected 'other'
-    range: string
-    title: other sample storage temperature
-
-  other_storage_condt:
-    description: Please specify your storage conditions if you selected 'other' and the available
-      values are not appropriate
-    range: string
-    title: other storage condition
 
   other_treatment:
     description: Many sample treatment descriptor columns are available. If a treatment
@@ -2332,16 +2329,6 @@ slots:
       penetration, infection, growth and reproduction, dissemination of pathogen.
     range: string
     title: sample disease stage
-
-  samp_store_temp:
-    description: The temperature at which your samples should be stored upon arrival.
-      This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
-      attribute to provide additional detail.
-    range: SampleStoreTempEnum
-    title: sample storage temperature
-    aliases:
-      - sample_storage_temperature
-      - storage_temperature
 
   sample_collected:
     description: This refers to the TOTAL amount of sample collected from the experiment.
@@ -3149,7 +3136,7 @@ slots:
 
   storage_condition:
     title: storage condition
-    description: The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.
+    description: The storage condition of the sample. This field is NOT multivalued. If selecting other add the `storage_condition_other` attribute to provide additional detail. Records physical state only; temperature is captured by temperature_celsius / temperature_category on SampleStorage.
     range: StorageConditionEnum
     exact_mappings:
       - MIXS:0000327
@@ -3165,15 +3152,6 @@ slots:
       - other_storage_condt
       - storage_condt_other
   
-  storage_location:
-    range: string
-    description: The physical or digital location where the processed sample is stored (e.g., freezer location, database ID).
-
-  storage_temperature:
-    description: |-
-      Storage temperature for the sample (e.g., "-80 C", "4 C").
-    range: string
-
   strain_description:
     description: |-
       A brief description of the modifications that comprise this strain
@@ -3353,6 +3331,13 @@ slots:
       submission_pattern: ^-?\d+(\.\d+)?\s*C$
     range: string
     title: temperature
+
+  temperature_category:
+    description: |-
+      Categorical temperature for a hold, for use when only a nominal condition
+      (e.g., "-80 C", "room temperature") is known. Record the numeric value in
+      temperature_celsius when available.
+    range: TemperatureCategoryEnum
 
   temperature_celsius:
     description: Temperature at which the method/process/activity was performed
