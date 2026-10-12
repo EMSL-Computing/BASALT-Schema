@@ -101,7 +101,8 @@ classes:
       A process that reduces the concentration of a target analyte in a sample by adding
       a diluent (e.g., water, buffer, etc.). All slots may be populated; generally either starting/final concentration or dilution factor is provided.
     slots:
-      - dilution_target
+      - dilution_analyte
+      - target_concentration_ug_per_ul
       - starting_concentration_mg_per_ml
       - final_concentration_mg_per_ml
       - dilution_factor
