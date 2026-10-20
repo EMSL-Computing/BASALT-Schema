@@ -15600,72 +15600,6 @@ slots:
     - Sample
     range: uuid
     required: true
-  aerosolArmSample__id:
-    name: aerosolArmSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: AerosolArmSample
-    domain_of:
-    - AerosolArmSample
-    range: uuid
-    required: true
-  aerosolSample__id:
-    name: aerosolSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: AerosolSample
-    domain_of:
-    - AerosolSample
-    range: uuid
-    required: true
-  aMP2UserSample__id:
-    name: aMP2UserSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: AMP2UserSample
-    domain_of:
-    - AMP2UserSample
-    range: uuid
-    required: true
-  commerciallyPurchasedSample__id:
-    name: commerciallyPurchasedSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: CommerciallyPurchasedSample
-    domain_of:
-    - CommerciallyPurchasedSample
-    range: uuid
-    required: true
-  cultureEnvironmentalSample__id:
-    name: cultureEnvironmentalSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: CultureEnvironmentalSample
-    domain_of:
-    - CultureEnvironmentalSample
-    range: uuid
-    required: true
-  engineeredStrainSample__id:
-    name: engineeredStrainSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: EngineeredStrainSample
-    domain_of:
-    - EngineeredStrainSample
-    range: uuid
-    required: true
   engineeredStrainSample__cbi:
     name: engineeredStrainSample__cbi
     description: Controlled Biological Information flag (yes/no).
@@ -15702,138 +15636,6 @@ slots:
     domain_of:
     - EngineeredStrainSample
     range: string
-  fieldDeployedTerraformSample__id:
-    name: fieldDeployedTerraformSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: FieldDeployedTerraformSample
-    domain_of:
-    - FieldDeployedTerraformSample
-    range: uuid
-    required: true
-  mixedCultureSample__id:
-    name: mixedCultureSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: MixedCultureSample
-    domain_of:
-    - MixedCultureSample
-    range: uuid
-    required: true
-  monetSoilSample__id:
-    name: monetSoilSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: MonetSoilSample
-    domain_of:
-    - MonetSoilSample
-    range: uuid
-    required: true
-  otherUndescribedSample__id:
-    name: otherUndescribedSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: OtherUndescribedSample
-    domain_of:
-    - OtherUndescribedSample
-    range: uuid
-    required: true
-  plantSample__id:
-    name: plantSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: PlantSample
-    domain_of:
-    - PlantSample
-    range: uuid
-    required: true
-  pureCultureSample__id:
-    name: pureCultureSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: PureCultureSample
-    domain_of:
-    - PureCultureSample
-    range: uuid
-    required: true
-  sedimentSample__id:
-    name: sedimentSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SedimentSample
-    domain_of:
-    - SedimentSample
-    range: uuid
-    required: true
-  soilSample__id:
-    name: soilSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SoilSample
-    domain_of:
-    - SoilSample
-    range: uuid
-    required: true
-  synthesizedMaterialSample__id:
-    name: synthesizedMaterialSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SynthesizedMaterialSample
-    domain_of:
-    - SynthesizedMaterialSample
-    range: uuid
-    required: true
-  terraformSample__id:
-    name: terraformSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: TerraformSample
-    domain_of:
-    - TerraformSample
-    range: uuid
-    required: true
-  waterSample__id:
-    name: waterSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: WaterSample
-    domain_of:
-    - WaterSample
-    range: uuid
-    required: true
-  processedSample__id:
-    name: processedSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: ProcessedSample
-    domain_of:
-    - ProcessedSample
-    range: uuid
-    required: true
   sampleStorage__id:
     name: sampleStorage__id
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
@@ -15845,17 +15647,6 @@ slots:
     - SampleStorage
     range: uuid
     required: true
-  coreSection__id:
-    name: coreSection__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: CoreSection
-    domain_of:
-    - CoreSection
-    range: uuid
-    required: true
   samplingActivity__id:
     name: samplingActivity__id
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
@@ -15865,182 +15656,6 @@ slots:
     owner: SamplingActivity
     domain_of:
     - SamplingActivity
-    range: uuid
-    required: true
-  aerosolArmSamplingActivity__id:
-    name: aerosolArmSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: AerosolArmSamplingActivity
-    domain_of:
-    - AerosolArmSamplingActivity
-    range: uuid
-    required: true
-  aerosolSamplingActivity__id:
-    name: aerosolSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: AerosolSamplingActivity
-    domain_of:
-    - AerosolSamplingActivity
-    range: uuid
-    required: true
-  commerciallyPurchasedSamplingActivity__id:
-    name: commerciallyPurchasedSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: CommerciallyPurchasedSamplingActivity
-    domain_of:
-    - CommerciallyPurchasedSamplingActivity
-    range: uuid
-    required: true
-  cultureEnvironmentalSamplingActivity__id:
-    name: cultureEnvironmentalSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: CultureEnvironmentalSamplingActivity
-    domain_of:
-    - CultureEnvironmentalSamplingActivity
-    range: uuid
-    required: true
-  engineeredStrainSamplingActivity__id:
-    name: engineeredStrainSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: EngineeredStrainSamplingActivity
-    domain_of:
-    - EngineeredStrainSamplingActivity
-    range: uuid
-    required: true
-  fieldDeployedTerraformSamplingActivity__id:
-    name: fieldDeployedTerraformSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: FieldDeployedTerraformSamplingActivity
-    domain_of:
-    - FieldDeployedTerraformSamplingActivity
-    range: uuid
-    required: true
-  mixedCultureSamplingActivity__id:
-    name: mixedCultureSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: MixedCultureSamplingActivity
-    domain_of:
-    - MixedCultureSamplingActivity
-    range: uuid
-    required: true
-  monetSoilSamplingActivity__id:
-    name: monetSoilSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: MonetSoilSamplingActivity
-    domain_of:
-    - MonetSoilSamplingActivity
-    range: uuid
-    required: true
-  otherUndescribedSamplingActivity__id:
-    name: otherUndescribedSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: OtherUndescribedSamplingActivity
-    domain_of:
-    - OtherUndescribedSamplingActivity
-    range: uuid
-    required: true
-  plantSamplingActivity__id:
-    name: plantSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: PlantSamplingActivity
-    domain_of:
-    - PlantSamplingActivity
-    range: uuid
-    required: true
-  pureCultureSamplingActivity__id:
-    name: pureCultureSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: PureCultureSamplingActivity
-    domain_of:
-    - PureCultureSamplingActivity
-    range: uuid
-    required: true
-  sedimentSamplingActivity__id:
-    name: sedimentSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SedimentSamplingActivity
-    domain_of:
-    - SedimentSamplingActivity
-    range: uuid
-    required: true
-  soilSamplingActivity__id:
-    name: soilSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SoilSamplingActivity
-    domain_of:
-    - SoilSamplingActivity
-    range: uuid
-    required: true
-  synthesizedMaterialSamplingActivity__id:
-    name: synthesizedMaterialSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SynthesizedMaterialSamplingActivity
-    domain_of:
-    - SynthesizedMaterialSamplingActivity
-    range: uuid
-    required: true
-  terraformSamplingActivity__id:
-    name: terraformSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: TerraformSamplingActivity
-    domain_of:
-    - TerraformSamplingActivity
-    range: uuid
-    required: true
-  waterSamplingActivity__id:
-    name: waterSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: WaterSamplingActivity
-    domain_of:
-    - WaterSamplingActivity
     range: uuid
     required: true
   sampleProcessingProtocol__id:
@@ -24504,6 +24119,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - aerosol_type
     - air_temp_regm
     - AerosolArmSample_analysis_type
@@ -24556,7 +24172,6 @@ classes:
     - third_blh
     - third_blh_quality
     - volatile_org_comp
-    - aerosolArmSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -24594,11 +24209,6 @@ classes:
             value: ^\d+(\.\d+)?\s*um$
         description: 'Refers to the mesh/pore size used to retain the sample. Materials
           smaller than the size threshold are excluded from the sample (Unit: um)'
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:AerosolArmSample
   AerosolSample:
     name: AerosolSample
@@ -24615,6 +24225,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - aerosol_type
     - air_temp_regm
     - AerosolSample_analysis_type
@@ -24659,7 +24270,6 @@ classes:
     - technical_reps
     - temperature_exposure
     - volatile_org_comp
-    - aerosolSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -24681,11 +24291,6 @@ classes:
             value: ^\d+(\.\d+)?\s*um$
         description: 'Refers to the mesh/pore size used to retain the sample. Materials
           smaller than the size threshold are excluded from the sample (Unit: um)'
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:AerosolSample
   AMP2UserSample:
     name: AMP2UserSample
@@ -24705,6 +24310,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - AMP2UserSample_organism_ref
     - AMP2UserSample_collection_date
     - growth_facil
@@ -24717,7 +24323,6 @@ classes:
     - other_guid_source
     - AMP2UserSample_analysis_type
     - cbi
-    - aMP2UserSample__id
     - AMP2UserSample_name
     slot_usage:
       organism_ref:
@@ -24757,11 +24362,6 @@ classes:
         name: analysis_type
         description: The type(s) of analysis planned for this sample.
         required: false
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:AMP2UserSample
   CommerciallyPurchasedSample:
     name: CommerciallyPurchasedSample
@@ -24778,6 +24378,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - CommerciallyPurchasedSample_analysis_type
     - cas
     - CommerciallyPurchasedSample_compound_name
@@ -24804,7 +24405,6 @@ classes:
     - storage_condition_other
     - technical_reps
     - temp
-    - commerciallyPurchasedSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -24812,11 +24412,6 @@ classes:
       compound_name:
         name: compound_name
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:CommerciallyPurchasedSample
   CultureEnvironmentalSample:
     name: CultureEnvironmentalSample
@@ -24833,6 +24428,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - air_temp_regm
     - CultureEnvironmentalSample_analysis_type
     - biotic_regm
@@ -24885,7 +24481,6 @@ classes:
     - technical_reps
     - trophic_level
     - watering_regm
-    - cultureEnvironmentalSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -24909,11 +24504,6 @@ classes:
       start_date_inc:
         name: start_date_inc
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:CultureEnvironmentalSample
   EngineeredStrainSample:
     name: EngineeredStrainSample
@@ -24934,20 +24524,16 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - organism_ref
     - cbi
     - storage_condition
     - storage_temperature
     - external_identifiers
-    - engineeredStrainSample__id
     - engineeredStrainSample__cbi
     - engineeredStrainSample__storage_condition
     - engineeredStrainSample__storage_temperature
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       cbi:
         name: cbi
         description: Controlled Biological Information flag (yes/no).
@@ -24979,6 +24565,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - air_temp_regm
     - FieldDeployedTerraformSample_analysis_type
     - biotic_regm
@@ -25057,7 +24644,6 @@ classes:
     - water_content
     - water_content_meth
     - watering_regm
-    - fieldDeployedTerraformSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -25092,11 +24678,6 @@ classes:
       synth_start_date:
         name: synth_start_date
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:FieldDeployedTerraformSample
   MixedCultureSample:
     name: MixedCultureSample
@@ -25113,6 +24694,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - air_temp_regm
     - MixedCultureSample_analysis_type
     - biotic_regm
@@ -25159,7 +24741,6 @@ classes:
     - technical_reps
     - trophic_level
     - watering_regm
-    - mixedCultureSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -25186,11 +24767,6 @@ classes:
           any relevant genetic typing schemes like Group I plasmid. Supply both the
           lineage name and the lineage rank separated by a colon, e.g. biovar:abc123.
           Subspecies should not be recorded in this slot but in the taxid slot.
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:MixedCultureSample
   MonetSoilSample:
     name: MonetSoilSample
@@ -25209,6 +24785,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - agrochem_addition
     - MonetSoilSample_bulk_elect_conductivity
     - chem_administration
@@ -25240,7 +24817,6 @@ classes:
     - MonetSoilSample_water_content
     - water_content_meth
     - watering_regm
-    - monetSoilSample__id
     slot_usage:
       bulk_elect_conductivity:
         name: bulk_elect_conductivity
@@ -25303,11 +24879,6 @@ classes:
           started and unsuccessful enter 'failed' if measurement was not attempted
           enter 'did not collect'.
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:MonetSoilSample
   OtherUndescribedSample:
     name: OtherUndescribedSample
@@ -25325,6 +24896,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - agrochem_addition
     - air_temp_regm
     - al_sat
@@ -25549,7 +25121,6 @@ classes:
     - water_current
     - water_temp_regm
     - watering_regm
-    - otherUndescribedSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -25582,11 +25153,6 @@ classes:
           any relevant genetic typing schemes like Group I plasmid. Supply both the
           lineage name and the lineage rank separated by a colon, e.g. biovar:abc123.
           Subspecies should not be recorded in this slot but in the taxid slot.
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:OtherUndescribedSample
   PlantSample:
     name: PlantSample
@@ -25603,6 +25169,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - air_temp_regm
     - ances_data
     - PlantSample_analysis_type
@@ -25684,7 +25251,6 @@ classes:
     - temp
     - water_temp_regm
     - watering_regm
-    - plantSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -25721,11 +25287,6 @@ classes:
       plant_taxid:
         name: plant_taxid
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:PlantSample
   PureCultureSample:
     name: PureCultureSample
@@ -25742,6 +25303,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - air_temp_regm
     - PureCultureSample_analysis_type
     - biotic_regm
@@ -25792,7 +25354,6 @@ classes:
     - technical_reps
     - trophic_level
     - watering_regm
-    - pureCultureSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -25816,11 +25377,6 @@ classes:
       start_date_inc:
         name: start_date_inc
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:PureCultureSample
   SedimentSample:
     name: SedimentSample
@@ -25837,6 +25393,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - air_temp_regm
     - alkalinity
     - alkalinity_method
@@ -25949,7 +25506,6 @@ classes:
     - water_content
     - water_content_meth
     - watering_regm
-    - sedimentSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -25991,11 +25547,6 @@ classes:
         description: Description of relationship(s) between the subject organism and
           other organism(s) it is associated with. The target organism is the subject
           of the relationship and the other organism(s) is the object
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SedimentSample
   SoilSample:
     name: SoilSample
@@ -26012,6 +25563,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - agrochem_addition
     - air_temp_regm
     - SoilSample_al_sat
@@ -26089,7 +25641,6 @@ classes:
     - water_content
     - water_content_meth
     - watering_regm
-    - soilSample__id
     slot_usage:
       al_sat:
         name: al_sat
@@ -26156,11 +25707,6 @@ classes:
         description: 'Refers to the mesh/pore size used to pre-filter/pre-sort the
           sample. Materials larger than the size threshold are excluded from the sample.
           (Unit: um)'
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SoilSample
   SynthesizedMaterialSample:
     name: SynthesizedMaterialSample
@@ -26177,6 +25723,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - SynthesizedMaterialSample_analysis_type
     - cas
     - compound_name
@@ -26206,7 +25753,6 @@ classes:
     - SynthesizedMaterialSample_synth_reagents
     - technical_reps
     - temp
-    - synthesizedMaterialSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -26217,11 +25763,6 @@ classes:
       synth_reagents:
         name: synth_reagents
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SynthesizedMaterialSample
   TerraformSample:
     name: TerraformSample
@@ -26238,6 +25779,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - air_temp_regm
     - TerraformSample_analysis_type
     - biotic_regm
@@ -26312,7 +25854,6 @@ classes:
     - water_content
     - water_content_meth
     - watering_regm
-    - terraformSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -26341,11 +25882,6 @@ classes:
       synth_start_date:
         name: synth_start_date
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:TerraformSample
   WaterSample:
     name: WaterSample
@@ -26362,6 +25898,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - air_temp_regm
     - alkalinity
     - alkalinity_method
@@ -26473,7 +26010,6 @@ classes:
     - tot_phosp
     - turbidity
     - water_current
-    - waterSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -26520,11 +26056,6 @@ classes:
           sample. Materials larger than the size threshold are excluded from the sample
           (Unit: um)'
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:WaterSample
   ProcessedSample:
     name: ProcessedSample
@@ -26560,22 +26091,17 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - label_text
     - concentration_ug_per_uL
     - total_amount_ug
     - volume_ul
     - sampled_portion
     - ProcessedSample_replicate
-    - processedSample__id
     slot_usage:
       replicate:
         name: replicate
         description: The TECHNICAL replicate number of the processed sample, if applicable.
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:ProcessedSample
   SampleStorage:
     name: SampleStorage
@@ -26652,6 +26178,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
+    - sample__id
     - label_text
     - concentration_ug_per_uL
     - total_amount_ug
@@ -26659,16 +26186,10 @@ classes:
     - sampled_portion
     - ProcessedSample_replicate
     - CoreSection_core_section
-    - coreSection__id
     slot_usage:
       core_section:
         name: core_section
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:CoreSection
   SamplingActivity:
     name: SamplingActivity
@@ -26713,18 +26234,13 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
-    - aerosolArmSamplingActivity__id
+    - samplingActivity__id
     - AerosolArmSamplingActivity_humidity
     slot_usage:
       humidity:
         name: humidity
         description: Amount of humidity measured in the air the day of sampling. Provided
           by iMet. Provide value and unit, any unit is valid
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:AerosolArmSamplingActivity
   AerosolSamplingActivity:
     name: AerosolSamplingActivity
@@ -26740,6 +26256,7 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - collection_time
     - humidity
     - sample_collected
@@ -26747,12 +26264,6 @@ classes:
     - sampling_duration
     - wind_direction
     - wind_speed
-    - aerosolSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:AerosolSamplingActivity
   CommerciallyPurchasedSamplingActivity:
     name: CommerciallyPurchasedSamplingActivity
@@ -26768,14 +26279,9 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - sample_collected
     - sample_collection_dev
-    - commerciallyPurchasedSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:CommerciallyPurchasedSamplingActivity
   CultureEnvironmentalSamplingActivity:
     name: CultureEnvironmentalSamplingActivity
@@ -26792,16 +26298,11 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - collection_time
     - sample_collected
     - sample_collection_dev
     - sample_collection_method
-    - cultureEnvironmentalSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:CultureEnvironmentalSamplingActivity
   EngineeredStrainSamplingActivity:
     name: EngineeredStrainSamplingActivity
@@ -26817,12 +26318,7 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
-    - engineeredStrainSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
+    - samplingActivity__id
     class_uri: basalt_schema:EngineeredStrainSamplingActivity
   FieldDeployedTerraformSamplingActivity:
     name: FieldDeployedTerraformSamplingActivity
@@ -26838,15 +26334,10 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - collection_time
     - sample_collected
     - sample_collection_method
-    - fieldDeployedTerraformSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:FieldDeployedTerraformSamplingActivity
   MixedCultureSamplingActivity:
     name: MixedCultureSamplingActivity
@@ -26862,16 +26353,11 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - collection_time
     - sample_collected
     - sample_collection_dev
     - sample_collection_method
-    - mixedCultureSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:MixedCultureSamplingActivity
   MonetSoilSamplingActivity:
     name: MonetSoilSamplingActivity
@@ -26887,13 +26373,13 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - MonetSoilSamplingActivity_collection_time
     - MonetSoilSamplingActivity_infiltration_1
     - MonetSoilSamplingActivity_infiltration_2
     - infiltration_notes
     - MonetSoilSamplingActivity_sample_collection_dev
     - weather
-    - monetSoilSamplingActivity__id
     slot_usage:
       collection_time:
         name: collection_time
@@ -26907,11 +26393,6 @@ classes:
       sample_collection_dev:
         name: sample_collection_dev
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:MonetSoilSamplingActivity
   OtherUndescribedSamplingActivity:
     name: OtherUndescribedSamplingActivity
@@ -26928,6 +26409,7 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - collection_time
     - OtherUndescribedSamplingActivity_humidity
     - sample_collected
@@ -26936,17 +26418,11 @@ classes:
     - sampling_duration
     - wind_direction
     - wind_speed
-    - otherUndescribedSamplingActivity__id
     slot_usage:
       humidity:
         name: humidity
         description: Amount of humidity measured in the air the day of sampling. Provided
           by iMet. Provide value and unit, any unit is valid
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:OtherUndescribedSamplingActivity
   PlantSamplingActivity:
     name: PlantSamplingActivity
@@ -26962,17 +26438,12 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - collection_time
     - sample_collected
     - sample_collection_dev
     - sample_collection_method
     - weather
-    - plantSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:PlantSamplingActivity
   PureCultureSamplingActivity:
     name: PureCultureSamplingActivity
@@ -26988,16 +26459,11 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - collection_time
     - sample_collected
     - sample_collection_dev
     - sample_collection_method
-    - pureCultureSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:PureCultureSamplingActivity
   SedimentSamplingActivity:
     name: SedimentSamplingActivity
@@ -27013,17 +26479,12 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - collection_time
     - sample_collected
     - sample_collection_dev
     - sample_collection_method
     - weather
-    - sedimentSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SedimentSamplingActivity
   SoilSamplingActivity:
     name: SoilSamplingActivity
@@ -27038,6 +26499,7 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - name
     - description
     - collection_time
@@ -27049,12 +26511,6 @@ classes:
     - sample_collection_method
     - wind_direction
     - weather
-    - soilSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SoilSamplingActivity
   SynthesizedMaterialSamplingActivity:
     name: SynthesizedMaterialSamplingActivity
@@ -27070,14 +26526,9 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - sample_collected
     - sample_collection_dev
-    - synthesizedMaterialSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SynthesizedMaterialSamplingActivity
   TerraformSamplingActivity:
     name: TerraformSamplingActivity
@@ -27093,15 +26544,10 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - collection_time
     - sample_collected
     - sample_collection_method
-    - terraformSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:TerraformSamplingActivity
   WaterSamplingActivity:
     name: WaterSamplingActivity
@@ -27117,11 +26563,11 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
+    - samplingActivity__id
     - collection_time
     - sample_collected
     - WaterSamplingActivity_sample_collection_dev
     - WaterSamplingActivity_sample_collection_method
-    - waterSamplingActivity__id
     slot_usage:
       sample_collection_dev:
         name: sample_collection_dev
@@ -27129,11 +26575,6 @@ classes:
       sample_collection_method:
         name: sample_collection_method
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:WaterSamplingActivity
   StandardSampleProcessing:
     name: StandardSampleProcessing
@@ -27916,4 +27357,4 @@ metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
 source_file_date: '2026-10-12T16:01:08'
 source_file_size: 21959
-generation_date: '2026-10-20T15:43:19'
+generation_date: '2026-10-20T15:45:57'

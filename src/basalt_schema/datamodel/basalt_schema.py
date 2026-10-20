@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-20T15:43:41
+# Generation date: 2026-10-20T15:46:23
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -19324,24 +19324,6 @@ slots.site__id = Slot(uri=BASALT_SCHEMA.id, name="site__id", curie=BASALT_SCHEMA
 slots.sample__id = Slot(uri=BASALT_SCHEMA.id, name="sample__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.sample__id, domain=None, range=URIRef)
 
-slots.aerosolArmSample__id = Slot(uri=BASALT_SCHEMA.id, name="aerosolArmSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.aerosolArmSample__id, domain=None, range=URIRef)
-
-slots.aerosolSample__id = Slot(uri=BASALT_SCHEMA.id, name="aerosolSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.aerosolSample__id, domain=None, range=URIRef)
-
-slots.aMP2UserSample__id = Slot(uri=BASALT_SCHEMA.id, name="aMP2UserSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.aMP2UserSample__id, domain=None, range=URIRef)
-
-slots.commerciallyPurchasedSample__id = Slot(uri=BASALT_SCHEMA.id, name="commerciallyPurchasedSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.commerciallyPurchasedSample__id, domain=None, range=URIRef)
-
-slots.cultureEnvironmentalSample__id = Slot(uri=BASALT_SCHEMA.id, name="cultureEnvironmentalSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.cultureEnvironmentalSample__id, domain=None, range=URIRef)
-
-slots.engineeredStrainSample__id = Slot(uri=BASALT_SCHEMA.id, name="engineeredStrainSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.engineeredStrainSample__id, domain=None, range=URIRef)
-
 slots.engineeredStrainSample__cbi = Slot(uri=BASALT_SCHEMA.cbi, name="engineeredStrainSample__cbi", curie=BASALT_SCHEMA.curie('cbi'),
                    model_uri=BASALT_SCHEMA.engineeredStrainSample__cbi, domain=None, range=str)
 
@@ -19351,98 +19333,11 @@ slots.engineeredStrainSample__storage_condition = Slot(uri=BASALT_SCHEMA.storage
 slots.engineeredStrainSample__storage_temperature = Slot(uri=BASALT_SCHEMA.storage_temperature, name="engineeredStrainSample__storage_temperature", curie=BASALT_SCHEMA.curie('storage_temperature'),
                    model_uri=BASALT_SCHEMA.engineeredStrainSample__storage_temperature, domain=None, range=Optional[str])
 
-slots.fieldDeployedTerraformSample__id = Slot(uri=BASALT_SCHEMA.id, name="fieldDeployedTerraformSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.fieldDeployedTerraformSample__id, domain=None, range=URIRef)
-
-slots.mixedCultureSample__id = Slot(uri=BASALT_SCHEMA.id, name="mixedCultureSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.mixedCultureSample__id, domain=None, range=URIRef)
-
-slots.monetSoilSample__id = Slot(uri=BASALT_SCHEMA.id, name="monetSoilSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.monetSoilSample__id, domain=None, range=URIRef)
-
-slots.otherUndescribedSample__id = Slot(uri=BASALT_SCHEMA.id, name="otherUndescribedSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.otherUndescribedSample__id, domain=None, range=URIRef)
-
-slots.plantSample__id = Slot(uri=BASALT_SCHEMA.id, name="plantSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.plantSample__id, domain=None, range=URIRef)
-
-slots.pureCultureSample__id = Slot(uri=BASALT_SCHEMA.id, name="pureCultureSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.pureCultureSample__id, domain=None, range=URIRef)
-
-slots.sedimentSample__id = Slot(uri=BASALT_SCHEMA.id, name="sedimentSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.sedimentSample__id, domain=None, range=URIRef)
-
-slots.soilSample__id = Slot(uri=BASALT_SCHEMA.id, name="soilSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.soilSample__id, domain=None, range=URIRef)
-
-slots.synthesizedMaterialSample__id = Slot(uri=BASALT_SCHEMA.id, name="synthesizedMaterialSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.synthesizedMaterialSample__id, domain=None, range=URIRef)
-
-slots.terraformSample__id = Slot(uri=BASALT_SCHEMA.id, name="terraformSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.terraformSample__id, domain=None, range=URIRef)
-
-slots.waterSample__id = Slot(uri=BASALT_SCHEMA.id, name="waterSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.waterSample__id, domain=None, range=URIRef)
-
-slots.processedSample__id = Slot(uri=BASALT_SCHEMA.id, name="processedSample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.processedSample__id, domain=None, range=URIRef)
-
 slots.sampleStorage__id = Slot(uri=BASALT_SCHEMA.id, name="sampleStorage__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.sampleStorage__id, domain=None, range=URIRef)
 
-slots.coreSection__id = Slot(uri=BASALT_SCHEMA.id, name="coreSection__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.coreSection__id, domain=None, range=URIRef)
-
 slots.samplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="samplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.samplingActivity__id, domain=None, range=URIRef)
-
-slots.aerosolArmSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="aerosolArmSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.aerosolArmSamplingActivity__id, domain=None, range=URIRef)
-
-slots.aerosolSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="aerosolSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.aerosolSamplingActivity__id, domain=None, range=URIRef)
-
-slots.commerciallyPurchasedSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="commerciallyPurchasedSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.commerciallyPurchasedSamplingActivity__id, domain=None, range=URIRef)
-
-slots.cultureEnvironmentalSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="cultureEnvironmentalSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.cultureEnvironmentalSamplingActivity__id, domain=None, range=URIRef)
-
-slots.engineeredStrainSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="engineeredStrainSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.engineeredStrainSamplingActivity__id, domain=None, range=URIRef)
-
-slots.fieldDeployedTerraformSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="fieldDeployedTerraformSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.fieldDeployedTerraformSamplingActivity__id, domain=None, range=URIRef)
-
-slots.mixedCultureSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="mixedCultureSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.mixedCultureSamplingActivity__id, domain=None, range=URIRef)
-
-slots.monetSoilSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="monetSoilSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.monetSoilSamplingActivity__id, domain=None, range=URIRef)
-
-slots.otherUndescribedSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="otherUndescribedSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.otherUndescribedSamplingActivity__id, domain=None, range=URIRef)
-
-slots.plantSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="plantSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.plantSamplingActivity__id, domain=None, range=URIRef)
-
-slots.pureCultureSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="pureCultureSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.pureCultureSamplingActivity__id, domain=None, range=URIRef)
-
-slots.sedimentSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="sedimentSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.sedimentSamplingActivity__id, domain=None, range=URIRef)
-
-slots.soilSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="soilSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.soilSamplingActivity__id, domain=None, range=URIRef)
-
-slots.synthesizedMaterialSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="synthesizedMaterialSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.synthesizedMaterialSamplingActivity__id, domain=None, range=URIRef)
-
-slots.terraformSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="terraformSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.terraformSamplingActivity__id, domain=None, range=URIRef)
-
-slots.waterSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="waterSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.waterSamplingActivity__id, domain=None, range=URIRef)
 
 slots.sampleProcessingProtocol__id = Slot(uri=BASALT_SCHEMA.id, name="sampleProcessingProtocol__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.sampleProcessingProtocol__id, domain=None, range=URIRef)

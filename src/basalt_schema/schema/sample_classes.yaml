@@ -101,10 +101,6 @@ classes:
       - where should proposal ID live? probably not here? emsl_activity is a string referencing a campaign name. but we do need to link samples to their parent studies/projects somehow.
 
   AerosolArmSample:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: An aerosol sample collected by the ARM facility.
     is_a: Sample
     annotations:
@@ -188,10 +184,6 @@ classes:
           submission_pattern: ^\d+(\.\d+)?\s*um$
 
   AerosolSample:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: An aerosol sample collected from the environment.
     is_a: Sample
     annotations:
@@ -333,17 +325,9 @@ classes:
         description: |-
           The type(s) of analysis planned for this sample.
           
-    attributes:
-      id:
-        range: uuid
-        identifier: true
 
 
   CommerciallyPurchasedSample:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: A sample containing commercially purchased material.
     is_a: Sample
     annotations:
@@ -382,10 +366,6 @@ classes:
         required: true
 
   CultureEnvironmentalSample:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: A sample containing organisms cultured from an environmental sample.
     is_a: Sample
     annotations:
@@ -482,9 +462,6 @@ classes:
       - external_identifiers
       
     attributes:
-      id:
-        identifier: true
-        range: uuid
 
       cbi:
         required: true
@@ -501,10 +478,6 @@ classes:
           Aliases: samp_store_temp
 
   FieldDeployedTerraformSample:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: A sample collected from a field-deployed Terraform experiment.
     is_a: Sample
     annotations:
@@ -613,10 +586,6 @@ classes:
         required: true
 
   MixedCultureSample:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: A sample containing multiple cultured organisms.
     is_a: Sample
     annotations:
@@ -693,10 +662,6 @@ classes:
     is_a: Sample
     annotations:
       submission_version: 2.1.1
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
       - agrochem_addition
       - bulk_elect_conductivity
@@ -774,10 +739,6 @@ classes:
         required: true
 
   OtherUndescribedSample:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: A sample that does not fit into any of the other described sample types.
     is_a: Sample
     annotations:
@@ -1033,10 +994,6 @@ classes:
           the lineage rank separated by a colon, e.g. biovar:abc123. Subspecies should not be recorded in this slot but in the taxid slot.
 
   PlantSample:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: A sample containing plant material.
     is_a: Sample
     annotations:
@@ -1149,10 +1106,6 @@ classes:
         required: true
 
   PureCultureSample:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: A sample of a culture containing a single organism.
     is_a: Sample
     annotations:
@@ -1230,10 +1183,6 @@ classes:
     is_a: Sample
     annotations:
       submission_version: 1.2.1
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
       - air_temp_regm
       - alkalinity
@@ -1381,10 +1330,6 @@ classes:
     is_a: Sample
     annotations:
       submission_version: 1.3.1
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
       - agrochem_addition
       - air_temp_regm
@@ -1512,10 +1457,6 @@ classes:
     is_a: Sample
     annotations:
       submission_version: 1.1.1
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
       - analysis_type
       - cas
@@ -1559,10 +1500,6 @@ classes:
     is_a: Sample
     annotations:
       submission_version: 1.2.1
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
       - air_temp_regm
       - analysis_type
@@ -1663,10 +1600,6 @@ classes:
     is_a: Sample
     annotations:
       submission_version: 1.1.1
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
       - air_temp_regm
       - alkalinity
@@ -1827,10 +1760,6 @@ classes:
        from an environment); the processing edge is a different relationship and lives in
        ProcessingSampleLink only.
     is_a: Sample
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
       - label_text
       - concentration_ug_per_uL
@@ -1883,10 +1812,6 @@ classes:
   CoreSection:
     description: A section of a core sample (TOP, MID, BTM).
     is_a: ProcessedSample
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
       - core_section
     slot_usage:
@@ -1913,10 +1838,6 @@ classes:
       - does project number go here? how do we connect Sample/SamplingActivity to a project/Study?
 
   AerosolArmSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: A sampling activity where aerosol samples were collected by ARM.
     is_a: SamplingActivity
     slot_usage:
@@ -1925,10 +1846,6 @@ classes:
           by iMet. Provide value and unit, any unit is valid
 
   AerosolSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: A sampling activity where aerosol samples were collected.
     is_a: SamplingActivity
     slots:
@@ -1941,10 +1858,6 @@ classes:
     - wind_speed
 
   CommerciallyPurchasedSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of samples that were purchased by the user.
     is_a: SamplingActivity
     slots:
@@ -1952,10 +1865,6 @@ classes:
       - sample_collection_dev
 
   CultureEnvironmentalSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of samples from a culture of organisms taken from the environment.
     is_a: SamplingActivity
     slots:
@@ -1965,19 +1874,11 @@ classes:
       - sample_collection_method
 
   EngineeredStrainSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of samples from a culture of an engineered organism.
     is_a: SamplingActivity
     slots:
 
   FieldDeployedTerraformSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of samples from a field-deployed Terraform device.
     is_a: SamplingActivity
     slots:
@@ -1986,10 +1887,6 @@ classes:
       - sample_collection_method
 
   MixedCultureSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of samples from a mixed culture.
     is_a: SamplingActivity
     slots:
@@ -1999,10 +1896,6 @@ classes:
       - sample_collection_method
 
   MonetSoilSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of soil cores according to the MONet soil sampling protocol.
     is_a: SamplingActivity
     slot_usage:
@@ -2023,10 +1916,6 @@ classes:
       - weather
 
   OtherUndescribedSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of samples from source that does not fit into any of the other categories.
     is_a: SamplingActivity
     slot_usage:
@@ -2044,10 +1933,6 @@ classes:
       - wind_speed
 
   PlantSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of samples associated with plants.
     is_a: SamplingActivity
     slots:
@@ -2058,10 +1943,6 @@ classes:
       - weather
 
   PureCultureSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of samples from a culture containing a single organism.
     is_a: SamplingActivity
     slots:
@@ -2071,10 +1952,6 @@ classes:
       - sample_collection_method
     
   SedimentSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of sediment samples from the environment.
     is_a: SamplingActivity
     slot_usage:
@@ -2089,10 +1966,6 @@ classes:
     title: Soil Sampling Activity
     description: Collection of soil samples from the environment.
     is_a: SamplingActivity
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
       - name
       - description
@@ -2107,10 +1980,6 @@ classes:
       - weather
 
   SynthesizedMaterialSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of samples of a synthesized material.
     is_a: SamplingActivity
     slots:
@@ -2118,10 +1987,6 @@ classes:
       - sample_collection_dev
 
   TerraformSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of samples from a Terraform device.
     is_a: SamplingActivity
     slots:
@@ -2130,10 +1995,6 @@ classes:
       - sample_collection_method
 
   WaterSamplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     description: Collection of water samples.
     is_a: SamplingActivity
     slot_usage:

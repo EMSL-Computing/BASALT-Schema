@@ -3655,11 +3655,11 @@ class AerosolArmSample(Sample):
     third_blh = Column(Float())
     third_blh_quality = Column(Text())
     volatile_org_comp = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "AerosolArmSample_external_identifiers" )
@@ -3670,7 +3670,7 @@ class AerosolArmSample(Sample):
     
 
     def __repr__(self):
-        return f"AerosolArmSample(aerosol_type={self.aerosol_type},air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},carb_dioxide={self.carb_dioxide},carb_monoxide={self.carb_monoxide},chem_administration={self.chem_administration},color_code={self.color_code},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},first_blh={self.first_blh},first_blh_quality_index={self.first_blh_quality_index},first_cbh={self.first_cbh},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},mean_total_cpc_concentration={self.mean_total_cpc_concentration},mean_total_pops_concentration={self.mean_total_pops_concentration},methane={self.methane},method_development={self.method_development},misc_param={self.misc_param},other={self.other},other_treatment={self.other_treatment},other_samp_store_temp={self.other_samp_store_temp},photochemical_exposure={self.photochemical_exposure},pressure_control={self.pressure_control},priority_order={self.priority_order},project={self.project},replicate_number={self.replicate_number},samp_store_temp={self.samp_store_temp},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sampled_during={self.sampled_during},second_blh={self.second_blh},second_blh_quality={self.second_blh_quality},second_cbh={self.second_cbh},size_frac_low={self.size_frac_low},size_frac_up={self.size_frac_up},solar_irradiance={self.solar_irradiance},source_mat_id={self.source_mat_id},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},technical_reps={self.technical_reps},third_blh={self.third_blh},third_blh_quality={self.third_blh_quality},volatile_org_comp={self.volatile_org_comp},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"AerosolArmSample(aerosol_type={self.aerosol_type},air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},carb_dioxide={self.carb_dioxide},carb_monoxide={self.carb_monoxide},chem_administration={self.chem_administration},color_code={self.color_code},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},first_blh={self.first_blh},first_blh_quality_index={self.first_blh_quality_index},first_cbh={self.first_cbh},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},mean_total_cpc_concentration={self.mean_total_cpc_concentration},mean_total_pops_concentration={self.mean_total_pops_concentration},methane={self.methane},method_development={self.method_development},misc_param={self.misc_param},other={self.other},other_treatment={self.other_treatment},other_samp_store_temp={self.other_samp_store_temp},photochemical_exposure={self.photochemical_exposure},pressure_control={self.pressure_control},priority_order={self.priority_order},project={self.project},replicate_number={self.replicate_number},samp_store_temp={self.samp_store_temp},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sampled_during={self.sampled_during},second_blh={self.second_blh},second_blh_quality={self.second_blh_quality},second_cbh={self.second_cbh},size_frac_low={self.size_frac_low},size_frac_up={self.size_frac_up},solar_irradiance={self.solar_irradiance},source_mat_id={self.source_mat_id},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},technical_reps={self.technical_reps},third_blh={self.third_blh},third_blh_quality={self.third_blh_quality},volatile_org_comp={self.volatile_org_comp},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -3731,11 +3731,11 @@ class AerosolSample(Sample):
     technical_reps = Column(Integer())
     temperature_exposure = Column(Text())
     volatile_org_comp = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "AerosolSample_external_identifiers" )
@@ -3746,7 +3746,7 @@ class AerosolSample(Sample):
     
 
     def __repr__(self):
-        return f"AerosolSample(aerosol_type={self.aerosol_type},air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},carb_dioxide={self.carb_dioxide},carb_monoxide={self.carb_monoxide},chem_administration={self.chem_administration},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},methane={self.methane},method_development={self.method_development},misc_param={self.misc_param},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen={self.oxygen},photochemical_exposure={self.photochemical_exposure},pressure_control={self.pressure_control},priority_order={self.priority_order},project={self.project},replicate_number={self.replicate_number},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sampled_during={self.sampled_during},samp_store_temp={self.samp_store_temp},size_frac_low={self.size_frac_low},size_frac_up={self.size_frac_up},solar_irradiance={self.solar_irradiance},source_mat_id={self.source_mat_id},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},technical_reps={self.technical_reps},temperature_exposure={self.temperature_exposure},volatile_org_comp={self.volatile_org_comp},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"AerosolSample(aerosol_type={self.aerosol_type},air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},carb_dioxide={self.carb_dioxide},carb_monoxide={self.carb_monoxide},chem_administration={self.chem_administration},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},methane={self.methane},method_development={self.method_development},misc_param={self.misc_param},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen={self.oxygen},photochemical_exposure={self.photochemical_exposure},pressure_control={self.pressure_control},priority_order={self.priority_order},project={self.project},replicate_number={self.replicate_number},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sampled_during={self.sampled_during},samp_store_temp={self.samp_store_temp},size_frac_low={self.size_frac_low},size_frac_up={self.size_frac_up},solar_irradiance={self.solar_irradiance},source_mat_id={self.source_mat_id},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},technical_reps={self.technical_reps},temperature_exposure={self.temperature_exposure},volatile_org_comp={self.volatile_org_comp},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -3789,17 +3789,17 @@ Workflow integration:
     other_guid_source = Column(Text())
     analysis_type = Column(Text())
     cbi = Column(Boolean())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"AMP2UserSample(organism_ref={self.organism_ref},collection_date={self.collection_date},growth_facil={self.growth_facil},isol_growth_condt={self.isol_growth_condt},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_temperature={self.storage_temperature},shipped_sample_size={self.shipped_sample_size},guid_source={self.guid_source},other_guid_source={self.other_guid_source},analysis_type={self.analysis_type},cbi={self.cbi},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"AMP2UserSample(organism_ref={self.organism_ref},collection_date={self.collection_date},growth_facil={self.growth_facil},isol_growth_condt={self.isol_growth_condt},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_temperature={self.storage_temperature},shipped_sample_size={self.shipped_sample_size},guid_source={self.guid_source},other_guid_source={self.other_guid_source},analysis_type={self.analysis_type},cbi={self.cbi},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -3842,11 +3842,11 @@ class CommerciallyPurchasedSample(Sample):
     storage_condition_other = Column(Text())
     technical_reps = Column(Integer())
     temp = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "CommerciallyPurchasedSample_external_identifiers" )
@@ -3857,7 +3857,7 @@ class CommerciallyPurchasedSample(Sample):
     
 
     def __repr__(self):
-        return f"CommerciallyPurchasedSample(analysis_type={self.analysis_type},cas={self.cas},compound_name={self.compound_name},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},item_number={self.item_number},method_development={self.method_development},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},production_method={self.production_method},project={self.project},replicate_number={self.replicate_number},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},technical_reps={self.technical_reps},temp={self.temp},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"CommerciallyPurchasedSample(analysis_type={self.analysis_type},cas={self.cas},compound_name={self.compound_name},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},item_number={self.item_number},method_development={self.method_development},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},production_method={self.production_method},project={self.project},replicate_number={self.replicate_number},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},technical_reps={self.technical_reps},temp={self.temp},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -3926,11 +3926,11 @@ class CultureEnvironmentalSample(Sample):
     technical_reps = Column(Integer())
     trophic_level = Column(Enum('autotroph', 'carboxydotroph', 'chemoautolithotroph', 'chemoautotroph', 'chemoheterotroph', 'chemolithoautotroph', 'chemolithotroph', 'chemoorganoheterotroph', 'chemoorganotroph', 'chemosynthetic', 'chemotroph', 'copiotroph', 'diazotroph', 'facultative', 'heterotroph', 'lithoautotroph', 'lithoheterotroph', 'lithotroph', 'methanotroph', 'methylotroph', 'mixotroph', 'obligate', 'oligotroph', 'organoheterotroph', 'organotroph', 'osmotroph', 'photoheterotroph', 'photoautotroph', 'photolithoautotroph', 'photolithotroph', 'phototroph', name='TrophicLevelEnum'))
     watering_regm = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "CultureEnvironmentalSample_external_identifiers" )
@@ -3941,7 +3941,7 @@ class CultureEnvironmentalSample(Sample):
     
 
     def __repr__(self):
-        return f"CultureEnvironmentalSample(air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},biotic_regm={self.biotic_regm},chem_administration={self.chem_administration},encoded_traits={self.encoded_traits},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},filter_method={self.filter_method},gaseous_environment={self.gaseous_environment},genetic_mod={self.genetic_mod},growth_medium={self.growth_medium},host_common_name={self.host_common_name},host_spec_range={self.host_spec_range},host_taxid={self.host_taxid},humidity_regm={self.humidity_regm},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},light_regm={self.light_regm},method_development={self.method_development},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},pathogenicity={self.pathogenicity},project={self.project},propagation={self.propagation},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},biotic_relationship={self.biotic_relationship},samp_store_temp={self.samp_store_temp},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},subspecf_gen_lin={self.subspecf_gen_lin},technical_reps={self.technical_reps},trophic_level={self.trophic_level},watering_regm={self.watering_regm},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"CultureEnvironmentalSample(air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},biotic_regm={self.biotic_regm},chem_administration={self.chem_administration},encoded_traits={self.encoded_traits},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},filter_method={self.filter_method},gaseous_environment={self.gaseous_environment},genetic_mod={self.genetic_mod},growth_medium={self.growth_medium},host_common_name={self.host_common_name},host_spec_range={self.host_spec_range},host_taxid={self.host_taxid},humidity_regm={self.humidity_regm},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},light_regm={self.light_regm},method_development={self.method_development},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},pathogenicity={self.pathogenicity},project={self.project},propagation={self.propagation},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},biotic_relationship={self.biotic_relationship},samp_store_temp={self.samp_store_temp},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},subspecf_gen_lin={self.subspecf_gen_lin},technical_reps={self.technical_reps},trophic_level={self.trophic_level},watering_regm={self.watering_regm},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -3968,11 +3968,11 @@ and carries only sample-instance-specific slots.
     cbi = Column(Text(), nullable=False )
     storage_condition = Column(Text(), nullable=False )
     storage_temperature = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "EngineeredStrainSample_external_identifiers" )
@@ -3983,7 +3983,7 @@ and carries only sample-instance-specific slots.
     
 
     def __repr__(self):
-        return f"EngineeredStrainSample(organism_ref={self.organism_ref},cbi={self.cbi},storage_condition={self.storage_condition},storage_temperature={self.storage_temperature},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"EngineeredStrainSample(organism_ref={self.organism_ref},cbi={self.cbi},storage_condition={self.storage_condition},storage_temperature={self.storage_temperature},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -4078,11 +4078,11 @@ class FieldDeployedTerraformSample(Sample):
     water_content = Column(Text())
     water_content_meth = Column(Text())
     watering_regm = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "FieldDeployedTerraformSample_external_identifiers" )
@@ -4093,7 +4093,7 @@ class FieldDeployedTerraformSample(Sample):
     
 
     def __repr__(self):
-        return f"FieldDeployedTerraformSample(air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},biotic_regm={self.biotic_regm},chem_administration={self.chem_administration},cult_root_med={self.cult_root_med},depth={self.depth},encoded_traits={self.encoded_traits},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},gaseous_environment={self.gaseous_environment},genetic_mod={self.genetic_mod},growth_medium={self.growth_medium},host_age={self.host_age},host_common_name={self.host_common_name},host_dry_mass={self.host_dry_mass},host_genotype={self.host_genotype},host_height={self.host_height},host_life_stage={self.host_life_stage},host_spec_range={self.host_spec_range},host_taxid={self.host_taxid},host_tot_mass={self.host_tot_mass},host_wet_mass={self.host_wet_mass},humidity_regm={self.humidity_regm},initiation_date_inoculation={self.initiation_date_inoculation},initiation_date_plant={self.initiation_date_plant},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},light_regm={self.light_regm},method_development={self.method_development},mineral_nutr_regm={self.mineral_nutr_regm},misc_param={self.misc_param},non_min_nutr_regm={self.non_min_nutr_regm},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},plant_growth_med={self.plant_growth_med},plant_product={self.plant_product},plant_sex={self.plant_sex},plant_struc={self.plant_struc},pressure={self.pressure},project={self.project},propagation={self.propagation},redox_potential={self.redox_potential},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},root_cond={self.root_cond},root_med_carbon={self.root_med_carbon},root_med_macronutr={self.root_med_macronutr},root_med_micronutr={self.root_med_micronutr},salt_regm={self.salt_regm},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},biotic_relationship={self.biotic_relationship},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},synth_env_assembly={self.synth_env_assembly},synth_env_design={self.synth_env_design},synth_env_design_method={self.synth_env_design_method},synth_env_material={self.synth_env_material},synth_env_treatment={self.synth_env_treatment},synth_start_date={self.synth_start_date},technical_reps={self.technical_reps},temp={self.temp},tiss_cult_growth_med={self.tiss_cult_growth_med},water_content={self.water_content},water_content_meth={self.water_content_meth},watering_regm={self.watering_regm},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"FieldDeployedTerraformSample(air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},biotic_regm={self.biotic_regm},chem_administration={self.chem_administration},cult_root_med={self.cult_root_med},depth={self.depth},encoded_traits={self.encoded_traits},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},gaseous_environment={self.gaseous_environment},genetic_mod={self.genetic_mod},growth_medium={self.growth_medium},host_age={self.host_age},host_common_name={self.host_common_name},host_dry_mass={self.host_dry_mass},host_genotype={self.host_genotype},host_height={self.host_height},host_life_stage={self.host_life_stage},host_spec_range={self.host_spec_range},host_taxid={self.host_taxid},host_tot_mass={self.host_tot_mass},host_wet_mass={self.host_wet_mass},humidity_regm={self.humidity_regm},initiation_date_inoculation={self.initiation_date_inoculation},initiation_date_plant={self.initiation_date_plant},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},light_regm={self.light_regm},method_development={self.method_development},mineral_nutr_regm={self.mineral_nutr_regm},misc_param={self.misc_param},non_min_nutr_regm={self.non_min_nutr_regm},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},plant_growth_med={self.plant_growth_med},plant_product={self.plant_product},plant_sex={self.plant_sex},plant_struc={self.plant_struc},pressure={self.pressure},project={self.project},propagation={self.propagation},redox_potential={self.redox_potential},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},root_cond={self.root_cond},root_med_carbon={self.root_med_carbon},root_med_macronutr={self.root_med_macronutr},root_med_micronutr={self.root_med_micronutr},salt_regm={self.salt_regm},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},biotic_relationship={self.biotic_relationship},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},synth_env_assembly={self.synth_env_assembly},synth_env_design={self.synth_env_design},synth_env_design_method={self.synth_env_design_method},synth_env_material={self.synth_env_material},synth_env_treatment={self.synth_env_treatment},synth_start_date={self.synth_start_date},technical_reps={self.technical_reps},temp={self.temp},tiss_cult_growth_med={self.tiss_cult_growth_med},water_content={self.water_content},water_content_meth={self.water_content_meth},watering_regm={self.watering_regm},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -4156,11 +4156,11 @@ class MixedCultureSample(Sample):
     technical_reps = Column(Integer())
     trophic_level = Column(Enum('autotroph', 'carboxydotroph', 'chemoautolithotroph', 'chemoautotroph', 'chemoheterotroph', 'chemolithoautotroph', 'chemolithotroph', 'chemoorganoheterotroph', 'chemoorganotroph', 'chemosynthetic', 'chemotroph', 'copiotroph', 'diazotroph', 'facultative', 'heterotroph', 'lithoautotroph', 'lithoheterotroph', 'lithotroph', 'methanotroph', 'methylotroph', 'mixotroph', 'obligate', 'oligotroph', 'organoheterotroph', 'organotroph', 'osmotroph', 'photoheterotroph', 'photoautotroph', 'photolithoautotroph', 'photolithotroph', 'phototroph', name='TrophicLevelEnum'))
     watering_regm = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "MixedCultureSample_external_identifiers" )
@@ -4171,7 +4171,7 @@ class MixedCultureSample(Sample):
     
 
     def __repr__(self):
-        return f"MixedCultureSample(air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},biotic_regm={self.biotic_regm},chem_administration={self.chem_administration},encoded_traits={self.encoded_traits},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},gaseous_environment={self.gaseous_environment},genetic_mod={self.genetic_mod},growth_medium={self.growth_medium},host_common_name={self.host_common_name},host_spec_range={self.host_spec_range},host_taxid={self.host_taxid},humidity_regm={self.humidity_regm},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},light_regm={self.light_regm},method_development={self.method_development},non_microb_biomass={self.non_microb_biomass},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},pathogenicity={self.pathogenicity},project={self.project},propagation={self.propagation},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},biotic_relationship={self.biotic_relationship},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sampled_during={self.sampled_during},samp_store_temp={self.samp_store_temp},source_mat_id={self.source_mat_id},specific_host={self.specific_host},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},subspecf_gen_lin={self.subspecf_gen_lin},technical_reps={self.technical_reps},trophic_level={self.trophic_level},watering_regm={self.watering_regm},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"MixedCultureSample(air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},biotic_regm={self.biotic_regm},chem_administration={self.chem_administration},encoded_traits={self.encoded_traits},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},gaseous_environment={self.gaseous_environment},genetic_mod={self.genetic_mod},growth_medium={self.growth_medium},host_common_name={self.host_common_name},host_spec_range={self.host_spec_range},host_taxid={self.host_taxid},humidity_regm={self.humidity_regm},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},light_regm={self.light_regm},method_development={self.method_development},non_microb_biomass={self.non_microb_biomass},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},pathogenicity={self.pathogenicity},project={self.project},propagation={self.propagation},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},biotic_relationship={self.biotic_relationship},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sampled_during={self.sampled_during},samp_store_temp={self.samp_store_temp},source_mat_id={self.source_mat_id},specific_host={self.specific_host},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},subspecf_gen_lin={self.subspecf_gen_lin},technical_reps={self.technical_reps},trophic_level={self.trophic_level},watering_regm={self.watering_regm},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -4219,11 +4219,11 @@ class MonetSoilSample(Sample):
     water_content = Column(Text(), nullable=False )
     water_content_meth = Column(Text())
     watering_regm = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "MonetSoilSample_external_identifiers" )
@@ -4234,7 +4234,7 @@ class MonetSoilSample(Sample):
     
 
     def __repr__(self):
-        return f"MonetSoilSample(agrochem_addition={self.agrochem_addition},bulk_elect_conductivity={self.bulk_elect_conductivity},chem_administration={self.chem_administration},core_group={self.core_group},depth={self.depth},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},latitude={self.latitude},longitude={self.longitude},lims_id={self.lims_id},misc_param={self.misc_param},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},project={self.project},sample_name={self.sample_name},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},sampling_set={self.sampling_set},soil_sample_type={self.soil_sample_type},soil_type={self.soil_type},soil_type_meth={self.soil_type_meth},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},temp={self.temp},water_content={self.water_content},water_content_meth={self.water_content_meth},watering_regm={self.watering_regm},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"MonetSoilSample(agrochem_addition={self.agrochem_addition},bulk_elect_conductivity={self.bulk_elect_conductivity},chem_administration={self.chem_administration},core_group={self.core_group},depth={self.depth},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},latitude={self.latitude},longitude={self.longitude},lims_id={self.lims_id},misc_param={self.misc_param},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},project={self.project},sample_name={self.sample_name},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},sampling_set={self.sampling_set},soil_sample_type={self.soil_sample_type},soil_type={self.soil_type},soil_type_meth={self.soil_type_meth},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},temp={self.temp},water_content={self.water_content},water_content_meth={self.water_content_meth},watering_regm={self.watering_regm},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -4475,11 +4475,11 @@ class OtherUndescribedSample(Sample):
     water_current = Column(Text())
     water_temp_regm = Column(Text())
     watering_regm = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "OtherUndescribedSample_external_identifiers" )
@@ -4490,7 +4490,7 @@ class OtherUndescribedSample(Sample):
     
 
     def __repr__(self):
-        return f"OtherUndescribedSample(agrochem_addition={self.agrochem_addition},air_temp_regm={self.air_temp_regm},al_sat={self.al_sat},al_sat_meth={self.al_sat_meth},alkalinity={self.alkalinity},alkalinity_method={self.alkalinity_method},alkyl_diethers={self.alkyl_diethers},aminopept_act={self.aminopept_act},ammonium={self.ammonium},analysis_type={self.analysis_type},ances_data={self.ances_data},antibiotic_regm={self.antibiotic_regm},bac_prod={self.bac_prod},bac_resp={self.bac_resp},bacteria_carb_prod={self.bacteria_carb_prod},biochem_oxygen_dem={self.biochem_oxygen_dem},biol_stat={self.biol_stat},biotic_regm={self.biotic_regm},bishomohopanol={self.bishomohopanol},bromide={self.bromide},bulk_elect_conductivity={self.bulk_elect_conductivity},calcium={self.calcium},carb_dioxide={self.carb_dioxide},carb_monoxide={self.carb_monoxide},carb_nitro_ratio={self.carb_nitro_ratio},cas={self.cas},chem_administration={self.chem_administration},chem_mutagen={self.chem_mutagen},chem_oxygen_dem={self.chem_oxygen_dem},chloride={self.chloride},chlorophyll={self.chlorophyll},compound_name={self.compound_name},conduc={self.conduc},density={self.density},depth={self.depth},diether_lipids={self.diether_lipids},diss_carb_dioxide={self.diss_carb_dioxide},diss_hydrogen={self.diss_hydrogen},diss_inorg_carb={self.diss_inorg_carb},diss_inorg_nitro={self.diss_inorg_nitro},diss_inorg_phosp={self.diss_inorg_phosp},diss_org_carb={self.diss_org_carb},diss_org_nitro={self.diss_org_nitro},diss_oxygen={self.diss_oxygen},down_par={self.down_par},efficiency_percent={self.efficiency_percent},emulsions={self.emulsions},encoded_traits={self.encoded_traits},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},fertilizer_regm={self.fertilizer_regm},filter_method={self.filter_method},fluor={self.fluor},fungicide_regm={self.fungicide_regm},gaseous_environment={self.gaseous_environment},gaseous_substances={self.gaseous_substances},genetic_mod={self.genetic_mod},glucosidase_act={self.glucosidase_act},gravity={self.gravity},growth_habit={self.growth_habit},growth_hormone_regm={self.growth_hormone_regm},growth_medium={self.growth_medium},heavy_metals={self.heavy_metals},heavy_metals_meth={self.heavy_metals_meth},herbicide_regm={self.herbicide_regm},host_age={self.host_age},host_common_name={self.host_common_name},host_disease_stat={self.host_disease_stat},host_dry_mass={self.host_dry_mass},host_height={self.host_height},host_infra_spec_name={self.host_infra_spec_name},host_infra_spec_rank={self.host_infra_spec_rank},host_length={self.host_length},host_life_stage={self.host_life_stage},host_phenotype={self.host_phenotype},host_spec_range={self.host_spec_range},host_symbiont={self.host_symbiont},host_taxid={self.host_taxid},host_tot_mass={self.host_tot_mass},host_wet_mass={self.host_wet_mass},humidity_regm={self.humidity_regm},indust_eff_percent={self.indust_eff_percent},inorg_particles={self.inorg_particles},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},item_number={self.item_number},latitude={self.latitude},longitude={self.longitude},light_intensity={self.light_intensity},light_regm={self.light_regm},link_addit_analys={self.link_addit_analys},magnesium={self.magnesium},mean_frict_vel={self.mean_frict_vel},mean_peak_frict_vel={self.mean_peak_frict_vel},mechanical_damage={self.mechanical_damage},method_development={self.method_development},methane={self.methane},micro_biomass_c_meth={self.micro_biomass_c_meth},micro_biomass_n_meth={self.micro_biomass_n_meth},microbial_biomass={self.microbial_biomass},microbial_biomass_c={self.microbial_biomass_c},microbial_biomass_n={self.microbial_biomass_n},microbial_biomass_meth={self.microbial_biomass_meth},mineral_nutr_regm={self.mineral_nutr_regm},misc_param={self.misc_param},n_alkanes={self.n_alkanes},nitrate={self.nitrate},nitrite={self.nitrite},nitro={self.nitro},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},non_min_nutr_regm={self.non_min_nutr_regm},org_carb={self.org_carb},org_matter={self.org_matter},org_nitro={self.org_nitro},org_nitro_method={self.org_nitro_method},org_particles={self.org_particles},organism_count={self.organism_count},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_treatment={self.other_treatment},oxygen={self.oxygen},oxygen_status={self.oxygen_status},part_org_carb={self.part_org_carb},part_org_nitro={self.part_org_nitro},particle_class={self.particle_class},pathogenicity={self.pathogenicity},perturbation={self.perturbation},pesticide_regm={self.pesticide_regm},petroleum_hydrocarb={self.petroleum_hydrocarb},ph={self.ph},ph_meth={self.ph_meth},ph_regm={self.ph_regm},phaeopigments={self.phaeopigments},phosphate={self.phosphate},phosplipid_fatt_acid={self.phosplipid_fatt_acid},photochemical_exposure={self.photochemical_exposure},photon_flux={self.photon_flux},porosity={self.porosity},potassium={self.potassium},pre_treatment={self.pre_treatment},pressure={self.pressure},pressure_control={self.pressure_control},primary_prod={self.primary_prod},primary_treatment={self.primary_treatment},priority_order={self.priority_order},production_method={self.production_method},project={self.project},propagation={self.propagation},radiation_regm={self.radiation_regm},rainfall_regm={self.rainfall_regm},reactor_type={self.reactor_type},redox_potential={self.redox_potential},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},salinity={self.salinity},salinity_method={self.salinity_method},salt_regm={self.salt_regm},biotic_relationship={self.biotic_relationship},samp_capt_status={self.samp_capt_status},samp_dis_stage={self.samp_dis_stage},samp_store_temp={self.samp_store_temp},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sample_type={self.sample_type},sampled_during={self.sampled_during},season_environment={self.season_environment},secondary_treatment={self.secondary_treatment},sewage_type={self.sewage_type},sieving={self.sieving},silicate={self.silicate},size_frac_low={self.size_frac_low},size_frac_up={self.size_frac_up},sludge_retent_time={self.sludge_retent_time},sodium={self.sodium},solar_irradiance={self.solar_irradiance},soluble_inorg_mat={self.soluble_inorg_mat},soluble_org_mat={self.soluble_org_mat},soluble_react_phosp={self.soluble_react_phosp},source_mat_id={self.source_mat_id},standing_water_regm={self.standing_water_regm},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},subspecf_gen_lin={self.subspecf_gen_lin},sulfate={self.sulfate},sulfide={self.sulfide},suspend_part_matter={self.suspend_part_matter},suspend_solids={self.suspend_solids},synth_instrument={self.synth_instrument},synth_process={self.synth_process},synth_reagents={self.synth_reagents},technical_reps={self.technical_reps},temp={self.temp},temperature_exposure={self.temperature_exposure},tertiary_treatment={self.tertiary_treatment},tidal_stage={self.tidal_stage},tiss_cult_growth_med={self.tiss_cult_growth_med},tot_carb={self.tot_carb},tot_depth_water_col={self.tot_depth_water_col},tot_diss_nitro={self.tot_diss_nitro},tot_inorg_nitro={self.tot_inorg_nitro},tot_nitro={self.tot_nitro},tot_nitro_cont_meth={self.tot_nitro_cont_meth},tot_nitro_content={self.tot_nitro_content},tot_org_c_meth={self.tot_org_c_meth},tot_org_carb={self.tot_org_carb},tot_part_carb={self.tot_part_carb},tot_phosp={self.tot_phosp},tot_phosphate={self.tot_phosphate},trophic_level={self.trophic_level},turbidity={self.turbidity},volatile_org_comp={self.volatile_org_comp},wastewater_type={self.wastewater_type},water_content={self.water_content},water_current={self.water_current},water_temp_regm={self.water_temp_regm},watering_regm={self.watering_regm},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"OtherUndescribedSample(agrochem_addition={self.agrochem_addition},air_temp_regm={self.air_temp_regm},al_sat={self.al_sat},al_sat_meth={self.al_sat_meth},alkalinity={self.alkalinity},alkalinity_method={self.alkalinity_method},alkyl_diethers={self.alkyl_diethers},aminopept_act={self.aminopept_act},ammonium={self.ammonium},analysis_type={self.analysis_type},ances_data={self.ances_data},antibiotic_regm={self.antibiotic_regm},bac_prod={self.bac_prod},bac_resp={self.bac_resp},bacteria_carb_prod={self.bacteria_carb_prod},biochem_oxygen_dem={self.biochem_oxygen_dem},biol_stat={self.biol_stat},biotic_regm={self.biotic_regm},bishomohopanol={self.bishomohopanol},bromide={self.bromide},bulk_elect_conductivity={self.bulk_elect_conductivity},calcium={self.calcium},carb_dioxide={self.carb_dioxide},carb_monoxide={self.carb_monoxide},carb_nitro_ratio={self.carb_nitro_ratio},cas={self.cas},chem_administration={self.chem_administration},chem_mutagen={self.chem_mutagen},chem_oxygen_dem={self.chem_oxygen_dem},chloride={self.chloride},chlorophyll={self.chlorophyll},compound_name={self.compound_name},conduc={self.conduc},density={self.density},depth={self.depth},diether_lipids={self.diether_lipids},diss_carb_dioxide={self.diss_carb_dioxide},diss_hydrogen={self.diss_hydrogen},diss_inorg_carb={self.diss_inorg_carb},diss_inorg_nitro={self.diss_inorg_nitro},diss_inorg_phosp={self.diss_inorg_phosp},diss_org_carb={self.diss_org_carb},diss_org_nitro={self.diss_org_nitro},diss_oxygen={self.diss_oxygen},down_par={self.down_par},efficiency_percent={self.efficiency_percent},emulsions={self.emulsions},encoded_traits={self.encoded_traits},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},fertilizer_regm={self.fertilizer_regm},filter_method={self.filter_method},fluor={self.fluor},fungicide_regm={self.fungicide_regm},gaseous_environment={self.gaseous_environment},gaseous_substances={self.gaseous_substances},genetic_mod={self.genetic_mod},glucosidase_act={self.glucosidase_act},gravity={self.gravity},growth_habit={self.growth_habit},growth_hormone_regm={self.growth_hormone_regm},growth_medium={self.growth_medium},heavy_metals={self.heavy_metals},heavy_metals_meth={self.heavy_metals_meth},herbicide_regm={self.herbicide_regm},host_age={self.host_age},host_common_name={self.host_common_name},host_disease_stat={self.host_disease_stat},host_dry_mass={self.host_dry_mass},host_height={self.host_height},host_infra_spec_name={self.host_infra_spec_name},host_infra_spec_rank={self.host_infra_spec_rank},host_length={self.host_length},host_life_stage={self.host_life_stage},host_phenotype={self.host_phenotype},host_spec_range={self.host_spec_range},host_symbiont={self.host_symbiont},host_taxid={self.host_taxid},host_tot_mass={self.host_tot_mass},host_wet_mass={self.host_wet_mass},humidity_regm={self.humidity_regm},indust_eff_percent={self.indust_eff_percent},inorg_particles={self.inorg_particles},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},item_number={self.item_number},latitude={self.latitude},longitude={self.longitude},light_intensity={self.light_intensity},light_regm={self.light_regm},link_addit_analys={self.link_addit_analys},magnesium={self.magnesium},mean_frict_vel={self.mean_frict_vel},mean_peak_frict_vel={self.mean_peak_frict_vel},mechanical_damage={self.mechanical_damage},method_development={self.method_development},methane={self.methane},micro_biomass_c_meth={self.micro_biomass_c_meth},micro_biomass_n_meth={self.micro_biomass_n_meth},microbial_biomass={self.microbial_biomass},microbial_biomass_c={self.microbial_biomass_c},microbial_biomass_n={self.microbial_biomass_n},microbial_biomass_meth={self.microbial_biomass_meth},mineral_nutr_regm={self.mineral_nutr_regm},misc_param={self.misc_param},n_alkanes={self.n_alkanes},nitrate={self.nitrate},nitrite={self.nitrite},nitro={self.nitro},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},non_min_nutr_regm={self.non_min_nutr_regm},org_carb={self.org_carb},org_matter={self.org_matter},org_nitro={self.org_nitro},org_nitro_method={self.org_nitro_method},org_particles={self.org_particles},organism_count={self.organism_count},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_treatment={self.other_treatment},oxygen={self.oxygen},oxygen_status={self.oxygen_status},part_org_carb={self.part_org_carb},part_org_nitro={self.part_org_nitro},particle_class={self.particle_class},pathogenicity={self.pathogenicity},perturbation={self.perturbation},pesticide_regm={self.pesticide_regm},petroleum_hydrocarb={self.petroleum_hydrocarb},ph={self.ph},ph_meth={self.ph_meth},ph_regm={self.ph_regm},phaeopigments={self.phaeopigments},phosphate={self.phosphate},phosplipid_fatt_acid={self.phosplipid_fatt_acid},photochemical_exposure={self.photochemical_exposure},photon_flux={self.photon_flux},porosity={self.porosity},potassium={self.potassium},pre_treatment={self.pre_treatment},pressure={self.pressure},pressure_control={self.pressure_control},primary_prod={self.primary_prod},primary_treatment={self.primary_treatment},priority_order={self.priority_order},production_method={self.production_method},project={self.project},propagation={self.propagation},radiation_regm={self.radiation_regm},rainfall_regm={self.rainfall_regm},reactor_type={self.reactor_type},redox_potential={self.redox_potential},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},salinity={self.salinity},salinity_method={self.salinity_method},salt_regm={self.salt_regm},biotic_relationship={self.biotic_relationship},samp_capt_status={self.samp_capt_status},samp_dis_stage={self.samp_dis_stage},samp_store_temp={self.samp_store_temp},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sample_type={self.sample_type},sampled_during={self.sampled_during},season_environment={self.season_environment},secondary_treatment={self.secondary_treatment},sewage_type={self.sewage_type},sieving={self.sieving},silicate={self.silicate},size_frac_low={self.size_frac_low},size_frac_up={self.size_frac_up},sludge_retent_time={self.sludge_retent_time},sodium={self.sodium},solar_irradiance={self.solar_irradiance},soluble_inorg_mat={self.soluble_inorg_mat},soluble_org_mat={self.soluble_org_mat},soluble_react_phosp={self.soluble_react_phosp},source_mat_id={self.source_mat_id},standing_water_regm={self.standing_water_regm},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},subspecf_gen_lin={self.subspecf_gen_lin},sulfate={self.sulfate},sulfide={self.sulfide},suspend_part_matter={self.suspend_part_matter},suspend_solids={self.suspend_solids},synth_instrument={self.synth_instrument},synth_process={self.synth_process},synth_reagents={self.synth_reagents},technical_reps={self.technical_reps},temp={self.temp},temperature_exposure={self.temperature_exposure},tertiary_treatment={self.tertiary_treatment},tidal_stage={self.tidal_stage},tiss_cult_growth_med={self.tiss_cult_growth_med},tot_carb={self.tot_carb},tot_depth_water_col={self.tot_depth_water_col},tot_diss_nitro={self.tot_diss_nitro},tot_inorg_nitro={self.tot_inorg_nitro},tot_nitro={self.tot_nitro},tot_nitro_cont_meth={self.tot_nitro_cont_meth},tot_nitro_content={self.tot_nitro_content},tot_org_c_meth={self.tot_org_c_meth},tot_org_carb={self.tot_org_carb},tot_part_carb={self.tot_part_carb},tot_phosp={self.tot_phosp},tot_phosphate={self.tot_phosphate},trophic_level={self.trophic_level},turbidity={self.turbidity},volatile_org_comp={self.volatile_org_comp},wastewater_type={self.wastewater_type},water_content={self.water_content},water_current={self.water_current},water_temp_regm={self.water_temp_regm},watering_regm={self.watering_regm},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -4588,11 +4588,11 @@ class PlantSample(Sample):
     temp = Column(Text())
     water_temp_regm = Column(Text())
     watering_regm = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "PlantSample_external_identifiers" )
@@ -4603,7 +4603,7 @@ class PlantSample(Sample):
     
 
     def __repr__(self):
-        return f"PlantSample(air_temp_regm={self.air_temp_regm},ances_data={self.ances_data},analysis_type={self.analysis_type},biol_stat={self.biol_stat},biotic_regm={self.biotic_regm},chem_administration={self.chem_administration},chem_mutagen={self.chem_mutagen},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},fertilizer_regm={self.fertilizer_regm},fungicide_regm={self.fungicide_regm},gaseous_environment={self.gaseous_environment},genetic_mod={self.genetic_mod},gravity={self.gravity},growth_habit={self.growth_habit},growth_hormone_regm={self.growth_hormone_regm},herbicide_regm={self.herbicide_regm},host_height={self.host_height},host_length={self.host_length},host_life_stage={self.host_life_stage},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},light_regm={self.light_regm},mechanical_damage={self.mechanical_damage},method_development={self.method_development},mineral_nutr_regm={self.mineral_nutr_regm},misc_param={self.misc_param},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},non_min_nutr_regm={self.non_min_nutr_regm},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},pesticide_regm={self.pesticide_regm},ph_regm={self.ph_regm},plant_age={self.plant_age},plant_common_name={self.plant_common_name},plant_disease_stat={self.plant_disease_stat},plant_dry_mass={self.plant_dry_mass},plant_genotype={self.plant_genotype},plant_growth_med={self.plant_growth_med},plant_sex={self.plant_sex},plant_struc={self.plant_struc},plant_taxid={self.plant_taxid},plant_wet_mass={self.plant_wet_mass},project={self.project},rainfall_regm={self.rainfall_regm},replicate_number={self.replicate_number},root_cond={self.root_cond},root_med_carbon={self.root_med_carbon},root_med_macronutr={self.root_med_macronutr},root_med_micronutr={self.root_med_micronutr},root_med_ph={self.root_med_ph},root_med_regl={self.root_med_regl},root_med_solid={self.root_med_solid},root_med_suppl={self.root_med_suppl},salinity={self.salinity},salinity_method={self.salinity_method},salt_regm={self.salt_regm},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},standing_water_regm={self.standing_water_regm},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},technical_reps={self.technical_reps},temp={self.temp},water_temp_regm={self.water_temp_regm},watering_regm={self.watering_regm},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"PlantSample(air_temp_regm={self.air_temp_regm},ances_data={self.ances_data},analysis_type={self.analysis_type},biol_stat={self.biol_stat},biotic_regm={self.biotic_regm},chem_administration={self.chem_administration},chem_mutagen={self.chem_mutagen},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},fertilizer_regm={self.fertilizer_regm},fungicide_regm={self.fungicide_regm},gaseous_environment={self.gaseous_environment},genetic_mod={self.genetic_mod},gravity={self.gravity},growth_habit={self.growth_habit},growth_hormone_regm={self.growth_hormone_regm},herbicide_regm={self.herbicide_regm},host_height={self.host_height},host_length={self.host_length},host_life_stage={self.host_life_stage},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},light_regm={self.light_regm},mechanical_damage={self.mechanical_damage},method_development={self.method_development},mineral_nutr_regm={self.mineral_nutr_regm},misc_param={self.misc_param},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},non_min_nutr_regm={self.non_min_nutr_regm},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},pesticide_regm={self.pesticide_regm},ph_regm={self.ph_regm},plant_age={self.plant_age},plant_common_name={self.plant_common_name},plant_disease_stat={self.plant_disease_stat},plant_dry_mass={self.plant_dry_mass},plant_genotype={self.plant_genotype},plant_growth_med={self.plant_growth_med},plant_sex={self.plant_sex},plant_struc={self.plant_struc},plant_taxid={self.plant_taxid},plant_wet_mass={self.plant_wet_mass},project={self.project},rainfall_regm={self.rainfall_regm},replicate_number={self.replicate_number},root_cond={self.root_cond},root_med_carbon={self.root_med_carbon},root_med_macronutr={self.root_med_macronutr},root_med_micronutr={self.root_med_micronutr},root_med_ph={self.root_med_ph},root_med_regl={self.root_med_regl},root_med_solid={self.root_med_solid},root_med_suppl={self.root_med_suppl},salinity={self.salinity},salinity_method={self.salinity_method},salt_regm={self.salt_regm},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},standing_water_regm={self.standing_water_regm},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},technical_reps={self.technical_reps},temp={self.temp},water_temp_regm={self.water_temp_regm},watering_regm={self.watering_regm},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -4670,11 +4670,11 @@ class PureCultureSample(Sample):
     technical_reps = Column(Integer())
     trophic_level = Column(Enum('autotroph', 'carboxydotroph', 'chemoautolithotroph', 'chemoautotroph', 'chemoheterotroph', 'chemolithoautotroph', 'chemolithotroph', 'chemoorganoheterotroph', 'chemoorganotroph', 'chemosynthetic', 'chemotroph', 'copiotroph', 'diazotroph', 'facultative', 'heterotroph', 'lithoautotroph', 'lithoheterotroph', 'lithotroph', 'methanotroph', 'methylotroph', 'mixotroph', 'obligate', 'oligotroph', 'organoheterotroph', 'organotroph', 'osmotroph', 'photoheterotroph', 'photoautotroph', 'photolithoautotroph', 'photolithotroph', 'phototroph', name='TrophicLevelEnum'))
     watering_regm = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "PureCultureSample_external_identifiers" )
@@ -4685,7 +4685,7 @@ class PureCultureSample(Sample):
     
 
     def __repr__(self):
-        return f"PureCultureSample(air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},biotic_regm={self.biotic_regm},chem_administration={self.chem_administration},encoded_traits={self.encoded_traits},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},filter_method={self.filter_method},gaseous_environment={self.gaseous_environment},genetic_mod={self.genetic_mod},growth_medium={self.growth_medium},host_common_name={self.host_common_name},host_spec_range={self.host_spec_range},host_taxid={self.host_taxid},humidity_regm={self.humidity_regm},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},light_regm={self.light_regm},method_development={self.method_development},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},pathogenicity={self.pathogenicity},project={self.project},propagation={self.propagation},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},biotic_relationship={self.biotic_relationship},samp_store_temp={self.samp_store_temp},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},subspecf_gen_lin={self.subspecf_gen_lin},technical_reps={self.technical_reps},trophic_level={self.trophic_level},watering_regm={self.watering_regm},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"PureCultureSample(air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},biotic_regm={self.biotic_regm},chem_administration={self.chem_administration},encoded_traits={self.encoded_traits},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},filter_method={self.filter_method},gaseous_environment={self.gaseous_environment},genetic_mod={self.genetic_mod},growth_medium={self.growth_medium},host_common_name={self.host_common_name},host_spec_range={self.host_spec_range},host_taxid={self.host_taxid},humidity_regm={self.humidity_regm},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},light_regm={self.light_regm},method_development={self.method_development},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},pathogenicity={self.pathogenicity},project={self.project},propagation={self.propagation},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},biotic_relationship={self.biotic_relationship},samp_store_temp={self.samp_store_temp},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},subspecf_gen_lin={self.subspecf_gen_lin},technical_reps={self.technical_reps},trophic_level={self.trophic_level},watering_regm={self.watering_regm},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -4814,11 +4814,11 @@ class SedimentSample(Sample):
     water_content = Column(Text())
     water_content_meth = Column(Text())
     watering_regm = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "SedimentSample_external_identifiers" )
@@ -4829,7 +4829,7 @@ class SedimentSample(Sample):
     
 
     def __repr__(self):
-        return f"SedimentSample(air_temp_regm={self.air_temp_regm},alkalinity={self.alkalinity},alkalinity_method={self.alkalinity_method},alkyl_diethers={self.alkyl_diethers},aminopept_act={self.aminopept_act},ammonium={self.ammonium},analysis_type={self.analysis_type},bacteria_carb_prod={self.bacteria_carb_prod},biotic_regm={self.biotic_regm},bishomohopanol={self.bishomohopanol},bromide={self.bromide},calcium={self.calcium},carb_nitro_ratio={self.carb_nitro_ratio},chem_administration={self.chem_administration},chloride={self.chloride},chlorophyll={self.chlorophyll},density={self.density},depth={self.depth},diether_lipids={self.diether_lipids},diss_carb_dioxide={self.diss_carb_dioxide},diss_hydrogen={self.diss_hydrogen},diss_inorg_carb={self.diss_inorg_carb},diss_org_carb={self.diss_org_carb},diss_org_nitro={self.diss_org_nitro},diss_oxygen={self.diss_oxygen},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},gaseous_environment={self.gaseous_environment},glucosidase_act={self.glucosidase_act},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},light_regm={self.light_regm},magnesium={self.magnesium},mean_frict_vel={self.mean_frict_vel},mean_peak_frict_vel={self.mean_peak_frict_vel},methane={self.methane},method_development={self.method_development},micro_biomass_c_meth={self.micro_biomass_c_meth},micro_biomass_n_meth={self.micro_biomass_n_meth},microbial_biomass={self.microbial_biomass},microbial_biomass_c={self.microbial_biomass_c},microbial_biomass_meth={self.microbial_biomass_meth},microbial_biomass_n={self.microbial_biomass_n},misc_param={self.misc_param},n_alkanes={self.n_alkanes},nitrate={self.nitrate},nitrite={self.nitrite},nitro={self.nitro},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},org_carb={self.org_carb},org_matter={self.org_matter},org_nitro={self.org_nitro},org_nitro_method={self.org_nitro_method},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},part_org_carb={self.part_org_carb},particle_class={self.particle_class},perturbation={self.perturbation},petroleum_hydrocarb={self.petroleum_hydrocarb},ph={self.ph},ph_meth={self.ph_meth},phaeopigments={self.phaeopigments},phosphate={self.phosphate},phosplipid_fatt_acid={self.phosplipid_fatt_acid},porosity={self.porosity},potassium={self.potassium},pressure={self.pressure},project={self.project},redox_potential={self.redox_potential},replicate_number={self.replicate_number},salinity={self.salinity},salinity_method={self.salinity_method},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},biotic_relationship={self.biotic_relationship},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},sediment_type={self.sediment_type},sieving={self.sieving},silicate={self.silicate},sodium={self.sodium},source_mat_id={self.source_mat_id},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},sulfate={self.sulfate},sulfide={self.sulfide},technical_reps={self.technical_reps},temp={self.temp},tidal_stage={self.tidal_stage},tot_carb={self.tot_carb},tot_depth_water_col={self.tot_depth_water_col},tot_nitro_cont_meth={self.tot_nitro_cont_meth},tot_nitro_content={self.tot_nitro_content},tot_org_c_meth={self.tot_org_c_meth},tot_org_carb={self.tot_org_carb},turbidity={self.turbidity},water_content={self.water_content},water_content_meth={self.water_content_meth},watering_regm={self.watering_regm},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"SedimentSample(air_temp_regm={self.air_temp_regm},alkalinity={self.alkalinity},alkalinity_method={self.alkalinity_method},alkyl_diethers={self.alkyl_diethers},aminopept_act={self.aminopept_act},ammonium={self.ammonium},analysis_type={self.analysis_type},bacteria_carb_prod={self.bacteria_carb_prod},biotic_regm={self.biotic_regm},bishomohopanol={self.bishomohopanol},bromide={self.bromide},calcium={self.calcium},carb_nitro_ratio={self.carb_nitro_ratio},chem_administration={self.chem_administration},chloride={self.chloride},chlorophyll={self.chlorophyll},density={self.density},depth={self.depth},diether_lipids={self.diether_lipids},diss_carb_dioxide={self.diss_carb_dioxide},diss_hydrogen={self.diss_hydrogen},diss_inorg_carb={self.diss_inorg_carb},diss_org_carb={self.diss_org_carb},diss_org_nitro={self.diss_org_nitro},diss_oxygen={self.diss_oxygen},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},gaseous_environment={self.gaseous_environment},glucosidase_act={self.glucosidase_act},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},light_regm={self.light_regm},magnesium={self.magnesium},mean_frict_vel={self.mean_frict_vel},mean_peak_frict_vel={self.mean_peak_frict_vel},methane={self.methane},method_development={self.method_development},micro_biomass_c_meth={self.micro_biomass_c_meth},micro_biomass_n_meth={self.micro_biomass_n_meth},microbial_biomass={self.microbial_biomass},microbial_biomass_c={self.microbial_biomass_c},microbial_biomass_meth={self.microbial_biomass_meth},microbial_biomass_n={self.microbial_biomass_n},misc_param={self.misc_param},n_alkanes={self.n_alkanes},nitrate={self.nitrate},nitrite={self.nitrite},nitro={self.nitro},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},org_carb={self.org_carb},org_matter={self.org_matter},org_nitro={self.org_nitro},org_nitro_method={self.org_nitro_method},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},part_org_carb={self.part_org_carb},particle_class={self.particle_class},perturbation={self.perturbation},petroleum_hydrocarb={self.petroleum_hydrocarb},ph={self.ph},ph_meth={self.ph_meth},phaeopigments={self.phaeopigments},phosphate={self.phosphate},phosplipid_fatt_acid={self.phosplipid_fatt_acid},porosity={self.porosity},potassium={self.potassium},pressure={self.pressure},project={self.project},redox_potential={self.redox_potential},replicate_number={self.replicate_number},salinity={self.salinity},salinity_method={self.salinity_method},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},biotic_relationship={self.biotic_relationship},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},sediment_type={self.sediment_type},sieving={self.sieving},silicate={self.silicate},sodium={self.sodium},source_mat_id={self.source_mat_id},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},sulfate={self.sulfate},sulfide={self.sulfide},technical_reps={self.technical_reps},temp={self.temp},tidal_stage={self.tidal_stage},tot_carb={self.tot_carb},tot_depth_water_col={self.tot_depth_water_col},tot_nitro_cont_meth={self.tot_nitro_cont_meth},tot_nitro_content={self.tot_nitro_content},tot_org_c_meth={self.tot_org_c_meth},tot_org_carb={self.tot_org_carb},turbidity={self.turbidity},water_content={self.water_content},water_content_meth={self.water_content_meth},watering_regm={self.watering_regm},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -4923,11 +4923,11 @@ class SoilSample(Sample):
     water_content = Column(Text())
     water_content_meth = Column(Text())
     watering_regm = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "SoilSample_external_identifiers" )
@@ -4938,7 +4938,7 @@ class SoilSample(Sample):
     
 
     def __repr__(self):
-        return f"SoilSample(agrochem_addition={self.agrochem_addition},air_temp_regm={self.air_temp_regm},al_sat={self.al_sat},al_sat_meth={self.al_sat_meth},analysis_type={self.analysis_type},biotic_regm={self.biotic_regm},bulk_elect_conductivity={self.bulk_elect_conductivity},chem_administration={self.chem_administration},depth={self.depth},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},filter_method={self.filter_method},gaseous_environment={self.gaseous_environment},heavy_metals={self.heavy_metals},heavy_metals_meth={self.heavy_metals_meth},horizon_meth={self.horizon_meth},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},light_regm={self.light_regm},link_addit_analys={self.link_addit_analys},method_development={self.method_development},micro_biomass_c_meth={self.micro_biomass_c_meth},micro_biomass_n_meth={self.micro_biomass_n_meth},microbial_biomass={self.microbial_biomass},microbial_biomass_c={self.microbial_biomass_c},microbial_biomass_meth={self.microbial_biomass_meth},microbial_biomass_n={self.microbial_biomass_n},misc_param={self.misc_param},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},perturbation={self.perturbation},ph={self.ph},ph_meth={self.ph_meth},project={self.project},replicate_number={self.replicate_number},salinity={self.salinity},salinity_method={self.salinity_method},biotic_relationship={self.biotic_relationship},samp_store_temp={self.samp_store_temp},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sampled_during={self.sampled_during},sieving={self.sieving},size_frac_low={self.size_frac_low},size_frac_up={self.size_frac_up},soil_horizon={self.soil_horizon},soil_sample_type={self.soil_sample_type},soil_texture={self.soil_texture},soil_type={self.soil_type},soil_type_meth={self.soil_type_meth},source_mat_id={self.source_mat_id},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},technical_reps={self.technical_reps},temp={self.temp},texture_meth={self.texture_meth},tot_nitro_cont_meth={self.tot_nitro_cont_meth},tot_nitro_content={self.tot_nitro_content},tot_org_c_meth={self.tot_org_c_meth},tot_org_carb={self.tot_org_carb},water_content={self.water_content},water_content_meth={self.water_content_meth},watering_regm={self.watering_regm},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"SoilSample(agrochem_addition={self.agrochem_addition},air_temp_regm={self.air_temp_regm},al_sat={self.al_sat},al_sat_meth={self.al_sat_meth},analysis_type={self.analysis_type},biotic_regm={self.biotic_regm},bulk_elect_conductivity={self.bulk_elect_conductivity},chem_administration={self.chem_administration},depth={self.depth},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},filter_method={self.filter_method},gaseous_environment={self.gaseous_environment},heavy_metals={self.heavy_metals},heavy_metals_meth={self.heavy_metals_meth},horizon_meth={self.horizon_meth},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},light_regm={self.light_regm},link_addit_analys={self.link_addit_analys},method_development={self.method_development},micro_biomass_c_meth={self.micro_biomass_c_meth},micro_biomass_n_meth={self.micro_biomass_n_meth},microbial_biomass={self.microbial_biomass},microbial_biomass_c={self.microbial_biomass_c},microbial_biomass_meth={self.microbial_biomass_meth},microbial_biomass_n={self.microbial_biomass_n},misc_param={self.misc_param},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},perturbation={self.perturbation},ph={self.ph},ph_meth={self.ph_meth},project={self.project},replicate_number={self.replicate_number},salinity={self.salinity},salinity_method={self.salinity_method},biotic_relationship={self.biotic_relationship},samp_store_temp={self.samp_store_temp},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},sampled_during={self.sampled_during},sieving={self.sieving},size_frac_low={self.size_frac_low},size_frac_up={self.size_frac_up},soil_horizon={self.soil_horizon},soil_sample_type={self.soil_sample_type},soil_texture={self.soil_texture},soil_type={self.soil_type},soil_type_meth={self.soil_type_meth},source_mat_id={self.source_mat_id},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},technical_reps={self.technical_reps},temp={self.temp},texture_meth={self.texture_meth},tot_nitro_cont_meth={self.tot_nitro_cont_meth},tot_nitro_content={self.tot_nitro_content},tot_org_c_meth={self.tot_org_c_meth},tot_org_carb={self.tot_org_carb},water_content={self.water_content},water_content_meth={self.water_content_meth},watering_regm={self.watering_regm},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -4984,11 +4984,11 @@ class SynthesizedMaterialSample(Sample):
     synth_reagents = Column(Text(), nullable=False )
     technical_reps = Column(Integer())
     temp = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "SynthesizedMaterialSample_external_identifiers" )
@@ -4999,7 +4999,7 @@ class SynthesizedMaterialSample(Sample):
     
 
     def __repr__(self):
-        return f"SynthesizedMaterialSample(analysis_type={self.analysis_type},cas={self.cas},compound_name={self.compound_name},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},genetic_mod={self.genetic_mod},item_number={self.item_number},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},oxygen_status={self.oxygen_status},product_name={self.product_name},production_method={self.production_method},project={self.project},replicate_number={self.replicate_number},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},synth_instrument={self.synth_instrument},synth_process={self.synth_process},synth_reagents={self.synth_reagents},technical_reps={self.technical_reps},temp={self.temp},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"SynthesizedMaterialSample(analysis_type={self.analysis_type},cas={self.cas},compound_name={self.compound_name},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},genetic_mod={self.genetic_mod},item_number={self.item_number},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},oxygen_status={self.oxygen_status},product_name={self.product_name},production_method={self.production_method},project={self.project},replicate_number={self.replicate_number},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},synth_instrument={self.synth_instrument},synth_process={self.synth_process},synth_reagents={self.synth_reagents},technical_reps={self.technical_reps},temp={self.temp},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -5090,11 +5090,11 @@ class TerraformSample(Sample):
     water_content = Column(Text())
     water_content_meth = Column(Text())
     watering_regm = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "TerraformSample_external_identifiers" )
@@ -5105,7 +5105,7 @@ class TerraformSample(Sample):
     
 
     def __repr__(self):
-        return f"TerraformSample(air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},biotic_regm={self.biotic_regm},chem_administration={self.chem_administration},cult_root_med={self.cult_root_med},encoded_traits={self.encoded_traits},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},gaseous_environment={self.gaseous_environment},genetic_mod={self.genetic_mod},growth_medium={self.growth_medium},host_age={self.host_age},host_common_name={self.host_common_name},host_dry_mass={self.host_dry_mass},host_genotype={self.host_genotype},host_height={self.host_height},host_life_stage={self.host_life_stage},host_spec_range={self.host_spec_range},host_taxid={self.host_taxid},host_tot_mass={self.host_tot_mass},host_wet_mass={self.host_wet_mass},humidity_regm={self.humidity_regm},initiation_date_inoculation={self.initiation_date_inoculation},initiation_date_plant={self.initiation_date_plant},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},light_regm={self.light_regm},method_development={self.method_development},mineral_nutr_regm={self.mineral_nutr_regm},misc_param={self.misc_param},non_min_nutr_regm={self.non_min_nutr_regm},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},plant_growth_med={self.plant_growth_med},plant_product={self.plant_product},plant_sex={self.plant_sex},plant_struc={self.plant_struc},pressure={self.pressure},project={self.project},propagation={self.propagation},redox_potential={self.redox_potential},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},root_cond={self.root_cond},root_med_carbon={self.root_med_carbon},root_med_macronutr={self.root_med_macronutr},root_med_micronutr={self.root_med_micronutr},salt_regm={self.salt_regm},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},biotic_relationship={self.biotic_relationship},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},synth_env_assembly={self.synth_env_assembly},synth_env_design={self.synth_env_design},synth_env_design_method={self.synth_env_design_method},synth_env_material={self.synth_env_material},synth_env_treatment={self.synth_env_treatment},synth_start_date={self.synth_start_date},technical_reps={self.technical_reps},temp={self.temp},tiss_cult_growth_med={self.tiss_cult_growth_med},water_content={self.water_content},water_content_meth={self.water_content_meth},watering_regm={self.watering_regm},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"TerraformSample(air_temp_regm={self.air_temp_regm},analysis_type={self.analysis_type},biotic_regm={self.biotic_regm},chem_administration={self.chem_administration},cult_root_med={self.cult_root_med},encoded_traits={self.encoded_traits},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},gaseous_environment={self.gaseous_environment},genetic_mod={self.genetic_mod},growth_medium={self.growth_medium},host_age={self.host_age},host_common_name={self.host_common_name},host_dry_mass={self.host_dry_mass},host_genotype={self.host_genotype},host_height={self.host_height},host_life_stage={self.host_life_stage},host_spec_range={self.host_spec_range},host_taxid={self.host_taxid},host_tot_mass={self.host_tot_mass},host_wet_mass={self.host_wet_mass},humidity_regm={self.humidity_regm},initiation_date_inoculation={self.initiation_date_inoculation},initiation_date_plant={self.initiation_date_plant},isol_growth_condt={self.isol_growth_condt},isotope_exposure={self.isotope_exposure},light_regm={self.light_regm},method_development={self.method_development},mineral_nutr_regm={self.mineral_nutr_regm},misc_param={self.misc_param},non_min_nutr_regm={self.non_min_nutr_regm},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},plant_growth_med={self.plant_growth_med},plant_product={self.plant_product},plant_sex={self.plant_sex},plant_struc={self.plant_struc},pressure={self.pressure},project={self.project},propagation={self.propagation},redox_potential={self.redox_potential},ref_biomaterial={self.ref_biomaterial},replicate_number={self.replicate_number},root_cond={self.root_cond},root_med_carbon={self.root_med_carbon},root_med_macronutr={self.root_med_macronutr},root_med_micronutr={self.root_med_micronutr},salt_regm={self.salt_regm},sample_link={self.sample_link},sample_name={self.sample_name},sample_processing={self.sample_processing},biotic_relationship={self.biotic_relationship},samp_store_temp={self.samp_store_temp},sampled_during={self.sampled_during},source_mat_id={self.source_mat_id},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},synth_env_assembly={self.synth_env_assembly},synth_env_design={self.synth_env_design},synth_env_design_method={self.synth_env_design_method},synth_env_material={self.synth_env_material},synth_env_treatment={self.synth_env_treatment},synth_start_date={self.synth_start_date},technical_reps={self.technical_reps},temp={self.temp},tiss_cult_growth_med={self.tiss_cult_growth_med},water_content={self.water_content},water_content_meth={self.water_content_meth},watering_regm={self.watering_regm},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -5233,11 +5233,11 @@ class WaterSample(Sample):
     tot_phosp = Column(Text())
     turbidity = Column(Text())
     water_current = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
     
     external_identifiers_rel = relationship( "WaterSample_external_identifiers" )
@@ -5248,7 +5248,7 @@ class WaterSample(Sample):
     
 
     def __repr__(self):
-        return f"WaterSample(air_temp_regm={self.air_temp_regm},alkalinity={self.alkalinity},alkalinity_method={self.alkalinity_method},alkyl_diethers={self.alkyl_diethers},aminopept_act={self.aminopept_act},ammonium={self.ammonium},analysis_type={self.analysis_type},bac_prod={self.bac_prod},bac_resp={self.bac_resp},bacteria_carb_prod={self.bacteria_carb_prod},biotic_regm={self.biotic_regm},bishomohopanol={self.bishomohopanol},bromide={self.bromide},calcium={self.calcium},carb_nitro_ratio={self.carb_nitro_ratio},chem_administration={self.chem_administration},chloride={self.chloride},chlorophyll={self.chlorophyll},conduc={self.conduc},density={self.density},depth={self.depth},diether_lipids={self.diether_lipids},diss_carb_dioxide={self.diss_carb_dioxide},diss_hydrogen={self.diss_hydrogen},diss_inorg_carb={self.diss_inorg_carb},diss_inorg_nitro={self.diss_inorg_nitro},diss_inorg_phosp={self.diss_inorg_phosp},diss_org_carb={self.diss_org_carb},diss_org_nitro={self.diss_org_nitro},diss_oxygen={self.diss_oxygen},down_par={self.down_par},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},filter_method={self.filter_method},fluor={self.fluor},gaseous_environment={self.gaseous_environment},glucosidase_act={self.glucosidase_act},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},light_intensity={self.light_intensity},magnesium={self.magnesium},mean_frict_vel={self.mean_frict_vel},mean_peak_frict_vel={self.mean_peak_frict_vel},method_development={self.method_development},misc_param={self.misc_param},n_alkanes={self.n_alkanes},nitrate={self.nitrate},nitrite={self.nitrite},nitro={self.nitro},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},org_carb={self.org_carb},org_matter={self.org_matter},org_nitro={self.org_nitro},org_nitro_method={self.org_nitro_method},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},part_org_carb={self.part_org_carb},part_org_nitro={self.part_org_nitro},perturbation={self.perturbation},petroleum_hydrocarb={self.petroleum_hydrocarb},ph={self.ph},ph_meth={self.ph_meth},phaeopigments={self.phaeopigments},phosphate={self.phosphate},phosplipid_fatt_acid={self.phosplipid_fatt_acid},photon_flux={self.photon_flux},potassium={self.potassium},pressure={self.pressure},primary_prod={self.primary_prod},project={self.project},redox_potential={self.redox_potential},replicate_number={self.replicate_number},salinity={self.salinity},salinity_method={self.salinity_method},sample_link={self.sample_link},sample_name={self.sample_name},sampled_during={self.sampled_during},silicate={self.silicate},size_frac_low={self.size_frac_low},size_frac_up={self.size_frac_up},sodium={self.sodium},soluble_react_phosp={self.soluble_react_phosp},source_mat_id={self.source_mat_id},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},sulfate={self.sulfate},sulfide={self.sulfide},samp_store_temp={self.samp_store_temp},suspend_part_matter={self.suspend_part_matter},technical_reps={self.technical_reps},temp={self.temp},tidal_stage={self.tidal_stage},tot_depth_water_col={self.tot_depth_water_col},tot_diss_nitro={self.tot_diss_nitro},tot_inorg_nitro={self.tot_inorg_nitro},tot_nitro={self.tot_nitro},tot_part_carb={self.tot_part_carb},tot_phosp={self.tot_phosp},turbidity={self.turbidity},water_current={self.water_current},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"WaterSample(air_temp_regm={self.air_temp_regm},alkalinity={self.alkalinity},alkalinity_method={self.alkalinity_method},alkyl_diethers={self.alkyl_diethers},aminopept_act={self.aminopept_act},ammonium={self.ammonium},analysis_type={self.analysis_type},bac_prod={self.bac_prod},bac_resp={self.bac_resp},bacteria_carb_prod={self.bacteria_carb_prod},biotic_regm={self.biotic_regm},bishomohopanol={self.bishomohopanol},bromide={self.bromide},calcium={self.calcium},carb_nitro_ratio={self.carb_nitro_ratio},chem_administration={self.chem_administration},chloride={self.chloride},chlorophyll={self.chlorophyll},conduc={self.conduc},density={self.density},depth={self.depth},diether_lipids={self.diether_lipids},diss_carb_dioxide={self.diss_carb_dioxide},diss_hydrogen={self.diss_hydrogen},diss_inorg_carb={self.diss_inorg_carb},diss_inorg_nitro={self.diss_inorg_nitro},diss_inorg_phosp={self.diss_inorg_phosp},diss_org_carb={self.diss_org_carb},diss_org_nitro={self.diss_org_nitro},diss_oxygen={self.diss_oxygen},down_par={self.down_par},env_broad_scale={self.env_broad_scale},env_local_scale={self.env_local_scale},env_medium={self.env_medium},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},filter_method={self.filter_method},fluor={self.fluor},gaseous_environment={self.gaseous_environment},glucosidase_act={self.glucosidase_act},isotope_exposure={self.isotope_exposure},latitude={self.latitude},longitude={self.longitude},light_intensity={self.light_intensity},magnesium={self.magnesium},mean_frict_vel={self.mean_frict_vel},mean_peak_frict_vel={self.mean_peak_frict_vel},method_development={self.method_development},misc_param={self.misc_param},n_alkanes={self.n_alkanes},nitrate={self.nitrate},nitrite={self.nitrite},nitro={self.nitro},non_microb_biomass={self.non_microb_biomass},non_microb_biomass_method={self.non_microb_biomass_method},org_carb={self.org_carb},org_matter={self.org_matter},org_nitro={self.org_nitro},org_nitro_method={self.org_nitro_method},other={self.other},other_samp_store_temp={self.other_samp_store_temp},other_storage_condt={self.other_storage_condt},other_treatment={self.other_treatment},oxygen_status={self.oxygen_status},part_org_carb={self.part_org_carb},part_org_nitro={self.part_org_nitro},perturbation={self.perturbation},petroleum_hydrocarb={self.petroleum_hydrocarb},ph={self.ph},ph_meth={self.ph_meth},phaeopigments={self.phaeopigments},phosphate={self.phosphate},phosplipid_fatt_acid={self.phosplipid_fatt_acid},photon_flux={self.photon_flux},potassium={self.potassium},pressure={self.pressure},primary_prod={self.primary_prod},project={self.project},redox_potential={self.redox_potential},replicate_number={self.replicate_number},salinity={self.salinity},salinity_method={self.salinity_method},sample_link={self.sample_link},sample_name={self.sample_name},sampled_during={self.sampled_during},silicate={self.silicate},size_frac_low={self.size_frac_low},size_frac_up={self.size_frac_up},sodium={self.sodium},soluble_react_phosp={self.soluble_react_phosp},source_mat_id={self.source_mat_id},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},sulfate={self.sulfate},sulfide={self.sulfide},samp_store_temp={self.samp_store_temp},suspend_part_matter={self.suspend_part_matter},technical_reps={self.technical_reps},temp={self.temp},tidal_stage={self.tidal_stage},tot_depth_water_col={self.tot_depth_water_col},tot_diss_nitro={self.tot_diss_nitro},tot_inorg_nitro={self.tot_inorg_nitro},tot_nitro={self.tot_nitro},tot_part_carb={self.tot_part_carb},tot_phosp={self.tot_phosp},turbidity={self.turbidity},water_current={self.water_current},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -5282,17 +5282,17 @@ ProcessingSampleLink only.
     volume_ul = Column(Float())
     sampled_portion = Column(Enum('supernatant', 'pellet', 'organic_layer', 'aqueous_layer', 'interlayer', 'chloroform_layer', 'methanol_layer', name='SamplePortionEnum'))
     replicate = Column(Integer())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"ProcessedSample(label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_ul={self.volume_ul},sampled_portion={self.sampled_portion},replicate={self.replicate},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"ProcessedSample(label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_ul={self.volume_ul},sampled_portion={self.sampled_portion},replicate={self.replicate},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
@@ -5310,7 +5310,6 @@ class AerosolArmSamplingActivity(SamplingActivity):
     """
     __tablename__ = 'AerosolArmSamplingActivity'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5318,12 +5317,13 @@ class AerosolArmSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"AerosolArmSamplingActivity(id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"AerosolArmSamplingActivity(name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5348,7 +5348,6 @@ class AerosolSamplingActivity(SamplingActivity):
     sampling_duration = Column(Text())
     wind_direction = Column(Enum('north', 'north_east', 'east', 'south_east', 'south', 'south_west', 'west', 'north_west', name='CardinalDirectionEnum'))
     wind_speed = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5356,12 +5355,13 @@ class AerosolSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"AerosolSamplingActivity(collection_time={self.collection_time},humidity={self.humidity},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sampling_duration={self.sampling_duration},wind_direction={self.wind_direction},wind_speed={self.wind_speed},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"AerosolSamplingActivity(collection_time={self.collection_time},humidity={self.humidity},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sampling_duration={self.sampling_duration},wind_direction={self.wind_direction},wind_speed={self.wind_speed},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5381,7 +5381,6 @@ class CommerciallyPurchasedSamplingActivity(SamplingActivity):
 
     sample_collected = Column(Text())
     sample_collection_dev = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5389,12 +5388,13 @@ class CommerciallyPurchasedSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"CommerciallyPurchasedSamplingActivity(sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"CommerciallyPurchasedSamplingActivity(sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5416,7 +5416,6 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
     sample_collected = Column(Text())
     sample_collection_dev = Column(Text())
     sample_collection_method = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5424,12 +5423,13 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"CultureEnvironmentalSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"CultureEnvironmentalSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5447,7 +5447,6 @@ class EngineeredStrainSamplingActivity(SamplingActivity):
     """
     __tablename__ = 'EngineeredStrainSamplingActivity'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5455,12 +5454,13 @@ class EngineeredStrainSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"EngineeredStrainSamplingActivity(id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"EngineeredStrainSamplingActivity(name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5481,7 +5481,6 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
     collection_time = Column(Text())
     sample_collected = Column(Text())
     sample_collection_method = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5489,12 +5488,13 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"FieldDeployedTerraformSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_method={self.sample_collection_method},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"FieldDeployedTerraformSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_method={self.sample_collection_method},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5516,7 +5516,6 @@ class MixedCultureSamplingActivity(SamplingActivity):
     sample_collected = Column(Text())
     sample_collection_dev = Column(Text())
     sample_collection_method = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5524,12 +5523,13 @@ class MixedCultureSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"MixedCultureSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"MixedCultureSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5553,7 +5553,6 @@ class MonetSoilSamplingActivity(SamplingActivity):
     infiltration_notes = Column(Text())
     sample_collection_dev = Column(Text(), nullable=False )
     weather = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5561,12 +5560,13 @@ class MonetSoilSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"MonetSoilSamplingActivity(collection_time={self.collection_time},infiltration_1={self.infiltration_1},infiltration_2={self.infiltration_2},infiltration_notes={self.infiltration_notes},sample_collection_dev={self.sample_collection_dev},weather={self.weather},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"MonetSoilSamplingActivity(collection_time={self.collection_time},infiltration_1={self.infiltration_1},infiltration_2={self.infiltration_2},infiltration_notes={self.infiltration_notes},sample_collection_dev={self.sample_collection_dev},weather={self.weather},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5592,7 +5592,6 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
     sampling_duration = Column(Text())
     wind_direction = Column(Enum('north', 'north_east', 'east', 'south_east', 'south', 'south_west', 'west', 'north_west', name='CardinalDirectionEnum'))
     wind_speed = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5600,12 +5599,13 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"OtherUndescribedSamplingActivity(collection_time={self.collection_time},humidity={self.humidity},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},sampling_duration={self.sampling_duration},wind_direction={self.wind_direction},wind_speed={self.wind_speed},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"OtherUndescribedSamplingActivity(collection_time={self.collection_time},humidity={self.humidity},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},sampling_duration={self.sampling_duration},wind_direction={self.wind_direction},wind_speed={self.wind_speed},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5628,7 +5628,6 @@ class PlantSamplingActivity(SamplingActivity):
     sample_collection_dev = Column(Text())
     sample_collection_method = Column(Text())
     weather = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5636,12 +5635,13 @@ class PlantSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"PlantSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},weather={self.weather},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"PlantSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},weather={self.weather},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5663,7 +5663,6 @@ class PureCultureSamplingActivity(SamplingActivity):
     sample_collected = Column(Text())
     sample_collection_dev = Column(Text())
     sample_collection_method = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5671,12 +5670,13 @@ class PureCultureSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"PureCultureSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"PureCultureSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5699,7 +5699,6 @@ class SedimentSamplingActivity(SamplingActivity):
     sample_collection_dev = Column(Text())
     sample_collection_method = Column(Text())
     weather = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5707,12 +5706,13 @@ class SedimentSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"SedimentSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},weather={self.weather},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"SedimentSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},weather={self.weather},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5741,18 +5741,18 @@ class SoilSamplingActivity(SamplingActivity):
     sample_collection_method = Column(Text())
     wind_direction = Column(Enum('north', 'north_east', 'east', 'south_east', 'south', 'south_west', 'west', 'north_west', name='CardinalDirectionEnum'))
     weather = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     project = Column(Integer())
     emsl_activity = Column(Text())
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"SoilSamplingActivity(name={self.name},description={self.description},collection_time={self.collection_time},infiltration_1={self.infiltration_1},infiltration_2={self.infiltration_2},infiltration_notes={self.infiltration_notes},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},wind_direction={self.wind_direction},weather={self.weather},id={self.id},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"SoilSamplingActivity(name={self.name},description={self.description},collection_time={self.collection_time},infiltration_1={self.infiltration_1},infiltration_2={self.infiltration_2},infiltration_notes={self.infiltration_notes},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},wind_direction={self.wind_direction},weather={self.weather},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5772,7 +5772,6 @@ class SynthesizedMaterialSamplingActivity(SamplingActivity):
 
     sample_collected = Column(Text())
     sample_collection_dev = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5780,12 +5779,13 @@ class SynthesizedMaterialSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"SynthesizedMaterialSamplingActivity(sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"SynthesizedMaterialSamplingActivity(sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5806,7 +5806,6 @@ class TerraformSamplingActivity(SamplingActivity):
     collection_time = Column(Text())
     sample_collected = Column(Text())
     sample_collection_method = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5814,12 +5813,13 @@ class TerraformSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"TerraformSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_method={self.sample_collection_method},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"TerraformSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_method={self.sample_collection_method},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -5841,7 +5841,6 @@ class WaterSamplingActivity(SamplingActivity):
     sample_collected = Column(Text())
     sample_collection_dev = Column(Text(), nullable=False )
     sample_collection_method = Column(Text(), nullable=False )
-    id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     project = Column(Integer())
@@ -5849,12 +5848,13 @@ class WaterSamplingActivity(SamplingActivity):
     collection_date = Column(Date())
     shipped_sample_size = Column(Text())
     sampled_at_site = Column(UUID(), ForeignKey('Site.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"WaterSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},id={self.id},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},)"
+        return f"WaterSamplingActivity(collection_time={self.collection_time},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
 
 
 
@@ -7888,7 +7888,6 @@ class CoreSection(ProcessedSample):
     __tablename__ = 'CoreSection'
 
     core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'), nullable=False )
-    id = Column(UUID(), primary_key=True, nullable=False )
     label_text = Column(Text())
     concentration_ug_per_uL = Column(Float())
     total_amount_ug = Column(Float())
@@ -7899,12 +7898,13 @@ class CoreSection(ProcessedSample):
     description = Column(Text())
     emsl_activity = Column(Text())
     lims_barcode = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"CoreSection(core_section={self.core_section},id={self.id},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_ul={self.volume_ul},sampled_portion={self.sampled_portion},replicate={self.replicate},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"CoreSection(core_section={self.core_section},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_ul={self.volume_ul},sampled_portion={self.sampled_portion},replicate={self.replicate},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},id={self.id},)"
 
 
 
