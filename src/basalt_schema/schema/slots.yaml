@@ -1169,6 +1169,12 @@ slots:
     range: string
     title: humidity regimen
 
+  id:
+    description: Unique identifier for this record.
+    identifier: true
+    range: uuid
+    required: true
+
   iat:
     description: Ion accumulation time setting used in the mass spectrometry method.
     range: double

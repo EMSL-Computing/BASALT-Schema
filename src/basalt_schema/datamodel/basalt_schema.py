@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-20T15:46:23
+# Generation date: 2026-10-20T15:48:03
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -721,15 +721,15 @@ class Activity(YAMLRoot):
     started_at_time: Optional[Union[str, XSDDateTime]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ActivityId):
             self.id = ActivityId(self.id)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -766,15 +766,15 @@ class Entity(YAMLRoot):
     description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, EntityId):
             self.id = EntityId(self.id)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -811,6 +811,11 @@ class DataProduct(YAMLRoot):
     md5checksum: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DataProductId):
+            self.id = DataProductId(self.id)
+
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
         if not isinstance(self.name, str):
@@ -820,11 +825,6 @@ class DataProduct(YAMLRoot):
             self.MissingRequiredField("s3_key")
         if not isinstance(self.s3_key, str):
             self.s3_key = str(self.s3_key)
-
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, DataProductId):
-            self.id = DataProductId(self.id)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -995,15 +995,15 @@ class DataGenerationActivity(YAMLRoot):
     instrument_operator: Optional[Union[str, PersonValueId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, DataGenerationActivityId):
             self.id = DataGenerationActivityId(self.id)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
 
         if self.sequence_order is not None and not isinstance(self.sequence_order, int):
             self.sequence_order = int(self.sequence_order)
@@ -16945,6 +16945,9 @@ slots.humidity = Slot(uri=BASALT_SCHEMA.humidity, name="humidity", curie=BASALT_
 slots.humidity_regm = Slot(uri=BASALT_SCHEMA.humidity_regm, name="humidity_regm", curie=BASALT_SCHEMA.curie('humidity_regm'),
                    model_uri=BASALT_SCHEMA.humidity_regm, domain=None, range=Optional[str])
 
+slots.id = Slot(uri=BASALT_SCHEMA.id, name="id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.id, domain=None, range=URIRef)
+
 slots.iat = Slot(uri=BASALT_SCHEMA.iat, name="iat", curie=BASALT_SCHEMA.curie('iat'),
                    model_uri=BASALT_SCHEMA.iat, domain=None, range=Optional[float])
 
@@ -18301,9 +18304,6 @@ slots.path = Slot(uri=BASALT_SCHEMA.path, name="path", curie=BASALT_SCHEMA.curie
 slots.computed_at = Slot(uri=BASALT_SCHEMA.computed_at, name="computed_at", curie=BASALT_SCHEMA.curie('computed_at'),
                    model_uri=BASALT_SCHEMA.computed_at, domain=None, range=Optional[Union[str, XSDDateTime]])
 
-slots.activity__id = Slot(uri=BASALT_SCHEMA.id, name="activity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.activity__id, domain=None, range=URIRef)
-
 slots.activity__ended_at_time = Slot(uri=BASALT_SCHEMA.ended_at_time, name="activity__ended_at_time", curie=BASALT_SCHEMA.curie('ended_at_time'),
                    model_uri=BASALT_SCHEMA.activity__ended_at_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
@@ -18315,12 +18315,6 @@ slots.activity__protocol_link = Slot(uri=BASALT_SCHEMA.protocol_link, name="acti
 
 slots.activity__started_at_time = Slot(uri=BASALT_SCHEMA.started_at_time, name="activity__started_at_time", curie=BASALT_SCHEMA.curie('started_at_time'),
                    model_uri=BASALT_SCHEMA.activity__started_at_time, domain=None, range=Optional[Union[str, XSDDateTime]])
-
-slots.entity__id = Slot(uri=BASALT_SCHEMA.id, name="entity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.entity__id, domain=None, range=URIRef)
-
-slots.dataProduct__id = Slot(uri=BASALT_SCHEMA.id, name="dataProduct__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.dataProduct__id, domain=None, range=URIRef)
 
 slots.instrumentData__alternative_identifiers = Slot(uri=BASALT_SCHEMA.alternative_identifiers, name="instrumentData__alternative_identifiers", curie=BASALT_SCHEMA.curie('alternative_identifiers'),
                    model_uri=BASALT_SCHEMA.instrumentData__alternative_identifiers, domain=None, range=Optional[str])
@@ -18339,12 +18333,6 @@ slots.sitePhoto__site_photo_type = Slot(uri=BASALT_SCHEMA.site_photo_type, name=
 
 slots.sitePhoto__photo_taken_during = Slot(uri=BASALT_SCHEMA.photo_taken_during, name="sitePhoto__photo_taken_during", curie=BASALT_SCHEMA.curie('photo_taken_during'),
                    model_uri=BASALT_SCHEMA.sitePhoto__photo_taken_during, domain=None, range=Optional[Union[str, SamplingActivityId]])
-
-slots.dataGenerationActivity__id = Slot(uri=BASALT_SCHEMA.id, name="dataGenerationActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.dataGenerationActivity__id, domain=None, range=URIRef)
-
-slots.dataProcessingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="dataProcessingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.dataProcessingActivity__id, domain=None, range=URIRef)
 
 slots.dataProcessingActivity__started_at_time = Slot(uri=BASALT_SCHEMA.started_at_time, name="dataProcessingActivity__started_at_time", curie=BASALT_SCHEMA.curie('started_at_time'),
                    model_uri=BASALT_SCHEMA.dataProcessingActivity__started_at_time, domain=None, range=Union[str, XSDDateTime])

@@ -71,9 +71,6 @@ classes:
     description: Something that happens over time and can use equipment.
     abstract: true
     attributes:
-      id:
-        identifier: true
-        range: uuid
       ended_at_time:
         range: datetime
       processing_institution:
@@ -85,17 +82,15 @@ classes:
       started_at_time:
         range: datetime
     slots:
+    - id
     - name
     - description
 
   Entity:
     description: Base identifiable thing.
     abstract: true
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
+    - id
     - name
     - description
 
@@ -107,6 +102,7 @@ classes:
       processedData and future sitePhoto extend this via is_a.
       No direct database table, subclasses map to tables.
     slots:
+      - id
       - name
       - description
       - project
@@ -118,11 +114,6 @@ classes:
       - s3_key
       - filesize
       - md5checksum
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-        required: true
 
   ProcessedData:
     is_a: DataProduct
@@ -180,6 +171,7 @@ classes:
       Abstract base for any data generation activity (physical to digital). Input data should 
       be specified on workflow subclasses.
     slots:
+      - id
       - sequence_order   
       - name
       - description
@@ -190,10 +182,6 @@ classes:
       - acquisition_end_time
       - instrument_used
       - instrument_operator
-    attributes:
-      id:
-        identifier: true
-        range: uuid
 
   DataProcessingActivity:
     abstract: true
@@ -201,6 +189,7 @@ classes:
       Abstract base for any data processing activity (digital to digital). Input data should 
       be specified on workflow subclasses.
     slots:
+      - id
       - parent_workflow_id  # [ADDED] self-referential chain link
       - workflow_steps      # [CHANGED] key-value direction; schema TBD (was # TODO JSONB)
       - description
@@ -211,9 +200,6 @@ classes:
           include details such as the purpose, output, and/or main steps of 
           the workflow.
     attributes:
-      id:
-        identifier: true
-        range: uuid
       started_at_time:
         range: datetime
         required: true
