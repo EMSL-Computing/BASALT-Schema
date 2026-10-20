@@ -28,11 +28,8 @@ imports:
 classes:
   Site:
     description: Site-level metadata for a specific location from which a set of samples are collected.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
+      - id
       - name
       - description
       - alt
@@ -87,11 +84,8 @@ classes:
   Sample:
     description: A physical sample collected from an environment. The environment can be ecological, laboratory, or any other context where samples are collected. This class serves as an abstract class to relate subclasses of samples.
     abstract: true
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
+      - id
       - name #should be inherited when Entity class is made
       - description #should be inherited when Entity class is made
       - emsl_activity
@@ -1791,11 +1785,8 @@ classes:
       incubation, culture growth, and reaction steps.
     mixins:
       - HasTemperatureHold
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
+      - id
       - sample
       - storage_condition
       - storage_condition_other
@@ -1821,11 +1812,8 @@ classes:
   SamplingActivity:
     description: An activity that involves the collection of a sample. This class serves as an abstract class to relate subclasses of sampling activities. Samples reference their parent sampling activity via the 'sampled_during' slot.
     abstract: true
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
+      - id
       - name #will be inherited when Activity class is made
       - description
       - project

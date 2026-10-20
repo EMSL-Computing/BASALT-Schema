@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-20T16:12:52
+# Generation date: 2026-10-20T16:14:52
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -1470,15 +1470,15 @@ class SampleProcessing(YAMLRoot):
     in_protocol: Optional[Union[str, SampleProcessingProtocolId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, SampleProcessingId):
             self.id = SampleProcessingId(self.id)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -2889,6 +2889,11 @@ class PurchasedMaterial(YAMLRoot):
     description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PurchasedMaterialId):
+            self.id = PurchasedMaterialId(self.id)
+
         if self._is_empty(self.purchased_material_type):
             self.MissingRequiredField("purchased_material_type")
         if not isinstance(self.purchased_material_type, str):
@@ -2898,11 +2903,6 @@ class PurchasedMaterial(YAMLRoot):
             self.MissingRequiredField("name")
         if not isinstance(self.name, str):
             self.name = str(self.name)
-
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, PurchasedMaterialId):
-            self.id = PurchasedMaterialId(self.id)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -6762,15 +6762,15 @@ class Sample(YAMLRoot):
     lims_barcode: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, SampleId):
             self.id = SampleId(self.id)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -12015,15 +12015,15 @@ class SamplingActivity(YAMLRoot):
     sampled_at_site: Optional[Union[str, SiteId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, SamplingActivityId):
             self.id = SamplingActivityId(self.id)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -18355,26 +18355,17 @@ slots.dataProcessingActivity__software_poc = Slot(uri=BASALT_SCHEMA.software_poc
 slots.dataProcessingActivity__execution_resource = Slot(uri=BASALT_SCHEMA.execution_resource, name="dataProcessingActivity__execution_resource", curie=BASALT_SCHEMA.curie('execution_resource'),
                    model_uri=BASALT_SCHEMA.dataProcessingActivity__execution_resource, domain=None, range=Optional[Union[str, "ExecutionResourceEnum"]])
 
-slots.alternativeIdentifier__id = Slot(uri=BASALT_SCHEMA.id, name="alternativeIdentifier__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.alternativeIdentifier__id, domain=None, range=URIRef)
-
 slots.alternativeIdentifier__alternate_id = Slot(uri=BASALT_SCHEMA.alternate_id, name="alternativeIdentifier__alternate_id", curie=BASALT_SCHEMA.curie('alternate_id'),
                    model_uri=BASALT_SCHEMA.alternativeIdentifier__alternate_id, domain=None, range=str)
 
 slots.alternativeIdentifier__alternate_identifier_type = Slot(uri=BASALT_SCHEMA.alternate_identifier_type, name="alternativeIdentifier__alternate_identifier_type", curie=BASALT_SCHEMA.curie('alternate_identifier_type'),
                    model_uri=BASALT_SCHEMA.alternativeIdentifier__alternate_identifier_type, domain=None, range=Union[str, "AlternateIdentifierType"])
 
-slots.functionalAnnotationIdentifier__id = Slot(uri=BASALT_SCHEMA.id, name="functionalAnnotationIdentifier__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.functionalAnnotationIdentifier__id, domain=None, range=URIRef)
-
 slots.functionalAnnotationIdentifier__functional_identifier = Slot(uri=BASALT_SCHEMA.functional_identifier, name="functionalAnnotationIdentifier__functional_identifier", curie=BASALT_SCHEMA.curie('functional_identifier'),
                    model_uri=BASALT_SCHEMA.functionalAnnotationIdentifier__functional_identifier, domain=None, range=str)
 
 slots.functionalAnnotationIdentifier__database = Slot(uri=BASALT_SCHEMA.database, name="functionalAnnotationIdentifier__database", curie=BASALT_SCHEMA.curie('database'),
                    model_uri=BASALT_SCHEMA.functionalAnnotationIdentifier__database, domain=None, range=Union[str, "AnnotationDatabaseEnum"])
-
-slots.instrument__id = Slot(uri=BASALT_SCHEMA.id, name="instrument__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.instrument__id, domain=None, range=URIRef)
 
 slots.instrument__name = Slot(uri=BASALT_SCHEMA.name, name="instrument__name", curie=BASALT_SCHEMA.curie('name'),
                    model_uri=BASALT_SCHEMA.instrument__name, domain=None, range=str)
@@ -18409,9 +18400,6 @@ slots.instrument__mass_analyzer_type = Slot(uri=BASALT_SCHEMA.mass_analyzer_type
 slots.instrument__other_properties = Slot(uri=BASALT_SCHEMA.other_properties, name="instrument__other_properties", curie=BASALT_SCHEMA.curie('other_properties'),
                    model_uri=BASALT_SCHEMA.instrument__other_properties, domain=None, range=Optional[str])
 
-slots.ontologyClass__id = Slot(uri=BASALT_SCHEMA.id, name="ontologyClass__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.ontologyClass__id, domain=None, range=URIRef)
-
 slots.ontologyClass__description = Slot(uri=BASALT_SCHEMA.description, name="ontologyClass__description", curie=BASALT_SCHEMA.curie('description'),
                    model_uri=BASALT_SCHEMA.ontologyClass__description, domain=None, range=Optional[str])
 
@@ -18420,9 +18408,6 @@ slots.ontologyClass__alternative_identifiers = Slot(uri=BASALT_SCHEMA.alternativ
 
 slots.ontologyClass__name = Slot(uri=BASALT_SCHEMA.name, name="ontologyClass__name", curie=BASALT_SCHEMA.curie('name'),
                    model_uri=BASALT_SCHEMA.ontologyClass__name, domain=None, range=Optional[str])
-
-slots.containerType__id = Slot(uri=BASALT_SCHEMA.id, name="containerType__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.containerType__id, domain=None, range=URIRef)
 
 slots.containerType__description = Slot(uri=BASALT_SCHEMA.description, name="containerType__description", curie=BASALT_SCHEMA.curie('description'),
                    model_uri=BASALT_SCHEMA.containerType__description, domain=None, range=Optional[str])
@@ -18451,9 +18436,6 @@ slots.containerAxis__name = Slot(uri=BASALT_SCHEMA.name, name="containerAxis__na
 slots.containerAxis__values = Slot(uri=BASALT_SCHEMA.values, name="containerAxis__values", curie=BASALT_SCHEMA.curie('values'),
                    model_uri=BASALT_SCHEMA.containerAxis__values, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.custodian__id = Slot(uri=BASALT_SCHEMA.id, name="custodian__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.custodian__id, domain=None, range=URIRef)
-
 slots.instrumentAlternativeIdentifier__id = Slot(uri=BASALT_SCHEMA.id, name="instrumentAlternativeIdentifier__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.instrumentAlternativeIdentifier__id, domain=None, range=URIRef)
 
@@ -18466,9 +18448,6 @@ slots.instrumentAlternativeIdentifier__instrument_alt_id_provider = Slot(uri=BAS
 slots.instrumentAlternativeIdentifier__instrument_id = Slot(uri=BASALT_SCHEMA.instrument_id, name="instrumentAlternativeIdentifier__instrument_id", curie=BASALT_SCHEMA.curie('instrument_id'),
                    model_uri=BASALT_SCHEMA.instrumentAlternativeIdentifier__instrument_id, domain=None, range=Union[str, InstrumentId])
 
-slots.labDevice__id = Slot(uri=BASALT_SCHEMA.id, name="labDevice__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.labDevice__id, domain=None, range=URIRef)
-
 slots.labDevice__description = Slot(uri=BASALT_SCHEMA.description, name="labDevice__description", curie=BASALT_SCHEMA.curie('description'),
                    model_uri=BASALT_SCHEMA.labDevice__description, domain=None, range=Optional[str])
 
@@ -18480,9 +18459,6 @@ slots.labDevice__activity_time_id = Slot(uri=BASALT_SCHEMA.activity_time_id, nam
 
 slots.labDevice__activity_speed_id = Slot(uri=BASALT_SCHEMA.activity_speed_id, name="labDevice__activity_speed_id", curie=BASALT_SCHEMA.curie('activity_speed_id'),
                    model_uri=BASALT_SCHEMA.labDevice__activity_speed_id, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.sampleProcessing__id = Slot(uri=BASALT_SCHEMA.id, name="sampleProcessing__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.sampleProcessing__id, domain=None, range=URIRef)
 
 slots.processingSampleLink__id = Slot(uri=BASALT_SCHEMA.id, name="processingSampleLink__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__id, domain=None, range=URIRef)
@@ -18523,20 +18499,11 @@ slots.changelog__changelog = Slot(uri=BASALT_SCHEMA.changelog, name="changelog__
 slots.configuration__id = Slot(uri=BASALT_SCHEMA.id, name="configuration__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.configuration__id, domain=None, range=Union[str, Uuid])
 
-slots.mobilePhaseSegment__id = Slot(uri=BASALT_SCHEMA.id, name="mobilePhaseSegment__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.mobilePhaseSegment__id, domain=None, range=URIRef)
-
 slots.mobilePhaseSegment__mobile_phase_percentage = Slot(uri=BASALT_SCHEMA.mobile_phase_percentage, name="mobilePhaseSegment__mobile_phase_percentage", curie=BASALT_SCHEMA.curie('mobile_phase_percentage'),
                    model_uri=BASALT_SCHEMA.mobilePhaseSegment__mobile_phase_percentage, domain=None, range=Optional[float])
 
 slots.mobilePhaseSegment__used_in_chromatography_config = Slot(uri=BASALT_SCHEMA.used_in_chromatography_config, name="mobilePhaseSegment__used_in_chromatography_config", curie=BASALT_SCHEMA.curie('used_in_chromatography_config'),
                    model_uri=BASALT_SCHEMA.mobilePhaseSegment__used_in_chromatography_config, domain=None, range=Optional[Union[dict, ChromatographyConfiguration]])
-
-slots.mobilePhase__id = Slot(uri=BASALT_SCHEMA.id, name="mobilePhase__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.mobilePhase__id, domain=None, range=URIRef)
-
-slots.mobilePhaseSubstance__id = Slot(uri=BASALT_SCHEMA.id, name="mobilePhaseSubstance__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.mobilePhaseSubstance__id, domain=None, range=URIRef)
 
 slots.mobilePhaseSubstance__in_mobile_phase = Slot(uri=BASALT_SCHEMA.in_mobile_phase, name="mobilePhaseSubstance__in_mobile_phase", curie=BASALT_SCHEMA.curie('in_mobile_phase'),
                    model_uri=BASALT_SCHEMA.mobilePhaseSubstance__in_mobile_phase, domain=None, range=Optional[Union[str, MobilePhaseId]])
@@ -18546,12 +18513,6 @@ slots.mobilePhaseSubstance__substance = Slot(uri=BASALT_SCHEMA.substance, name="
 
 slots.mobilePhaseSubstance__concentration = Slot(uri=BASALT_SCHEMA.concentration, name="mobilePhaseSubstance__concentration", curie=BASALT_SCHEMA.curie('concentration'),
                    model_uri=BASALT_SCHEMA.mobilePhaseSubstance__concentration, domain=None, range=Optional[str])
-
-slots.calibrationStandardRun__id = Slot(uri=BASALT_SCHEMA.id, name="calibrationStandardRun__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.calibrationStandardRun__id, domain=None, range=URIRef)
-
-slots.purchasedMaterial__id = Slot(uri=BASALT_SCHEMA.id, name="purchasedMaterial__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.purchasedMaterial__id, domain=None, range=URIRef)
 
 slots.wellMetadata__position = Slot(uri=BASALT_SCHEMA.position, name="wellMetadata__position", curie=BASALT_SCHEMA.curie('position'),
                    model_uri=BASALT_SCHEMA.wellMetadata__position, domain=None, range=str)
@@ -19297,15 +19258,6 @@ slots.xASLCFProduct__species_proportions = Slot(uri=BASALT_SCHEMA.species_propor
 slots.xASLCFProduct__lcf_data_rows = Slot(uri=BASALT_SCHEMA.lcf_data_rows, name="xASLCFProduct__lcf_data_rows", curie=BASALT_SCHEMA.curie('lcf_data_rows'),
                    model_uri=BASALT_SCHEMA.xASLCFProduct__lcf_data_rows, domain=None, range=Optional[Union[Union[dict, XASLCFDataRow], list[Union[dict, XASLCFDataRow]]]])
 
-slots.organism__id = Slot(uri=BASALT_SCHEMA.id, name="organism__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.organism__id, domain=None, range=URIRef)
-
-slots.site__id = Slot(uri=BASALT_SCHEMA.id, name="site__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.site__id, domain=None, range=URIRef)
-
-slots.sample__id = Slot(uri=BASALT_SCHEMA.id, name="sample__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.sample__id, domain=None, range=URIRef)
-
 slots.engineeredStrainSample__cbi = Slot(uri=BASALT_SCHEMA.cbi, name="engineeredStrainSample__cbi", curie=BASALT_SCHEMA.curie('cbi'),
                    model_uri=BASALT_SCHEMA.engineeredStrainSample__cbi, domain=None, range=str)
 
@@ -19314,18 +19266,6 @@ slots.engineeredStrainSample__storage_condition = Slot(uri=BASALT_SCHEMA.storage
 
 slots.engineeredStrainSample__storage_temperature = Slot(uri=BASALT_SCHEMA.storage_temperature, name="engineeredStrainSample__storage_temperature", curie=BASALT_SCHEMA.curie('storage_temperature'),
                    model_uri=BASALT_SCHEMA.engineeredStrainSample__storage_temperature, domain=None, range=Optional[str])
-
-slots.sampleStorage__id = Slot(uri=BASALT_SCHEMA.id, name="sampleStorage__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.sampleStorage__id, domain=None, range=URIRef)
-
-slots.samplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="samplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.samplingActivity__id, domain=None, range=URIRef)
-
-slots.sampleProcessingProtocol__id = Slot(uri=BASALT_SCHEMA.id, name="sampleProcessingProtocol__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.sampleProcessingProtocol__id, domain=None, range=URIRef)
-
-slots.sampleProcessingRun__id = Slot(uri=BASALT_SCHEMA.id, name="sampleProcessingRun__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.sampleProcessingRun__id, domain=None, range=URIRef)
 
 slots.chemicalConversionProcess__chemical_conversion_category = Slot(uri=BASALT_SCHEMA.chemical_conversion_category, name="chemicalConversionProcess__chemical_conversion_category", curie=BASALT_SCHEMA.curie('chemical_conversion_category'),
                    model_uri=BASALT_SCHEMA.chemicalConversionProcess__chemical_conversion_category, domain=None, range=Optional[Union[str, "ChemicalConversionCategoryEnum"]])
@@ -19357,9 +19297,6 @@ slots.substancesUsedLink__id = Slot(uri=BASALT_SCHEMA.id, name="substancesUsedLi
 slots.substancesUsedLink__sample_processing_substance = Slot(uri=BASALT_SCHEMA.sample_processing_substance, name="substancesUsedLink__sample_processing_substance", curie=BASALT_SCHEMA.curie('sample_processing_substance'),
                    model_uri=BASALT_SCHEMA.substancesUsedLink__sample_processing_substance, domain=None, range=Optional[Union[str, SampleProcessingSubstanceId]])
 
-slots.sampleProcessingSubstance__id = Slot(uri=BASALT_SCHEMA.id, name="sampleProcessingSubstance__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.sampleProcessingSubstance__id, domain=None, range=URIRef)
-
 slots.sampleProcessingSubstance__known_as = Slot(uri=BASALT_SCHEMA.known_as, name="sampleProcessingSubstance__known_as", curie=BASALT_SCHEMA.curie('known_as'),
                    model_uri=BASALT_SCHEMA.sampleProcessingSubstance__known_as, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
 
@@ -19374,9 +19311,6 @@ slots.sampleProcessingSubstance__final_concentration_mg_per_ml = Slot(uri=BASALT
 
 slots.proteinQuantification__protein_assay_type = Slot(uri=BASALT_SCHEMA.protein_assay_type, name="proteinQuantification__protein_assay_type", curie=BASALT_SCHEMA.curie('protein_assay_type'),
                    model_uri=BASALT_SCHEMA.proteinQuantification__protein_assay_type, domain=None, range=Union[str, "ProteinAssayTypeEnum"])
-
-slots.study__id = Slot(uri=BASALT_SCHEMA.id, name="study__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.study__id, domain=None, range=URIRef)
 
 slots.study__project_id = Slot(uri=BASALT_SCHEMA.project_id, name="study__project_id", curie=BASALT_SCHEMA.curie('project_id'),
                    model_uri=BASALT_SCHEMA.study__project_id, domain=None, range=int)
@@ -19417,9 +19351,6 @@ slots.study__associated_dois = Slot(uri=BASALT_SCHEMA.associated_dois, name="stu
 slots.study__funding_sources = Slot(uri=BASALT_SCHEMA.funding_sources, name="study__funding_sources", curie=BASALT_SCHEMA.curie('funding_sources'),
                    model_uri=BASALT_SCHEMA.study__funding_sources, domain=None, range=Optional[Union[Union[dict, DOI], list[Union[dict, DOI]]]])
 
-slots.projectParticipant__id = Slot(uri=BASALT_SCHEMA.id, name="projectParticipant__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.projectParticipant__id, domain=None, range=URIRef)
-
 slots.projectParticipant__role = Slot(uri=BASALT_SCHEMA.role, name="projectParticipant__role", curie=BASALT_SCHEMA.curie('role'),
                    model_uri=BASALT_SCHEMA.projectParticipant__role, domain=None, range=Union[str, "NexusRoleEnum"])
 
@@ -19458,9 +19389,6 @@ slots.controlledTermValue__term_id = Slot(uri=BASALT_SCHEMA.term_id, name="contr
 
 slots.controlledTermValue__controlled_term_provider = Slot(uri=BASALT_SCHEMA.controlled_term_provider, name="controlledTermValue__controlled_term_provider", curie=BASALT_SCHEMA.curie('controlled_term_provider'),
                    model_uri=BASALT_SCHEMA.controlledTermValue__controlled_term_provider, domain=None, range=Optional[str])
-
-slots.personValue__id = Slot(uri=BASALT_SCHEMA.id, name="personValue__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.personValue__id, domain=None, range=URIRef)
 
 slots.personValue__first_name = Slot(uri=BASALT_SCHEMA.first_name, name="personValue__first_name", curie=BASALT_SCHEMA.curie('first_name'),
                    model_uri=BASALT_SCHEMA.personValue__first_name, domain=None, range=str)

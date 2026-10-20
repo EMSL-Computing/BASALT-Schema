@@ -39,14 +39,11 @@ classes:
       many samples reference the same record. For "which steps actually ran together",
       see SampleProcessingRun.
     slots:
+      - id
       - name
       - description
       - protocol_url
       - protocol_version
-    attributes:
-      id:
-        identifier: true
-        range: uuid
 
   SampleProcessingRun:
     description: >-
@@ -64,12 +61,9 @@ classes:
       single "starting sample" pointer is the grouping key -- an ancestor column would be
       ambiguous the moment anything is pooled.
     slots:
+      - id
       - name
       - description
-    attributes:
-      id:
-        identifier: true
-        range: uuid
 
   ChemicalConversionProcess: 
     is_a: SampleProcessing 
@@ -206,11 +200,9 @@ classes:
       SampleProcessing activity, and the same substance may be used in multiple 
       SampleProcessing activities.
     slots:
+      - id
       - volume_ml
     attributes:
-      id:
-        identifier: true
-        range: uuid
       known_as:
         range: ChemicalEntityEnum
         description: Common name or identifier for the substance.

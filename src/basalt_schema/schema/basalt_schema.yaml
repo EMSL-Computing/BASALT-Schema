@@ -215,10 +215,9 @@ classes:
         range: ExecutionResourceEnum
 
   AlternativeIdentifier:
+    slots:
+      - id
     attributes:
-      id:
-        identifier: true
-        range: uuid
       alternate_id:
         range: string
         required: true
@@ -227,10 +226,9 @@ classes:
         required: true
 
   FunctionalAnnotationIdentifier:
+    slots:
+      - id
     attributes:
-      id:
-        identifier: true
-        range: uuid
       functional_identifier:
         range: string
         required: true
@@ -244,10 +242,9 @@ classes:
       investigation, but is not a reagent. This class models a specific
       instance of an instrument IF identifying information is filled out, 
       otherwise, it is a generic standin for an instrument model.
+    slots:
+      - id
     attributes:
-      id:
-        identifier: true
-        range: uuid
       name:
         range: string
         required: true
@@ -278,10 +275,9 @@ classes:
         description: Other important properties of the instrument that are not captured in other fields.
 
   OntologyClass: # table has no data
+    slots:
+      - id
     attributes:
-      id:
-        identifier: true
-        range: uuid
       description:
         range: string
       alternative_identifiers:
@@ -291,14 +287,12 @@ classes:
 
   ContainerType:
     slots:
+      - id
       - container_type
     slot_usage:
       container_type:
         range: ContainerTypeEnum
     attributes:
-      id:
-        identifier: true
-        range: uuid
       description:
         range: string
       container_size_id:
@@ -332,11 +326,8 @@ classes:
 
   Custodian:
     slots:
+      - id
       - person
-    attributes:
-      id:
-        identifier: true
-        range: uuid
 
   InstrumentAlternativeIdentifier:
     attributes:
@@ -354,10 +345,9 @@ classes:
   LabDevice:
     description: |-
       A lab device is a physical instrument or equipment used in a laboratory setting for conducting experiments, measurements, or analyses. It can include various types of instruments such as microscopes, spectrometers, centrifuges, and other specialized equipment. Lab devices are essential for performing scientific research and obtaining accurate data.
+    slots:
+      - id
     attributes:
-      id:
-        identifier: true
-        range: uuid
       description:
         range: string
       device_type:
@@ -382,13 +372,10 @@ classes:
       a SampleProcessingProtocol record via in_protocol, which is the single home for
       protocol_url and protocol_version.
     slots:
+      - id
       - name
       - description
       - in_protocol
-    attributes:
-      id:
-        identifier: true
-        range: uuid
 
   HasTemperatureHold:
     mixin: true

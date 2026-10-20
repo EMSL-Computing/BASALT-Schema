@@ -63,11 +63,9 @@ classes:
 
   PersonValue:
     slots:
+      - id
       - email
     attributes:
-      id:
-        identifier: true
-        range: uuid
       first_name:
         range: string
         required: true
