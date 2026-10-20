@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-20T15:41:54
+# Generation date: 2026-10-20T15:43:41
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -692,31 +692,7 @@ class ProjectParticipantId(Uuid):
     pass
 
 
-class TimestampValueId(extended_str):
-    pass
-
-
-class TextValueId(extended_str):
-    pass
-
-
-class SoftwareControlledTermValueId(extended_str):
-    pass
-
-
-class ControlledTermValueId(extended_str):
-    pass
-
-
 class PersonValueId(Uuid):
-    pass
-
-
-class QuantityValueId(Uuid):
-    pass
-
-
-class ConditioningValueId(extended_str):
     pass
 
 
@@ -1301,7 +1277,7 @@ class ContainerType(YAMLRoot):
     id: Union[str, ContainerTypeId] = None
     description: Optional[str] = None
     container_type: Optional[Union[str, "ContainerTypeEnum"]] = None
-    container_size_id: Optional[Union[str, QuantityValueId]] = None
+    container_size_id: Optional[Union[dict, "QuantityValue"]] = None
     axes: Optional[Union[Union[dict, "ContainerAxis"], list[Union[dict, "ContainerAxis"]]]] = empty_list()
     contains: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     label_format: Optional[str] = None
@@ -1320,8 +1296,8 @@ class ContainerType(YAMLRoot):
         if self.container_type is not None and not isinstance(self.container_type, ContainerTypeEnum):
             self.container_type = ContainerTypeEnum(self.container_type)
 
-        if self.container_size_id is not None and not isinstance(self.container_size_id, QuantityValueId):
-            self.container_size_id = QuantityValueId(self.container_size_id)
+        if self.container_size_id is not None and not isinstance(self.container_size_id, QuantityValue):
+            self.container_size_id = QuantityValue(**as_dict(self.container_size_id))
 
         if not isinstance(self.axes, list):
             self.axes = [self.axes] if self.axes is not None else []
@@ -1442,8 +1418,8 @@ class LabDevice(YAMLRoot):
     id: Union[str, LabDeviceId] = None
     description: Optional[str] = None
     device_type: Optional[Union[str, "DeviceTypeEnum"]] = None
-    activity_time_id: Optional[Union[str, QuantityValueId]] = None
-    activity_speed_id: Optional[Union[str, QuantityValueId]] = None
+    activity_time_id: Optional[Union[dict, "QuantityValue"]] = None
+    activity_speed_id: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1457,11 +1433,11 @@ class LabDevice(YAMLRoot):
         if self.device_type is not None and not isinstance(self.device_type, DeviceTypeEnum):
             self.device_type = DeviceTypeEnum(self.device_type)
 
-        if self.activity_time_id is not None and not isinstance(self.activity_time_id, QuantityValueId):
-            self.activity_time_id = QuantityValueId(self.activity_time_id)
+        if self.activity_time_id is not None and not isinstance(self.activity_time_id, QuantityValue):
+            self.activity_time_id = QuantityValue(**as_dict(self.activity_time_id))
 
-        if self.activity_speed_id is not None and not isinstance(self.activity_speed_id, QuantityValueId):
-            self.activity_speed_id = QuantityValueId(self.activity_speed_id)
+        if self.activity_speed_id is not None and not isinstance(self.activity_speed_id, QuantityValue):
+            self.activity_speed_id = QuantityValue(**as_dict(self.activity_speed_id))
 
         super().__post_init__(**kwargs)
 
@@ -3859,7 +3835,7 @@ class MetagenomicsProduct(ProcessedData):
     s3_key: str = None
     mg_workflow_step: Optional[Union[str, "MetagenomicsSteps"]] = None
     sample_id: Optional[Union[str, SampleId]] = None
-    provider_name: Optional[Union[str, ControlledTermValueId]] = None
+    provider_name: Optional[Union[dict, "ControlledTermValue"]] = None
     raw_fasta_url: Optional[str] = None
     additional_information: Optional[str] = None
 
@@ -3870,8 +3846,8 @@ class MetagenomicsProduct(ProcessedData):
         if self.sample_id is not None and not isinstance(self.sample_id, SampleId):
             self.sample_id = SampleId(self.sample_id)
 
-        if self.provider_name is not None and not isinstance(self.provider_name, ControlledTermValueId):
-            self.provider_name = ControlledTermValueId(self.provider_name)
+        if self.provider_name is not None and not isinstance(self.provider_name, ControlledTermValue):
+            self.provider_name = ControlledTermValue(**as_dict(self.provider_name))
 
         if self.raw_fasta_url is not None and not isinstance(self.raw_fasta_url, str):
             self.raw_fasta_url = str(self.raw_fasta_url)
@@ -4426,7 +4402,7 @@ class BulkDensityProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    bulk_density: Optional[Union[str, QuantityValueId]] = None
+    bulk_density: Optional[Union[dict, "QuantityValue"]] = None
     flag: Optional[Union[str, "ProcessedDataFlag"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -4438,8 +4414,8 @@ class BulkDensityProduct(ProcessedData):
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)
 
-        if self.bulk_density is not None and not isinstance(self.bulk_density, QuantityValueId):
-            self.bulk_density = QuantityValueId(self.bulk_density)
+        if self.bulk_density is not None and not isinstance(self.bulk_density, QuantityValue):
+            self.bulk_density = QuantityValue(**as_dict(self.bulk_density))
 
         if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
             self.flag = ProcessedDataFlag(self.flag)
@@ -4464,10 +4440,10 @@ class ElementalAnalysisProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    total_carbon: Optional[Union[str, QuantityValueId]] = None
-    total_nitrogen: Optional[Union[str, QuantityValueId]] = None
-    total_kjeldahl_nitrogen: Optional[Union[str, QuantityValueId]] = None
-    total_sulfur: Optional[Union[str, QuantityValueId]] = None
+    total_carbon: Optional[Union[dict, "QuantityValue"]] = None
+    total_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
+    total_kjeldahl_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
+    total_sulfur: Optional[Union[dict, "QuantityValue"]] = None
     flag_total_carbon: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_total_nitrogen: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_tkn: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -4482,17 +4458,17 @@ class ElementalAnalysisProduct(ProcessedData):
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)
 
-        if self.total_carbon is not None and not isinstance(self.total_carbon, QuantityValueId):
-            self.total_carbon = QuantityValueId(self.total_carbon)
+        if self.total_carbon is not None and not isinstance(self.total_carbon, QuantityValue):
+            self.total_carbon = QuantityValue(**as_dict(self.total_carbon))
 
-        if self.total_nitrogen is not None and not isinstance(self.total_nitrogen, QuantityValueId):
-            self.total_nitrogen = QuantityValueId(self.total_nitrogen)
+        if self.total_nitrogen is not None and not isinstance(self.total_nitrogen, QuantityValue):
+            self.total_nitrogen = QuantityValue(**as_dict(self.total_nitrogen))
 
-        if self.total_kjeldahl_nitrogen is not None and not isinstance(self.total_kjeldahl_nitrogen, QuantityValueId):
-            self.total_kjeldahl_nitrogen = QuantityValueId(self.total_kjeldahl_nitrogen)
+        if self.total_kjeldahl_nitrogen is not None and not isinstance(self.total_kjeldahl_nitrogen, QuantityValue):
+            self.total_kjeldahl_nitrogen = QuantityValue(**as_dict(self.total_kjeldahl_nitrogen))
 
-        if self.total_sulfur is not None and not isinstance(self.total_sulfur, QuantityValueId):
-            self.total_sulfur = QuantityValueId(self.total_sulfur)
+        if self.total_sulfur is not None and not isinstance(self.total_sulfur, QuantityValue):
+            self.total_sulfur = QuantityValue(**as_dict(self.total_sulfur))
 
         if self.flag_total_carbon is not None and not isinstance(self.flag_total_carbon, ProcessedDataFlag):
             self.flag_total_carbon = ProcessedDataFlag(self.flag_total_carbon)
@@ -4525,7 +4501,7 @@ class EnzymeProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    beta_glucosidase_ug_pnp_per_g_per_h: Optional[Union[str, QuantityValueId]] = None
+    beta_glucosidase_ug_pnp_per_g_per_h: Optional[Union[dict, "QuantityValue"]] = None
     flag: Optional[Union[str, "ProcessedDataFlag"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -4537,8 +4513,8 @@ class EnzymeProduct(ProcessedData):
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)
 
-        if self.beta_glucosidase_ug_pnp_per_g_per_h is not None and not isinstance(self.beta_glucosidase_ug_pnp_per_g_per_h, QuantityValueId):
-            self.beta_glucosidase_ug_pnp_per_g_per_h = QuantityValueId(self.beta_glucosidase_ug_pnp_per_g_per_h)
+        if self.beta_glucosidase_ug_pnp_per_g_per_h is not None and not isinstance(self.beta_glucosidase_ug_pnp_per_g_per_h, QuantityValue):
+            self.beta_glucosidase_ug_pnp_per_g_per_h = QuantityValue(**as_dict(self.beta_glucosidase_ug_pnp_per_g_per_h))
 
         if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
             self.flag = ProcessedDataFlag(self.flag)
@@ -4563,7 +4539,7 @@ class GWCMoistureProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    gwc_percent: Optional[Union[str, QuantityValueId]] = None
+    gwc_percent: Optional[Union[dict, "QuantityValue"]] = None
     flag: Optional[Union[str, "ProcessedDataFlag"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -4575,8 +4551,8 @@ class GWCMoistureProduct(ProcessedData):
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)
 
-        if self.gwc_percent is not None and not isinstance(self.gwc_percent, QuantityValueId):
-            self.gwc_percent = QuantityValueId(self.gwc_percent)
+        if self.gwc_percent is not None and not isinstance(self.gwc_percent, QuantityValue):
+            self.gwc_percent = QuantityValue(**as_dict(self.gwc_percent))
 
         if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
             self.flag = ProcessedDataFlag(self.flag)
@@ -4651,18 +4627,18 @@ class IonsAnalysisProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    sulfate: Optional[Union[str, QuantityValueId]] = None
-    boron: Optional[Union[str, QuantityValueId]] = None
-    zinc: Optional[Union[str, QuantityValueId]] = None
-    manganate: Optional[Union[str, QuantityValueId]] = None
-    copper: Optional[Union[str, QuantityValueId]] = None
-    iron: Optional[Union[str, QuantityValueId]] = None
-    calcium: Optional[Union[str, QuantityValueId]] = None
-    magnesium: Optional[Union[str, QuantityValueId]] = None
-    sodium: Optional[Union[str, QuantityValueId]] = None
-    potassium: Optional[Union[str, QuantityValueId]] = None
-    total_bases: Optional[Union[str, QuantityValueId]] = None
-    cation_exchange_capacity: Optional[Union[str, QuantityValueId]] = None
+    sulfate: Optional[Union[dict, "QuantityValue"]] = None
+    boron: Optional[Union[dict, "QuantityValue"]] = None
+    zinc: Optional[Union[dict, "QuantityValue"]] = None
+    manganate: Optional[Union[dict, "QuantityValue"]] = None
+    copper: Optional[Union[dict, "QuantityValue"]] = None
+    iron: Optional[Union[dict, "QuantityValue"]] = None
+    calcium: Optional[Union[dict, "QuantityValue"]] = None
+    magnesium: Optional[Union[dict, "QuantityValue"]] = None
+    sodium: Optional[Union[dict, "QuantityValue"]] = None
+    potassium: Optional[Union[dict, "QuantityValue"]] = None
+    total_bases: Optional[Union[dict, "QuantityValue"]] = None
+    cation_exchange_capacity: Optional[Union[dict, "QuantityValue"]] = None
     flag_sulfate: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_boron: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_zinc: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -4685,41 +4661,41 @@ class IonsAnalysisProduct(ProcessedData):
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)
 
-        if self.sulfate is not None and not isinstance(self.sulfate, QuantityValueId):
-            self.sulfate = QuantityValueId(self.sulfate)
+        if self.sulfate is not None and not isinstance(self.sulfate, QuantityValue):
+            self.sulfate = QuantityValue(**as_dict(self.sulfate))
 
-        if self.boron is not None and not isinstance(self.boron, QuantityValueId):
-            self.boron = QuantityValueId(self.boron)
+        if self.boron is not None and not isinstance(self.boron, QuantityValue):
+            self.boron = QuantityValue(**as_dict(self.boron))
 
-        if self.zinc is not None and not isinstance(self.zinc, QuantityValueId):
-            self.zinc = QuantityValueId(self.zinc)
+        if self.zinc is not None and not isinstance(self.zinc, QuantityValue):
+            self.zinc = QuantityValue(**as_dict(self.zinc))
 
-        if self.manganate is not None and not isinstance(self.manganate, QuantityValueId):
-            self.manganate = QuantityValueId(self.manganate)
+        if self.manganate is not None and not isinstance(self.manganate, QuantityValue):
+            self.manganate = QuantityValue(**as_dict(self.manganate))
 
-        if self.copper is not None and not isinstance(self.copper, QuantityValueId):
-            self.copper = QuantityValueId(self.copper)
+        if self.copper is not None and not isinstance(self.copper, QuantityValue):
+            self.copper = QuantityValue(**as_dict(self.copper))
 
-        if self.iron is not None and not isinstance(self.iron, QuantityValueId):
-            self.iron = QuantityValueId(self.iron)
+        if self.iron is not None and not isinstance(self.iron, QuantityValue):
+            self.iron = QuantityValue(**as_dict(self.iron))
 
-        if self.calcium is not None and not isinstance(self.calcium, QuantityValueId):
-            self.calcium = QuantityValueId(self.calcium)
+        if self.calcium is not None and not isinstance(self.calcium, QuantityValue):
+            self.calcium = QuantityValue(**as_dict(self.calcium))
 
-        if self.magnesium is not None and not isinstance(self.magnesium, QuantityValueId):
-            self.magnesium = QuantityValueId(self.magnesium)
+        if self.magnesium is not None and not isinstance(self.magnesium, QuantityValue):
+            self.magnesium = QuantityValue(**as_dict(self.magnesium))
 
-        if self.sodium is not None and not isinstance(self.sodium, QuantityValueId):
-            self.sodium = QuantityValueId(self.sodium)
+        if self.sodium is not None and not isinstance(self.sodium, QuantityValue):
+            self.sodium = QuantityValue(**as_dict(self.sodium))
 
-        if self.potassium is not None and not isinstance(self.potassium, QuantityValueId):
-            self.potassium = QuantityValueId(self.potassium)
+        if self.potassium is not None and not isinstance(self.potassium, QuantityValue):
+            self.potassium = QuantityValue(**as_dict(self.potassium))
 
-        if self.total_bases is not None and not isinstance(self.total_bases, QuantityValueId):
-            self.total_bases = QuantityValueId(self.total_bases)
+        if self.total_bases is not None and not isinstance(self.total_bases, QuantityValue):
+            self.total_bases = QuantityValue(**as_dict(self.total_bases))
 
-        if self.cation_exchange_capacity is not None and not isinstance(self.cation_exchange_capacity, QuantityValueId):
-            self.cation_exchange_capacity = QuantityValueId(self.cation_exchange_capacity)
+        if self.cation_exchange_capacity is not None and not isinstance(self.cation_exchange_capacity, QuantityValue):
+            self.cation_exchange_capacity = QuantityValue(**as_dict(self.cation_exchange_capacity))
 
         if self.flag_sulfate is not None and not isinstance(self.flag_sulfate, ProcessedDataFlag):
             self.flag_sulfate = ProcessedDataFlag(self.flag_sulfate)
@@ -4780,9 +4756,9 @@ class HClExtOMProduct(ProcessedData):
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
     produced_by_toctn_run: Optional[Union[str, TOCTNDataGenerationActivityId]] = None
-    total_organic_carbon: Optional[Union[str, QuantityValueId]] = None
+    total_organic_carbon: Optional[Union[dict, "QuantityValue"]] = None
     total_organic_carbon_avg: Optional[float] = None
-    total_nitrogen: Optional[Union[str, QuantityValueId]] = None
+    total_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
     total_nitrogen_avg: Optional[float] = None
     flag_toc: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_tn: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -4804,14 +4780,14 @@ class HClExtOMProduct(ProcessedData):
         if self.produced_by_toctn_run is not None and not isinstance(self.produced_by_toctn_run, TOCTNDataGenerationActivityId):
             self.produced_by_toctn_run = TOCTNDataGenerationActivityId(self.produced_by_toctn_run)
 
-        if self.total_organic_carbon is not None and not isinstance(self.total_organic_carbon, QuantityValueId):
-            self.total_organic_carbon = QuantityValueId(self.total_organic_carbon)
+        if self.total_organic_carbon is not None and not isinstance(self.total_organic_carbon, QuantityValue):
+            self.total_organic_carbon = QuantityValue(**as_dict(self.total_organic_carbon))
 
         if self.total_organic_carbon_avg is not None and not isinstance(self.total_organic_carbon_avg, float):
             self.total_organic_carbon_avg = float(self.total_organic_carbon_avg)
 
-        if self.total_nitrogen is not None and not isinstance(self.total_nitrogen, QuantityValueId):
-            self.total_nitrogen = QuantityValueId(self.total_nitrogen)
+        if self.total_nitrogen is not None and not isinstance(self.total_nitrogen, QuantityValue):
+            self.total_nitrogen = QuantityValue(**as_dict(self.total_nitrogen))
 
         if self.total_nitrogen_avg is not None and not isinstance(self.total_nitrogen_avg, float):
             self.total_nitrogen_avg = float(self.total_nitrogen_avg)
@@ -4850,9 +4826,9 @@ class MicrobialBiomassProduct(ProcessedData):
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
-    mbc: Optional[Union[str, QuantityValueId]] = None
+    mbc: Optional[Union[dict, "QuantityValue"]] = None
     mbc_avg: Optional[float] = None
-    mbn: Optional[Union[str, QuantityValueId]] = None
+    mbn: Optional[Union[dict, "QuantityValue"]] = None
     mbn_avg: Optional[float] = None
     flag_mbc: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_mbn: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -4871,14 +4847,14 @@ class MicrobialBiomassProduct(ProcessedData):
         if self.replicate is not None and not isinstance(self.replicate, int):
             self.replicate = int(self.replicate)
 
-        if self.mbc is not None and not isinstance(self.mbc, QuantityValueId):
-            self.mbc = QuantityValueId(self.mbc)
+        if self.mbc is not None and not isinstance(self.mbc, QuantityValue):
+            self.mbc = QuantityValue(**as_dict(self.mbc))
 
         if self.mbc_avg is not None and not isinstance(self.mbc_avg, float):
             self.mbc_avg = float(self.mbc_avg)
 
-        if self.mbn is not None and not isinstance(self.mbn, QuantityValueId):
-            self.mbn = QuantityValueId(self.mbn)
+        if self.mbn is not None and not isinstance(self.mbn, QuantityValue):
+            self.mbn = QuantityValue(**as_dict(self.mbn))
 
         if self.mbn_avg is not None and not isinstance(self.mbn_avg, float):
             self.mbn_avg = float(self.mbn_avg)
@@ -4916,9 +4892,9 @@ class NitrogenAnalysisProduct(ProcessedData):
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
-    no3_n: Optional[Union[str, QuantityValueId]] = None
+    no3_n: Optional[Union[dict, "QuantityValue"]] = None
     no3_n_avg: Optional[float] = None
-    nh4_n: Optional[Union[str, QuantityValueId]] = None
+    nh4_n: Optional[Union[dict, "QuantityValue"]] = None
     nh4_n_avg: Optional[float] = None
     flag_no3n: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_nh4n: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -4937,14 +4913,14 @@ class NitrogenAnalysisProduct(ProcessedData):
         if self.replicate is not None and not isinstance(self.replicate, int):
             self.replicate = int(self.replicate)
 
-        if self.no3_n is not None and not isinstance(self.no3_n, QuantityValueId):
-            self.no3_n = QuantityValueId(self.no3_n)
+        if self.no3_n is not None and not isinstance(self.no3_n, QuantityValue):
+            self.no3_n = QuantityValue(**as_dict(self.no3_n))
 
         if self.no3_n_avg is not None and not isinstance(self.no3_n_avg, float):
             self.no3_n_avg = float(self.no3_n_avg)
 
-        if self.nh4_n is not None and not isinstance(self.nh4_n, QuantityValueId):
-            self.nh4_n = QuantityValueId(self.nh4_n)
+        if self.nh4_n is not None and not isinstance(self.nh4_n, QuantityValue):
+            self.nh4_n = QuantityValue(**as_dict(self.nh4_n))
 
         if self.nh4_n_avg is not None and not isinstance(self.nh4_n_avg, float):
             self.nh4_n_avg = float(self.nh4_n_avg)
@@ -4983,7 +4959,7 @@ class PhosphorusAnalysisProduct(ProcessedData):
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
     extraction_method: Optional[str] = None
-    phosphorus: Optional[Union[str, QuantityValueId]] = None
+    phosphorus: Optional[Union[dict, "QuantityValue"]] = None
     phosphorus_avg: Optional[float] = None
     flag: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_avg: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -5003,8 +4979,8 @@ class PhosphorusAnalysisProduct(ProcessedData):
         if self.extraction_method is not None and not isinstance(self.extraction_method, str):
             self.extraction_method = str(self.extraction_method)
 
-        if self.phosphorus is not None and not isinstance(self.phosphorus, QuantityValueId):
-            self.phosphorus = QuantityValueId(self.phosphorus)
+        if self.phosphorus is not None and not isinstance(self.phosphorus, QuantityValue):
+            self.phosphorus = QuantityValue(**as_dict(self.phosphorus))
 
         if self.phosphorus_avg is not None and not isinstance(self.phosphorus_avg, float):
             self.phosphorus_avg = float(self.phosphorus_avg)
@@ -5072,9 +5048,9 @@ class TextureProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    sand_pct: Optional[Union[str, QuantityValueId]] = None
-    silt_pct: Optional[Union[str, QuantityValueId]] = None
-    clay_pct: Optional[Union[str, QuantityValueId]] = None
+    sand_pct: Optional[Union[dict, "QuantityValue"]] = None
+    silt_pct: Optional[Union[dict, "QuantityValue"]] = None
+    clay_pct: Optional[Union[dict, "QuantityValue"]] = None
     flag: Optional[Union[str, "ProcessedDataFlag"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -5086,14 +5062,14 @@ class TextureProduct(ProcessedData):
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)
 
-        if self.sand_pct is not None and not isinstance(self.sand_pct, QuantityValueId):
-            self.sand_pct = QuantityValueId(self.sand_pct)
+        if self.sand_pct is not None and not isinstance(self.sand_pct, QuantityValue):
+            self.sand_pct = QuantityValue(**as_dict(self.sand_pct))
 
-        if self.silt_pct is not None and not isinstance(self.silt_pct, QuantityValueId):
-            self.silt_pct = QuantityValueId(self.silt_pct)
+        if self.silt_pct is not None and not isinstance(self.silt_pct, QuantityValue):
+            self.silt_pct = QuantityValue(**as_dict(self.silt_pct))
 
-        if self.clay_pct is not None and not isinstance(self.clay_pct, QuantityValueId):
-            self.clay_pct = QuantityValueId(self.clay_pct)
+        if self.clay_pct is not None and not isinstance(self.clay_pct, QuantityValue):
+            self.clay_pct = QuantityValue(**as_dict(self.clay_pct))
 
         if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
             self.flag = ProcessedDataFlag(self.flag)
@@ -5121,9 +5097,9 @@ class WEOMProduct(ProcessedData):
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
     produced_by_toctn_run: Optional[Union[str, TOCTNDataGenerationActivityId]] = None
-    total_organic_carbon: Optional[Union[str, QuantityValueId]] = None
+    total_organic_carbon: Optional[Union[dict, "QuantityValue"]] = None
     total_organic_carbon_avg: Optional[float] = None
-    total_nitrogen: Optional[Union[str, QuantityValueId]] = None
+    total_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
     total_nitrogen_avg: Optional[float] = None
     flag_toc: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_tn: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -5145,14 +5121,14 @@ class WEOMProduct(ProcessedData):
         if self.produced_by_toctn_run is not None and not isinstance(self.produced_by_toctn_run, TOCTNDataGenerationActivityId):
             self.produced_by_toctn_run = TOCTNDataGenerationActivityId(self.produced_by_toctn_run)
 
-        if self.total_organic_carbon is not None and not isinstance(self.total_organic_carbon, QuantityValueId):
-            self.total_organic_carbon = QuantityValueId(self.total_organic_carbon)
+        if self.total_organic_carbon is not None and not isinstance(self.total_organic_carbon, QuantityValue):
+            self.total_organic_carbon = QuantityValue(**as_dict(self.total_organic_carbon))
 
         if self.total_organic_carbon_avg is not None and not isinstance(self.total_organic_carbon_avg, float):
             self.total_organic_carbon_avg = float(self.total_organic_carbon_avg)
 
-        if self.total_nitrogen is not None and not isinstance(self.total_nitrogen, QuantityValueId):
-            self.total_nitrogen = QuantityValueId(self.total_nitrogen)
+        if self.total_nitrogen is not None and not isinstance(self.total_nitrogen, QuantityValue):
+            self.total_nitrogen = QuantityValue(**as_dict(self.total_nitrogen))
 
         if self.total_nitrogen_avg is not None and not isinstance(self.total_nitrogen_avg, float):
             self.total_nitrogen_avg = float(self.total_nitrogen_avg)
@@ -13551,16 +13527,10 @@ class TimestampValue(YAMLRoot):
     class_name: ClassVar[str] = "TimestampValue"
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TimestampValue
 
-    id: Union[str, TimestampValueId] = None
     description: Optional[str] = None
     has_raw_value: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, TimestampValueId):
-            self.id = TimestampValueId(self.id)
-
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
@@ -13585,17 +13555,11 @@ class TextValue(YAMLRoot):
     class_name: ClassVar[str] = "TextValue"
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TextValue
 
-    id: Union[str, TextValueId] = None
     description: Optional[str] = None
     language: Optional[str] = None
     has_raw_value: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, TextValueId):
-            self.id = TextValueId(self.id)
-
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
@@ -13617,18 +13581,12 @@ class SoftwareControlledTermValue(YAMLRoot):
     class_name: ClassVar[str] = "SoftwareControlledTermValue"
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SoftwareControlledTermValue
 
-    id: Union[str, SoftwareControlledTermValueId] = None
     name: str = None
     version: str = None
     description: Optional[str] = None
     has_raw_value: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, SoftwareControlledTermValueId):
-            self.id = SoftwareControlledTermValueId(self.id)
-
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
         if not isinstance(self.name, str):
@@ -13657,7 +13615,6 @@ class ControlledTermValue(YAMLRoot):
     class_name: ClassVar[str] = "ControlledTermValue"
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ControlledTermValue
 
-    id: Union[str, ControlledTermValueId] = None
     description: Optional[str] = None
     has_raw_value: Optional[str] = None
     term: Optional[str] = None
@@ -13665,11 +13622,6 @@ class ControlledTermValue(YAMLRoot):
     controlled_term_provider: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ControlledTermValueId):
-            self.id = ControlledTermValueId(self.id)
-
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
@@ -13752,7 +13704,6 @@ class QuantityValue(YAMLRoot):
     class_name: ClassVar[str] = "QuantityValue"
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.QuantityValue
 
-    id: Union[str, QuantityValueId] = None
     description: Optional[str] = None
     has_value_unit: Optional[str] = None
     has_unit: Optional[str] = None
@@ -13762,11 +13713,6 @@ class QuantityValue(YAMLRoot):
     has_raw_value: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, QuantityValueId):
-            self.id = QuantityValueId(self.id)
-
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
@@ -13800,7 +13746,6 @@ class ConditioningValue(YAMLRoot):
     class_name: ClassVar[str] = "ConditioningValue"
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ConditioningValue
 
-    id: Union[str, ConditioningValueId] = None
     source_material: Optional[str] = None
     instrument: Optional[str] = None
     gas: Optional[str] = None
@@ -13808,11 +13753,6 @@ class ConditioningValue(YAMLRoot):
     has_raw_value: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ConditioningValueId):
-            self.id = ConditioningValueId(self.id)
-
         if self.source_material is not None and not isinstance(self.source_material, str):
             self.source_material = str(self.source_material)
 
@@ -17492,7 +17432,7 @@ slots.protocol_version = Slot(uri=BASALT_SCHEMA.protocol_version, name="protocol
                    model_uri=BASALT_SCHEMA.protocol_version, domain=None, range=Optional[str])
 
 slots.provider_name = Slot(uri=BASALT_SCHEMA.provider_name, name="provider_name", curie=BASALT_SCHEMA.curie('provider_name'),
-                   model_uri=BASALT_SCHEMA.provider_name, domain=None, range=Optional[Union[str, ControlledTermValueId]])
+                   model_uri=BASALT_SCHEMA.provider_name, domain=None, range=Optional[Union[dict, ControlledTermValue]])
 
 slots.purchased_material_type = Slot(uri=BASALT_SCHEMA.purchased_material_type, name="purchased_material_type", curie=BASALT_SCHEMA.curie('purchased_material_type'),
                    model_uri=BASALT_SCHEMA.purchased_material_type, domain=None, range=str)
@@ -18500,7 +18440,7 @@ slots.containerType__container_type = Slot(uri=BASALT_SCHEMA.container_type, nam
                    model_uri=BASALT_SCHEMA.containerType__container_type, domain=None, range=Optional[Union[str, "ContainerTypeEnum"]])
 
 slots.containerType__container_size_id = Slot(uri=BASALT_SCHEMA.container_size_id, name="containerType__container_size_id", curie=BASALT_SCHEMA.curie('container_size_id'),
-                   model_uri=BASALT_SCHEMA.containerType__container_size_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.containerType__container_size_id, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.containerType__axes = Slot(uri=BASALT_SCHEMA.axes, name="containerType__axes", curie=BASALT_SCHEMA.curie('axes'),
                    model_uri=BASALT_SCHEMA.containerType__axes, domain=None, range=Optional[Union[Union[dict, ContainerAxis], list[Union[dict, ContainerAxis]]]])
@@ -18551,10 +18491,10 @@ slots.labDevice__device_type = Slot(uri=BASALT_SCHEMA.device_type, name="labDevi
                    model_uri=BASALT_SCHEMA.labDevice__device_type, domain=None, range=Optional[Union[str, "DeviceTypeEnum"]])
 
 slots.labDevice__activity_time_id = Slot(uri=BASALT_SCHEMA.activity_time_id, name="labDevice__activity_time_id", curie=BASALT_SCHEMA.curie('activity_time_id'),
-                   model_uri=BASALT_SCHEMA.labDevice__activity_time_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.labDevice__activity_time_id, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.labDevice__activity_speed_id = Slot(uri=BASALT_SCHEMA.activity_speed_id, name="labDevice__activity_speed_id", curie=BASALT_SCHEMA.curie('activity_speed_id'),
-                   model_uri=BASALT_SCHEMA.labDevice__activity_speed_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.labDevice__activity_speed_id, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sampleProcessing__id = Slot(uri=BASALT_SCHEMA.id, name="sampleProcessing__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.sampleProcessing__id, domain=None, range=URIRef)
@@ -18770,22 +18710,22 @@ slots.xCTDataGenerationActivity__image_voxel_size_is = Slot(uri=BASALT_SCHEMA.im
                    model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__image_voxel_size_is, domain=None, range=str)
 
 slots.bulkDensityProduct__bulk_density = Slot(uri=BASALT_SCHEMA.bulk_density, name="bulkDensityProduct__bulk_density", curie=BASALT_SCHEMA.curie('bulk_density'),
-                   model_uri=BASALT_SCHEMA.bulkDensityProduct__bulk_density, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.bulkDensityProduct__bulk_density, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.bulkDensityProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="bulkDensityProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.bulkDensityProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.elementalAnalysisProduct__total_carbon = Slot(uri=BASALT_SCHEMA.total_carbon, name="elementalAnalysisProduct__total_carbon", curie=BASALT_SCHEMA.curie('total_carbon'),
-                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_carbon, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_carbon, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.elementalAnalysisProduct__total_nitrogen = Slot(uri=BASALT_SCHEMA.total_nitrogen, name="elementalAnalysisProduct__total_nitrogen", curie=BASALT_SCHEMA.curie('total_nitrogen'),
-                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_nitrogen, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.elementalAnalysisProduct__total_kjeldahl_nitrogen = Slot(uri=BASALT_SCHEMA.total_kjeldahl_nitrogen, name="elementalAnalysisProduct__total_kjeldahl_nitrogen", curie=BASALT_SCHEMA.curie('total_kjeldahl_nitrogen'),
-                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_kjeldahl_nitrogen, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_kjeldahl_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.elementalAnalysisProduct__total_sulfur = Slot(uri=BASALT_SCHEMA.total_sulfur, name="elementalAnalysisProduct__total_sulfur", curie=BASALT_SCHEMA.curie('total_sulfur'),
-                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_sulfur, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_sulfur, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.elementalAnalysisProduct__flag_total_carbon = Slot(uri=BASALT_SCHEMA.flag_total_carbon, name="elementalAnalysisProduct__flag_total_carbon", curie=BASALT_SCHEMA.curie('flag_total_carbon'),
                    model_uri=BASALT_SCHEMA.elementalAnalysisProduct__flag_total_carbon, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
@@ -18800,13 +18740,13 @@ slots.elementalAnalysisProduct__flag_total_sulfur = Slot(uri=BASALT_SCHEMA.flag_
                    model_uri=BASALT_SCHEMA.elementalAnalysisProduct__flag_total_sulfur, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h = Slot(uri=BASALT_SCHEMA.beta_glucosidase_ug_pnp_per_g_per_h, name="enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h", curie=BASALT_SCHEMA.curie('beta_glucosidase_ug_pnp_per_g_per_h'),
-                   model_uri=BASALT_SCHEMA.enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.enzymeProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="enzymeProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.enzymeProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.gWCMoistureProduct__gwc_percent = Slot(uri=BASALT_SCHEMA.gwc_percent, name="gWCMoistureProduct__gwc_percent", curie=BASALT_SCHEMA.curie('gwc_percent'),
-                   model_uri=BASALT_SCHEMA.gWCMoistureProduct__gwc_percent, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.gWCMoistureProduct__gwc_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.gWCMoistureProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="gWCMoistureProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.gWCMoistureProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
@@ -18827,40 +18767,40 @@ slots.hydraulicPropertiesProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="hydr
                    model_uri=BASALT_SCHEMA.hydraulicPropertiesProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.ionsAnalysisProduct__sulfate = Slot(uri=BASALT_SCHEMA.sulfate, name="ionsAnalysisProduct__sulfate", curie=BASALT_SCHEMA.curie('sulfate'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__sulfate, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__sulfate, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ionsAnalysisProduct__boron = Slot(uri=BASALT_SCHEMA.boron, name="ionsAnalysisProduct__boron", curie=BASALT_SCHEMA.curie('boron'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__boron, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__boron, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ionsAnalysisProduct__zinc = Slot(uri=BASALT_SCHEMA.zinc, name="ionsAnalysisProduct__zinc", curie=BASALT_SCHEMA.curie('zinc'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__zinc, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__zinc, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ionsAnalysisProduct__manganate = Slot(uri=BASALT_SCHEMA.manganate, name="ionsAnalysisProduct__manganate", curie=BASALT_SCHEMA.curie('manganate'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__manganate, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__manganate, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ionsAnalysisProduct__copper = Slot(uri=BASALT_SCHEMA.copper, name="ionsAnalysisProduct__copper", curie=BASALT_SCHEMA.curie('copper'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__copper, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__copper, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ionsAnalysisProduct__iron = Slot(uri=BASALT_SCHEMA.iron, name="ionsAnalysisProduct__iron", curie=BASALT_SCHEMA.curie('iron'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__iron, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__iron, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ionsAnalysisProduct__calcium = Slot(uri=BASALT_SCHEMA.calcium, name="ionsAnalysisProduct__calcium", curie=BASALT_SCHEMA.curie('calcium'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__calcium, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__calcium, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ionsAnalysisProduct__magnesium = Slot(uri=BASALT_SCHEMA.magnesium, name="ionsAnalysisProduct__magnesium", curie=BASALT_SCHEMA.curie('magnesium'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__magnesium, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__magnesium, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ionsAnalysisProduct__sodium = Slot(uri=BASALT_SCHEMA.sodium, name="ionsAnalysisProduct__sodium", curie=BASALT_SCHEMA.curie('sodium'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__sodium, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__sodium, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ionsAnalysisProduct__potassium = Slot(uri=BASALT_SCHEMA.potassium, name="ionsAnalysisProduct__potassium", curie=BASALT_SCHEMA.curie('potassium'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__potassium, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__potassium, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ionsAnalysisProduct__total_bases = Slot(uri=BASALT_SCHEMA.total_bases, name="ionsAnalysisProduct__total_bases", curie=BASALT_SCHEMA.curie('total_bases'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__total_bases, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__total_bases, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ionsAnalysisProduct__cation_exchange_capacity = Slot(uri=BASALT_SCHEMA.cation_exchange_capacity, name="ionsAnalysisProduct__cation_exchange_capacity", curie=BASALT_SCHEMA.curie('cation_exchange_capacity'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__cation_exchange_capacity, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__cation_exchange_capacity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ionsAnalysisProduct__flag_sulfate = Slot(uri=BASALT_SCHEMA.flag_sulfate, name="ionsAnalysisProduct__flag_sulfate", curie=BASALT_SCHEMA.curie('flag_sulfate'),
                    model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_sulfate, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
@@ -18899,13 +18839,13 @@ slots.ionsAnalysisProduct__flag_cec = Slot(uri=BASALT_SCHEMA.flag_cec, name="ion
                    model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_cec, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.hClExtOMProduct__total_organic_carbon = Slot(uri=BASALT_SCHEMA.total_organic_carbon, name="hClExtOMProduct__total_organic_carbon", curie=BASALT_SCHEMA.curie('total_organic_carbon'),
-                   model_uri=BASALT_SCHEMA.hClExtOMProduct__total_organic_carbon, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.hClExtOMProduct__total_organic_carbon, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.hClExtOMProduct__total_organic_carbon_avg = Slot(uri=BASALT_SCHEMA.total_organic_carbon_avg, name="hClExtOMProduct__total_organic_carbon_avg", curie=BASALT_SCHEMA.curie('total_organic_carbon_avg'),
                    model_uri=BASALT_SCHEMA.hClExtOMProduct__total_organic_carbon_avg, domain=None, range=Optional[float])
 
 slots.hClExtOMProduct__total_nitrogen = Slot(uri=BASALT_SCHEMA.total_nitrogen, name="hClExtOMProduct__total_nitrogen", curie=BASALT_SCHEMA.curie('total_nitrogen'),
-                   model_uri=BASALT_SCHEMA.hClExtOMProduct__total_nitrogen, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.hClExtOMProduct__total_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.hClExtOMProduct__total_nitrogen_avg = Slot(uri=BASALT_SCHEMA.total_nitrogen_avg, name="hClExtOMProduct__total_nitrogen_avg", curie=BASALT_SCHEMA.curie('total_nitrogen_avg'),
                    model_uri=BASALT_SCHEMA.hClExtOMProduct__total_nitrogen_avg, domain=None, range=Optional[float])
@@ -18923,13 +18863,13 @@ slots.hClExtOMProduct__flag_tn_avg = Slot(uri=BASALT_SCHEMA.flag_tn_avg, name="h
                    model_uri=BASALT_SCHEMA.hClExtOMProduct__flag_tn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.microbialBiomassProduct__mbc = Slot(uri=BASALT_SCHEMA.mbc, name="microbialBiomassProduct__mbc", curie=BASALT_SCHEMA.curie('mbc'),
-                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbc, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbc, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.microbialBiomassProduct__mbc_avg = Slot(uri=BASALT_SCHEMA.mbc_avg, name="microbialBiomassProduct__mbc_avg", curie=BASALT_SCHEMA.curie('mbc_avg'),
                    model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbc_avg, domain=None, range=Optional[float])
 
 slots.microbialBiomassProduct__mbn = Slot(uri=BASALT_SCHEMA.mbn, name="microbialBiomassProduct__mbn", curie=BASALT_SCHEMA.curie('mbn'),
-                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbn, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbn, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.microbialBiomassProduct__mbn_avg = Slot(uri=BASALT_SCHEMA.mbn_avg, name="microbialBiomassProduct__mbn_avg", curie=BASALT_SCHEMA.curie('mbn_avg'),
                    model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbn_avg, domain=None, range=Optional[float])
@@ -18947,13 +18887,13 @@ slots.microbialBiomassProduct__flag_mbn_avg = Slot(uri=BASALT_SCHEMA.flag_mbn_av
                    model_uri=BASALT_SCHEMA.microbialBiomassProduct__flag_mbn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.nitrogenAnalysisProduct__no3_n = Slot(uri=BASALT_SCHEMA.no3_n, name="nitrogenAnalysisProduct__no3_n", curie=BASALT_SCHEMA.curie('no3_n'),
-                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__no3_n, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__no3_n, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.nitrogenAnalysisProduct__no3_n_avg = Slot(uri=BASALT_SCHEMA.no3_n_avg, name="nitrogenAnalysisProduct__no3_n_avg", curie=BASALT_SCHEMA.curie('no3_n_avg'),
                    model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__no3_n_avg, domain=None, range=Optional[float])
 
 slots.nitrogenAnalysisProduct__nh4_n = Slot(uri=BASALT_SCHEMA.nh4_n, name="nitrogenAnalysisProduct__nh4_n", curie=BASALT_SCHEMA.curie('nh4_n'),
-                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__nh4_n, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__nh4_n, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.nitrogenAnalysisProduct__nh4_n_avg = Slot(uri=BASALT_SCHEMA.nh4_n_avg, name="nitrogenAnalysisProduct__nh4_n_avg", curie=BASALT_SCHEMA.curie('nh4_n_avg'),
                    model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__nh4_n_avg, domain=None, range=Optional[float])
@@ -18974,7 +18914,7 @@ slots.phosphorusAnalysisProduct__extraction_method = Slot(uri=BASALT_SCHEMA.extr
                    model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__extraction_method, domain=None, range=Optional[str])
 
 slots.phosphorusAnalysisProduct__phosphorus = Slot(uri=BASALT_SCHEMA.phosphorus, name="phosphorusAnalysisProduct__phosphorus", curie=BASALT_SCHEMA.curie('phosphorus'),
-                   model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__phosphorus, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__phosphorus, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.phosphorusAnalysisProduct__phosphorus_avg = Slot(uri=BASALT_SCHEMA.phosphorus_avg, name="phosphorusAnalysisProduct__phosphorus_avg", curie=BASALT_SCHEMA.curie('phosphorus_avg'),
                    model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__phosphorus_avg, domain=None, range=Optional[float])
@@ -18992,25 +18932,25 @@ slots.respirationProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="respirationP
                    model_uri=BASALT_SCHEMA.respirationProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.textureProduct__sand_pct = Slot(uri=BASALT_SCHEMA.sand_pct, name="textureProduct__sand_pct", curie=BASALT_SCHEMA.curie('sand_pct'),
-                   model_uri=BASALT_SCHEMA.textureProduct__sand_pct, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.textureProduct__sand_pct, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.textureProduct__silt_pct = Slot(uri=BASALT_SCHEMA.silt_pct, name="textureProduct__silt_pct", curie=BASALT_SCHEMA.curie('silt_pct'),
-                   model_uri=BASALT_SCHEMA.textureProduct__silt_pct, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.textureProduct__silt_pct, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.textureProduct__clay_pct = Slot(uri=BASALT_SCHEMA.clay_pct, name="textureProduct__clay_pct", curie=BASALT_SCHEMA.curie('clay_pct'),
-                   model_uri=BASALT_SCHEMA.textureProduct__clay_pct, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.textureProduct__clay_pct, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.textureProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="textureProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.textureProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.wEOMProduct__total_organic_carbon = Slot(uri=BASALT_SCHEMA.total_organic_carbon, name="wEOMProduct__total_organic_carbon", curie=BASALT_SCHEMA.curie('total_organic_carbon'),
-                   model_uri=BASALT_SCHEMA.wEOMProduct__total_organic_carbon, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.wEOMProduct__total_organic_carbon, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.wEOMProduct__total_organic_carbon_avg = Slot(uri=BASALT_SCHEMA.total_organic_carbon_avg, name="wEOMProduct__total_organic_carbon_avg", curie=BASALT_SCHEMA.curie('total_organic_carbon_avg'),
                    model_uri=BASALT_SCHEMA.wEOMProduct__total_organic_carbon_avg, domain=None, range=Optional[float])
 
 slots.wEOMProduct__total_nitrogen = Slot(uri=BASALT_SCHEMA.total_nitrogen, name="wEOMProduct__total_nitrogen", curie=BASALT_SCHEMA.curie('total_nitrogen'),
-                   model_uri=BASALT_SCHEMA.wEOMProduct__total_nitrogen, domain=None, range=Optional[Union[str, QuantityValueId]])
+                   model_uri=BASALT_SCHEMA.wEOMProduct__total_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.wEOMProduct__total_nitrogen_avg = Slot(uri=BASALT_SCHEMA.total_nitrogen_avg, name="wEOMProduct__total_nitrogen_avg", curie=BASALT_SCHEMA.curie('total_nitrogen_avg'),
                    model_uri=BASALT_SCHEMA.wEOMProduct__total_nitrogen_avg, domain=None, range=Optional[float])
@@ -19621,17 +19561,11 @@ slots.dOI__doi_category = Slot(uri=BASALT_SCHEMA.doi_category, name="dOI__doi_ca
 slots.dOI__doi_provider = Slot(uri=BASALT_SCHEMA.doi_provider, name="dOI__doi_provider", curie=BASALT_SCHEMA.curie('doi_provider'),
                    model_uri=BASALT_SCHEMA.dOI__doi_provider, domain=None, range=Optional[Union[str, "DoiProviderEnum"]])
 
-slots.timestampValue__id = Slot(uri=BASALT_SCHEMA.id, name="timestampValue__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.timestampValue__id, domain=None, range=URIRef)
-
 slots.timestampValue__description = Slot(uri=BASALT_SCHEMA.description, name="timestampValue__description", curie=BASALT_SCHEMA.curie('description'),
                    model_uri=BASALT_SCHEMA.timestampValue__description, domain=None, range=Optional[str])
 
 slots.timestampValue__has_raw_value = Slot(uri=BASALT_SCHEMA.has_raw_value, name="timestampValue__has_raw_value", curie=BASALT_SCHEMA.curie('has_raw_value'),
                    model_uri=BASALT_SCHEMA.timestampValue__has_raw_value, domain=None, range=Optional[str])
-
-slots.textValue__id = Slot(uri=BASALT_SCHEMA.id, name="textValue__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.textValue__id, domain=None, range=URIRef)
 
 slots.textValue__language = Slot(uri=BASALT_SCHEMA.language, name="textValue__language", curie=BASALT_SCHEMA.curie('language'),
                    model_uri=BASALT_SCHEMA.textValue__language, domain=None, range=Optional[str])
@@ -19639,14 +19573,8 @@ slots.textValue__language = Slot(uri=BASALT_SCHEMA.language, name="textValue__la
 slots.textValue__has_raw_value = Slot(uri=BASALT_SCHEMA.has_raw_value, name="textValue__has_raw_value", curie=BASALT_SCHEMA.curie('has_raw_value'),
                    model_uri=BASALT_SCHEMA.textValue__has_raw_value, domain=None, range=Optional[str])
 
-slots.softwareControlledTermValue__id = Slot(uri=BASALT_SCHEMA.id, name="softwareControlledTermValue__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.softwareControlledTermValue__id, domain=None, range=URIRef)
-
 slots.softwareControlledTermValue__has_raw_value = Slot(uri=BASALT_SCHEMA.has_raw_value, name="softwareControlledTermValue__has_raw_value", curie=BASALT_SCHEMA.curie('has_raw_value'),
                    model_uri=BASALT_SCHEMA.softwareControlledTermValue__has_raw_value, domain=None, range=Optional[str])
-
-slots.controlledTermValue__id = Slot(uri=BASALT_SCHEMA.id, name="controlledTermValue__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.controlledTermValue__id, domain=None, range=URIRef)
 
 slots.controlledTermValue__has_raw_value = Slot(uri=BASALT_SCHEMA.has_raw_value, name="controlledTermValue__has_raw_value", curie=BASALT_SCHEMA.curie('has_raw_value'),
                    model_uri=BASALT_SCHEMA.controlledTermValue__has_raw_value, domain=None, range=Optional[str])
@@ -19681,9 +19609,6 @@ slots.personValue__profile_image_url = Slot(uri=BASALT_SCHEMA.profile_image_url,
 slots.personValue__websites = Slot(uri=BASALT_SCHEMA.websites, name="personValue__websites", curie=BASALT_SCHEMA.curie('websites'),
                    model_uri=BASALT_SCHEMA.personValue__websites, domain=None, range=Optional[str])
 
-slots.quantityValue__id = Slot(uri=BASALT_SCHEMA.id, name="quantityValue__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.quantityValue__id, domain=None, range=URIRef)
-
 slots.quantityValue__has_value_unit = Slot(uri=BASALT_SCHEMA.has_value_unit, name="quantityValue__has_value_unit", curie=BASALT_SCHEMA.curie('has_value_unit'),
                    model_uri=BASALT_SCHEMA.quantityValue__has_value_unit, domain=None, range=Optional[str])
 
@@ -19701,9 +19626,6 @@ slots.quantityValue__has_maximum_numeric_value = Slot(uri=BASALT_SCHEMA.has_maxi
 
 slots.quantityValue__has_raw_value = Slot(uri=BASALT_SCHEMA.has_raw_value, name="quantityValue__has_raw_value", curie=BASALT_SCHEMA.curie('has_raw_value'),
                    model_uri=BASALT_SCHEMA.quantityValue__has_raw_value, domain=None, range=Optional[str])
-
-slots.conditioningValue__id = Slot(uri=BASALT_SCHEMA.id, name="conditioningValue__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.conditioningValue__id, domain=None, range=URIRef)
 
 slots.conditioningValue__source_material = Slot(uri=BASALT_SCHEMA.source_material, name="conditioningValue__source_material", curie=BASALT_SCHEMA.curie('source_material'),
                    model_uri=BASALT_SCHEMA.conditioningValue__source_material, domain=None, range=Optional[str])

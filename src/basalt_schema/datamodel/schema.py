@@ -253,10 +253,11 @@ class ContainerType(Base):
     id = Column(UUID(), primary_key=True, nullable=False )
     description = Column(Text())
     container_type = Column(Enum('screw_top_conical', name='ContainerTypeEnum'))
-    container_size_id = Column(UUID(), ForeignKey('QuantityValue.id'))
     label_format = Column(Text())
     renderer = Column(Text())
     slot_capacity = Column(Text())
+    container_size_id_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    container_size_id = relationship("QuantityValue", uselist=False, foreign_keys=[container_size_id_id])
     
     
     # ManyToMany
@@ -271,7 +272,7 @@ class ContainerType(Base):
     
 
     def __repr__(self):
-        return f"ContainerType(id={self.id},description={self.description},container_type={self.container_type},container_size_id={self.container_size_id},label_format={self.label_format},renderer={self.renderer},slot_capacity={self.slot_capacity},)"
+        return f"ContainerType(id={self.id},description={self.description},container_type={self.container_type},label_format={self.label_format},renderer={self.renderer},slot_capacity={self.slot_capacity},container_size_id_id={self.container_size_id_id},)"
 
 
 
@@ -354,14 +355,16 @@ class LabDevice(Base):
     id = Column(UUID(), primary_key=True, nullable=False )
     description = Column(Text())
     device_type = Column(Enum('orbital_shaker', 'thermomixer', name='DeviceTypeEnum'))
-    activity_time_id = Column(UUID(), ForeignKey('QuantityValue.id'))
-    activity_speed_id = Column(UUID(), ForeignKey('QuantityValue.id'))
+    activity_time_id_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    activity_time_id = relationship("QuantityValue", uselist=False, foreign_keys=[activity_time_id_id])
+    activity_speed_id_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    activity_speed_id = relationship("QuantityValue", uselist=False, foreign_keys=[activity_speed_id_id])
     
 
     
 
     def __repr__(self):
-        return f"LabDevice(id={self.id},description={self.description},device_type={self.device_type},activity_time_id={self.activity_time_id},activity_speed_id={self.activity_speed_id},)"
+        return f"LabDevice(id={self.id},description={self.description},device_type={self.device_type},activity_time_id_id={self.activity_time_id_id},activity_speed_id_id={self.activity_speed_id_id},)"
 
 
 
@@ -1444,15 +1447,15 @@ class TimestampValue(Base):
     """
     __tablename__ = 'TimestampValue'
 
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     description = Column(Text())
-    id = Column(Text(), primary_key=True, nullable=False )
     has_raw_value = Column(Text())
     
 
     
 
     def __repr__(self):
-        return f"TimestampValue(description={self.description},id={self.id},has_raw_value={self.has_raw_value},)"
+        return f"TimestampValue(id={self.id},description={self.description},has_raw_value={self.has_raw_value},)"
 
 
 
@@ -1465,8 +1468,8 @@ class TextValue(Base):
     """
     __tablename__ = 'TextValue'
 
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     description = Column(Text())
-    id = Column(Text(), primary_key=True, nullable=False )
     language = Column(Text())
     has_raw_value = Column(Text())
     
@@ -1474,7 +1477,7 @@ class TextValue(Base):
     
 
     def __repr__(self):
-        return f"TextValue(description={self.description},id={self.id},language={self.language},has_raw_value={self.has_raw_value},)"
+        return f"TextValue(id={self.id},description={self.description},language={self.language},has_raw_value={self.has_raw_value},)"
 
 
 
@@ -1487,17 +1490,17 @@ class SoftwareControlledTermValue(Base):
     """
     __tablename__ = 'SoftwareControlledTermValue'
 
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     version = Column(Text(), nullable=False )
-    id = Column(Text(), primary_key=True, nullable=False )
     has_raw_value = Column(Text())
     
 
     
 
     def __repr__(self):
-        return f"SoftwareControlledTermValue(name={self.name},description={self.description},version={self.version},id={self.id},has_raw_value={self.has_raw_value},)"
+        return f"SoftwareControlledTermValue(id={self.id},name={self.name},description={self.description},version={self.version},has_raw_value={self.has_raw_value},)"
 
 
 
@@ -1510,8 +1513,8 @@ class ControlledTermValue(Base):
     """
     __tablename__ = 'ControlledTermValue'
 
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     description = Column(Text())
-    id = Column(Text(), primary_key=True, nullable=False )
     has_raw_value = Column(Text())
     term = Column(Text())
     term_id = Column(Text())
@@ -1521,7 +1524,7 @@ class ControlledTermValue(Base):
     
 
     def __repr__(self):
-        return f"ControlledTermValue(description={self.description},id={self.id},has_raw_value={self.has_raw_value},term={self.term},term_id={self.term_id},controlled_term_provider={self.controlled_term_provider},)"
+        return f"ControlledTermValue(id={self.id},description={self.description},has_raw_value={self.has_raw_value},term={self.term},term_id={self.term_id},controlled_term_provider={self.controlled_term_provider},)"
 
 
 
@@ -1565,8 +1568,8 @@ class QuantityValue(Base):
     """
     __tablename__ = 'QuantityValue'
 
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     description = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
     has_value_unit = Column(Text())
     has_unit = Column(Text())
     has_numeric_value = Column(Float())
@@ -1578,7 +1581,7 @@ class QuantityValue(Base):
     
 
     def __repr__(self):
-        return f"QuantityValue(description={self.description},id={self.id},has_value_unit={self.has_value_unit},has_unit={self.has_unit},has_numeric_value={self.has_numeric_value},has_minimum_numeric_value={self.has_minimum_numeric_value},has_maximum_numeric_value={self.has_maximum_numeric_value},has_raw_value={self.has_raw_value},)"
+        return f"QuantityValue(id={self.id},description={self.description},has_value_unit={self.has_value_unit},has_unit={self.has_unit},has_numeric_value={self.has_numeric_value},has_minimum_numeric_value={self.has_minimum_numeric_value},has_maximum_numeric_value={self.has_maximum_numeric_value},has_raw_value={self.has_raw_value},)"
 
 
 
@@ -1591,7 +1594,7 @@ class ConditioningValue(Base):
     """
     __tablename__ = 'ConditioningValue'
 
-    id = Column(Text(), primary_key=True, nullable=False )
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     source_material = Column(Text())
     instrument = Column(Text())
     gas = Column(Text())
@@ -6935,7 +6938,6 @@ and add only their type-specific slots.
 
     mg_workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='MetagenomicsSteps'))
     sample_id = Column(UUID(), ForeignKey('Sample.id'))
-    provider_name = Column(Text(), ForeignKey('ControlledTermValue.id'))
     raw_fasta_url = Column(Text())
     additional_information = Column(Text())
     summary_metrics = Column(Text())
@@ -6952,12 +6954,14 @@ and add only their type-specific slots.
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    provider_name_id = Column(Integer(), ForeignKey('ControlledTermValue.id'))
+    provider_name = relationship("ControlledTermValue", uselist=False, foreign_keys=[provider_name_id])
     
 
     
 
     def __repr__(self):
-        return f"MetagenomicsProduct(mg_workflow_step={self.mg_workflow_step},sample_id={self.sample_id},provider_name={self.provider_name},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"MetagenomicsProduct(mg_workflow_step={self.mg_workflow_step},sample_id={self.sample_id},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},provider_name_id={self.provider_name_id},)"
 
 
 
@@ -6976,7 +6980,6 @@ class BulkDensityProduct(ProcessedData):
     __tablename__ = 'BulkDensityProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    bulk_density = Column(UUID(), ForeignKey('QuantityValue.id'))
     flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
@@ -6993,12 +6996,14 @@ class BulkDensityProduct(ProcessedData):
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    bulk_density_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    bulk_density = relationship("QuantityValue", uselist=False, foreign_keys=[bulk_density_id])
     
 
     
 
     def __repr__(self):
-        return f"BulkDensityProduct(measure_type={self.measure_type},bulk_density={self.bulk_density},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"BulkDensityProduct(measure_type={self.measure_type},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},bulk_density_id={self.bulk_density_id},)"
 
 
 
@@ -7018,10 +7023,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     __tablename__ = 'ElementalAnalysisProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    total_carbon = Column(UUID(), ForeignKey('QuantityValue.id'))
-    total_nitrogen = Column(UUID(), ForeignKey('QuantityValue.id'))
-    total_kjeldahl_nitrogen = Column(UUID(), ForeignKey('QuantityValue.id'))
-    total_sulfur = Column(UUID(), ForeignKey('QuantityValue.id'))
     flag_total_carbon = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     flag_total_nitrogen = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     flag_tkn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
@@ -7041,12 +7042,20 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    total_carbon_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    total_carbon = relationship("QuantityValue", uselist=False, foreign_keys=[total_carbon_id])
+    total_nitrogen_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    total_nitrogen = relationship("QuantityValue", uselist=False, foreign_keys=[total_nitrogen_id])
+    total_kjeldahl_nitrogen_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    total_kjeldahl_nitrogen = relationship("QuantityValue", uselist=False, foreign_keys=[total_kjeldahl_nitrogen_id])
+    total_sulfur_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    total_sulfur = relationship("QuantityValue", uselist=False, foreign_keys=[total_sulfur_id])
     
 
     
 
     def __repr__(self):
-        return f"ElementalAnalysisProduct(measure_type={self.measure_type},total_carbon={self.total_carbon},total_nitrogen={self.total_nitrogen},total_kjeldahl_nitrogen={self.total_kjeldahl_nitrogen},total_sulfur={self.total_sulfur},flag_total_carbon={self.flag_total_carbon},flag_total_nitrogen={self.flag_total_nitrogen},flag_tkn={self.flag_tkn},flag_total_sulfur={self.flag_total_sulfur},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"ElementalAnalysisProduct(measure_type={self.measure_type},flag_total_carbon={self.flag_total_carbon},flag_total_nitrogen={self.flag_total_nitrogen},flag_tkn={self.flag_tkn},flag_total_sulfur={self.flag_total_sulfur},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},total_carbon_id={self.total_carbon_id},total_nitrogen_id={self.total_nitrogen_id},total_kjeldahl_nitrogen_id={self.total_kjeldahl_nitrogen_id},total_sulfur_id={self.total_sulfur_id},)"
 
 
 
@@ -7065,7 +7074,6 @@ class EnzymeProduct(ProcessedData):
     __tablename__ = 'EnzymeProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    beta_glucosidase_ug_pnp_per_g_per_h = Column(UUID(), ForeignKey('QuantityValue.id'))
     flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
@@ -7082,12 +7090,14 @@ class EnzymeProduct(ProcessedData):
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    beta_glucosidase_ug_pnp_per_g_per_h_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    beta_glucosidase_ug_pnp_per_g_per_h = relationship("QuantityValue", uselist=False, foreign_keys=[beta_glucosidase_ug_pnp_per_g_per_h_id])
     
 
     
 
     def __repr__(self):
-        return f"EnzymeProduct(measure_type={self.measure_type},beta_glucosidase_ug_pnp_per_g_per_h={self.beta_glucosidase_ug_pnp_per_g_per_h},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"EnzymeProduct(measure_type={self.measure_type},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},beta_glucosidase_ug_pnp_per_g_per_h_id={self.beta_glucosidase_ug_pnp_per_g_per_h_id},)"
 
 
 
@@ -7106,7 +7116,6 @@ class GWCMoistureProduct(ProcessedData):
     __tablename__ = 'GWCMoistureProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    gwc_percent = Column(UUID(), ForeignKey('QuantityValue.id'))
     flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
@@ -7123,12 +7132,14 @@ class GWCMoistureProduct(ProcessedData):
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    gwc_percent_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    gwc_percent = relationship("QuantityValue", uselist=False, foreign_keys=[gwc_percent_id])
     
 
     
 
     def __repr__(self):
-        return f"GWCMoistureProduct(measure_type={self.measure_type},gwc_percent={self.gwc_percent},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"GWCMoistureProduct(measure_type={self.measure_type},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},gwc_percent_id={self.gwc_percent_id},)"
 
 
 
@@ -7192,18 +7203,6 @@ Individual QC flags for each ion using ProcessedDataFlag enum.
     __tablename__ = 'IonsAnalysisProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    sulfate = Column(UUID(), ForeignKey('QuantityValue.id'))
-    boron = Column(UUID(), ForeignKey('QuantityValue.id'))
-    zinc = Column(UUID(), ForeignKey('QuantityValue.id'))
-    manganate = Column(UUID(), ForeignKey('QuantityValue.id'))
-    copper = Column(UUID(), ForeignKey('QuantityValue.id'))
-    iron = Column(UUID(), ForeignKey('QuantityValue.id'))
-    calcium = Column(UUID(), ForeignKey('QuantityValue.id'))
-    magnesium = Column(UUID(), ForeignKey('QuantityValue.id'))
-    sodium = Column(UUID(), ForeignKey('QuantityValue.id'))
-    potassium = Column(UUID(), ForeignKey('QuantityValue.id'))
-    total_bases = Column(UUID(), ForeignKey('QuantityValue.id'))
-    cation_exchange_capacity = Column(UUID(), ForeignKey('QuantityValue.id'))
     flag_sulfate = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     flag_boron = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     flag_zinc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
@@ -7231,12 +7230,36 @@ Individual QC flags for each ion using ProcessedDataFlag enum.
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    sulfate_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    sulfate = relationship("QuantityValue", uselist=False, foreign_keys=[sulfate_id])
+    boron_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    boron = relationship("QuantityValue", uselist=False, foreign_keys=[boron_id])
+    zinc_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    zinc = relationship("QuantityValue", uselist=False, foreign_keys=[zinc_id])
+    manganate_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    manganate = relationship("QuantityValue", uselist=False, foreign_keys=[manganate_id])
+    copper_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    copper = relationship("QuantityValue", uselist=False, foreign_keys=[copper_id])
+    iron_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    iron = relationship("QuantityValue", uselist=False, foreign_keys=[iron_id])
+    calcium_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    calcium = relationship("QuantityValue", uselist=False, foreign_keys=[calcium_id])
+    magnesium_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    magnesium = relationship("QuantityValue", uselist=False, foreign_keys=[magnesium_id])
+    sodium_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    sodium = relationship("QuantityValue", uselist=False, foreign_keys=[sodium_id])
+    potassium_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    potassium = relationship("QuantityValue", uselist=False, foreign_keys=[potassium_id])
+    total_bases_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    total_bases = relationship("QuantityValue", uselist=False, foreign_keys=[total_bases_id])
+    cation_exchange_capacity_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    cation_exchange_capacity = relationship("QuantityValue", uselist=False, foreign_keys=[cation_exchange_capacity_id])
     
 
     
 
     def __repr__(self):
-        return f"IonsAnalysisProduct(measure_type={self.measure_type},sulfate={self.sulfate},boron={self.boron},zinc={self.zinc},manganate={self.manganate},copper={self.copper},iron={self.iron},calcium={self.calcium},magnesium={self.magnesium},sodium={self.sodium},potassium={self.potassium},total_bases={self.total_bases},cation_exchange_capacity={self.cation_exchange_capacity},flag_sulfate={self.flag_sulfate},flag_boron={self.flag_boron},flag_zinc={self.flag_zinc},flag_manganate={self.flag_manganate},flag_copper={self.flag_copper},flag_iron={self.flag_iron},flag_calcium={self.flag_calcium},flag_magnesium={self.flag_magnesium},flag_sodium={self.flag_sodium},flag_potassium={self.flag_potassium},flag_total_bases={self.flag_total_bases},flag_cec={self.flag_cec},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"IonsAnalysisProduct(measure_type={self.measure_type},flag_sulfate={self.flag_sulfate},flag_boron={self.flag_boron},flag_zinc={self.flag_zinc},flag_manganate={self.flag_manganate},flag_copper={self.flag_copper},flag_iron={self.flag_iron},flag_calcium={self.flag_calcium},flag_magnesium={self.flag_magnesium},flag_sodium={self.flag_sodium},flag_potassium={self.flag_potassium},flag_total_bases={self.flag_total_bases},flag_cec={self.flag_cec},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},sulfate_id={self.sulfate_id},boron_id={self.boron_id},zinc_id={self.zinc_id},manganate_id={self.manganate_id},copper_id={self.copper_id},iron_id={self.iron_id},calcium_id={self.calcium_id},magnesium_id={self.magnesium_id},sodium_id={self.sodium_id},potassium_id={self.potassium_id},total_bases_id={self.total_bases_id},cation_exchange_capacity_id={self.cation_exchange_capacity_id},)"
 
 
 
@@ -7258,9 +7281,7 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     replicate = Column(Integer())
     produced_by_toctn_run = Column(UUID(), ForeignKey('TOC_TN_DataGenerationActivity.id'))
-    total_organic_carbon = Column(UUID(), ForeignKey('QuantityValue.id'))
     total_organic_carbon_avg = Column(Float())
-    total_nitrogen = Column(UUID(), ForeignKey('QuantityValue.id'))
     total_nitrogen_avg = Column(Float())
     flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
@@ -7281,12 +7302,16 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    total_organic_carbon_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    total_organic_carbon = relationship("QuantityValue", uselist=False, foreign_keys=[total_organic_carbon_id])
+    total_nitrogen_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    total_nitrogen = relationship("QuantityValue", uselist=False, foreign_keys=[total_nitrogen_id])
     
 
     
 
     def __repr__(self):
-        return f"HClExtOMProduct(measure_type={self.measure_type},replicate={self.replicate},produced_by_toctn_run={self.produced_by_toctn_run},total_organic_carbon={self.total_organic_carbon},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen={self.total_nitrogen},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"HClExtOMProduct(measure_type={self.measure_type},replicate={self.replicate},produced_by_toctn_run={self.produced_by_toctn_run},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_nitrogen_id={self.total_nitrogen_id},)"
 
 
 
@@ -7307,9 +7332,7 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     replicate = Column(Integer())
-    mbc = Column(UUID(), ForeignKey('QuantityValue.id'))
     mbc_avg = Column(Float())
-    mbn = Column(UUID(), ForeignKey('QuantityValue.id'))
     mbn_avg = Column(Float())
     flag_mbc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     flag_mbn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
@@ -7330,12 +7353,16 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    mbc_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    mbc = relationship("QuantityValue", uselist=False, foreign_keys=[mbc_id])
+    mbn_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    mbn = relationship("QuantityValue", uselist=False, foreign_keys=[mbn_id])
     
 
     
 
     def __repr__(self):
-        return f"MicrobialBiomassProduct(measure_type={self.measure_type},replicate={self.replicate},mbc={self.mbc},mbc_avg={self.mbc_avg},mbn={self.mbn},mbn_avg={self.mbn_avg},flag_mbc={self.flag_mbc},flag_mbn={self.flag_mbn},flag_mbc_avg={self.flag_mbc_avg},flag_mbn_avg={self.flag_mbn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"MicrobialBiomassProduct(measure_type={self.measure_type},replicate={self.replicate},mbc_avg={self.mbc_avg},mbn_avg={self.mbn_avg},flag_mbc={self.flag_mbc},flag_mbn={self.flag_mbn},flag_mbc_avg={self.flag_mbc_avg},flag_mbn_avg={self.flag_mbn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},mbc_id={self.mbc_id},mbn_id={self.mbn_id},)"
 
 
 
@@ -7356,9 +7383,7 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     replicate = Column(Integer())
-    no3_n = Column(UUID(), ForeignKey('QuantityValue.id'))
     no3_n_avg = Column(Float())
-    nh4_n = Column(UUID(), ForeignKey('QuantityValue.id'))
     nh4_n_avg = Column(Float())
     flag_no3n = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     flag_nh4n = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
@@ -7379,12 +7404,16 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    no3_n_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    no3_n = relationship("QuantityValue", uselist=False, foreign_keys=[no3_n_id])
+    nh4_n_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    nh4_n = relationship("QuantityValue", uselist=False, foreign_keys=[nh4_n_id])
     
 
     
 
     def __repr__(self):
-        return f"NitrogenAnalysisProduct(measure_type={self.measure_type},replicate={self.replicate},no3_n={self.no3_n},no3_n_avg={self.no3_n_avg},nh4_n={self.nh4_n},nh4_n_avg={self.nh4_n_avg},flag_no3n={self.flag_no3n},flag_nh4n={self.flag_nh4n},flag_no3n_avg={self.flag_no3n_avg},flag_nh4n_avg={self.flag_nh4n_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"NitrogenAnalysisProduct(measure_type={self.measure_type},replicate={self.replicate},no3_n_avg={self.no3_n_avg},nh4_n_avg={self.nh4_n_avg},flag_no3n={self.flag_no3n},flag_nh4n={self.flag_nh4n},flag_no3n_avg={self.flag_no3n_avg},flag_nh4n_avg={self.flag_nh4n_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},no3_n_id={self.no3_n_id},nh4_n_id={self.nh4_n_id},)"
 
 
 
@@ -7406,7 +7435,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     replicate = Column(Integer())
     extraction_method = Column(Text())
-    phosphorus = Column(UUID(), ForeignKey('QuantityValue.id'))
     phosphorus_avg = Column(Float())
     flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     flag_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
@@ -7425,12 +7453,14 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    phosphorus_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    phosphorus = relationship("QuantityValue", uselist=False, foreign_keys=[phosphorus_id])
     
 
     
 
     def __repr__(self):
-        return f"PhosphorusAnalysisProduct(measure_type={self.measure_type},replicate={self.replicate},extraction_method={self.extraction_method},phosphorus={self.phosphorus},phosphorus_avg={self.phosphorus_avg},flag={self.flag},flag_avg={self.flag_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"PhosphorusAnalysisProduct(measure_type={self.measure_type},replicate={self.replicate},extraction_method={self.extraction_method},phosphorus_avg={self.phosphorus_avg},flag={self.flag},flag_avg={self.flag_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},phosphorus_id={self.phosphorus_id},)"
 
 
 
@@ -7491,9 +7521,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     __tablename__ = 'TextureProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    sand_pct = Column(UUID(), ForeignKey('QuantityValue.id'))
-    silt_pct = Column(UUID(), ForeignKey('QuantityValue.id'))
-    clay_pct = Column(UUID(), ForeignKey('QuantityValue.id'))
     flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
@@ -7510,12 +7537,18 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    sand_pct_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    sand_pct = relationship("QuantityValue", uselist=False, foreign_keys=[sand_pct_id])
+    silt_pct_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    silt_pct = relationship("QuantityValue", uselist=False, foreign_keys=[silt_pct_id])
+    clay_pct_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    clay_pct = relationship("QuantityValue", uselist=False, foreign_keys=[clay_pct_id])
     
 
     
 
     def __repr__(self):
-        return f"TextureProduct(measure_type={self.measure_type},sand_pct={self.sand_pct},silt_pct={self.silt_pct},clay_pct={self.clay_pct},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"TextureProduct(measure_type={self.measure_type},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},sand_pct_id={self.sand_pct_id},silt_pct_id={self.silt_pct_id},clay_pct_id={self.clay_pct_id},)"
 
 
 
@@ -7537,9 +7570,7 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     replicate = Column(Integer())
     produced_by_toctn_run = Column(UUID(), ForeignKey('TOC_TN_DataGenerationActivity.id'))
-    total_organic_carbon = Column(UUID(), ForeignKey('QuantityValue.id'))
     total_organic_carbon_avg = Column(Float())
-    total_nitrogen = Column(UUID(), ForeignKey('QuantityValue.id'))
     total_nitrogen_avg = Column(Float())
     flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
     flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
@@ -7560,12 +7591,16 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    total_organic_carbon_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    total_organic_carbon = relationship("QuantityValue", uselist=False, foreign_keys=[total_organic_carbon_id])
+    total_nitrogen_id = Column(Integer(), ForeignKey('QuantityValue.id'))
+    total_nitrogen = relationship("QuantityValue", uselist=False, foreign_keys=[total_nitrogen_id])
     
 
     
 
     def __repr__(self):
-        return f"WEOMProduct(measure_type={self.measure_type},replicate={self.replicate},produced_by_toctn_run={self.produced_by_toctn_run},total_organic_carbon={self.total_organic_carbon},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen={self.total_nitrogen},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"WEOMProduct(measure_type={self.measure_type},replicate={self.replicate},produced_by_toctn_run={self.produced_by_toctn_run},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_nitrogen_id={self.total_nitrogen_id},)"
 
 
 
@@ -8009,7 +8044,6 @@ Inherits all MetagenomicsProduct and dataProduct slots.
     annotation_database = Column(Enum('PFAM', 'COG', 'KEGG', name='AnnotationDatabaseEnum'))
     mg_workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='MetagenomicsSteps'))
     sample_id = Column(UUID(), ForeignKey('Sample.id'))
-    provider_name = Column(Text(), ForeignKey('ControlledTermValue.id'))
     raw_fasta_url = Column(Text())
     additional_information = Column(Text())
     summary_metrics = Column(Text())
@@ -8026,12 +8060,14 @@ Inherits all MetagenomicsProduct and dataProduct slots.
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    provider_name_id = Column(Integer(), ForeignKey('ControlledTermValue.id'))
+    provider_name = relationship("ControlledTermValue", uselist=False, foreign_keys=[provider_name_id])
     
 
     
 
     def __repr__(self):
-        return f"Metagenomics_AnnotationProduct(annotation_database={self.annotation_database},mg_workflow_step={self.mg_workflow_step},sample_id={self.sample_id},provider_name={self.provider_name},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"Metagenomics_AnnotationProduct(annotation_database={self.annotation_database},mg_workflow_step={self.mg_workflow_step},sample_id={self.sample_id},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},provider_name_id={self.provider_name_id},)"
 
 
 
@@ -8052,7 +8088,6 @@ Inherits all MetagenomicsProduct and dataProduct slots.
 
     mg_workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='MetagenomicsSteps'))
     sample_id = Column(UUID(), ForeignKey('Sample.id'))
-    provider_name = Column(Text(), ForeignKey('ControlledTermValue.id'))
     raw_fasta_url = Column(Text())
     additional_information = Column(Text())
     summary_metrics = Column(Text())
@@ -8069,12 +8104,14 @@ Inherits all MetagenomicsProduct and dataProduct slots.
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    provider_name_id = Column(Integer(), ForeignKey('ControlledTermValue.id'))
+    provider_name = relationship("ControlledTermValue", uselist=False, foreign_keys=[provider_name_id])
     
 
     
 
     def __repr__(self):
-        return f"Metagenomics_BinningProduct(mg_workflow_step={self.mg_workflow_step},sample_id={self.sample_id},provider_name={self.provider_name},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"Metagenomics_BinningProduct(mg_workflow_step={self.mg_workflow_step},sample_id={self.sample_id},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},provider_name_id={self.provider_name_id},)"
 
 
 
@@ -8096,7 +8133,6 @@ Inherits all MetagenomicsProduct and dataProduct slots.
     gene_family = Column(Text())
     mg_workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='MetagenomicsSteps'))
     sample_id = Column(UUID(), ForeignKey('Sample.id'))
-    provider_name = Column(Text(), ForeignKey('ControlledTermValue.id'))
     raw_fasta_url = Column(Text())
     additional_information = Column(Text())
     summary_metrics = Column(Text())
@@ -8113,12 +8149,14 @@ Inherits all MetagenomicsProduct and dataProduct slots.
     filesize = Column(Integer())
     md5checksum = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
+    provider_name_id = Column(Integer(), ForeignKey('ControlledTermValue.id'))
+    provider_name = relationship("ControlledTermValue", uselist=False, foreign_keys=[provider_name_id])
     
 
     
 
     def __repr__(self):
-        return f"Metagenomics_GenePhylogenyProduct(gene_family={self.gene_family},mg_workflow_step={self.mg_workflow_step},sample_id={self.sample_id},provider_name={self.provider_name},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"Metagenomics_GenePhylogenyProduct(gene_family={self.gene_family},mg_workflow_step={self.mg_workflow_step},sample_id={self.sample_id},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},provider_name_id={self.provider_name_id},)"
 
 
 

@@ -2260,13 +2260,7 @@ class Configuration(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -2406,13 +2400,7 @@ class MassSpectrometryConfiguration(Configuration):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -2546,13 +2534,7 @@ class ChromatographyConfiguration(Configuration):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -2634,13 +2616,7 @@ Lower = earlier in process.""", json_schema_extra = { "linkml_meta": {'domain_of
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     mobile_phase_percentage: Optional[float] = Field(default=None, description="""The proportion of the mobile phase segment in the overall mobile phase sequence, expressed as a percentage.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MobilePhaseSegment']} })
     used_in_chromatography_config: Optional[ChromatographyConfiguration] = Field(default=None, description="""The chromatography configuration in which this mobile phase segment is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MobilePhaseSegment']} })
@@ -2719,13 +2695,7 @@ class MobilePhase(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -2805,13 +2775,7 @@ class MobilePhaseSubstance(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     in_mobile_phase: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MobilePhaseSubstance']} })
     substance: Optional[ChemicalEntityEnum] = Field(default=None, description="""The chemical substance used in the mobile phase.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MobilePhaseSubstance']} })
@@ -2940,13 +2904,7 @@ class CalibrationStandardRun(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -3072,13 +3030,7 @@ class PurchasedMaterial(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -3695,13 +3647,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -3928,13 +3874,7 @@ attribute to provide additional detail.""", json_schema_extra = { "linkml_meta":
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -4065,13 +4005,7 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -4664,13 +4598,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -5303,13 +5231,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -5567,13 +5489,7 @@ Indicates if the sample is subject to CBI restrictions.""", json_schema_extra = 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Sample identifier/name (e.g., \"PP_0055\").
 May match strain_identifier on organism for 1:1 cases,
@@ -6054,13 +5970,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -6821,13 +6731,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -7005,13 +6909,7 @@ Aliases: samp_store_temp""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -7848,13 +7746,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -8549,13 +8441,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -9091,13 +8977,7 @@ in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta":
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -10323,13 +10203,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -11107,13 +10981,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -11850,13 +11718,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -12820,13 +12682,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -13686,13 +13542,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -14157,13 +14007,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -14954,13 +14798,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -15889,13 +15727,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -16051,13 +15883,7 @@ class ProcessedSample(Sample):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -16187,13 +16013,7 @@ class CoreSection(ProcessedSample):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     label_text: Optional[str] = Field(default=None, description="""The label on the stored processed sample, if applicable (e.g., \"f01\").""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedSample']} })
     concentration_ug_per_uL: Optional[float] = Field(default=None, title="concentration (ug/uL)", description="""Concentration of the substance in micrograms per microliter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['UVSpectroscopyProduct', 'RIProduct', 'ProcessedSample']} })
@@ -16418,13 +16238,7 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -16506,13 +16320,7 @@ class AerosolArmSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -16720,13 +16528,7 @@ class AerosolSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -16908,13 +16710,7 @@ class CommerciallyPurchasedSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -17120,13 +16916,7 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -17281,13 +17071,7 @@ class EngineeredStrainSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -17481,13 +17265,7 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -17693,13 +17471,7 @@ class MixedCultureSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -17899,13 +17671,7 @@ class MonetSoilSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -18128,13 +17894,7 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -18344,13 +18104,7 @@ class PlantSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -18556,13 +18310,7 @@ class PureCultureSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -18772,13 +18520,7 @@ class SedimentSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -19046,13 +18788,7 @@ class SoilSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     project: Optional[int] = Field(default=None, title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
          'domain_of': ['AerosolArmSample',
@@ -19189,13 +18925,7 @@ class SynthesizedMaterialSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -19389,13 +19119,7 @@ class TerraformSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -19605,13 +19329,7 @@ class WaterSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -19812,13 +19530,7 @@ class Activity(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     ended_at_time: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'DataProcessingActivity']} })
     processing_institution: Optional[InstitutionEnum] = Field(default=None, description="""The institution where the activity took place.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity']} })
@@ -19945,13 +19657,7 @@ class Entity(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -20129,13 +19835,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -20324,13 +20024,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -20519,13 +20213,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -20712,13 +20400,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -20905,13 +20587,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -21099,13 +20775,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -21125,7 +20795,7 @@ class MetagenomicsProduct(ProcessedData):
                        'SampleStorage',
                        'ProcessedData',
                        'ProcessingSampleLink']} })
-    provider_name: Optional[str] = Field(default=None, description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
+    provider_name: Optional[ControlledTermValue] = Field(default=None, description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     raw_fasta_url: Optional[str] = Field(default=None, description="""URL of raw FASTA file, if available from provider""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     additional_information: Optional[str] = Field(default=None, description="""Additional information pertaining to these data, including SP Project ID and Taxon OID""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
@@ -21299,13 +20969,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -21323,7 +20987,7 @@ class MetagenomicsAnnotationProduct(MetagenomicsProduct):
                        'SampleStorage',
                        'ProcessedData',
                        'ProcessingSampleLink']} })
-    provider_name: Optional[str] = Field(default=None, description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
+    provider_name: Optional[ControlledTermValue] = Field(default=None, description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     raw_fasta_url: Optional[str] = Field(default=None, description="""URL of raw FASTA file, if available from provider""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     additional_information: Optional[str] = Field(default=None, description="""Additional information pertaining to these data, including SP Project ID and Taxon OID""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
@@ -21497,13 +21161,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -21520,7 +21178,7 @@ class MetagenomicsBinningProduct(MetagenomicsProduct):
                        'SampleStorage',
                        'ProcessedData',
                        'ProcessingSampleLink']} })
-    provider_name: Optional[str] = Field(default=None, description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
+    provider_name: Optional[ControlledTermValue] = Field(default=None, description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     raw_fasta_url: Optional[str] = Field(default=None, description="""URL of raw FASTA file, if available from provider""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     additional_information: Optional[str] = Field(default=None, description="""Additional information pertaining to these data, including SP Project ID and Taxon OID""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
@@ -21694,13 +21352,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -21718,7 +21370,7 @@ class MetagenomicsGenePhylogenyProduct(MetagenomicsProduct):
                        'SampleStorage',
                        'ProcessedData',
                        'ProcessingSampleLink']} })
-    provider_name: Optional[str] = Field(default=None, description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
+    provider_name: Optional[ControlledTermValue] = Field(default=None, description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     raw_fasta_url: Optional[str] = Field(default=None, description="""URL of raw FASTA file, if available from provider""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     additional_information: Optional[str] = Field(default=None, description="""Additional information pertaining to these data, including SP Project ID and Taxon OID""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
@@ -21892,13 +21544,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -21926,7 +21572,7 @@ class BulkDensityProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    bulk_density: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct']} })
+    bulk_density: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
                        'EnzymeProduct',
@@ -22114,13 +21760,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -22149,10 +21789,10 @@ class ElementalAnalysisProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    total_carbon: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    total_nitrogen: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
-    total_kjeldahl_nitrogen: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    total_sulfur: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    total_carbon: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    total_nitrogen: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
+    total_kjeldahl_nitrogen: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    total_sulfur: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
     flag_total_carbon: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
     flag_total_nitrogen: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
     flag_tkn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
@@ -22333,13 +21973,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -22367,7 +22001,7 @@ class EnzymeProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    beta_glucosidase_ug_pnp_per_g_per_h: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeProduct']} })
+    beta_glucosidase_ug_pnp_per_g_per_h: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
                        'EnzymeProduct',
@@ -22555,13 +22189,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -22589,7 +22217,7 @@ class GWCMoistureProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    gwc_percent: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['GWCMoistureProduct']} })
+    gwc_percent: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['GWCMoistureProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
                        'EnzymeProduct',
@@ -22777,13 +22405,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -23002,13 +22624,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -23037,33 +22653,33 @@ class IonsAnalysisProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    sulfate: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+    sulfate: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'WaterSample']} })
-    boron: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    zinc: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    manganate: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    copper: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    iron: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    calcium: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+    boron: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    zinc: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    manganate: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    copper: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    iron: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    calcium: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'WaterSample']} })
-    magnesium: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+    magnesium: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'WaterSample']} })
-    sodium: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+    sodium: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'WaterSample']} })
-    potassium: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+    potassium: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'WaterSample']} })
-    total_bases: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    cation_exchange_capacity: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    total_bases: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    cation_exchange_capacity: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
     flag_sulfate: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
     flag_boron: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
     flag_zinc: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
@@ -23252,13 +22868,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -23295,9 +22905,9 @@ class HClExtOMProduct(ProcessedData):
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
     produced_by_toctn_run: Optional[str] = Field(default=None, description="""a reference to the TOC/TN data generation activity that produced this measurement.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_organic_carbon: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    total_organic_carbon: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     total_organic_carbon_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_nitrogen: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
+    total_nitrogen: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
     total_nitrogen_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     flag_toc: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     flag_tn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
@@ -23479,13 +23089,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -23521,9 +23125,9 @@ class MicrobialBiomassProduct(ProcessedData):
                        'WEOMProduct',
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
-    mbc: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
+    mbc: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
     mbc_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    mbn: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
+    mbn: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
     mbn_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
     flag_mbc: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
     flag_mbn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
@@ -23705,13 +23309,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -23747,9 +23345,9 @@ class NitrogenAnalysisProduct(ProcessedData):
                        'WEOMProduct',
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
-    no3_n: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
+    no3_n: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
     no3_n_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    nh4_n: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
+    nh4_n: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
     nh4_n_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
     flag_no3n: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
     flag_nh4n: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
@@ -23931,13 +23529,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -23985,7 +23577,7 @@ class PhosphorusAnalysisProduct(ProcessedData):
                        'SoilSample',
                        'WaterSample',
                        'Extraction']} })
-    phosphorus: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
+    phosphorus: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
     phosphorus_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
@@ -24175,13 +23767,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -24397,13 +23983,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -24432,9 +24012,9 @@ class TextureProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    sand_pct: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
-    silt_pct: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
-    clay_pct: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
+    sand_pct: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
+    silt_pct: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
+    clay_pct: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
                        'EnzymeProduct',
@@ -24622,13 +24202,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -24665,9 +24239,9 @@ class WEOMProduct(ProcessedData):
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
     produced_by_toctn_run: Optional[str] = Field(default=None, description="""a reference to the TOC/TN data generation activity that produced this measurement.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_organic_carbon: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    total_organic_carbon: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     total_organic_carbon_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_nitrogen: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
+    total_nitrogen: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
     total_nitrogen_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     flag_toc: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     flag_tn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
@@ -24849,13 +24423,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -25075,13 +24643,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -25286,13 +24848,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -25528,13 +25084,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -25811,13 +25361,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -26072,13 +25616,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -26308,13 +25846,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -26525,13 +26057,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -26738,13 +26264,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -26930,13 +26450,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -27118,13 +26632,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -27304,13 +26812,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -27512,13 +27014,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -27695,13 +27191,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -27837,13 +27327,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -27988,13 +27472,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -28134,13 +27612,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -28289,13 +27761,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -28441,13 +27907,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -28608,13 +28068,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -28745,13 +28199,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -28882,13 +28330,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -29019,13 +28461,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -29157,13 +28593,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -29297,13 +28727,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -29446,13 +28870,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -29584,13 +29002,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -29725,13 +29137,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -29875,13 +29281,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -30012,13 +29412,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -30156,13 +29550,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -30283,13 +29671,7 @@ Schema for allowed keys TBD per workflow type before full implementation.""", js
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     started_at_time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'DataProcessingActivity']} })
     ended_at_time: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'DataProcessingActivity']} })
@@ -30415,13 +29797,7 @@ Schema for allowed keys TBD per workflow type before full implementation.""", js
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     started_at_time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'DataProcessingActivity']} })
     ended_at_time: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'DataProcessingActivity']} })
@@ -30544,13 +29920,7 @@ Schema for allowed keys TBD per workflow type before full implementation.""", js
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     started_at_time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'DataProcessingActivity']} })
     ended_at_time: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'DataProcessingActivity']} })
@@ -30630,13 +30000,7 @@ class AlternativeIdentifier(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     alternate_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['AlternativeIdentifier']} })
     alternate_identifier_type: AlternateIdentifierType = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['AlternativeIdentifier']} })
@@ -30712,13 +30076,7 @@ class FunctionalAnnotationIdentifier(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     functional_identifier: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['FunctionalAnnotationIdentifier']} })
     database: AnnotationDatabaseEnum = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['FunctionalAnnotationIdentifier']} })
@@ -30800,13 +30158,7 @@ class Instrument(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     name: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -30910,13 +30262,7 @@ class OntologyClass(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -31038,13 +30384,7 @@ class ContainerType(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -31072,7 +30412,7 @@ class ContainerType(ConfiguredBaseModel):
                        'ControlledTermValue',
                        'QuantityValue']} })
     container_type: Optional[ContainerTypeEnum] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CultureGrowth', 'ContainerType', 'FiltrationProcess']} })
-    container_size_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ContainerType']} })
+    container_size_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ContainerType']} })
     axes: Optional[list[ContainerAxis]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ContainerType']} })
     contains: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ContainerType']} })
     label_format: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ContainerType']} })
@@ -31178,13 +30518,7 @@ class Custodian(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     person_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Custodian']} })
 
@@ -31259,13 +30593,7 @@ class InstrumentAlternativeIdentifier(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     alt_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentAlternativeIdentifier']} })
     instrument_alt_id_provider: Optional[InstrumentAltIdProviderEnum] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentAlternativeIdentifier']} })
@@ -31345,13 +30673,7 @@ class LabDevice(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -31379,8 +30701,8 @@ class LabDevice(ConfiguredBaseModel):
                        'ControlledTermValue',
                        'QuantityValue']} })
     device_type: Optional[DeviceTypeEnum] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['LabDevice']} })
-    activity_time_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['LabDevice']} })
-    activity_speed_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['LabDevice']} })
+    activity_time_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['LabDevice']} })
+    activity_speed_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['LabDevice']} })
 
 
 class SampleProcessing(ConfiguredBaseModel):
@@ -31513,13 +30835,7 @@ class SampleProcessing(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -31677,13 +30993,7 @@ Examples: \"100 ug/mL ampicillin\", \"1 mM IPTG\"""", json_schema_extra = { "lin
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -31875,13 +31185,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     temperature_celsius: Optional[float] = Field(default=None, description="""Temperature at which the method/process/activity was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration',
                        'HasTemperatureHold',
@@ -32039,13 +31343,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     temperature_celsius: Optional[float] = Field(default=None, description="""Temperature at which the method/process/activity was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration',
                        'HasTemperatureHold',
@@ -32201,13 +31499,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     temperature_celsius: Optional[float] = Field(default=None, description="""Temperature at which the method/process/activity was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration',
                        'HasTemperatureHold',
@@ -32361,13 +31653,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     temperature_celsius: Optional[float] = Field(default=None, description="""Temperature at which the method/process/activity was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration',
                        'HasTemperatureHold',
@@ -32521,13 +31807,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     temperature_celsius: Optional[float] = Field(default=None, description="""Temperature at which the method/process/activity was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration',
                        'HasTemperatureHold',
@@ -32684,13 +31964,7 @@ class PlateSetupActivity(HasIncubationConditions, SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     temperature_celsius: Optional[float] = Field(default=None, description="""Temperature at which the method/process/activity was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration',
                        'HasTemperatureHold',
@@ -32854,13 +32128,7 @@ produced by an upstream MediaPreparation activity.""", json_schema_extra = { "li
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     temperature_celsius: Optional[float] = Field(default=None, description="""Temperature at which the method/process/activity was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration',
                        'HasTemperatureHold',
@@ -33014,13 +32282,7 @@ class EcoplatePlateSetupActivity(PlateSetupActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     temperature_celsius: Optional[float] = Field(default=None, description="""Temperature at which the method/process/activity was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration',
                        'HasTemperatureHold',
@@ -33176,13 +32438,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -33334,13 +32590,7 @@ class SampleStorage(HasTemperatureHold):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     temperature_celsius: Optional[float] = Field(default=None, description="""Temperature at which the method/process/activity was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration',
                        'HasTemperatureHold',
@@ -33458,13 +32708,7 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     processing_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
     step_number: int = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['MobilePhaseSegment', 'ProcessingSampleLink']} })
@@ -33645,13 +32889,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -33807,13 +33045,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -33972,13 +33204,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -34156,13 +33382,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -34297,13 +33517,7 @@ Schema for allowed keys TBD per workflow type before full implementation.""", js
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     started_at_time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'DataProcessingActivity']} })
     ended_at_time: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'DataProcessingActivity']} })
@@ -34461,13 +33675,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -34618,13 +33826,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -34754,13 +33956,7 @@ class UVChannelConfig(Configuration):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -34884,13 +34080,7 @@ class StandardSampleProcessing(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -35014,13 +34204,7 @@ class SampleProcessingProtocol(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -35144,13 +34328,7 @@ class SampleProcessingRun(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -35294,13 +34472,7 @@ reaction, or storage), in hours. Shared by all HasTemperatureHold classes.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -35438,13 +34610,7 @@ class Dilution(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -35586,13 +34752,7 @@ class Extraction(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -35727,13 +34887,7 @@ class FiltrationProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -35867,13 +35021,7 @@ class FractionationProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -35999,13 +35147,7 @@ class NormalizationProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -36130,13 +35272,7 @@ class PoolingProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -36213,13 +35349,7 @@ class SubstancesUsedLink(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     sample_processing_substance: Optional[str] = Field(default=None, description="""A substance that was used in the SampleProcessing activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SubstancesUsedLink']} })
 
@@ -36300,13 +35430,7 @@ class SampleProcessingSubstance(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     known_as: Optional[ChemicalEntityEnum] = Field(default=None, description="""Common name or identifier for the substance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SampleProcessingSubstance']} })
     substance_role: Optional[SubstanceRoleEnum] = Field(default=None, description="""The role or function of the substance in the context of its use.""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReagentAddition', 'SampleProcessingSubstance']} })
@@ -36444,13 +35568,7 @@ class ProteinQuantification(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -36584,13 +35702,7 @@ class ResuspensionProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -36723,13 +35835,7 @@ class SolidPhaseExtractionProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -36854,13 +35960,7 @@ class SubsamplingProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
 
 
@@ -36964,13 +36064,7 @@ class Study(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     project_id: int = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Study']} })
     title: Optional[str] = Field(default=None, description="""The title of the study/proposal.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study']} })
@@ -37103,13 +36197,7 @@ class ProjectParticipant(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     role: NexusRoleEnum = Field(default=..., description="""The role of the contributor in the study (e.g., data analysis, writing).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink', 'ProjectParticipant']} })
     person: str = Field(default=..., description="""The person who contributed to the study.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProjectParticipant']} })
@@ -37157,81 +36245,6 @@ class TimestampValue(ConfiguredBaseModel):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
-                       'MobilePhaseSegment',
-                       'MobilePhase',
-                       'MobilePhaseSubstance',
-                       'CalibrationStandardRun',
-                       'PurchasedMaterial',
-                       'organism',
-                       'Site',
-                       'Sample',
-                       'AerosolArmSample',
-                       'AerosolSample',
-                       'AMP2UserSample',
-                       'CommerciallyPurchasedSample',
-                       'CultureEnvironmentalSample',
-                       'EngineeredStrainSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'MonetSoilSample',
-                       'OtherUndescribedSample',
-                       'PlantSample',
-                       'PureCultureSample',
-                       'SedimentSample',
-                       'SoilSample',
-                       'SynthesizedMaterialSample',
-                       'TerraformSample',
-                       'WaterSample',
-                       'ProcessedSample',
-                       'SampleStorage',
-                       'CoreSection',
-                       'SamplingActivity',
-                       'AerosolArmSamplingActivity',
-                       'AerosolSamplingActivity',
-                       'CommerciallyPurchasedSamplingActivity',
-                       'CultureEnvironmentalSamplingActivity',
-                       'EngineeredStrainSamplingActivity',
-                       'FieldDeployedTerraformSamplingActivity',
-                       'MixedCultureSamplingActivity',
-                       'MonetSoilSamplingActivity',
-                       'OtherUndescribedSamplingActivity',
-                       'PlantSamplingActivity',
-                       'PureCultureSamplingActivity',
-                       'SedimentSamplingActivity',
-                       'SoilSamplingActivity',
-                       'SynthesizedMaterialSamplingActivity',
-                       'TerraformSamplingActivity',
-                       'WaterSamplingActivity',
-                       'Activity',
-                       'Entity',
-                       'DataProduct',
-                       'DataGenerationActivity',
-                       'DataProcessingActivity',
-                       'AlternativeIdentifier',
-                       'FunctionalAnnotationIdentifier',
-                       'Instrument',
-                       'OntologyClass',
-                       'ContainerType',
-                       'Custodian',
-                       'InstrumentAlternativeIdentifier',
-                       'LabDevice',
-                       'SampleProcessing',
-                       'ProcessingSampleLink',
-                       'SampleProcessingProtocol',
-                       'SampleProcessingRun',
-                       'SubstancesUsedLink',
-                       'SampleProcessingSubstance',
-                       'Study',
-                       'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
-                       'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
-                       'zipDownload']} })
     has_raw_value: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TimestampValue',
                        'TextValue',
                        'SoftwareControlledTermValue',
@@ -37271,81 +36284,6 @@ class TextValue(ConfiguredBaseModel):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
-                       'MobilePhaseSegment',
-                       'MobilePhase',
-                       'MobilePhaseSubstance',
-                       'CalibrationStandardRun',
-                       'PurchasedMaterial',
-                       'organism',
-                       'Site',
-                       'Sample',
-                       'AerosolArmSample',
-                       'AerosolSample',
-                       'AMP2UserSample',
-                       'CommerciallyPurchasedSample',
-                       'CultureEnvironmentalSample',
-                       'EngineeredStrainSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'MonetSoilSample',
-                       'OtherUndescribedSample',
-                       'PlantSample',
-                       'PureCultureSample',
-                       'SedimentSample',
-                       'SoilSample',
-                       'SynthesizedMaterialSample',
-                       'TerraformSample',
-                       'WaterSample',
-                       'ProcessedSample',
-                       'SampleStorage',
-                       'CoreSection',
-                       'SamplingActivity',
-                       'AerosolArmSamplingActivity',
-                       'AerosolSamplingActivity',
-                       'CommerciallyPurchasedSamplingActivity',
-                       'CultureEnvironmentalSamplingActivity',
-                       'EngineeredStrainSamplingActivity',
-                       'FieldDeployedTerraformSamplingActivity',
-                       'MixedCultureSamplingActivity',
-                       'MonetSoilSamplingActivity',
-                       'OtherUndescribedSamplingActivity',
-                       'PlantSamplingActivity',
-                       'PureCultureSamplingActivity',
-                       'SedimentSamplingActivity',
-                       'SoilSamplingActivity',
-                       'SynthesizedMaterialSamplingActivity',
-                       'TerraformSamplingActivity',
-                       'WaterSamplingActivity',
-                       'Activity',
-                       'Entity',
-                       'DataProduct',
-                       'DataGenerationActivity',
-                       'DataProcessingActivity',
-                       'AlternativeIdentifier',
-                       'FunctionalAnnotationIdentifier',
-                       'Instrument',
-                       'OntologyClass',
-                       'ContainerType',
-                       'Custodian',
-                       'InstrumentAlternativeIdentifier',
-                       'LabDevice',
-                       'SampleProcessing',
-                       'ProcessingSampleLink',
-                       'SampleProcessingProtocol',
-                       'SampleProcessingRun',
-                       'SubstancesUsedLink',
-                       'SampleProcessingSubstance',
-                       'Study',
-                       'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
-                       'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
-                       'zipDownload']} })
     language: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextValue']} })
     has_raw_value: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TimestampValue',
                        'TextValue',
@@ -37404,81 +36342,6 @@ class SoftwareControlledTermValue(ConfiguredBaseModel):
                        'ControlledTermValue',
                        'QuantityValue']} })
     version: str = Field(default=..., description="""String indicating the version of the software or protocol""", json_schema_extra = { "linkml_meta": {'domain_of': ['Changelog', 'SoftwareControlledTermValue']} })
-    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
-                       'MobilePhaseSegment',
-                       'MobilePhase',
-                       'MobilePhaseSubstance',
-                       'CalibrationStandardRun',
-                       'PurchasedMaterial',
-                       'organism',
-                       'Site',
-                       'Sample',
-                       'AerosolArmSample',
-                       'AerosolSample',
-                       'AMP2UserSample',
-                       'CommerciallyPurchasedSample',
-                       'CultureEnvironmentalSample',
-                       'EngineeredStrainSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'MonetSoilSample',
-                       'OtherUndescribedSample',
-                       'PlantSample',
-                       'PureCultureSample',
-                       'SedimentSample',
-                       'SoilSample',
-                       'SynthesizedMaterialSample',
-                       'TerraformSample',
-                       'WaterSample',
-                       'ProcessedSample',
-                       'SampleStorage',
-                       'CoreSection',
-                       'SamplingActivity',
-                       'AerosolArmSamplingActivity',
-                       'AerosolSamplingActivity',
-                       'CommerciallyPurchasedSamplingActivity',
-                       'CultureEnvironmentalSamplingActivity',
-                       'EngineeredStrainSamplingActivity',
-                       'FieldDeployedTerraformSamplingActivity',
-                       'MixedCultureSamplingActivity',
-                       'MonetSoilSamplingActivity',
-                       'OtherUndescribedSamplingActivity',
-                       'PlantSamplingActivity',
-                       'PureCultureSamplingActivity',
-                       'SedimentSamplingActivity',
-                       'SoilSamplingActivity',
-                       'SynthesizedMaterialSamplingActivity',
-                       'TerraformSamplingActivity',
-                       'WaterSamplingActivity',
-                       'Activity',
-                       'Entity',
-                       'DataProduct',
-                       'DataGenerationActivity',
-                       'DataProcessingActivity',
-                       'AlternativeIdentifier',
-                       'FunctionalAnnotationIdentifier',
-                       'Instrument',
-                       'OntologyClass',
-                       'ContainerType',
-                       'Custodian',
-                       'InstrumentAlternativeIdentifier',
-                       'LabDevice',
-                       'SampleProcessing',
-                       'ProcessingSampleLink',
-                       'SampleProcessingProtocol',
-                       'SampleProcessingRun',
-                       'SubstancesUsedLink',
-                       'SampleProcessingSubstance',
-                       'Study',
-                       'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
-                       'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
-                       'zipDownload']} })
     has_raw_value: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TimestampValue',
                        'TextValue',
                        'SoftwareControlledTermValue',
@@ -37515,81 +36378,6 @@ class ControlledTermValue(ConfiguredBaseModel):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
-                       'MobilePhaseSegment',
-                       'MobilePhase',
-                       'MobilePhaseSubstance',
-                       'CalibrationStandardRun',
-                       'PurchasedMaterial',
-                       'organism',
-                       'Site',
-                       'Sample',
-                       'AerosolArmSample',
-                       'AerosolSample',
-                       'AMP2UserSample',
-                       'CommerciallyPurchasedSample',
-                       'CultureEnvironmentalSample',
-                       'EngineeredStrainSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'MonetSoilSample',
-                       'OtherUndescribedSample',
-                       'PlantSample',
-                       'PureCultureSample',
-                       'SedimentSample',
-                       'SoilSample',
-                       'SynthesizedMaterialSample',
-                       'TerraformSample',
-                       'WaterSample',
-                       'ProcessedSample',
-                       'SampleStorage',
-                       'CoreSection',
-                       'SamplingActivity',
-                       'AerosolArmSamplingActivity',
-                       'AerosolSamplingActivity',
-                       'CommerciallyPurchasedSamplingActivity',
-                       'CultureEnvironmentalSamplingActivity',
-                       'EngineeredStrainSamplingActivity',
-                       'FieldDeployedTerraformSamplingActivity',
-                       'MixedCultureSamplingActivity',
-                       'MonetSoilSamplingActivity',
-                       'OtherUndescribedSamplingActivity',
-                       'PlantSamplingActivity',
-                       'PureCultureSamplingActivity',
-                       'SedimentSamplingActivity',
-                       'SoilSamplingActivity',
-                       'SynthesizedMaterialSamplingActivity',
-                       'TerraformSamplingActivity',
-                       'WaterSamplingActivity',
-                       'Activity',
-                       'Entity',
-                       'DataProduct',
-                       'DataGenerationActivity',
-                       'DataProcessingActivity',
-                       'AlternativeIdentifier',
-                       'FunctionalAnnotationIdentifier',
-                       'Instrument',
-                       'OntologyClass',
-                       'ContainerType',
-                       'Custodian',
-                       'InstrumentAlternativeIdentifier',
-                       'LabDevice',
-                       'SampleProcessing',
-                       'ProcessingSampleLink',
-                       'SampleProcessingProtocol',
-                       'SampleProcessingRun',
-                       'SubstancesUsedLink',
-                       'SampleProcessingSubstance',
-                       'Study',
-                       'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
-                       'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
-                       'zipDownload']} })
     has_raw_value: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TimestampValue',
                        'TextValue',
                        'SoftwareControlledTermValue',
@@ -37674,13 +36462,7 @@ class PersonValue(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     first_name: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['PersonValue']} })
     last_name: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['PersonValue']} })
@@ -37721,81 +36503,6 @@ class QuantityValue(ConfiguredBaseModel):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
-                       'MobilePhaseSegment',
-                       'MobilePhase',
-                       'MobilePhaseSubstance',
-                       'CalibrationStandardRun',
-                       'PurchasedMaterial',
-                       'organism',
-                       'Site',
-                       'Sample',
-                       'AerosolArmSample',
-                       'AerosolSample',
-                       'AMP2UserSample',
-                       'CommerciallyPurchasedSample',
-                       'CultureEnvironmentalSample',
-                       'EngineeredStrainSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'MonetSoilSample',
-                       'OtherUndescribedSample',
-                       'PlantSample',
-                       'PureCultureSample',
-                       'SedimentSample',
-                       'SoilSample',
-                       'SynthesizedMaterialSample',
-                       'TerraformSample',
-                       'WaterSample',
-                       'ProcessedSample',
-                       'SampleStorage',
-                       'CoreSection',
-                       'SamplingActivity',
-                       'AerosolArmSamplingActivity',
-                       'AerosolSamplingActivity',
-                       'CommerciallyPurchasedSamplingActivity',
-                       'CultureEnvironmentalSamplingActivity',
-                       'EngineeredStrainSamplingActivity',
-                       'FieldDeployedTerraformSamplingActivity',
-                       'MixedCultureSamplingActivity',
-                       'MonetSoilSamplingActivity',
-                       'OtherUndescribedSamplingActivity',
-                       'PlantSamplingActivity',
-                       'PureCultureSamplingActivity',
-                       'SedimentSamplingActivity',
-                       'SoilSamplingActivity',
-                       'SynthesizedMaterialSamplingActivity',
-                       'TerraformSamplingActivity',
-                       'WaterSamplingActivity',
-                       'Activity',
-                       'Entity',
-                       'DataProduct',
-                       'DataGenerationActivity',
-                       'DataProcessingActivity',
-                       'AlternativeIdentifier',
-                       'FunctionalAnnotationIdentifier',
-                       'Instrument',
-                       'OntologyClass',
-                       'ContainerType',
-                       'Custodian',
-                       'InstrumentAlternativeIdentifier',
-                       'LabDevice',
-                       'SampleProcessing',
-                       'ProcessingSampleLink',
-                       'SampleProcessingProtocol',
-                       'SampleProcessingRun',
-                       'SubstancesUsedLink',
-                       'SampleProcessingSubstance',
-                       'Study',
-                       'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
-                       'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
-                       'zipDownload']} })
     has_value_unit: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
     has_unit: Optional[str] = Field(default=None, description="""The human-readable unit name""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
     has_numeric_value: Optional[float] = Field(default=None, description="""The numeric value of the quantity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
@@ -37812,81 +36519,6 @@ class QuantityValue(ConfiguredBaseModel):
 class ConditioningValue(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/value-tables'})
 
-    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
-                       'MobilePhaseSegment',
-                       'MobilePhase',
-                       'MobilePhaseSubstance',
-                       'CalibrationStandardRun',
-                       'PurchasedMaterial',
-                       'organism',
-                       'Site',
-                       'Sample',
-                       'AerosolArmSample',
-                       'AerosolSample',
-                       'AMP2UserSample',
-                       'CommerciallyPurchasedSample',
-                       'CultureEnvironmentalSample',
-                       'EngineeredStrainSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'MonetSoilSample',
-                       'OtherUndescribedSample',
-                       'PlantSample',
-                       'PureCultureSample',
-                       'SedimentSample',
-                       'SoilSample',
-                       'SynthesizedMaterialSample',
-                       'TerraformSample',
-                       'WaterSample',
-                       'ProcessedSample',
-                       'SampleStorage',
-                       'CoreSection',
-                       'SamplingActivity',
-                       'AerosolArmSamplingActivity',
-                       'AerosolSamplingActivity',
-                       'CommerciallyPurchasedSamplingActivity',
-                       'CultureEnvironmentalSamplingActivity',
-                       'EngineeredStrainSamplingActivity',
-                       'FieldDeployedTerraformSamplingActivity',
-                       'MixedCultureSamplingActivity',
-                       'MonetSoilSamplingActivity',
-                       'OtherUndescribedSamplingActivity',
-                       'PlantSamplingActivity',
-                       'PureCultureSamplingActivity',
-                       'SedimentSamplingActivity',
-                       'SoilSamplingActivity',
-                       'SynthesizedMaterialSamplingActivity',
-                       'TerraformSamplingActivity',
-                       'WaterSamplingActivity',
-                       'Activity',
-                       'Entity',
-                       'DataProduct',
-                       'DataGenerationActivity',
-                       'DataProcessingActivity',
-                       'AlternativeIdentifier',
-                       'FunctionalAnnotationIdentifier',
-                       'Instrument',
-                       'OntologyClass',
-                       'ContainerType',
-                       'Custodian',
-                       'InstrumentAlternativeIdentifier',
-                       'LabDevice',
-                       'SampleProcessing',
-                       'ProcessingSampleLink',
-                       'SampleProcessingProtocol',
-                       'SampleProcessingRun',
-                       'SubstancesUsedLink',
-                       'SampleProcessingSubstance',
-                       'Study',
-                       'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
-                       'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
-                       'zipDownload']} })
     source_material: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ConditioningValue']} })
     instrument: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ConditioningValue']} })
     gas: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ConditioningValue']} })
@@ -37977,13 +36609,7 @@ class ZipDownload(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
                        'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
                        'zipDownload']} })
     time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['zipDownload']} })
     user: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['zipDownload']} })

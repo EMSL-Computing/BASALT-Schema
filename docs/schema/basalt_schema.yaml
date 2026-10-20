@@ -8364,6 +8364,8 @@ slots:
     domain_of:
     - MetagenomicsProduct
     range: ControlledTermValue
+    inlined: true
+    inlined_as_list: true
   purchased_material_type:
     name: purchased_material_type
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/purchased_material_type
@@ -12613,6 +12615,8 @@ slots:
     domain_of:
     - ContainerType
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   containerType__axes:
     name: containerType__axes
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12779,6 +12783,8 @@ slots:
     domain_of:
     - LabDevice
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   labDevice__activity_speed_id:
     name: labDevice__activity_speed_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12788,6 +12794,8 @@ slots:
     domain_of:
     - LabDevice
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   sampleProcessing__id:
     name: sampleProcessing__id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -13570,6 +13578,8 @@ slots:
     domain_of:
     - BulkDensityProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   bulkDensityProduct__flag:
     name: bulkDensityProduct__flag
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13588,6 +13598,8 @@ slots:
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   elementalAnalysisProduct__total_nitrogen:
     name: elementalAnalysisProduct__total_nitrogen
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13597,6 +13609,8 @@ slots:
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   elementalAnalysisProduct__total_kjeldahl_nitrogen:
     name: elementalAnalysisProduct__total_kjeldahl_nitrogen
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13606,6 +13620,8 @@ slots:
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   elementalAnalysisProduct__total_sulfur:
     name: elementalAnalysisProduct__total_sulfur
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13615,6 +13631,8 @@ slots:
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   elementalAnalysisProduct__flag_total_carbon:
     name: elementalAnalysisProduct__flag_total_carbon
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13660,6 +13678,8 @@ slots:
     domain_of:
     - EnzymeProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   enzymeProduct__flag:
     name: enzymeProduct__flag
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13678,6 +13698,8 @@ slots:
     domain_of:
     - GWCMoistureProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   gWCMoistureProduct__flag:
     name: gWCMoistureProduct__flag
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13750,6 +13772,8 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__boron:
     name: ionsAnalysisProduct__boron
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13759,6 +13783,8 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__zinc:
     name: ionsAnalysisProduct__zinc
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13768,6 +13794,8 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__manganate:
     name: ionsAnalysisProduct__manganate
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13777,6 +13805,8 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__copper:
     name: ionsAnalysisProduct__copper
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13786,6 +13816,8 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__iron:
     name: ionsAnalysisProduct__iron
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13795,6 +13827,8 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__calcium:
     name: ionsAnalysisProduct__calcium
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13804,6 +13838,8 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__magnesium:
     name: ionsAnalysisProduct__magnesium
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13813,6 +13849,8 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__sodium:
     name: ionsAnalysisProduct__sodium
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13822,6 +13860,8 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__potassium:
     name: ionsAnalysisProduct__potassium
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13831,6 +13871,8 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__total_bases:
     name: ionsAnalysisProduct__total_bases
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13840,6 +13882,8 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__cation_exchange_capacity:
     name: ionsAnalysisProduct__cation_exchange_capacity
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13849,6 +13893,8 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__flag_sulfate:
     name: ionsAnalysisProduct__flag_sulfate
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13966,6 +14012,8 @@ slots:
     domain_of:
     - HClExtOMProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   hClExtOMProduct__total_organic_carbon_avg:
     name: hClExtOMProduct__total_organic_carbon_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13984,6 +14032,8 @@ slots:
     domain_of:
     - HClExtOMProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   hClExtOMProduct__total_nitrogen_avg:
     name: hClExtOMProduct__total_nitrogen_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14038,6 +14088,8 @@ slots:
     domain_of:
     - MicrobialBiomassProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   microbialBiomassProduct__mbc_avg:
     name: microbialBiomassProduct__mbc_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14056,6 +14108,8 @@ slots:
     domain_of:
     - MicrobialBiomassProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   microbialBiomassProduct__mbn_avg:
     name: microbialBiomassProduct__mbn_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14110,6 +14164,8 @@ slots:
     domain_of:
     - NitrogenAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   nitrogenAnalysisProduct__no3_n_avg:
     name: nitrogenAnalysisProduct__no3_n_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14128,6 +14184,8 @@ slots:
     domain_of:
     - NitrogenAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   nitrogenAnalysisProduct__nh4_n_avg:
     name: nitrogenAnalysisProduct__nh4_n_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14191,6 +14249,8 @@ slots:
     domain_of:
     - PhosphorusAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   phosphorusAnalysisProduct__phosphorus_avg:
     name: phosphorusAnalysisProduct__phosphorus_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14246,6 +14306,8 @@ slots:
     domain_of:
     - TextureProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   textureProduct__silt_pct:
     name: textureProduct__silt_pct
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14255,6 +14317,8 @@ slots:
     domain_of:
     - TextureProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   textureProduct__clay_pct:
     name: textureProduct__clay_pct
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14264,6 +14328,8 @@ slots:
     domain_of:
     - TextureProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   textureProduct__flag:
     name: textureProduct__flag
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14282,6 +14348,8 @@ slots:
     domain_of:
     - WEOMProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   wEOMProduct__total_organic_carbon_avg:
     name: wEOMProduct__total_organic_carbon_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14300,6 +14368,8 @@ slots:
     domain_of:
     - WEOMProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   wEOMProduct__total_nitrogen_avg:
     name: wEOMProduct__total_nitrogen_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -16381,17 +16451,6 @@ slots:
     domain_of:
     - DOI
     range: DoiProviderEnum
-  timestampValue__id:
-    name: timestampValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: TimestampValue
-    domain_of:
-    - TimestampValue
-    range: string
-    required: true
   timestampValue__description:
     name: timestampValue__description
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -16410,17 +16469,6 @@ slots:
     domain_of:
     - TimestampValue
     range: string
-  textValue__id:
-    name: textValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: TextValue
-    domain_of:
-    - TextValue
-    range: string
-    required: true
   textValue__language:
     name: textValue__language
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -16439,17 +16487,6 @@ slots:
     domain_of:
     - TextValue
     range: string
-  softwareControlledTermValue__id:
-    name: softwareControlledTermValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SoftwareControlledTermValue
-    domain_of:
-    - SoftwareControlledTermValue
-    range: string
-    required: true
   softwareControlledTermValue__has_raw_value:
     name: softwareControlledTermValue__has_raw_value
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -16459,17 +16496,6 @@ slots:
     domain_of:
     - SoftwareControlledTermValue
     range: string
-  controlledTermValue__id:
-    name: controlledTermValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: ControlledTermValue
-    domain_of:
-    - ControlledTermValue
-    range: string
-    required: true
   controlledTermValue__has_raw_value:
     name: controlledTermValue__has_raw_value
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -16576,17 +16602,6 @@ slots:
     domain_of:
     - PersonValue
     range: string
-  quantityValue__id:
-    name: quantityValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: QuantityValue
-    domain_of:
-    - QuantityValue
-    range: uuid
-    required: true
   quantityValue__has_value_unit:
     name: quantityValue__has_value_unit
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -16643,17 +16658,6 @@ slots:
     domain_of:
     - QuantityValue
     range: string
-  conditioningValue__id:
-    name: conditioningValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: ConditioningValue
-    domain_of:
-    - ConditioningValue
-    range: string
-    required: true
   conditioningValue__source_material:
     name: conditioningValue__source_material
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -27661,14 +27665,9 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     slots:
     - description
-    - timestampValue__id
     - timestampValue__description
     - timestampValue__has_raw_value
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: string
       description:
         name: description
         range: string
@@ -27683,14 +27682,9 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     slots:
     - description
-    - textValue__id
     - textValue__language
     - textValue__has_raw_value
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: string
       language:
         name: language
         range: string
@@ -27706,13 +27700,8 @@ classes:
     - name
     - description
     - version
-    - softwareControlledTermValue__id
     - softwareControlledTermValue__has_raw_value
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: string
       has_raw_value:
         name: has_raw_value
         range: string
@@ -27723,16 +27712,11 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     slots:
     - description
-    - controlledTermValue__id
     - controlledTermValue__has_raw_value
     - controlledTermValue__term
     - controlledTermValue__term_id
     - controlledTermValue__controlled_term_provider
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: string
       has_raw_value:
         name: has_raw_value
         range: string
@@ -27800,7 +27784,6 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     slots:
     - description
-    - quantityValue__id
     - quantityValue__has_value_unit
     - quantityValue__has_unit
     - quantityValue__has_numeric_value
@@ -27808,10 +27791,6 @@ classes:
     - quantityValue__has_maximum_numeric_value
     - quantityValue__has_raw_value
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       has_value_unit:
         name: has_value_unit
       has_unit:
@@ -27835,17 +27814,12 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ConditioningValue
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     slots:
-    - conditioningValue__id
     - conditioningValue__source_material
     - conditioningValue__instrument
     - conditioningValue__gas
     - conditioningValue__pressure
     - conditioningValue__has_raw_value
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: string
       source_material:
         name: source_material
         range: string
@@ -27942,4 +27916,4 @@ metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
 source_file_date: '2026-10-12T16:01:08'
 source_file_size: 21959
-generation_date: '2026-10-20T15:41:34'
+generation_date: '2026-10-20T15:43:19'

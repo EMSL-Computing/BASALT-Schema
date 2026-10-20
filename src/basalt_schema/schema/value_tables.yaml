@@ -21,9 +21,6 @@ classes:
     slots:
       - description
     attributes:
-      id:
-        identifier: true
-        range: string
       description:
         range: string
       has_raw_value:
@@ -35,9 +32,6 @@ classes:
     slots:
       - description
     attributes:
-      id:
-        identifier: true
-        range: string
       language:
         range: string
       has_raw_value:
@@ -49,9 +43,6 @@ classes:
       - description
       - version
     attributes:
-      id:
-        identifier: true
-        range: string
       has_raw_value:
         range: string
 
@@ -59,9 +50,6 @@ classes:
     slots:
       - description
     attributes:
-      id:
-        identifier: true
-        range: string
       has_raw_value:
         range: string
       term:
@@ -105,9 +93,6 @@ classes:
       - description
     description: A quantity value with numeric value and optional unit
     attributes:
-      id:
-        identifier: true
-        range: uuid
       has_value_unit:
       has_unit:
         description: The human-readable unit name
@@ -122,9 +107,6 @@ classes:
 
   ConditioningValue:
     attributes:
-      id:
-        identifier: true
-        range: string
       source_material:
         range: string
       instrument:
