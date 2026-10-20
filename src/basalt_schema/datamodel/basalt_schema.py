@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-20T15:51:51
+# Generation date: 2026-10-20T15:54:43
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -1275,8 +1275,8 @@ class ContainerType(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ContainerType
 
     id: Union[str, ContainerTypeId] = None
-    description: Optional[str] = None
     container_type: Optional[Union[str, "ContainerTypeEnum"]] = None
+    description: Optional[str] = None
     container_size_id: Optional[Union[dict, "QuantityValue"]] = None
     axes: Optional[Union[Union[dict, "ContainerAxis"], list[Union[dict, "ContainerAxis"]]]] = empty_list()
     contains: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
@@ -1290,11 +1290,11 @@ class ContainerType(YAMLRoot):
         if not isinstance(self.id, ContainerTypeId):
             self.id = ContainerTypeId(self.id)
 
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
         if self.container_type is not None and not isinstance(self.container_type, ContainerTypeEnum):
             self.container_type = ContainerTypeEnum(self.container_type)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         if self.container_size_id is not None and not isinstance(self.container_size_id, QuantityValue):
             self.container_size_id = QuantityValue(**as_dict(self.container_size_id))
@@ -3733,7 +3733,7 @@ class WellReading(YAMLRoot):
 
     position: str = None
     value: float = None
-    flag: Optional[str] = None
+    well_flag: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.position):
@@ -3746,8 +3746,8 @@ class WellReading(YAMLRoot):
         if not isinstance(self.value, float):
             self.value = float(self.value)
 
-        if self.flag is not None and not isinstance(self.flag, str):
-            self.flag = str(self.flag)
+        if self.well_flag is not None and not isinstance(self.well_flag, str):
+            self.well_flag = str(self.well_flag)
 
         super().__post_init__(**kwargs)
 
@@ -5950,7 +5950,7 @@ class XASMotorPosition(YAMLRoot):
     motor_index: int = None
     motor_name: Optional[str] = None
     pv: Optional[str] = None
-    position: Optional[float] = None
+    motor_position: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.motor_index):
@@ -5964,8 +5964,8 @@ class XASMotorPosition(YAMLRoot):
         if self.pv is not None and not isinstance(self.pv, str):
             self.pv = str(self.pv)
 
-        if self.position is not None and not isinstance(self.position, float):
-            self.position = float(self.position)
+        if self.motor_position is not None and not isinstance(self.motor_position, float):
+            self.motor_position = float(self.motor_position)
 
         super().__post_init__(**kwargs)
 
@@ -12969,8 +12969,8 @@ class Extraction(SampleProcessing):
     name: str = None
     substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
     starting_mass_mg: Optional[float] = None
-    extraction_target: Optional[Union[Union[str, "AnalyteCategoryEnum"], list[Union[str, "AnalyteCategoryEnum"]]]] = empty_list()
     extraction_method: Optional[Union[str, "ExtractionMethodEnum"]] = None
+    extraction_target: Optional[Union[Union[str, "AnalyteCategoryEnum"], list[Union[str, "AnalyteCategoryEnum"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -12984,12 +12984,12 @@ class Extraction(SampleProcessing):
         if self.starting_mass_mg is not None and not isinstance(self.starting_mass_mg, float):
             self.starting_mass_mg = float(self.starting_mass_mg)
 
+        if self.extraction_method is not None and not isinstance(self.extraction_method, ExtractionMethodEnum):
+            self.extraction_method = ExtractionMethodEnum(self.extraction_method)
+
         if not isinstance(self.extraction_target, list):
             self.extraction_target = [self.extraction_target] if self.extraction_target is not None else []
         self.extraction_target = [v if isinstance(v, AnalyteCategoryEnum) else AnalyteCategoryEnum(v) for v in self.extraction_target]
-
-        if self.extraction_method is not None and not isinstance(self.extraction_method, ExtractionMethodEnum):
-            self.extraction_method = ExtractionMethodEnum(self.extraction_method)
 
         super().__post_init__(**kwargs)
 
@@ -17800,8 +17800,8 @@ slots.motor_name = Slot(uri=BASALT_SCHEMA.motor_name, name="motor_name", curie=B
 slots.pv = Slot(uri=BASALT_SCHEMA.pv, name="pv", curie=BASALT_SCHEMA.curie('pv'),
                    model_uri=BASALT_SCHEMA.pv, domain=None, range=Optional[str])
 
-slots.position = Slot(uri=BASALT_SCHEMA.position, name="position", curie=BASALT_SCHEMA.curie('position'),
-                   model_uri=BASALT_SCHEMA.position, domain=None, range=Optional[float])
+slots.motor_position = Slot(uri=BASALT_SCHEMA.motor_position, name="motor_position", curie=BASALT_SCHEMA.curie('motor_position'),
+                   model_uri=BASALT_SCHEMA.motor_position, domain=None, range=Optional[float])
 
 slots.col_index = Slot(uri=BASALT_SCHEMA.col_index, name="col_index", curie=BASALT_SCHEMA.curie('col_index'),
                    model_uri=BASALT_SCHEMA.col_index, domain=None, range=Optional[int])
@@ -18424,9 +18424,6 @@ slots.containerType__id = Slot(uri=BASALT_SCHEMA.id, name="containerType__id", c
 slots.containerType__description = Slot(uri=BASALT_SCHEMA.description, name="containerType__description", curie=BASALT_SCHEMA.curie('description'),
                    model_uri=BASALT_SCHEMA.containerType__description, domain=None, range=Optional[str])
 
-slots.containerType__container_type = Slot(uri=BASALT_SCHEMA.container_type, name="containerType__container_type", curie=BASALT_SCHEMA.curie('container_type'),
-                   model_uri=BASALT_SCHEMA.containerType__container_type, domain=None, range=Optional[Union[str, "ContainerTypeEnum"]])
-
 slots.containerType__container_size_id = Slot(uri=BASALT_SCHEMA.container_size_id, name="containerType__container_size_id", curie=BASALT_SCHEMA.curie('container_size_id'),
                    model_uri=BASALT_SCHEMA.containerType__container_size_id, domain=None, range=Optional[Union[dict, QuantityValue]])
 
@@ -18619,8 +18616,8 @@ slots.wellReading__position = Slot(uri=BASALT_SCHEMA.position, name="wellReading
 slots.wellReading__value = Slot(uri=BASALT_SCHEMA.value, name="wellReading__value", curie=BASALT_SCHEMA.curie('value'),
                    model_uri=BASALT_SCHEMA.wellReading__value, domain=None, range=float)
 
-slots.wellReading__flag = Slot(uri=BASALT_SCHEMA.flag, name="wellReading__flag", curie=BASALT_SCHEMA.curie('flag'),
-                   model_uri=BASALT_SCHEMA.wellReading__flag, domain=None, range=Optional[str])
+slots.wellReading__well_flag = Slot(uri=BASALT_SCHEMA.well_flag, name="wellReading__well_flag", curie=BASALT_SCHEMA.curie('well_flag'),
+                   model_uri=BASALT_SCHEMA.wellReading__well_flag, domain=None, range=Optional[str])
 
 slots.enzymeActivityDataGenerationActivity__wavelength = Slot(uri=BASALT_SCHEMA.wavelength, name="enzymeActivityDataGenerationActivity__wavelength", curie=BASALT_SCHEMA.curie('wavelength'),
                    model_uri=BASALT_SCHEMA.enzymeActivityDataGenerationActivity__wavelength, domain=None, range=Optional[float])
@@ -18954,9 +18951,6 @@ slots.wEOMProduct__flag_toc_avg = Slot(uri=BASALT_SCHEMA.flag_toc_avg, name="wEO
 
 slots.wEOMProduct__flag_tn_avg = Slot(uri=BASALT_SCHEMA.flag_tn_avg, name="wEOMProduct__flag_tn_avg", curie=BASALT_SCHEMA.curie('flag_tn_avg'),
                    model_uri=BASALT_SCHEMA.wEOMProduct__flag_tn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
-
-slots.pHProduct__ph = Slot(uri=BASALT_SCHEMA.ph, name="pHProduct__ph", curie=BASALT_SCHEMA.curie('ph'),
-                   model_uri=BASALT_SCHEMA.pHProduct__ph, domain=None, range=Optional[float])
 
 slots.pHProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="pHProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.pHProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
@@ -19348,9 +19342,6 @@ slots.chemicalConversionProcess__labeling_method = Slot(uri=BASALT_SCHEMA.labeli
 slots.extraction__extraction_target = Slot(uri=BASALT_SCHEMA.extraction_target, name="extraction__extraction_target", curie=BASALT_SCHEMA.curie('extraction_target'),
                    model_uri=BASALT_SCHEMA.extraction__extraction_target, domain=None, range=Optional[Union[Union[str, "AnalyteCategoryEnum"], list[Union[str, "AnalyteCategoryEnum"]]]])
 
-slots.extraction__extraction_method = Slot(uri=BASALT_SCHEMA.extraction_method, name="extraction__extraction_method", curie=BASALT_SCHEMA.curie('extraction_method'),
-                   model_uri=BASALT_SCHEMA.extraction__extraction_method, domain=None, range=Optional[Union[str, "ExtractionMethodEnum"]])
-
 slots.normalizationProcess__normalization_method = Slot(uri=BASALT_SCHEMA.normalization_method, name="normalizationProcess__normalization_method", curie=BASALT_SCHEMA.curie('normalization_method'),
                    model_uri=BASALT_SCHEMA.normalizationProcess__normalization_method, domain=None, range=Optional[Union[str, "NormalizationMethodEnum"]])
 
@@ -19551,6 +19542,9 @@ slots.InstrumentData_description = Slot(uri=BASALT_SCHEMA.description, name="Ins
 
 slots.DataProcessingActivity_description = Slot(uri=BASALT_SCHEMA.description, name="DataProcessingActivity_description", curie=BASALT_SCHEMA.curie('description'),
                    model_uri=BASALT_SCHEMA.DataProcessingActivity_description, domain=DataProcessingActivity, range=Optional[str])
+
+slots.ContainerType_container_type = Slot(uri=BASALT_SCHEMA.container_type, name="ContainerType_container_type", curie=BASALT_SCHEMA.curie('container_type'),
+                   model_uri=BASALT_SCHEMA.ContainerType_container_type, domain=ContainerType, range=Optional[Union[str, "ContainerTypeEnum"]])
 
 slots.MassSpectrometryDataGenerationActivity_acquisition_start_time = Slot(uri=BASALT_SCHEMA.acquisition_start_time, name="MassSpectrometryDataGenerationActivity_acquisition_start_time", curie=BASALT_SCHEMA.curie('acquisition_start_time'),
                    model_uri=BASALT_SCHEMA.MassSpectrometryDataGenerationActivity_acquisition_start_time, domain=MassSpectrometryDataGenerationActivity, range=Union[str, XSDDateTime])
@@ -20010,6 +20004,9 @@ slots.WaterSamplingActivity_sample_collection_method = Slot(uri=BASALT_SCHEMA.sa
 
 slots.Dilution_dilution_analyte = Slot(uri=BASALT_SCHEMA.dilution_analyte, name="Dilution_dilution_analyte", curie=BASALT_SCHEMA.curie('dilution_analyte'),
                    model_uri=BASALT_SCHEMA.Dilution_dilution_analyte, domain=Dilution, range=str)
+
+slots.Extraction_extraction_method = Slot(uri=BASALT_SCHEMA.extraction_method, name="Extraction_extraction_method", curie=BASALT_SCHEMA.curie('extraction_method'),
+                   model_uri=BASALT_SCHEMA.Extraction_extraction_method, domain=Extraction, range=Optional[Union[str, "ExtractionMethodEnum"]])
 
 slots.FiltrationProcess_volume_ml = Slot(uri=BASALT_SCHEMA.volume_ml, name="FiltrationProcess_volume_ml", curie=BASALT_SCHEMA.curie('volume_ml'),
                    model_uri=BASALT_SCHEMA.FiltrationProcess_volume_ml, domain=FiltrationProcess, range=Optional[float])

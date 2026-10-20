@@ -2856,7 +2856,7 @@ class WellMetadata(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate'})
 
-    position: str = Field(default=..., description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading', 'XASMotorPosition']} })
+    position: str = Field(default=..., description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading']} })
     well_type: Optional[str] = Field(default=None, description="""Role of this well   \"sample\", \"blank\", \"uninoculated_control\", \"standard\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
     replicate_group: Optional[str] = Field(default=None, description="""Identifier linking technical replicates (e.g. \"rep1\", \"rep2\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
 
@@ -2925,7 +2925,7 @@ Non-null -> this well uses a different media batch.""", json_schema_extra = { "l
 WellReagentAddition capturing one compound, its role, dispensed
 volume, and concentrations. Replaces the former free-text
 treatments slot.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata']} })
-    position: str = Field(default=..., description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading', 'XASMotorPosition']} })
+    position: str = Field(default=..., description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading']} })
     well_type: Optional[str] = Field(default=None, description="""Role of this well   \"sample\", \"blank\", \"uninoculated_control\", \"standard\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
     replicate_group: Optional[str] = Field(default=None, description="""Identifier linking technical replicates (e.g. \"rep1\", \"rep2\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
 
@@ -2944,7 +2944,7 @@ class EcoplateWellMetadata(WellMetadata):
     carbon_source: str = Field(default=..., description="""Carbon source in this well (e.g. \"L-malic acid\", \"glucose\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['EcoplateWellMetadata']} })
     treatment: Optional[str] = Field(default=None, description="""Experimental treatment (e.g. \"control\", \"nickel_1pct\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['EcoplateWellMetadata']} })
     treatment_concentration: Optional[str] = Field(default=None, description="""Treatment concentration with unit (e.g. \"1.0 pct\", \"10 mM\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['EcoplateWellMetadata']} })
-    position: str = Field(default=..., description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading', 'XASMotorPosition']} })
+    position: str = Field(default=..., description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading']} })
     well_type: Optional[str] = Field(default=None, description="""Role of this well   \"sample\", \"blank\", \"uninoculated_control\", \"standard\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
     replicate_group: Optional[str] = Field(default=None, description="""Identifier linking technical replicates (e.g. \"rep1\", \"rep2\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
 
@@ -2959,19 +2959,9 @@ class WellReading(ConfiguredBaseModel):
                    'have multiple OD methods (e.g. OD600 vs OD750)',
                    'units for value slot']})
 
-    position: str = Field(default=..., description="""Well position (e.g. \"A01\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading', 'XASMotorPosition']} })
+    position: str = Field(default=..., description="""Well position (e.g. \"A01\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading']} })
     value: float = Field(default=..., description="""Measured value (absorbance, OD, fluorescence)""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading']} })
-    flag: Optional[str] = Field(default=None, description="""QC flag   \"ok\", \"blank\", \"outlier\", \"contaminated\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
-                       'BulkDensityProduct',
-                       'EnzymeProduct',
-                       'GWCMoistureProduct',
-                       'HydraulicPropertiesProduct',
-                       'PhosphorusAnalysisProduct',
-                       'RespirationProduct',
-                       'TextureProduct',
-                       'pHProduct',
-                       'UVSpectroscopyProduct',
-                       'RIProduct']} })
+    well_flag: Optional[str] = Field(default=None, description="""QC flag   \"ok\", \"blank\", \"outlier\", \"contaminated\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading']} })
 
 
 class XASAmplifier(ConfiguredBaseModel):
@@ -3001,7 +2991,7 @@ class XASMotorPosition(ConfiguredBaseModel):
     motor_index: int = Field(default=..., description="""1-based motor index (aligns with Motor_N_Pos)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASMotorPosition']} })
     motor_name: Optional[str] = Field(default=None, description="""Motor name (e.g. Disp_V_polycold)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASMotorPosition']} })
     pv: Optional[str] = Field(default=None, description="""EPICS process variable name (e.g. 20bm:m28)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASMotorPosition', 'XASSignalColumn']} })
-    position: Optional[float] = Field(default=None, description="""Motor position value at scan start""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading', 'XASMotorPosition']} })
+    motor_position: Optional[float] = Field(default=None, description="""Motor position value at scan start""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASMotorPosition']} })
 
 
 class XASSignalColumn(ConfiguredBaseModel):
@@ -19498,8 +19488,7 @@ class BulkDensityProduct(ProcessedData):
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
     bulk_density: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
-                       'BulkDensityProduct',
+    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -19855,8 +19844,7 @@ class EnzymeProduct(ProcessedData):
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
     beta_glucosidase_ug_pnp_per_g_per_h: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
-                       'BulkDensityProduct',
+    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -20035,8 +20023,7 @@ class GWCMoistureProduct(ProcessedData):
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
     gwc_percent: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['GWCMoistureProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
-                       'BulkDensityProduct',
+    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -20218,8 +20205,7 @@ class HydraulicPropertiesProduct(ProcessedData):
     n: Optional[float] = Field(default=None, description="""Van Genuchten pore-size distribution index n (dimensionless, n > 1). Controls the slope of the water-retention curve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
     theta_r: Optional[float] = Field(default=None, description="""Residual volumetric water content theta_r (cm3 cm). The water content at which liquid conductivity approaches zero.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
     theta_s: Optional[float] = Field(default=None, description="""Saturated volumetric water content theta_s (cm3 cm e-3). Approximates total porosity under saturated conditions.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""QC flag for the entire VGM fit (e.g. missing sample, failed QC).""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
-                       'BulkDensityProduct',
+    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""QC flag for the entire VGM fit (e.g. missing sample, failed QC).""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -21180,8 +21166,7 @@ class PhosphorusAnalysisProduct(ProcessedData):
                        'Extraction']} })
     phosphorus: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
     phosphorus_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
-                       'BulkDensityProduct',
+    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -21361,8 +21346,7 @@ class RespirationProduct(ProcessedData):
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
     respiration_co2_c_ug_per_g: Optional[float] = Field(default=None, description="""Soil respiration expressed as µg CO₂-C per gram soil""", json_schema_extra = { "linkml_meta": {'domain_of': ['RespirationProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
-                       'BulkDensityProduct',
+    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -21544,8 +21528,7 @@ class TextureProduct(ProcessedData):
     sand_pct: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
     silt_pct: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
     clay_pct: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
-                       'BulkDensityProduct',
+    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -21908,13 +21891,12 @@ class PHProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    ph: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
+    ph: Optional[float] = Field(default=None, title="pH", description="""pH measurement of the sample or liquid portion of sample or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
-                       'BulkDensityProduct',
+    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -23111,8 +23093,7 @@ class UVSpectroscopyProduct(ProcessedData):
     peak_height: Optional[float] = Field(default=None, description="""The height of the peak in a chromatogram or mass spectrum, which can be used to assess the concentration of the analyte.""", json_schema_extra = { "linkml_meta": {'domain_of': ['UVSpectroscopyProduct']} })
     weight_percent: Optional[float] = Field(default=None, description="""Weight percent of the entity in the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['UVSpectroscopyProduct', 'RIProduct']} })
     concentration_ug_per_uL: Optional[float] = Field(default=None, title="concentration (ug/uL)", description="""Concentration of the substance in micrograms per microliter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['UVSpectroscopyProduct', 'RIProduct', 'ProcessedSample']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""A flag indicating the QC status of the data.""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
-                       'BulkDensityProduct',
+    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""A flag indicating the QC status of the data.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -23282,8 +23263,7 @@ class RIProduct(ProcessedData):
                        'SynthesizedMaterialSample']} })
     weight_percent: Optional[float] = Field(default=None, description="""Weight percent of the entity in the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['UVSpectroscopyProduct', 'RIProduct']} })
     concentration_ug_per_uL: Optional[float] = Field(default=None, title="concentration (ug/uL)", description="""Concentration of the substance in micrograms per microliter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['UVSpectroscopyProduct', 'RIProduct', 'ProcessedSample']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""A flag indicating the QC status of the data.""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
-                       'BulkDensityProduct',
+    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""A flag indicating the QC status of the data.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -26450,9 +26430,12 @@ class OntologyClass(ConfiguredBaseModel):
 
 class ContainerType(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema',
+         'slot_usage': {'container_type': {'name': 'container_type',
+                                           'range': 'ContainerTypeEnum'}},
          'todos': ['reconcile with enums and in media_strain_culture_plate.yaml',
                    'potentially delete along with ContainerAxis? What are these for?']})
 
+    container_type: Optional[ContainerTypeEnum] = Field(default=None, description="""Physical container used for the culture or sample (flask, tube, plate, etc.)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureGrowth', 'ContainerType', 'FiltrationProcess']} })
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -26512,7 +26495,6 @@ class ContainerType(ConfiguredBaseModel):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    container_type: Optional[ContainerTypeEnum] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CultureGrowth', 'ContainerType', 'FiltrationProcess']} })
     container_size_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ContainerType']} })
     axes: Optional[list[ContainerAxis]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ContainerType']} })
     contains: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ContainerType']} })
@@ -29693,7 +29675,13 @@ class Extraction(SampleProcessing):
     """
     The removal and isolation of a desired analyte from other material  in a sample.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-processing'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-processing',
+         'slot_usage': {'extraction_method': {'description': 'Named extraction method '
+                                                             'applied (e.g., MPLEx, '
+                                                             'bead beating, '
+                                                             'TCA/Acetone).',
+                                              'name': 'extraction_method',
+                                              'range': 'ExtractionMethodEnum'}}})
 
     substances_used: Optional[str] = Field(default=None, description="""A reference to substances used in a SampleProcessing activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SampleStorage',
                        'ChemicalConversionProcess',
@@ -29701,8 +29689,7 @@ class Extraction(SampleProcessing):
                        'Extraction',
                        'ResuspensionProcess']} })
     starting_mass_mg: Optional[float] = Field(default=None, description="""The mass of sample or analyte used in the first step of the process, in milligrams.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Extraction']} })
-    extraction_target: Optional[list[AnalyteCategoryEnum]] = Field(default=None, description="""The target analyte(s) or compound class(es) for the extraction process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Extraction']} })
-    extraction_method: Optional[ExtractionMethodEnum] = Field(default=None, description="""Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
+    extraction_method: Optional[ExtractionMethodEnum] = Field(default=None, title="extraction method", description="""Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
                        'AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -29714,6 +29701,7 @@ class Extraction(SampleProcessing):
                        'SoilSample',
                        'WaterSample',
                        'Extraction']} })
+    extraction_target: Optional[list[AnalyteCategoryEnum]] = Field(default=None, description="""The target analyte(s) or compound class(es) for the extraction process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Extraction']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',

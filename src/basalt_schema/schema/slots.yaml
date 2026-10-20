@@ -1875,7 +1875,7 @@ slots:
   ph:
     description: pH measurement of the sample or liquid portion of sample or aqueous
       phase of the fluid
-    range: float
+    range: double
     title: pH
 
   ph_adjustment:
@@ -2796,7 +2796,7 @@ slots:
     description: EPICS process variable name (e.g. 20bm:m28)
     range: string
 
-  position:
+  motor_position:
     description: Motor position value at scan start
     range: float
 

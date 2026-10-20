@@ -290,14 +290,17 @@ classes:
         range: string
 
   ContainerType:
+    slots:
+      - container_type
+    slot_usage:
+      container_type:
+        range: ContainerTypeEnum
     attributes:
       id:
         identifier: true
         range: uuid
       description:
         range: string
-      container_type:
-        range: ContainerTypeEnum
       container_size_id:
         range: QuantityValue
       axes:

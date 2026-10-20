@@ -250,9 +250,9 @@ class ContainerType(Base):
     """
     __tablename__ = 'ContainerType'
 
+    container_type = Column(Enum('screw_top_conical', name='ContainerTypeEnum'))
     id = Column(UUID(), primary_key=True, nullable=False )
     description = Column(Text())
-    container_type = Column(Enum('screw_top_conical', name='ContainerTypeEnum'))
     label_format = Column(Text())
     renderer = Column(Text())
     slot_capacity = Column(Text())
@@ -272,7 +272,7 @@ class ContainerType(Base):
     
 
     def __repr__(self):
-        return f"ContainerType(id={self.id},description={self.description},container_type={self.container_type},label_format={self.label_format},renderer={self.renderer},slot_capacity={self.slot_capacity},container_size_id_id={self.container_size_id_id},)"
+        return f"ContainerType(container_type={self.container_type},id={self.id},description={self.description},label_format={self.label_format},renderer={self.renderer},slot_capacity={self.slot_capacity},container_size_id_id={self.container_size_id_id},)"
 
 
 
@@ -827,7 +827,7 @@ PlateProduct.well_readings.
     id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     position = Column(Text(), nullable=False )
     value = Column(Float(), nullable=False )
-    flag = Column(Text())
+    well_flag = Column(Text())
     PlateProduct_id = Column(Integer(), ForeignKey('PlateProduct.id'))
     AMP2ODProduct_id = Column(Integer(), ForeignKey('AMP2ODProduct.id'))
     EcoplateAbsorbanceProduct_id = Column(Integer(), ForeignKey('EcoplateAbsorbanceProduct.id'))
@@ -836,7 +836,7 @@ PlateProduct.well_readings.
     
 
     def __repr__(self):
-        return f"WellReading(id={self.id},position={self.position},value={self.value},flag={self.flag},PlateProduct_id={self.PlateProduct_id},AMP2ODProduct_id={self.AMP2ODProduct_id},EcoplateAbsorbanceProduct_id={self.EcoplateAbsorbanceProduct_id},)"
+        return f"WellReading(id={self.id},position={self.position},value={self.value},well_flag={self.well_flag},PlateProduct_id={self.PlateProduct_id},AMP2ODProduct_id={self.AMP2ODProduct_id},EcoplateAbsorbanceProduct_id={self.EcoplateAbsorbanceProduct_id},)"
 
 
 
@@ -881,14 +881,14 @@ Corresponds to one row in LAM_XAS_MOTS (Motor_N_Pos header fields).
     motor_index = Column(Integer(), nullable=False )
     motor_name = Column(Text())
     pv = Column(Text())
-    position = Column(Float())
+    motor_position = Column(Float())
     XASInstrumentData_id = Column(UUID(), ForeignKey('XASInstrumentData.id'))
     
 
     
 
     def __repr__(self):
-        return f"XASMotorPosition(id={self.id},motor_index={self.motor_index},motor_name={self.motor_name},pv={self.pv},position={self.position},XASInstrumentData_id={self.XASInstrumentData_id},)"
+        return f"XASMotorPosition(id={self.id},motor_index={self.motor_index},motor_name={self.motor_name},pv={self.pv},motor_position={self.motor_position},XASInstrumentData_id={self.XASInstrumentData_id},)"
 
 
 

@@ -120,14 +120,16 @@ classes:
     slots:
       - substances_used
       - starting_mass_mg
+      - extraction_method
+    slot_usage:
+      extraction_method:
+        range: ExtractionMethodEnum
+        description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
     attributes:
       extraction_target:
         range: AnalyteCategoryEnum
         multivalued: true
         description: The target analyte(s) or compound class(es) for the extraction process.
-      extraction_method:
-        range: ExtractionMethodEnum
-        description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
 
   FiltrationProcess:
     is_a: SampleProcessing

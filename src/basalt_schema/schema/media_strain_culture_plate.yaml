@@ -511,7 +511,7 @@ classes:
         description: Measured value (absorbance, OD, fluorescence)
         range: float
         required: true
-      flag:
+      well_flag:
         description: QC flag   "ok", "blank", "outlier", "contaminated"
         range: string
     todos:

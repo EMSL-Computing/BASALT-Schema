@@ -333,9 +333,8 @@ classes:
       Soil pH analysis product, typically derived via pH meter or similar instrument.
     slots:
       - measure_type
+      - ph
     attributes:
-      ph:
-        range: double
       flag:
         range: ProcessedDataFlag
 
@@ -815,7 +814,7 @@ classes:
       - motor_index
       - motor_name
       - pv
-      - position
+      - motor_position
     slot_usage:
       motor_index:
         required: true

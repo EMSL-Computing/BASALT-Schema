@@ -4331,6 +4331,7 @@ slots:
     slot_uri: basalt_schema:container_type
     owner: FiltrationProcess
     domain_of:
+    - ContainerType
     - CultureGrowth
     - FiltrationProcess
     range: string
@@ -5086,7 +5087,7 @@ slots:
     title: extraction method
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:extraction_method
-    owner: WaterSample
+    owner: Extraction
     domain_of:
     - AerosolArmSample
     - AerosolSample
@@ -5098,6 +5099,7 @@ slots:
     - SedimentSample
     - SoilSample
     - WaterSample
+    - Extraction
     range: string
   extreme_event:
     name: extreme_event
@@ -7669,11 +7671,12 @@ slots:
     slot_uri: basalt_schema:ph
     owner: WaterSample
     domain_of:
+    - pHProduct
     - OtherUndescribedSample
     - SedimentSample
     - SoilSample
     - WaterSample
-    range: float
+    range: double
   ph_adjustment:
     name: ph_adjustment
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ph_adjustment
@@ -9903,12 +9906,12 @@ slots:
     - XASMotorPosition
     - XASSignalColumn
     range: string
-  position:
-    name: position
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/position
+  motor_position:
+    name: motor_position
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/motor_position
     description: Motor position value at scan start
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:position
+    slot_uri: basalt_schema:motor_position
     owner: XASMotorPosition
     domain_of:
     - XASMotorPosition
@@ -12554,15 +12557,6 @@ slots:
     domain_of:
     - ContainerType
     range: string
-  containerType__container_type:
-    name: containerType__container_type
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:container_type
-    alias: container_type
-    owner: ContainerType
-    domain_of:
-    - ContainerType
-    range: ContainerTypeEnum
   containerType__container_size_id:
     name: containerType__container_size_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -13272,12 +13266,12 @@ slots:
     - WellReading
     range: float
     required: true
-  wellReading__flag:
-    name: wellReading__flag
+  wellReading__well_flag:
+    name: wellReading__well_flag
     description: QC flag   "ok", "blank", "outlier", "contaminated"
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
-    slot_uri: basalt_schema:flag
-    alias: flag
+    slot_uri: basalt_schema:well_flag
+    alias: well_flag
     owner: WellReading
     domain_of:
     - WellReading
@@ -14372,15 +14366,6 @@ slots:
     domain_of:
     - WEOMProduct
     range: ProcessedDataFlag
-  pHProduct__ph:
-    name: pHProduct__ph
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:ph
-    alias: ph
-    owner: pHProduct
-    domain_of:
-    - pHProduct
-    range: double
   pHProduct__flag:
     name: pHProduct__flag
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -15689,16 +15674,6 @@ slots:
     - Extraction
     range: AnalyteCategoryEnum
     multivalued: true
-  extraction__extraction_method:
-    name: extraction__extraction_method
-    description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
-    slot_uri: basalt_schema:extraction_method
-    alias: extraction_method
-    owner: Extraction
-    domain_of:
-    - Extraction
-    range: ExtractionMethodEnum
   normalizationProcess__normalization_method:
     name: normalizationProcess__normalization_method
     description: The strategy used for normalization (equal mass, equal volume, etc.).
@@ -16379,6 +16354,22 @@ slots:
     is_usage_slot: true
     usage_slot_name: description
     range: string
+  ContainerType_container_type:
+    name: ContainerType_container_type
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/container_type
+    description: Physical container used for the culture or sample (flask, tube, plate,
+      etc.)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: container_type
+    domain: ContainerType
+    slot_uri: basalt_schema:container_type
+    alias: container_type
+    owner: ContainerType
+    domain_of:
+    - ContainerType
+    is_usage_slot: true
+    usage_slot_name: container_type
+    range: ContainerTypeEnum
   MassSpectrometryDataGenerationActivity_acquisition_start_time:
     name: MassSpectrometryDataGenerationActivity_acquisition_start_time
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/acquisition_start_time
@@ -19416,6 +19407,22 @@ slots:
     usage_slot_name: dilution_analyte
     range: string
     required: true
+  Extraction_extraction_method:
+    name: Extraction_extraction_method
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/extraction_method
+    description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
+    title: extraction method
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: extraction_method
+    domain: Extraction
+    slot_uri: basalt_schema:extraction_method
+    alias: extraction_method
+    owner: Extraction
+    domain_of:
+    - Extraction
+    is_usage_slot: true
+    usage_slot_name: extraction_method
+    range: ExtractionMethodEnum
   FiltrationProcess_volume_ml:
     name: FiltrationProcess_volume_ml
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/volume_ml
@@ -19833,15 +19840,19 @@ classes:
     - potentially delete along with ContainerAxis? What are these for?
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
+    - ContainerType_container_type
     - containerType__id
     - containerType__description
-    - containerType__container_type
     - containerType__container_size_id
     - containerType__axes
     - containerType__contains
     - containerType__label_format
     - containerType__renderer
     - containerType__slot_capacity
+    slot_usage:
+      container_type:
+        name: container_type
+        range: ContainerTypeEnum
     attributes:
       id:
         name: id
@@ -19850,9 +19861,6 @@ classes:
       description:
         name: description
         range: string
-      container_type:
-        name: container_type
-        range: ContainerTypeEnum
       container_size_id:
         name: container_size_id
         range: QuantityValue
@@ -21516,7 +21524,7 @@ classes:
     slots:
     - wellReading__position
     - wellReading__value
-    - wellReading__flag
+    - wellReading__well_flag
     attributes:
       position:
         name: position
@@ -21528,8 +21536,8 @@ classes:
         description: Measured value (absorbance, OD, fluorescence)
         range: float
         required: true
-      flag:
-        name: flag
+      well_flag:
+        name: well_flag
         description: QC flag   "ok", "blank", "outlier", "contaminated"
         range: string
     class_uri: basalt_schema:WellReading
@@ -22825,12 +22833,9 @@ classes:
     - lims_barcode
     - sample
     - measure_type
-    - pHProduct__ph
+    - ph
     - pHProduct__flag
     attributes:
-      ph:
-        name: ph
-        range: double
       flag:
         name: flag
         range: ProcessedDataFlag
@@ -23587,7 +23592,7 @@ classes:
     - XASMotorPosition_motor_index
     - motor_name
     - pv
-    - position
+    - motor_position
     slot_usage:
       motor_index:
         name: motor_index
@@ -26663,8 +26668,13 @@ classes:
     - sampleProcessing__id
     - substances_used
     - starting_mass_mg
+    - Extraction_extraction_method
     - extraction__extraction_target
-    - extraction__extraction_method
+    slot_usage:
+      extraction_method:
+        name: extraction_method
+        description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
+        range: ExtractionMethodEnum
     attributes:
       extraction_target:
         name: extraction_target
@@ -26672,10 +26682,6 @@ classes:
           process.
         range: AnalyteCategoryEnum
         multivalued: true
-      extraction_method:
-        name: extraction_method
-        description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
-        range: ExtractionMethodEnum
     class_uri: basalt_schema:Extraction
   FiltrationProcess:
     name: FiltrationProcess
@@ -27288,6 +27294,6 @@ classes:
         - descendant_id
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-10-20T15:49:08'
-source_file_size: 21649
-generation_date: '2026-10-20T15:51:31'
+source_file_date: '2026-10-20T15:53:22'
+source_file_size: 21699
+generation_date: '2026-10-20T15:54:24'

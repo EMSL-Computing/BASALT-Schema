@@ -1,4 +1,4 @@
-product_id,plate_barcode,timepoint_label,position,value,flag,violation_note
+product_id,plate_barcode,timepoint_label,position,value,well_flag,violation_note
 urn:amp2:prod:complex-t0,EPix1-complex,t=0,A1,0.0684,ok,
 urn:amp2:prod:complex-t0,EPix1-complex,t=0,A2,0.0789,ok,
 urn:amp2:prod:complex-t0,EPix1-complex,t=0,A3,0.0681,ok,

@@ -1721,7 +1721,7 @@ for pr in products:
     A("    flagged_well_count: %d" % pr["flagged_well_count"])
     A("    well_readings:")
     for wr in pr["well_readings"]:
-        A("      - {position: %s, value: %s, flag: %s}"
+        A("      - {position: %s, value: %s, well_flag: %s}"
           % (q(wr["position"]), q(wr["value"]), q(wr["flag"])))
     A("")
 
@@ -1882,7 +1882,7 @@ write_csv("09_od_products.csv", [
 # 10 well readings ---------------------------------------------------------
 write_csv("10_well_readings.csv", [
     "product_id", "plate_barcode", "timepoint_label", "position", "value",
-    "flag"], [list(r) for r in readings])
+    "well_flag"], [list(r) for r in readings])
 
 # 11 links -----------------------------------------------------------------
 write_csv("11_processing_sample_links.csv", [
