@@ -13561,11 +13561,11 @@ slots:
     - XCTDataGenerationActivity
     range: string
     required: true
-  bulkDensityProduct__bulk_density_id:
-    name: bulkDensityProduct__bulk_density_id
+  bulkDensityProduct__bulk_density:
+    name: bulkDensityProduct__bulk_density
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:bulk_density_id
-    alias: bulk_density_id
+    slot_uri: basalt_schema:bulk_density
+    alias: bulk_density
     owner: BulkDensityProduct
     domain_of:
     - BulkDensityProduct
@@ -13579,38 +13579,38 @@ slots:
     domain_of:
     - BulkDensityProduct
     range: ProcessedDataFlag
-  elementalAnalysisProduct__total_carbon_id:
-    name: elementalAnalysisProduct__total_carbon_id
+  elementalAnalysisProduct__total_carbon:
+    name: elementalAnalysisProduct__total_carbon
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_carbon_id
-    alias: total_carbon_id
+    slot_uri: basalt_schema:total_carbon
+    alias: total_carbon
     owner: ElementalAnalysisProduct
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
-  elementalAnalysisProduct__total_nitrogen_id:
-    name: elementalAnalysisProduct__total_nitrogen_id
+  elementalAnalysisProduct__total_nitrogen:
+    name: elementalAnalysisProduct__total_nitrogen
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_nitrogen_id
-    alias: total_nitrogen_id
+    slot_uri: basalt_schema:total_nitrogen
+    alias: total_nitrogen
     owner: ElementalAnalysisProduct
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
-  elementalAnalysisProduct__total_kjeldahl_nitrogen_id:
-    name: elementalAnalysisProduct__total_kjeldahl_nitrogen_id
+  elementalAnalysisProduct__total_kjeldahl_nitrogen:
+    name: elementalAnalysisProduct__total_kjeldahl_nitrogen
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_kjeldahl_nitrogen_id
-    alias: total_kjeldahl_nitrogen_id
+    slot_uri: basalt_schema:total_kjeldahl_nitrogen
+    alias: total_kjeldahl_nitrogen
     owner: ElementalAnalysisProduct
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
-  elementalAnalysisProduct__total_sulfur_id:
-    name: elementalAnalysisProduct__total_sulfur_id
+  elementalAnalysisProduct__total_sulfur:
+    name: elementalAnalysisProduct__total_sulfur
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_sulfur_id
-    alias: total_sulfur_id
+    slot_uri: basalt_schema:total_sulfur
+    alias: total_sulfur
     owner: ElementalAnalysisProduct
     domain_of:
     - ElementalAnalysisProduct
@@ -13651,11 +13651,11 @@ slots:
     domain_of:
     - ElementalAnalysisProduct
     range: ProcessedDataFlag
-  enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h_id:
-    name: enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h_id
+  enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h:
+    name: enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:beta_glucosidase_ug_pnp_per_g_per_h_id
-    alias: beta_glucosidase_ug_pnp_per_g_per_h_id
+    slot_uri: basalt_schema:beta_glucosidase_ug_pnp_per_g_per_h
+    alias: beta_glucosidase_ug_pnp_per_g_per_h
     owner: EnzymeProduct
     domain_of:
     - EnzymeProduct
@@ -13669,11 +13669,11 @@ slots:
     domain_of:
     - EnzymeProduct
     range: ProcessedDataFlag
-  gWCMoistureProduct__gwc_percent_id:
-    name: gWCMoistureProduct__gwc_percent_id
+  gWCMoistureProduct__gwc_percent:
+    name: gWCMoistureProduct__gwc_percent
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:gwc_percent_id
-    alias: gwc_percent_id
+    slot_uri: basalt_schema:gwc_percent
+    alias: gwc_percent
     owner: GWCMoistureProduct
     domain_of:
     - GWCMoistureProduct
@@ -13741,110 +13741,110 @@ slots:
     domain_of:
     - HydraulicPropertiesProduct
     range: ProcessedDataFlag
-  ionsAnalysisProduct__sulfate_id:
-    name: ionsAnalysisProduct__sulfate_id
+  ionsAnalysisProduct__sulfate:
+    name: ionsAnalysisProduct__sulfate
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:sulfate_id
-    alias: sulfate_id
+    slot_uri: basalt_schema:sulfate
+    alias: sulfate
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__boron_id:
-    name: ionsAnalysisProduct__boron_id
+  ionsAnalysisProduct__boron:
+    name: ionsAnalysisProduct__boron
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:boron_id
-    alias: boron_id
+    slot_uri: basalt_schema:boron
+    alias: boron
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__zinc_id:
-    name: ionsAnalysisProduct__zinc_id
+  ionsAnalysisProduct__zinc:
+    name: ionsAnalysisProduct__zinc
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:zinc_id
-    alias: zinc_id
+    slot_uri: basalt_schema:zinc
+    alias: zinc
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__manganate_id:
-    name: ionsAnalysisProduct__manganate_id
+  ionsAnalysisProduct__manganate:
+    name: ionsAnalysisProduct__manganate
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:manganate_id
-    alias: manganate_id
+    slot_uri: basalt_schema:manganate
+    alias: manganate
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__copper_id:
-    name: ionsAnalysisProduct__copper_id
+  ionsAnalysisProduct__copper:
+    name: ionsAnalysisProduct__copper
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:copper_id
-    alias: copper_id
+    slot_uri: basalt_schema:copper
+    alias: copper
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__iron_id:
-    name: ionsAnalysisProduct__iron_id
+  ionsAnalysisProduct__iron:
+    name: ionsAnalysisProduct__iron
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:iron_id
-    alias: iron_id
+    slot_uri: basalt_schema:iron
+    alias: iron
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__calcium_id:
-    name: ionsAnalysisProduct__calcium_id
+  ionsAnalysisProduct__calcium:
+    name: ionsAnalysisProduct__calcium
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:calcium_id
-    alias: calcium_id
+    slot_uri: basalt_schema:calcium
+    alias: calcium
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__magnesium_id:
-    name: ionsAnalysisProduct__magnesium_id
+  ionsAnalysisProduct__magnesium:
+    name: ionsAnalysisProduct__magnesium
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:magnesium_id
-    alias: magnesium_id
+    slot_uri: basalt_schema:magnesium
+    alias: magnesium
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__sodium_id:
-    name: ionsAnalysisProduct__sodium_id
+  ionsAnalysisProduct__sodium:
+    name: ionsAnalysisProduct__sodium
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:sodium_id
-    alias: sodium_id
+    slot_uri: basalt_schema:sodium
+    alias: sodium
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__potassium_id:
-    name: ionsAnalysisProduct__potassium_id
+  ionsAnalysisProduct__potassium:
+    name: ionsAnalysisProduct__potassium
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:potassium_id
-    alias: potassium_id
+    slot_uri: basalt_schema:potassium
+    alias: potassium
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__total_bases_id:
-    name: ionsAnalysisProduct__total_bases_id
+  ionsAnalysisProduct__total_bases:
+    name: ionsAnalysisProduct__total_bases
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_bases_id
-    alias: total_bases_id
+    slot_uri: basalt_schema:total_bases
+    alias: total_bases
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__cation_exchange_capacity_id:
-    name: ionsAnalysisProduct__cation_exchange_capacity_id
+  ionsAnalysisProduct__cation_exchange_capacity:
+    name: ionsAnalysisProduct__cation_exchange_capacity
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:cation_exchange_capacity_id
-    alias: cation_exchange_capacity_id
+    slot_uri: basalt_schema:cation_exchange_capacity
+    alias: cation_exchange_capacity
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
@@ -13957,11 +13957,11 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: ProcessedDataFlag
-  hClExtOMProduct__total_organic_carbon_id:
-    name: hClExtOMProduct__total_organic_carbon_id
+  hClExtOMProduct__total_organic_carbon:
+    name: hClExtOMProduct__total_organic_carbon
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_organic_carbon_id
-    alias: total_organic_carbon_id
+    slot_uri: basalt_schema:total_organic_carbon
+    alias: total_organic_carbon
     owner: HClExtOMProduct
     domain_of:
     - HClExtOMProduct
@@ -13975,11 +13975,11 @@ slots:
     domain_of:
     - HClExtOMProduct
     range: double
-  hClExtOMProduct__total_nitrogen_id:
-    name: hClExtOMProduct__total_nitrogen_id
+  hClExtOMProduct__total_nitrogen:
+    name: hClExtOMProduct__total_nitrogen
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_nitrogen_id
-    alias: total_nitrogen_id
+    slot_uri: basalt_schema:total_nitrogen
+    alias: total_nitrogen
     owner: HClExtOMProduct
     domain_of:
     - HClExtOMProduct
@@ -14029,11 +14029,11 @@ slots:
     domain_of:
     - HClExtOMProduct
     range: ProcessedDataFlag
-  microbialBiomassProduct__mbc_id:
-    name: microbialBiomassProduct__mbc_id
+  microbialBiomassProduct__mbc:
+    name: microbialBiomassProduct__mbc
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:mbc_id
-    alias: mbc_id
+    slot_uri: basalt_schema:mbc
+    alias: mbc
     owner: MicrobialBiomassProduct
     domain_of:
     - MicrobialBiomassProduct
@@ -14047,11 +14047,11 @@ slots:
     domain_of:
     - MicrobialBiomassProduct
     range: double
-  microbialBiomassProduct__mbn_id:
-    name: microbialBiomassProduct__mbn_id
+  microbialBiomassProduct__mbn:
+    name: microbialBiomassProduct__mbn
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:mbn_id
-    alias: mbn_id
+    slot_uri: basalt_schema:mbn
+    alias: mbn
     owner: MicrobialBiomassProduct
     domain_of:
     - MicrobialBiomassProduct
@@ -14101,11 +14101,11 @@ slots:
     domain_of:
     - MicrobialBiomassProduct
     range: ProcessedDataFlag
-  nitrogenAnalysisProduct__no3_n_id:
-    name: nitrogenAnalysisProduct__no3_n_id
+  nitrogenAnalysisProduct__no3_n:
+    name: nitrogenAnalysisProduct__no3_n
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:no3_n_id
-    alias: no3_n_id
+    slot_uri: basalt_schema:no3_n
+    alias: no3_n
     owner: NitrogenAnalysisProduct
     domain_of:
     - NitrogenAnalysisProduct
@@ -14119,11 +14119,11 @@ slots:
     domain_of:
     - NitrogenAnalysisProduct
     range: double
-  nitrogenAnalysisProduct__nh4_n_id:
-    name: nitrogenAnalysisProduct__nh4_n_id
+  nitrogenAnalysisProduct__nh4_n:
+    name: nitrogenAnalysisProduct__nh4_n
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:nh4_n_id
-    alias: nh4_n_id
+    slot_uri: basalt_schema:nh4_n
+    alias: nh4_n
     owner: NitrogenAnalysisProduct
     domain_of:
     - NitrogenAnalysisProduct
@@ -14182,11 +14182,11 @@ slots:
     domain_of:
     - PhosphorusAnalysisProduct
     range: string
-  phosphorusAnalysisProduct__phosphorus_id:
-    name: phosphorusAnalysisProduct__phosphorus_id
+  phosphorusAnalysisProduct__phosphorus:
+    name: phosphorusAnalysisProduct__phosphorus
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:phosphorus_id
-    alias: phosphorus_id
+    slot_uri: basalt_schema:phosphorus
+    alias: phosphorus
     owner: PhosphorusAnalysisProduct
     domain_of:
     - PhosphorusAnalysisProduct
@@ -14237,29 +14237,29 @@ slots:
     domain_of:
     - RespirationProduct
     range: ProcessedDataFlag
-  textureProduct__sand_pct_id:
-    name: textureProduct__sand_pct_id
+  textureProduct__sand_pct:
+    name: textureProduct__sand_pct
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:sand_pct_id
-    alias: sand_pct_id
+    slot_uri: basalt_schema:sand_pct
+    alias: sand_pct
     owner: TextureProduct
     domain_of:
     - TextureProduct
     range: QuantityValue
-  textureProduct__silt_pct_id:
-    name: textureProduct__silt_pct_id
+  textureProduct__silt_pct:
+    name: textureProduct__silt_pct
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:silt_pct_id
-    alias: silt_pct_id
+    slot_uri: basalt_schema:silt_pct
+    alias: silt_pct
     owner: TextureProduct
     domain_of:
     - TextureProduct
     range: QuantityValue
-  textureProduct__clay_pct_id:
-    name: textureProduct__clay_pct_id
+  textureProduct__clay_pct:
+    name: textureProduct__clay_pct
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:clay_pct_id
-    alias: clay_pct_id
+    slot_uri: basalt_schema:clay_pct
+    alias: clay_pct
     owner: TextureProduct
     domain_of:
     - TextureProduct
@@ -14273,11 +14273,11 @@ slots:
     domain_of:
     - TextureProduct
     range: ProcessedDataFlag
-  wEOMProduct__total_organic_carbon_id:
-    name: wEOMProduct__total_organic_carbon_id
+  wEOMProduct__total_organic_carbon:
+    name: wEOMProduct__total_organic_carbon
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_organic_carbon_id
-    alias: total_organic_carbon_id
+    slot_uri: basalt_schema:total_organic_carbon
+    alias: total_organic_carbon
     owner: WEOMProduct
     domain_of:
     - WEOMProduct
@@ -14291,11 +14291,11 @@ slots:
     domain_of:
     - WEOMProduct
     range: double
-  wEOMProduct__total_nitrogen_id:
-    name: wEOMProduct__total_nitrogen_id
+  wEOMProduct__total_nitrogen:
+    name: wEOMProduct__total_nitrogen
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_nitrogen_id
-    alias: total_nitrogen_id
+    slot_uri: basalt_schema:total_nitrogen
+    alias: total_nitrogen
     owner: WEOMProduct
     domain_of:
     - WEOMProduct
@@ -22558,11 +22558,11 @@ classes:
     - lims_barcode
     - sample_id
     - measure_type
-    - bulkDensityProduct__bulk_density_id
+    - bulkDensityProduct__bulk_density
     - bulkDensityProduct__flag
     attributes:
-      bulk_density_id:
-        name: bulk_density_id
+      bulk_density:
+        name: bulk_density
         range: QuantityValue
       flag:
         name: flag
@@ -22594,26 +22594,26 @@ classes:
     - lims_barcode
     - sample_id
     - measure_type
-    - elementalAnalysisProduct__total_carbon_id
-    - elementalAnalysisProduct__total_nitrogen_id
-    - elementalAnalysisProduct__total_kjeldahl_nitrogen_id
-    - elementalAnalysisProduct__total_sulfur_id
+    - elementalAnalysisProduct__total_carbon
+    - elementalAnalysisProduct__total_nitrogen
+    - elementalAnalysisProduct__total_kjeldahl_nitrogen
+    - elementalAnalysisProduct__total_sulfur
     - elementalAnalysisProduct__flag_total_carbon
     - elementalAnalysisProduct__flag_total_nitrogen
     - elementalAnalysisProduct__flag_tkn
     - elementalAnalysisProduct__flag_total_sulfur
     attributes:
-      total_carbon_id:
-        name: total_carbon_id
+      total_carbon:
+        name: total_carbon
         range: QuantityValue
-      total_nitrogen_id:
-        name: total_nitrogen_id
+      total_nitrogen:
+        name: total_nitrogen
         range: QuantityValue
-      total_kjeldahl_nitrogen_id:
-        name: total_kjeldahl_nitrogen_id
+      total_kjeldahl_nitrogen:
+        name: total_kjeldahl_nitrogen
         range: QuantityValue
-      total_sulfur_id:
-        name: total_sulfur_id
+      total_sulfur:
+        name: total_sulfur
         range: QuantityValue
       flag_total_carbon:
         name: flag_total_carbon
@@ -22652,11 +22652,11 @@ classes:
     - lims_barcode
     - sample_id
     - measure_type
-    - enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h_id
+    - enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h
     - enzymeProduct__flag
     attributes:
-      beta_glucosidase_ug_pnp_per_g_per_h_id:
-        name: beta_glucosidase_ug_pnp_per_g_per_h_id
+      beta_glucosidase_ug_pnp_per_g_per_h:
+        name: beta_glucosidase_ug_pnp_per_g_per_h
         range: QuantityValue
       flag:
         name: flag
@@ -22686,11 +22686,11 @@ classes:
     - lims_barcode
     - sample_id
     - measure_type
-    - gWCMoistureProduct__gwc_percent_id
+    - gWCMoistureProduct__gwc_percent
     - gWCMoistureProduct__flag
     attributes:
-      gwc_percent_id:
-        name: gwc_percent_id
+      gwc_percent:
+        name: gwc_percent
         range: QuantityValue
       flag:
         name: flag
@@ -22778,18 +22778,18 @@ classes:
     - lims_barcode
     - sample_id
     - measure_type
-    - ionsAnalysisProduct__sulfate_id
-    - ionsAnalysisProduct__boron_id
-    - ionsAnalysisProduct__zinc_id
-    - ionsAnalysisProduct__manganate_id
-    - ionsAnalysisProduct__copper_id
-    - ionsAnalysisProduct__iron_id
-    - ionsAnalysisProduct__calcium_id
-    - ionsAnalysisProduct__magnesium_id
-    - ionsAnalysisProduct__sodium_id
-    - ionsAnalysisProduct__potassium_id
-    - ionsAnalysisProduct__total_bases_id
-    - ionsAnalysisProduct__cation_exchange_capacity_id
+    - ionsAnalysisProduct__sulfate
+    - ionsAnalysisProduct__boron
+    - ionsAnalysisProduct__zinc
+    - ionsAnalysisProduct__manganate
+    - ionsAnalysisProduct__copper
+    - ionsAnalysisProduct__iron
+    - ionsAnalysisProduct__calcium
+    - ionsAnalysisProduct__magnesium
+    - ionsAnalysisProduct__sodium
+    - ionsAnalysisProduct__potassium
+    - ionsAnalysisProduct__total_bases
+    - ionsAnalysisProduct__cation_exchange_capacity
     - ionsAnalysisProduct__flag_sulfate
     - ionsAnalysisProduct__flag_boron
     - ionsAnalysisProduct__flag_zinc
@@ -22803,41 +22803,41 @@ classes:
     - ionsAnalysisProduct__flag_total_bases
     - ionsAnalysisProduct__flag_cec
     attributes:
-      sulfate_id:
-        name: sulfate_id
+      sulfate:
+        name: sulfate
         range: QuantityValue
-      boron_id:
-        name: boron_id
+      boron:
+        name: boron
         range: QuantityValue
-      zinc_id:
-        name: zinc_id
+      zinc:
+        name: zinc
         range: QuantityValue
-      manganate_id:
-        name: manganate_id
+      manganate:
+        name: manganate
         range: QuantityValue
-      copper_id:
-        name: copper_id
+      copper:
+        name: copper
         range: QuantityValue
-      iron_id:
-        name: iron_id
+      iron:
+        name: iron
         range: QuantityValue
-      calcium_id:
-        name: calcium_id
+      calcium:
+        name: calcium
         range: QuantityValue
-      magnesium_id:
-        name: magnesium_id
+      magnesium:
+        name: magnesium
         range: QuantityValue
-      sodium_id:
-        name: sodium_id
+      sodium:
+        name: sodium
         range: QuantityValue
-      potassium_id:
-        name: potassium_id
+      potassium:
+        name: potassium
         range: QuantityValue
-      total_bases_id:
-        name: total_bases_id
+      total_bases:
+        name: total_bases
         range: QuantityValue
-      cation_exchange_capacity_id:
-        name: cation_exchange_capacity_id
+      cation_exchange_capacity:
+        name: cation_exchange_capacity
         range: QuantityValue
       flag_sulfate:
         name: flag_sulfate
@@ -22904,23 +22904,23 @@ classes:
     - measure_type
     - replicate
     - produced_by_toctn_run
-    - hClExtOMProduct__total_organic_carbon_id
+    - hClExtOMProduct__total_organic_carbon
     - hClExtOMProduct__total_organic_carbon_avg
-    - hClExtOMProduct__total_nitrogen_id
+    - hClExtOMProduct__total_nitrogen
     - hClExtOMProduct__total_nitrogen_avg
     - hClExtOMProduct__flag_toc
     - hClExtOMProduct__flag_tn
     - hClExtOMProduct__flag_toc_avg
     - hClExtOMProduct__flag_tn_avg
     attributes:
-      total_organic_carbon_id:
-        name: total_organic_carbon_id
+      total_organic_carbon:
+        name: total_organic_carbon
         range: QuantityValue
       total_organic_carbon_avg:
         name: total_organic_carbon_avg
         range: double
-      total_nitrogen_id:
-        name: total_nitrogen_id
+      total_nitrogen:
+        name: total_nitrogen
         range: QuantityValue
       total_nitrogen_avg:
         name: total_nitrogen_avg
@@ -22965,23 +22965,23 @@ classes:
     - sample_id
     - measure_type
     - replicate
-    - microbialBiomassProduct__mbc_id
+    - microbialBiomassProduct__mbc
     - microbialBiomassProduct__mbc_avg
-    - microbialBiomassProduct__mbn_id
+    - microbialBiomassProduct__mbn
     - microbialBiomassProduct__mbn_avg
     - microbialBiomassProduct__flag_mbc
     - microbialBiomassProduct__flag_mbn
     - microbialBiomassProduct__flag_mbc_avg
     - microbialBiomassProduct__flag_mbn_avg
     attributes:
-      mbc_id:
-        name: mbc_id
+      mbc:
+        name: mbc
         range: QuantityValue
       mbc_avg:
         name: mbc_avg
         range: double
-      mbn_id:
-        name: mbn_id
+      mbn:
+        name: mbn
         range: QuantityValue
       mbn_avg:
         name: mbn_avg
@@ -23026,23 +23026,23 @@ classes:
     - sample_id
     - measure_type
     - replicate
-    - nitrogenAnalysisProduct__no3_n_id
+    - nitrogenAnalysisProduct__no3_n
     - nitrogenAnalysisProduct__no3_n_avg
-    - nitrogenAnalysisProduct__nh4_n_id
+    - nitrogenAnalysisProduct__nh4_n
     - nitrogenAnalysisProduct__nh4_n_avg
     - nitrogenAnalysisProduct__flag_no3n
     - nitrogenAnalysisProduct__flag_nh4n
     - nitrogenAnalysisProduct__flag_no3n_avg
     - nitrogenAnalysisProduct__flag_nh4n_avg
     attributes:
-      no3_n_id:
-        name: no3_n_id
+      no3_n:
+        name: no3_n
         range: QuantityValue
       no3_n_avg:
         name: no3_n_avg
         range: double
-      nh4_n_id:
-        name: nh4_n_id
+      nh4_n:
+        name: nh4_n
         range: QuantityValue
       nh4_n_avg:
         name: nh4_n_avg
@@ -23088,7 +23088,7 @@ classes:
     - measure_type
     - replicate
     - phosphorusAnalysisProduct__extraction_method
-    - phosphorusAnalysisProduct__phosphorus_id
+    - phosphorusAnalysisProduct__phosphorus
     - phosphorusAnalysisProduct__phosphorus_avg
     - phosphorusAnalysisProduct__flag
     - phosphorusAnalysisProduct__flag_avg
@@ -23096,8 +23096,8 @@ classes:
       extraction_method:
         name: extraction_method
         range: string
-      phosphorus_id:
-        name: phosphorus_id
+      phosphorus:
+        name: phosphorus
         range: QuantityValue
       phosphorus_avg:
         name: phosphorus_avg
@@ -23169,19 +23169,19 @@ classes:
     - lims_barcode
     - sample_id
     - measure_type
-    - textureProduct__sand_pct_id
-    - textureProduct__silt_pct_id
-    - textureProduct__clay_pct_id
+    - textureProduct__sand_pct
+    - textureProduct__silt_pct
+    - textureProduct__clay_pct
     - textureProduct__flag
     attributes:
-      sand_pct_id:
-        name: sand_pct_id
+      sand_pct:
+        name: sand_pct
         range: QuantityValue
-      silt_pct_id:
-        name: silt_pct_id
+      silt_pct:
+        name: silt_pct
         range: QuantityValue
-      clay_pct_id:
-        name: clay_pct_id
+      clay_pct:
+        name: clay_pct
         range: QuantityValue
       flag:
         name: flag
@@ -23215,23 +23215,23 @@ classes:
     - measure_type
     - replicate
     - produced_by_toctn_run
-    - wEOMProduct__total_organic_carbon_id
+    - wEOMProduct__total_organic_carbon
     - wEOMProduct__total_organic_carbon_avg
-    - wEOMProduct__total_nitrogen_id
+    - wEOMProduct__total_nitrogen
     - wEOMProduct__total_nitrogen_avg
     - wEOMProduct__flag_toc
     - wEOMProduct__flag_tn
     - wEOMProduct__flag_toc_avg
     - wEOMProduct__flag_tn_avg
     attributes:
-      total_organic_carbon_id:
-        name: total_organic_carbon_id
+      total_organic_carbon:
+        name: total_organic_carbon
         range: QuantityValue
       total_organic_carbon_avg:
         name: total_organic_carbon_avg
         range: double
-      total_nitrogen_id:
-        name: total_nitrogen_id
+      total_nitrogen:
+        name: total_nitrogen
         range: QuantityValue
       total_nitrogen_avg:
         name: total_nitrogen_avg
@@ -27942,4 +27942,4 @@ metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
 source_file_date: '2026-10-12T16:01:08'
 source_file_size: 21959
-generation_date: '2026-10-12T16:03:34'
+generation_date: '2026-10-20T15:41:34'

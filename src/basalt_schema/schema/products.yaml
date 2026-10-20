@@ -26,7 +26,7 @@ classes:
     slots:
       - measure_type
     attributes:
-      bulk_density_id:
+      bulk_density:
         range: QuantityValue
       flag:
         range: ProcessedDataFlag
@@ -39,13 +39,13 @@ classes:
     slots:
       - measure_type
     attributes:
-      total_carbon_id:
+      total_carbon:
         range: QuantityValue
-      total_nitrogen_id:
+      total_nitrogen:
         range: QuantityValue
-      total_kjeldahl_nitrogen_id:
+      total_kjeldahl_nitrogen:
         range: QuantityValue
-      total_sulfur_id:
+      total_sulfur:
         range: QuantityValue
       flag_total_carbon:
         range: ProcessedDataFlag
@@ -63,7 +63,7 @@ classes:
     slots:
       - measure_type
     attributes:
-      beta_glucosidase_ug_pnp_per_g_per_h_id:
+      beta_glucosidase_ug_pnp_per_g_per_h:
         range: QuantityValue
       flag:
         range: ProcessedDataFlag
@@ -75,7 +75,7 @@ classes:
     slots:
       - measure_type
     attributes:
-      gwc_percent_id:
+      gwc_percent:
         range: QuantityValue
       flag:
         range: ProcessedDataFlag
@@ -122,29 +122,29 @@ classes:
     slots:
       - measure_type
     attributes:
-      sulfate_id:
+      sulfate:
         range: QuantityValue
-      boron_id:
+      boron:
         range: QuantityValue
-      zinc_id:
+      zinc:
         range: QuantityValue
-      manganate_id:
+      manganate:
         range: QuantityValue
-      copper_id:
+      copper:
         range: QuantityValue
-      iron_id:
+      iron:
         range: QuantityValue
-      calcium_id:
+      calcium:
         range: QuantityValue
-      magnesium_id:
+      magnesium:
         range: QuantityValue
-      sodium_id:
+      sodium:
         range: QuantityValue
-      potassium_id:
+      potassium:
         range: QuantityValue
-      total_bases_id:
+      total_bases:
         range: QuantityValue
-      cation_exchange_capacity_id:
+      cation_exchange_capacity:
         range: QuantityValue
       flag_sulfate:
         range: ProcessedDataFlag
@@ -181,11 +181,11 @@ classes:
       - replicate
       - produced_by_toctn_run
     attributes:
-      total_organic_carbon_id:
+      total_organic_carbon:
         range: QuantityValue
       total_organic_carbon_avg:
         range: double
-      total_nitrogen_id:
+      total_nitrogen:
         range: QuantityValue
       total_nitrogen_avg:
         range: double
@@ -207,11 +207,11 @@ classes:
       - measure_type
       - replicate
     attributes:
-      mbc_id:
+      mbc:
         range: QuantityValue
       mbc_avg:
         range: double
-      mbn_id:
+      mbn:
         range: QuantityValue
       mbn_avg:
         range: double
@@ -233,11 +233,11 @@ classes:
       - measure_type
       - replicate
     attributes:
-      no3_n_id:
+      no3_n:
         range: QuantityValue
       no3_n_avg:
         range: double
-      nh4_n_id:
+      nh4_n:
         range: QuantityValue
       nh4_n_avg:
         range: double
@@ -261,7 +261,7 @@ classes:
     attributes:
       extraction_method:
         range: string
-      phosphorus_id:
+      phosphorus:
         range: QuantityValue
       phosphorus_avg:
         range: double
@@ -291,11 +291,11 @@ classes:
     slots:
       - measure_type
     attributes:
-      sand_pct_id:
+      sand_pct:
         range: QuantityValue
-      silt_pct_id:
+      silt_pct:
         range: QuantityValue
-      clay_pct_id:
+      clay_pct:
         range: QuantityValue
       flag:
         range: ProcessedDataFlag
@@ -310,11 +310,11 @@ classes:
       - replicate
       - produced_by_toctn_run
     attributes:
-      total_organic_carbon_id:
+      total_organic_carbon:
         range: QuantityValue
       total_organic_carbon_avg:
         range: double
-      total_nitrogen_id:
+      total_nitrogen:
         range: QuantityValue
       total_nitrogen_avg:
         range: double

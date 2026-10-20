@@ -9268,7 +9268,10 @@ class OtherUndescribedSample(Sample):
          'domain_of': ['MonetSoilSample', 'OtherUndescribedSample', 'SoilSample']} })
     calcium: Optional[str] = Field(default=None, alias="calcium", title="calcium", description="""Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(mg/L|umol/L|ppm)$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     carb_dioxide: Optional[str] = Field(default=None, alias="carb_dioxide", title="carbon dioxide", description="""Amount of carbon dioxide measured in the air the day of sampling. Provided by ARM""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ppm)$'}},
          'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
@@ -9642,7 +9645,10 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
     link_addit_analys: Optional[str] = Field(default=None, alias="link_addit_analys", title="link to additional analysis", description="""Link to additional analysis results performed on the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
     magnesium: Optional[str] = Field(default=None, alias="magnesium", title="magnesium", description="""Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/kg|mol/L|mg/L|ppm)$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     mean_frict_vel: Optional[str] = Field(default=None, alias="mean_frict_vel", title="mean friction velocity", description="""Measurement of mean friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*m/s$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
@@ -9839,7 +9845,10 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
          'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
     potassium: Optional[str] = Field(default=None, alias="potassium", title="potassium", description="""Concentration of potassium in the sample (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     pre_treatment: Optional[str] = Field(default=None, alias="pre_treatment", title="pre-treatment", description="""the process of pre-treatment removes materials that can be easily collected from the raw wastewater""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     pressure: Optional[str] = Field(default=None, alias="pressure", title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*atm$'}},
@@ -10051,7 +10060,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
     sludge_retent_time: Optional[str] = Field(default=None, alias="sludge_retent_time", title="sludge retention time", description="""the time activated sludge remains in reactor""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     sodium: Optional[str] = Field(default=None, alias="sodium", title="sodium", description="""Sodium concentration in the sample (Unit: ug/mL)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*ug/mL$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     solar_irradiance: Optional[str] = Field(default=None, alias="solar_irradiance", title="solar irradiance", description="""Solar irradiance is the power per unit area (surface power density) received from the Sun in the form of electromagnetic radiation in the wavelength range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(kW/m2/d|erg/cm2/s)$'}},
          'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
@@ -10131,7 +10143,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'todos': ['make this inlined/multivalued?']} })
     sulfate: Optional[str] = Field(default=None, alias="sulfate", title="sulfate", description="""Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     sulfide: Optional[str] = Field(default=None, alias="sulfide", title="sulfide", description="""Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
@@ -12012,7 +12027,10 @@ class SedimentSample(Sample):
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     calcium: Optional[str] = Field(default=None, alias="calcium", title="calcium", description="""Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(mg/L|umol/L|ppm)$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     carb_nitro_ratio: Optional[str] = Field(default=None, alias="carb_nitro_ratio", title="carbon nitrogen ratio", description="""Ratio of amount or concentrations of carbon to nitrogen.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     chem_administration: Optional[str] = Field(default=None, alias="chem_administration", title="chemical administration", description="""List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -12233,7 +12251,10 @@ class SedimentSample(Sample):
                        'TerraformSample']} })
     magnesium: Optional[str] = Field(default=None, alias="magnesium", title="magnesium", description="""Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/kg|mol/L|mg/L|ppm)$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     mean_frict_vel: Optional[str] = Field(default=None, alias="mean_frict_vel", title="mean friction velocity", description="""Measurement of mean friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*m/s$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
@@ -12420,7 +12441,10 @@ class SedimentSample(Sample):
          'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
     potassium: Optional[str] = Field(default=None, alias="potassium", title="potassium", description="""Concentration of potassium in the sample (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     pressure: Optional[str] = Field(default=None, alias="pressure", title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*atm$'}},
          'domain_of': ['FieldDeployedTerraformSample',
@@ -12582,7 +12606,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     sodium: Optional[str] = Field(default=None, alias="sodium", title="sodium", description="""Sodium concentration in the sample (Unit: ug/mL)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*ug/mL$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     source_mat_id: Optional[str] = Field(default=None, alias="source_mat_id", title="source material identifier", description="""A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -12648,7 +12675,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleStorage']} })
     sulfate: Optional[str] = Field(default=None, alias="sulfate", title="sulfate", description="""Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     sulfide: Optional[str] = Field(default=None, alias="sulfide", title="sulfide", description="""Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
@@ -15098,7 +15128,10 @@ class WaterSample(Sample):
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     calcium: Optional[str] = Field(default=None, alias="calcium", title="calcium", description="""Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(mg/L|umol/L|ppm)$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     carb_nitro_ratio: Optional[str] = Field(default=None, alias="carb_nitro_ratio", title="carbon nitrogen ratio", description="""Ratio of amount or concentrations of carbon to nitrogen.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     chem_administration: Optional[str] = Field(default=None, alias="chem_administration", title="chemical administration", description="""List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -15322,7 +15355,10 @@ class WaterSample(Sample):
          'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     magnesium: Optional[str] = Field(default=None, alias="magnesium", title="magnesium", description="""Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/kg|mol/L|mg/L|ppm)$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     mean_frict_vel: Optional[str] = Field(default=None, alias="mean_frict_vel", title="mean friction velocity", description="""Measurement of mean friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*m/s$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
@@ -15492,7 +15528,10 @@ class WaterSample(Sample):
          'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     potassium: Optional[str] = Field(default=None, alias="potassium", title="potassium", description="""Concentration of potassium in the sample (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     pressure: Optional[str] = Field(default=None, alias="pressure", title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*atm$'}},
          'domain_of': ['FieldDeployedTerraformSample',
@@ -15630,7 +15669,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'WaterSample']} })
     sodium: Optional[str] = Field(default=None, alias="sodium", title="sodium", description="""Sodium concentration in the sample (Unit: ug/mL)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*ug/mL$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     soluble_react_phosp: Optional[str] = Field(default=None, alias="soluble_react_phosp", title="soluble reactive phosphorus", description="""Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
          'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
@@ -15699,7 +15741,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleStorage']} })
     sulfate: Optional[str] = Field(default=None, alias="sulfate", title="sulfate", description="""Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
-         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+         'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
     sulfide: Optional[str] = Field(default=None, alias="sulfide", title="sulfide", description="""Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
@@ -21879,7 +21924,7 @@ class BulkDensityProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    bulk_density_id: Optional[str] = Field(default=None, alias="bulk_density_id", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct']} })
+    bulk_density: Optional[str] = Field(default=None, alias="bulk_density", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
                        'EnzymeProduct',
@@ -22102,10 +22147,10 @@ class ElementalAnalysisProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    total_carbon_id: Optional[str] = Field(default=None, alias="total_carbon_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    total_nitrogen_id: Optional[str] = Field(default=None, alias="total_nitrogen_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
-    total_kjeldahl_nitrogen_id: Optional[str] = Field(default=None, alias="total_kjeldahl_nitrogen_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    total_sulfur_id: Optional[str] = Field(default=None, alias="total_sulfur_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    total_carbon: Optional[str] = Field(default=None, alias="total_carbon", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    total_nitrogen: Optional[str] = Field(default=None, alias="total_nitrogen", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
+    total_kjeldahl_nitrogen: Optional[str] = Field(default=None, alias="total_kjeldahl_nitrogen", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    total_sulfur: Optional[str] = Field(default=None, alias="total_sulfur", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
     flag_total_carbon: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_total_carbon", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
     flag_total_nitrogen: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_total_nitrogen", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
     flag_tkn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tkn", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
@@ -22320,7 +22365,7 @@ class EnzymeProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    beta_glucosidase_ug_pnp_per_g_per_h_id: Optional[str] = Field(default=None, alias="beta_glucosidase_ug_pnp_per_g_per_h_id", json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeProduct']} })
+    beta_glucosidase_ug_pnp_per_g_per_h: Optional[str] = Field(default=None, alias="beta_glucosidase_ug_pnp_per_g_per_h", json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
                        'EnzymeProduct',
@@ -22542,7 +22587,7 @@ class GWCMoistureProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    gwc_percent_id: Optional[str] = Field(default=None, alias="gwc_percent_id", json_schema_extra = { "linkml_meta": {'domain_of': ['GWCMoistureProduct']} })
+    gwc_percent: Optional[str] = Field(default=None, alias="gwc_percent", json_schema_extra = { "linkml_meta": {'domain_of': ['GWCMoistureProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
                        'EnzymeProduct',
@@ -22990,18 +23035,33 @@ class IonsAnalysisProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    sulfate_id: Optional[str] = Field(default=None, alias="sulfate_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    boron_id: Optional[str] = Field(default=None, alias="boron_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    zinc_id: Optional[str] = Field(default=None, alias="zinc_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    manganate_id: Optional[str] = Field(default=None, alias="manganate_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    copper_id: Optional[str] = Field(default=None, alias="copper_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    iron_id: Optional[str] = Field(default=None, alias="iron_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    calcium_id: Optional[str] = Field(default=None, alias="calcium_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    magnesium_id: Optional[str] = Field(default=None, alias="magnesium_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    sodium_id: Optional[str] = Field(default=None, alias="sodium_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    potassium_id: Optional[str] = Field(default=None, alias="potassium_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    total_bases_id: Optional[str] = Field(default=None, alias="total_bases_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    cation_exchange_capacity_id: Optional[str] = Field(default=None, alias="cation_exchange_capacity_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    sulfate: Optional[str] = Field(default=None, alias="sulfate", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
+    boron: Optional[str] = Field(default=None, alias="boron", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    zinc: Optional[str] = Field(default=None, alias="zinc", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    manganate: Optional[str] = Field(default=None, alias="manganate", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    copper: Optional[str] = Field(default=None, alias="copper", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    iron: Optional[str] = Field(default=None, alias="iron", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    calcium: Optional[str] = Field(default=None, alias="calcium", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
+    magnesium: Optional[str] = Field(default=None, alias="magnesium", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
+    sodium: Optional[str] = Field(default=None, alias="sodium", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
+    potassium: Optional[str] = Field(default=None, alias="potassium", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'OtherUndescribedSample',
+                       'SedimentSample',
+                       'WaterSample']} })
+    total_bases: Optional[str] = Field(default=None, alias="total_bases", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    cation_exchange_capacity: Optional[str] = Field(default=None, alias="cation_exchange_capacity", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
     flag_sulfate: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_sulfate", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
     flag_boron: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_boron", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
     flag_zinc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_zinc", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
@@ -23233,9 +23293,9 @@ class HClExtOMProduct(ProcessedData):
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
     produced_by_toctn_run: Optional[str] = Field(default=None, alias="produced_by_toctn_run", description="""a reference to the TOC/TN data generation activity that produced this measurement.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_organic_carbon_id: Optional[str] = Field(default=None, alias="total_organic_carbon_id", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    total_organic_carbon: Optional[str] = Field(default=None, alias="total_organic_carbon", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     total_organic_carbon_avg: Optional[float] = Field(default=None, alias="total_organic_carbon_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_nitrogen_id: Optional[str] = Field(default=None, alias="total_nitrogen_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
+    total_nitrogen: Optional[str] = Field(default=None, alias="total_nitrogen", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
     total_nitrogen_avg: Optional[float] = Field(default=None, alias="total_nitrogen_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     flag_toc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_toc", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     flag_tn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tn", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
@@ -23459,9 +23519,9 @@ class MicrobialBiomassProduct(ProcessedData):
                        'WEOMProduct',
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
-    mbc_id: Optional[str] = Field(default=None, alias="mbc_id", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
+    mbc: Optional[str] = Field(default=None, alias="mbc", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
     mbc_avg: Optional[float] = Field(default=None, alias="mbc_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    mbn_id: Optional[str] = Field(default=None, alias="mbn_id", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
+    mbn: Optional[str] = Field(default=None, alias="mbn", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
     mbn_avg: Optional[float] = Field(default=None, alias="mbn_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
     flag_mbc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_mbc", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
     flag_mbn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_mbn", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
@@ -23685,9 +23745,9 @@ class NitrogenAnalysisProduct(ProcessedData):
                        'WEOMProduct',
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
-    no3_n_id: Optional[str] = Field(default=None, alias="no3_n_id", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
+    no3_n: Optional[str] = Field(default=None, alias="no3_n", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
     no3_n_avg: Optional[float] = Field(default=None, alias="no3_n_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    nh4_n_id: Optional[str] = Field(default=None, alias="nh4_n_id", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
+    nh4_n: Optional[str] = Field(default=None, alias="nh4_n", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
     nh4_n_avg: Optional[float] = Field(default=None, alias="nh4_n_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
     flag_no3n: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_no3n", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
     flag_nh4n: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_nh4n", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
@@ -23923,7 +23983,7 @@ class PhosphorusAnalysisProduct(ProcessedData):
                        'SoilSample',
                        'WaterSample',
                        'Extraction']} })
-    phosphorus_id: Optional[str] = Field(default=None, alias="phosphorus_id", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
+    phosphorus: Optional[str] = Field(default=None, alias="phosphorus", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
     phosphorus_avg: Optional[float] = Field(default=None, alias="phosphorus_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
@@ -24370,9 +24430,9 @@ class TextureProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    sand_pct_id: Optional[str] = Field(default=None, alias="sand_pct_id", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
-    silt_pct_id: Optional[str] = Field(default=None, alias="silt_pct_id", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
-    clay_pct_id: Optional[str] = Field(default=None, alias="clay_pct_id", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
+    sand_pct: Optional[str] = Field(default=None, alias="sand_pct", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
+    silt_pct: Optional[str] = Field(default=None, alias="silt_pct", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
+    clay_pct: Optional[str] = Field(default=None, alias="clay_pct", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
                        'EnzymeProduct',
@@ -24603,9 +24663,9 @@ class WEOMProduct(ProcessedData):
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
     produced_by_toctn_run: Optional[str] = Field(default=None, alias="produced_by_toctn_run", description="""a reference to the TOC/TN data generation activity that produced this measurement.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_organic_carbon_id: Optional[str] = Field(default=None, alias="total_organic_carbon_id", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    total_organic_carbon: Optional[str] = Field(default=None, alias="total_organic_carbon", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     total_organic_carbon_avg: Optional[float] = Field(default=None, alias="total_organic_carbon_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_nitrogen_id: Optional[str] = Field(default=None, alias="total_nitrogen_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
+    total_nitrogen: Optional[str] = Field(default=None, alias="total_nitrogen", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
     total_nitrogen_avg: Optional[float] = Field(default=None, alias="total_nitrogen_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     flag_toc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_toc", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     flag_tn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tn", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })

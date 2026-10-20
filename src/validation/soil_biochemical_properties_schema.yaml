@@ -106,7 +106,7 @@ classes:
       MBC_mg_per_kg:
         description: |-
           Microbial Biomass Carbon in milligrams per kilogram of soil (mg/kg).
-          Source: MicrobialBiomassProduct.mbc_id from canonical schema.
+          Source: MicrobialBiomassProduct.mbc from canonical schema.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -115,7 +115,7 @@ classes:
       MBN_mg_per_kg:
         description: |-
           Microbial Biomass Nitrogen in milligrams per kilogram of soil (mg/kg).
-          Source: MicrobialBiomassProduct.mbn_id from canonical schema.
+          Source: MicrobialBiomassProduct.mbn from canonical schema.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -125,77 +125,77 @@ classes:
       SO4_S_mg_per_kg:
         description: |-
           Sulfate-Sulfur (SO4-S) in milligrams per kilogram of soil (mg/kg).
-          Source: IonsAnalysisProduct.sulfate_id from canonical schema.
+          Source: IonsAnalysisProduct.sulfate from canonical schema.
         range: double
         required: false
         
       B_mg_per_kg:
         description: |-
           Boron (B) in milligrams per kilogram of soil (mg/kg).
-          Source: IonsAnalysisProduct.boron_id from canonical schema.
+          Source: IonsAnalysisProduct.boron from canonical schema.
         range: double
         required: false
         
       Zn_mg_per_kg:
         description: |-
           Zinc (Zn) in milligrams per kilogram of soil (mg/kg).
-          Source: IonsAnalysisProduct.zinc_id from canonical schema.
+          Source: IonsAnalysisProduct.zinc from canonical schema.
         range: double
         required: false
         
       Mn_mg_per_kg:
         description: |-
           Manganese (Mn) in milligrams per kilogram of soil (mg/kg).
-          Source: IonsAnalysisProduct.manganate_id from canonical schema.
+          Source: IonsAnalysisProduct.manganate from canonical schema.
         range: double
         required: false
         
       Cu_mg_per_kg:
         description: |-
           Copper (Cu) in milligrams per kilogram of soil (mg/kg).
-          Source: IonsAnalysisProduct.copper_id from canonical schema.
+          Source: IonsAnalysisProduct.copper from canonical schema.
         range: double
         required: false
         
       Fe_mg_per_kg:
         description: |-
           Iron (Fe) in milligrams per kilogram of soil (mg/kg).
-          Source: IonsAnalysisProduct.iron_id from canonical schema.
+          Source: IonsAnalysisProduct.iron from canonical schema.
         range: double
         required: false
         
       Ca_meq_per_100_g:
         description: |-
           Calcium (Ca) in milliequivalents per 100 grams of soil (meq/100g).
-          Source: IonsAnalysisProduct.calcium_id from canonical schema.
+          Source: IonsAnalysisProduct.calcium from canonical schema.
         range: double
         required: false
         
       Mg_meq_per_100_g:
         description: |-
           Magnesium (Mg) in milliequivalents per 100 grams of soil (meq/100g).
-          Source: IonsAnalysisProduct.magnesium_id from canonical schema.
+          Source: IonsAnalysisProduct.magnesium from canonical schema.
         range: double
         required: false
         
       Na_meq_per_100_g:
         description: |-
           Sodium (Na) in milliequivalents per 100 grams of soil (meq/100g).
-          Source: IonsAnalysisProduct.sodium_id from canonical schema.
+          Source: IonsAnalysisProduct.sodium from canonical schema.
         range: double
         required: false
         
       K_meq_per_100_g:
         description: |-
           Potassium (K) in milliequivalents per 100 grams of soil (meq/100g).
-          Source: IonsAnalysisProduct.potassium_id from canonical schema.
+          Source: IonsAnalysisProduct.potassium from canonical schema.
         range: double
         required: false
         
       CEC_meq_per_100_g:
         description: |-
           Cation Exchange Capacity in milliequivalents per 100 grams (meq/100g).
-          Source: IonsAnalysisProduct.cation_exchange_capacity_id from canonical schema.
+          Source: IonsAnalysisProduct.cation_exchange_capacity from canonical schema.
         range: double
         required: false
       
@@ -203,21 +203,21 @@ classes:
       Total_C_percent:
         description: |-
           Total Carbon as percentage of dry soil weight (%).
-          Source: ElementalAnalysisProduct.total_carbon_id from canonical schema.
+          Source: ElementalAnalysisProduct.total_carbon from canonical schema.
         range: double
         required: false
         
       Total_N_percent:
         description: |-
           Total Nitrogen as percentage of dry soil weight (%).
-          Source: ElementalAnalysisProduct.total_nitrogen_id from canonical schema.
+          Source: ElementalAnalysisProduct.total_nitrogen from canonical schema.
         range: double
         required: false
         
       Total_S_percent:
         description: |-
           Total Sulfur as percentage of dry soil weight (%).
-          Source: ElementalAnalysisProduct.total_sulfur_id from canonical schema.
+          Source: ElementalAnalysisProduct.total_sulfur from canonical schema.
         range: double
         required: false
       
@@ -225,7 +225,7 @@ classes:
       NH4_N_mg_per_kg:
         description: |-
           Ammonium Nitrogen (NH4-N) in milligrams per kilogram of soil (mg/kg).
-          Source: NitrogenAnalysisProduct.nh4_n_id from canonical schema.
+          Source: NitrogenAnalysisProduct.nh4_n from canonical schema.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -234,7 +234,7 @@ classes:
       NO3_N_mg_per_kg:
         description: |-
           Nitrate Nitrogen (NO3-N) in milligrams per kilogram of soil (mg/kg).
-          Source: NitrogenAnalysisProduct.no3_n_id from canonical schema.
+          Source: NitrogenAnalysisProduct.no3_n from canonical schema.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -244,7 +244,7 @@ classes:
       PO4_P_mg_per_kg:
         description: |-
           Phosphate Phosphorus (PO4-P) in milligrams per kilogram of soil (mg/kg).
-          Source: PhosphorusAnalysisProduct.phosphorus_id from canonical schema.
+          Source: PhosphorusAnalysisProduct.phosphorus from canonical schema.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -261,7 +261,7 @@ classes:
       GWC_percent:
         description: |-
           Gravimetric Water Content as percentage (%).
-          Source: GWCMoistureProduct.gwc_percent_id from canonical schema.
+          Source: GWCMoistureProduct.gwc_percent from canonical schema.
           Ratio of water mass to dry soil mass, expressed as percentage.
           GWC = (wet_mass - dry_mass) / dry_mass x 100
           L2 data: average across replicates
@@ -273,7 +273,7 @@ classes:
       WEOM_TOC_mg_per_kg:
         description: |-
           Water Extractable Organic Matter - Total Organic Carbon in mg/kg.
-          Source: WEOMProduct.total_organic_carbon_id from canonical schema.
+          Source: WEOMProduct.total_organic_carbon from canonical schema.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -282,7 +282,7 @@ classes:
       WEOM_TN_mg_per_kg:
         description: |-
           Water Extractable Organic Matter - Total Nitrogen in mg/kg.
-          Source: WEOMProduct.total_nitrogen_id from canonical schema.
+          Source: WEOMProduct.total_nitrogen from canonical schema.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -292,7 +292,7 @@ classes:
       HClExtOM_TOC_mg_per_kg:
         description: |-
           Mineral Associated Organic Matter - Total Organic Carbon in mg/kg.
-          Source: HClExtOMProduct.total_organic_carbon_id from canonical schema.
+          Source: HClExtOMProduct.total_organic_carbon from canonical schema.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -301,7 +301,7 @@ classes:
       HClExtOM_TN_mg_per_kg:
         description: |-
           Mineral Associated Organic Matter - Total Nitrogen in mg/kg.
-          Source: HClExtOMProduct.total_nitrogen_id from canonical schema.
+          Source: HClExtOMProduct.total_nitrogen from canonical schema.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -311,21 +311,21 @@ classes:
       Clay_percent:
         description: |-
           Clay content as percentage of soil by weight (%).
-          Source: TextureProduct.clay_pct_id from canonical schema.
+          Source: TextureProduct.clay_pct from canonical schema.
         range: double
         required: false
         
       Sand_percent:
         description: |-
           Sand content as percentage of soil by weight (%).
-          Source: TextureProduct.sand_pct_id from canonical schema.
+          Source: TextureProduct.sand_pct from canonical schema.
         range: double
         required: false
         
       Silt_percent:
         description: |-
           Silt content as percentage of soil by weight (%).
-          Source: TextureProduct.silt_pct_id from canonical schema.
+          Source: TextureProduct.silt_pct from canonical schema.
         range: double
         required: false
       
@@ -333,7 +333,7 @@ classes:
       Beta_Glucosidase_ug_pNP_per_g_per_h:
         description: |-
           Beta-Glucosidase enzyme activity in micrograms para-nitrophenol per gram per hour (ug pNP/g/h).
-          Source: EnzymeProduct.beta_glucosidase_ug_pnp_per_g_per_h_id from canonical schema.
+          Source: EnzymeProduct.beta_glucosidase_ug_pnp_per_g_per_h from canonical schema.
         range: double
         required: false
       
@@ -341,7 +341,7 @@ classes:
       Bulk_density_g_per_cm3:
         description: |-
           Soil bulk density in grams per cubic centimeter (g/cm^3).
-          Source: BulkDensityProduct.bulk_density_id from canonical schema.
+          Source: BulkDensityProduct.bulk_density from canonical schema.
         range: double
         required: false
       
