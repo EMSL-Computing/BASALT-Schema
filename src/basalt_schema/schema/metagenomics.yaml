@@ -67,7 +67,7 @@ classes:
       and add only their type-specific slots.
     slots:
       - mg_workflow_step
-      - sample_id
+      - sample
       - provider_name
       - raw_fasta_url
       - additional_information
@@ -125,7 +125,7 @@ classes:
     is_a: DataProcessingActivity
     description: |-
       Concrete metagenomics workflow run. Inherits all DataProcessingActivity
-      slots including parent_workflow_id (chain link) and workflow_steps
+      slots including parent_workflow (chain link) and workflow_steps
       (key-value, schema TBD). Specific workflow step type is captured via the
       inherited type attribute (string); expected values: 
       'metagenomics_annotation', 'metagenomics_binning', 'metagenomics_phylogeny'.

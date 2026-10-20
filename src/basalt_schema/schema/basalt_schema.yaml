@@ -122,7 +122,7 @@ classes:
     slots:
       - summary_metrics  # [ADDED] key-value product summary, per-type schema TBD
       - lims_barcode     # [PROMOTED] from inline attribute
-      - sample_id        # [ADDED] link back to originating sample
+      - sample        # [ADDED] link back to originating sample
     todos:
       - all subclasses need a more specific upstream slot to replace was_generated_by
 
@@ -175,7 +175,7 @@ classes:
       - sequence_order   
       - name
       - description
-      - analyte_id
+      - analyte
       - protocol_url
       - protocol_version
       - acquisition_start_time
@@ -190,7 +190,7 @@ classes:
       be specified on workflow subclasses.
     slots:
       - id
-      - parent_workflow_id  # [ADDED] self-referential chain link
+      - parent_workflow  # [ADDED] self-referential chain link
       - workflow_steps      # [CHANGED] key-value direction; schema TBD (was # TODO JSONB)
       - description
     slot_usage:
@@ -332,7 +332,7 @@ classes:
       id:
         identifier: true
         range: uuid
-      person_id:
+      person:
         range: PersonValue
 
   InstrumentAlternativeIdentifier:
@@ -496,7 +496,7 @@ classes:
         Abstract base class for X-ray analytical methods including XRF (elemental),
         XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits
         acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,
-        analyte_id, and other core metadata from DataGenerationActivity.
+        analyte, and other core metadata from DataGenerationActivity.
 
         Concrete subclasses define method-specific measurement parameters.
         Future X-ray methods (e.g., XCT) can extend this class.

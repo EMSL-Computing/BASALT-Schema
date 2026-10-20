@@ -197,7 +197,7 @@ classes:
       - plate_type
       - plate_barcode
       - setup_date
-      - setup_operator_id
+      - setup_operator
       - setup_instrument
       - sealing_method
       - well_metadata
@@ -257,7 +257,7 @@ classes:
       - timepoint_label
     todos:
       - measurement_time stamp
-    # Inherited from DataGenerationActivity: id, analyte_id,
+    # Inherited from DataGenerationActivity: id, analyte,
     #   name, acquisition_time, instrument_id, protocol_url,
     #   instrument_operator_id, sequence_order, version
 
@@ -268,9 +268,9 @@ classes:
     is_a: PlateDataGenerationActivity
     description: |-
       AMP2 plate measurement (OD, fluorescence, flow cytometry).
-      analyte_id -> processedSample(type='amp2_96well_plate')
+      analyte -> processedSample(type='amp2_96well_plate')
 
-      Chained via DataProcessingActivity.parent_workflow_id to track
+      Chained via DataProcessingActivity.parent_workflow to track
       multi-timepoint series on the same plate.
 
       v1 origin: plate-general.yaml AMP2DataGenerationActivity
@@ -285,7 +285,7 @@ classes:
     is_a: PlateDataGenerationActivity
     description: |-
       Ecoplate absorbance measurement at a single timepoint.
-      analyte_id -> processedSample(type='ecoplate_plate')
+      analyte -> processedSample(type='ecoplate_plate')
       wavelength_nm typically 590 for Biolog EcoPlates.
 
       v1 origin: plate-general.yaml EcoplateDataGenerationActivity
@@ -444,7 +444,7 @@ classes:
       media_ref slot.  Per-well reagent additions (nutrients, normalizers, inducers)
       are captured as structured WellReagentAddition entries in reagent_additions.
     slots:
-      - sample_id
+      - sample
     attributes:
       media_ref:
         description: |-

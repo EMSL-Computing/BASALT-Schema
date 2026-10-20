@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-20T15:48:03
+# Generation date: 2026-10-20T15:51:51
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -873,7 +873,7 @@ class ProcessedData(DataProduct):
     s3_key: str = None
     summary_metrics: Optional[str] = None
     lims_barcode: Optional[str] = None
-    sample_id: Optional[Union[str, SampleId]] = None
+    sample: Optional[Union[str, SampleId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.summary_metrics is not None and not isinstance(self.summary_metrics, str):
@@ -882,8 +882,8 @@ class ProcessedData(DataProduct):
         if self.lims_barcode is not None and not isinstance(self.lims_barcode, str):
             self.lims_barcode = str(self.lims_barcode)
 
-        if self.sample_id is not None and not isinstance(self.sample_id, SampleId):
-            self.sample_id = SampleId(self.sample_id)
+        if self.sample is not None and not isinstance(self.sample, SampleId):
+            self.sample = SampleId(self.sample)
 
         super().__post_init__(**kwargs)
 
@@ -986,7 +986,7 @@ class DataGenerationActivity(YAMLRoot):
     name: str = None
     sequence_order: Optional[int] = None
     description: Optional[str] = None
-    analyte_id: Optional[Union[str, ProcessedSampleId]] = None
+    analyte: Optional[Union[str, ProcessedSampleId]] = None
     protocol_url: Optional[str] = None
     protocol_version: Optional[str] = None
     acquisition_start_time: Optional[Union[str, XSDDateTime]] = None
@@ -1011,8 +1011,8 @@ class DataGenerationActivity(YAMLRoot):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.analyte_id is not None and not isinstance(self.analyte_id, ProcessedSampleId):
-            self.analyte_id = ProcessedSampleId(self.analyte_id)
+        if self.analyte is not None and not isinstance(self.analyte, ProcessedSampleId):
+            self.analyte = ProcessedSampleId(self.analyte)
 
         if self.protocol_url is not None and not isinstance(self.protocol_url, str):
             self.protocol_url = str(self.protocol_url)
@@ -1050,7 +1050,7 @@ class DataProcessingActivity(YAMLRoot):
 
     id: Union[str, DataProcessingActivityId] = None
     started_at_time: Union[str, XSDDateTime] = None
-    parent_workflow_id: Optional[Union[str, DataProcessingActivityId]] = None
+    parent_workflow: Optional[Union[str, DataProcessingActivityId]] = None
     workflow_steps: Optional[str] = None
     description: Optional[str] = None
     ended_at_time: Optional[Union[str, XSDDateTime]] = None
@@ -1070,8 +1070,8 @@ class DataProcessingActivity(YAMLRoot):
         if not isinstance(self.started_at_time, XSDDateTime):
             self.started_at_time = XSDDateTime(self.started_at_time)
 
-        if self.parent_workflow_id is not None and not isinstance(self.parent_workflow_id, DataProcessingActivityId):
-            self.parent_workflow_id = DataProcessingActivityId(self.parent_workflow_id)
+        if self.parent_workflow is not None and not isinstance(self.parent_workflow, DataProcessingActivityId):
+            self.parent_workflow = DataProcessingActivityId(self.parent_workflow)
 
         if self.workflow_steps is not None and not isinstance(self.workflow_steps, str):
             self.workflow_steps = str(self.workflow_steps)
@@ -1352,7 +1352,7 @@ class Custodian(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Custodian
 
     id: Union[str, CustodianId] = None
-    person_id: Optional[Union[str, PersonValueId]] = None
+    person: Optional[Union[str, PersonValueId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1360,8 +1360,8 @@ class Custodian(YAMLRoot):
         if not isinstance(self.id, CustodianId):
             self.id = CustodianId(self.id)
 
-        if self.person_id is not None and not isinstance(self.person_id, PersonValueId):
-            self.person_id = PersonValueId(self.person_id)
+        if self.person is not None and not isinstance(self.person, PersonValueId):
+            self.person = PersonValueId(self.person)
 
         super().__post_init__(**kwargs)
 
@@ -1674,7 +1674,7 @@ class XRayDataGenerationActivity(DataGenerationActivity):
     Abstract base class for X-ray analytical methods including XRF (elemental),
     XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits
     acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,
-    analyte_id, and other core metadata from DataGenerationActivity.
+    analyte, and other core metadata from DataGenerationActivity.
 
     Concrete subclasses define method-specific measurement parameters.
     Future X-ray methods (e.g., XCT) can extend this class.
@@ -3201,7 +3201,7 @@ class PlateSetupActivity(SampleProcessing):
     plate_type: str = None
     setup_date: Union[str, XSDDateTime] = None
     plate_barcode: Optional[str] = None
-    setup_operator_id: Optional[Union[str, PersonValueId]] = None
+    setup_operator: Optional[Union[str, PersonValueId]] = None
     setup_instrument: Optional[str] = None
     sealing_method: Optional[str] = None
     well_metadata: Optional[Union[Union[dict, "WellMetadata"], list[Union[dict, "WellMetadata"]]]] = empty_list()
@@ -3222,8 +3222,8 @@ class PlateSetupActivity(SampleProcessing):
         if self.plate_barcode is not None and not isinstance(self.plate_barcode, str):
             self.plate_barcode = str(self.plate_barcode)
 
-        if self.setup_operator_id is not None and not isinstance(self.setup_operator_id, PersonValueId):
-            self.setup_operator_id = PersonValueId(self.setup_operator_id)
+        if self.setup_operator is not None and not isinstance(self.setup_operator, PersonValueId):
+            self.setup_operator = PersonValueId(self.setup_operator)
 
         if self.setup_instrument is not None and not isinstance(self.setup_instrument, str):
             self.setup_instrument = str(self.setup_instrument)
@@ -3351,9 +3351,9 @@ class PlateDataGenerationActivity(DataGenerationActivity):
 class AMP2DataGenerationActivity(PlateDataGenerationActivity):
     """
     AMP2 plate measurement (OD, fluorescence, flow cytometry).
-    analyte_id -> processedSample(type='amp2_96well_plate')
+    analyte -> processedSample(type='amp2_96well_plate')
 
-    Chained via DataProcessingActivity.parent_workflow_id to track
+    Chained via DataProcessingActivity.parent_workflow to track
     multi-timepoint series on the same plate.
 
     v1 origin: plate-general.yaml AMP2DataGenerationActivity
@@ -3392,7 +3392,7 @@ class AMP2DataGenerationActivity(PlateDataGenerationActivity):
 class EcoplateDataGenerationActivity(PlateDataGenerationActivity):
     """
     Ecoplate absorbance measurement at a single timepoint.
-    analyte_id -> processedSample(type='ecoplate_plate')
+    analyte -> processedSample(type='ecoplate_plate')
     wavelength_nm typically 590 for Biolog EcoPlates.
 
     v1 origin: plate-general.yaml EcoplateDataGenerationActivity
@@ -3650,7 +3650,7 @@ class AMP2WellMetadata(WellMetadata):
     position: str = None
     media_volume_ul: float = None
     inoculum_volume_ul: float = None
-    sample_id: Optional[Union[str, SampleId]] = None
+    sample: Optional[Union[str, SampleId]] = None
     media_ref: Optional[Union[str, ProcessedSampleId]] = None
     reagent_additions: Optional[Union[Union[dict, WellReagentAddition], list[Union[dict, WellReagentAddition]]]] = empty_list()
 
@@ -3665,8 +3665,8 @@ class AMP2WellMetadata(WellMetadata):
         if not isinstance(self.inoculum_volume_ul, float):
             self.inoculum_volume_ul = float(self.inoculum_volume_ul)
 
-        if self.sample_id is not None and not isinstance(self.sample_id, SampleId):
-            self.sample_id = SampleId(self.sample_id)
+        if self.sample is not None and not isinstance(self.sample, SampleId):
+            self.sample = SampleId(self.sample)
 
         if self.media_ref is not None and not isinstance(self.media_ref, ProcessedSampleId):
             self.media_ref = ProcessedSampleId(self.media_ref)
@@ -3834,7 +3834,7 @@ class MetagenomicsProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     mg_workflow_step: Optional[Union[str, "MetagenomicsSteps"]] = None
-    sample_id: Optional[Union[str, SampleId]] = None
+    sample: Optional[Union[str, SampleId]] = None
     provider_name: Optional[Union[dict, "ControlledTermValue"]] = None
     raw_fasta_url: Optional[str] = None
     additional_information: Optional[str] = None
@@ -3843,8 +3843,8 @@ class MetagenomicsProduct(ProcessedData):
         if self.mg_workflow_step is not None and not isinstance(self.mg_workflow_step, MetagenomicsSteps):
             self.mg_workflow_step = MetagenomicsSteps(self.mg_workflow_step)
 
-        if self.sample_id is not None and not isinstance(self.sample_id, SampleId):
-            self.sample_id = SampleId(self.sample_id)
+        if self.sample is not None and not isinstance(self.sample, SampleId):
+            self.sample = SampleId(self.sample)
 
         if self.provider_name is not None and not isinstance(self.provider_name, ControlledTermValue):
             self.provider_name = ControlledTermValue(**as_dict(self.provider_name))
@@ -3948,7 +3948,7 @@ class MetagenomicsGenePhylogenyProduct(MetagenomicsProduct):
 class MetagenomicsDataProcessingActivity(DataProcessingActivity):
     """
     Concrete metagenomics workflow run. Inherits all DataProcessingActivity
-    slots including parent_workflow_id (chain link) and workflow_steps
+    slots including parent_workflow (chain link) and workflow_steps
     (key-value, schema TBD). Specific workflow step type is captured via the
     inherited type attribute (string); expected values:
     'metagenomics_annotation', 'metagenomics_binning', 'metagenomics_phylogeny'.
@@ -11914,7 +11914,7 @@ class SampleStorage(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SampleStorage
 
     id: Union[str, SampleStorageId] = None
-    sample_id: Union[str, SampleId] = None
+    sample: Union[str, SampleId] = None
     storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
     storage_condition_other: Optional[str] = None
     substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
@@ -11930,10 +11930,10 @@ class SampleStorage(YAMLRoot):
         if not isinstance(self.id, SampleStorageId):
             self.id = SampleStorageId(self.id)
 
-        if self._is_empty(self.sample_id):
-            self.MissingRequiredField("sample_id")
-        if not isinstance(self.sample_id, SampleId):
-            self.sample_id = SampleId(self.sample_id)
+        if self._is_empty(self.sample):
+            self.MissingRequiredField("sample")
+        if not isinstance(self.sample, SampleId):
+            self.sample = SampleId(self.sample)
 
         if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
             self.storage_condition = StorageConditionEnum(self.storage_condition)
@@ -16465,8 +16465,8 @@ slots.analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="analysis_type"
 slots.analyte_category = Slot(uri=BASALT_SCHEMA.analyte_category, name="analyte_category", curie=BASALT_SCHEMA.curie('analyte_category'),
                    model_uri=BASALT_SCHEMA.analyte_category, domain=None, range=Optional[Union[str, "AnalyteCategoryEnum"]])
 
-slots.analyte_id = Slot(uri=BASALT_SCHEMA.analyte_id, name="analyte_id", curie=BASALT_SCHEMA.curie('analyte_id'),
-                   model_uri=BASALT_SCHEMA.analyte_id, domain=None, range=Optional[Union[str, ProcessedSampleId]])
+slots.analyte = Slot(uri=BASALT_SCHEMA.analyte, name="analyte", curie=BASALT_SCHEMA.curie('analyte'),
+                   model_uri=BASALT_SCHEMA.analyte, domain=None, range=Optional[Union[str, ProcessedSampleId]])
 
 slots.ances_data = Slot(uri=BASALT_SCHEMA.ances_data, name="ances_data", curie=BASALT_SCHEMA.curie('ances_data'),
                    model_uri=BASALT_SCHEMA.ances_data, domain=None, range=Optional[str])
@@ -17248,8 +17248,8 @@ slots.oxygen_relationship = Slot(uri=BASALT_SCHEMA.oxygen_status, name="oxygen_r
 slots.oxygen_saturation_pct = Slot(uri=BASALT_SCHEMA.oxygen_saturation_pct, name="oxygen_saturation_pct", curie=BASALT_SCHEMA.curie('oxygen_saturation_pct'),
                    model_uri=BASALT_SCHEMA.oxygen_saturation_pct, domain=None, range=Optional[float])
 
-slots.parent_workflow_id = Slot(uri=BASALT_SCHEMA.parent_workflow_id, name="parent_workflow_id", curie=BASALT_SCHEMA.curie('parent_workflow_id'),
-                   model_uri=BASALT_SCHEMA.parent_workflow_id, domain=None, range=Optional[Union[str, DataProcessingActivityId]])
+slots.parent_workflow = Slot(uri=BASALT_SCHEMA.parent_workflow, name="parent_workflow", curie=BASALT_SCHEMA.curie('parent_workflow'),
+                   model_uri=BASALT_SCHEMA.parent_workflow, domain=None, range=Optional[Union[str, DataProcessingActivityId]])
 
 slots.part_org_carb = Slot(uri=BASALT_SCHEMA.part_org_carb, name="part_org_carb", curie=BASALT_SCHEMA.curie('part_org_carb'),
                    model_uri=BASALT_SCHEMA.part_org_carb, domain=None, range=Optional[str])
@@ -17545,8 +17545,8 @@ slots.sample_collection_method = Slot(uri=BASALT_SCHEMA.sample_collection_method
 slots.sample_end_time = Slot(uri=BASALT_SCHEMA.sample_end_time, name="sample_end_time", curie=BASALT_SCHEMA.curie('sample_end_time'),
                    model_uri=BASALT_SCHEMA.sample_end_time, domain=None, range=Optional[str])
 
-slots.sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
-                   model_uri=BASALT_SCHEMA.sample_id, domain=None, range=Optional[Union[str, SampleId]])
+slots.sample = Slot(uri=BASALT_SCHEMA.sample, name="sample", curie=BASALT_SCHEMA.curie('sample'),
+                   model_uri=BASALT_SCHEMA.sample, domain=None, range=Optional[Union[str, SampleId]])
 
 slots.sample_link = Slot(uri=BASALT_SCHEMA.sample_link, name="sample_link", curie=BASALT_SCHEMA.curie('sample_link'),
                    model_uri=BASALT_SCHEMA.sample_link, domain=None, range=Optional[str])
@@ -17935,8 +17935,8 @@ slots.setup_date = Slot(uri=BASALT_SCHEMA.setup_date, name="setup_date", curie=B
 slots.setup_instrument = Slot(uri=BASALT_SCHEMA.setup_instrument, name="setup_instrument", curie=BASALT_SCHEMA.curie('setup_instrument'),
                    model_uri=BASALT_SCHEMA.setup_instrument, domain=None, range=Optional[str])
 
-slots.setup_operator_id = Slot(uri=BASALT_SCHEMA.setup_operator_id, name="setup_operator_id", curie=BASALT_SCHEMA.curie('setup_operator_id'),
-                   model_uri=BASALT_SCHEMA.setup_operator_id, domain=None, range=Optional[Union[str, PersonValueId]])
+slots.setup_operator = Slot(uri=BASALT_SCHEMA.setup_operator, name="setup_operator", curie=BASALT_SCHEMA.curie('setup_operator'),
+                   model_uri=BASALT_SCHEMA.setup_operator, domain=None, range=Optional[Union[str, PersonValueId]])
 
 slots.sewage_type = Slot(uri=BASALT_SCHEMA.sewage_type, name="sewage_type", curie=BASALT_SCHEMA.curie('sewage_type'),
                    model_uri=BASALT_SCHEMA.sewage_type, domain=None, range=Optional[str])
@@ -18454,8 +18454,8 @@ slots.containerAxis__values = Slot(uri=BASALT_SCHEMA.values, name="containerAxis
 slots.custodian__id = Slot(uri=BASALT_SCHEMA.id, name="custodian__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.custodian__id, domain=None, range=URIRef)
 
-slots.custodian__person_id = Slot(uri=BASALT_SCHEMA.person_id, name="custodian__person_id", curie=BASALT_SCHEMA.curie('person_id'),
-                   model_uri=BASALT_SCHEMA.custodian__person_id, domain=None, range=Optional[Union[str, PersonValueId]])
+slots.custodian__person = Slot(uri=BASALT_SCHEMA.person, name="custodian__person", curie=BASALT_SCHEMA.curie('person'),
+                   model_uri=BASALT_SCHEMA.custodian__person, domain=None, range=Optional[Union[str, PersonValueId]])
 
 slots.instrumentAlternativeIdentifier__id = Slot(uri=BASALT_SCHEMA.id, name="instrumentAlternativeIdentifier__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.instrumentAlternativeIdentifier__id, domain=None, range=URIRef)
@@ -19975,8 +19975,8 @@ slots.ProcessedSample_replicate = Slot(uri=BASALT_SCHEMA.replicate, name="Proces
 slots.SampleStorage_storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="SampleStorage_storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
                    model_uri=BASALT_SCHEMA.SampleStorage_storage_condition, domain=SampleStorage, range=Optional[Union[str, "StorageConditionEnum"]])
 
-slots.SampleStorage_sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="SampleStorage_sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
-                   model_uri=BASALT_SCHEMA.SampleStorage_sample_id, domain=SampleStorage, range=Union[str, SampleId])
+slots.SampleStorage_sample = Slot(uri=BASALT_SCHEMA.sample, name="SampleStorage_sample", curie=BASALT_SCHEMA.curie('sample'),
+                   model_uri=BASALT_SCHEMA.SampleStorage_sample, domain=SampleStorage, range=Union[str, SampleId])
 
 slots.SampleStorage_substances_used = Slot(uri=BASALT_SCHEMA.substances_used, name="SampleStorage_substances_used", curie=BASALT_SCHEMA.curie('substances_used'),
                    model_uri=BASALT_SCHEMA.SampleStorage_substances_used, domain=SampleStorage, range=Optional[Union[str, SubstancesUsedLinkId]])

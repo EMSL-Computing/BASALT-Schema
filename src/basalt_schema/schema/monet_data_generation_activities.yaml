@@ -19,7 +19,7 @@ imports:
 classes:
 
 # Inherited from DataGenerationActivity: name, description, sequence_order, protocol_url, protocol_version,
-# id, analyte_id, acquisition_start_time, acquisition_end_time, instrument_id, instrument_operator_id
+# id, analyte, acquisition_start_time, acquisition_end_time, instrument_id, instrument_operator_id
 
 # One class per DataProduct in products.yaml.
 # These were formerly all "Method" classes, never populated.

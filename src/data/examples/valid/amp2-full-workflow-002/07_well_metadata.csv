@@ -1,4 +1,4 @@
-plate_barcode,plate_setup_activity_id,position,well_type,replicate_group,media_volume_ul,inoculum_volume_ul,sample_id,user_sample_name_denormalised,media_ref_override,effective_media_processed_sample_id,treatments
+plate_barcode,plate_setup_activity_id,position,well_type,replicate_group,media_volume_ul,inoculum_volume_ul,sample,user_sample_name_denormalised,media_ref_override,effective_media_processed_sample_id,treatments
 AMP2-P001,urn:amp2:activity:plate-setup-AMP2-P001,A01,sample,rep_1,180.0,20.0,urn:amp2:sample:AMP2-0001,AG5577-pJE2165-R1,,urn:amp2:processed-sample:media-LB-lennox-001,
 AMP2-P001,urn:amp2:activity:plate-setup-AMP2-P001,A02,sample,rep_1,180.0,20.0,urn:amp2:sample:AMP2-0002,AG5577-pJE2165-R2,,urn:amp2:processed-sample:media-LB-lennox-001,
 AMP2-P001,urn:amp2:activity:plate-setup-AMP2-P001,A03,sample,rep_1,180.0,20.0,urn:amp2:sample:AMP2-0003,PP_0055-R1,,urn:amp2:processed-sample:media-LB-lennox-001,

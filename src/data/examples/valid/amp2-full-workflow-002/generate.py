@@ -329,7 +329,7 @@ ORG_BY_ID = {o["id"]: o for o in ORGANISMS}
 # confused:
 #   * `id`   -- the database primary key (urn:amp2:sample:AMP2-00NN).
 #              This is the value every FK in this dataset points at,
-#              including AMP2WellMetadata.sample_id.
+#              including AMP2WellMetadata.sample.
 #   * `name` -- the human-readable sample name the submitter wrote on the
 #              tube, e.g. "PP_0055-R1". NOT unique across organisms by
 #              construction, but unique here.
@@ -634,7 +634,7 @@ def add_storage(sample_id, nominal, hold_start_time):
     temp_c, category, condition = STORAGE_BY_NOMINAL[nominal]
     sample_storage.append({
         "id": "urn:amp2:sample-storage:%04d" % (len(sample_storage) + 1),
-        "sample_id": sample_id,
+        "sample": sample_id,
         "storage_condition": condition,
         "temperature_celsius": temp_c,
         "temperature_category": category,
@@ -864,7 +864,7 @@ for (r, c) in wells_96():
             "position": pos(r, c), "well_type": "sample",
             "replicate_group": rep, "media_ref": media_ref,
             "media_volume_ul": 180.0, "inoculum_volume_ul": 20.0,
-            "sample_id": smp["id"], "sample_name": smp["name"],
+            "sample": smp["id"], "sample_name": smp["name"],
             "treatments": None, "media_key": media_key,
         })
     elif c == 9:
@@ -872,7 +872,7 @@ for (r, c) in wells_96():
             "position": pos(r, c), "well_type": "uninoculated_control",
             "replicate_group": rep, "media_ref": media_ref,
             "media_volume_ul": 200.0, "inoculum_volume_ul": 0.0,
-            "sample_id": None, "sample_name": None,
+            "sample": None, "sample_name": None,
             "treatments": None, "media_key": media_key,
         })
     elif c == 10:
@@ -880,7 +880,7 @@ for (r, c) in wells_96():
             "position": pos(r, c), "well_type": "blank",
             "replicate_group": rep, "media_ref": media_ref,
             "media_volume_ul": 200.0, "inoculum_volume_ul": 0.0,
-            "sample_id": None, "sample_name": None,
+            "sample": None, "sample_name": None,
             "treatments": None, "media_key": media_key,
         })
     elif c == 11:
@@ -889,7 +889,7 @@ for (r, c) in wells_96():
             "position": pos(r, c), "well_type": "positive_control",
             "replicate_group": rep, "media_ref": media_ref,
             "media_volume_ul": 180.0, "inoculum_volume_ul": 20.0,
-            "sample_id": ctrl["id"], "sample_name": ctrl["name"],
+            "sample": ctrl["id"], "sample_name": ctrl["name"],
             "treatments": None, "media_key": media_key,
         })
     else:  # c == 12
@@ -898,7 +898,7 @@ for (r, c) in wells_96():
                 "position": pos(r, c), "well_type": "standard",
                 "replicate_group": rep, "media_ref": media_ref,
                 "media_volume_ul": 200.0, "inoculum_volume_ul": 0.0,
-                "sample_id": None, "sample_name": None,
+                "sample": None, "sample_name": None,
                 "treatments": ["0.5 McFarland latex turbidity standard"],
                 "media_key": media_key,
             })
@@ -907,7 +907,7 @@ for (r, c) in wells_96():
                 "position": pos(r, c), "well_type": "negative_control",
                 "replicate_group": rep, "media_ref": media_ref,
                 "media_volume_ul": 200.0, "inoculum_volume_ul": 0.0,
-                "sample_id": None, "sample_name": None,
+                "sample": None, "sample_name": None,
                 "treatments": ["50 ug/mL apramycin sterility check"],
                 "media_key": media_key,
             })
@@ -955,7 +955,7 @@ for (r, c) in wells_96():
             "replicate_group": "rep_%d" % ((c - 1) % 4 + 1),
             "media_ref": None,
             "media_volume_ul": 178.0, "inoculum_volume_ul": 20.0,
-            "sample_id": smp["id"], "sample_name": smp["name"],
+            "sample": smp["id"], "sample_name": smp["name"],
             "treatments": [label], "media_key": "LBVAN",
             "vanillate_mM": conc,
         })
@@ -978,7 +978,7 @@ for (r, c) in wells_96():
             "media_ref": None,
             "media_volume_ul": 198.0 if inoc == 0.0 else 178.0,
             "inoculum_volume_ul": inoc,
-            "sample_id": sid, "sample_name": sn,
+            "sample": sid, "sample_name": sn,
             "treatments": tr, "media_key": "LBVAN",
             "vanillate_mM": 0.0,
         })
@@ -1033,7 +1033,7 @@ for quad, cells in quad_buckets.items():
                 "position": pos(r, c), "well_type": "sample",
                 "replicate_group": "rep_%d" % rep, "media_ref": media_ref,
                 "media_volume_ul": 45.0, "inoculum_volume_ul": 5.0,
-                "sample_id": smp["id"], "sample_name": smp["name"],
+                "sample": smp["id"], "sample_name": smp["name"],
                 "treatments": None, "media_key": media_key,
             })
         else:
@@ -1055,7 +1055,7 @@ for quad, cells in quad_buckets.items():
                 "position": pos(r, c), "well_type": wt,
                 "replicate_group": "rep_1", "media_ref": media_ref,
                 "media_volume_ul": 50.0, "inoculum_volume_ul": inoc,
-                "sample_id": sid, "sample_name": sn,
+                "sample": sid, "sample_name": sn,
                 "treatments": tr, "media_key": media_key,
             })
 
@@ -1157,7 +1157,7 @@ def od_value(plate, well, t_hours):
     if wt == "standard":
         return max(0.001, 0.512 + rng.gauss(0.0, 0.004))
 
-    smp = SAMPLE_BY_ID[well["sample_id"]]
+    smp = SAMPLE_BY_ID[well["sample"]]
     org = ORG_BY_ID[smp["organism_ref"]]
     media_key = well["media_key"]
     K, r = GROWTH[org["id"]][media_key]
@@ -1266,7 +1266,7 @@ for plate in PLATES:
                 % plate["well_count"]),
             "plate_barcode": plate["barcode"],
             "plate_setup_id": plate["activity_id"],
-            "analyte_id": plate["plate_ps_id"],
+            "analyte": plate["plate_ps_id"],
             "timepoint_label": tlabel,
             "measurement_type": "optical_density",
             "wavelength_nm": 600,
@@ -1310,7 +1310,7 @@ for plate in PLATES:
                            % (plate["barcode"], tlabel),
             "was_generated_by": act_id,
             "plate_barcode": plate["barcode"],
-            "analyte_id": plate["plate_ps_id"],
+            "analyte": plate["plate_ps_id"],
             "timepoint_label": tlabel,
             "wavelength_nm": 600,
             "plate_average": round(mean, 4),
@@ -1327,8 +1327,8 @@ for plate in PLATES:
 
 plate_setups = []
 for plate in PLATES:
-    inoc_samples = sorted({w["sample_id"] for w in plate["wells"]
-                           if w["sample_id"]})
+    inoc_samples = sorted({w["sample"] for w in plate["wells"]
+                           if w["sample"]})
     for step, sid in enumerate(inoc_samples, start=1):
         add_link(SAMPLE_BY_ID[sid]["exp_ps"], plate["activity_id"], step,
                  "input_sample")
@@ -1408,11 +1408,11 @@ A("#   The strain/biological identity is a SEPARATE record in `organisms`,")
 A("#   reached via amp2_user_samples[].organism_ref. Several samples may")
 A("#   share one organism (PP_0055 has three), so an organism id can never")
 A("#   stand in for a sample id.")
-A("#   Downstream, AMP2WellMetadata.sample_id in `plate_setup_activities`")
+A("#   Downstream, AMP2WellMetadata.sample in `plate_setup_activities`")
 A("#   holds the amp2_user_samples[].id of whatever went into that well,")
 A("#   even though what was physically pipetted is the experimental_culture")
 A("#   processed sample derived from it. Follow processing_sample_links to")
-A("#   walk the physical chain; follow well.sample_id to answer \"whose")
+A("#   walk the physical chain; follow well.sample to answer \"whose")
 A("#   sample is in this well\".")
 A("#   00_sample_identity_crosswalk.csv in the sibling directory lays the")
 A("#   whole chain out one row per sample.")
@@ -1467,7 +1467,7 @@ A("")
 
 # --- people / instruments -------------------------------------------------
 A("# ---------------------------------------------------------------------------")
-A("# PersonValue records referenced by setup_operator_id / instrument_operator_id")
+A("# PersonValue records referenced by setup_operator / instrument_operator_id")
 A("# ---------------------------------------------------------------------------")
 A("people:")
 for p in PEOPLE:
@@ -1616,7 +1616,7 @@ A("#   A record on a sample, not a SampleProcessing step: storing or freezing")
 A("#   never mints a new sample id or a processing_sample_link.")
 A("# ---------------------------------------------------------------------------")
 A("sample_storage:")
-STORAGE_FIELDS = ["id", "sample_id", "storage_condition", "temperature_celsius",
+STORAGE_FIELDS = ["id", "sample", "storage_condition", "temperature_celsius",
                   "temperature_category", "hold_start_time", "hold_end_time"]
 for st in sample_storage:
     first = True
@@ -1645,7 +1645,7 @@ for plate in plate_setups:
     A("    plate_format: %s" % q(plate["plate_format"]))
     A("    well_count: %d" % plate["well_count"])
     A("    setup_date: %s" % q(plate["setup_date"]))
-    A("    setup_operator_id: %s" % q(plate["operator"]))
+    A("    setup_operator: %s" % q(plate["operator"]))
     A("    setup_instrument: %s" % q(plate["setup_instrument"]))
     A("    sealing_method: %s" % q(plate["sealing_method"]))
     A("    cycle_id: %d" % plate["cycle_id"])
@@ -1665,7 +1665,7 @@ for plate in plate_setups:
             "media_ref: %s" % q(w["media_ref"]),
             "media_volume_ul: %s" % q(w["media_volume_ul"]),
             "inoculum_volume_ul: %s" % q(w["inoculum_volume_ul"]),
-            "sample_id: %s" % q(w["sample_id"]),
+            "sample: %s" % q(w["sample"]),
         ]
         if w["treatments"]:
             parts.append("treatments: [%s]"
@@ -1678,12 +1678,12 @@ for plate in plate_setups:
 # --- data generation ------------------------------------------------------
 A("# ---------------------------------------------------------------------------")
 A("# data_generation_activities  (class: AMP2DataGenerationActivity)")
-A("#   analyte_id points at the plate processed sample. One activity per")
+A("#   analyte points at the plate processed sample. One activity per")
 A("#   plate x timepoint. read_status \"aborted\" means no product was written.")
 A("# ---------------------------------------------------------------------------")
 A("data_generation_activities:")
 DGA_FIELDS = ["id", "activity_type", "name", "description", "plate_barcode",
-              "plate_setup_id", "analyte_id", "timepoint_label",
+              "plate_setup_id", "analyte", "timepoint_label",
               "measurement_type", "wavelength_nm", "sequence_order",
               "acquisition_start_time", "acquisition_end_time",
               "instrument_used", "instrument_operator_id", "protocol_url",
@@ -1711,7 +1711,7 @@ for pr in products:
     A("    description: %s" % q(pr["description"]))
     A("    was_generated_by: %s" % q(pr["was_generated_by"]))
     A("    plate_barcode: %s" % q(pr["plate_barcode"]))
-    A("    analyte_id: %s" % q(pr["analyte_id"]))
+    A("    analyte: %s" % q(pr["analyte"]))
     A("    timepoint_label: %s" % q(pr["timepoint_label"]))
     A("    wavelength_nm: %s" % q(pr["wavelength_nm"]))
     A("    plate_average: %s" % q(pr["plate_average"]))
@@ -1771,7 +1771,7 @@ for s in SAMPLES:
     well_total = 0
     for plate in PLATES:
         hits = [w["position"] for w in plate["wells"]
-                if w["sample_id"] == s["id"]]
+                if w["sample"] == s["id"]]
         if hits:
             plates_used.append("%s(%d wells)" % (plate["barcode"], len(hits)))
             well_total += len(hits)
@@ -1832,7 +1832,7 @@ write_csv("05_processed_samples.csv", [
 # 06 plate setup -----------------------------------------------------------
 write_csv("06_plate_setup_activities.csv", [
     "id", "activity_type", "in_protocol", "name", "plate_type", "plate_barcode",
-    "plate_format", "well_count", "setup_date", "setup_operator_id",
+    "plate_format", "well_count", "setup_date", "setup_operator",
     "setup_instrument", "sealing_method", "cycle_id", "temperature_celsius",
     "agitation_speed_rpm", "oxygen_saturation_pct", "media_ref",
     "output_plate_processed_sample_id", "description"],
@@ -1853,7 +1853,7 @@ for plate in PLATES:
         wm_rows.append([
             plate["barcode"], plate["activity_id"], w["position"],
             w["well_type"], w["replicate_group"], w["media_volume_ul"],
-            w["inoculum_volume_ul"], w["sample_id"], w["sample_name"],
+            w["inoculum_volume_ul"], w["sample"], w["sample_name"],
             w["media_ref"],
             w["media_ref"] if w["media_ref"] else default_media_ps,
             joinlist(w["treatments"]),
@@ -1861,7 +1861,7 @@ for plate in PLATES:
 write_csv("07_well_metadata.csv", [
     "plate_barcode", "plate_setup_activity_id", "position", "well_type",
     "replicate_group", "media_volume_ul", "inoculum_volume_ul",
-    "sample_id", "user_sample_name_denormalised", "media_ref_override",
+    "sample", "user_sample_name_denormalised", "media_ref_override",
     "effective_media_processed_sample_id", "treatments"], wm_rows)
 
 # 08 data generation -------------------------------------------------------
@@ -1871,10 +1871,10 @@ write_csv("08_data_generation_activities.csv", DGA_FIELDS,
 # 09 products --------------------------------------------------------------
 write_csv("09_od_products.csv", [
     "id", "product_type", "name", "was_generated_by", "plate_barcode",
-    "analyte_id", "timepoint_label", "wavelength_nm", "plate_average",
+    "analyte", "timepoint_label", "wavelength_nm", "plate_average",
     "blank_mean", "cv_percent", "plate_reader_model", "flagged_well_count"],
     [[p["id"], p["product_type"], p["name"], p["was_generated_by"],
-      p["plate_barcode"], p["analyte_id"], p["timepoint_label"],
+      p["plate_barcode"], p["analyte"], p["timepoint_label"],
       p["wavelength_nm"], p["plate_average"], p["blank_mean"],
       p["cv_percent"], p["plate_reader_model"], p["flagged_well_count"]]
      for p in products])
@@ -1954,7 +1954,7 @@ interchangeable:
 | the strain / biological identity | `01_organisms.csv` → `id`, reached via `organism_ref` | `urn:amp2:organism:PP-0055` |
 
 **The sample id is `AMP2UserSample.id`.** Every foreign key in this dataset
-points at that value, including `AMP2WellMetadata.sample_id`. The organism id
+points at that value, including `AMP2WellMetadata.sample`. The organism id
 can never substitute for it: organisms are shared, e.g. `PP_0055` has three
 samples (`AMP2-0003`, `AMP2-0004`, `AMP2-0005`) and `KT2440_WT` has two.
 
@@ -1962,7 +1962,7 @@ Physically, what gets pipetted into a well is the `experimental_culture`
 ProcessedSample descended from that user sample, not the tube itself. So there
 are two ways to ask a question about a well and they answer different things:
 
-* *"Whose sample is in well D07?"* → `AMP2WellMetadata.sample_id`, which holds
+* *"Whose sample is in well D07?"* → `AMP2WellMetadata.sample`, which holds
   the `AMP2UserSample.id` directly.
 * *"What physical material is in well D07 and how was it made?"* → walk
   `11_processing_sample_links.csv` backwards from the plate setup activity.

@@ -2910,11 +2910,10 @@ class AMP2WellMetadata(WellMetadata):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate'})
 
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     media_ref: Optional[str] = Field(default=None, alias="media_ref", description="""FK to the prepared media processedSample used in this well.
 NULL -> fall back to plate-level AMP2PlateSetupActivity.media_ref.
 Non-null -> this well uses a different media batch.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2PlateSetupActivity', 'AMP2WellMetadata']} })
@@ -18103,11 +18102,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -18257,11 +18255,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -18409,11 +18406,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -18561,11 +18557,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -18714,11 +18709,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -18863,11 +18857,10 @@ class MetagenomicsProduct(ProcessedData):
          'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/metagenomics'})
 
     mg_workflow_step: Optional[MetagenomicsSteps] = Field(default=None, alias="mg_workflow_step", description="""Metagenomics workflow step that produced this product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     provider_name: Optional[ControlledTermValue] = Field(default=None, alias="provider_name", description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     raw_fasta_url: Optional[str] = Field(default=None, alias="raw_fasta_url", description="""URL of raw FASTA file, if available from provider""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     additional_information: Optional[str] = Field(default=None, alias="additional_information", description="""Additional information pertaining to these data, including SP Project ID and Taxon OID""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
@@ -19020,11 +19013,10 @@ class MetagenomicsAnnotationProduct(MetagenomicsProduct):
 
     annotation_database: Optional[AnnotationDatabaseEnum] = Field(default=None, alias="annotation_database", description="""Primary annotation database used (e.g., IMG, KEGG)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Metagenomics_AnnotationProduct']} })
     mg_workflow_step: Optional[MetagenomicsSteps] = Field(default=None, alias="mg_workflow_step", description="""Metagenomics workflow step that produced this product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     provider_name: Optional[ControlledTermValue] = Field(default=None, alias="provider_name", description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     raw_fasta_url: Optional[str] = Field(default=None, alias="raw_fasta_url", description="""URL of raw FASTA file, if available from provider""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     additional_information: Optional[str] = Field(default=None, alias="additional_information", description="""Additional information pertaining to these data, including SP Project ID and Taxon OID""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
@@ -19176,11 +19168,10 @@ class MetagenomicsBinningProduct(MetagenomicsProduct):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/metagenomics'})
 
     mg_workflow_step: Optional[MetagenomicsSteps] = Field(default=None, alias="mg_workflow_step", description="""Metagenomics workflow step that produced this product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     provider_name: Optional[ControlledTermValue] = Field(default=None, alias="provider_name", description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     raw_fasta_url: Optional[str] = Field(default=None, alias="raw_fasta_url", description="""URL of raw FASTA file, if available from provider""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     additional_information: Optional[str] = Field(default=None, alias="additional_information", description="""Additional information pertaining to these data, including SP Project ID and Taxon OID""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
@@ -19333,11 +19324,10 @@ class MetagenomicsGenePhylogenyProduct(MetagenomicsProduct):
 
     gene_family: Optional[str] = Field(default=None, alias="gene_family", description="""Gene family or marker used for the phylogeny (e.g., 16S, ITS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Metagenomics_GenePhylogenyProduct']} })
     mg_workflow_step: Optional[MetagenomicsSteps] = Field(default=None, alias="mg_workflow_step", description="""Metagenomics workflow step that produced this product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     provider_name: Optional[ControlledTermValue] = Field(default=None, alias="provider_name", description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     raw_fasta_url: Optional[str] = Field(default=None, alias="raw_fasta_url", description="""URL of raw FASTA file, if available from provider""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     additional_information: Optional[str] = Field(default=None, alias="additional_information", description="""Additional information pertaining to these data, including SP Project ID and Taxon OID""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
@@ -19524,11 +19514,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -19702,11 +19691,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -19883,11 +19871,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -20064,11 +20051,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -20248,11 +20234,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -20457,11 +20442,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -20643,11 +20627,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -20828,11 +20811,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -21013,11 +20995,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -21216,11 +21197,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -21397,11 +21377,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -21581,11 +21560,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -21767,11 +21745,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -21952,11 +21929,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -22122,11 +22098,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -22323,11 +22298,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -22565,11 +22539,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -22785,11 +22758,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -22980,11 +22952,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -23156,11 +23127,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -23328,11 +23298,10 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -24310,7 +24279,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24420,7 +24389,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: datetime  = Field(default=..., alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24525,7 +24494,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24537,9 +24506,9 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
 class AMP2DataGenerationActivity(PlateDataGenerationActivity):
     """
     AMP2 plate measurement (OD, fluorescence, flow cytometry).
-    analyte_id -> processedSample(type='amp2_96well_plate')
+    analyte -> processedSample(type='amp2_96well_plate')
 
-    Chained via DataProcessingActivity.parent_workflow_id to track
+    Chained via DataProcessingActivity.parent_workflow to track
     multi-timepoint series on the same plate.
 
     v1 origin: plate-general.yaml AMP2DataGenerationActivity
@@ -24639,7 +24608,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24651,7 +24620,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
 class EcoplateDataGenerationActivity(PlateDataGenerationActivity):
     """
     Ecoplate absorbance measurement at a single timepoint.
-    analyte_id -> processedSample(type='ecoplate_plate')
+    analyte -> processedSample(type='ecoplate_plate')
     wavelength_nm typically 590 for Biolog EcoPlates.
 
     v1 origin: plate-general.yaml EcoplateDataGenerationActivity
@@ -24750,7 +24719,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24876,7 +24845,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24972,7 +24941,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25068,7 +25037,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25164,7 +25133,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25261,7 +25230,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25360,7 +25329,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25468,7 +25437,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25565,7 +25534,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25665,7 +25634,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25774,7 +25743,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25870,7 +25839,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25973,7 +25942,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -26030,14 +25999,8 @@ class DataProcessingActivity(ConfiguredBaseModel):
                        'ProjectParticipant',
                        'PersonValue',
                        'zipDownload']} })
-    parent_workflow_id: Optional[str] = Field(default=None, alias="parent_workflow_id", description="""Self-referential FK to the preceding DataProcessingActivity in a chain.
-NULL -> first (or standalone) step.
-Non-null -> this execution directly follows parent_workflow_id.
-Enables single-hop chaining queries; full traversal via linkage_cache.
-
-DDL: ALTER TABLE \"DataProcessingActivity\"
-       ADD COLUMN parent_workflow_id UUID
-       REFERENCES \"DataProcessingActivity\"(id);""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
+    parent_workflow: Optional[str] = Field(default=None, alias="parent_workflow", description="""The preceding DataProcessingActivity in a chain of processing steps.
+Absent for the first (or a standalone) step.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
     workflow_steps: Optional[str] = Field(default=None, alias="workflow_steps", description="""Per-run workflow parameters. Previously annotated TODO JSONB in schema.
 Direction: structured key-value pairs keyed by workflow type.
 Schema for allowed keys TBD per workflow type before full implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
@@ -26121,14 +26084,8 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
                        'ProjectParticipant',
                        'PersonValue',
                        'zipDownload']} })
-    parent_workflow_id: Optional[str] = Field(default=None, alias="parent_workflow_id", description="""Self-referential FK to the preceding DataProcessingActivity in a chain.
-NULL -> first (or standalone) step.
-Non-null -> this execution directly follows parent_workflow_id.
-Enables single-hop chaining queries; full traversal via linkage_cache.
-
-DDL: ALTER TABLE \"DataProcessingActivity\"
-       ADD COLUMN parent_workflow_id UUID
-       REFERENCES \"DataProcessingActivity\"(id);""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
+    parent_workflow: Optional[str] = Field(default=None, alias="parent_workflow", description="""The preceding DataProcessingActivity in a chain of processing steps.
+Absent for the first (or a standalone) step.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
     workflow_steps: Optional[str] = Field(default=None, alias="workflow_steps", description="""Per-run workflow parameters. Previously annotated TODO JSONB in schema.
 Direction: structured key-value pairs keyed by workflow type.
 Schema for allowed keys TBD per workflow type before full implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
@@ -26168,7 +26125,7 @@ Schema for allowed keys TBD per workflow type before full implementation.""", js
 class MetagenomicsDataProcessingActivity(DataProcessingActivity):
     """
     Concrete metagenomics workflow run. Inherits all DataProcessingActivity
-    slots including parent_workflow_id (chain link) and workflow_steps
+    slots including parent_workflow (chain link) and workflow_steps
     (key-value, schema TBD). Specific workflow step type is captured via the
     inherited type attribute (string); expected values: 
     'metagenomics_annotation', 'metagenomics_binning', 'metagenomics_phylogeny'.
@@ -26209,14 +26166,8 @@ class MetagenomicsDataProcessingActivity(DataProcessingActivity):
                        'ProjectParticipant',
                        'PersonValue',
                        'zipDownload']} })
-    parent_workflow_id: Optional[str] = Field(default=None, alias="parent_workflow_id", description="""Self-referential FK to the preceding DataProcessingActivity in a chain.
-NULL -> first (or standalone) step.
-Non-null -> this execution directly follows parent_workflow_id.
-Enables single-hop chaining queries; full traversal via linkage_cache.
-
-DDL: ALTER TABLE \"DataProcessingActivity\"
-       ADD COLUMN parent_workflow_id UUID
-       REFERENCES \"DataProcessingActivity\"(id);""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
+    parent_workflow: Optional[str] = Field(default=None, alias="parent_workflow", description="""The preceding DataProcessingActivity in a chain of processing steps.
+Absent for the first (or a standalone) step.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
     workflow_steps: Optional[str] = Field(default=None, alias="workflow_steps", description="""Per-run workflow parameters. Previously annotated TODO JSONB in schema.
 Direction: structured key-value pairs keyed by workflow type.
 Schema for allowed keys TBD per workflow type before full implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
@@ -26633,7 +26584,7 @@ class Custodian(ConfiguredBaseModel):
                        'ProjectParticipant',
                        'PersonValue',
                        'zipDownload']} })
-    person_id: Optional[str] = Field(default=None, alias="person_id", json_schema_extra = { "linkml_meta": {'domain_of': ['Custodian']} })
+    person: Optional[str] = Field(default=None, alias="person", json_schema_extra = { "linkml_meta": {'domain_of': ['Custodian', 'ProjectParticipant']} })
 
 
 class InstrumentAlternativeIdentifier(ConfiguredBaseModel):
@@ -27639,7 +27590,7 @@ class PlateSetupActivity(HasIncubationConditions, SampleProcessing):
     plate_type: str = Field(default=..., alias="plate_type", description="""Vendor and model of plate (e.g. \"Greiner_96well_flat_bottom\", \"Biolog_EcoPlate\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     plate_barcode: Optional[str] = Field(default=None, alias="plate_barcode", description="""Physical barcode on plate (if different from UUID)""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     setup_date: datetime  = Field(default=..., alias="setup_date", description="""When the plate was physically set up""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
-    setup_operator_id: Optional[str] = Field(default=None, alias="setup_operator_id", description="""Person who set up the plate""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
+    setup_operator: Optional[str] = Field(default=None, alias="setup_operator", description="""Person who set up the plate""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     setup_instrument: Optional[str] = Field(default=None, alias="setup_instrument", description="""Automated liquid handler (e.g. \"Hamilton_STAR\") or \"manual\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     sealing_method: Optional[str] = Field(default=None, alias="sealing_method", description="""How the plate is sealed (e.g. \"BreathEasy_membrane\", \"adhesive_film\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     well_metadata: Optional[list[WellMetadata]] = Field(default=None, alias="well_metadata", description="""Structured per-well metadata array. Format varies by activity subclass:
@@ -27764,11 +27715,11 @@ class AMP2PlateSetupActivity(PlateSetupActivity):
 Maps to Montana's growth_medium (on CultureGrowth) and media_id
 (on plate setup).  Points to processedSample(type=prepared_media)
 produced by an upstream MediaPreparation activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2PlateSetupActivity', 'AMP2WellMetadata']} })
-    cycle_id: Optional[int] = Field(default=None, alias="cycle_id", title="DBTL cycle number", description="""Integer identifying the Design-Build-Test-Learn iteration this plate belongs to. Together with the originating sample_id it uniquely identifies an experiment design across repeated cycles.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2PlateSetupActivity']} })
+    cycle_id: Optional[int] = Field(default=None, alias="cycle_id", title="DBTL cycle number", description="""Integer identifying the Design-Build-Test-Learn iteration this plate belongs to. Together with the originating sample it uniquely identifies an experiment design across repeated cycles.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2PlateSetupActivity']} })
     plate_type: str = Field(default=..., alias="plate_type", description="""Vendor and model of plate (e.g. \"Greiner_96well_flat_bottom\", \"Biolog_EcoPlate\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     plate_barcode: Optional[str] = Field(default=None, alias="plate_barcode", description="""Physical barcode on plate (if different from UUID)""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     setup_date: datetime  = Field(default=..., alias="setup_date", description="""When the plate was physically set up""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
-    setup_operator_id: Optional[str] = Field(default=None, alias="setup_operator_id", description="""Person who set up the plate""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
+    setup_operator: Optional[str] = Field(default=None, alias="setup_operator", description="""Person who set up the plate""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     setup_instrument: Optional[str] = Field(default=None, alias="setup_instrument", description="""Automated liquid handler (e.g. \"Hamilton_STAR\") or \"manual\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     sealing_method: Optional[str] = Field(default=None, alias="sealing_method", description="""How the plate is sealed (e.g. \"BreathEasy_membrane\", \"adhesive_film\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     well_metadata: Optional[list[WellMetadata]] = Field(default=None, alias="well_metadata", description="""Structured per-well metadata array. Format varies by activity subclass:
@@ -27887,7 +27838,7 @@ class EcoplatePlateSetupActivity(PlateSetupActivity):
     plate_type: str = Field(default=..., alias="plate_type", description="""Vendor and model of plate (e.g. \"Greiner_96well_flat_bottom\", \"Biolog_EcoPlate\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     plate_barcode: Optional[str] = Field(default=None, alias="plate_barcode", description="""Physical barcode on plate (if different from UUID)""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     setup_date: datetime  = Field(default=..., alias="setup_date", description="""When the plate was physically set up""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
-    setup_operator_id: Optional[str] = Field(default=None, alias="setup_operator_id", description="""Person who set up the plate""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
+    setup_operator: Optional[str] = Field(default=None, alias="setup_operator", description="""Person who set up the plate""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     setup_instrument: Optional[str] = Field(default=None, alias="setup_instrument", description="""Automated liquid handler (e.g. \"Hamilton_STAR\") or \"manual\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     sealing_method: Optional[str] = Field(default=None, alias="sealing_method", description="""How the plate is sealed (e.g. \"BreathEasy_membrane\", \"adhesive_film\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     well_metadata: Optional[list[WellMetadata]] = Field(default=None, alias="well_metadata", description="""Structured per-well metadata array. Format varies by activity subclass:
@@ -28091,7 +28042,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -28121,9 +28072,9 @@ class SampleStorage(HasTemperatureHold):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'mixins': ['HasTemperatureHold'],
-         'slot_usage': {'sample_id': {'description': 'The sample being stored.',
-                                      'name': 'sample_id',
-                                      'required': True},
+         'slot_usage': {'sample': {'description': 'The sample being stored.',
+                                   'name': 'sample',
+                                   'required': True},
                         'storage_condition': {'description': 'Physical state of the '
                                                              'sample during this '
                                                              'storage period.',
@@ -28134,11 +28085,10 @@ class SampleStorage(HasTemperatureHold):
                                                            'glycerol, DMSO, RNAlater).',
                                             'name': 'substances_used'}}})
 
-    sample_id: str = Field(default=..., alias="sample_id", description="""The sample being stored.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    sample: str = Field(default=..., alias="sample", description="""The sample being stored.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+                       'ProcessedData']} })
     storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""Physical state of the sample during this storage period.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -28300,11 +28250,7 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'zipDownload']} })
     processing_id: str = Field(default=..., alias="processing_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
     step_number: int = Field(default=..., alias="step_number", json_schema_extra = { "linkml_meta": {'domain_of': ['MobilePhaseSegment', 'ProcessingSampleLink']} })
-    sample_id: str = Field(default=..., alias="sample_id", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
-                       'MetagenomicsProduct',
-                       'SampleStorage',
-                       'ProcessedData',
-                       'ProcessingSampleLink']} })
+    sample_id: str = Field(default=..., alias="sample_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
     role: SampleRole = Field(default=..., alias="role", description="""Whether sample_id was consumed by (input_sample) or produced by (output_sample) processing_id.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink', 'ProjectParticipant']} })
 
 
@@ -28338,7 +28284,7 @@ class XRayDataGenerationActivity(DataGenerationActivity):
     Abstract base class for X-ray analytical methods including XRF (elemental),
     XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits
     acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,
-    analyte_id, and other core metadata from DataGenerationActivity.
+    analyte, and other core metadata from DataGenerationActivity.
 
     Concrete subclasses define method-specific measurement parameters.
     Future X-ray methods (e.g., XCT) can extend this class.
@@ -28437,7 +28383,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -28558,7 +28504,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -28682,7 +28628,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -28825,7 +28771,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -28896,14 +28842,8 @@ class XASLCFDataProcessingActivity(DataProcessingActivity):
                        'ProjectParticipant',
                        'PersonValue',
                        'zipDownload']} })
-    parent_workflow_id: Optional[str] = Field(default=None, alias="parent_workflow_id", description="""Self-referential FK to the preceding DataProcessingActivity in a chain.
-NULL -> first (or standalone) step.
-Non-null -> this execution directly follows parent_workflow_id.
-Enables single-hop chaining queries; full traversal via linkage_cache.
-
-DDL: ALTER TABLE \"DataProcessingActivity\"
-       ADD COLUMN parent_workflow_id UUID
-       REFERENCES \"DataProcessingActivity\"(id);""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
+    parent_workflow: Optional[str] = Field(default=None, alias="parent_workflow", description="""The preceding DataProcessingActivity in a chain of processing steps.
+Absent for the first (or a standalone) step.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
     workflow_steps: Optional[str] = Field(default=None, alias="workflow_steps", description="""Per-run workflow parameters. Previously annotated TODO JSONB in schema.
 Direction: structured key-value pairs keyed by workflow type.
 Schema for allowed keys TBD per workflow type before full implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
@@ -29048,7 +28988,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -29164,7 +29104,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -30878,7 +30818,7 @@ class ProjectParticipant(ConfiguredBaseModel):
                        'PersonValue',
                        'zipDownload']} })
     role: NexusRoleEnum = Field(default=..., alias="role", description="""The role of the contributor in the study (e.g., data analysis, writing).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink', 'ProjectParticipant']} })
-    person: str = Field(default=..., alias="person", description="""The person who contributed to the study.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProjectParticipant']} })
+    person: str = Field(default=..., alias="person", description="""The person who contributed to the study.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Custodian', 'ProjectParticipant']} })
 
 
 class DOI(ConfiguredBaseModel):

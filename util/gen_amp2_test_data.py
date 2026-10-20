@@ -148,7 +148,7 @@ def vanilla_well_metadata(pad: int = 6) -> str:
                 lines.append(
                     f'{sp}- {{position: "{pos}", well_type: "sample",'
                     f' replicate_group: "rep_{c}", media_volume_ul: 180.0,'
-                    f' inoculum_volume_ul: 20.0, sample_id: "KT2440-{pos}"}}'
+                    f' inoculum_volume_ul: 20.0, sample: "KT2440-{pos}"}}'
                 )
     return "\n".join(lines)
 
@@ -179,14 +179,14 @@ def complex_well_metadata(pad: int = 6) -> str:
                 lines.append(
                     f'{sp}- {{position: "{pos}", well_type: "sample",'
                     f' media_ref: "{media_ref}", replicate_group: "{rep_group}",'
-                    f' media_volume_ul: 180.0, sample_id: "{strain_arm}-{pos}"}}'
+                    f' media_volume_ul: 180.0, sample: "{strain_arm}-{pos}"}}'
                 )
             else:
                 lines.append(
                     f'{sp}- {{position: "{pos}", well_type: "sample",'
                     f' media_ref: "{media_ref}", replicate_group: "{rep_group}",'
                     f' media_volume_ul: 180.0, inoculum_volume_ul: 20.0,'
-                    f' sample_id: "{strain_arm}-{pos}"}}'
+                    f' sample: "{strain_arm}-{pos}"}}'
                 )
     return "\n".join(lines)
 
@@ -339,7 +339,7 @@ plate_setup_activities:
     plate_type: "Greiner_96well_flat_bottom"
     plate_barcode: "EPix1"
     # [V2] setup_date intentionally omitted — required field missing
-    setup_operator_id: "kapu336"
+    setup_operator: "kapu336"
     setup_instrument: "manual"
     sealing_method: "BreathEasy_membrane"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
@@ -630,7 +630,7 @@ plate_setup_activities:
     plate_type: "Greiner_96well_flat_bottom"
     plate_barcode: "EPix1-complex"
     setup_date: "2026-03-24T15:30:00"
-    setup_operator_id: "kapu336"
+    setup_operator: "kapu336"
     setup_instrument: "manual"
     sealing_method: "BreathEasy_membrane"
     # No plate-level media_ref — per-well overrides used instead
@@ -759,7 +759,7 @@ def write_vanilla_csvs(out_dir: Path) -> None:
     # 04 plate_setup
     write_csv(out_dir / "04_plate_setup.csv",
               ["id", "activity_type", "plate_type", "plate_barcode", "setup_date",
-               "setup_operator_id", "setup_instrument", "sealing_method",
+               "setup_operator", "setup_instrument", "sealing_method",
                "media_ref", "input_sample_id", "output_sample_id",
                "violation_note"],
               [{"id": "urn:amp2:act:plate-setup-EPix1-001",
@@ -767,7 +767,7 @@ def write_vanilla_csvs(out_dir: Path) -> None:
                 "plate_type": "Greiner_96well_flat_bottom",
                 "plate_barcode": "EPix1",
                 "setup_date": "",           # [V2] intentionally blank
-                "setup_operator_id": "kapu336",
+                "setup_operator": "kapu336",
                 "setup_instrument": "manual",
                 "sealing_method": "BreathEasy_membrane",
                 "media_ref": "urn:amp2:ps:M9-glucose-batch-001",
@@ -784,15 +784,15 @@ def write_vanilla_csvs(out_dir: Path) -> None:
                 wm_rows.append({"plate_barcode": "EPix1", "position": pos,
                                  "well_type": "blank", "replicate_group": "",
                                  "media_volume_ul": 200.0, "inoculum_volume_ul": 0.0,
-                                 "sample_id": "", "media_ref_override": ""})
+                                 "sample": "", "media_ref_override": ""})
             else:
                 wm_rows.append({"plate_barcode": "EPix1", "position": pos,
                                  "well_type": "sample", "replicate_group": f"rep_{c}",
                                  "media_volume_ul": 180.0, "inoculum_volume_ul": 20.0,
-                                 "sample_id": f"KT2440-{pos}", "media_ref_override": ""})
+                                 "sample": f"KT2440-{pos}", "media_ref_override": ""})
     write_csv(out_dir / "05_well_metadata.csv",
               ["plate_barcode", "position", "well_type", "replicate_group",
-               "media_volume_ul", "inoculum_volume_ul", "sample_id",
+               "media_volume_ul", "inoculum_volume_ul", "sample",
                "media_ref_override"],
               wm_rows)
 
@@ -962,14 +962,14 @@ def write_complex_csvs(out_dir: Path) -> None:
     # 04 plate_setup
     write_csv(out_dir / "04_plate_setup.csv",
               ["id", "activity_type", "plate_type", "plate_barcode", "setup_date",
-               "setup_operator_id", "setup_instrument", "sealing_method",
+               "setup_operator", "setup_instrument", "sealing_method",
                "media_ref", "input_sample_id", "output_sample_id", "violation_note"],
               [{"id": "urn:amp2:act:plate-setup-complex-001",
                 "activity_type": "AMP2PlateSetupActivity",
                 "plate_type": "Greiner_96well_flat_bottom",
                 "plate_barcode": "EPix1-complex",
                 "setup_date": "2026-03-24T15:30:00",
-                "setup_operator_id": "kapu336",
+                "setup_operator": "kapu336",
                 "setup_instrument": "manual",
                 "sealing_method": "BreathEasy_membrane",
                 "media_ref": "",   # no plate-level media; per-well overrides used
@@ -990,7 +990,7 @@ def write_complex_csvs(out_dir: Path) -> None:
                                  "well_type": "blank", "replicate_group": "",
                                  "media_ref_override": "",
                                  "media_volume_ul": 200.0, "inoculum_volume_ul": 0.0,
-                                 "sample_id": "", "strain_arm": "",
+                                 "sample": "", "strain_arm": "",
                                  "violation_note": ""})
             else:
                 media_ref = m9_id if c <= 6 else lb_id
@@ -1001,13 +1001,13 @@ def write_complex_csvs(out_dir: Path) -> None:
                                  "well_type": "sample", "replicate_group": f"rep_{c}",
                                  "media_ref_override": media_ref,
                                  "media_volume_ul": 180.0, "inoculum_volume_ul": vol,
-                                 "sample_id": f"{strain_arm}-{pos}",
+                                 "sample": f"{strain_arm}-{pos}",
                                  "strain_arm": strain_arm,
                                  "violation_note": note})
     write_csv(out_dir / "05_well_metadata.csv",
               ["plate_barcode", "position", "well_type", "replicate_group",
                "media_ref_override", "media_volume_ul", "inoculum_volume_ul",
-               "sample_id", "strain_arm", "violation_note"],
+               "sample", "strain_arm", "violation_note"],
               wm_rows)
 
     # 06 data_generation_activities (includes duplicate t=8h [C6])

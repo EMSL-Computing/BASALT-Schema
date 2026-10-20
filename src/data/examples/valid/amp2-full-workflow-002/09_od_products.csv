@@ -1,4 +1,4 @@
-id,product_type,name,was_generated_by,plate_barcode,analyte_id,timepoint_label,wavelength_nm,plate_average,blank_mean,cv_percent,plate_reader_model,flagged_well_count
+id,product_type,name,was_generated_by,plate_barcode,analyte,timepoint_label,wavelength_nm,plate_average,blank_mean,cv_percent,plate_reader_model,flagged_well_count
 urn:amp2:data:od-product-AMP2-P001-t00h,AMP2ODProduct,AMP2-P001 OD600 product t=0h,urn:amp2:activity:od-read-AMP2-P001-t00h,AMP2-P001,urn:amp2:processed-sample:plate-AMP2-P001,t=0h,600,0.0827,0.0385,8.34,BioTek Epoch2,0
 urn:amp2:data:od-product-AMP2-P001-t02h,AMP2ODProduct,AMP2-P001 OD600 product t=2h,urn:amp2:activity:od-read-AMP2-P001-t02h,AMP2-P001,urn:amp2:processed-sample:plate-AMP2-P001,t=2h,600,0.0925,0.0392,8.57,BioTek Epoch2,0
 urn:amp2:data:od-product-AMP2-P001-t04h,AMP2ODProduct,AMP2-P001 OD600 product t=4h,urn:amp2:activity:od-read-AMP2-P001-t04h,AMP2-P001,urn:amp2:processed-sample:plate-AMP2-P001,t=4h,600,0.1695,0.0401,23.96,BioTek Epoch2,0

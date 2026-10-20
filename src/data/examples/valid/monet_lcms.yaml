@@ -466,7 +466,7 @@
     description: LCMS analysis of 65432_1_EX_TOP, HILIC positive mode
     version: v1.0
     sequence_order: 1
-    analyte_id: processed_sample_11_uuid
+    analyte: processed_sample_11_uuid
     analyte_category: metabolite
     acquisition_start_time: 2024-09-17T14:22:00Z
     acquisition_end_time: 2024-09-17T14:52:00Z
@@ -481,7 +481,7 @@
     description: LCMS analysis of 65432_1_EX_TOP, HILIC negative mode
     version: v1.0
     sequence_order: 1
-    analyte_id: processed_sample_11_uuid
+    analyte: processed_sample_11_uuid
     analyte_category: metabolite
     acquisition_start_time: 2024-09-17T14:22:00Z
     acquisition_end_time: 2024-09-17T14:52:00Z
@@ -496,7 +496,7 @@
     description: LCMS analysis of 65432_1_EX_BTM, HILIC positive mode
     version: v1.0
     sequence_order: 1
-    analyte_id: processed_sample_12_uuid
+    analyte: processed_sample_12_uuid
     analyte_category: metabolite
     acquisition_start_time: 2024-09-17T14:22:00Z
     acquisition_end_time: 2024-09-17T14:52:00Z
@@ -511,7 +511,7 @@
     description: LCMS analysis of 65432_1_EX_BTM, HILIC negative mode
     version: v1.0
     sequence_order: 1
-    analyte_id: processed_sample_12_uuid
+    analyte: processed_sample_12_uuid
     analyte_category: metabolite
     acquisition_start_time: 2024-09-17T14:22:00Z
     acquisition_end_time: 2024-09-17T14:52:00Z
@@ -833,7 +833,7 @@
     software_version: 2.0.0
     software_poc:
     execution_resource: emsl_tahoma
-    parent_workflow_id:
+    parent_workflow:
     workflow_steps:
     uses_calibration:
     uses_raw_ms_data: instrument_data_hilic_pos_1_uuid
@@ -848,7 +848,7 @@
     software_version: 2.0.0
     software_poc:
     execution_resource: emsl_tahoma
-    parent_workflow_id:
+    parent_workflow:
     workflow_steps:
     uses_calibration:
     uses_raw_ms_data: instrument_data_hilic_neg_1_uuid
@@ -863,7 +863,7 @@
     software_version: 2.0.0
     software_poc:
     execution_resource: emsl_tahoma
-    parent_workflow_id:
+    parent_workflow:
     workflow_steps:
     uses_calibration:
     uses_raw_ms_data: instrument_data_hilic_pos_2_uuid
@@ -878,7 +878,7 @@
     software_version: 2.0.0
     software_poc:
     execution_resource: emsl_tahoma
-    parent_workflow_id:
+    parent_workflow:
     workflow_steps:
     uses_calibration:
     uses_raw_ms_data: instrument_data_hilic_neg_2_uuid
@@ -900,7 +900,7 @@
     md5checksum: 4f8a1d6b9e2c5a0d3f6b9c1e4a7d0b2f
     summary_metrics:
     lims_barcode:
-    sample_id: sample_name
+    sample: sample_name
     results_from_ms_processing: ms_dataproc_hilic_pos_1_uuid
 
   - id: molid_hilic_neg_1_uuid
@@ -917,7 +917,7 @@
     md5checksum: 6a0c3e8b1d4f7a2c5e8b0d3f6a9c2e5b
     summary_metrics:
     lims_barcode:
-    sample_id: 65432_1_EX
+    sample: 65432_1_EX
     results_from_ms_processing: ms_dataproc_hilic_neg_1_uuid
 
   - id: molid_hilic_pos_2_uuid
@@ -934,7 +934,7 @@
     md5checksum: 8c2e5b0d3f6a9c2e5b8d1f4a7c0e3b6d
     summary_metrics:
     lims_barcode:
-    sample_id: 65432_1_EX
+    sample: 65432_1_EX
     results_from_ms_processing: ms_dataproc_hilic_pos_2_uuid
 
   - id: molid_hilic_neg_2_uuid
@@ -951,6 +951,6 @@
     md5checksum: 0e3b6d9c2f5a8b1e4d7a0c3f6b9e2c5a
     summary_metrics:
     lims_barcode:
-    sample_id: 65432_1_EX
+    sample: 65432_1_EX
     results_from_ms_processing: ms_dataproc_hilic_neg_2_uuid
 

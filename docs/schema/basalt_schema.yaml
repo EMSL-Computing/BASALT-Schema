@@ -3552,13 +3552,12 @@ slots:
     domain_of:
     - MassSpectrometryDataGenerationActivity
     range: AnalyteCategoryEnum
-  analyte_id:
-    name: analyte_id
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/analyte_id
-    description: FK reference to a ProcessedSample representing the substance analyzed
-      in this activity.
+  analyte:
+    name: analyte
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/analyte
+    description: The ProcessedSample representing the substance analyzed in this activity.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:analyte_id
+    slot_uri: basalt_schema:analyte
     owner: DataGenerationActivity
     domain_of:
     - DataGenerationActivity
@@ -4462,8 +4461,8 @@ slots:
     name: cycle_id
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/cycle_id
     description: Integer identifying the Design-Build-Test-Learn iteration this plate
-      belongs to. Together with the originating sample_id it uniquely identifies an
-      experiment design across repeated cycles.
+      belongs to. Together with the originating sample it uniquely identifies an experiment
+      design across repeated cycles.
     title: DBTL cycle number
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:cycle_id
@@ -7499,17 +7498,14 @@ slots:
     domain_of:
     - HasIncubationConditions
     range: float
-  parent_workflow_id:
-    name: parent_workflow_id
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/parent_workflow_id
-    description: "Self-referential FK to the preceding DataProcessingActivity in a\
-      \ chain.\nNULL -> first (or standalone) step.\nNon-null -> this execution directly\
-      \ follows parent_workflow_id.\nEnables single-hop chaining queries; full traversal\
-      \ via linkage_cache.\n\nDDL: ALTER TABLE \"DataProcessingActivity\"\n      \
-      \ ADD COLUMN parent_workflow_id UUID\n       REFERENCES \"DataProcessingActivity\"\
-      (id);"
+  parent_workflow:
+    name: parent_workflow
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/parent_workflow
+    description: 'The preceding DataProcessingActivity in a chain of processing steps.
+
+      Absent for the first (or a standalone) step.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:parent_workflow_id
+    slot_uri: basalt_schema:parent_workflow
     owner: DataProcessingActivity
     domain_of:
     - DataProcessingActivity
@@ -8917,12 +8913,12 @@ slots:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:sample_end_time
     range: string
-  sample_id:
-    name: sample_id
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample_id
+  sample:
+    name: sample
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample
     description: Link back to the originating sample
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:sample_id
+    slot_uri: basalt_schema:sample
     owner: SampleStorage
     domain_of:
     - ProcessedData
@@ -10383,12 +10379,12 @@ slots:
     domain_of:
     - PlateSetupActivity
     range: string
-  setup_operator_id:
-    name: setup_operator_id
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/setup_operator_id
+  setup_operator:
+    name: setup_operator
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/setup_operator
     description: Person who set up the plate
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:setup_operator_id
+    slot_uri: basalt_schema:setup_operator
     owner: PlateSetupActivity
     domain_of:
     - PlateSetupActivity
@@ -12658,11 +12654,11 @@ slots:
     - Custodian
     range: uuid
     required: true
-  custodian__person_id:
-    name: custodian__person_id
+  custodian__person:
+    name: custodian__person
     from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:person_id
-    alias: person_id
+    slot_uri: basalt_schema:person
+    alias: person
     owner: Custodian
     domain_of:
     - Custodian
@@ -19174,20 +19170,20 @@ slots:
     is_usage_slot: true
     usage_slot_name: storage_condition
     range: StorageConditionEnum
-  SampleStorage_sample_id:
-    name: SampleStorage_sample_id
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample_id
+  SampleStorage_sample:
+    name: SampleStorage_sample
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample
     description: The sample being stored.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    is_a: sample_id
+    is_a: sample
     domain: SampleStorage
-    slot_uri: basalt_schema:sample_id
-    alias: sample_id
+    slot_uri: basalt_schema:sample
+    alias: sample
     owner: SampleStorage
     domain_of:
     - SampleStorage
     is_usage_slot: true
-    usage_slot_name: sample_id
+    usage_slot_name: sample
     range: Sample
     required: true
   SampleStorage_substances_used:
@@ -19545,7 +19541,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     class_uri: basalt_schema:ProcessedData
   InstrumentData:
     name: InstrumentData
@@ -19641,7 +19637,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -19658,7 +19654,7 @@ classes:
     abstract: true
     slots:
     - id
-    - parent_workflow_id
+    - parent_workflow
     - workflow_steps
     - DataProcessingActivity_description
     - dataProcessingActivity__started_at_time
@@ -19903,14 +19899,14 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
     - custodian__id
-    - custodian__person_id
+    - custodian__person
     attributes:
       id:
         name: id
         identifier: true
         range: uuid
-      person_id:
-        name: person_id
+      person:
+        name: person
         range: PersonValue
     class_uri: basalt_schema:Custodian
   InstrumentAlternativeIdentifier:
@@ -20151,12 +20147,12 @@ classes:
     description: "Abstract base class for X-ray analytical methods including XRF (elemental),\n\
       XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits\n\
       acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,\n\
-      analyte_id, and other core metadata from DataGenerationActivity.\n\nConcrete\
-      \ subclasses define method-specific measurement parameters.\nFuture X-ray methods\
-      \ (e.g., XCT) can extend this class.\n\nShared patterns:\n  - Direct instrument\
-      \ output (no computational workflow) is typical for XRF\n  - XRD may optionally\
-      \ link to DataProcessingActivity for Rietveld refinement\n  - XAS acquires raw\
-      \ sweep files as XASInstrumentData, which are later fitted\n    by an XASLCFDataProcessingActivity\
+      analyte, and other core metadata from DataGenerationActivity.\n\nConcrete subclasses\
+      \ define method-specific measurement parameters.\nFuture X-ray methods (e.g.,\
+      \ XCT) can extend this class.\n\nShared patterns:\n  - Direct instrument output\
+      \ (no computational workflow) is typical for XRF\n  - XRD may optionally link\
+      \ to DataProcessingActivity for Rietveld refinement\n  - XAS acquires raw sweep\
+      \ files as XASInstrumentData, which are later fitted\n    by an XASLCFDataProcessingActivity\
       \ to yield an XASLCFProduct\n  - protocol_url should link to vendor SOP or EMSL\
       \ internal protocol documentation"
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -20167,7 +20163,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -20198,7 +20194,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -20230,7 +20226,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -20258,7 +20254,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -20316,7 +20312,7 @@ classes:
     is_a: DataProcessingActivity
     slots:
     - id
-    - parent_workflow_id
+    - parent_workflow
     - workflow_steps
     - DataProcessingActivity_description
     - dataProcessingActivity__started_at_time
@@ -20360,7 +20356,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -20386,7 +20382,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -20486,7 +20482,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - results_from_ms_processing
     class_uri: basalt_schema:MassSpectrometryDataProduct
   MSImageProduct:
@@ -20512,7 +20508,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - results_from_ms_processing
     class_uri: basalt_schema:MSImageProduct
   MolecularIdentificationProduct:
@@ -20538,7 +20534,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - results_from_ms_processing
     class_uri: basalt_schema:MolecularIdentificationProduct
   MetaproteomicsProduct:
@@ -20563,7 +20559,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - results_from_ms_processing
     - metaproteomics_result_type
     class_uri: basalt_schema:MetaproteomicsProduct
@@ -20578,7 +20574,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - instrument_used
@@ -20740,7 +20736,7 @@ classes:
     is_a: DataProcessingActivity
     slots:
     - id
-    - parent_workflow_id
+    - parent_workflow
     - workflow_steps
     - DataProcessingActivity_description
     - dataProcessingActivity__started_at_time
@@ -21044,7 +21040,7 @@ classes:
     - plate_type
     - plate_barcode
     - setup_date
-    - setup_operator_id
+    - setup_operator
     - setup_instrument
     - sealing_method
     - well_metadata
@@ -21078,7 +21074,7 @@ classes:
     - plate_type
     - plate_barcode
     - setup_date
-    - setup_operator_id
+    - setup_operator
     - setup_instrument
     - sealing_method
     - well_metadata
@@ -21118,7 +21114,7 @@ classes:
     - plate_type
     - plate_barcode
     - setup_date
-    - setup_operator_id
+    - setup_operator
     - setup_instrument
     - sealing_method
     - well_metadata
@@ -21146,7 +21142,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21160,10 +21156,10 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/AMP2DataGenerationActivity
     description: 'AMP2 plate measurement (OD, fluorescence, flow cytometry).
 
-      analyte_id -> processedSample(type=''amp2_96well_plate'')
+      analyte -> processedSample(type=''amp2_96well_plate'')
 
 
-      Chained via DataProcessingActivity.parent_workflow_id to track
+      Chained via DataProcessingActivity.parent_workflow to track
 
       multi-timepoint series on the same plate.
 
@@ -21176,7 +21172,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21192,7 +21188,7 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/EcoplateDataGenerationActivity
     description: 'Ecoplate absorbance measurement at a single timepoint.
 
-      analyte_id -> processedSample(type=''ecoplate_plate'')
+      analyte -> processedSample(type=''ecoplate_plate'')
 
       wavelength_nm typically 590 for Biolog EcoPlates.
 
@@ -21205,7 +21201,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21425,7 +21421,7 @@ classes:
     - wellMetadata__position
     - wellMetadata__well_type
     - wellMetadata__replicate_group
-    - sample_id
+    - sample
     - aMP2WellMetadata__media_ref
     - aMP2WellMetadata__media_volume_ul
     - aMP2WellMetadata__inoculum_volume_ul
@@ -21549,7 +21545,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21620,7 +21616,7 @@ classes:
     - summary_metrics
     - lims_barcode
     - mg_workflow_step
-    - sample_id
+    - sample
     - provider_name
     - raw_fasta_url
     - additional_information
@@ -21650,7 +21646,7 @@ classes:
     - summary_metrics
     - lims_barcode
     - mg_workflow_step
-    - sample_id
+    - sample
     - provider_name
     - raw_fasta_url
     - additional_information
@@ -21680,7 +21676,7 @@ classes:
     - summary_metrics
     - lims_barcode
     - mg_workflow_step
-    - sample_id
+    - sample
     - provider_name
     - raw_fasta_url
     - additional_information
@@ -21710,7 +21706,7 @@ classes:
     - summary_metrics
     - lims_barcode
     - mg_workflow_step
-    - sample_id
+    - sample
     - provider_name
     - raw_fasta_url
     - additional_information
@@ -21720,7 +21716,7 @@ classes:
     name: MetagenomicsDataProcessingActivity
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/MetagenomicsDataProcessingActivity
     description: "Concrete metagenomics workflow run. Inherits all DataProcessingActivity\n\
-      slots including parent_workflow_id (chain link) and workflow_steps\n(key-value,\
+      slots including parent_workflow (chain link) and workflow_steps\n(key-value,\
       \ schema TBD). Specific workflow step type is captured via the\ninherited type\
       \ attribute (string); expected values: \n'metagenomics_annotation', 'metagenomics_binning',\
       \ 'metagenomics_phylogeny'."
@@ -21728,7 +21724,7 @@ classes:
     is_a: DataProcessingActivity
     slots:
     - id
-    - parent_workflow_id
+    - parent_workflow
     - workflow_steps
     - DataProcessingActivity_description
     - dataProcessingActivity__started_at_time
@@ -21748,7 +21744,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21766,7 +21762,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21786,7 +21782,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21814,7 +21810,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21832,7 +21828,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21856,7 +21852,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21884,7 +21880,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21932,7 +21928,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21959,7 +21955,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21977,7 +21973,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -22028,7 +22024,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -22046,7 +22042,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyte
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -22112,7 +22108,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - bulkDensityProduct__bulk_density
     - bulkDensityProduct__flag
@@ -22148,7 +22144,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - elementalAnalysisProduct__total_carbon
     - elementalAnalysisProduct__total_nitrogen
@@ -22206,7 +22202,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h
     - enzymeProduct__flag
@@ -22240,7 +22236,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - gWCMoistureProduct__gwc_percent
     - gWCMoistureProduct__flag
@@ -22275,7 +22271,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - hydraulicPropertiesProduct__alpha
     - hydraulicPropertiesProduct__n
@@ -22332,7 +22328,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - ionsAnalysisProduct__sulfate
     - ionsAnalysisProduct__boron
@@ -22456,7 +22452,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - replicate
     - produced_by_toctn_run
@@ -22518,7 +22514,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - replicate
     - microbialBiomassProduct__mbc
@@ -22579,7 +22575,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - replicate
     - nitrogenAnalysisProduct__no3_n
@@ -22640,7 +22636,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - replicate
     - phosphorusAnalysisProduct__extraction_method
@@ -22686,7 +22682,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - respirationProduct__respiration_co2_c_ug_per_g
     - respirationProduct__flag
@@ -22723,7 +22719,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - textureProduct__sand_pct
     - textureProduct__silt_pct
@@ -22767,7 +22763,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - replicate
     - produced_by_toctn_run
@@ -22827,7 +22823,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - pHProduct__ph
     - pHProduct__flag
@@ -22874,7 +22870,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     class_uri: basalt_schema:XRayDataProduct
   XCTProduct:
     name: XCTProduct
@@ -22898,7 +22894,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - xCTProduct__roi_x_voxel
     - xCTProduct__roi_y_voxel
@@ -23101,7 +23097,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - xRFElementalProduct__cl_mg_per_kg
     - xRFElementalProduct__v_mg_per_kg
@@ -23386,7 +23382,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - xRDPhaseProduct__quartz_percent
     - xRDPhaseProduct__albite_percent
@@ -23681,7 +23677,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - measure_type
     - results_from_xas_processing
     - xas_filename
@@ -23820,7 +23816,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - produced_by_uv_run
     - compound_name
     - retention_time_min
@@ -23854,7 +23850,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - sample
     - produced_by_ri_run
     - compound_name
     - weight_percent
@@ -26076,7 +26072,7 @@ classes:
     mixins:
     - HasTemperatureHold
     slots:
-    - SampleStorage_sample_id
+    - SampleStorage_sample
     - SampleStorage_storage_condition
     - storage_condition_other
     - SampleStorage_substances_used
@@ -26090,8 +26086,8 @@ classes:
       storage_condition:
         name: storage_condition
         description: Physical state of the sample during this storage period.
-      sample_id:
-        name: sample_id
+      sample:
+        name: sample
         description: The sample being stored.
         required: true
       substances_used:
@@ -27292,6 +27288,6 @@ classes:
         - descendant_id
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-10-20T15:46:57'
-source_file_size: 21664
-generation_date: '2026-10-20T15:47:43'
+source_file_date: '2026-10-20T15:49:08'
+source_file_size: 21649
+generation_date: '2026-10-20T15:51:31'
