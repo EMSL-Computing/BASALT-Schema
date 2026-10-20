@@ -331,12 +331,12 @@ classes:
     - I'm only including this in case we need it to sync up with L7 in some way
 
   Custodian:
+    slots:
+      - person
     attributes:
       id:
         identifier: true
         range: uuid
-      person:
-        range: PersonValue
 
   InstrumentAlternativeIdentifier:
     attributes:

@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-20T15:54:43
+# Generation date: 2026-10-20T16:12:52
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -13462,8 +13462,8 @@ class ProjectParticipant(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ProjectParticipant
 
     id: Union[str, ProjectParticipantId] = None
-    role: Union[str, "NexusRoleEnum"] = None
     person: Union[str, PersonValueId] = None
+    role: Union[str, "NexusRoleEnum"] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -13471,15 +13471,15 @@ class ProjectParticipant(YAMLRoot):
         if not isinstance(self.id, ProjectParticipantId):
             self.id = ProjectParticipantId(self.id)
 
-        if self._is_empty(self.role):
-            self.MissingRequiredField("role")
-        if not isinstance(self.role, NexusRoleEnum):
-            self.role = NexusRoleEnum(self.role)
-
         if self._is_empty(self.person):
             self.MissingRequiredField("person")
         if not isinstance(self.person, PersonValueId):
             self.person = PersonValueId(self.person)
+
+        if self._is_empty(self.role):
+            self.MissingRequiredField("role")
+        if not isinstance(self.role, NexusRoleEnum):
+            self.role = NexusRoleEnum(self.role)
 
         super().__post_init__(**kwargs)
 
@@ -17272,6 +17272,9 @@ slots.peak_percent_area = Slot(uri=BASALT_SCHEMA.peak_percent_area, name="peak_p
 slots.peak_height = Slot(uri=BASALT_SCHEMA.peak_height, name="peak_height", curie=BASALT_SCHEMA.curie('peak_height'),
                    model_uri=BASALT_SCHEMA.peak_height, domain=None, range=Optional[float])
 
+slots.person = Slot(uri=BASALT_SCHEMA.person, name="person", curie=BASALT_SCHEMA.curie('person'),
+                   model_uri=BASALT_SCHEMA.person, domain=None, range=Optional[Union[str, PersonValueId]])
+
 slots.perturbation = Slot(uri=BASALT_SCHEMA.perturbation, name="perturbation", curie=BASALT_SCHEMA.curie('perturbation'),
                    model_uri=BASALT_SCHEMA.perturbation, domain=None, range=Optional[str])
 
@@ -18451,9 +18454,6 @@ slots.containerAxis__values = Slot(uri=BASALT_SCHEMA.values, name="containerAxis
 slots.custodian__id = Slot(uri=BASALT_SCHEMA.id, name="custodian__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.custodian__id, domain=None, range=URIRef)
 
-slots.custodian__person = Slot(uri=BASALT_SCHEMA.person, name="custodian__person", curie=BASALT_SCHEMA.curie('person'),
-                   model_uri=BASALT_SCHEMA.custodian__person, domain=None, range=Optional[Union[str, PersonValueId]])
-
 slots.instrumentAlternativeIdentifier__id = Slot(uri=BASALT_SCHEMA.id, name="instrumentAlternativeIdentifier__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.instrumentAlternativeIdentifier__id, domain=None, range=URIRef)
 
@@ -19423,9 +19423,6 @@ slots.projectParticipant__id = Slot(uri=BASALT_SCHEMA.id, name="projectParticipa
 slots.projectParticipant__role = Slot(uri=BASALT_SCHEMA.role, name="projectParticipant__role", curie=BASALT_SCHEMA.curie('role'),
                    model_uri=BASALT_SCHEMA.projectParticipant__role, domain=None, range=Union[str, "NexusRoleEnum"])
 
-slots.projectParticipant__person = Slot(uri=BASALT_SCHEMA.person, name="projectParticipant__person", curie=BASALT_SCHEMA.curie('person'),
-                   model_uri=BASALT_SCHEMA.projectParticipant__person, domain=None, range=Union[str, PersonValueId])
-
 slots.dOI__doi_value = Slot(uri=BASALT_SCHEMA.doi_value, name="dOI__doi_value", curie=BASALT_SCHEMA.curie('doi_value'),
                    model_uri=BASALT_SCHEMA.dOI__doi_value, domain=None, range=Union[str, URIorCURIE])
 
@@ -20013,3 +20010,6 @@ slots.FiltrationProcess_volume_ml = Slot(uri=BASALT_SCHEMA.volume_ml, name="Filt
 
 slots.Study_external_identifiers = Slot(uri=BASALT_SCHEMA.external_identifiers, name="Study_external_identifiers", curie=BASALT_SCHEMA.curie('external_identifiers'),
                    model_uri=BASALT_SCHEMA.Study_external_identifiers, domain=Study, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+
+slots.ProjectParticipant_person = Slot(uri=BASALT_SCHEMA.person, name="ProjectParticipant_person", curie=BASALT_SCHEMA.curie('person'),
+                   model_uri=BASALT_SCHEMA.ProjectParticipant_person, domain=ProjectParticipant, range=Union[str, PersonValueId])

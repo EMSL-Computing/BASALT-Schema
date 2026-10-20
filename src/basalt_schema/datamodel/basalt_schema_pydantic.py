@@ -26534,6 +26534,7 @@ class ContainerAxis(ConfiguredBaseModel):
 class Custodian(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema'})
 
+    person: Optional[str] = Field(default=None, description="""A person associated with this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Custodian', 'ProjectParticipant']} })
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -26568,7 +26569,6 @@ class Custodian(ConfiguredBaseModel):
                        'ProjectParticipant',
                        'PersonValue',
                        'zipDownload']} })
-    person: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Custodian', 'ProjectParticipant']} })
 
 
 class InstrumentAlternativeIdentifier(ConfiguredBaseModel):
@@ -30771,8 +30771,13 @@ class ProjectParticipant(ConfiguredBaseModel):
     """
     A record of a person and their role on an EMSL project.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/study'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/study',
+         'slot_usage': {'person': {'description': 'The person who contributed to the '
+                                                  'study.',
+                                   'name': 'person',
+                                   'required': True}}})
 
+    person: str = Field(default=..., description="""The person who contributed to the study.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Custodian', 'ProjectParticipant']} })
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -30808,7 +30813,6 @@ class ProjectParticipant(ConfiguredBaseModel):
                        'PersonValue',
                        'zipDownload']} })
     role: NexusRoleEnum = Field(default=..., description="""The role of the contributor in the study (e.g., data analysis, writing).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink', 'ProjectParticipant']} })
-    person: str = Field(default=..., description="""The person who contributed to the study.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Custodian', 'ProjectParticipant']} })
 
 
 class DOI(ConfiguredBaseModel):

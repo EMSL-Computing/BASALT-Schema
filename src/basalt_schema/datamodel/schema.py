@@ -310,14 +310,14 @@ class Custodian(Base):
     """
     __tablename__ = 'Custodian'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     person = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"Custodian(id={self.id},person={self.person},)"
+        return f"Custodian(person={self.person},id={self.id},)"
 
 
 
@@ -1404,15 +1404,15 @@ class ProjectParticipant(Base):
     """
     __tablename__ = 'ProjectParticipant'
 
+    person = Column(UUID(), ForeignKey('PersonValue.id'), nullable=False )
     id = Column(UUID(), primary_key=True, nullable=False )
     role = Column(Enum('Principal Investigator', 'Co-Investigator', 'Team Member', 'Integrated Research Platform Lead', 'Administrative Coordinator', 'Project Manager', 'Metadata POC', 'Science Lead', 'Science POC', name='NexusRoleEnum'), nullable=False )
-    person = Column(UUID(), ForeignKey('PersonValue.id'), nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"ProjectParticipant(id={self.id},role={self.role},person={self.person},)"
+        return f"ProjectParticipant(person={self.person},id={self.id},role={self.role},)"
 
 
 

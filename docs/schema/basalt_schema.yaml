@@ -7611,6 +7611,17 @@ slots:
     domain_of:
     - UVSpectroscopyProduct
     range: float
+  person:
+    name: person
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/person
+    description: A person associated with this record.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:person
+    owner: ProjectParticipant
+    domain_of:
+    - Custodian
+    - ProjectParticipant
+    range: PersonValue
   perturbation:
     name: perturbation
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/perturbation
@@ -12648,15 +12659,6 @@ slots:
     - Custodian
     range: uuid
     required: true
-  custodian__person:
-    name: custodian__person
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:person
-    alias: person
-    owner: Custodian
-    domain_of:
-    - Custodian
-    range: PersonValue
   instrumentAlternativeIdentifier__id:
     name: instrumentAlternativeIdentifier__id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -15956,17 +15958,6 @@ slots:
     domain_of:
     - ProjectParticipant
     range: NexusRoleEnum
-    required: true
-  projectParticipant__person:
-    name: projectParticipant__person
-    description: The person who contributed to the study.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
-    slot_uri: basalt_schema:person
-    alias: person
-    owner: ProjectParticipant
-    domain_of:
-    - ProjectParticipant
-    range: PersonValue
     required: true
   dOI__doi_value:
     name: dOI__doi_value
@@ -19455,6 +19446,22 @@ slots:
     usage_slot_name: external_identifiers
     range: uriorcurie
     multivalued: true
+  ProjectParticipant_person:
+    name: ProjectParticipant_person
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/person
+    description: The person who contributed to the study.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: person
+    domain: ProjectParticipant
+    slot_uri: basalt_schema:person
+    alias: person
+    owner: ProjectParticipant
+    domain_of:
+    - ProjectParticipant
+    is_usage_slot: true
+    usage_slot_name: person
+    range: PersonValue
+    required: true
 classes:
   Activity:
     name: Activity
@@ -19906,16 +19913,13 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Custodian
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
+    - person
     - custodian__id
-    - custodian__person
     attributes:
       id:
         name: id
         identifier: true
         range: uuid
-      person:
-        name: person
-        range: PersonValue
     class_uri: basalt_schema:Custodian
   InstrumentAlternativeIdentifier:
     name: InstrumentAlternativeIdentifier
@@ -26994,9 +26998,14 @@ classes:
     description: A record of a person and their role on an EMSL project.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     slots:
+    - ProjectParticipant_person
     - projectParticipant__id
     - projectParticipant__role
-    - projectParticipant__person
+    slot_usage:
+      person:
+        name: person
+        description: The person who contributed to the study.
+        required: true
     attributes:
       id:
         name: id
@@ -27007,11 +27016,6 @@ classes:
         description: The role of the contributor in the study (e.g., data analysis,
           writing).
         range: NexusRoleEnum
-        required: true
-      person:
-        name: person
-        description: The person who contributed to the study.
-        range: PersonValue
         required: true
     class_uri: basalt_schema:ProjectParticipant
   DOI:
@@ -27294,6 +27298,6 @@ classes:
         - descendant_id
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-10-20T15:53:22'
-source_file_size: 21699
-generation_date: '2026-10-20T15:54:24'
+source_file_date: '2026-10-20T16:11:55'
+source_file_size: 21684
+generation_date: '2026-10-20T16:12:31'

@@ -1849,6 +1849,10 @@ slots:
     description: The height of the peak in a chromatogram or mass spectrum, which can be used to assess the concentration of the analyte.
     range: float
 
+  person:
+    description: A person associated with this record.
+    range: PersonValue
+
   perturbation:
     description: Type of perturbation, e.g. chemical administration, physical disturbance,
       etc.; coupled with perturbation regimen, including how many times the perturbation
