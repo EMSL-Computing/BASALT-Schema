@@ -47,6 +47,7 @@ imports:
   - metagenomics
   - monet_data_generation_activities
   - products
+  - revisions
   - organism
   - sample_classes
   - sample_processing
