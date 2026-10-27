@@ -85,8 +85,8 @@ classes:
       chemical_conversion_category:
         range: ChemicalConversionCategoryEnum
         description: The category of chemical conversion process.
-      digestion_method:
-        range: DigestionMethodEnum
+      protein_digestion_method:
+        range: ProteinDigestionMethodEnum
         description: Named digestion method applied, when the category is protease_cleavage.
       enrichment_type:
         range: EnrichmentTypeEnum
@@ -196,6 +196,9 @@ classes:
       sample_processing_substance:
         range: SampleProcessingSubstance
         description: A substance that was used in the SampleProcessing activity.
+      sample_processing_id:
+        range: SampleProcessing
+        description: The SampleProcessing activity in which the substance was used.
 
   SampleProcessingSubstance:
     description: >-

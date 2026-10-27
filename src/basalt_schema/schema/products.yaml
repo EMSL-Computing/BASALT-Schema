@@ -31,6 +31,280 @@ classes:
       flag:
         range: ProcessedDataFlag
 
+  CMM_ICPMS_DigestionProduct:
+    is_a: ProcessedData
+    description: |-
+      ICP-MS results from a sample digestion targeting critical minerals and materials.
+    slots:
+      - measure_type
+      - results_from_ms_processing
+    attributes:
+      Al_ug_per_g:
+        range: double
+      Ba_ug_per_g:
+        range: double
+      Ca_ug_per_g:
+        range: double
+      Ce_ug_per_g:
+        range: double
+      Co_ug_per_g:
+        range: double
+      Cr_ug_per_g:
+        range: double
+      Cu_ug_per_g:
+        range: double
+      Dy_ug_per_g:
+        range: double
+      Er_ug_per_g:
+        range: double
+      Eu_ug_per_g:
+        range: double
+      Fe_ug_per_g:
+        range: double
+      Gd_ug_per_g:
+        range: double
+      Ho_ug_per_g:
+        range: double
+      K_ug_per_g:
+        range: double
+      La_ug_per_g:
+        range: double
+      Li_ug_per_g:
+        range: double
+      Lu_ug_per_g:
+        range: double
+      Mg_ug_per_g:
+        range: double
+      Mn_ug_per_g:
+        range: double
+      Mo_ug_per_g:
+        range: double
+      Nd_ug_per_g:
+        range: double
+      Ni_ug_per_g:
+        range: double
+      Pr_ug_per_g:
+        range: double
+      Sc_ug_per_g:
+        range: double
+      Si_ug_per_g:
+        range: double
+      Sm_ug_per_g:
+        range: double
+      Sr_ug_per_g:
+        range: double
+      Tb_ug_per_g:
+        range: double
+      Tm_ug_per_g:
+        range: double
+      Y_ug_per_g:
+        range: double
+      Yb_ug_per_g:
+        range: double
+      Zn_ug_per_g:
+        range: double
+      flag_Al:
+        range: ProcessedDataFlag
+      flag_Ba:
+        range: ProcessedDataFlag
+      flag_Ca:
+        range: ProcessedDataFlag
+      flag_Ce:
+        range: ProcessedDataFlag
+      flag_Co:
+        range: ProcessedDataFlag
+      flag_Cr:
+        range: ProcessedDataFlag
+      flag_Cu:
+        range: ProcessedDataFlag
+      flag_Dy:
+        range: ProcessedDataFlag
+      flag_Er:
+        range: ProcessedDataFlag
+      flag_Eu:
+        range: ProcessedDataFlag
+      flag_Fe:
+        range: ProcessedDataFlag
+      flag_Gd:
+        range: ProcessedDataFlag
+      flag_Ho:
+        range: ProcessedDataFlag
+      flag_K:
+        range: ProcessedDataFlag
+      flag_La:
+        range: ProcessedDataFlag
+      flag_Li:
+        range: ProcessedDataFlag
+      flag_Lu:
+        range: ProcessedDataFlag
+      flag_Mg:
+        range: ProcessedDataFlag
+      flag_Mn:
+        range: ProcessedDataFlag
+      flag_Mo:
+        range: ProcessedDataFlag
+      flag_Nd:
+        range: ProcessedDataFlag
+      flag_Ni:
+        range: ProcessedDataFlag
+      flag_Pr:
+        range: ProcessedDataFlag
+      flag_Sc:
+        range: ProcessedDataFlag
+      flag_Si:
+        range: ProcessedDataFlag
+      flag_Sm:
+        range: ProcessedDataFlag
+      flag_Sr:
+        range: ProcessedDataFlag
+      flag_Tb:
+        range: ProcessedDataFlag
+      flag_Tm:
+        range: ProcessedDataFlag
+      flag_Y:
+        range: ProcessedDataFlag
+      flag_Yb:
+        range: ProcessedDataFlag
+      flag_Zn:
+        range: ProcessedDataFlag
+
+  CMM_ICPMS_ExtractionProduct:
+    is_a: ProcessedData
+    description: |-
+      ICP-MS results from a sample extraction targeting critical minerals and materials.
+    slots:
+      - measure_type
+      - results_from_ms_processing
+    attributes:
+      Al_ug_per_g:
+        range: double
+      Ba_ug_per_g:
+        range: double
+      Ca_ug_per_g:
+        range: double
+      Ce_ug_per_g:
+        range: double
+      Co_ug_per_g:
+        range: double
+      Cr_ug_per_g:
+        range: double
+      Cu_ug_per_g:
+        range: double
+      Dy_ug_per_g:
+        range: double
+      Er_ug_per_g:
+        range: double
+      Eu_ug_per_g:
+        range: double
+      Fe_ug_per_g:
+        range: double
+      Gd_ug_per_g:
+        range: double
+      Ho_ug_per_g:
+        range: double
+      K_ug_per_g:
+        range: double
+      La_ug_per_g:
+        range: double
+      Li_ug_per_g:
+        range: double
+      Lu_ug_per_g:
+        range: double
+      Mg_ug_per_g:
+        range: double
+      Mn_ug_per_g:
+        range: double
+      Mo_ug_per_g:
+        range: double
+      Nd_ug_per_g:
+        range: double
+      Ni_ug_per_g:
+        range: double
+      Pr_ug_per_g:
+        range: double
+      Sc_ug_per_g:
+        range: double
+      Si_ug_per_g:
+        range: double
+      Sm_ug_per_g:
+        range: double
+      Sr_ug_per_g:
+        range: double
+      Tb_ug_per_g:
+        range: double
+      Tm_ug_per_g:
+        range: double
+      Y_ug_per_g:
+        range: double
+      Yb_ug_per_g:
+        range: double
+      Zn_ug_per_g:
+        range: double
+      flag_Al:
+        range: ProcessedDataFlag
+      flag_Ba:
+        range: ProcessedDataFlag
+      flag_Ca:
+        range: ProcessedDataFlag
+      flag_Ce:
+        range: ProcessedDataFlag
+      flag_Co:
+        range: ProcessedDataFlag
+      flag_Cr:
+        range: ProcessedDataFlag
+      flag_Cu:
+        range: ProcessedDataFlag
+      flag_Dy:
+        range: ProcessedDataFlag
+      flag_Er:
+        range: ProcessedDataFlag
+      flag_Eu:
+        range: ProcessedDataFlag
+      flag_Fe:
+        range: ProcessedDataFlag
+      flag_Gd:
+        range: ProcessedDataFlag
+      flag_Ho:
+        range: ProcessedDataFlag
+      flag_K:
+        range: ProcessedDataFlag
+      flag_La:
+        range: ProcessedDataFlag
+      flag_Li:
+        range: ProcessedDataFlag
+      flag_Lu:
+        range: ProcessedDataFlag
+      flag_Mg:
+        range: ProcessedDataFlag
+      flag_Mn:
+        range: ProcessedDataFlag
+      flag_Mo:
+        range: ProcessedDataFlag
+      flag_Nd:
+        range: ProcessedDataFlag
+      flag_Ni:
+        range: ProcessedDataFlag
+      flag_Pr:
+        range: ProcessedDataFlag
+      flag_Sc:
+        range: ProcessedDataFlag
+      flag_Si:
+        range: ProcessedDataFlag
+      flag_Sm:
+        range: ProcessedDataFlag
+      flag_Sr:
+        range: ProcessedDataFlag
+      flag_Tb:
+        range: ProcessedDataFlag
+      flag_Tm:
+        range: ProcessedDataFlag
+      flag_Y:
+        range: ProcessedDataFlag
+      flag_Yb:
+        range: ProcessedDataFlag
+      flag_Zn:
+        range: ProcessedDataFlag
+
   ElementalAnalysisProduct:
     is_a: ProcessedData
     description: |-
@@ -281,6 +555,80 @@ classes:
         description: Soil respiration expressed as µg CO₂-C per gram soil
         range: double
       flag:
+        range: ProcessedDataFlag
+
+  Rhizo_ICPMS_DigestionProduct:
+    is_a: ProcessedData
+    description: |-
+      ICP-MS results from a sample digestion targeting critical minerals and materials in rhizosphere samples.
+    slots:
+      - measure_type
+      - results_from_ms_processing
+    attributes:
+      Al_ug_per_g:
+        range: double
+      Ca_ug_per_g:
+        range: double
+      Co_ug_per_g:
+        range: double
+      Cu_ug_per_g:
+        range: double
+      Fe_ug_per_g:
+        range: double
+      K_ug_per_g:
+        range: double
+      Mg_ug_per_g:
+        range: double
+      Mn_ug_per_g:
+        range: double
+      Ni_ug_per_g:
+        range: double
+      P_ug_per_g:
+        range: double
+      S_ug_per_g:
+        range: double
+      Zn_ug_per_g:
+        range: double
+      flag_Al:
+        range: ProcessedDataFlag
+      flag_Ca:
+        range: ProcessedDataFlag
+      flag_Co:
+        range: ProcessedDataFlag
+      flag_Cu:
+        range: ProcessedDataFlag
+      flag_Fe:
+        range: ProcessedDataFlag
+      flag_K:
+        range: ProcessedDataFlag
+      flag_Mg:
+        range: ProcessedDataFlag
+      flag_Mn:
+        range: ProcessedDataFlag
+      flag_Ni:
+        range: ProcessedDataFlag
+      flag_P:
+        range: ProcessedDataFlag
+      flag_S:
+        range: ProcessedDataFlag
+      flag_Zn:
+        range: ProcessedDataFlag
+
+  Rhizo_ICPMS_ExtractionProduct:
+    is_a: ProcessedData
+    description: |-
+      ICP-MS results from a sample extraction targeting critical minerals and materials in rhizosphere samples.
+    slots:
+      - measure_type
+      - results_from_ms_processing
+    attributes:
+      Co_ug_per_g:
+        range: double
+      Ni_ug_per_g:
+        range: double
+      flag_Co:
+        range: ProcessedDataFlag
+      flag_Ni:
         range: ProcessedDataFlag
 
   TextureProduct:
