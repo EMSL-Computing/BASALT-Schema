@@ -128,7 +128,7 @@ def readings_block(values: dict[str, float], blank_wells: set[str],
         val  = values[well]
         flag = _flag(well, val, blank_wells)
         pos  = bad_pos if (bad_pos and well == "A1") else well
-        lines.append(f'{sp}- {{position: "{pos}", value: {val:.4f}, flag: "{flag}"}}')
+        lines.append(f'{sp}- {{position: "{pos}", value: {val:.4f}, well_flag: "{flag}"}}')
     return "\n".join(lines)
 
 
@@ -148,7 +148,7 @@ def vanilla_well_metadata(pad: int = 6) -> str:
                 lines.append(
                     f'{sp}- {{position: "{pos}", well_type: "sample",'
                     f' replicate_group: "rep_{c}", media_volume_ul: 180.0,'
-                    f' inoculum_volume_ul: 20.0, sample_id: "KT2440-{pos}"}}'
+                    f' inoculum_volume_ul: 20.0, source_sample: "KT2440-{pos}"}}'
                 )
     return "\n".join(lines)
 
@@ -179,14 +179,14 @@ def complex_well_metadata(pad: int = 6) -> str:
                 lines.append(
                     f'{sp}- {{position: "{pos}", well_type: "sample",'
                     f' media_ref: "{media_ref}", replicate_group: "{rep_group}",'
-                    f' media_volume_ul: 180.0, sample_id: "{strain_arm}-{pos}"}}'
+                    f' media_volume_ul: 180.0, source_sample: "{strain_arm}-{pos}"}}'
                 )
             else:
                 lines.append(
                     f'{sp}- {{position: "{pos}", well_type: "sample",'
                     f' media_ref: "{media_ref}", replicate_group: "{rep_group}",'
                     f' media_volume_ul: 180.0, inoculum_volume_ul: 20.0,'
-                    f' sample_id: "{strain_arm}-{pos}"}}'
+                    f' source_sample: "{strain_arm}-{pos}"}}'
                 )
     return "\n".join(lines)
 
@@ -339,7 +339,7 @@ plate_setup_activities:
     plate_type: "Greiner_96well_flat_bottom"
     plate_barcode: "EPix1"
     # [V2] setup_date intentionally omitted — required field missing
-    setup_operator_id: "kapu336"
+    setup_operator: "kapu336"
     setup_instrument: "manual"
     sealing_method: "BreathEasy_membrane"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
@@ -630,7 +630,7 @@ plate_setup_activities:
     plate_type: "Greiner_96well_flat_bottom"
     plate_barcode: "EPix1-complex"
     setup_date: "2026-03-24T15:30:00"
-    setup_operator_id: "kapu336"
+    setup_operator: "kapu336"
     setup_instrument: "manual"
     sealing_method: "BreathEasy_membrane"
     # No plate-level media_ref — per-well overrides used instead
@@ -759,7 +759,7 @@ def write_vanilla_csvs(out_dir: Path) -> None:
     # 04 plate_setup
     write_csv(out_dir / "04_plate_setup.csv",
               ["id", "activity_type", "plate_type", "plate_barcode", "setup_date",
-               "setup_operator_id", "setup_instrument", "sealing_method",
+               "setup_operator", "setup_instrument", "sealing_method",
                "media_ref", "input_sample_id", "output_sample_id",
                "violation_note"],
               [{"id": "urn:amp2:act:plate-setup-EPix1-001",
@@ -767,7 +767,7 @@ def write_vanilla_csvs(out_dir: Path) -> None:
                 "plate_type": "Greiner_96well_flat_bottom",
                 "plate_barcode": "EPix1",
                 "setup_date": "",           # [V2] intentionally blank
-                "setup_operator_id": "kapu336",
+                "setup_operator": "kapu336",
                 "setup_instrument": "manual",
                 "sealing_method": "BreathEasy_membrane",
                 "media_ref": "urn:amp2:ps:M9-glucose-batch-001",
@@ -784,15 +784,15 @@ def write_vanilla_csvs(out_dir: Path) -> None:
                 wm_rows.append({"plate_barcode": "EPix1", "position": pos,
                                  "well_type": "blank", "replicate_group": "",
                                  "media_volume_ul": 200.0, "inoculum_volume_ul": 0.0,
-                                 "sample_id": "", "media_ref_override": ""})
+                                 "source_sample": "", "media_ref_override": ""})
             else:
                 wm_rows.append({"plate_barcode": "EPix1", "position": pos,
                                  "well_type": "sample", "replicate_group": f"rep_{c}",
                                  "media_volume_ul": 180.0, "inoculum_volume_ul": 20.0,
-                                 "sample_id": f"KT2440-{pos}", "media_ref_override": ""})
+                                 "source_sample": f"KT2440-{pos}", "media_ref_override": ""})
     write_csv(out_dir / "05_well_metadata.csv",
               ["plate_barcode", "position", "well_type", "replicate_group",
-               "media_volume_ul", "inoculum_volume_ul", "sample_id",
+               "media_volume_ul", "inoculum_volume_ul", "source_sample",
                "media_ref_override"],
               wm_rows)
 
@@ -852,12 +852,12 @@ def write_vanilla_csvs(out_dir: Path) -> None:
                 "timepoint_label": label if label != "t=24h" else "",  # [V3] propagated
                 "position": well,
                 "value": f"{val:.4f}",
-                "flag": flag,
+                "well_flag": flag,
                 "violation_note": violation,
             })
     write_csv(out_dir / "07_well_readings.csv",
               ["product_id", "plate_barcode", "timepoint_label", "position",
-               "value", "flag", "violation_note"],
+               "value", "well_flag", "violation_note"],
               wr_rows)
 
 
@@ -962,14 +962,14 @@ def write_complex_csvs(out_dir: Path) -> None:
     # 04 plate_setup
     write_csv(out_dir / "04_plate_setup.csv",
               ["id", "activity_type", "plate_type", "plate_barcode", "setup_date",
-               "setup_operator_id", "setup_instrument", "sealing_method",
+               "setup_operator", "setup_instrument", "sealing_method",
                "media_ref", "input_sample_id", "output_sample_id", "violation_note"],
               [{"id": "urn:amp2:act:plate-setup-complex-001",
                 "activity_type": "AMP2PlateSetupActivity",
                 "plate_type": "Greiner_96well_flat_bottom",
                 "plate_barcode": "EPix1-complex",
                 "setup_date": "2026-03-24T15:30:00",
-                "setup_operator_id": "kapu336",
+                "setup_operator": "kapu336",
                 "setup_instrument": "manual",
                 "sealing_method": "BreathEasy_membrane",
                 "media_ref": "",   # no plate-level media; per-well overrides used
@@ -990,7 +990,7 @@ def write_complex_csvs(out_dir: Path) -> None:
                                  "well_type": "blank", "replicate_group": "",
                                  "media_ref_override": "",
                                  "media_volume_ul": 200.0, "inoculum_volume_ul": 0.0,
-                                 "sample_id": "", "strain_arm": "",
+                                 "source_sample": "", "strain_arm": "",
                                  "violation_note": ""})
             else:
                 media_ref = m9_id if c <= 6 else lb_id
@@ -1001,13 +1001,13 @@ def write_complex_csvs(out_dir: Path) -> None:
                                  "well_type": "sample", "replicate_group": f"rep_{c}",
                                  "media_ref_override": media_ref,
                                  "media_volume_ul": 180.0, "inoculum_volume_ul": vol,
-                                 "sample_id": f"{strain_arm}-{pos}",
+                                 "source_sample": f"{strain_arm}-{pos}",
                                  "strain_arm": strain_arm,
                                  "violation_note": note})
     write_csv(out_dir / "05_well_metadata.csv",
               ["plate_barcode", "position", "well_type", "replicate_group",
                "media_ref_override", "media_volume_ul", "inoculum_volume_ul",
-               "sample_id", "strain_arm", "violation_note"],
+               "source_sample", "strain_arm", "violation_note"],
               wm_rows)
 
     # 06 data_generation_activities (includes duplicate t=8h [C6])
@@ -1068,12 +1068,12 @@ def write_complex_csvs(out_dir: Path) -> None:
                 "timepoint_label": label,
                 "position": pos,
                 "value": f"{val:.4f}",
-                "flag": flag,
+                "well_flag": flag,
                 "violation_note": note,
             })
     write_csv(out_dir / "07_well_readings.csv",
               ["product_id", "plate_barcode", "timepoint_label", "position",
-               "value", "flag", "violation_note"],
+               "value", "well_flag", "violation_note"],
               wr_rows)
 
 
@@ -1116,7 +1116,7 @@ SQL_HARNESS = """\
 SELECT
     wr->>'position'          AS position,
     (wr->>'value')::numeric  AS od_value,
-    wr->>'flag'              AS flag
+    wr->>'well_flag'              AS well_flag
 FROM plate_product pp,
      jsonb_array_elements(pp.well_readings) AS wr
 WHERE pp.plate_barcode  = 'EPix1'
@@ -1133,7 +1133,7 @@ SELECT
     pp.timepoint_label,
     dga.sequence_order,
     (wr->>'value')::numeric   AS od_value,
-    wr->>'flag'               AS flag
+    wr->>'well_flag'               AS well_flag
 FROM plate_product pp
 JOIN data_generation_activity dga ON dga.id = pp.activity_id
 JOIN plate_setup_activity     psa ON psa.id = dga.plate_setup_id,
@@ -1180,7 +1180,7 @@ WITH well_values AS (
         dga.sequence_order,
         wr->>'position'                   AS position,
         (wr->>'value')::numeric           AS od_value,
-        wr->>'flag'                       AS flag
+        wr->>'well_flag'                       AS well_flag
     FROM plate_product pp
     JOIN data_generation_activity dga ON dga.id = pp.activity_id,
          jsonb_array_elements(pp.well_readings) AS wr
@@ -1250,7 +1250,7 @@ ORDER BY psa.plate_barcode;
 
 -- ---------------------------------------------------------------------------
 -- Q6: Blank-corrected OD values per well per timepoint
---     Subtracts blank_mean (computed from flag='blank' wells) from each
+--     Subtracts blank_mean (computed from well_flag='blank' wells) from each
 --     sample well; flags negative-corrected values for review.
 -- ---------------------------------------------------------------------------
 WITH blank_means AS (
@@ -1260,7 +1260,7 @@ WITH blank_means AS (
         AVG((wr->>'value')::numeric) AS computed_blank_mean
     FROM plate_product pp,
          jsonb_array_elements(pp.well_readings) AS wr
-    WHERE wr->>'flag' = 'blank'
+    WHERE wr->>'well_flag' = 'blank'
     GROUP BY pp.id, pp.timepoint_label
 )
 SELECT
@@ -1281,7 +1281,7 @@ JOIN plate_setup_activity     psa ON psa.id = dga.plate_setup_id
 JOIN blank_means              bm  ON bm.product_id = pp.id,
      jsonb_array_elements(pp.well_readings) AS wr
 WHERE psa.plate_barcode = 'EPix1'
-  AND wr->>'flag'        != 'blank'
+  AND wr->>'well_flag'        != 'blank'
 ORDER BY wr->>'position', dga.sequence_order;
 
 

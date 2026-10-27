@@ -226,7 +226,7 @@ classes:
       total_bases:
         description: |-
           Sum of exchangeable base cations (Ca + Mg + Na + K) in meq/100g.
-          Present in operational schema (total_bases_id) but not currently a
+          Present in operational schema (total_bases) but not currently a
           CSV output column. Flag exists: flag_total_bases.
         range: double
         required: false

@@ -32,7 +32,7 @@
 SELECT
     wr->>'position'          AS position,
     (wr->>'value')::numeric  AS od_value,
-    wr->>'flag'              AS flag
+    wr->>'well_flag'              AS well_flag
 FROM plate_product pp,
      jsonb_array_elements(pp.well_readings) AS wr
 WHERE pp.plate_barcode  = 'EPix1'
@@ -49,7 +49,7 @@ SELECT
     pp.timepoint_label,
     dga.sequence_order,
     (wr->>'value')::numeric   AS od_value,
-    wr->>'flag'               AS flag
+    wr->>'well_flag'               AS well_flag
 FROM plate_product pp
 JOIN data_generation_activity dga ON dga.id = pp.activity_id
 JOIN plate_setup_activity     psa ON psa.id = dga.plate_setup_id,
@@ -96,7 +96,7 @@ WITH well_values AS (
         dga.sequence_order,
         wr->>'position'                   AS position,
         (wr->>'value')::numeric           AS od_value,
-        wr->>'flag'                       AS flag
+        wr->>'well_flag'                       AS well_flag
     FROM plate_product pp
     JOIN data_generation_activity dga ON dga.id = pp.activity_id,
          jsonb_array_elements(pp.well_readings) AS wr
@@ -166,7 +166,7 @@ ORDER BY psa.plate_barcode;
 
 -- ---------------------------------------------------------------------------
 -- Q6: Blank-corrected OD values per well per timepoint
---     Subtracts blank_mean (computed from flag='blank' wells) from each
+--     Subtracts blank_mean (computed from well_flag='blank' wells) from each
 --     sample well; flags negative-corrected values for review.
 -- ---------------------------------------------------------------------------
 WITH blank_means AS (
@@ -176,7 +176,7 @@ WITH blank_means AS (
         AVG((wr->>'value')::numeric) AS computed_blank_mean
     FROM plate_product pp,
          jsonb_array_elements(pp.well_readings) AS wr
-    WHERE wr->>'flag' = 'blank'
+    WHERE wr->>'well_flag' = 'blank'
     GROUP BY pp.id, pp.timepoint_label
 )
 SELECT
@@ -197,7 +197,7 @@ JOIN plate_setup_activity     psa ON psa.id = dga.plate_setup_id
 JOIN blank_means              bm  ON bm.product_id = pp.id,
      jsonb_array_elements(pp.well_readings) AS wr
 WHERE psa.plate_barcode = 'EPix1'
-  AND wr->>'flag'        != 'blank'
+  AND wr->>'well_flag'        != 'blank'
 ORDER BY wr->>'position', dga.sequence_order;
 
 

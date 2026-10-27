@@ -28,7 +28,6 @@ imports:
 - slots
 - study
 - value_tables
-- zip_download
 - linkage_cache
 - basalt_schema
 license: CC0-1.0
@@ -3552,13 +3551,12 @@ slots:
     domain_of:
     - MassSpectrometryDataGenerationActivity
     range: AnalyteCategoryEnum
-  analyte_id:
-    name: analyte_id
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/analyte_id
-    description: FK reference to a ProcessedSample representing the substance analyzed
-      in this activity.
+  analyzed_sample:
+    name: analyzed_sample
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/analyzed_sample
+    description: The ProcessedSample representing the substance analyzed in this activity.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:analyte_id
+    slot_uri: basalt_schema:analyzed_sample
     owner: DataGenerationActivity
     domain_of:
     - DataGenerationActivity
@@ -4332,6 +4330,7 @@ slots:
     slot_uri: basalt_schema:container_type
     owner: FiltrationProcess
     domain_of:
+    - ContainerType
     - CultureGrowth
     - FiltrationProcess
     range: string
@@ -4462,8 +4461,8 @@ slots:
     name: cycle_id
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/cycle_id
     description: Integer identifying the Design-Build-Test-Learn iteration this plate
-      belongs to. Together with the originating sample_id it uniquely identifies an
-      experiment design across repeated cycles.
+      belongs to. Together with the originating sample it uniquely identifies an experiment
+      design across repeated cycles.
     title: DBTL cycle number
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:cycle_id
@@ -5087,7 +5086,7 @@ slots:
     title: extraction method
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:extraction_method
-    owner: WaterSample
+    owner: Extraction
     domain_of:
     - AerosolArmSample
     - AerosolSample
@@ -5099,6 +5098,7 @@ slots:
     - SedimentSample
     - SoilSample
     - WaterSample
+    - Extraction
     range: string
   extreme_event:
     name: extreme_event
@@ -5968,6 +5968,46 @@ slots:
     - SoilSample
     - TerraformSample
     range: string
+  id:
+    name: id
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/id
+    description: Unique identifier for this record.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:id
+    identifier: true
+    owner: PersonValue
+    domain_of:
+    - Activity
+    - Entity
+    - DataProduct
+    - DataGenerationActivity
+    - DataProcessingActivity
+    - AlternativeIdentifier
+    - FunctionalAnnotationIdentifier
+    - Instrument
+    - OntologyClass
+    - ContainerType
+    - Custodian
+    - LabDevice
+    - SampleProcessing
+    - MobilePhaseSegment
+    - MobilePhase
+    - MobilePhaseSubstance
+    - CalibrationStandardRun
+    - PurchasedMaterial
+    - organism
+    - Site
+    - Sample
+    - SampleStorage
+    - SamplingActivity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
+    - SampleProcessingSubstance
+    - Study
+    - ProjectParticipant
+    - PersonValue
+    range: uuid
+    required: true
   iat:
     name: iat
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/iat
@@ -7483,17 +7523,14 @@ slots:
     domain_of:
     - HasIncubationConditions
     range: float
-  parent_workflow_id:
-    name: parent_workflow_id
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/parent_workflow_id
-    description: "Self-referential FK to the preceding DataProcessingActivity in a\
-      \ chain.\nNULL -> first (or standalone) step.\nNon-null -> this execution directly\
-      \ follows parent_workflow_id.\nEnables single-hop chaining queries; full traversal\
-      \ via linkage_cache.\n\nDDL: ALTER TABLE \"DataProcessingActivity\"\n      \
-      \ ADD COLUMN parent_workflow_id UUID\n       REFERENCES \"DataProcessingActivity\"\
-      (id);"
+  parent_workflow:
+    name: parent_workflow
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/parent_workflow
+    description: 'The preceding DataProcessingActivity in a chain of processing steps.
+
+      Absent for the first (or a standalone) step.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:parent_workflow_id
+    slot_uri: basalt_schema:parent_workflow
     owner: DataProcessingActivity
     domain_of:
     - DataProcessingActivity
@@ -7597,6 +7634,17 @@ slots:
     domain_of:
     - UVSpectroscopyProduct
     range: float
+  person:
+    name: person
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/person
+    description: A person associated with this record.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:person
+    owner: ProjectParticipant
+    domain_of:
+    - Custodian
+    - ProjectParticipant
+    range: PersonValue
   perturbation:
     name: perturbation
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/perturbation
@@ -7657,11 +7705,12 @@ slots:
     slot_uri: basalt_schema:ph
     owner: WaterSample
     domain_of:
+    - pHProduct
     - OtherUndescribedSample
     - SedimentSample
     - SoilSample
     - WaterSample
-    range: float
+    range: double
   ph_adjustment:
     name: ph_adjustment
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ph_adjustment
@@ -8364,6 +8413,8 @@ slots:
     domain_of:
     - MetagenomicsProduct
     range: ControlledTermValue
+    inlined: true
+    inlined_as_list: true
   purchased_material_type:
     name: purchased_material_type
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/purchased_material_type
@@ -8899,12 +8950,12 @@ slots:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:sample_end_time
     range: string
-  sample_id:
-    name: sample_id
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample_id
+  source_sample:
+    name: source_sample
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/source_sample
     description: Link back to the originating sample
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:sample_id
+    slot_uri: basalt_schema:source_sample
     owner: SampleStorage
     domain_of:
     - ProcessedData
@@ -9889,12 +9940,12 @@ slots:
     - XASMotorPosition
     - XASSignalColumn
     range: string
-  position:
-    name: position
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/position
+  motor_position:
+    name: motor_position
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/motor_position
     description: Motor position value at scan start
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:position
+    slot_uri: basalt_schema:motor_position
     owner: XASMotorPosition
     domain_of:
     - XASMotorPosition
@@ -10365,12 +10416,12 @@ slots:
     domain_of:
     - PlateSetupActivity
     range: string
-  setup_operator_id:
-    name: setup_operator_id
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/setup_operator_id
+  setup_operator:
+    name: setup_operator
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/setup_operator
     description: Person who set up the plate
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:setup_operator_id
+    slot_uri: basalt_schema:setup_operator
     owner: PlateSetupActivity
     domain_of:
     - PlateSetupActivity
@@ -12154,17 +12205,6 @@ slots:
     domain_of:
     - LinkageCache
     range: datetime
-  activity__id:
-    name: activity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: Activity
-    domain_of:
-    - Activity
-    range: uuid
-    required: true
   activity__ended_at_time:
     name: activity__ended_at_time
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12204,28 +12244,6 @@ slots:
     domain_of:
     - Activity
     range: datetime
-  entity__id:
-    name: entity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: Entity
-    domain_of:
-    - Entity
-    range: uuid
-    required: true
-  dataProduct__id:
-    name: dataProduct__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: DataProduct
-    domain_of:
-    - DataProduct
-    range: uuid
-    required: true
   instrumentData__alternative_identifiers:
     name: instrumentData__alternative_identifiers
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12280,28 +12298,6 @@ slots:
     domain_of:
     - SitePhoto
     range: SamplingActivity
-  dataGenerationActivity__id:
-    name: dataGenerationActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: uuid
-    required: true
-  dataProcessingActivity__id:
-    name: dataProcessingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: DataProcessingActivity
-    domain_of:
-    - DataProcessingActivity
-    range: uuid
-    required: true
   dataProcessingActivity__started_at_time:
     name: dataProcessingActivity__started_at_time
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12357,17 +12353,6 @@ slots:
     domain_of:
     - DataProcessingActivity
     range: ExecutionResourceEnum
-  alternativeIdentifier__id:
-    name: alternativeIdentifier__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: AlternativeIdentifier
-    domain_of:
-    - AlternativeIdentifier
-    range: uuid
-    required: true
   alternativeIdentifier__alternate_id:
     name: alternativeIdentifier__alternate_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12388,17 +12373,6 @@ slots:
     - AlternativeIdentifier
     range: AlternateIdentifierType
     required: true
-  functionalAnnotationIdentifier__id:
-    name: functionalAnnotationIdentifier__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: FunctionalAnnotationIdentifier
-    domain_of:
-    - FunctionalAnnotationIdentifier
-    range: uuid
-    required: true
   functionalAnnotationIdentifier__functional_identifier:
     name: functionalAnnotationIdentifier__functional_identifier
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12418,17 +12392,6 @@ slots:
     domain_of:
     - FunctionalAnnotationIdentifier
     range: AnnotationDatabaseEnum
-    required: true
-  instrument__id:
-    name: instrument__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: Instrument
-    domain_of:
-    - Instrument
-    range: uuid
     required: true
   instrument__name:
     name: instrument__name
@@ -12537,17 +12500,6 @@ slots:
     domain_of:
     - Instrument
     range: string
-  ontologyClass__id:
-    name: ontologyClass__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: OntologyClass
-    domain_of:
-    - OntologyClass
-    range: uuid
-    required: true
   ontologyClass__description:
     name: ontologyClass__description
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12575,17 +12527,6 @@ slots:
     domain_of:
     - OntologyClass
     range: string
-  containerType__id:
-    name: containerType__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: ContainerType
-    domain_of:
-    - ContainerType
-    range: uuid
-    required: true
   containerType__description:
     name: containerType__description
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12595,15 +12536,6 @@ slots:
     domain_of:
     - ContainerType
     range: string
-  containerType__container_type:
-    name: containerType__container_type
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:container_type
-    alias: container_type
-    owner: ContainerType
-    domain_of:
-    - ContainerType
-    range: ContainerTypeEnum
   containerType__container_size_id:
     name: containerType__container_size_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12613,6 +12545,8 @@ slots:
     domain_of:
     - ContainerType
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   containerType__axes:
     name: containerType__axes
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12682,26 +12616,6 @@ slots:
     - ContainerAxis
     range: string
     multivalued: true
-  custodian__id:
-    name: custodian__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: Custodian
-    domain_of:
-    - Custodian
-    range: uuid
-    required: true
-  custodian__person_id:
-    name: custodian__person_id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:person_id
-    alias: person_id
-    owner: Custodian
-    domain_of:
-    - Custodian
-    range: PersonValue
   instrumentAlternativeIdentifier__id:
     name: instrumentAlternativeIdentifier__id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12741,17 +12655,6 @@ slots:
     - InstrumentAlternativeIdentifier
     range: Instrument
     required: true
-  labDevice__id:
-    name: labDevice__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: LabDevice
-    domain_of:
-    - LabDevice
-    range: uuid
-    required: true
   labDevice__description:
     name: labDevice__description
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12779,6 +12682,8 @@ slots:
     domain_of:
     - LabDevice
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   labDevice__activity_speed_id:
     name: labDevice__activity_speed_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12788,17 +12693,8 @@ slots:
     domain_of:
     - LabDevice
     range: QuantityValue
-  sampleProcessing__id:
-    name: sampleProcessing__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SampleProcessing
-    domain_of:
-    - SampleProcessing
-    range: uuid
-    required: true
+    inlined: true
+    inlined_as_list: true
   processingSampleLink__id:
     name: processingSampleLink__id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12932,17 +12828,6 @@ slots:
     - Configuration
     range: uuid
     required: true
-  mobilePhaseSegment__id:
-    name: mobilePhaseSegment__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: MobilePhaseSegment
-    domain_of:
-    - MobilePhaseSegment
-    range: uuid
-    required: true
   mobilePhaseSegment__mobile_phase_percentage:
     name: mobilePhaseSegment__mobile_phase_percentage
     description: The proportion of the mobile phase segment in the overall mobile
@@ -12967,28 +12852,6 @@ slots:
     range: ChromatographyConfiguration
     inlined: true
     inlined_as_list: true
-  mobilePhase__id:
-    name: mobilePhase__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: MobilePhase
-    domain_of:
-    - MobilePhase
-    range: uuid
-    required: true
-  mobilePhaseSubstance__id:
-    name: mobilePhaseSubstance__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: MobilePhaseSubstance
-    domain_of:
-    - MobilePhaseSubstance
-    range: uuid
-    required: true
   mobilePhaseSubstance__in_mobile_phase:
     name: mobilePhaseSubstance__in_mobile_phase
     from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
@@ -13020,28 +12883,6 @@ slots:
     domain_of:
     - MobilePhaseSubstance
     range: string
-  calibrationStandardRun__id:
-    name: calibrationStandardRun__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: CalibrationStandardRun
-    domain_of:
-    - CalibrationStandardRun
-    range: uuid
-    required: true
-  purchasedMaterial__id:
-    name: purchasedMaterial__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: PurchasedMaterial
-    domain_of:
-    - PurchasedMaterial
-    range: uuid
-    required: true
   wellMetadata__position:
     name: wellMetadata__position
     description: Well position (e.g. "A01", "H12")
@@ -13307,12 +13148,12 @@ slots:
     - WellReading
     range: float
     required: true
-  wellReading__flag:
-    name: wellReading__flag
+  wellReading__well_flag:
+    name: wellReading__well_flag
     description: QC flag   "ok", "blank", "outlier", "contaminated"
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
-    slot_uri: basalt_schema:flag
-    alias: flag
+    slot_uri: basalt_schema:well_flag
+    alias: well_flag
     owner: WellReading
     domain_of:
     - WellReading
@@ -13561,15 +13402,17 @@ slots:
     - XCTDataGenerationActivity
     range: string
     required: true
-  bulkDensityProduct__bulk_density_id:
-    name: bulkDensityProduct__bulk_density_id
+  bulkDensityProduct__bulk_density:
+    name: bulkDensityProduct__bulk_density
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:bulk_density_id
-    alias: bulk_density_id
+    slot_uri: basalt_schema:bulk_density
+    alias: bulk_density
     owner: BulkDensityProduct
     domain_of:
     - BulkDensityProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   bulkDensityProduct__flag:
     name: bulkDensityProduct__flag
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13579,42 +13422,50 @@ slots:
     domain_of:
     - BulkDensityProduct
     range: ProcessedDataFlag
-  elementalAnalysisProduct__total_carbon_id:
-    name: elementalAnalysisProduct__total_carbon_id
+  elementalAnalysisProduct__total_carbon:
+    name: elementalAnalysisProduct__total_carbon
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_carbon_id
-    alias: total_carbon_id
+    slot_uri: basalt_schema:total_carbon
+    alias: total_carbon
     owner: ElementalAnalysisProduct
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
-  elementalAnalysisProduct__total_nitrogen_id:
-    name: elementalAnalysisProduct__total_nitrogen_id
+    inlined: true
+    inlined_as_list: true
+  elementalAnalysisProduct__total_nitrogen:
+    name: elementalAnalysisProduct__total_nitrogen
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_nitrogen_id
-    alias: total_nitrogen_id
+    slot_uri: basalt_schema:total_nitrogen
+    alias: total_nitrogen
     owner: ElementalAnalysisProduct
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
-  elementalAnalysisProduct__total_kjeldahl_nitrogen_id:
-    name: elementalAnalysisProduct__total_kjeldahl_nitrogen_id
+    inlined: true
+    inlined_as_list: true
+  elementalAnalysisProduct__total_kjeldahl_nitrogen:
+    name: elementalAnalysisProduct__total_kjeldahl_nitrogen
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_kjeldahl_nitrogen_id
-    alias: total_kjeldahl_nitrogen_id
+    slot_uri: basalt_schema:total_kjeldahl_nitrogen
+    alias: total_kjeldahl_nitrogen
     owner: ElementalAnalysisProduct
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
-  elementalAnalysisProduct__total_sulfur_id:
-    name: elementalAnalysisProduct__total_sulfur_id
+    inlined: true
+    inlined_as_list: true
+  elementalAnalysisProduct__total_sulfur:
+    name: elementalAnalysisProduct__total_sulfur
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_sulfur_id
-    alias: total_sulfur_id
+    slot_uri: basalt_schema:total_sulfur
+    alias: total_sulfur
     owner: ElementalAnalysisProduct
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   elementalAnalysisProduct__flag_total_carbon:
     name: elementalAnalysisProduct__flag_total_carbon
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13651,15 +13502,17 @@ slots:
     domain_of:
     - ElementalAnalysisProduct
     range: ProcessedDataFlag
-  enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h_id:
-    name: enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h_id
+  enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h:
+    name: enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:beta_glucosidase_ug_pnp_per_g_per_h_id
-    alias: beta_glucosidase_ug_pnp_per_g_per_h_id
+    slot_uri: basalt_schema:beta_glucosidase_ug_pnp_per_g_per_h
+    alias: beta_glucosidase_ug_pnp_per_g_per_h
     owner: EnzymeProduct
     domain_of:
     - EnzymeProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   enzymeProduct__flag:
     name: enzymeProduct__flag
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13669,15 +13522,17 @@ slots:
     domain_of:
     - EnzymeProduct
     range: ProcessedDataFlag
-  gWCMoistureProduct__gwc_percent_id:
-    name: gWCMoistureProduct__gwc_percent_id
+  gWCMoistureProduct__gwc_percent:
+    name: gWCMoistureProduct__gwc_percent
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:gwc_percent_id
-    alias: gwc_percent_id
+    slot_uri: basalt_schema:gwc_percent
+    alias: gwc_percent
     owner: GWCMoistureProduct
     domain_of:
     - GWCMoistureProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   gWCMoistureProduct__flag:
     name: gWCMoistureProduct__flag
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13741,114 +13596,138 @@ slots:
     domain_of:
     - HydraulicPropertiesProduct
     range: ProcessedDataFlag
-  ionsAnalysisProduct__sulfate_id:
-    name: ionsAnalysisProduct__sulfate_id
+  ionsAnalysisProduct__sulfate:
+    name: ionsAnalysisProduct__sulfate
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:sulfate_id
-    alias: sulfate_id
+    slot_uri: basalt_schema:sulfate
+    alias: sulfate
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__boron_id:
-    name: ionsAnalysisProduct__boron_id
+    inlined: true
+    inlined_as_list: true
+  ionsAnalysisProduct__boron:
+    name: ionsAnalysisProduct__boron
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:boron_id
-    alias: boron_id
+    slot_uri: basalt_schema:boron
+    alias: boron
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__zinc_id:
-    name: ionsAnalysisProduct__zinc_id
+    inlined: true
+    inlined_as_list: true
+  ionsAnalysisProduct__zinc:
+    name: ionsAnalysisProduct__zinc
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:zinc_id
-    alias: zinc_id
+    slot_uri: basalt_schema:zinc
+    alias: zinc
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__manganate_id:
-    name: ionsAnalysisProduct__manganate_id
+    inlined: true
+    inlined_as_list: true
+  ionsAnalysisProduct__manganate:
+    name: ionsAnalysisProduct__manganate
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:manganate_id
-    alias: manganate_id
+    slot_uri: basalt_schema:manganate
+    alias: manganate
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__copper_id:
-    name: ionsAnalysisProduct__copper_id
+    inlined: true
+    inlined_as_list: true
+  ionsAnalysisProduct__copper:
+    name: ionsAnalysisProduct__copper
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:copper_id
-    alias: copper_id
+    slot_uri: basalt_schema:copper
+    alias: copper
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__iron_id:
-    name: ionsAnalysisProduct__iron_id
+    inlined: true
+    inlined_as_list: true
+  ionsAnalysisProduct__iron:
+    name: ionsAnalysisProduct__iron
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:iron_id
-    alias: iron_id
+    slot_uri: basalt_schema:iron
+    alias: iron
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__calcium_id:
-    name: ionsAnalysisProduct__calcium_id
+    inlined: true
+    inlined_as_list: true
+  ionsAnalysisProduct__calcium:
+    name: ionsAnalysisProduct__calcium
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:calcium_id
-    alias: calcium_id
+    slot_uri: basalt_schema:calcium
+    alias: calcium
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__magnesium_id:
-    name: ionsAnalysisProduct__magnesium_id
+    inlined: true
+    inlined_as_list: true
+  ionsAnalysisProduct__magnesium:
+    name: ionsAnalysisProduct__magnesium
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:magnesium_id
-    alias: magnesium_id
+    slot_uri: basalt_schema:magnesium
+    alias: magnesium
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__sodium_id:
-    name: ionsAnalysisProduct__sodium_id
+    inlined: true
+    inlined_as_list: true
+  ionsAnalysisProduct__sodium:
+    name: ionsAnalysisProduct__sodium
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:sodium_id
-    alias: sodium_id
+    slot_uri: basalt_schema:sodium
+    alias: sodium
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__potassium_id:
-    name: ionsAnalysisProduct__potassium_id
+    inlined: true
+    inlined_as_list: true
+  ionsAnalysisProduct__potassium:
+    name: ionsAnalysisProduct__potassium
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:potassium_id
-    alias: potassium_id
+    slot_uri: basalt_schema:potassium
+    alias: potassium
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__total_bases_id:
-    name: ionsAnalysisProduct__total_bases_id
+    inlined: true
+    inlined_as_list: true
+  ionsAnalysisProduct__total_bases:
+    name: ionsAnalysisProduct__total_bases
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_bases_id
-    alias: total_bases_id
+    slot_uri: basalt_schema:total_bases
+    alias: total_bases
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
-  ionsAnalysisProduct__cation_exchange_capacity_id:
-    name: ionsAnalysisProduct__cation_exchange_capacity_id
+    inlined: true
+    inlined_as_list: true
+  ionsAnalysisProduct__cation_exchange_capacity:
+    name: ionsAnalysisProduct__cation_exchange_capacity
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:cation_exchange_capacity_id
-    alias: cation_exchange_capacity_id
+    slot_uri: basalt_schema:cation_exchange_capacity
+    alias: cation_exchange_capacity
     owner: IonsAnalysisProduct
     domain_of:
     - IonsAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   ionsAnalysisProduct__flag_sulfate:
     name: ionsAnalysisProduct__flag_sulfate
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13957,15 +13836,17 @@ slots:
     domain_of:
     - IonsAnalysisProduct
     range: ProcessedDataFlag
-  hClExtOMProduct__total_organic_carbon_id:
-    name: hClExtOMProduct__total_organic_carbon_id
+  hClExtOMProduct__total_organic_carbon:
+    name: hClExtOMProduct__total_organic_carbon
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_organic_carbon_id
-    alias: total_organic_carbon_id
+    slot_uri: basalt_schema:total_organic_carbon
+    alias: total_organic_carbon
     owner: HClExtOMProduct
     domain_of:
     - HClExtOMProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   hClExtOMProduct__total_organic_carbon_avg:
     name: hClExtOMProduct__total_organic_carbon_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -13975,15 +13856,17 @@ slots:
     domain_of:
     - HClExtOMProduct
     range: double
-  hClExtOMProduct__total_nitrogen_id:
-    name: hClExtOMProduct__total_nitrogen_id
+  hClExtOMProduct__total_nitrogen:
+    name: hClExtOMProduct__total_nitrogen
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_nitrogen_id
-    alias: total_nitrogen_id
+    slot_uri: basalt_schema:total_nitrogen
+    alias: total_nitrogen
     owner: HClExtOMProduct
     domain_of:
     - HClExtOMProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   hClExtOMProduct__total_nitrogen_avg:
     name: hClExtOMProduct__total_nitrogen_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14029,15 +13912,17 @@ slots:
     domain_of:
     - HClExtOMProduct
     range: ProcessedDataFlag
-  microbialBiomassProduct__mbc_id:
-    name: microbialBiomassProduct__mbc_id
+  microbialBiomassProduct__mbc:
+    name: microbialBiomassProduct__mbc
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:mbc_id
-    alias: mbc_id
+    slot_uri: basalt_schema:mbc
+    alias: mbc
     owner: MicrobialBiomassProduct
     domain_of:
     - MicrobialBiomassProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   microbialBiomassProduct__mbc_avg:
     name: microbialBiomassProduct__mbc_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14047,15 +13932,17 @@ slots:
     domain_of:
     - MicrobialBiomassProduct
     range: double
-  microbialBiomassProduct__mbn_id:
-    name: microbialBiomassProduct__mbn_id
+  microbialBiomassProduct__mbn:
+    name: microbialBiomassProduct__mbn
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:mbn_id
-    alias: mbn_id
+    slot_uri: basalt_schema:mbn
+    alias: mbn
     owner: MicrobialBiomassProduct
     domain_of:
     - MicrobialBiomassProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   microbialBiomassProduct__mbn_avg:
     name: microbialBiomassProduct__mbn_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14101,15 +13988,17 @@ slots:
     domain_of:
     - MicrobialBiomassProduct
     range: ProcessedDataFlag
-  nitrogenAnalysisProduct__no3_n_id:
-    name: nitrogenAnalysisProduct__no3_n_id
+  nitrogenAnalysisProduct__no3_n:
+    name: nitrogenAnalysisProduct__no3_n
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:no3_n_id
-    alias: no3_n_id
+    slot_uri: basalt_schema:no3_n
+    alias: no3_n
     owner: NitrogenAnalysisProduct
     domain_of:
     - NitrogenAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   nitrogenAnalysisProduct__no3_n_avg:
     name: nitrogenAnalysisProduct__no3_n_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14119,15 +14008,17 @@ slots:
     domain_of:
     - NitrogenAnalysisProduct
     range: double
-  nitrogenAnalysisProduct__nh4_n_id:
-    name: nitrogenAnalysisProduct__nh4_n_id
+  nitrogenAnalysisProduct__nh4_n:
+    name: nitrogenAnalysisProduct__nh4_n
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:nh4_n_id
-    alias: nh4_n_id
+    slot_uri: basalt_schema:nh4_n
+    alias: nh4_n
     owner: NitrogenAnalysisProduct
     domain_of:
     - NitrogenAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   nitrogenAnalysisProduct__nh4_n_avg:
     name: nitrogenAnalysisProduct__nh4_n_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14182,15 +14073,17 @@ slots:
     domain_of:
     - PhosphorusAnalysisProduct
     range: string
-  phosphorusAnalysisProduct__phosphorus_id:
-    name: phosphorusAnalysisProduct__phosphorus_id
+  phosphorusAnalysisProduct__phosphorus:
+    name: phosphorusAnalysisProduct__phosphorus
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:phosphorus_id
-    alias: phosphorus_id
+    slot_uri: basalt_schema:phosphorus
+    alias: phosphorus
     owner: PhosphorusAnalysisProduct
     domain_of:
     - PhosphorusAnalysisProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   phosphorusAnalysisProduct__phosphorus_avg:
     name: phosphorusAnalysisProduct__phosphorus_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14237,33 +14130,39 @@ slots:
     domain_of:
     - RespirationProduct
     range: ProcessedDataFlag
-  textureProduct__sand_pct_id:
-    name: textureProduct__sand_pct_id
+  textureProduct__sand_pct:
+    name: textureProduct__sand_pct
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:sand_pct_id
-    alias: sand_pct_id
+    slot_uri: basalt_schema:sand_pct
+    alias: sand_pct
     owner: TextureProduct
     domain_of:
     - TextureProduct
     range: QuantityValue
-  textureProduct__silt_pct_id:
-    name: textureProduct__silt_pct_id
+    inlined: true
+    inlined_as_list: true
+  textureProduct__silt_pct:
+    name: textureProduct__silt_pct
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:silt_pct_id
-    alias: silt_pct_id
+    slot_uri: basalt_schema:silt_pct
+    alias: silt_pct
     owner: TextureProduct
     domain_of:
     - TextureProduct
     range: QuantityValue
-  textureProduct__clay_pct_id:
-    name: textureProduct__clay_pct_id
+    inlined: true
+    inlined_as_list: true
+  textureProduct__clay_pct:
+    name: textureProduct__clay_pct
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:clay_pct_id
-    alias: clay_pct_id
+    slot_uri: basalt_schema:clay_pct
+    alias: clay_pct
     owner: TextureProduct
     domain_of:
     - TextureProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   textureProduct__flag:
     name: textureProduct__flag
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14273,15 +14172,17 @@ slots:
     domain_of:
     - TextureProduct
     range: ProcessedDataFlag
-  wEOMProduct__total_organic_carbon_id:
-    name: wEOMProduct__total_organic_carbon_id
+  wEOMProduct__total_organic_carbon:
+    name: wEOMProduct__total_organic_carbon
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_organic_carbon_id
-    alias: total_organic_carbon_id
+    slot_uri: basalt_schema:total_organic_carbon
+    alias: total_organic_carbon
     owner: WEOMProduct
     domain_of:
     - WEOMProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   wEOMProduct__total_organic_carbon_avg:
     name: wEOMProduct__total_organic_carbon_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14291,15 +14192,17 @@ slots:
     domain_of:
     - WEOMProduct
     range: double
-  wEOMProduct__total_nitrogen_id:
-    name: wEOMProduct__total_nitrogen_id
+  wEOMProduct__total_nitrogen:
+    name: wEOMProduct__total_nitrogen
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:total_nitrogen_id
-    alias: total_nitrogen_id
+    slot_uri: basalt_schema:total_nitrogen
+    alias: total_nitrogen
     owner: WEOMProduct
     domain_of:
     - WEOMProduct
     range: QuantityValue
+    inlined: true
+    inlined_as_list: true
   wEOMProduct__total_nitrogen_avg:
     name: wEOMProduct__total_nitrogen_avg
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -14345,15 +14248,6 @@ slots:
     domain_of:
     - WEOMProduct
     range: ProcessedDataFlag
-  pHProduct__ph:
-    name: pHProduct__ph
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
-    slot_uri: basalt_schema:ph
-    alias: ph
-    owner: pHProduct
-    domain_of:
-    - pHProduct
-    range: double
   pHProduct__flag:
     name: pHProduct__flag
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -15497,105 +15391,6 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  organism__id:
-    name: organism__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/organism
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: organism
-    domain_of:
-    - organism
-    range: uuid
-    required: true
-  site__id:
-    name: site__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: Site
-    domain_of:
-    - Site
-    range: uuid
-    required: true
-  sample__id:
-    name: sample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: Sample
-    domain_of:
-    - Sample
-    range: uuid
-    required: true
-  aerosolArmSample__id:
-    name: aerosolArmSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: AerosolArmSample
-    domain_of:
-    - AerosolArmSample
-    range: uuid
-    required: true
-  aerosolSample__id:
-    name: aerosolSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: AerosolSample
-    domain_of:
-    - AerosolSample
-    range: uuid
-    required: true
-  aMP2UserSample__id:
-    name: aMP2UserSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: AMP2UserSample
-    domain_of:
-    - AMP2UserSample
-    range: uuid
-    required: true
-  commerciallyPurchasedSample__id:
-    name: commerciallyPurchasedSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: CommerciallyPurchasedSample
-    domain_of:
-    - CommerciallyPurchasedSample
-    range: uuid
-    required: true
-  cultureEnvironmentalSample__id:
-    name: cultureEnvironmentalSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: CultureEnvironmentalSample
-    domain_of:
-    - CultureEnvironmentalSample
-    range: uuid
-    required: true
-  engineeredStrainSample__id:
-    name: engineeredStrainSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: EngineeredStrainSample
-    domain_of:
-    - EngineeredStrainSample
-    range: uuid
-    required: true
   engineeredStrainSample__cbi:
     name: engineeredStrainSample__cbi
     description: Controlled Biological Information flag (yes/no).
@@ -15632,369 +15427,6 @@ slots:
     domain_of:
     - EngineeredStrainSample
     range: string
-  fieldDeployedTerraformSample__id:
-    name: fieldDeployedTerraformSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: FieldDeployedTerraformSample
-    domain_of:
-    - FieldDeployedTerraformSample
-    range: uuid
-    required: true
-  mixedCultureSample__id:
-    name: mixedCultureSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: MixedCultureSample
-    domain_of:
-    - MixedCultureSample
-    range: uuid
-    required: true
-  monetSoilSample__id:
-    name: monetSoilSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: MonetSoilSample
-    domain_of:
-    - MonetSoilSample
-    range: uuid
-    required: true
-  otherUndescribedSample__id:
-    name: otherUndescribedSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: OtherUndescribedSample
-    domain_of:
-    - OtherUndescribedSample
-    range: uuid
-    required: true
-  plantSample__id:
-    name: plantSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: PlantSample
-    domain_of:
-    - PlantSample
-    range: uuid
-    required: true
-  pureCultureSample__id:
-    name: pureCultureSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: PureCultureSample
-    domain_of:
-    - PureCultureSample
-    range: uuid
-    required: true
-  sedimentSample__id:
-    name: sedimentSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SedimentSample
-    domain_of:
-    - SedimentSample
-    range: uuid
-    required: true
-  soilSample__id:
-    name: soilSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SoilSample
-    domain_of:
-    - SoilSample
-    range: uuid
-    required: true
-  synthesizedMaterialSample__id:
-    name: synthesizedMaterialSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SynthesizedMaterialSample
-    domain_of:
-    - SynthesizedMaterialSample
-    range: uuid
-    required: true
-  terraformSample__id:
-    name: terraformSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: TerraformSample
-    domain_of:
-    - TerraformSample
-    range: uuid
-    required: true
-  waterSample__id:
-    name: waterSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: WaterSample
-    domain_of:
-    - WaterSample
-    range: uuid
-    required: true
-  processedSample__id:
-    name: processedSample__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: ProcessedSample
-    domain_of:
-    - ProcessedSample
-    range: uuid
-    required: true
-  sampleStorage__id:
-    name: sampleStorage__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SampleStorage
-    domain_of:
-    - SampleStorage
-    range: uuid
-    required: true
-  coreSection__id:
-    name: coreSection__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: CoreSection
-    domain_of:
-    - CoreSection
-    range: uuid
-    required: true
-  samplingActivity__id:
-    name: samplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SamplingActivity
-    domain_of:
-    - SamplingActivity
-    range: uuid
-    required: true
-  aerosolArmSamplingActivity__id:
-    name: aerosolArmSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: AerosolArmSamplingActivity
-    domain_of:
-    - AerosolArmSamplingActivity
-    range: uuid
-    required: true
-  aerosolSamplingActivity__id:
-    name: aerosolSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: AerosolSamplingActivity
-    domain_of:
-    - AerosolSamplingActivity
-    range: uuid
-    required: true
-  commerciallyPurchasedSamplingActivity__id:
-    name: commerciallyPurchasedSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: CommerciallyPurchasedSamplingActivity
-    domain_of:
-    - CommerciallyPurchasedSamplingActivity
-    range: uuid
-    required: true
-  cultureEnvironmentalSamplingActivity__id:
-    name: cultureEnvironmentalSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: CultureEnvironmentalSamplingActivity
-    domain_of:
-    - CultureEnvironmentalSamplingActivity
-    range: uuid
-    required: true
-  engineeredStrainSamplingActivity__id:
-    name: engineeredStrainSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: EngineeredStrainSamplingActivity
-    domain_of:
-    - EngineeredStrainSamplingActivity
-    range: uuid
-    required: true
-  fieldDeployedTerraformSamplingActivity__id:
-    name: fieldDeployedTerraformSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: FieldDeployedTerraformSamplingActivity
-    domain_of:
-    - FieldDeployedTerraformSamplingActivity
-    range: uuid
-    required: true
-  mixedCultureSamplingActivity__id:
-    name: mixedCultureSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: MixedCultureSamplingActivity
-    domain_of:
-    - MixedCultureSamplingActivity
-    range: uuid
-    required: true
-  monetSoilSamplingActivity__id:
-    name: monetSoilSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: MonetSoilSamplingActivity
-    domain_of:
-    - MonetSoilSamplingActivity
-    range: uuid
-    required: true
-  otherUndescribedSamplingActivity__id:
-    name: otherUndescribedSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: OtherUndescribedSamplingActivity
-    domain_of:
-    - OtherUndescribedSamplingActivity
-    range: uuid
-    required: true
-  plantSamplingActivity__id:
-    name: plantSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: PlantSamplingActivity
-    domain_of:
-    - PlantSamplingActivity
-    range: uuid
-    required: true
-  pureCultureSamplingActivity__id:
-    name: pureCultureSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: PureCultureSamplingActivity
-    domain_of:
-    - PureCultureSamplingActivity
-    range: uuid
-    required: true
-  sedimentSamplingActivity__id:
-    name: sedimentSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SedimentSamplingActivity
-    domain_of:
-    - SedimentSamplingActivity
-    range: uuid
-    required: true
-  soilSamplingActivity__id:
-    name: soilSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SoilSamplingActivity
-    domain_of:
-    - SoilSamplingActivity
-    range: uuid
-    required: true
-  synthesizedMaterialSamplingActivity__id:
-    name: synthesizedMaterialSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SynthesizedMaterialSamplingActivity
-    domain_of:
-    - SynthesizedMaterialSamplingActivity
-    range: uuid
-    required: true
-  terraformSamplingActivity__id:
-    name: terraformSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: TerraformSamplingActivity
-    domain_of:
-    - TerraformSamplingActivity
-    range: uuid
-    required: true
-  waterSamplingActivity__id:
-    name: waterSamplingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: WaterSamplingActivity
-    domain_of:
-    - WaterSamplingActivity
-    range: uuid
-    required: true
-  sampleProcessingProtocol__id:
-    name: sampleProcessingProtocol__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SampleProcessingProtocol
-    domain_of:
-    - SampleProcessingProtocol
-    range: uuid
-    required: true
-  sampleProcessingRun__id:
-    name: sampleProcessingRun__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SampleProcessingRun
-    domain_of:
-    - SampleProcessingRun
-    range: uuid
-    required: true
   chemicalConversionProcess__chemical_conversion_category:
     name: chemicalConversionProcess__chemical_conversion_category
     description: The category of chemical conversion process.
@@ -16047,16 +15479,6 @@ slots:
     - Extraction
     range: AnalyteCategoryEnum
     multivalued: true
-  extraction__extraction_method:
-    name: extraction__extraction_method
-    description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
-    slot_uri: basalt_schema:extraction_method
-    alias: extraction_method
-    owner: Extraction
-    domain_of:
-    - Extraction
-    range: ExtractionMethodEnum
   normalizationProcess__normalization_method:
     name: normalizationProcess__normalization_method
     description: The strategy used for normalization (equal mass, equal volume, etc.).
@@ -16110,17 +15532,6 @@ slots:
     domain_of:
     - SubstancesUsedLink
     range: SampleProcessingSubstance
-  sampleProcessingSubstance__id:
-    name: sampleProcessingSubstance__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SampleProcessingSubstance
-    domain_of:
-    - SampleProcessingSubstance
-    range: uuid
-    required: true
   sampleProcessingSubstance__known_as:
     name: sampleProcessingSubstance__known_as
     description: Common name or identifier for the substance.
@@ -16173,17 +15584,6 @@ slots:
     domain_of:
     - ProteinQuantification
     range: ProteinAssayTypeEnum
-    required: true
-  study__id:
-    name: study__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: Study
-    domain_of:
-    - Study
-    range: uuid
     required: true
   study__project_id:
     name: study__project_id
@@ -16318,17 +15718,6 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  projectParticipant__id:
-    name: projectParticipant__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: ProjectParticipant
-    domain_of:
-    - ProjectParticipant
-    range: uuid
-    required: true
   projectParticipant__role:
     name: projectParticipant__role
     description: The role of the contributor in the study (e.g., data analysis, writing).
@@ -16339,17 +15728,6 @@ slots:
     domain_of:
     - ProjectParticipant
     range: NexusRoleEnum
-    required: true
-  projectParticipant__person:
-    name: projectParticipant__person
-    description: The person who contributed to the study.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
-    slot_uri: basalt_schema:person
-    alias: person
-    owner: ProjectParticipant
-    domain_of:
-    - ProjectParticipant
-    range: PersonValue
     required: true
   dOI__doi_value:
     name: dOI__doi_value
@@ -16381,17 +15759,6 @@ slots:
     domain_of:
     - DOI
     range: DoiProviderEnum
-  timestampValue__id:
-    name: timestampValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: TimestampValue
-    domain_of:
-    - TimestampValue
-    range: string
-    required: true
   timestampValue__description:
     name: timestampValue__description
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -16410,17 +15777,6 @@ slots:
     domain_of:
     - TimestampValue
     range: string
-  textValue__id:
-    name: textValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: TextValue
-    domain_of:
-    - TextValue
-    range: string
-    required: true
   textValue__language:
     name: textValue__language
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -16439,17 +15795,6 @@ slots:
     domain_of:
     - TextValue
     range: string
-  softwareControlledTermValue__id:
-    name: softwareControlledTermValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SoftwareControlledTermValue
-    domain_of:
-    - SoftwareControlledTermValue
-    range: string
-    required: true
   softwareControlledTermValue__has_raw_value:
     name: softwareControlledTermValue__has_raw_value
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -16459,17 +15804,6 @@ slots:
     domain_of:
     - SoftwareControlledTermValue
     range: string
-  controlledTermValue__id:
-    name: controlledTermValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: ControlledTermValue
-    domain_of:
-    - ControlledTermValue
-    range: string
-    required: true
   controlledTermValue__has_raw_value:
     name: controlledTermValue__has_raw_value
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -16508,17 +15842,6 @@ slots:
     domain_of:
     - ControlledTermValue
     range: string
-  personValue__id:
-    name: personValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: PersonValue
-    domain_of:
-    - PersonValue
-    range: uuid
-    required: true
   personValue__first_name:
     name: personValue__first_name
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -16576,17 +15899,6 @@ slots:
     domain_of:
     - PersonValue
     range: string
-  quantityValue__id:
-    name: quantityValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: QuantityValue
-    domain_of:
-    - QuantityValue
-    range: uuid
-    required: true
   quantityValue__has_value_unit:
     name: quantityValue__has_value_unit
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -16643,17 +15955,6 @@ slots:
     domain_of:
     - QuantityValue
     range: string
-  conditioningValue__id:
-    name: conditioningValue__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: ConditioningValue
-    domain_of:
-    - ConditioningValue
-    range: string
-    required: true
   conditioningValue__source_material:
     name: conditioningValue__source_material
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
@@ -16698,56 +15999,6 @@ slots:
     owner: ConditioningValue
     domain_of:
     - ConditioningValue
-    range: string
-  zipDownload__id:
-    name: zipDownload__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/zip_download
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: zipDownload
-    domain_of:
-    - zipDownload
-    range: uuid
-    required: true
-  zipDownload__time:
-    name: zipDownload__time
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/zip_download
-    slot_uri: basalt_schema:time
-    alias: time
-    owner: zipDownload
-    domain_of:
-    - zipDownload
-    range: datetime
-    required: true
-  zipDownload__user:
-    name: zipDownload__user
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/zip_download
-    slot_uri: basalt_schema:user
-    alias: user
-    owner: zipDownload
-    domain_of:
-    - zipDownload
-    range: string
-    required: true
-  zipDownload__files:
-    name: zipDownload__files
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/zip_download
-    slot_uri: basalt_schema:files
-    alias: files
-    owner: zipDownload
-    domain_of:
-    - zipDownload
-    range: integer
-    required: true
-  zipDownload__packages:
-    name: zipDownload__packages
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/zip_download
-    slot_uri: basalt_schema:packages
-    alias: packages
-    owner: zipDownload
-    domain_of:
-    - zipDownload
     range: string
   linkageCache__ancestor_id:
     name: linkageCache__ancestor_id
@@ -16803,6 +16054,22 @@ slots:
     is_usage_slot: true
     usage_slot_name: description
     range: string
+  ContainerType_container_type:
+    name: ContainerType_container_type
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/container_type
+    description: Physical container used for the culture or sample (flask, tube, plate,
+      etc.)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: container_type
+    domain: ContainerType
+    slot_uri: basalt_schema:container_type
+    alias: container_type
+    owner: ContainerType
+    domain_of:
+    - ContainerType
+    is_usage_slot: true
+    usage_slot_name: container_type
+    range: ContainerTypeEnum
   MassSpectrometryDataGenerationActivity_acquisition_start_time:
     name: MassSpectrometryDataGenerationActivity_acquisition_start_time
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/acquisition_start_time
@@ -19594,20 +18861,20 @@ slots:
     is_usage_slot: true
     usage_slot_name: storage_condition
     range: StorageConditionEnum
-  SampleStorage_sample_id:
-    name: SampleStorage_sample_id
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample_id
+  SampleStorage_source_sample:
+    name: SampleStorage_source_sample
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/source_sample
     description: The sample being stored.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    is_a: sample_id
+    is_a: source_sample
     domain: SampleStorage
-    slot_uri: basalt_schema:sample_id
-    alias: sample_id
+    slot_uri: basalt_schema:source_sample
+    alias: source_sample
     owner: SampleStorage
     domain_of:
     - SampleStorage
     is_usage_slot: true
-    usage_slot_name: sample_id
+    usage_slot_name: source_sample
     range: Sample
     required: true
   SampleStorage_substances_used:
@@ -19840,6 +19107,22 @@ slots:
     usage_slot_name: dilution_analyte
     range: string
     required: true
+  Extraction_extraction_method:
+    name: Extraction_extraction_method
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/extraction_method
+    description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
+    title: extraction method
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: extraction_method
+    domain: Extraction
+    slot_uri: basalt_schema:extraction_method
+    alias: extraction_method
+    owner: Extraction
+    domain_of:
+    - Extraction
+    is_usage_slot: true
+    usage_slot_name: extraction_method
+    range: ExtractionMethodEnum
   FiltrationProcess_volume_ml:
     name: FiltrationProcess_volume_ml
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/volume_ml
@@ -19872,6 +19155,22 @@ slots:
     usage_slot_name: external_identifiers
     range: uriorcurie
     multivalued: true
+  ProjectParticipant_person:
+    name: ProjectParticipant_person
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/person
+    description: The person who contributed to the study.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: person
+    domain: ProjectParticipant
+    slot_uri: basalt_schema:person
+    alias: person
+    owner: ProjectParticipant
+    domain_of:
+    - ProjectParticipant
+    is_usage_slot: true
+    usage_slot_name: person
+    range: PersonValue
+    required: true
 classes:
   Activity:
     name: Activity
@@ -19880,18 +19179,14 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     abstract: true
     slots:
+    - id
     - name
     - description
-    - activity__id
     - activity__ended_at_time
     - activity__processing_institution
     - activity__protocol_link
     - activity__started_at_time
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       ended_at_time:
         name: ended_at_time
         range: datetime
@@ -19915,14 +19210,9 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     abstract: true
     slots:
+    - id
     - name
     - description
-    - entity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:Entity
   DataProduct:
     name: DataProduct
@@ -19937,6 +19227,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     abstract: true
     slots:
+    - id
     - name
     - description
     - project
@@ -19948,13 +19239,6 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
-        required: true
     class_uri: basalt_schema:DataProduct
   ProcessedData:
     name: ProcessedData
@@ -19966,6 +19250,7 @@ classes:
     is_a: DataProduct
     abstract: true
     slots:
+    - id
     - name
     - description
     - project
@@ -19977,10 +19262,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     class_uri: basalt_schema:ProcessedData
   InstrumentData:
     name: InstrumentData
@@ -19997,6 +19281,7 @@ classes:
     is_a: DataProduct
     abstract: true
     slots:
+    - id
     - name
     - project
     - sampling_set
@@ -20007,7 +19292,6 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - file_curie
     - instrumentData__alternative_identifiers
     - instrumentData__compression_type
@@ -20042,6 +19326,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     is_a: DataProduct
     slots:
+    - id
     - name
     - description
     - project
@@ -20053,7 +19338,6 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - sitePhoto__site_photo_type
     - sitePhoto__photo_taken_during
     attributes:
@@ -20072,22 +19356,17 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     abstract: true
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:DataGenerationActivity
   DataProcessingActivity:
     name: DataProcessingActivity
@@ -20097,10 +19376,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     abstract: true
     slots:
-    - parent_workflow_id
+    - id
+    - parent_workflow
     - workflow_steps
     - DataProcessingActivity_description
-    - dataProcessingActivity__id
     - dataProcessingActivity__started_at_time
     - dataProcessingActivity__ended_at_time
     - dataProcessingActivity__software_url
@@ -20113,10 +19392,6 @@ classes:
         description: A human-readable description of the data analysis workflow. May  include
           details such as the purpose, output, and/or main steps of  the workflow.
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       started_at_time:
         name: started_at_time
         range: datetime
@@ -20142,14 +19417,10 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/AlternativeIdentifier
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
-    - alternativeIdentifier__id
+    - id
     - alternativeIdentifier__alternate_id
     - alternativeIdentifier__alternate_identifier_type
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       alternate_id:
         name: alternate_id
         range: string
@@ -20164,14 +19435,10 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/FunctionalAnnotationIdentifier
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
-    - functionalAnnotationIdentifier__id
+    - id
     - functionalAnnotationIdentifier__functional_identifier
     - functionalAnnotationIdentifier__database
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       functional_identifier:
         name: functional_identifier
         range: string
@@ -20190,7 +19457,7 @@ classes:
       \ is a generic standin for an instrument model."
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
-    - instrument__id
+    - id
     - instrument__name
     - instrument__vendor
     - instrument__model
@@ -20203,10 +19470,6 @@ classes:
     - instrument__mass_analyzer_type
     - instrument__other_properties
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       name:
         name: name
         range: string
@@ -20254,15 +19517,11 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/OntologyClass
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
-    - ontologyClass__id
+    - id
     - ontologyClass__description
     - ontologyClass__alternative_identifiers
     - ontologyClass__name
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       description:
         name: description
         range: string
@@ -20281,26 +19540,23 @@ classes:
     - potentially delete along with ContainerAxis? What are these for?
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
-    - containerType__id
+    - id
+    - ContainerType_container_type
     - containerType__description
-    - containerType__container_type
     - containerType__container_size_id
     - containerType__axes
     - containerType__contains
     - containerType__label_format
     - containerType__renderer
     - containerType__slot_capacity
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
-      description:
-        name: description
-        range: string
+    slot_usage:
       container_type:
         name: container_type
         range: ContainerTypeEnum
+    attributes:
+      description:
+        name: description
+        range: string
       container_size_id:
         name: container_size_id
         range: QuantityValue
@@ -20346,16 +19602,8 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Custodian
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
-    - custodian__id
-    - custodian__person_id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
-      person_id:
-        name: person_id
-        range: PersonValue
+    - id
+    - person
     class_uri: basalt_schema:Custodian
   InstrumentAlternativeIdentifier:
     name: InstrumentAlternativeIdentifier
@@ -20392,16 +19640,12 @@ classes:
       research and obtaining accurate data.
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
-    - labDevice__id
+    - id
     - labDevice__description
     - labDevice__device_type
     - labDevice__activity_time_id
     - labDevice__activity_speed_id
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       description:
         name: description
         range: string
@@ -20443,15 +19687,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     abstract: true
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SampleProcessing
   HasTemperatureHold:
     name: HasTemperatureHold
@@ -20595,7 +19834,7 @@ classes:
     description: "Abstract base class for X-ray analytical methods including XRF (elemental),\n\
       XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits\n\
       acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,\n\
-      analyte_id, and other core metadata from DataGenerationActivity.\n\nConcrete\
+      analyzed_sample, and other core metadata from DataGenerationActivity.\n\nConcrete\
       \ subclasses define method-specific measurement parameters.\nFuture X-ray methods\
       \ (e.g., XCT) can extend this class.\n\nShared patterns:\n  - Direct instrument\
       \ output (no computational workflow) is typical for XRF\n  - XRD may optionally\
@@ -20607,17 +19846,17 @@ classes:
     is_a: DataGenerationActivity
     abstract: true
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     class_uri: basalt_schema:XRayDataGenerationActivity
   XRFDataGenerationActivity:
     name: XRFDataGenerationActivity
@@ -20638,17 +19877,17 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     is_a: XRayDataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     class_uri: basalt_schema:XRFDataGenerationActivity
   XRDDataGenerationActivity:
     name: XRDDataGenerationActivity
@@ -20670,17 +19909,17 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     is_a: XRayDataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     class_uri: basalt_schema:XRDDataGenerationActivity
   XASDataGenerationActivity:
     name: XASDataGenerationActivity
@@ -20698,17 +19937,17 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     is_a: XRayDataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - facility
     - beamline
     - ring_energy_gev
@@ -20759,10 +19998,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     is_a: DataProcessingActivity
     slots:
-    - parent_workflow_id
+    - id
+    - parent_workflow
     - workflow_steps
     - DataProcessingActivity_description
-    - dataProcessingActivity__id
     - dataProcessingActivity__started_at_time
     - dataProcessingActivity__ended_at_time
     - dataProcessingActivity__software_url
@@ -20800,17 +20039,17 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - wavelength_nm
     - temperature_celsius
     - calibration_standard
@@ -20826,17 +20065,17 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - uv_detector_type
     - wavelength_nm_max
     - wavelength_nm_min
@@ -20885,6 +20124,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     is_a: InstrumentData
     slots:
+    - id
     - name
     - project
     - sampling_set
@@ -20895,7 +20135,6 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - file_curie
     - instrumentData__alternative_identifiers
     - instrumentData__compression_type
@@ -20916,6 +20155,7 @@ classes:
     is_a: ProcessedData
     abstract: true
     slots:
+    - id
     - name
     - description
     - project
@@ -20927,10 +20167,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - results_from_ms_processing
     class_uri: basalt_schema:MassSpectrometryDataProduct
   MSImageProduct:
@@ -20942,6 +20181,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     is_a: MassSpectrometryDataProduct
     slots:
+    - id
     - name
     - description
     - project
@@ -20953,10 +20193,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - results_from_ms_processing
     class_uri: basalt_schema:MSImageProduct
   MolecularIdentificationProduct:
@@ -20968,6 +20207,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     is_a: MassSpectrometryDataProduct
     slots:
+    - id
     - name
     - description
     - project
@@ -20979,10 +20219,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - results_from_ms_processing
     class_uri: basalt_schema:MolecularIdentificationProduct
   MetaproteomicsProduct:
@@ -20993,6 +20232,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     is_a: MassSpectrometryDataProduct
     slots:
+    - id
     - name
     - description
     - project
@@ -21004,10 +20244,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - results_from_ms_processing
     - metaproteomics_result_type
     class_uri: basalt_schema:MetaproteomicsProduct
@@ -21018,15 +20257,15 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - uses_ms_configuration
     - uses_chromatography
     - analyte_category
@@ -21106,18 +20345,14 @@ classes:
       separation.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     slots:
+    - id
     - duration_min
     - mobile_phase
     - flow_rate_ul_min
     - step_number
-    - mobilePhaseSegment__id
     - mobilePhaseSegment__mobile_phase_percentage
     - mobilePhaseSegment__used_in_chromatography_config
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       mobile_phase_percentage:
         name: mobile_phase_percentage
         description: The proportion of the mobile phase segment in the overall mobile
@@ -21136,12 +20371,7 @@ classes:
       use of that mobile phase in a sequence of flow segments.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     slots:
-    - mobilePhase__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
+    - id
     class_uri: basalt_schema:MobilePhase
   MobilePhaseSubstance:
     name: MobilePhaseSubstance
@@ -21150,16 +20380,12 @@ classes:
       in a mobile phase in a chromatography protocol.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     slots:
+    - id
     - volume_ul
-    - mobilePhaseSubstance__id
     - mobilePhaseSubstance__in_mobile_phase
     - mobilePhaseSubstance__substance
     - mobilePhaseSubstance__concentration
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       in_mobile_phase:
         name: in_mobile_phase
         range: MobilePhase
@@ -21183,10 +20409,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     is_a: DataProcessingActivity
     slots:
-    - parent_workflow_id
+    - id
+    - parent_workflow
     - workflow_steps
     - DataProcessingActivity_description
-    - dataProcessingActivity__id
     - dataProcessingActivity__started_at_time
     - dataProcessingActivity__ended_at_time
     - dataProcessingActivity__software_url
@@ -21205,18 +20431,13 @@ classes:
       for calibration and quality control.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     slots:
+    - id
     - name
     - description
     - internal_calibration
     - calibration_target
     - calibration_standard
     - calibration_data
-    - calibrationStandardRun__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:CalibrationStandardRun
   HasIncubationConditions:
     name: HasIncubationConditions
@@ -21255,16 +20476,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     abstract: true
     slots:
+    - id
     - purchased_material_type
     - name
     - description
-    - purchasedMaterial__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
-        required: true
     class_uri: basalt_schema:PurchasedMaterial
   MediaPreparation:
     name: MediaPreparation
@@ -21286,10 +20501,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: SampleProcessing
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - media_type
     - volume_ml
     - media_recipe
@@ -21314,10 +20529,10 @@ classes:
     mixins:
     - HasIncubationConditions
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - organism_ref
     - growth_medium
     - container_type
@@ -21348,10 +20563,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: CultureGrowth
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - organism_ref
     - growth_medium
     - container_type
@@ -21385,10 +20600,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: CultureGrowth
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - organism_ref
     - growth_medium
     - container_type
@@ -21419,10 +20634,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: CultureGrowth
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - organism_ref
     - growth_medium
     - container_type
@@ -21450,10 +20665,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: CultureGrowth
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - organism_ref
     - growth_medium
     - container_type
@@ -21481,14 +20696,14 @@ classes:
     mixins:
     - HasIncubationConditions
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - plate_type
     - plate_barcode
     - setup_date
-    - setup_operator_id
+    - setup_operator
     - setup_instrument
     - sealing_method
     - well_metadata
@@ -21515,14 +20730,14 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: PlateSetupActivity
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - plate_type
     - plate_barcode
     - setup_date
-    - setup_operator_id
+    - setup_operator
     - setup_instrument
     - sealing_method
     - well_metadata
@@ -21555,14 +20770,14 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: PlateSetupActivity
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - plate_type
     - plate_barcode
     - setup_date
-    - setup_operator_id
+    - setup_operator
     - setup_instrument
     - sealing_method
     - well_metadata
@@ -21586,17 +20801,17 @@ classes:
     is_a: DataGenerationActivity
     abstract: true
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - timepoint_label
     class_uri: basalt_schema:PlateDataGenerationActivity
   AMP2DataGenerationActivity:
@@ -21604,10 +20819,10 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/AMP2DataGenerationActivity
     description: 'AMP2 plate measurement (OD, fluorescence, flow cytometry).
 
-      analyte_id -> processedSample(type=''amp2_96well_plate'')
+      analyzed_sample -> processedSample(type=''amp2_96well_plate'')
 
 
-      Chained via DataProcessingActivity.parent_workflow_id to track
+      Chained via DataProcessingActivity.parent_workflow to track
 
       multi-timepoint series on the same plate.
 
@@ -21616,17 +20831,17 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: PlateDataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - timepoint_label
     - measurement_type
     - wavelength_nm
@@ -21636,7 +20851,7 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/EcoplateDataGenerationActivity
     description: 'Ecoplate absorbance measurement at a single timepoint.
 
-      analyte_id -> processedSample(type=''ecoplate_plate'')
+      analyzed_sample -> processedSample(type=''ecoplate_plate'')
 
       wavelength_nm typically 590 for Biolog EcoPlates.
 
@@ -21645,17 +20860,17 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: PlateDataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - timepoint_label
     - wavelength_nm
     class_uri: basalt_schema:EcoplateDataGenerationActivity
@@ -21869,7 +21084,7 @@ classes:
     - wellMetadata__position
     - wellMetadata__well_type
     - wellMetadata__replicate_group
-    - sample_id
+    - source_sample
     - aMP2WellMetadata__media_ref
     - aMP2WellMetadata__media_volume_ul
     - aMP2WellMetadata__inoculum_volume_ul
@@ -21964,7 +21179,7 @@ classes:
     slots:
     - wellReading__position
     - wellReading__value
-    - wellReading__flag
+    - wellReading__well_flag
     attributes:
       position:
         name: position
@@ -21976,8 +21191,8 @@ classes:
         description: Measured value (absorbance, OD, fluorescence)
         range: float
         required: true
-      flag:
-        name: flag
+      well_flag:
+        name: well_flag
         description: QC flag   "ok", "blank", "outlier", "contaminated"
         range: string
     class_uri: basalt_schema:WellReading
@@ -21989,17 +21204,17 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/metagenomics
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - nucleotide_sequencing_category
     - NucleotideSequencing_external_identifiers
     slot_usage:
@@ -22016,6 +21231,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/metagenomics
     is_a: InstrumentData
     slots:
+    - id
     - name
     - project
     - sampling_set
@@ -22026,7 +21242,6 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - file_curie
     - instrumentData__alternative_identifiers
     - instrumentData__compression_type
@@ -22049,6 +21264,7 @@ classes:
     is_a: ProcessedData
     abstract: true
     slots:
+    - id
     - name
     - description
     - project
@@ -22060,11 +21276,10 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
     - mg_workflow_step
-    - sample_id
+    - source_sample
     - provider_name
     - raw_fasta_url
     - additional_information
@@ -22079,6 +21294,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/metagenomics
     is_a: MetagenomicsProduct
     slots:
+    - id
     - name
     - description
     - project
@@ -22090,11 +21306,10 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
     - mg_workflow_step
-    - sample_id
+    - source_sample
     - provider_name
     - raw_fasta_url
     - additional_information
@@ -22109,6 +21324,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/metagenomics
     is_a: MetagenomicsProduct
     slots:
+    - id
     - name
     - description
     - project
@@ -22120,11 +21336,10 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
     - mg_workflow_step
-    - sample_id
+    - source_sample
     - provider_name
     - raw_fasta_url
     - additional_information
@@ -22139,6 +21354,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/metagenomics
     is_a: MetagenomicsProduct
     slots:
+    - id
     - name
     - description
     - project
@@ -22150,11 +21366,10 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
     - mg_workflow_step
-    - sample_id
+    - source_sample
     - provider_name
     - raw_fasta_url
     - additional_information
@@ -22164,17 +21379,17 @@ classes:
     name: MetagenomicsDataProcessingActivity
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/MetagenomicsDataProcessingActivity
     description: "Concrete metagenomics workflow run. Inherits all DataProcessingActivity\n\
-      slots including parent_workflow_id (chain link) and workflow_steps\n(key-value,\
+      slots including parent_workflow (chain link) and workflow_steps\n(key-value,\
       \ schema TBD). Specific workflow step type is captured via the\ninherited type\
       \ attribute (string); expected values: \n'metagenomics_annotation', 'metagenomics_binning',\
       \ 'metagenomics_phylogeny'."
     from_schema: https://emsl-computing.github.io/BASALT-Schema/metagenomics
     is_a: DataProcessingActivity
     slots:
-    - parent_workflow_id
+    - id
+    - parent_workflow
     - workflow_steps
     - DataProcessingActivity_description
-    - dataProcessingActivity__id
     - dataProcessingActivity__started_at_time
     - dataProcessingActivity__ended_at_time
     - dataProcessingActivity__software_url
@@ -22188,17 +21403,17 @@ classes:
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     class_uri: basalt_schema:BulkDensityDataGenerationActivity
   ElementalAnalysisDataGenerationActivity:
     name: ElementalAnalysisDataGenerationActivity
@@ -22206,17 +21421,17 @@ classes:
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     class_uri: basalt_schema:ElementalAnalysisDataGenerationActivity
   EnzymeActivityDataGenerationActivity:
     name: EnzymeActivityDataGenerationActivity
@@ -22226,17 +21441,17 @@ classes:
     mixins:
     - HasTemperatureHold
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - enzymeActivityDataGenerationActivity__wavelength
     - temperature_celsius
     - temperature_category
@@ -22254,17 +21469,17 @@ classes:
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     class_uri: basalt_schema:GravimetricWaterContentDataGenerationActivity
   HydraulicPropertiesDataGenerationActivity:
     name: HydraulicPropertiesDataGenerationActivity
@@ -22272,17 +21487,17 @@ classes:
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - hydraulicPropertiesDataGenerationActivity__fitting_model
     attributes:
       fitting_model:
@@ -22296,17 +21511,17 @@ classes:
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - kuoDataGenerationActivity__detection_limit
     - kuoDataGenerationActivity__wavelength
     attributes:
@@ -22324,17 +21539,17 @@ classes:
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - microbialBiomassDataGenerationActivity__detector
     - microbialBiomassDataGenerationActivity__mode
     - microbialBiomassDataGenerationActivity__injection_volume
@@ -22372,17 +21587,17 @@ classes:
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - pHDataGenerationActivity__calibration
     attributes:
       calibration:
@@ -22399,17 +21614,17 @@ classes:
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     class_uri: basalt_schema:RespirationDataGenerationActivity
   TOC_TN_DataGenerationActivity:
     name: TOC_TN_DataGenerationActivity
@@ -22417,17 +21632,17 @@ classes:
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - tOCTNDataGenerationActivity__column
     - tOCTNDataGenerationActivity__mode
     - tOCTNDataGenerationActivity__detector
@@ -22468,17 +21683,17 @@ classes:
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     class_uri: basalt_schema:TextureDataGenerationActivity
   XCTDataGenerationActivity:
     name: XCTDataGenerationActivity
@@ -22486,17 +21701,17 @@ classes:
     from_schema: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
     is_a: DataGenerationActivity
     slots:
+    - id
     - sequence_order
     - name
     - description
-    - analyte_id
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
     - acquisition_end_time
     - instrument_used
     - instrument_operator
-    - dataGenerationActivity__id
     - xCTDataGenerationActivity__x_ray_power
     - xCTDataGenerationActivity__cu_filter
     - xCTDataGenerationActivity__total_projections_collected
@@ -22542,6 +21757,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -22553,16 +21769,15 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
-    - bulkDensityProduct__bulk_density_id
+    - bulkDensityProduct__bulk_density
     - bulkDensityProduct__flag
     attributes:
-      bulk_density_id:
-        name: bulk_density_id
+      bulk_density:
+        name: bulk_density
         range: QuantityValue
       flag:
         name: flag
@@ -22578,6 +21793,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -22589,31 +21805,30 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
-    - elementalAnalysisProduct__total_carbon_id
-    - elementalAnalysisProduct__total_nitrogen_id
-    - elementalAnalysisProduct__total_kjeldahl_nitrogen_id
-    - elementalAnalysisProduct__total_sulfur_id
+    - elementalAnalysisProduct__total_carbon
+    - elementalAnalysisProduct__total_nitrogen
+    - elementalAnalysisProduct__total_kjeldahl_nitrogen
+    - elementalAnalysisProduct__total_sulfur
     - elementalAnalysisProduct__flag_total_carbon
     - elementalAnalysisProduct__flag_total_nitrogen
     - elementalAnalysisProduct__flag_tkn
     - elementalAnalysisProduct__flag_total_sulfur
     attributes:
-      total_carbon_id:
-        name: total_carbon_id
+      total_carbon:
+        name: total_carbon
         range: QuantityValue
-      total_nitrogen_id:
-        name: total_nitrogen_id
+      total_nitrogen:
+        name: total_nitrogen
         range: QuantityValue
-      total_kjeldahl_nitrogen_id:
-        name: total_kjeldahl_nitrogen_id
+      total_kjeldahl_nitrogen:
+        name: total_kjeldahl_nitrogen
         range: QuantityValue
-      total_sulfur_id:
-        name: total_sulfur_id
+      total_sulfur:
+        name: total_sulfur
         range: QuantityValue
       flag_total_carbon:
         name: flag_total_carbon
@@ -22636,6 +21851,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -22647,16 +21863,15 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
-    - enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h_id
+    - enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h
     - enzymeProduct__flag
     attributes:
-      beta_glucosidase_ug_pnp_per_g_per_h_id:
-        name: beta_glucosidase_ug_pnp_per_g_per_h_id
+      beta_glucosidase_ug_pnp_per_g_per_h:
+        name: beta_glucosidase_ug_pnp_per_g_per_h
         range: QuantityValue
       flag:
         name: flag
@@ -22670,6 +21885,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -22681,16 +21897,15 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
-    - gWCMoistureProduct__gwc_percent_id
+    - gWCMoistureProduct__gwc_percent
     - gWCMoistureProduct__flag
     attributes:
-      gwc_percent_id:
-        name: gwc_percent_id
+      gwc_percent:
+        name: gwc_percent
         range: QuantityValue
       flag:
         name: flag
@@ -22705,6 +21920,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -22716,10 +21932,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
     - hydraulicPropertiesProduct__alpha
     - hydraulicPropertiesProduct__n
@@ -22762,6 +21977,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -22773,23 +21989,22 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
-    - ionsAnalysisProduct__sulfate_id
-    - ionsAnalysisProduct__boron_id
-    - ionsAnalysisProduct__zinc_id
-    - ionsAnalysisProduct__manganate_id
-    - ionsAnalysisProduct__copper_id
-    - ionsAnalysisProduct__iron_id
-    - ionsAnalysisProduct__calcium_id
-    - ionsAnalysisProduct__magnesium_id
-    - ionsAnalysisProduct__sodium_id
-    - ionsAnalysisProduct__potassium_id
-    - ionsAnalysisProduct__total_bases_id
-    - ionsAnalysisProduct__cation_exchange_capacity_id
+    - ionsAnalysisProduct__sulfate
+    - ionsAnalysisProduct__boron
+    - ionsAnalysisProduct__zinc
+    - ionsAnalysisProduct__manganate
+    - ionsAnalysisProduct__copper
+    - ionsAnalysisProduct__iron
+    - ionsAnalysisProduct__calcium
+    - ionsAnalysisProduct__magnesium
+    - ionsAnalysisProduct__sodium
+    - ionsAnalysisProduct__potassium
+    - ionsAnalysisProduct__total_bases
+    - ionsAnalysisProduct__cation_exchange_capacity
     - ionsAnalysisProduct__flag_sulfate
     - ionsAnalysisProduct__flag_boron
     - ionsAnalysisProduct__flag_zinc
@@ -22803,41 +22018,41 @@ classes:
     - ionsAnalysisProduct__flag_total_bases
     - ionsAnalysisProduct__flag_cec
     attributes:
-      sulfate_id:
-        name: sulfate_id
+      sulfate:
+        name: sulfate
         range: QuantityValue
-      boron_id:
-        name: boron_id
+      boron:
+        name: boron
         range: QuantityValue
-      zinc_id:
-        name: zinc_id
+      zinc:
+        name: zinc
         range: QuantityValue
-      manganate_id:
-        name: manganate_id
+      manganate:
+        name: manganate
         range: QuantityValue
-      copper_id:
-        name: copper_id
+      copper:
+        name: copper
         range: QuantityValue
-      iron_id:
-        name: iron_id
+      iron:
+        name: iron
         range: QuantityValue
-      calcium_id:
-        name: calcium_id
+      calcium:
+        name: calcium
         range: QuantityValue
-      magnesium_id:
-        name: magnesium_id
+      magnesium:
+        name: magnesium
         range: QuantityValue
-      sodium_id:
-        name: sodium_id
+      sodium:
+        name: sodium
         range: QuantityValue
-      potassium_id:
-        name: potassium_id
+      potassium:
+        name: potassium
         range: QuantityValue
-      total_bases_id:
-        name: total_bases_id
+      total_bases:
+        name: total_bases
         range: QuantityValue
-      cation_exchange_capacity_id:
-        name: cation_exchange_capacity_id
+      cation_exchange_capacity:
+        name: cation_exchange_capacity
         range: QuantityValue
       flag_sulfate:
         name: flag_sulfate
@@ -22886,6 +22101,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -22897,30 +22113,29 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
     - replicate
     - produced_by_toctn_run
-    - hClExtOMProduct__total_organic_carbon_id
+    - hClExtOMProduct__total_organic_carbon
     - hClExtOMProduct__total_organic_carbon_avg
-    - hClExtOMProduct__total_nitrogen_id
+    - hClExtOMProduct__total_nitrogen
     - hClExtOMProduct__total_nitrogen_avg
     - hClExtOMProduct__flag_toc
     - hClExtOMProduct__flag_tn
     - hClExtOMProduct__flag_toc_avg
     - hClExtOMProduct__flag_tn_avg
     attributes:
-      total_organic_carbon_id:
-        name: total_organic_carbon_id
+      total_organic_carbon:
+        name: total_organic_carbon
         range: QuantityValue
       total_organic_carbon_avg:
         name: total_organic_carbon_avg
         range: double
-      total_nitrogen_id:
-        name: total_nitrogen_id
+      total_nitrogen:
+        name: total_nitrogen
         range: QuantityValue
       total_nitrogen_avg:
         name: total_nitrogen_avg
@@ -22948,6 +22163,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -22959,29 +22175,28 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
     - replicate
-    - microbialBiomassProduct__mbc_id
+    - microbialBiomassProduct__mbc
     - microbialBiomassProduct__mbc_avg
-    - microbialBiomassProduct__mbn_id
+    - microbialBiomassProduct__mbn
     - microbialBiomassProduct__mbn_avg
     - microbialBiomassProduct__flag_mbc
     - microbialBiomassProduct__flag_mbn
     - microbialBiomassProduct__flag_mbc_avg
     - microbialBiomassProduct__flag_mbn_avg
     attributes:
-      mbc_id:
-        name: mbc_id
+      mbc:
+        name: mbc
         range: QuantityValue
       mbc_avg:
         name: mbc_avg
         range: double
-      mbn_id:
-        name: mbn_id
+      mbn:
+        name: mbn
         range: QuantityValue
       mbn_avg:
         name: mbn_avg
@@ -23009,6 +22224,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -23020,29 +22236,28 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
     - replicate
-    - nitrogenAnalysisProduct__no3_n_id
+    - nitrogenAnalysisProduct__no3_n
     - nitrogenAnalysisProduct__no3_n_avg
-    - nitrogenAnalysisProduct__nh4_n_id
+    - nitrogenAnalysisProduct__nh4_n
     - nitrogenAnalysisProduct__nh4_n_avg
     - nitrogenAnalysisProduct__flag_no3n
     - nitrogenAnalysisProduct__flag_nh4n
     - nitrogenAnalysisProduct__flag_no3n_avg
     - nitrogenAnalysisProduct__flag_nh4n_avg
     attributes:
-      no3_n_id:
-        name: no3_n_id
+      no3_n:
+        name: no3_n
         range: QuantityValue
       no3_n_avg:
         name: no3_n_avg
         range: double
-      nh4_n_id:
-        name: nh4_n_id
+      nh4_n:
+        name: nh4_n
         range: QuantityValue
       nh4_n_avg:
         name: nh4_n_avg
@@ -23070,6 +22285,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -23081,14 +22297,13 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
     - replicate
     - phosphorusAnalysisProduct__extraction_method
-    - phosphorusAnalysisProduct__phosphorus_id
+    - phosphorusAnalysisProduct__phosphorus
     - phosphorusAnalysisProduct__phosphorus_avg
     - phosphorusAnalysisProduct__flag
     - phosphorusAnalysisProduct__flag_avg
@@ -23096,8 +22311,8 @@ classes:
       extraction_method:
         name: extraction_method
         range: string
-      phosphorus_id:
-        name: phosphorus_id
+      phosphorus:
+        name: phosphorus
         range: QuantityValue
       phosphorus_avg:
         name: phosphorus_avg
@@ -23116,6 +22331,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -23127,10 +22343,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
     - respirationProduct__respiration_co2_c_ug_per_g
     - respirationProduct__flag
@@ -23153,6 +22368,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -23164,24 +22380,23 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
-    - textureProduct__sand_pct_id
-    - textureProduct__silt_pct_id
-    - textureProduct__clay_pct_id
+    - textureProduct__sand_pct
+    - textureProduct__silt_pct
+    - textureProduct__clay_pct
     - textureProduct__flag
     attributes:
-      sand_pct_id:
-        name: sand_pct_id
+      sand_pct:
+        name: sand_pct
         range: QuantityValue
-      silt_pct_id:
-        name: silt_pct_id
+      silt_pct:
+        name: silt_pct
         range: QuantityValue
-      clay_pct_id:
-        name: clay_pct_id
+      clay_pct:
+        name: clay_pct
         range: QuantityValue
       flag:
         name: flag
@@ -23197,6 +22412,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -23208,30 +22424,29 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
     - replicate
     - produced_by_toctn_run
-    - wEOMProduct__total_organic_carbon_id
+    - wEOMProduct__total_organic_carbon
     - wEOMProduct__total_organic_carbon_avg
-    - wEOMProduct__total_nitrogen_id
+    - wEOMProduct__total_nitrogen
     - wEOMProduct__total_nitrogen_avg
     - wEOMProduct__flag_toc
     - wEOMProduct__flag_tn
     - wEOMProduct__flag_toc_avg
     - wEOMProduct__flag_tn_avg
     attributes:
-      total_organic_carbon_id:
-        name: total_organic_carbon_id
+      total_organic_carbon:
+        name: total_organic_carbon
         range: QuantityValue
       total_organic_carbon_avg:
         name: total_organic_carbon_avg
         range: double
-      total_nitrogen_id:
-        name: total_nitrogen_id
+      total_nitrogen:
+        name: total_nitrogen
         range: QuantityValue
       total_nitrogen_avg:
         name: total_nitrogen_avg
@@ -23257,6 +22472,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -23268,17 +22484,13 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
-    - pHProduct__ph
+    - ph
     - pHProduct__flag
     attributes:
-      ph:
-        name: ph
-        range: double
       flag:
         name: flag
         range: ProcessedDataFlag
@@ -23304,6 +22516,7 @@ classes:
     is_a: ProcessedData
     abstract: true
     slots:
+    - id
     - name
     - description
     - project
@@ -23315,10 +22528,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     class_uri: basalt_schema:XRayDataProduct
   XCTProduct:
     name: XCTProduct
@@ -23328,6 +22540,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: XRayDataProduct
     slots:
+    - id
     - name
     - description
     - project
@@ -23339,10 +22552,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
     - xCTProduct__roi_x_voxel
     - xCTProduct__roi_y_voxel
@@ -23531,6 +22743,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: XRayDataProduct
     slots:
+    - id
     - name
     - description
     - project
@@ -23542,10 +22755,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
     - xRFElementalProduct__cl_mg_per_kg
     - xRFElementalProduct__v_mg_per_kg
@@ -23816,6 +23028,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: XRayDataProduct
     slots:
+    - id
     - name
     - description
     - project
@@ -23827,10 +23040,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
     - xRDPhaseProduct__quartz_percent
     - xRDPhaseProduct__albite_percent
@@ -23933,6 +23145,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: InstrumentData
     slots:
+    - id
     - name
     - project
     - sampling_set
@@ -23943,7 +23156,6 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - file_curie
     - instrumentData__alternative_identifiers
     - instrumentData__compression_type
@@ -24035,7 +23247,7 @@ classes:
     - XASMotorPosition_motor_index
     - motor_name
     - pv
-    - position
+    - motor_position
     slot_usage:
       motor_index:
         name: motor_index
@@ -24111,6 +23323,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: XRayDataProduct
     slots:
+    - id
     - name
     - description
     - project
@@ -24122,10 +23335,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - measure_type
     - results_from_xas_processing
     - xas_filename
@@ -24250,6 +23462,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -24261,10 +23474,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - produced_by_uv_run
     - compound_name
     - retention_time_min
@@ -24284,6 +23496,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
+    - id
     - name
     - description
     - project
@@ -24295,10 +23508,9 @@ classes:
     - s3_key
     - filesize
     - md5checksum
-    - dataProduct__id
     - summary_metrics
     - lims_barcode
-    - sample_id
+    - source_sample
     - produced_by_ri_run
     - compound_name
     - weight_percent
@@ -24321,6 +23533,7 @@ classes:
       \ as strain_ref)"
     from_schema: https://emsl-computing.github.io/BASALT-Schema/organism
     slots:
+    - id
     - organism_organism_name
     - description
     - organism_strain_identifier
@@ -24345,7 +23558,6 @@ classes:
     - pathogenicity
     - host_spec_range
     - propagation
-    - organism__id
     slot_usage:
       strain_identifier:
         name: strain_identifier
@@ -24383,12 +23595,6 @@ classes:
       trophic_level:
         name: trophic_level
         required: false
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
-        required: true
     class_uri: basalt_schema:Organism
   Site:
     name: Site
@@ -24401,6 +23607,7 @@ classes:
     - fao_class - can this vary within a site or change with time?
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     slots:
+    - id
     - name
     - description
     - alt
@@ -24436,7 +23643,6 @@ classes:
     - slope_aspect
     - slope_gradient
     - tillage
-    - site__id
     slot_usage:
       elev:
         name: elev
@@ -24455,11 +23661,6 @@ classes:
       longitude:
         name: longitude
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:Site
   Sample:
     name: Sample
@@ -24474,16 +23675,11 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     abstract: true
     slots:
+    - id
     - name
     - description
     - emsl_activity
     - lims_barcode
-    - sample__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:Sample
   AerosolArmSample:
     name: AerosolArmSample
@@ -24496,6 +23692,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -24552,7 +23749,6 @@ classes:
     - third_blh
     - third_blh_quality
     - volatile_org_comp
-    - aerosolArmSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -24590,11 +23786,6 @@ classes:
             value: ^\d+(\.\d+)?\s*um$
         description: 'Refers to the mesh/pore size used to retain the sample. Materials
           smaller than the size threshold are excluded from the sample (Unit: um)'
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:AerosolArmSample
   AerosolSample:
     name: AerosolSample
@@ -24607,6 +23798,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -24655,7 +23847,6 @@ classes:
     - technical_reps
     - temperature_exposure
     - volatile_org_comp
-    - aerosolSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -24677,11 +23868,6 @@ classes:
             value: ^\d+(\.\d+)?\s*um$
         description: 'Refers to the mesh/pore size used to retain the sample. Materials
           smaller than the size threshold are excluded from the sample (Unit: um)'
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:AerosolSample
   AMP2UserSample:
     name: AMP2UserSample
@@ -24698,6 +23884,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - description
     - emsl_activity
     - lims_barcode
@@ -24713,7 +23900,6 @@ classes:
     - other_guid_source
     - AMP2UserSample_analysis_type
     - cbi
-    - aMP2UserSample__id
     - AMP2UserSample_name
     slot_usage:
       organism_ref:
@@ -24753,11 +23939,6 @@ classes:
         name: analysis_type
         description: The type(s) of analysis planned for this sample.
         required: false
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:AMP2UserSample
   CommerciallyPurchasedSample:
     name: CommerciallyPurchasedSample
@@ -24770,6 +23951,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -24800,7 +23982,6 @@ classes:
     - storage_condition_other
     - technical_reps
     - temp
-    - commerciallyPurchasedSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -24808,11 +23989,6 @@ classes:
       compound_name:
         name: compound_name
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:CommerciallyPurchasedSample
   CultureEnvironmentalSample:
     name: CultureEnvironmentalSample
@@ -24825,6 +24001,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -24881,7 +24058,6 @@ classes:
     - technical_reps
     - trophic_level
     - watering_regm
-    - cultureEnvironmentalSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -24905,11 +24081,6 @@ classes:
       start_date_inc:
         name: start_date_inc
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:CultureEnvironmentalSample
   EngineeredStrainSample:
     name: EngineeredStrainSample
@@ -24926,6 +24097,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -24935,15 +24107,10 @@ classes:
     - storage_condition
     - storage_temperature
     - external_identifiers
-    - engineeredStrainSample__id
     - engineeredStrainSample__cbi
     - engineeredStrainSample__storage_condition
     - engineeredStrainSample__storage_temperature
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       cbi:
         name: cbi
         description: Controlled Biological Information flag (yes/no).
@@ -24971,6 +24138,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -25053,7 +24221,6 @@ classes:
     - water_content
     - water_content_meth
     - watering_regm
-    - fieldDeployedTerraformSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -25088,11 +24255,6 @@ classes:
       synth_start_date:
         name: synth_start_date
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:FieldDeployedTerraformSample
   MixedCultureSample:
     name: MixedCultureSample
@@ -25105,6 +24267,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -25155,7 +24318,6 @@ classes:
     - technical_reps
     - trophic_level
     - watering_regm
-    - mixedCultureSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -25182,11 +24344,6 @@ classes:
           any relevant genetic typing schemes like Group I plasmid. Supply both the
           lineage name and the lineage rank separated by a colon, e.g. biovar:abc123.
           Subspecies should not be recorded in this slot but in the taxid slot.
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:MixedCultureSample
   MonetSoilSample:
     name: MonetSoilSample
@@ -25201,6 +24358,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -25236,7 +24394,6 @@ classes:
     - MonetSoilSample_water_content
     - water_content_meth
     - watering_regm
-    - monetSoilSample__id
     slot_usage:
       bulk_elect_conductivity:
         name: bulk_elect_conductivity
@@ -25299,11 +24456,6 @@ classes:
           started and unsuccessful enter 'failed' if measurement was not attempted
           enter 'did not collect'.
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:MonetSoilSample
   OtherUndescribedSample:
     name: OtherUndescribedSample
@@ -25317,6 +24469,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -25545,7 +24698,6 @@ classes:
     - water_current
     - water_temp_regm
     - watering_regm
-    - otherUndescribedSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -25578,11 +24730,6 @@ classes:
           any relevant genetic typing schemes like Group I plasmid. Supply both the
           lineage name and the lineage rank separated by a colon, e.g. biovar:abc123.
           Subspecies should not be recorded in this slot but in the taxid slot.
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:OtherUndescribedSample
   PlantSample:
     name: PlantSample
@@ -25595,6 +24742,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -25680,7 +24828,6 @@ classes:
     - temp
     - water_temp_regm
     - watering_regm
-    - plantSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -25717,11 +24864,6 @@ classes:
       plant_taxid:
         name: plant_taxid
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:PlantSample
   PureCultureSample:
     name: PureCultureSample
@@ -25734,6 +24876,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -25788,7 +24931,6 @@ classes:
     - technical_reps
     - trophic_level
     - watering_regm
-    - pureCultureSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -25812,11 +24954,6 @@ classes:
       start_date_inc:
         name: start_date_inc
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:PureCultureSample
   SedimentSample:
     name: SedimentSample
@@ -25829,6 +24966,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -25945,7 +25083,6 @@ classes:
     - water_content
     - water_content_meth
     - watering_regm
-    - sedimentSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -25987,11 +25124,6 @@ classes:
         description: Description of relationship(s) between the subject organism and
           other organism(s) it is associated with. The target organism is the subject
           of the relationship and the other organism(s) is the object
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SedimentSample
   SoilSample:
     name: SoilSample
@@ -26004,6 +25136,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -26085,7 +25218,6 @@ classes:
     - water_content
     - water_content_meth
     - watering_regm
-    - soilSample__id
     slot_usage:
       al_sat:
         name: al_sat
@@ -26152,11 +25284,6 @@ classes:
         description: 'Refers to the mesh/pore size used to pre-filter/pre-sort the
           sample. Materials larger than the size threshold are excluded from the sample.
           (Unit: um)'
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SoilSample
   SynthesizedMaterialSample:
     name: SynthesizedMaterialSample
@@ -26169,6 +25296,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -26202,7 +25330,6 @@ classes:
     - SynthesizedMaterialSample_synth_reagents
     - technical_reps
     - temp
-    - synthesizedMaterialSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -26213,11 +25340,6 @@ classes:
       synth_reagents:
         name: synth_reagents
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SynthesizedMaterialSample
   TerraformSample:
     name: TerraformSample
@@ -26230,6 +25352,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -26308,7 +25431,6 @@ classes:
     - water_content
     - water_content_meth
     - watering_regm
-    - terraformSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -26337,11 +25459,6 @@ classes:
       synth_start_date:
         name: synth_start_date
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:TerraformSample
   WaterSample:
     name: WaterSample
@@ -26354,6 +25471,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -26469,7 +25587,6 @@ classes:
     - tot_phosp
     - turbidity
     - water_current
-    - waterSample__id
     slot_usage:
       analysis_type:
         name: analysis_type
@@ -26516,11 +25633,6 @@ classes:
           sample. Materials larger than the size threshold are excluded from the sample
           (Unit: um)'
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:WaterSample
   ProcessedSample:
     name: ProcessedSample
@@ -26552,6 +25664,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -26562,16 +25675,10 @@ classes:
     - volume_ul
     - sampled_portion
     - ProcessedSample_replicate
-    - processedSample__id
     slot_usage:
       replicate:
         name: replicate
         description: The TECHNICAL replicate number of the processed sample, if applicable.
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:ProcessedSample
   SampleStorage:
     name: SampleStorage
@@ -26609,11 +25716,11 @@ classes:
     mixins:
     - HasTemperatureHold
     slots:
-    - SampleStorage_sample_id
+    - id
+    - SampleStorage_source_sample
     - SampleStorage_storage_condition
     - storage_condition_other
     - SampleStorage_substances_used
-    - sampleStorage__id
     - temperature_celsius
     - temperature_category
     - duration_hours
@@ -26623,19 +25730,14 @@ classes:
       storage_condition:
         name: storage_condition
         description: Physical state of the sample during this storage period.
-      sample_id:
-        name: sample_id
+      source_sample:
+        name: source_sample
         description: The sample being stored.
         required: true
       substances_used:
         name: substances_used
         description: Cryoprotectants or preservatives the sample is stored in (e.g.,
           glycerol, DMSO, RNAlater).
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SampleStorage
   CoreSection:
     name: CoreSection
@@ -26644,6 +25746,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: ProcessedSample
     slots:
+    - id
     - name
     - description
     - emsl_activity
@@ -26655,16 +25758,10 @@ classes:
     - sampled_portion
     - ProcessedSample_replicate
     - CoreSection_core_section
-    - coreSection__id
     slot_usage:
       core_section:
         name: core_section
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:CoreSection
   SamplingActivity:
     name: SamplingActivity
@@ -26681,6 +25778,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     abstract: true
     slots:
+    - id
     - name
     - description
     - project
@@ -26688,12 +25786,6 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
-    - samplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SamplingActivity
   AerosolArmSamplingActivity:
     name: AerosolArmSamplingActivity
@@ -26702,6 +25794,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -26709,18 +25802,12 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
-    - aerosolArmSamplingActivity__id
     - AerosolArmSamplingActivity_humidity
     slot_usage:
       humidity:
         name: humidity
         description: Amount of humidity measured in the air the day of sampling. Provided
           by iMet. Provide value and unit, any unit is valid
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:AerosolArmSamplingActivity
   AerosolSamplingActivity:
     name: AerosolSamplingActivity
@@ -26729,6 +25816,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -26743,12 +25831,6 @@ classes:
     - sampling_duration
     - wind_direction
     - wind_speed
-    - aerosolSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:AerosolSamplingActivity
   CommerciallyPurchasedSamplingActivity:
     name: CommerciallyPurchasedSamplingActivity
@@ -26757,6 +25839,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -26766,12 +25849,6 @@ classes:
     - sampled_at_site
     - sample_collected
     - sample_collection_dev
-    - commerciallyPurchasedSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:CommerciallyPurchasedSamplingActivity
   CultureEnvironmentalSamplingActivity:
     name: CultureEnvironmentalSamplingActivity
@@ -26781,6 +25858,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -26792,12 +25870,6 @@ classes:
     - sample_collected
     - sample_collection_dev
     - sample_collection_method
-    - cultureEnvironmentalSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:CultureEnvironmentalSamplingActivity
   EngineeredStrainSamplingActivity:
     name: EngineeredStrainSamplingActivity
@@ -26806,6 +25878,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -26813,12 +25886,6 @@ classes:
     - collection_date
     - shipped_sample_size
     - sampled_at_site
-    - engineeredStrainSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:EngineeredStrainSamplingActivity
   FieldDeployedTerraformSamplingActivity:
     name: FieldDeployedTerraformSamplingActivity
@@ -26827,6 +25894,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -26837,12 +25905,6 @@ classes:
     - collection_time
     - sample_collected
     - sample_collection_method
-    - fieldDeployedTerraformSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:FieldDeployedTerraformSamplingActivity
   MixedCultureSamplingActivity:
     name: MixedCultureSamplingActivity
@@ -26851,6 +25913,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -26862,12 +25925,6 @@ classes:
     - sample_collected
     - sample_collection_dev
     - sample_collection_method
-    - mixedCultureSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:MixedCultureSamplingActivity
   MonetSoilSamplingActivity:
     name: MonetSoilSamplingActivity
@@ -26876,6 +25933,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -26889,7 +25947,6 @@ classes:
     - infiltration_notes
     - MonetSoilSamplingActivity_sample_collection_dev
     - weather
-    - monetSoilSamplingActivity__id
     slot_usage:
       collection_time:
         name: collection_time
@@ -26903,11 +25960,6 @@ classes:
       sample_collection_dev:
         name: sample_collection_dev
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:MonetSoilSamplingActivity
   OtherUndescribedSamplingActivity:
     name: OtherUndescribedSamplingActivity
@@ -26917,6 +25969,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -26932,17 +25985,11 @@ classes:
     - sampling_duration
     - wind_direction
     - wind_speed
-    - otherUndescribedSamplingActivity__id
     slot_usage:
       humidity:
         name: humidity
         description: Amount of humidity measured in the air the day of sampling. Provided
           by iMet. Provide value and unit, any unit is valid
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:OtherUndescribedSamplingActivity
   PlantSamplingActivity:
     name: PlantSamplingActivity
@@ -26951,6 +25998,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -26963,12 +26011,6 @@ classes:
     - sample_collection_dev
     - sample_collection_method
     - weather
-    - plantSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:PlantSamplingActivity
   PureCultureSamplingActivity:
     name: PureCultureSamplingActivity
@@ -26977,6 +26019,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -26988,12 +26031,6 @@ classes:
     - sample_collected
     - sample_collection_dev
     - sample_collection_method
-    - pureCultureSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:PureCultureSamplingActivity
   SedimentSamplingActivity:
     name: SedimentSamplingActivity
@@ -27002,6 +26039,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -27014,12 +26052,6 @@ classes:
     - sample_collection_dev
     - sample_collection_method
     - weather
-    - sedimentSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SedimentSamplingActivity
   SoilSamplingActivity:
     name: SoilSamplingActivity
@@ -27029,6 +26061,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - project
     - emsl_activity
     - collection_date
@@ -27045,12 +26078,6 @@ classes:
     - sample_collection_method
     - wind_direction
     - weather
-    - soilSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SoilSamplingActivity
   SynthesizedMaterialSamplingActivity:
     name: SynthesizedMaterialSamplingActivity
@@ -27059,6 +26086,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -27068,12 +26096,6 @@ classes:
     - sampled_at_site
     - sample_collected
     - sample_collection_dev
-    - synthesizedMaterialSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SynthesizedMaterialSamplingActivity
   TerraformSamplingActivity:
     name: TerraformSamplingActivity
@@ -27082,6 +26104,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -27092,12 +26115,6 @@ classes:
     - collection_time
     - sample_collected
     - sample_collection_method
-    - terraformSamplingActivity__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:TerraformSamplingActivity
   WaterSamplingActivity:
     name: WaterSamplingActivity
@@ -27106,6 +26123,7 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: SamplingActivity
     slots:
+    - id
     - name
     - description
     - project
@@ -27117,7 +26135,6 @@ classes:
     - sample_collected
     - WaterSamplingActivity_sample_collection_dev
     - WaterSamplingActivity_sample_collection_method
-    - waterSamplingActivity__id
     slot_usage:
       sample_collection_dev:
         name: sample_collection_dev
@@ -27125,11 +26142,6 @@ classes:
       sample_collection_method:
         name: sample_collection_method
         required: true
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:WaterSamplingActivity
   StandardSampleProcessing:
     name: StandardSampleProcessing
@@ -27149,10 +26161,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     class_uri: basalt_schema:StandardSampleProcessing
   SampleProcessingProtocol:
     name: SampleProcessingProtocol
@@ -27164,16 +26176,11 @@ classes:
       ran together", see SampleProcessingRun.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     slots:
+    - id
     - name
     - description
     - protocol_url
     - protocol_version
-    - sampleProcessingProtocol__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SampleProcessingProtocol
   SampleProcessingRun:
     name: SampleProcessingRun
@@ -27193,14 +26200,9 @@ classes:
       would be ambiguous the moment anything is pooled.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     slots:
+    - id
     - name
     - description
-    - sampleProcessingRun__id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
     class_uri: basalt_schema:SampleProcessingRun
   ChemicalConversionProcess:
     name: ChemicalConversionProcess
@@ -27213,10 +26215,10 @@ classes:
     mixins:
     - HasTemperatureHold
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - substances_used
     - chemicalConversionProcess__chemical_conversion_category
     - chemicalConversionProcess__digestion_method
@@ -27255,10 +26257,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - Dilution_dilution_analyte
     - target_concentration_ug_per_ul
     - starting_concentration_mg_per_ml
@@ -27279,14 +26281,19 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - substances_used
     - starting_mass_mg
+    - Extraction_extraction_method
     - extraction__extraction_target
-    - extraction__extraction_method
+    slot_usage:
+      extraction_method:
+        name: extraction_method
+        description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
+        range: ExtractionMethodEnum
     attributes:
       extraction_target:
         name: extraction_target
@@ -27294,10 +26301,6 @@ classes:
           process.
         range: AnalyteCategoryEnum
         multivalued: true
-      extraction_method:
-        name: extraction_method
-        description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
-        range: ExtractionMethodEnum
     class_uri: basalt_schema:Extraction
   FiltrationProcess:
     name: FiltrationProcess
@@ -27308,10 +26311,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - container_size_ml
     - container_type
     - filter_material
@@ -27334,10 +26337,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - lims_protocol_instance_id
     - uses_chromatography
     class_uri: basalt_schema:FractionationProcess
@@ -27349,10 +26352,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - normalizationProcess__normalization_method
     - normalizationProcess__target_mass_mg
     - normalizationProcess__target_vol_ul
@@ -27382,10 +26385,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - final_mass_mg
     - final_vol_ml
     class_uri: basalt_schema:PoolingProcess
@@ -27416,17 +26419,13 @@ classes:
       activity, and the same substance may be used in multiple  SampleProcessing activities.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     slots:
+    - id
     - volume_ml
-    - sampleProcessingSubstance__id
     - sampleProcessingSubstance__known_as
     - sampleProcessingSubstance__substance_role
     - sampleProcessingSubstance__source_concentration_mg_per_ml
     - sampleProcessingSubstance__final_concentration_mg_per_ml
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       known_as:
         name: known_as
         description: Common name or identifier for the substance.
@@ -27454,10 +26453,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - lims_protocol_instance_id
     - final_concentration_mg_per_ml
     - proteinQuantification__protein_assay_type
@@ -27476,10 +26475,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - lims_protocol_instance_id
     - final_vol_ml
     - substances_used
@@ -27492,10 +26491,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - lims_protocol_instance_id
     - uses_chromatography
     class_uri: basalt_schema:SolidPhaseExtractionProcess
@@ -27508,10 +26507,10 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
     slots:
+    - id
     - name
     - description
     - in_protocol
-    - sampleProcessing__id
     - final_mass_mg
     - final_vol_ml
     class_uri: basalt_schema:SubsamplingProcess
@@ -27527,8 +26526,8 @@ classes:
       one or more campaigns. The study may also have associated DOIs and funding sources.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     slots:
+    - id
     - Study_external_identifiers
-    - study__id
     - study__project_id
     - study__title
     - study__name
@@ -27548,10 +26547,6 @@ classes:
         description: List of project- or study-level identifiers (e.g., GOLD study
           ID) representing this project.
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       project_id:
         name: project_id
         range: integer
@@ -27610,24 +26605,20 @@ classes:
     description: A record of a person and their role on an EMSL project.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     slots:
-    - projectParticipant__id
+    - id
+    - ProjectParticipant_person
     - projectParticipant__role
-    - projectParticipant__person
+    slot_usage:
+      person:
+        name: person
+        description: The person who contributed to the study.
+        required: true
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       role:
         name: role
         description: The role of the contributor in the study (e.g., data analysis,
           writing).
         range: NexusRoleEnum
-        required: true
-      person:
-        name: person
-        description: The person who contributed to the study.
-        range: PersonValue
         required: true
     class_uri: basalt_schema:ProjectParticipant
   DOI:
@@ -27661,14 +26652,9 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     slots:
     - description
-    - timestampValue__id
     - timestampValue__description
     - timestampValue__has_raw_value
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: string
       description:
         name: description
         range: string
@@ -27683,14 +26669,9 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     slots:
     - description
-    - textValue__id
     - textValue__language
     - textValue__has_raw_value
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: string
       language:
         name: language
         range: string
@@ -27706,13 +26687,8 @@ classes:
     - name
     - description
     - version
-    - softwareControlledTermValue__id
     - softwareControlledTermValue__has_raw_value
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: string
       has_raw_value:
         name: has_raw_value
         range: string
@@ -27723,16 +26699,11 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     slots:
     - description
-    - controlledTermValue__id
     - controlledTermValue__has_raw_value
     - controlledTermValue__term
     - controlledTermValue__term_id
     - controlledTermValue__controlled_term_provider
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: string
       has_raw_value:
         name: has_raw_value
         range: string
@@ -27753,8 +26724,8 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/PersonValue
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     slots:
+    - id
     - email
-    - personValue__id
     - personValue__first_name
     - personValue__last_name
     - personValue__middle_initial
@@ -27762,10 +26733,6 @@ classes:
     - personValue__profile_image_url
     - personValue__websites
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       first_name:
         name: first_name
         range: string
@@ -27800,7 +26767,6 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     slots:
     - description
-    - quantityValue__id
     - quantityValue__has_value_unit
     - quantityValue__has_unit
     - quantityValue__has_numeric_value
@@ -27808,10 +26774,6 @@ classes:
     - quantityValue__has_maximum_numeric_value
     - quantityValue__has_raw_value
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
       has_value_unit:
         name: has_value_unit
       has_unit:
@@ -27835,17 +26797,12 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ConditioningValue
     from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     slots:
-    - conditioningValue__id
     - conditioningValue__source_material
     - conditioningValue__instrument
     - conditioningValue__gas
     - conditioningValue__pressure
     - conditioningValue__has_raw_value
     attributes:
-      id:
-        name: id
-        identifier: true
-        range: string
       source_material:
         name: source_material
         range: string
@@ -27862,39 +26819,6 @@ classes:
         name: has_raw_value
         range: string
     class_uri: basalt_schema:ConditioningValue
-  zipDownload:
-    name: zipDownload
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ZipDownload
-    description: A zip download record, capturing the details of a zip file download
-      event.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/zip_download
-    slots:
-    - zipDownload__id
-    - zipDownload__time
-    - zipDownload__user
-    - zipDownload__files
-    - zipDownload__packages
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
-      time:
-        name: time
-        range: datetime
-        required: true
-      user:
-        name: user
-        range: string
-        required: true
-      files:
-        name: files
-        range: integer
-        required: true
-      packages:
-        name: packages
-        range: string
-    class_uri: basalt_schema:ZipDownload
   LinkageCache:
     name: LinkageCache
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/LinkageCache
@@ -27940,6 +26864,6 @@ classes:
         - descendant_id
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-10-12T16:01:08'
-source_file_size: 21959
-generation_date: '2026-10-12T16:03:34'
+source_file_date: '2026-10-27T15:03:51'
+source_file_size: 21361
+generation_date: '2026-10-27T15:04:18'

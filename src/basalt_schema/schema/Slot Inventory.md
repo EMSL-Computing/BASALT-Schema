@@ -27,8 +27,8 @@
 | `uncertainty_metrics` | **Not Found** | — | — | — | No uncertainty or error propagation field exists anywhere |
 | `calibration_timestamp` | **Partial** | (via `MassSpectrometryStandardRun`) | `MassSpectrometryStandardRun` | mass_spec.yaml | No explicit calibration timestamp slot; the `MassSpectrometryStandardRun` referenced by `uses_calibration` would need a `calibration_date` attribute added |
 | `calibration_method` | **Partial** | `calibration_target` / `calibration_standard` / `internal_calibration` | `MassSpectrometryStandardRun` | mass_spec.yaml | Mass spec only; `calibration_target` (CalibrationTargetEnum), `calibration_standard` (PurchasedMaterial), `internal_calibration` (boolean) together describe the approach; no generic cross-technique `calibration_method` slot |
-| `variables` | **Not Found** | — | — | — | No list-of-variable-entries slot; individual measured values are typed columns (e.g., `bulk_density_id`, `gwc_percent_id`) |
-| `variables.name` | **Not Found** | — | — | — | Variable columns are named by analyte (e.g., `total_carbon_id`), not stored as name/value pairs |
+| `variables` | **Not Found** | — | — | — | No list-of-variable-entries slot; individual measured values are typed columns (e.g., `bulk_density`, `gwc_percent`) |
+| `variables.name` | **Not Found** | — | — | — | Variable columns are named by analyte (e.g., `total_carbon`), not stored as name/value pairs |
 | `variables.unit` | **Partial** | `QuantityValue.unit` | `QuantityValue` | value_tables.yaml | `QuantityValue` has a `unit` field; analyte slots point to `QuantityValue` instances, but no explicit `variables.unit` path |
 | `variables.datatype` | **Not Found** | — | — | — | Types are implicit in slot ranges (`float`, `double`, `integer`); no runtime datatype field |
 | `variables.description` | **Partial** | `description` (per slot) | — | slots.yaml | LinkML slot definitions carry descriptions, but these are schema-level metadata not runtime slot values |

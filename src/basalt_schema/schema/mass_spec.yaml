@@ -165,14 +165,12 @@ classes:
   MobilePhaseSegment:
     description: A segment of the mobile phase sequence used in a chromatographic separation.
     slots:
+      - id
       - duration_min
       - mobile_phase
       - flow_rate_ul_min
       - step_number
     attributes:
-      id:
-        identifier: true
-        range: uuid
       mobile_phase_percentage:
         description: The proportion of the mobile phase segment in the overall mobile phase sequence, expressed as a percentage.
         range: float
@@ -182,19 +180,15 @@ classes:
     
   MobilePhase:
     description: Link between a set of substances used in a mobile phase, and the use of that mobile phase in a sequence of flow segments.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
+    slots:
+      - id
 
   MobilePhaseSubstance:
     description: A representation of a single chemical and its concentration used in a mobile phase in a chromatography protocol.
     slots:
+      - id
       - volume_ul
     attributes:
-      id:
-        identifier: true
-        range: uuid
       in_mobile_phase:
         range: MobilePhase
       substance:
@@ -226,13 +220,10 @@ classes:
     description: |-
       A record of a standard run with a batch of samples, which is used for calibration and quality control.
     slots:
+      - id
       - name
       - description
       - internal_calibration
       - calibration_target
       - calibration_standard
       - calibration_data
-    attributes:
-      id:
-        identifier: true
-        range: uuid

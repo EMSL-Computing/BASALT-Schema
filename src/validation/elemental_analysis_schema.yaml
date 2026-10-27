@@ -109,7 +109,7 @@ classes:
       total_kjeldahl_nitrogen:
         description: |-
           Total Kjeldahl Nitrogen (TKN) as weight percent of dry soil (%).
-          Present in operational schema (total_kjeldahl_nitrogen_id) but not
+          Present in operational schema (total_kjeldahl_nitrogen) but not
           currently a CSV output column. Flag: flag_tkn.
         range: double
         required: false

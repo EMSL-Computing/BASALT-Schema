@@ -54,7 +54,6 @@ imports:
   - slots
   - study
   - value_tables
-  - zip_download
   - linkage_cache
 
 types:
@@ -72,9 +71,6 @@ classes:
     description: Something that happens over time and can use equipment.
     abstract: true
     attributes:
-      id:
-        identifier: true
-        range: uuid
       ended_at_time:
         range: datetime
       processing_institution:
@@ -86,17 +82,15 @@ classes:
       started_at_time:
         range: datetime
     slots:
+    - id
     - name
     - description
 
   Entity:
     description: Base identifiable thing.
     abstract: true
-    attributes:
-      id:
-        identifier: true
-        range: uuid
     slots:
+    - id
     - name
     - description
 
@@ -108,6 +102,7 @@ classes:
       processedData and future sitePhoto extend this via is_a.
       No direct database table, subclasses map to tables.
     slots:
+      - id
       - name
       - description
       - project
@@ -119,11 +114,6 @@ classes:
       - s3_key
       - filesize
       - md5checksum
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-        required: true
 
   ProcessedData:
     is_a: DataProduct
@@ -132,7 +122,7 @@ classes:
     slots:
       - summary_metrics  # [ADDED] key-value product summary, per-type schema TBD
       - lims_barcode     # [PROMOTED] from inline attribute
-      - sample_id        # [ADDED] link back to originating sample
+      - source_sample        # [ADDED] link back to originating sample
     todos:
       - all subclasses need a more specific upstream slot to replace was_generated_by
 
@@ -181,20 +171,17 @@ classes:
       Abstract base for any data generation activity (physical to digital). Input data should 
       be specified on workflow subclasses.
     slots:
+      - id
       - sequence_order   
       - name
       - description
-      - analyte_id
+      - analyzed_sample
       - protocol_url
       - protocol_version
       - acquisition_start_time
       - acquisition_end_time
       - instrument_used
       - instrument_operator
-    attributes:
-      id:
-        identifier: true
-        range: uuid
 
   DataProcessingActivity:
     abstract: true
@@ -202,7 +189,8 @@ classes:
       Abstract base for any data processing activity (digital to digital). Input data should 
       be specified on workflow subclasses.
     slots:
-      - parent_workflow_id  # [ADDED] self-referential chain link
+      - id
+      - parent_workflow  # [ADDED] self-referential chain link
       - workflow_steps      # [CHANGED] key-value direction; schema TBD (was # TODO JSONB)
       - description
     slot_usage:
@@ -212,9 +200,6 @@ classes:
           include details such as the purpose, output, and/or main steps of 
           the workflow.
     attributes:
-      id:
-        identifier: true
-        range: uuid
       started_at_time:
         range: datetime
         required: true
@@ -230,10 +215,9 @@ classes:
         range: ExecutionResourceEnum
 
   AlternativeIdentifier:
+    slots:
+      - id
     attributes:
-      id:
-        identifier: true
-        range: uuid
       alternate_id:
         range: string
         required: true
@@ -242,10 +226,9 @@ classes:
         required: true
 
   FunctionalAnnotationIdentifier:
+    slots:
+      - id
     attributes:
-      id:
-        identifier: true
-        range: uuid
       functional_identifier:
         range: string
         required: true
@@ -259,10 +242,9 @@ classes:
       investigation, but is not a reagent. This class models a specific
       instance of an instrument IF identifying information is filled out, 
       otherwise, it is a generic standin for an instrument model.
+    slots:
+      - id
     attributes:
-      id:
-        identifier: true
-        range: uuid
       name:
         range: string
         required: true
@@ -293,10 +275,9 @@ classes:
         description: Other important properties of the instrument that are not captured in other fields.
 
   OntologyClass: # table has no data
+    slots:
+      - id
     attributes:
-      id:
-        identifier: true
-        range: uuid
       description:
         range: string
       alternative_identifiers:
@@ -305,14 +286,15 @@ classes:
         range: string
 
   ContainerType:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      description:
-        range: string
+    slots:
+      - id
+      - container_type
+    slot_usage:
       container_type:
         range: ContainerTypeEnum
+    attributes:
+      description:
+        range: string
       container_size_id:
         range: QuantityValue
       axes:
@@ -343,12 +325,9 @@ classes:
     - I'm only including this in case we need it to sync up with L7 in some way
 
   Custodian:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      person_id:
-        range: PersonValue
+    slots:
+      - id
+      - person
 
   InstrumentAlternativeIdentifier:
     attributes:
@@ -366,10 +345,9 @@ classes:
   LabDevice:
     description: |-
       A lab device is a physical instrument or equipment used in a laboratory setting for conducting experiments, measurements, or analyses. It can include various types of instruments such as microscopes, spectrometers, centrifuges, and other specialized equipment. Lab devices are essential for performing scientific research and obtaining accurate data.
+    slots:
+      - id
     attributes:
-      id:
-        identifier: true
-        range: uuid
       description:
         range: string
       device_type:
@@ -394,13 +372,10 @@ classes:
       a SampleProcessingProtocol record via in_protocol, which is the single home for
       protocol_url and protocol_version.
     slots:
+      - id
       - name
       - description
       - in_protocol
-    attributes:
-      id:
-        identifier: true
-        range: uuid
 
   HasTemperatureHold:
     mixin: true
@@ -511,7 +486,7 @@ classes:
         Abstract base class for X-ray analytical methods including XRF (elemental),
         XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits
         acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,
-        analyte_id, and other core metadata from DataGenerationActivity.
+        analyzed_sample, and other core metadata from DataGenerationActivity.
 
         Concrete subclasses define method-specific measurement parameters.
         Future X-ray methods (e.g., XCT) can extend this class.

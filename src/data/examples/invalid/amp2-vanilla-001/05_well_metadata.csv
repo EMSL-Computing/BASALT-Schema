@@ -1,4 +1,4 @@
-plate_barcode,position,well_type,replicate_group,media_volume_ul,inoculum_volume_ul,sample_id,media_ref_override
+plate_barcode,position,well_type,replicate_group,media_volume_ul,inoculum_volume_ul,source_sample,media_ref_override
 EPix1,A1,sample,rep_1,180.0,20.0,KT2440-A1,
 EPix1,A2,sample,rep_2,180.0,20.0,KT2440-A2,
 EPix1,A3,sample,rep_3,180.0,20.0,KT2440-A3,

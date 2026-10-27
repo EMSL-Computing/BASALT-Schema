@@ -43,14 +43,10 @@ classes:
       that are not instruments.  Currently Strain is the only concrete subtype.
       Activities reference Strain via the strain_ref FK slot.
     slots:
+      - id
       - purchased_material_type
       - name
       - description
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-        required: true
 
 
   # ============================================================================
@@ -197,7 +193,7 @@ classes:
       - plate_type
       - plate_barcode
       - setup_date
-      - setup_operator_id
+      - setup_operator
       - setup_instrument
       - sealing_method
       - well_metadata
@@ -257,7 +253,7 @@ classes:
       - timepoint_label
     todos:
       - measurement_time stamp
-    # Inherited from DataGenerationActivity: id, analyte_id,
+    # Inherited from DataGenerationActivity: id, analyzed_sample,
     #   name, acquisition_time, instrument_id, protocol_url,
     #   instrument_operator_id, sequence_order, version
 
@@ -268,9 +264,9 @@ classes:
     is_a: PlateDataGenerationActivity
     description: |-
       AMP2 plate measurement (OD, fluorescence, flow cytometry).
-      analyte_id -> processedSample(type='amp2_96well_plate')
+      analyzed_sample -> processedSample(type='amp2_96well_plate')
 
-      Chained via DataProcessingActivity.parent_workflow_id to track
+      Chained via DataProcessingActivity.parent_workflow to track
       multi-timepoint series on the same plate.
 
       v1 origin: plate-general.yaml AMP2DataGenerationActivity
@@ -285,7 +281,7 @@ classes:
     is_a: PlateDataGenerationActivity
     description: |-
       Ecoplate absorbance measurement at a single timepoint.
-      analyte_id -> processedSample(type='ecoplate_plate')
+      analyzed_sample -> processedSample(type='ecoplate_plate')
       wavelength_nm typically 590 for Biolog EcoPlates.
 
       v1 origin: plate-general.yaml EcoplateDataGenerationActivity
@@ -444,7 +440,7 @@ classes:
       media_ref slot.  Per-well reagent additions (nutrients, normalizers, inducers)
       are captured as structured WellReagentAddition entries in reagent_additions.
     slots:
-      - sample_id
+      - source_sample
     attributes:
       media_ref:
         description: |-
@@ -511,7 +507,7 @@ classes:
         description: Measured value (absorbance, OD, fluorescence)
         range: float
         required: true
-      flag:
+      well_flag:
         description: QC flag   "ok", "blank", "outlier", "contaminated"
         range: string
     todos:

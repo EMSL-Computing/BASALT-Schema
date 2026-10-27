@@ -1,4 +1,4 @@
-plate_barcode,position,well_type,replicate_group,media_ref_override,media_volume_ul,inoculum_volume_ul,sample_id,strain_arm,violation_note
+plate_barcode,position,well_type,replicate_group,media_ref_override,media_volume_ul,inoculum_volume_ul,source_sample,strain_arm,violation_note
 EPix1-complex,A1,sample,rep_1,urn:amp2:ps:M9-glucose-batch-002,180.0,20.0,KT2440-A1,KT2440,
 EPix1-complex,A2,sample,rep_2,urn:amp2:ps:M9-glucose-batch-002,180.0,20.0,KT2440-A2,KT2440,
 EPix1-complex,A3,sample,rep_3,urn:amp2:ps:M9-glucose-batch-002,180.0,,KT2440-A3,KT2440,[C5] inoculum_volume_ul missing (required)

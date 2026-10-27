@@ -29,11 +29,9 @@ classes:
       A study may have multiple participants, each with different roles, and may be associated with
       one or more campaigns. The study may also have associated DOIs and funding sources.
     slots:
+      - id
       - external_identifiers
     attributes:
-      id:
-        identifier: true
-        range: uuid
       # campaign_id:
       #   range: campaign
         #required: true
@@ -89,18 +87,18 @@ classes:
 
   ProjectParticipant:
     description: A record of a person and their role on an EMSL project.
+    slots:
+      - id
+      - person
+    slot_usage:
+      person:
+        required: true
+        description: The person who contributed to the study.
     attributes:
-      id:
-        identifier: true
-        range: uuid
       role:
         range: NexusRoleEnum
         required: true
         description: The role of the contributor in the study (e.g., data analysis, writing).
-      person:
-        range: PersonValue
-        required: true
-        description: The person who contributed to the study.
   
   DOI:
     description: A digital object identifier (DOI) representing a persistent link to a digital resource.

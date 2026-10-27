@@ -127,9 +127,9 @@ slots:
     description: omics type for easier search, optional
     range: AnalyteCategoryEnum
   
-  analyte_id:
+  analyzed_sample:
     description: |-
-      FK reference to a ProcessedSample representing the substance analyzed in this activity.
+      The ProcessedSample representing the substance analyzed in this activity.
     range: ProcessedSample
 
   ances_data:
@@ -531,7 +531,7 @@ slots:
     title: DBTL cycle number
     description: >-
       Integer identifying the Design-Build-Test-Learn iteration this plate
-      belongs to. Together with the originating sample_id it uniquely
+      belongs to. Together with the originating sample it uniquely
       identifies an experiment design across repeated cycles.
     range: integer
 
@@ -1169,6 +1169,12 @@ slots:
     range: string
     title: humidity regimen
 
+  id:
+    description: Unique identifier for this record.
+    identifier: true
+    range: uuid
+    required: true
+
   iat:
     description: Ion accumulation time setting used in the mass spectrometry method.
     range: double
@@ -1795,16 +1801,10 @@ slots:
       For example, ambient air is approximately 20.9%.
     range: float
 
-  parent_workflow_id:
+  parent_workflow:
     description: |-
-      Self-referential FK to the preceding DataProcessingActivity in a chain.
-      NULL -> first (or standalone) step.
-      Non-null -> this execution directly follows parent_workflow_id.
-      Enables single-hop chaining queries; full traversal via linkage_cache.
-
-      DDL: ALTER TABLE "DataProcessingActivity"
-             ADD COLUMN parent_workflow_id UUID
-             REFERENCES "DataProcessingActivity"(id);
+      The preceding DataProcessingActivity in a chain of processing steps.
+      Absent for the first (or a standalone) step.
     range: DataProcessingActivity
     required: false
 
@@ -1849,6 +1849,10 @@ slots:
     description: The height of the peak in a chromatogram or mass spectrum, which can be used to assess the concentration of the analyte.
     range: float
 
+  person:
+    description: A person associated with this record.
+    range: PersonValue
+
   perturbation:
     description: Type of perturbation, e.g. chemical administration, physical disturbance,
       etc.; coupled with perturbation regimen, including how many times the perturbation
@@ -1875,7 +1879,7 @@ slots:
   ph:
     description: pH measurement of the sample or liquid portion of sample or aqueous
       phase of the fluid
-    range: float
+    range: double
     title: pH
 
   ph_adjustment:
@@ -2391,7 +2395,7 @@ slots:
     range: string
     title: sample end time
 
-  sample_id:
+  source_sample:
     description: Link back to the originating sample
     range: Sample
     required: false
@@ -2796,7 +2800,7 @@ slots:
     description: EPICS process variable name (e.g. 20bm:m28)
     range: string
 
-  position:
+  motor_position:
     description: Motor position value at scan start
     range: float
 
@@ -2979,7 +2983,7 @@ slots:
     description: Automated liquid handler (e.g. "Hamilton_STAR") or "manual"
     range: string
 
-  setup_operator_id:
+  setup_operator:
     description: Person who set up the plate
     range: PersonValue
 

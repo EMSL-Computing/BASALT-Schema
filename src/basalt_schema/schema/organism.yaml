@@ -42,6 +42,7 @@ classes:
         - AMP2UserSample.organism_ref points here
         - CultureGrowth activities reference via organism_ref (aliased as strain_ref)
     slots:
+      - id
       # Identity slots
       - name
       - description
@@ -79,12 +80,6 @@ classes:
       - host_spec_range
       - propagation
       
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-        required: true
-        
     slot_usage:
       strain_identifier:
         required: true

@@ -1,4 +1,4 @@
-product_id,plate_barcode,timepoint_label,position,value,flag
+product_id,plate_barcode,timepoint_label,position,value,well_flag
 urn:amp2:data:od-product-AMP2-P001-t00h,AMP2-P001,t=0h,A01,0.096,ok
 urn:amp2:data:od-product-AMP2-P001-t00h,AMP2-P001,t=0h,A02,0.0806,ok
 urn:amp2:data:od-product-AMP2-P001-t00h,AMP2-P001,t=0h,A03,0.0806,ok
