@@ -42,8 +42,8 @@
 #     phenotype, trophic_level, pathogenicity, propagation.
 #   * StrainPurity is a pass/fail QC gate and emits no processed sample,
 #     per media_strain_culture_plate.yaml.
-#   * oxygen_relationship is the canonical slot name (oxygen_status is an
-#     alias).
+#   * oxygen_saturation_pct replaces the former oxygen_relationship enum
+#     with a float (percent O2 saturation).
 #
 # Deliberate data conditions (all schema-valid; none are schema violations)
 #   * AMP2-0013 fails its first purity streak (contaminant_strains set),
@@ -624,12 +624,54 @@ amp2_user_samples:
     replicate_number: 2
 
 # ---------------------------------------------------------------------------
+# sample_processing_protocols  (class: SampleProcessingProtocol)
+#   Type-level recipe records. Activities reference these via in_protocol.
+# ---------------------------------------------------------------------------
+sample_processing_protocols:
+  - id: "urn:amp2:protocol:media-prep-v1"
+    name: "AMP2 media preparation SOP"
+    description: "Standard operating procedure for AMP2 growth media preparation"
+    protocol_url: "https://protocols.io/view/amp2-media-preparation-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:strain-purity-v1"
+    name: "AMP2 strain purity check SOP"
+    description: "Standard operating procedure for strain purity verification"
+    protocol_url: "https://protocols.io/view/amp2-strain-purity-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:stock-culture-v1"
+    name: "AMP2 stock culture preparation SOP"
+    description: "Standard operating procedure for glycerol stock preparation"
+    protocol_url: "https://protocols.io/view/amp2-stock-culture-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:preculture-v1"
+    name: "AMP2 pre-culture growth SOP"
+    description: "Standard operating procedure for pre-culture inoculation and growth"
+    protocol_url: "https://protocols.io/view/amp2-preculture-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:experimental-culture-v1"
+    name: "AMP2 experimental culture SOP"
+    description: "Standard operating procedure for experimental culture growth"
+    protocol_url: "https://protocols.io/view/amp2-experimental-culture-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:plate-setup-v1"
+    name: "AMP2 96-well plate setup SOP"
+    description: "Standard operating procedure for AMP2 96-well plate inoculation and setup"
+    protocol_url: "https://protocols.io/view/amp2-plate-setup-v1"
+    protocol_version: "1.0"
+
+# ---------------------------------------------------------------------------
 # media_preparations  (class: MediaPreparation, is_a SampleProcessing)
 #   Each emits one processed_sample of type prepared_media; downstream
 #   media_ref slots point at that processed sample, never at this activity.
 # ---------------------------------------------------------------------------
 media_preparations:
   - id: "urn:amp2:activity:media-prep-LB-001"
+    in_protocol: "urn:amp2:protocol:media-prep-v1"
     name: "LB Lennox broth batch 001"
     media_type: "rich_media"
     volume_ml: 2000.0
@@ -647,6 +689,7 @@ media_preparations:
     # output prepared_media processed sample: urn:amp2:processed-sample:media-LB-lennox-001
 
   - id: "urn:amp2:activity:media-prep-M9-glucose-001"
+    in_protocol: "urn:amp2:protocol:media-prep-v1"
     name: "M9 + 0.4% glucose batch 001"
     media_type: "minimal_media"
     volume_ml: 1500.0
@@ -667,6 +710,7 @@ media_preparations:
     # output prepared_media processed sample: urn:amp2:processed-sample:media-M9-glucose-001
 
   - id: "urn:amp2:activity:media-prep-M9-benzoate-001"
+    in_protocol: "urn:amp2:protocol:media-prep-v1"
     name: "M9 + 20 mM sodium benzoate batch 001"
     media_type: "minimal_media"
     volume_ml: 1000.0
@@ -687,6 +731,7 @@ media_preparations:
     # output prepared_media processed sample: urn:amp2:processed-sample:media-M9-benzoate-001
 
   - id: "urn:amp2:activity:media-prep-YPD-001"
+    in_protocol: "urn:amp2:protocol:media-prep-v1"
     name: "YPD broth batch 001"
     media_type: "rich_media"
     volume_ml: 800.0
@@ -704,6 +749,7 @@ media_preparations:
     # output prepared_media processed sample: urn:amp2:processed-sample:media-YPD-001
 
   - id: "urn:amp2:activity:media-prep-LB-vanillate-001"
+    in_protocol: "urn:amp2:protocol:media-prep-v1"
     name: "LB + apramycin + vanillate induction medium batch 001"
     media_type: "pre_culture"
     volume_ml: 1200.0
@@ -725,6 +771,7 @@ media_preparations:
     # output prepared_media processed sample: urn:amp2:processed-sample:media-LB-vanillate-001
 
   - id: "urn:amp2:activity:media-prep-LB-agar-001"
+    in_protocol: "urn:amp2:protocol:media-prep-v1"
     name: "LB agar purity plates batch 001"
     media_type: "strain_purity"
     volume_ml: 600.0
@@ -743,6 +790,7 @@ media_preparations:
     # output prepared_media processed sample: urn:amp2:processed-sample:media-LB-agar-001
 
   - id: "urn:amp2:activity:media-prep-glycerol-stock-001"
+    in_protocol: "urn:amp2:protocol:media-prep-v1"
     name: "LB + 25% glycerol cryostock medium batch 001"
     media_type: "stock_culture"
     volume_ml: 400.0
@@ -769,6 +817,7 @@ culture_growth_activities:
   # user sample: AG5577-pJE2165-R1
   - id: "urn:amp2:activity:strain-purity-0001"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "AG5577-pJE2165-R1 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
@@ -777,7 +826,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -790,6 +839,7 @@ culture_growth_activities:
   # user sample: AG5577-pJE2165-R1
   - id: "urn:amp2:activity:stock-culture-0001"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "AG5577-pJE2165-R1 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
@@ -798,7 +848,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -811,6 +861,7 @@ culture_growth_activities:
   # user sample: AG5577-pJE2165-R1
   - id: "urn:amp2:activity:pre-culture-0001"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "AG5577-pJE2165-R1 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
@@ -819,7 +870,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -832,6 +883,7 @@ culture_growth_activities:
   # user sample: AG5577-pJE2165-R1
   - id: "urn:amp2:activity:experimental-culture-0001"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "AG5577-pJE2165-R1 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
@@ -840,7 +892,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -853,6 +905,7 @@ culture_growth_activities:
   # user sample: AG5577-pJE2165-R2
   - id: "urn:amp2:activity:strain-purity-0002"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "AG5577-pJE2165-R2 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
@@ -861,7 +914,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -874,6 +927,7 @@ culture_growth_activities:
   # user sample: AG5577-pJE2165-R2
   - id: "urn:amp2:activity:stock-culture-0002"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "AG5577-pJE2165-R2 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
@@ -882,7 +936,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -895,6 +949,7 @@ culture_growth_activities:
   # user sample: AG5577-pJE2165-R2
   - id: "urn:amp2:activity:pre-culture-0002"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "AG5577-pJE2165-R2 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
@@ -903,7 +958,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -916,6 +971,7 @@ culture_growth_activities:
   # user sample: AG5577-pJE2165-R2
   - id: "urn:amp2:activity:experimental-culture-0002"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "AG5577-pJE2165-R2 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
@@ -924,7 +980,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -937,6 +993,7 @@ culture_growth_activities:
   # user sample: PP_0055-R1
   - id: "urn:amp2:activity:strain-purity-0003"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "PP_0055-R1 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:PP-0055"
@@ -945,7 +1002,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -958,6 +1015,7 @@ culture_growth_activities:
   # user sample: PP_0055-R1
   - id: "urn:amp2:activity:stock-culture-0003"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "PP_0055-R1 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:PP-0055"
@@ -966,7 +1024,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -979,6 +1037,7 @@ culture_growth_activities:
   # user sample: PP_0055-R1
   - id: "urn:amp2:activity:pre-culture-0003"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "PP_0055-R1 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:PP-0055"
@@ -987,7 +1046,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -1000,6 +1059,7 @@ culture_growth_activities:
   # user sample: PP_0055-R1
   - id: "urn:amp2:activity:experimental-culture-0003"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "PP_0055-R1 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:PP-0055"
@@ -1008,7 +1068,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -1021,6 +1081,7 @@ culture_growth_activities:
   # user sample: PP_0055-R2
   - id: "urn:amp2:activity:strain-purity-0004"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "PP_0055-R2 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:PP-0055"
@@ -1029,7 +1090,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -1042,6 +1103,7 @@ culture_growth_activities:
   # user sample: PP_0055-R2
   - id: "urn:amp2:activity:stock-culture-0004"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "PP_0055-R2 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:PP-0055"
@@ -1050,7 +1112,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -1063,6 +1125,7 @@ culture_growth_activities:
   # user sample: PP_0055-R2
   - id: "urn:amp2:activity:pre-culture-0004"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "PP_0055-R2 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:PP-0055"
@@ -1071,7 +1134,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -1084,6 +1147,7 @@ culture_growth_activities:
   # user sample: PP_0055-R2
   - id: "urn:amp2:activity:experimental-culture-0004"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "PP_0055-R2 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:PP-0055"
@@ -1092,7 +1156,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -1105,6 +1169,7 @@ culture_growth_activities:
   # user sample: PP_0055-R3
   - id: "urn:amp2:activity:strain-purity-0005"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "PP_0055-R3 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:PP-0055"
@@ -1113,7 +1178,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -1126,6 +1191,7 @@ culture_growth_activities:
   # user sample: PP_0055-R3
   - id: "urn:amp2:activity:stock-culture-0005"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "PP_0055-R3 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:PP-0055"
@@ -1134,7 +1200,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -1147,6 +1213,7 @@ culture_growth_activities:
   # user sample: PP_0055-R3
   - id: "urn:amp2:activity:pre-culture-0005"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "PP_0055-R3 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:PP-0055"
@@ -1155,7 +1222,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -1168,6 +1235,7 @@ culture_growth_activities:
   # user sample: PP_0055-R3
   - id: "urn:amp2:activity:experimental-culture-0005"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "PP_0055-R3 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:PP-0055"
@@ -1176,7 +1244,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -1189,6 +1257,7 @@ culture_growth_activities:
   # user sample: PP_1021-R1
   - id: "urn:amp2:activity:strain-purity-0006"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "PP_1021-R1 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:PP-1021"
@@ -1197,7 +1266,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -1210,6 +1279,7 @@ culture_growth_activities:
   # user sample: PP_1021-R1
   - id: "urn:amp2:activity:stock-culture-0006"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "PP_1021-R1 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:PP-1021"
@@ -1218,7 +1288,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -1231,6 +1301,7 @@ culture_growth_activities:
   # user sample: PP_1021-R1
   - id: "urn:amp2:activity:pre-culture-0006"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "PP_1021-R1 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:PP-1021"
@@ -1239,7 +1310,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -1252,6 +1323,7 @@ culture_growth_activities:
   # user sample: PP_1021-R1
   - id: "urn:amp2:activity:experimental-culture-0006"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "PP_1021-R1 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:PP-1021"
@@ -1260,7 +1332,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -1273,6 +1345,7 @@ culture_growth_activities:
   # user sample: PP_3186-R1
   - id: "urn:amp2:activity:strain-purity-0007"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "PP_3186-R1 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:PP-3186"
@@ -1281,7 +1354,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -1294,6 +1367,7 @@ culture_growth_activities:
   # user sample: PP_3186-R1
   - id: "urn:amp2:activity:stock-culture-0007"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "PP_3186-R1 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:PP-3186"
@@ -1302,7 +1376,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -1315,6 +1389,7 @@ culture_growth_activities:
   # user sample: PP_3186-R1
   - id: "urn:amp2:activity:pre-culture-0007"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "PP_3186-R1 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:PP-3186"
@@ -1323,7 +1398,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -1336,6 +1411,7 @@ culture_growth_activities:
   # user sample: PP_3186-R1
   - id: "urn:amp2:activity:experimental-culture-0007"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "PP_3186-R1 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:PP-3186"
@@ -1344,7 +1420,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -1357,6 +1433,7 @@ culture_growth_activities:
   # user sample: PP_3186-R2
   - id: "urn:amp2:activity:strain-purity-0008"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "PP_3186-R2 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:PP-3186"
@@ -1365,7 +1442,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -1378,6 +1455,7 @@ culture_growth_activities:
   # user sample: PP_3186-R2
   - id: "urn:amp2:activity:stock-culture-0008"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "PP_3186-R2 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:PP-3186"
@@ -1386,7 +1464,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -1399,6 +1477,7 @@ culture_growth_activities:
   # user sample: PP_3186-R2
   - id: "urn:amp2:activity:pre-culture-0008"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "PP_3186-R2 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:PP-3186"
@@ -1407,7 +1486,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -1420,6 +1499,7 @@ culture_growth_activities:
   # user sample: PP_3186-R2
   - id: "urn:amp2:activity:experimental-culture-0008"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "PP_3186-R2 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:PP-3186"
@@ -1428,7 +1508,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -1441,6 +1521,7 @@ culture_growth_activities:
   # user sample: PP_5325-R1
   - id: "urn:amp2:activity:strain-purity-0009"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "PP_5325-R1 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:PP-5325"
@@ -1449,7 +1530,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -1462,6 +1543,7 @@ culture_growth_activities:
   # user sample: PP_5325-R1
   - id: "urn:amp2:activity:stock-culture-0009"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "PP_5325-R1 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:PP-5325"
@@ -1470,7 +1552,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -1483,6 +1565,7 @@ culture_growth_activities:
   # user sample: PP_5325-R1
   - id: "urn:amp2:activity:pre-culture-0009"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "PP_5325-R1 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:PP-5325"
@@ -1491,7 +1574,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -1504,6 +1587,7 @@ culture_growth_activities:
   # user sample: PP_5325-R1
   - id: "urn:amp2:activity:experimental-culture-0009"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "PP_5325-R1 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:PP-5325"
@@ -1512,7 +1596,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -1525,6 +1609,7 @@ culture_growth_activities:
   # user sample: KT2440_WT-R1
   - id: "urn:amp2:activity:strain-purity-0010"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "KT2440_WT-R1 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:KT2440-WT"
@@ -1533,7 +1618,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -1546,6 +1631,7 @@ culture_growth_activities:
   # user sample: KT2440_WT-R1
   - id: "urn:amp2:activity:stock-culture-0010"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "KT2440_WT-R1 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:KT2440-WT"
@@ -1554,7 +1640,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -1567,6 +1653,7 @@ culture_growth_activities:
   # user sample: KT2440_WT-R1
   - id: "urn:amp2:activity:pre-culture-0010"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "KT2440_WT-R1 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:KT2440-WT"
@@ -1575,7 +1662,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -1588,6 +1675,7 @@ culture_growth_activities:
   # user sample: KT2440_WT-R1
   - id: "urn:amp2:activity:experimental-culture-0010"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "KT2440_WT-R1 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:KT2440-WT"
@@ -1596,7 +1684,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -1609,6 +1697,7 @@ culture_growth_activities:
   # user sample: KT2440_WT-R2
   - id: "urn:amp2:activity:strain-purity-0011"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "KT2440_WT-R2 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:KT2440-WT"
@@ -1617,7 +1706,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -1630,6 +1719,7 @@ culture_growth_activities:
   # user sample: KT2440_WT-R2
   - id: "urn:amp2:activity:stock-culture-0011"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "KT2440_WT-R2 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:KT2440-WT"
@@ -1638,7 +1728,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -1651,6 +1741,7 @@ culture_growth_activities:
   # user sample: KT2440_WT-R2
   - id: "urn:amp2:activity:pre-culture-0011"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "KT2440_WT-R2 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:KT2440-WT"
@@ -1659,7 +1750,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -1672,6 +1763,7 @@ culture_growth_activities:
   # user sample: KT2440_WT-R2
   - id: "urn:amp2:activity:experimental-culture-0011"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "KT2440_WT-R2 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:KT2440-WT"
@@ -1680,7 +1772,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -1693,6 +1785,7 @@ culture_growth_activities:
   # user sample: RHA1_pTE314-R1
   - id: "urn:amp2:activity:strain-purity-0012"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "RHA1_pTE314-R1 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
@@ -1701,7 +1794,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -1714,6 +1807,7 @@ culture_growth_activities:
   # user sample: RHA1_pTE314-R1
   - id: "urn:amp2:activity:stock-culture-0012"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "RHA1_pTE314-R1 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
@@ -1722,7 +1816,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -1735,6 +1829,7 @@ culture_growth_activities:
   # user sample: RHA1_pTE314-R1
   - id: "urn:amp2:activity:pre-culture-0012"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "RHA1_pTE314-R1 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
@@ -1743,7 +1838,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -1756,6 +1851,7 @@ culture_growth_activities:
   # user sample: RHA1_pTE314-R1
   - id: "urn:amp2:activity:experimental-culture-0012"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "RHA1_pTE314-R1 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
@@ -1764,7 +1860,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -1777,6 +1873,7 @@ culture_growth_activities:
   # user sample: RHA1_pTE314-R2
   - id: "urn:amp2:activity:strain-purity-0013"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "RHA1_pTE314-R2 strain purity check"
     description: "First streak showed mixed colony morphology; sample was re-streaked from the original vial and passed on the second attempt."
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
@@ -1785,7 +1882,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + 16S colony PCR"
@@ -1798,6 +1895,7 @@ culture_growth_activities:
   # user sample: RHA1_pTE314-R2
   - id: "urn:amp2:activity:stock-culture-0013"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "RHA1_pTE314-R2 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
@@ -1806,7 +1904,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -1819,6 +1917,7 @@ culture_growth_activities:
   # user sample: RHA1_pTE314-R2
   - id: "urn:amp2:activity:pre-culture-0013"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "RHA1_pTE314-R2 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
@@ -1827,7 +1926,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -1840,6 +1939,7 @@ culture_growth_activities:
   # user sample: RHA1_pTE314-R2
   - id: "urn:amp2:activity:experimental-culture-0013"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "RHA1_pTE314-R2 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
@@ -1848,7 +1948,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -1861,6 +1961,7 @@ culture_growth_activities:
   # user sample: IFO0880_LIP1-R1
   - id: "urn:amp2:activity:strain-purity-0014"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "IFO0880_LIP1-R1 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
@@ -1869,7 +1970,7 @@ culture_growth_activities:
     incubation_time_hours: 48.0
     temperature_celsius: 25.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + ITS colony PCR"
@@ -1882,6 +1983,7 @@ culture_growth_activities:
   # user sample: IFO0880_LIP1-R1
   - id: "urn:amp2:activity:stock-culture-0014"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "IFO0880_LIP1-R1 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
@@ -1890,7 +1992,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 25.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -1903,6 +2005,7 @@ culture_growth_activities:
   # user sample: IFO0880_LIP1-R1
   - id: "urn:amp2:activity:pre-culture-0014"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "IFO0880_LIP1-R1 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
@@ -1911,7 +2014,7 @@ culture_growth_activities:
     incubation_time_hours: 18.0
     temperature_celsius: 25.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -1924,6 +2027,7 @@ culture_growth_activities:
   # user sample: IFO0880_LIP1-R1
   - id: "urn:amp2:activity:experimental-culture-0014"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "IFO0880_LIP1-R1 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
@@ -1932,7 +2036,7 @@ culture_growth_activities:
     incubation_time_hours: 6.0
     temperature_celsius: 25.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -1945,6 +2049,7 @@ culture_growth_activities:
   # user sample: IFO0880_LIP1-R2
   - id: "urn:amp2:activity:strain-purity-0015"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "IFO0880_LIP1-R2 strain purity check"
     description: "Single-colony morphology confirmed; no contaminants observed."
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
@@ -1953,7 +2058,7 @@ culture_growth_activities:
     incubation_time_hours: 48.0
     temperature_celsius: 25.0
     agitation_speed_rpm: null
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "petri_dish"
     processing_steps: "streak; incubate; inspect; colony PCR"
     inspection_method: "visual colony morphology + ITS colony PCR"
@@ -1966,6 +2071,7 @@ culture_growth_activities:
   # user sample: IFO0880_LIP1-R2
   - id: "urn:amp2:activity:stock-culture-0015"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "IFO0880_LIP1-R2 glycerol stock preparation"
     description: "Overnight culture mixed 1:1 with cryostock medium and banked at -80 C."
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
@@ -1974,7 +2080,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 25.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "culture_tube"
     processing_steps: "inoculate; incubate; mix with glycerol; aliquot; freeze"
     inspection_method: null
@@ -1987,6 +2093,7 @@ culture_growth_activities:
   # user sample: IFO0880_LIP1-R2
   - id: "urn:amp2:activity:pre-culture-0015"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "IFO0880_LIP1-R2 pre-culture"
     description: "Stock scraped into pre-culture medium to establish viable inoculum."
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
@@ -1995,7 +2102,7 @@ culture_growth_activities:
     incubation_time_hours: 18.0
     temperature_celsius: 25.0
     agitation_speed_rpm: 200
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "thaw; inoculate; incubate; check OD600"
     inspection_method: null
@@ -2008,6 +2115,7 @@ culture_growth_activities:
   # user sample: IFO0880_LIP1-R2
   - id: "urn:amp2:activity:experimental-culture-0015"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "IFO0880_LIP1-R2 experimental culture"
     description: "Terminal culture step; back-diluted to OD600 0.05 and grown to mid-exponential before plating."
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
@@ -2016,7 +2124,7 @@ culture_growth_activities:
     incubation_time_hours: 6.0
     temperature_celsius: 25.0
     agitation_speed_rpm: 220
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "baffled_flask"
     processing_steps: "back-dilute; incubate; measure OD600; normalise to OD600 0.10"
     inspection_method: null
@@ -2536,6 +2644,7 @@ processed_samples:
 plate_setup_activities:
   - id: "urn:amp2:activity:plate-setup-AMP2-P001"
     activity_type: "AMP2PlateSetupActivity"
+    in_protocol: "urn:amp2:protocol:plate-setup-v1"
     name: "AMP2-P001 plate setup"
     description: "Carbon-source comparison plate. Rows A-D carry the plate-level LB batch; rows E-H override to the M9 + 0.4% glucose batch through AMP2WellMetadata.media_ref."
     plate_type: "Greiner_96well_flat_bottom_655161"
@@ -2546,9 +2655,10 @@ plate_setup_activities:
     setup_operator_id: "urn:amp2:person:kapu336"
     setup_instrument: "manual"
     sealing_method: "BreathEasy_membrane"
+    cycle_id: 1
     temperature_celsius: 30.0
     agitation_speed_rpm: 180
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     processing_steps: "dispense media; dispense inoculum; seal; load reader"
     media_ref: "urn:amp2:processed-sample:media-LB-lennox-001"
     # output plate processed sample: urn:amp2:processed-sample:plate-AMP2-P001
@@ -2652,6 +2762,7 @@ plate_setup_activities:
 
   - id: "urn:amp2:activity:plate-setup-AMP2-P002"
     activity_type: "AMP2PlateSetupActivity"
+    in_protocol: "urn:amp2:protocol:plate-setup-v1"
     name: "AMP2-P002 plate setup"
     description: "CRISPRi induction dose-response plate. One plate-level medium for every well (no per-well media_ref overrides); the experimental variable is the per-well vanillate concentration carried in AMP2WellMetadata.treatments."
     plate_type: "Corning_96well_flat_bottom_3596"
@@ -2662,9 +2773,10 @@ plate_setup_activities:
     setup_operator_id: "urn:amp2:person:navi204"
     setup_instrument: "Hamilton_Microlab_STAR"
     sealing_method: "BreathEasy_membrane"
+    cycle_id: 1
     temperature_celsius: 30.0
     agitation_speed_rpm: 180
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     processing_steps: "dispense media; dispense inoculum; seal; load reader"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     # output plate processed sample: urn:amp2:processed-sample:plate-AMP2-P002
@@ -2768,6 +2880,7 @@ plate_setup_activities:
 
   - id: "urn:amp2:activity:plate-setup-AMP2-P003"
     activity_type: "AMP2PlateSetupActivity"
+    in_protocol: "urn:amp2:protocol:plate-setup-v1"
     name: "AMP2-P003 plate setup"
     description: "Full-panel 384-well plate: all 15 user samples x 6 technical replicates in each of four media quadrants (A-H/01-12 LB, A-H/13-24 M9+glucose, I-P/01-12 M9+benzoate, I-P/13-24 YPD). Demonstrates that the data model is not limited to 96-well geometry."
     plate_type: "Greiner_384well_flat_bottom_781091"
@@ -2778,9 +2891,10 @@ plate_setup_activities:
     setup_operator_id: "urn:amp2:person:navi204"
     setup_instrument: "Hamilton_Microlab_STAR"
     sealing_method: "optically_clear_adhesive_film"
+    cycle_id: 1
     temperature_celsius: 28.0
     agitation_speed_rpm: 150
-    oxygen_relationship: "aerobic"
+    oxygen_saturation_pct: 20.9
     processing_steps: "dispense media; dispense inoculum; seal; load reader"
     media_ref: "urn:amp2:processed-sample:media-LB-lennox-001"
     # output plate processed sample: urn:amp2:processed-sample:plate-AMP2-P003

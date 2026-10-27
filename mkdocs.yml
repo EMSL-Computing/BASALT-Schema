@@ -3,6 +3,10 @@ site_name: "BASALT"
 theme:
   # https://www.mkdocs.org/user-guide/configuration/#theme
   name: material
+  # Theme overrides live in ./overrides. We override partials/source.html so the
+  # header repo block shows the latest git *tag* instead of the latest GitHub
+  # *Release* (see docs/js/latest-tag.js).
+  custom_dir: overrides
   icon:
     logo: material/book-open-page-variant
   # palette:
@@ -24,6 +28,10 @@ extra_javascript:
   # Opens the "Schema Visualizer" nav entry in a new tab, resolved against the
   # site root so it works both under `mkdocs serve` and on the published site.
   - js/nav-visualizer.js
+  # Render the header repo facts (version=latest git tag, stars, forks). Works
+  # together with overrides/partials/source.html, which disables Material's own
+  # fetch of the latest GitHub Release.
+  - js/latest-tag.js
 
 plugins:
   - search

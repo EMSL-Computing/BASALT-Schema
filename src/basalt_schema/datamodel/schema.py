@@ -430,6 +430,7 @@ SampleProcessingRun.
     id = Column(UUID(), primary_key=True, nullable=False )
     processing_id = Column(UUID(), ForeignKey('SampleProcessing.id'), nullable=False )
     step_number = Column(Integer(), nullable=False )
+    sample_id = Column(UUID(), ForeignKey('Sample.id'), nullable=False )
     role = Column(Enum('input_sample', 'output_sample', name='SampleRole'), nullable=False )
     
 
@@ -441,7 +442,7 @@ SampleProcessingRun.
     
 
     def __repr__(self):
-        return f"ProcessingSampleLink(in_run={self.in_run},id={self.id},processing_id={self.processing_id},step_number={self.step_number},role={self.role},)"
+        return f"ProcessingSampleLink(in_run={self.in_run},id={self.id},processing_id={self.processing_id},step_number={self.step_number},sample_id={self.sample_id},role={self.role},)"
 
 
 
@@ -539,46 +540,91 @@ class Configuration(Base):
 
 class MobilePhaseSegment(Base):
     """
-    A segment of the mobile phase used in chromatography during mass spectrometry.
+    A segment of the mobile phase sequence used in a chromatographic separation.
     """
     __tablename__ = 'MobilePhaseSegment'
 
-    name = Column(Text(), nullable=False )
     duration_min = Column(Float())
+    mobile_phase = Column(UUID(), ForeignKey('MobilePhase.id'))
+    flow_rate_ul_min = Column(Float())
+    step_number = Column(Integer())
     id = Column(UUID(), primary_key=True, nullable=False )
-    segment_order = Column(Integer())
-    substance = Column(Text())
+    mobile_phase_percentage = Column(Float())
+    used_in_chromatography_config_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'))
+    used_in_chromatography_config = relationship("ChromatographyConfiguration", uselist=False, foreign_keys=[used_in_chromatography_config_uid])
     
 
     
 
     def __repr__(self):
-        return f"MobilePhaseSegment(name={self.name},duration_min={self.duration_min},id={self.id},segment_order={self.segment_order},substance={self.substance},)"
+        return f"MobilePhaseSegment(duration_min={self.duration_min},mobile_phase={self.mobile_phase},flow_rate_ul_min={self.flow_rate_ul_min},step_number={self.step_number},id={self.id},mobile_phase_percentage={self.mobile_phase_percentage},used_in_chromatography_config_uid={self.used_in_chromatography_config_uid},)"
 
 
 
     
 
 
-class MassSpectrometryStandardRun(Base):
+class MobilePhase(Base):
     """
-    A record of a mass spectrometry standard run with a batch of samples, which is used for calibration and quality control.
+    Link between a set of substances used in a mobile phase, and the use of that mobile phase in a sequence of flow segments.
     """
-    __tablename__ = 'MassSpectrometryStandardRun'
+    __tablename__ = 'MobilePhase'
+
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"MobilePhase(id={self.id},)"
+
+
+
+    
+
+
+class MobilePhaseSubstance(Base):
+    """
+    A representation of a single chemical and its concentration used in a mobile phase in a chromatography protocol.
+    """
+    __tablename__ = 'MobilePhaseSubstance'
+
+    volume_ul = Column(Float())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    in_mobile_phase = Column(UUID(), ForeignKey('MobilePhase.id'))
+    substance = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    concentration = Column(Text())
+    
+
+    
+
+    def __repr__(self):
+        return f"MobilePhaseSubstance(volume_ul={self.volume_ul},id={self.id},in_mobile_phase={self.in_mobile_phase},substance={self.substance},concentration={self.concentration},)"
+
+
+
+    
+
+
+class CalibrationStandardRun(Base):
+    """
+    A record of a standard run with a batch of samples, which is used for calibration and quality control.
+    """
+    __tablename__ = 'CalibrationStandardRun'
 
     name = Column(Text(), nullable=False )
     description = Column(Text())
     internal_calibration = Column(Boolean())
-    calibration_target = Column(Enum('mass_charge_ratio', 'retention_time', 'retention_index', name='CalibrationTargetEnum'))
+    calibration_target = Column(Enum('mass_charge_ratio', 'retention_time', 'retention_index', 'refractive_index', name='CalibrationTargetEnum'))
     calibration_standard = Column(UUID(), ForeignKey('PurchasedMaterial.id'))
-    calibration_data = Column(UUID(), ForeignKey('MassSpectrometryInstrumentData.id'))
+    calibration_data = Column(UUID(), ForeignKey('InstrumentData.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
     
 
     
 
     def __repr__(self):
-        return f"MassSpectrometryStandardRun(name={self.name},description={self.description},internal_calibration={self.internal_calibration},calibration_target={self.calibration_target},calibration_standard={self.calibration_standard},calibration_data={self.calibration_data},id={self.id},)"
+        return f"CalibrationStandardRun(name={self.name},description={self.description},internal_calibration={self.internal_calibration},calibration_target={self.calibration_target},calibration_standard={self.calibration_standard},calibration_data={self.calibration_data},id={self.id},)"
 
 
 
@@ -597,13 +643,13 @@ of the sampleProcessing is_a tree.
     id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
+    oxygen_saturation_pct = Column(Float())
     
 
     
 
     def __repr__(self):
-        return f"HasIncubationConditions(id={self.id},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},)"
+        return f"HasIncubationConditions(id={self.id},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},)"
 
 
 
@@ -689,6 +735,45 @@ Subclasses add type-specific fields.
 
     def __repr__(self):
         return f"WellMetadata(id={self.id},position={self.position},well_type={self.well_type},replicate_group={self.replicate_group},PlateSetupActivity_id={self.PlateSetupActivity_id},AMP2PlateSetupActivity_id={self.AMP2PlateSetupActivity_id},EcoplatePlateSetupActivity_id={self.EcoplatePlateSetupActivity_id},)"
+
+
+
+    
+
+
+class WellReagentAddition(Base):
+    """
+    One reagent addition to one well. Captures the compound identity, its role
+in the experiment, dispensed volume, and both the requested and achieved
+concentrations. NOT a standalone database table; embedded structured entries
+under AMP2WellMetadata.reagent_additions.
+
+For reagents dispensed at plate setup time, addition_time is null.
+For mid-experiment perturbations (e.g. inducer added at hour 23 of a 24h
+time-series), addition_time records when the addition occurred.
+
+Borrows compound and substance_role from SampleProcessingSubstance /
+PortionOfSubstance; adds requested-vs-actual concentration split and
+addition_time for the inducer scenario.
+    """
+    __tablename__ = 'WellReagentAddition'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    compound = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'), nullable=False )
+    substance_role = Column(Enum('buffer', 'acid', 'base', 'ms_proteolytic_enzyme', 'solvent', 'surfactant', 'derivatizing_agent', 'solubilizing_agent', 'nutrient', 'normalizer', 'inducer', name='SubstanceRoleEnum'), nullable=False )
+    volume_ul = Column(Float(), nullable=False )
+    stock_concentration = Column(Float())
+    requested_concentration = Column(Float())
+    actual_concentration = Column(Float())
+    concentration_unit = Column(Text())
+    addition_time = Column(Text())
+    AMP2WellMetadata_id = Column(Integer(), ForeignKey('AMP2WellMetadata.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"WellReagentAddition(id={self.id},compound={self.compound},substance_role={self.substance_role},volume_ul={self.volume_ul},stock_concentration={self.stock_concentration},requested_concentration={self.requested_concentration},actual_concentration={self.actual_concentration},concentration_unit={self.concentration_unit},addition_time={self.addition_time},AMP2WellMetadata_id={self.AMP2WellMetadata_id},)"
 
 
 
@@ -1201,16 +1286,36 @@ A run may cover several starting samples (a PoolingProcess run) or produce sever
     
 
 
-class PortionOfSubstance(Base):
+class SubstancesUsedLink(Base):
     """
-    A portion of a substance with specific characteristics.
+    A link between a SampleProcessing activity and a PortionOfSubstance that was used in it.
     """
-    __tablename__ = 'PortionOfSubstance'
+    __tablename__ = 'SubstancesUsedLink'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    known_as = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'ethanol', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
-    substance_role = Column(Enum('buffer', 'acid', 'base', 'ms_proteolytic_enzyme', 'solvent', 'surfactant', 'derivatizing_agent', 'solubilizing_agent', name='SubstanceRoleEnum'))
-    volume_mL = Column(Float())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    sample_processing_substance = Column(UUID(), ForeignKey('SampleProcessingSubstance.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"SubstancesUsedLink(id={self.id},sample_processing_substance={self.sample_processing_substance},)"
+
+
+
+    
+
+
+class SampleProcessingSubstance(Base):
+    """
+    A portion of a substance with specific characteristics, as used in a  SampleProcessing activity. Multiple substances may be used in a single  SampleProcessing activity, and the same substance may be used in multiple  SampleProcessing activities.
+    """
+    __tablename__ = 'SampleProcessingSubstance'
+
+    volume_ml = Column(Float())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    known_as = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    substance_role = Column(Enum('buffer', 'acid', 'base', 'ms_proteolytic_enzyme', 'solvent', 'surfactant', 'derivatizing_agent', 'solubilizing_agent', 'nutrient', 'normalizer', 'inducer', name='SubstanceRoleEnum'))
     source_concentration_mg_per_ml = Column(Float())
     final_concentration_mg_per_ml = Column(Float())
     
@@ -1218,7 +1323,7 @@ class PortionOfSubstance(Base):
     
 
     def __repr__(self):
-        return f"PortionOfSubstance(id={self.id},known_as={self.known_as},substance_role={self.substance_role},volume_mL={self.volume_mL},source_concentration_mg_per_ml={self.source_concentration_mg_per_ml},final_concentration_mg_per_ml={self.final_concentration_mg_per_ml},)"
+        return f"SampleProcessingSubstance(volume_ml={self.volume_ml},id={self.id},known_as={self.known_as},substance_role={self.substance_role},source_concentration_mg_per_ml={self.source_concentration_mg_per_ml},final_concentration_mg_per_ml={self.final_concentration_mg_per_ml},)"
 
 
 
@@ -1648,26 +1753,6 @@ class XASLCFDataProcessingActivity_uses_xas_raw_data(Base):
     
 
 
-class ChromatographyConfiguration_mobile_phases(Base):
-    """
-    
-    """
-    __tablename__ = 'ChromatographyConfiguration_mobile_phases'
-
-    ChromatographyConfiguration_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'), primary_key=True)
-    mobile_phases_id = Column(UUID(), ForeignKey('MobilePhaseSegment.id'), primary_key=True)
-    
-
-    
-
-    def __repr__(self):
-        return f"ChromatographyConfiguration_mobile_phases(ChromatographyConfiguration_uid={self.ChromatographyConfiguration_uid},mobile_phases_id={self.mobile_phases_id},)"
-
-
-
-    
-
-
 class MediaPreparation_exposure_sensitivity(Base):
     """
     
@@ -1702,26 +1787,6 @@ class MediaPreparation_media_additions(Base):
 
     def __repr__(self):
         return f"MediaPreparation_media_additions(MediaPreparation_id={self.MediaPreparation_id},media_additions={self.media_additions},)"
-
-
-
-    
-
-
-class AMP2WellMetadata_treatments(Base):
-    """
-    
-    """
-    __tablename__ = 'AMP2WellMetadata_treatments'
-
-    AMP2WellMetadata_id = Column(Integer(), ForeignKey('AMP2WellMetadata.id'), primary_key=True)
-    treatments = Column(Text(), primary_key=True)
-    
-
-    
-
-    def __repr__(self):
-        return f"AMP2WellMetadata_treatments(AMP2WellMetadata_id={self.AMP2WellMetadata_id},treatments={self.treatments},)"
 
 
 
@@ -2068,46 +2133,6 @@ class WaterSample_external_identifiers(Base):
     
 
 
-class ChemicalConversionProcess_substances_used(Base):
-    """
-    
-    """
-    __tablename__ = 'ChemicalConversionProcess_substances_used'
-
-    ChemicalConversionProcess_id = Column(UUID(), ForeignKey('ChemicalConversionProcess.id'), primary_key=True)
-    substances_used_id = Column(Integer(), ForeignKey('PortionOfSubstance.id'), primary_key=True)
-    
-
-    
-
-    def __repr__(self):
-        return f"ChemicalConversionProcess_substances_used(ChemicalConversionProcess_id={self.ChemicalConversionProcess_id},substances_used_id={self.substances_used_id},)"
-
-
-
-    
-
-
-class Extraction_substances_used(Base):
-    """
-    
-    """
-    __tablename__ = 'Extraction_substances_used'
-
-    Extraction_id = Column(UUID(), ForeignKey('Extraction.id'), primary_key=True)
-    substances_used_id = Column(Integer(), ForeignKey('PortionOfSubstance.id'), primary_key=True)
-    
-
-    
-
-    def __repr__(self):
-        return f"Extraction_substances_used(Extraction_id={self.Extraction_id},substances_used_id={self.substances_used_id},)"
-
-
-
-    
-
-
 class Extraction_extraction_target(Base):
     """
     
@@ -2429,6 +2454,122 @@ XAS data. One instance represents a single .lcf fit run.
     
 
 
+class RIDataGenerationActivity(DataGenerationActivity):
+    """
+    Refractive Index (RI) measurement activity.
+Represents one measurement session for a sample using a RI detector.
+    """
+    __tablename__ = 'RIDataGenerationActivity'
+
+    wavelength_nm = Column(Integer(), nullable=False )
+    temperature_celsius = Column(Float())
+    calibration_standard = Column(UUID(), ForeignKey('PurchasedMaterial.id'))
+    uses_calibration = Column(UUID(), ForeignKey('CalibrationStandardRun.id'))
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    uses_chromatography_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'))
+    uses_chromatography = relationship("ChromatographyConfiguration", uselist=False, foreign_keys=[uses_chromatography_uid])
+    
+
+    
+
+    def __repr__(self):
+        return f"RIDataGenerationActivity(wavelength_nm={self.wavelength_nm},temperature_celsius={self.temperature_celsius},calibration_standard={self.calibration_standard},uses_calibration={self.uses_calibration},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},uses_chromatography_uid={self.uses_chromatography_uid},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class UVDataGenerationActivity(DataGenerationActivity):
+    """
+    Ultraviolet spectroscopy acquisition activity.
+Represents one measurement session for a sample using UV spectroscopy.
+    """
+    __tablename__ = 'UVDataGenerationActivity'
+
+    uv_detector_type = Column(Enum('photodiode_array', 'variable_wavelength', 'fixed_wavelength', name='UVDetectorEnum'))
+    wavelength_nm_max = Column(Float())
+    wavelength_nm_min = Column(Float())
+    resolution_nm = Column(Float())
+    sampling_rate_hz = Column(Float())
+    negative_absorbance_margin_au = Column(Float())
+    uses_calibration = Column(UUID(), ForeignKey('CalibrationStandardRun.id'))
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    uses_chromatography_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'))
+    uses_chromatography = relationship("ChromatographyConfiguration", uselist=False, foreign_keys=[uses_chromatography_uid])
+    
+
+    
+
+    def __repr__(self):
+        return f"UVDataGenerationActivity(uv_detector_type={self.uv_detector_type},wavelength_nm_max={self.wavelength_nm_max},wavelength_nm_min={self.wavelength_nm_min},resolution_nm={self.resolution_nm},sampling_rate_hz={self.sampling_rate_hz},negative_absorbance_margin_au={self.negative_absorbance_margin_au},uses_calibration={self.uses_calibration},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},uses_chromatography_uid={self.uses_chromatography_uid},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class UVChannelConfig(Configuration):
+    """
+    Configuration for a single UV-Vis detector channel.
+    """
+    __tablename__ = 'UVChannelConfig'
+
+    uid = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    uv_datagen_run = Column(UUID(), ForeignKey('UVDataGenerationActivity.id'))
+    channel_number = Column(Integer())
+    wavelength_nm = Column(Integer(), nullable=False )
+    resolution_nm = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    id = Column(UUID(), nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"UVChannelConfig(uid={self.uid},uv_datagen_run={self.uv_datagen_run},channel_number={self.channel_number},wavelength_nm={self.wavelength_nm},resolution_nm={self.resolution_nm},name={self.name},description={self.description},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
 class MassSpectrometryDataGenerationActivity(DataGenerationActivity):
     """
     A record of the mass spectrometry run that generates a raw data product.
@@ -2518,7 +2659,7 @@ class ChromatographyConfiguration(Configuration):
     column = Column(Text())
     column_dimensions = Column(Text())
     column_manufacturer = Column(Text())
-    chromatography_type = Column(Enum('liquid_chromatography', 'gas_chromatography', 'solid_phase_extraction', name='ChromatographyCategoryEnum'), nullable=False )
+    chromatography_type = Column(Enum('liquid_chromatography', 'gas_chromatography', 'solid_phase_extraction', 'high_performance_liquid_chromatography', name='ChromatographyCategoryEnum'), nullable=False )
     stationary_phase = Column(Text())
     temperature_celsius = Column(Float())
     duration_min = Column(Float())
@@ -2527,10 +2668,6 @@ class ChromatographyConfiguration(Configuration):
     name = Column(Text(), nullable=False )
     description = Column(Text())
     id = Column(UUID(), nullable=False )
-    
-    
-    # ManyToMany
-    mobile_phases = relationship( "MobilePhaseSegment", secondary="ChromatographyConfiguration_mobile_phases")
     
 
     
@@ -2555,7 +2692,7 @@ slots including used_software and version.
     """
     __tablename__ = 'MassSpectrometryDataProcessingActivity'
 
-    uses_calibration = Column(UUID(), ForeignKey('MassSpectrometryStandardRun.id'))
+    uses_calibration = Column(UUID(), ForeignKey('CalibrationStandardRun.id'))
     uses_raw_ms_data = Column(UUID(), ForeignKey('MassSpectrometryInstrumentData.id'))
     lims_task_instance_id = Column(Integer())
     metaproteomics_analysis_category = Column(Enum('matched_metagenome', 'in_silico_metagenome', 'WITHDRAWN', name='MetaproteomicsAnalysisCategoryEnum'))
@@ -2660,7 +2797,7 @@ PreCultureGrowth, ExperimentalCulture.
     container_type = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
+    oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -2670,7 +2807,7 @@ PreCultureGrowth, ExperimentalCulture.
     
 
     def __repr__(self):
-        return f"CultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"CultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -2704,7 +2841,7 @@ v1 origin: plate-general.yaml PlateSetupActivity
     sealing_method = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
+    oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -2718,7 +2855,7 @@ v1 origin: plate-general.yaml PlateSetupActivity
     
 
     def __repr__(self):
-        return f"PlateSetupActivity(plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"PlateSetupActivity(plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -2845,8 +2982,9 @@ v1 origin: plate-general.yaml EcoplateAbsorbanceProduct
 class AMP2WellMetadata(WellMetadata):
     """
     AMP2-specific per-well metadata.
-Minimal   media composition comes from the Media entity referenced via
-the activity's media_ref slot.  Per-well data is volumes and replicate info.
+Media composition comes from the Media entity referenced via the activity's
+media_ref slot.  Per-well reagent additions (nutrients, normalizers, inducers)
+are captured as structured WellReagentAddition entries in reagent_additions.
     """
     __tablename__ = 'AMP2WellMetadata'
 
@@ -2860,9 +2998,8 @@ the activity's media_ref slot.  Per-well data is volumes and replicate info.
     replicate_group = Column(Text())
     
     
-    treatments_rel = relationship( "AMP2WellMetadata_treatments" )
-    treatments = association_proxy("treatments_rel", "treatments",
-                                  creator=lambda x_: AMP2WellMetadata_treatments(treatments=x_))
+    # One-To-Many: OneToAnyMapping(source_class='AMP2WellMetadata', source_slot='reagent_additions', mapping_type=None, target_class='WellReagentAddition', target_slot='AMP2WellMetadata_id', join_class=None, uses_join_table=None, multivalued=False)
+    reagent_additions = relationship( "WellReagentAddition", foreign_keys="[WellReagentAddition.AMP2WellMetadata_id]")
     
 
     
@@ -2981,6 +3118,442 @@ inherited type attribute (string); expected values:
 
     def __repr__(self):
         return f"MetagenomicsDataProcessingActivity(parent_workflow_id={self.parent_workflow_id},workflow_steps={self.workflow_steps},description={self.description},id={self.id},started_at_time={self.started_at_time},ended_at_time={self.ended_at_time},software_url={self.software_url},software_version={self.software_version},software_poc={self.software_poc},execution_resource={self.execution_resource},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class BulkDensityDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'BulkDensityDataGenerationActivity'
+
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"BulkDensityDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class ElementalAnalysisDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'ElementalAnalysisDataGenerationActivity'
+
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"ElementalAnalysisDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class EnzymeActivityDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'EnzymeActivityDataGenerationActivity'
+
+    incubation_temp_c = Column(Float())
+    incubation_time = Column(Text())
+    wavelength = Column(Float())
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"EnzymeActivityDataGenerationActivity(incubation_temp_c={self.incubation_temp_c},incubation_time={self.incubation_time},wavelength={self.wavelength},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class GravimetricWaterContentDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'GravimetricWaterContentDataGenerationActivity'
+
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"GravimetricWaterContentDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class HydraulicPropertiesDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'HydraulicPropertiesDataGenerationActivity'
+
+    fitting_model = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"HydraulicPropertiesDataGenerationActivity(fitting_model={self.fitting_model},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class KuoDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'KuoDataGenerationActivity'
+
+    detection_limit = Column(Text(), nullable=False )
+    wavelength = Column(Text())
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"KuoDataGenerationActivity(detection_limit={self.detection_limit},wavelength={self.wavelength},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class MicrobialBiomassDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'MicrobialBiomassDataGenerationActivity'
+
+    detector = Column(Text(), nullable=False )
+    mode = Column(Text())
+    injection_volume = Column(Text(), nullable=False )
+    sample_volume = Column(Text(), nullable=False )
+    number_of_injections = Column(Float(), nullable=False )
+    check_standard_spacing = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"MicrobialBiomassDataGenerationActivity(detector={self.detector},mode={self.mode},injection_volume={self.injection_volume},sample_volume={self.sample_volume},number_of_injections={self.number_of_injections},check_standard_spacing={self.check_standard_spacing},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class PH_DataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'PH_DataGenerationActivity'
+
+    calibration = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"PH_DataGenerationActivity(calibration={self.calibration},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class RespirationDataGenerationActivity(DataGenerationActivity):
+    """
+    Data generation activity for soil respiration analysis.
+Captures CO2-C efflux measured per gram of soil.
+    """
+    __tablename__ = 'RespirationDataGenerationActivity'
+
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"RespirationDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class TOC_TN_DataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'TOC_TN_DataGenerationActivity'
+
+    column = Column(Text())
+    mode = Column(Text())
+    detector = Column(Text(), nullable=False )
+    injection_volume = Column(Text(), nullable=False )
+    sample_volume = Column(Text(), nullable=False )
+    number_of_injections = Column(Float(), nullable=False )
+    check_standard_spacing = Column(Text())
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"TOC_TN_DataGenerationActivity(column={self.column},mode={self.mode},detector={self.detector},injection_volume={self.injection_volume},sample_volume={self.sample_volume},number_of_injections={self.number_of_injections},check_standard_spacing={self.check_standard_spacing},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class TextureDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'TextureDataGenerationActivity'
+
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"TextureDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class XCTDataGenerationActivity(DataGenerationActivity):
+    """
+    
+    """
+    __tablename__ = 'XCTDataGenerationActivity'
+
+    x_ray_power = Column(Text(), nullable=False )
+    cu_filter = Column(Text(), nullable=False )
+    total_projections_collected = Column(Float(), nullable=False )
+    rotation = Column(Text(), nullable=False )
+    frames_recording_per_projection = Column(Float(), nullable=False )
+    exposure_time_per_frame = Column(Text(), nullable=False )
+    image_voxel_size_is = Column(Text(), nullable=False )
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"XCTDataGenerationActivity(x_ray_power={self.x_ray_power},cu_filter={self.cu_filter},total_projections_collected={self.total_projections_collected},rotation={self.rotation},frames_recording_per_projection={self.frames_recording_per_projection},exposure_time_per_frame={self.exposure_time_per_frame},image_voxel_size_is={self.image_voxel_size_is},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
 
 
 
@@ -3213,7 +3786,7 @@ class CommerciallyPurchasedSample(Sample):
 
     analysis_type = Column(Text(), nullable=False )
     cas = Column(Text())
-    compound_name = Column(Text(), nullable=False )
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'), nullable=False )
     experimental_factor = Column(Text())
     experimental_factor_other = Column(Text())
     item_number = Column(Text())
@@ -3677,7 +4250,7 @@ class OtherUndescribedSample(Sample):
     chem_oxygen_dem = Column(Text())
     chloride = Column(Text())
     chlorophyll = Column(Text())
-    compound_name = Column(Text())
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
     conduc = Column(Text())
     density = Column(Text())
     depth = Column(Text())
@@ -4352,7 +4925,7 @@ class SynthesizedMaterialSample(Sample):
 
     analysis_type = Column(Text(), nullable=False )
     cas = Column(Text())
-    compound_name = Column(Text())
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
     experimental_factor = Column(Text())
     experimental_factor_other = Column(Text())
     genetic_mod = Column(Text())
@@ -4674,7 +5247,7 @@ ProcessingSampleLink only.
     label_text = Column(Text())
     concentration_ug_per_uL = Column(Float())
     total_amount_ug = Column(Float())
-    volume_uL = Column(Float())
+    volume_ul = Column(Float())
     sampled_portion = Column(Enum('supernatant', 'pellet', 'organic_layer', 'aqueous_layer', 'interlayer', 'chloroform_layer', 'methanol_layer', name='SamplePortionEnum'))
     replicate = Column(Integer())
     id = Column(UUID(), primary_key=True, nullable=False )
@@ -4687,7 +5260,7 @@ ProcessingSampleLink only.
     
 
     def __repr__(self):
-        return f"ProcessedSample(storage_location={self.storage_location},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_uL={self.volume_uL},sampled_portion={self.sampled_portion},replicate={self.replicate},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"ProcessedSample(storage_location={self.storage_location},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_ul={self.volume_ul},sampled_portion={self.sampled_portion},replicate={self.replicate},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
 
 
 
@@ -5297,6 +5870,7 @@ class ChemicalConversionProcess(SampleProcessing):
 
     duration_min = Column(Float())
     temperature_celsius = Column(Float())
+    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
     chemical_conversion_category = Column(Enum('addition', 'substitution', 'acid_base', 'reduction_oxidation', 'combustion', 'decomposition', 'protease_cleavage', name='ChemicalConversionCategoryEnum'))
     digestion_method = Column(Enum('urea', 's_trap', 'fasp', 'other', name='DigestionMethodEnum'))
     enrichment_type = Column(Enum('phosphopeptide', 'acetyl_peptide', 'ubiquitin_peptide', 'other', name='EnrichmentTypeEnum'))
@@ -5306,15 +5880,11 @@ class ChemicalConversionProcess(SampleProcessing):
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
     
-    
-    # ManyToMany
-    substances_used = relationship( "PortionOfSubstance", secondary="ChemicalConversionProcess_substances_used")
-    
 
     
 
     def __repr__(self):
-        return f"ChemicalConversionProcess(duration_min={self.duration_min},temperature_celsius={self.temperature_celsius},chemical_conversion_category={self.chemical_conversion_category},digestion_method={self.digestion_method},enrichment_type={self.enrichment_type},labeling_method={self.labeling_method},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"ChemicalConversionProcess(duration_min={self.duration_min},temperature_celsius={self.temperature_celsius},substances_used={self.substances_used},chemical_conversion_category={self.chemical_conversion_category},digestion_method={self.digestion_method},enrichment_type={self.enrichment_type},labeling_method={self.labeling_method},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5332,16 +5902,13 @@ class Extraction(SampleProcessing):
     """
     __tablename__ = 'Extraction'
 
+    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
     starting_mass_mg = Column(Float())
     extraction_method = Column(Enum('mplex', 'bead_beating', 'tca_acetone_precipitation', 'cell_lysis_s_trap', 'other', name='ExtractionMethodEnum'))
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    
-    
-    # ManyToMany
-    substances_used = relationship( "PortionOfSubstance", secondary="Extraction_substances_used")
     
     
     extraction_target_rel = relationship( "Extraction_extraction_target" )
@@ -5352,7 +5919,41 @@ class Extraction(SampleProcessing):
     
 
     def __repr__(self):
-        return f"Extraction(starting_mass_mg={self.starting_mass_mg},extraction_method={self.extraction_method},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"Extraction(substances_used={self.substances_used},starting_mass_mg={self.starting_mass_mg},extraction_method={self.extraction_method},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class FiltrationProcess(SampleProcessing):
+    """
+    The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
+    """
+    __tablename__ = 'FiltrationProcess'
+
+    container_size_ml = Column(Float())
+    container_type = Column(Text())
+    filter_material = Column(Text())
+    filter_pore_size_um = Column(Float())
+    is_pressurized = Column(Boolean())
+    separation_method = Column(Text())
+    volume_ml = Column(Float())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"FiltrationProcess(container_size_ml={self.container_size_ml},container_type={self.container_type},filter_material={self.filter_material},filter_pore_size_um={self.filter_pore_size_um},is_pressurized={self.is_pressurized},separation_method={self.separation_method},volume_ml={self.volume_ml},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5376,12 +5977,14 @@ class FractionationProcess(SampleProcessing):
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
+    uses_chromatography_uid = Column(Integer(), ForeignKey('ChromatographyConfiguration.uid'))
+    uses_chromatography = relationship("ChromatographyConfiguration", uselist=False, foreign_keys=[uses_chromatography_uid])
     
 
     
 
     def __repr__(self):
-        return f"FractionationProcess(lims_protocol_instance_id={self.lims_protocol_instance_id},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"FractionationProcess(lims_protocol_instance_id={self.lims_protocol_instance_id},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},uses_chromatography_uid={self.uses_chromatography_uid},)"
 
 
 
@@ -5430,6 +6033,7 @@ class PoolingProcess(SampleProcessing):
     __tablename__ = 'PoolingProcess'
 
     final_mass_mg = Column(Float())
+    final_vol_ml = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -5439,7 +6043,7 @@ class PoolingProcess(SampleProcessing):
     
 
     def __repr__(self):
-        return f"PoolingProcess(final_mass_mg={self.final_mass_mg},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"PoolingProcess(final_mass_mg={self.final_mass_mg},final_vol_ml={self.final_vol_ml},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5488,6 +6092,8 @@ class ResuspensionProcess(SampleProcessing):
     __tablename__ = 'ResuspensionProcess'
 
     lims_protocol_instance_id = Column(Integer())
+    final_vol_ml = Column(Float())
+    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -5497,7 +6103,7 @@ class ResuspensionProcess(SampleProcessing):
     
 
     def __repr__(self):
-        return f"ResuspensionProcess(lims_protocol_instance_id={self.lims_protocol_instance_id},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"ResuspensionProcess(lims_protocol_instance_id={self.lims_protocol_instance_id},final_vol_ml={self.final_vol_ml},substances_used={self.substances_used},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5539,13 +6145,14 @@ class SolidPhaseExtractionProcess(SampleProcessing):
     
 
 
-class SubSamplingProcess(SampleProcessing):
+class SubsamplingProcess(SampleProcessing):
     """
     A laboratory subsampling process that takes a portion of an existing  sample and produces a derived (processed) sample for downstream  analysis. (Separating a sample aliquot from the starting material for  downstream activity.)
     """
-    __tablename__ = 'SubSamplingProcess'
+    __tablename__ = 'SubsamplingProcess'
 
     final_mass_mg = Column(Float())
+    final_vol_ml = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -5555,7 +6162,7 @@ class SubSamplingProcess(SampleProcessing):
     
 
     def __repr__(self):
-        return f"SubSamplingProcess(final_mass_mg={self.final_mass_mg},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"SubsamplingProcess(final_mass_mg={self.final_mass_mg},final_vol_ml={self.final_vol_ml},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5863,7 +6470,7 @@ Refs:   Media (growth medium), Strain (target organism)
     container_type = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
+    oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -5873,7 +6480,7 @@ Refs:   Media (growth medium), Strain (target organism)
     
 
     def __repr__(self):
-        return f"StrainPurity(inspection_method={self.inspection_method},target_strain={self.target_strain},contaminant_strains={self.contaminant_strains},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"StrainPurity(inspection_method={self.inspection_method},target_strain={self.target_strain},contaminant_strains={self.contaminant_strains},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5902,7 +6509,7 @@ Refs:   Media (growth medium), Strain
     container_type = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
+    oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -5912,7 +6519,7 @@ Refs:   Media (growth medium), Strain
     
 
     def __repr__(self):
-        return f"StockCulturePreparation(preparation_date={self.preparation_date},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"StockCulturePreparation(preparation_date={self.preparation_date},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5941,7 +6548,7 @@ Refs:   Media (growth medium), Strain
     container_type = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
+    oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -5951,7 +6558,7 @@ Refs:   Media (growth medium), Strain
     
 
     def __repr__(self):
-        return f"PreCultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"PreCultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -5982,7 +6589,7 @@ Refs:   Media (growth medium), Strain
     container_type = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
+    oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -5992,7 +6599,7 @@ Refs:   Media (growth medium), Strain
     
 
     def __repr__(self):
-        return f"ExperimentalCulture(treatment_type={self.treatment_type},growth_time={self.growth_time},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"ExperimentalCulture(treatment_type={self.treatment_type},growth_time={self.growth_time},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -6023,6 +6630,7 @@ v2 change: media_ref directly on class (no UsesMedia mixin);
     __tablename__ = 'AMP2PlateSetupActivity'
 
     media_ref = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    cycle_id = Column(Integer())
     plate_type = Column(Text(), nullable=False )
     plate_barcode = Column(Text())
     setup_date = Column(DateTime(), nullable=False )
@@ -6031,7 +6639,7 @@ v2 change: media_ref directly on class (no UsesMedia mixin);
     sealing_method = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
+    oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -6045,7 +6653,7 @@ v2 change: media_ref directly on class (no UsesMedia mixin);
     
 
     def __repr__(self):
-        return f"AMP2PlateSetupActivity(media_ref={self.media_ref},plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"AMP2PlateSetupActivity(media_ref={self.media_ref},cycle_id={self.cycle_id},plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -6078,7 +6686,7 @@ v1 origin: plate-general.yaml EcoplatePlateSetupActivity
     sealing_method = Column(Text())
     temperature_celsius = Column(Float())
     agitation_speed_rpm = Column(Integer())
-    oxygen_status = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'obligate_aerobe', 'obligate_anaerobe', name='OxygenStatusEnum'))
+    oxygen_saturation_pct = Column(Float())
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
@@ -6092,7 +6700,7 @@ v1 origin: plate-general.yaml EcoplatePlateSetupActivity
     
 
     def __repr__(self):
-        return f"EcoplatePlateSetupActivity(plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
+        return f"EcoplatePlateSetupActivity(plate_type={self.plate_type},plate_barcode={self.plate_barcode},setup_date={self.setup_date},setup_operator_id={self.setup_operator_id},setup_instrument={self.setup_instrument},sealing_method={self.sealing_method},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_saturation_pct={self.oxygen_saturation_pct},name={self.name},description={self.description},in_protocol={self.in_protocol},id={self.id},)"
 
 
 
@@ -6781,65 +7389,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     
 
 
-class TomographyProduct(ProcessedData):
-    """
-    Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
-    """
-    __tablename__ = 'TomographyProduct'
-
-    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    roi_volume_voxel = Column(Float())
-    voxel_size = Column(Float())
-    connected_pores = Column(Float())
-    pore_diameter_min = Column(Float())
-    pore_diameter_max = Column(Float())
-    pore_diameter_mean = Column(Float())
-    pore_diameter_median = Column(Float())
-    pore_diameter_variance = Column(Float())
-    pore_volume_mean = Column(Float())
-    total_pore_volume = Column(Float())
-    permeability_x = Column(Float())
-    flow_rate_x = Column(Float())
-    tortuosity_x = Column(Float())
-    permeability_y = Column(Float())
-    flow_rate_y = Column(Float())
-    tortuosity_y = Column(Float())
-    permeability_z = Column(Float())
-    flow_rate_z = Column(Float())
-    tortuosity_z = Column(Float())
-    flag_xct = Column(Text())
-    summary_metrics = Column(Text())
-    lims_barcode = Column(Text())
-    sample_id = Column(UUID(), ForeignKey('Sample.id'))
-    name = Column(Text(), nullable=False )
-    description = Column(Text())
-    project = Column(Integer())
-    sampling_set = Column(Integer())
-    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
-    sample_name = Column(Text())
-    s3_base_url = Column(Text())
-    s3_bucket = Column(Text())
-    s3_key = Column(Text(), nullable=False )
-    filesize = Column(Integer())
-    md5checksum = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    
-
-    
-
-    def __repr__(self):
-        return f"TomographyProduct(measure_type={self.measure_type},roi_volume_voxel={self.roi_volume_voxel},voxel_size={self.voxel_size},connected_pores={self.connected_pores},pore_diameter_min={self.pore_diameter_min},pore_diameter_max={self.pore_diameter_max},pore_diameter_mean={self.pore_diameter_mean},pore_diameter_median={self.pore_diameter_median},pore_diameter_variance={self.pore_diameter_variance},pore_volume_mean={self.pore_volume_mean},total_pore_volume={self.total_pore_volume},permeability_x={self.permeability_x},flow_rate_x={self.flow_rate_x},tortuosity_x={self.tortuosity_x},permeability_y={self.permeability_y},flow_rate_y={self.flow_rate_y},tortuosity_y={self.tortuosity_y},permeability_z={self.permeability_z},flow_rate_z={self.flow_rate_z},tortuosity_z={self.tortuosity_z},flag_xct={self.flag_xct},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
-
-
-
-    
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
-    
-
-
 class PHProduct(ProcessedData):
     """
     Soil pH analysis product, typically derived via pH meter or similar instrument.
@@ -6887,6 +7436,7 @@ class XRayDataProduct(ProcessedData):
 Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
 
 Concrete subclasses:
+  - XCTProduct: pore geometry and flow properties (X-ray computed tomography)
   - XRFElementalProduct: elemental concentrations
   - XRDPhaseProduct: mineral phases
   - XASLCFProduct: linear combination fitting results
@@ -6894,6 +7444,7 @@ Concrete subclasses:
 Common patterns:
   - s3_key points to the raw or processed X-ray data file in MinIO
   - summary_metrics provides lightweight queryable summaries:
+      XCT: {"connected_pores":1842, "total_pore_volume":3.2e6, "tortuosity_z":1.47}
       XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
       XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
       XAS: {"r_factor":0.000975, "lcf_type":"XANES", "n_standards":3}
@@ -7013,6 +7564,100 @@ Stores file pointer metadata and key per-sweep scan header fields.
     
 
 
+class UVSpectroscopyProduct(ProcessedData):
+    """
+    A compound and its measurements resulting from a 
+UVDataGenerationActivity.One UVDataGenerationActivity may have many 
+"products" representing all compounds detected in the sample.
+    """
+    __tablename__ = 'UVSpectroscopyProduct'
+
+    produced_by_uv_run = Column(UUID(), ForeignKey('UVDataGenerationActivity.id'))
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    retention_time_min = Column(Float())
+    peak_area = Column(Float())
+    peak_percent_area = Column(Float())
+    peak_height = Column(Float())
+    weight_percent = Column(Float())
+    concentration_ug_per_uL = Column(Float())
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"UVSpectroscopyProduct(produced_by_uv_run={self.produced_by_uv_run},compound_name={self.compound_name},retention_time_min={self.retention_time_min},peak_area={self.peak_area},peak_percent_area={self.peak_percent_area},peak_height={self.peak_height},weight_percent={self.weight_percent},concentration_ug_per_uL={self.concentration_ug_per_uL},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class RIProduct(ProcessedData):
+    """
+    A compound and its measurements resulting from a 
+RIDataGenerationActivity.One RIDataGenerationActivity may have many 
+"products" representing all compounds detected in the sample.
+    """
+    __tablename__ = 'RIProduct'
+
+    produced_by_ri_run = Column(UUID(), ForeignKey('RIDataGenerationActivity.id'))
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    weight_percent = Column(Float())
+    concentration_ug_per_uL = Column(Float())
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"RIProduct(produced_by_ri_run={self.produced_by_ri_run},compound_name={self.compound_name},weight_percent={self.weight_percent},concentration_ug_per_uL={self.concentration_ug_per_uL},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
 class CoreSection(ProcessedSample):
     """
     A section of a core sample (TOP, MID, BTM).
@@ -7025,7 +7670,7 @@ class CoreSection(ProcessedSample):
     label_text = Column(Text())
     concentration_ug_per_uL = Column(Float())
     total_amount_ug = Column(Float())
-    volume_uL = Column(Float())
+    volume_ul = Column(Float())
     sampled_portion = Column(Enum('supernatant', 'pellet', 'organic_layer', 'aqueous_layer', 'interlayer', 'chloroform_layer', 'methanol_layer', name='SamplePortionEnum'))
     replicate = Column(Integer())
     name = Column(Text(), nullable=False )
@@ -7037,7 +7682,7 @@ class CoreSection(ProcessedSample):
     
 
     def __repr__(self):
-        return f"CoreSection(core_section={self.core_section},id={self.id},storage_location={self.storage_location},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_uL={self.volume_uL},sampled_portion={self.sampled_portion},replicate={self.replicate},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"CoreSection(core_section={self.core_section},id={self.id},storage_location={self.storage_location},label_text={self.label_text},concentration_ug_per_uL={self.concentration_ug_per_uL},total_amount_ug={self.total_amount_ug},volume_ul={self.volume_ul},sampled_portion={self.sampled_portion},replicate={self.replicate},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
 
 
 
@@ -7129,10 +7774,11 @@ class MolecularIdentificationProduct(MassSpectrometryDataProduct):
 
 class MetaproteomicsProduct(MassSpectrometryDataProduct):
     """
-    Abstract parent class for processed metaproteomics data. Details and subclasses TBD.
+    A tabular data file containing peptide-level, protein-level, or aggregation results.
     """
     __tablename__ = 'MetaproteomicsProduct'
 
+    metaproteomics_result_type = Column(Enum('peptide_level', 'protein_level', 'aggregation', name='MetaproteomicsResultTypeEnum'))
     results_from_ms_processing = Column(UUID(), ForeignKey('MassSpectrometryDataProcessingActivity.id'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
@@ -7154,7 +7800,7 @@ class MetaproteomicsProduct(MassSpectrometryDataProduct):
     
 
     def __repr__(self):
-        return f"MetaproteomicsProduct(results_from_ms_processing={self.results_from_ms_processing},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+        return f"MetaproteomicsProduct(metaproteomics_result_type={self.metaproteomics_result_type},results_from_ms_processing={self.results_from_ms_processing},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
 
 
 
@@ -7286,6 +7932,77 @@ Inherits all MetagenomicsProduct and dataProduct slots.
 
     def __repr__(self):
         return f"Metagenomics_GenePhylogenyProduct(gene_family={self.gene_family},mg_workflow_step={self.mg_workflow_step},sample_id={self.sample_id},provider_name={self.provider_name},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class XCTProduct(XRayDataProduct):
+    """
+    X-ray computed tomography (XCT) analysis product for pore geometry and flow properties of intact soil cores.
+    """
+    __tablename__ = 'XCTProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    roi_x_voxel = Column(Float())
+    roi_y_voxel = Column(Float())
+    roi_z_voxel = Column(Float())
+    voxel_size_mm_per_voxel = Column(Float())
+    porosity_percent = Column(Float())
+    connected_pores_fraction = Column(Float())
+    pore_connectivity_percent = Column(Float())
+    pore_equivalent_diameter_min_mm = Column(Float())
+    pore_equivalent_diameter_max_mm = Column(Float())
+    pore_equivalent_diameter_mean_mm = Column(Float())
+    pore_equivalent_diameter_median_mm = Column(Float())
+    pore_equivalent_diameter_variance_mm2 = Column(Float())
+    pore_volume_min_mm3 = Column(Float())
+    pore_volume_max_mm3 = Column(Float())
+    pore_volume_mean_mm3 = Column(Float())
+    pore_volume_median_mm3 = Column(Float())
+    pore_volume_variance_mm6 = Column(Float())
+    pore_area_min_mm2 = Column(Float())
+    pore_area_max_mm2 = Column(Float())
+    pore_area_mean_mm2 = Column(Float())
+    pore_area_median_mm2 = Column(Float())
+    pore_area_variance_mm4 = Column(Float())
+    permeability_x_um2 = Column(Float())
+    flow_rate_x_mm3_per_sec = Column(Float())
+    tortuosity_x = Column(Float())
+    permeability_y_um2 = Column(Float())
+    flow_rate_y_mm3_per_sec = Column(Float())
+    tortuosity_y = Column(Float())
+    permeability_z_um2 = Column(Float())
+    flow_rate_z_mm3_per_sec = Column(Float())
+    tortuosity_z = Column(Float())
+    flag_xct = Column(Text())
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"XCTProduct(measure_type={self.measure_type},roi_x_voxel={self.roi_x_voxel},roi_y_voxel={self.roi_y_voxel},roi_z_voxel={self.roi_z_voxel},voxel_size_mm_per_voxel={self.voxel_size_mm_per_voxel},porosity_percent={self.porosity_percent},connected_pores_fraction={self.connected_pores_fraction},pore_connectivity_percent={self.pore_connectivity_percent},pore_equivalent_diameter_min_mm={self.pore_equivalent_diameter_min_mm},pore_equivalent_diameter_max_mm={self.pore_equivalent_diameter_max_mm},pore_equivalent_diameter_mean_mm={self.pore_equivalent_diameter_mean_mm},pore_equivalent_diameter_median_mm={self.pore_equivalent_diameter_median_mm},pore_equivalent_diameter_variance_mm2={self.pore_equivalent_diameter_variance_mm2},pore_volume_min_mm3={self.pore_volume_min_mm3},pore_volume_max_mm3={self.pore_volume_max_mm3},pore_volume_mean_mm3={self.pore_volume_mean_mm3},pore_volume_median_mm3={self.pore_volume_median_mm3},pore_volume_variance_mm6={self.pore_volume_variance_mm6},pore_area_min_mm2={self.pore_area_min_mm2},pore_area_max_mm2={self.pore_area_max_mm2},pore_area_mean_mm2={self.pore_area_mean_mm2},pore_area_median_mm2={self.pore_area_median_mm2},pore_area_variance_mm4={self.pore_area_variance_mm4},permeability_x_um2={self.permeability_x_um2},flow_rate_x_mm3_per_sec={self.flow_rate_x_mm3_per_sec},tortuosity_x={self.tortuosity_x},permeability_y_um2={self.permeability_y_um2},flow_rate_y_mm3_per_sec={self.flow_rate_y_mm3_per_sec},tortuosity_y={self.tortuosity_y},permeability_z_um2={self.permeability_z_um2},flow_rate_z_mm3_per_sec={self.flow_rate_z_mm3_per_sec},tortuosity_z={self.tortuosity_z},flag_xct={self.flag_xct},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
 
 
 

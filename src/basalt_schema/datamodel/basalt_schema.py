@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: (not recorded - see git history)
+# Generation date: 2026-09-25T08:51:10
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -188,6 +188,14 @@ class XASLCFDataProcessingActivityId(DataProcessingActivityId):
     pass
 
 
+class RIDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class UVDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
 class ChangelogVersion(extended_str):
     pass
 
@@ -220,11 +228,19 @@ class MobilePhaseSegmentId(Uuid):
     pass
 
 
+class MobilePhaseId(Uuid):
+    pass
+
+
+class MobilePhaseSubstanceId(Uuid):
+    pass
+
+
 class MassSpectrometryDataProcessingActivityId(DataProcessingActivityId):
     pass
 
 
-class MassSpectrometryStandardRunId(Uuid):
+class CalibrationStandardRunId(Uuid):
     pass
 
 
@@ -308,6 +324,54 @@ class MetagenomicsDataProcessingActivityId(DataProcessingActivityId):
     pass
 
 
+class BulkDensityDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class ElementalAnalysisDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class EnzymeActivityDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class GravimetricWaterContentDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class HydraulicPropertiesDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class KuoDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class MicrobialBiomassDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class PHDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class RespirationDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class TOCTNDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class TextureDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class XCTDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
 class BulkDensityProductId(ProcessedDataId):
     pass
 
@@ -356,10 +420,6 @@ class TextureProductId(ProcessedDataId):
     pass
 
 
-class TomographyProductId(ProcessedDataId):
-    pass
-
-
 class WEOMProductId(ProcessedDataId):
     pass
 
@@ -369,6 +429,10 @@ class PHProductId(ProcessedDataId):
 
 
 class XRayDataProductId(ProcessedDataId):
+    pass
+
+
+class XCTProductId(XRayDataProductId):
     pass
 
 
@@ -385,6 +449,14 @@ class XASInstrumentDataId(InstrumentDataId):
 
 
 class XASLCFProductId(XRayDataProductId):
+    pass
+
+
+class UVSpectroscopyProductId(ProcessedDataId):
+    pass
+
+
+class RIProductId(ProcessedDataId):
     pass
 
 
@@ -564,6 +636,10 @@ class ExtractionId(SampleProcessingId):
     pass
 
 
+class FiltrationProcessId(SampleProcessingId):
+    pass
+
+
 class FractionationProcessId(SampleProcessingId):
     pass
 
@@ -573,6 +649,14 @@ class NormalizationProcessId(SampleProcessingId):
 
 
 class PoolingProcessId(SampleProcessingId):
+    pass
+
+
+class SubstancesUsedLinkId(Uuid):
+    pass
+
+
+class SampleProcessingSubstanceId(Uuid):
     pass
 
 
@@ -588,7 +672,7 @@ class SolidPhaseExtractionProcessId(SampleProcessingId):
     pass
 
 
-class SubSamplingProcessId(SampleProcessingId):
+class SubsamplingProcessId(SampleProcessingId):
     pass
 
 
@@ -1456,6 +1540,7 @@ class ProcessingSampleLink(YAMLRoot):
     id: Union[str, ProcessingSampleLinkId] = None
     processing_id: Union[str, SampleProcessingId] = None
     step_number: int = None
+    sample_id: Union[str, SampleId] = None
     role: Union[str, "SampleRole"] = None
     in_run: Optional[Union[str, SampleProcessingRunId]] = None
 
@@ -1474,6 +1559,11 @@ class ProcessingSampleLink(YAMLRoot):
             self.MissingRequiredField("step_number")
         if not isinstance(self.step_number, int):
             self.step_number = int(self.step_number)
+
+        if self._is_empty(self.sample_id):
+            self.MissingRequiredField("sample_id")
+        if not isinstance(self.sample_id, SampleId):
+            self.sample_id = SampleId(self.sample_id)
 
         if self._is_empty(self.role):
             self.MissingRequiredField("role")
@@ -1971,6 +2061,110 @@ class XASLCFDataProcessingActivity(DataProcessingActivity):
 
 
 @dataclass(repr=False)
+class RIDataGenerationActivity(DataGenerationActivity):
+    """
+    Refractive Index (RI) measurement activity.
+    Represents one measurement session for a sample using a RI detector.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RIDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RIDataGenerationActivity"
+    class_name: ClassVar[str] = "RIDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RIDataGenerationActivity
+
+    id: Union[str, RIDataGenerationActivityId] = None
+    name: str = None
+    wavelength_nm: int = None
+    temperature_celsius: Optional[float] = None
+    calibration_standard: Optional[Union[str, PurchasedMaterialId]] = None
+    uses_chromatography: Optional[Union[dict, "ChromatographyConfiguration"]] = None
+    uses_calibration: Optional[Union[str, CalibrationStandardRunId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RIDataGenerationActivityId):
+            self.id = RIDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.wavelength_nm):
+            self.MissingRequiredField("wavelength_nm")
+        if not isinstance(self.wavelength_nm, int):
+            self.wavelength_nm = int(self.wavelength_nm)
+
+        if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
+            self.temperature_celsius = float(self.temperature_celsius)
+
+        if self.calibration_standard is not None and not isinstance(self.calibration_standard, PurchasedMaterialId):
+            self.calibration_standard = PurchasedMaterialId(self.calibration_standard)
+
+        if self.uses_chromatography is not None and not isinstance(self.uses_chromatography, ChromatographyConfiguration):
+            self.uses_chromatography = ChromatographyConfiguration(**as_dict(self.uses_chromatography))
+
+        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationStandardRunId):
+            self.uses_calibration = CalibrationStandardRunId(self.uses_calibration)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class UVDataGenerationActivity(DataGenerationActivity):
+    """
+    Ultraviolet spectroscopy acquisition activity.
+    Represents one measurement session for a sample using UV spectroscopy.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["UVDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:UVDataGenerationActivity"
+    class_name: ClassVar[str] = "UVDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.UVDataGenerationActivity
+
+    id: Union[str, UVDataGenerationActivityId] = None
+    name: str = None
+    uv_detector_type: Optional[Union[str, "UVDetectorEnum"]] = None
+    wavelength_nm_max: Optional[float] = None
+    wavelength_nm_min: Optional[float] = None
+    resolution_nm: Optional[float] = None
+    sampling_rate_hz: Optional[float] = None
+    negative_absorbance_margin_au: Optional[float] = None
+    uses_chromatography: Optional[Union[dict, "ChromatographyConfiguration"]] = None
+    uses_calibration: Optional[Union[str, CalibrationStandardRunId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, UVDataGenerationActivityId):
+            self.id = UVDataGenerationActivityId(self.id)
+
+        if self.uv_detector_type is not None and not isinstance(self.uv_detector_type, UVDetectorEnum):
+            self.uv_detector_type = UVDetectorEnum(self.uv_detector_type)
+
+        if self.wavelength_nm_max is not None and not isinstance(self.wavelength_nm_max, float):
+            self.wavelength_nm_max = float(self.wavelength_nm_max)
+
+        if self.wavelength_nm_min is not None and not isinstance(self.wavelength_nm_min, float):
+            self.wavelength_nm_min = float(self.wavelength_nm_min)
+
+        if self.resolution_nm is not None and not isinstance(self.resolution_nm, float):
+            self.resolution_nm = float(self.resolution_nm)
+
+        if self.sampling_rate_hz is not None and not isinstance(self.sampling_rate_hz, float):
+            self.sampling_rate_hz = float(self.sampling_rate_hz)
+
+        if self.negative_absorbance_margin_au is not None and not isinstance(self.negative_absorbance_margin_au, float):
+            self.negative_absorbance_margin_au = float(self.negative_absorbance_margin_au)
+
+        if self.uses_chromatography is not None and not isinstance(self.uses_chromatography, ChromatographyConfiguration):
+            self.uses_chromatography = ChromatographyConfiguration(**as_dict(self.uses_chromatography))
+
+        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationStandardRunId):
+            self.uses_calibration = CalibrationStandardRunId(self.uses_calibration)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Changelog(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2114,7 +2308,7 @@ class MolecularIdentificationProduct(MassSpectrometryDataProduct):
 @dataclass(repr=False)
 class MetaproteomicsProduct(MassSpectrometryDataProduct):
     """
-    Abstract parent class for processed metaproteomics data. Details and subclasses TBD.
+    A tabular data file containing peptide-level, protein-level, or aggregation results.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2126,6 +2320,19 @@ class MetaproteomicsProduct(MassSpectrometryDataProduct):
     id: Union[str, MetaproteomicsProductId] = None
     name: str = None
     s3_key: str = None
+    metaproteomics_result_type: Optional[Union[str, "MetaproteomicsResultTypeEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MetaproteomicsProductId):
+            self.id = MetaproteomicsProductId(self.id)
+
+        if self.metaproteomics_result_type is not None and not isinstance(self.metaproteomics_result_type, MetaproteomicsResultTypeEnum):
+            self.metaproteomics_result_type = MetaproteomicsResultTypeEnum(self.metaproteomics_result_type)
+
+        super().__post_init__(**kwargs)
+
 
 @dataclass(repr=False)
 class MassSpectrometryDataGenerationActivity(DataGenerationActivity):
@@ -2206,6 +2413,43 @@ class Configuration(YAMLRoot):
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class UVChannelConfig(Configuration):
+    """
+    Configuration for a single UV-Vis detector channel.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["UVChannelConfig"]
+    class_class_curie: ClassVar[str] = "basalt_schema:UVChannelConfig"
+    class_name: ClassVar[str] = "UVChannelConfig"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.UVChannelConfig
+
+    name: str = None
+    id: Union[str, Uuid] = None
+    wavelength_nm: int = None
+    uv_datagen_run: Optional[Union[str, UVDataGenerationActivityId]] = None
+    channel_number: Optional[int] = None
+    resolution_nm: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.wavelength_nm):
+            self.MissingRequiredField("wavelength_nm")
+        if not isinstance(self.wavelength_nm, int):
+            self.wavelength_nm = int(self.wavelength_nm)
+
+        if self.uv_datagen_run is not None and not isinstance(self.uv_datagen_run, UVDataGenerationActivityId):
+            self.uv_datagen_run = UVDataGenerationActivityId(self.uv_datagen_run)
+
+        if self.channel_number is not None and not isinstance(self.channel_number, int):
+            self.channel_number = int(self.channel_number)
+
+        if self.resolution_nm is not None and not isinstance(self.resolution_nm, float):
+            self.resolution_nm = float(self.resolution_nm)
 
         super().__post_init__(**kwargs)
 
@@ -2311,7 +2555,6 @@ class ChromatographyConfiguration(Configuration):
     column: Optional[str] = None
     column_dimensions: Optional[str] = None
     column_manufacturer: Optional[str] = None
-    mobile_phases: Optional[Union[Union[str, MobilePhaseSegmentId], list[Union[str, MobilePhaseSegmentId]]]] = empty_list()
     stationary_phase: Optional[str] = None
     temperature_celsius: Optional[float] = None
     duration_min: Optional[float] = None
@@ -2332,10 +2575,6 @@ class ChromatographyConfiguration(Configuration):
 
         if self.column_manufacturer is not None and not isinstance(self.column_manufacturer, str):
             self.column_manufacturer = str(self.column_manufacturer)
-
-        if not isinstance(self.mobile_phases, list):
-            self.mobile_phases = [self.mobile_phases] if self.mobile_phases is not None else []
-        self.mobile_phases = [v if isinstance(v, MobilePhaseSegmentId) else MobilePhaseSegmentId(v) for v in self.mobile_phases]
 
         if self.stationary_phase is not None and not isinstance(self.stationary_phase, str):
             self.stationary_phase = str(self.stationary_phase)
@@ -2358,7 +2597,7 @@ class ChromatographyConfiguration(Configuration):
 @dataclass(repr=False)
 class MobilePhaseSegment(YAMLRoot):
     """
-    A segment of the mobile phase used in chromatography during mass spectrometry.
+    A segment of the mobile phase sequence used in a chromatographic separation.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2368,10 +2607,12 @@ class MobilePhaseSegment(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MobilePhaseSegment
 
     id: Union[str, MobilePhaseSegmentId] = None
-    name: str = None
     duration_min: Optional[float] = None
-    segment_order: Optional[int] = None
-    substance: Optional[str] = None
+    mobile_phase: Optional[Union[str, MobilePhaseId]] = None
+    flow_rate_ul_min: Optional[float] = None
+    step_number: Optional[int] = None
+    mobile_phase_percentage: Optional[float] = None
+    used_in_chromatography_config: Optional[Union[dict, ChromatographyConfiguration]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2379,19 +2620,86 @@ class MobilePhaseSegment(YAMLRoot):
         if not isinstance(self.id, MobilePhaseSegmentId):
             self.id = MobilePhaseSegmentId(self.id)
 
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
         if self.duration_min is not None and not isinstance(self.duration_min, float):
             self.duration_min = float(self.duration_min)
 
-        if self.segment_order is not None and not isinstance(self.segment_order, int):
-            self.segment_order = int(self.segment_order)
+        if self.mobile_phase is not None and not isinstance(self.mobile_phase, MobilePhaseId):
+            self.mobile_phase = MobilePhaseId(self.mobile_phase)
 
-        if self.substance is not None and not isinstance(self.substance, str):
-            self.substance = str(self.substance)
+        if self.flow_rate_ul_min is not None and not isinstance(self.flow_rate_ul_min, float):
+            self.flow_rate_ul_min = float(self.flow_rate_ul_min)
+
+        if self.step_number is not None and not isinstance(self.step_number, int):
+            self.step_number = int(self.step_number)
+
+        if self.mobile_phase_percentage is not None and not isinstance(self.mobile_phase_percentage, float):
+            self.mobile_phase_percentage = float(self.mobile_phase_percentage)
+
+        if self.used_in_chromatography_config is not None and not isinstance(self.used_in_chromatography_config, ChromatographyConfiguration):
+            self.used_in_chromatography_config = ChromatographyConfiguration(**as_dict(self.used_in_chromatography_config))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MobilePhase(YAMLRoot):
+    """
+    Link between a set of substances used in a mobile phase, and the use of that mobile phase in a sequence of flow
+    segments.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MobilePhase"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MobilePhase"
+    class_name: ClassVar[str] = "MobilePhase"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MobilePhase
+
+    id: Union[str, MobilePhaseId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MobilePhaseId):
+            self.id = MobilePhaseId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MobilePhaseSubstance(YAMLRoot):
+    """
+    A representation of a single chemical and its concentration used in a mobile phase in a chromatography protocol.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MobilePhaseSubstance"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MobilePhaseSubstance"
+    class_name: ClassVar[str] = "MobilePhaseSubstance"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MobilePhaseSubstance
+
+    id: Union[str, MobilePhaseSubstanceId] = None
+    volume_ul: Optional[float] = None
+    in_mobile_phase: Optional[Union[str, MobilePhaseId]] = None
+    substance: Optional[Union[str, "ChemicalEntityEnum"]] = None
+    concentration: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MobilePhaseSubstanceId):
+            self.id = MobilePhaseSubstanceId(self.id)
+
+        if self.volume_ul is not None and not isinstance(self.volume_ul, float):
+            self.volume_ul = float(self.volume_ul)
+
+        if self.in_mobile_phase is not None and not isinstance(self.in_mobile_phase, MobilePhaseId):
+            self.in_mobile_phase = MobilePhaseId(self.in_mobile_phase)
+
+        if self.substance is not None and not isinstance(self.substance, ChemicalEntityEnum):
+            self.substance = ChemicalEntityEnum(self.substance)
+
+        if self.concentration is not None and not isinstance(self.concentration, str):
+            self.concentration = str(self.concentration)
 
         super().__post_init__(**kwargs)
 
@@ -2411,7 +2719,7 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
 
     id: Union[str, MassSpectrometryDataProcessingActivityId] = None
     started_at_time: Union[str, XSDDateTime] = None
-    uses_calibration: Optional[Union[str, MassSpectrometryStandardRunId]] = None
+    uses_calibration: Optional[Union[str, CalibrationStandardRunId]] = None
     uses_raw_ms_data: Optional[Union[str, MassSpectrometryInstrumentDataId]] = None
     lims_task_instance_id: Optional[int] = None
     metaproteomics_analysis_category: Optional[Union[str, "MetaproteomicsAnalysisCategoryEnum"]] = None
@@ -2422,8 +2730,8 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
         if not isinstance(self.id, MassSpectrometryDataProcessingActivityId):
             self.id = MassSpectrometryDataProcessingActivityId(self.id)
 
-        if self.uses_calibration is not None and not isinstance(self.uses_calibration, MassSpectrometryStandardRunId):
-            self.uses_calibration = MassSpectrometryStandardRunId(self.uses_calibration)
+        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationStandardRunId):
+            self.uses_calibration = CalibrationStandardRunId(self.uses_calibration)
 
         if self.uses_raw_ms_data is not None and not isinstance(self.uses_raw_ms_data, MassSpectrometryInstrumentDataId):
             self.uses_raw_ms_data = MassSpectrometryInstrumentDataId(self.uses_raw_ms_data)
@@ -2438,31 +2746,30 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
 
 
 @dataclass(repr=False)
-class MassSpectrometryStandardRun(YAMLRoot):
+class CalibrationStandardRun(YAMLRoot):
     """
-    A record of a mass spectrometry standard run with a batch of samples, which is used for calibration and quality
-    control.
+    A record of a standard run with a batch of samples, which is used for calibration and quality control.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MassSpectrometryStandardRun"]
-    class_class_curie: ClassVar[str] = "basalt_schema:MassSpectrometryStandardRun"
-    class_name: ClassVar[str] = "MassSpectrometryStandardRun"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MassSpectrometryStandardRun
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["CalibrationStandardRun"]
+    class_class_curie: ClassVar[str] = "basalt_schema:CalibrationStandardRun"
+    class_name: ClassVar[str] = "CalibrationStandardRun"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.CalibrationStandardRun
 
-    id: Union[str, MassSpectrometryStandardRunId] = None
+    id: Union[str, CalibrationStandardRunId] = None
     name: str = None
     description: Optional[str] = None
     internal_calibration: Optional[Union[bool, Bool]] = None
     calibration_target: Optional[Union[str, "CalibrationTargetEnum"]] = None
     calibration_standard: Optional[Union[str, PurchasedMaterialId]] = None
-    calibration_data: Optional[Union[str, MassSpectrometryInstrumentDataId]] = None
+    calibration_data: Optional[Union[str, InstrumentDataId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, MassSpectrometryStandardRunId):
-            self.id = MassSpectrometryStandardRunId(self.id)
+        if not isinstance(self.id, CalibrationStandardRunId):
+            self.id = CalibrationStandardRunId(self.id)
 
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
@@ -2481,8 +2788,8 @@ class MassSpectrometryStandardRun(YAMLRoot):
         if self.calibration_standard is not None and not isinstance(self.calibration_standard, PurchasedMaterialId):
             self.calibration_standard = PurchasedMaterialId(self.calibration_standard)
 
-        if self.calibration_data is not None and not isinstance(self.calibration_data, MassSpectrometryInstrumentDataId):
-            self.calibration_data = MassSpectrometryInstrumentDataId(self.calibration_data)
+        if self.calibration_data is not None and not isinstance(self.calibration_data, InstrumentDataId):
+            self.calibration_data = InstrumentDataId(self.calibration_data)
 
         super().__post_init__(**kwargs)
 
@@ -2504,7 +2811,7 @@ class HasIncubationConditions(YAMLRoot):
 
     temperature_celsius: Optional[float] = None
     agitation_speed_rpm: Optional[int] = None
-    oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
+    oxygen_saturation_pct: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
@@ -2513,8 +2820,8 @@ class HasIncubationConditions(YAMLRoot):
         if self.agitation_speed_rpm is not None and not isinstance(self.agitation_speed_rpm, int):
             self.agitation_speed_rpm = int(self.agitation_speed_rpm)
 
-        if self.oxygen_status is not None and not isinstance(self.oxygen_status, OxygenStatusEnum):
-            self.oxygen_status = OxygenStatusEnum(self.oxygen_status)
+        if self.oxygen_saturation_pct is not None and not isinstance(self.oxygen_saturation_pct, float):
+            self.oxygen_saturation_pct = float(self.oxygen_saturation_pct)
 
         super().__post_init__(**kwargs)
 
@@ -2669,7 +2976,7 @@ class CultureGrowth(SampleProcessing):
     container_type: Optional[str] = None
     temperature_celsius: Optional[float] = None
     agitation_speed_rpm: Optional[int] = None
-    oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
+    oxygen_saturation_pct: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.organism_ref is not None and not isinstance(self.organism_ref, OrganismId):
@@ -2690,8 +2997,8 @@ class CultureGrowth(SampleProcessing):
         if self.agitation_speed_rpm is not None and not isinstance(self.agitation_speed_rpm, int):
             self.agitation_speed_rpm = int(self.agitation_speed_rpm)
 
-        if self.oxygen_status is not None and not isinstance(self.oxygen_status, OxygenStatusEnum):
-            self.oxygen_status = OxygenStatusEnum(self.oxygen_status)
+        if self.oxygen_saturation_pct is not None and not isinstance(self.oxygen_saturation_pct, float):
+            self.oxygen_saturation_pct = float(self.oxygen_saturation_pct)
 
         super().__post_init__(**kwargs)
 
@@ -2866,7 +3173,7 @@ class PlateSetupActivity(SampleProcessing):
     well_metadata: Optional[Union[Union[dict, "WellMetadata"], list[Union[dict, "WellMetadata"]]]] = empty_list()
     temperature_celsius: Optional[float] = None
     agitation_speed_rpm: Optional[int] = None
-    oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
+    oxygen_saturation_pct: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.plate_type):
@@ -2899,8 +3206,8 @@ class PlateSetupActivity(SampleProcessing):
         if self.agitation_speed_rpm is not None and not isinstance(self.agitation_speed_rpm, int):
             self.agitation_speed_rpm = int(self.agitation_speed_rpm)
 
-        if self.oxygen_status is not None and not isinstance(self.oxygen_status, OxygenStatusEnum):
-            self.oxygen_status = OxygenStatusEnum(self.oxygen_status)
+        if self.oxygen_saturation_pct is not None and not isinstance(self.oxygen_saturation_pct, float):
+            self.oxygen_saturation_pct = float(self.oxygen_saturation_pct)
 
         super().__post_init__(**kwargs)
 
@@ -2934,6 +3241,7 @@ class AMP2PlateSetupActivity(PlateSetupActivity):
     plate_type: str = None
     setup_date: Union[str, XSDDateTime] = None
     media_ref: Optional[Union[str, ProcessedSampleId]] = None
+    cycle_id: Optional[int] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2943,6 +3251,9 @@ class AMP2PlateSetupActivity(PlateSetupActivity):
 
         if self.media_ref is not None and not isinstance(self.media_ref, ProcessedSampleId):
             self.media_ref = ProcessedSampleId(self.media_ref)
+
+        if self.cycle_id is not None and not isinstance(self.cycle_id, int):
+            self.cycle_id = int(self.cycle_id)
 
         super().__post_init__(**kwargs)
 
@@ -3226,11 +3537,78 @@ class WellMetadata(YAMLRoot):
 
 
 @dataclass(repr=False)
+class WellReagentAddition(YAMLRoot):
+    """
+    One reagent addition to one well. Captures the compound identity, its role
+    in the experiment, dispensed volume, and both the requested and achieved
+    concentrations. NOT a standalone database table; embedded structured entries
+    under AMP2WellMetadata.reagent_additions.
+
+    For reagents dispensed at plate setup time, addition_time is null.
+    For mid-experiment perturbations (e.g. inducer added at hour 23 of a 24h
+    time-series), addition_time records when the addition occurred.
+
+    Borrows compound and substance_role from SampleProcessingSubstance /
+    PortionOfSubstance; adds requested-vs-actual concentration split and
+    addition_time for the inducer scenario.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["WellReagentAddition"]
+    class_class_curie: ClassVar[str] = "basalt_schema:WellReagentAddition"
+    class_name: ClassVar[str] = "WellReagentAddition"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.WellReagentAddition
+
+    compound: Union[str, "ChemicalEntityEnum"] = None
+    substance_role: Union[str, "SubstanceRoleEnum"] = None
+    volume_ul: float = None
+    stock_concentration: Optional[float] = None
+    requested_concentration: Optional[float] = None
+    actual_concentration: Optional[float] = None
+    concentration_unit: Optional[str] = None
+    addition_time: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.compound):
+            self.MissingRequiredField("compound")
+        if not isinstance(self.compound, ChemicalEntityEnum):
+            self.compound = ChemicalEntityEnum(self.compound)
+
+        if self._is_empty(self.substance_role):
+            self.MissingRequiredField("substance_role")
+        if not isinstance(self.substance_role, SubstanceRoleEnum):
+            self.substance_role = SubstanceRoleEnum(self.substance_role)
+
+        if self._is_empty(self.volume_ul):
+            self.MissingRequiredField("volume_ul")
+        if not isinstance(self.volume_ul, float):
+            self.volume_ul = float(self.volume_ul)
+
+        if self.stock_concentration is not None and not isinstance(self.stock_concentration, float):
+            self.stock_concentration = float(self.stock_concentration)
+
+        if self.requested_concentration is not None and not isinstance(self.requested_concentration, float):
+            self.requested_concentration = float(self.requested_concentration)
+
+        if self.actual_concentration is not None and not isinstance(self.actual_concentration, float):
+            self.actual_concentration = float(self.actual_concentration)
+
+        if self.concentration_unit is not None and not isinstance(self.concentration_unit, str):
+            self.concentration_unit = str(self.concentration_unit)
+
+        if self.addition_time is not None and not isinstance(self.addition_time, str):
+            self.addition_time = str(self.addition_time)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class AMP2WellMetadata(WellMetadata):
     """
     AMP2-specific per-well metadata.
-    Minimal   media composition comes from the Media entity referenced via
-    the activity's media_ref slot.  Per-well data is volumes and replicate info.
+    Media composition comes from the Media entity referenced via the activity's
+    media_ref slot.  Per-well reagent additions (nutrients, normalizers, inducers)
+    are captured as structured WellReagentAddition entries in reagent_additions.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -3244,7 +3622,7 @@ class AMP2WellMetadata(WellMetadata):
     inoculum_volume_ul: float = None
     sample_id: Optional[Union[str, SampleId]] = None
     media_ref: Optional[Union[str, ProcessedSampleId]] = None
-    treatments: Optional[Union[str, list[str]]] = empty_list()
+    reagent_additions: Optional[Union[Union[dict, WellReagentAddition], list[Union[dict, WellReagentAddition]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.media_volume_ul):
@@ -3263,9 +3641,7 @@ class AMP2WellMetadata(WellMetadata):
         if self.media_ref is not None and not isinstance(self.media_ref, ProcessedSampleId):
             self.media_ref = ProcessedSampleId(self.media_ref)
 
-        if not isinstance(self.treatments, list):
-            self.treatments = [self.treatments] if self.treatments is not None else []
-        self.treatments = [v if isinstance(v, str) else str(v) for v in self.treatments]
+        self._normalize_inlined_as_list(slot_name="reagent_additions", slot_type=WellReagentAddition, key_name="compound", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -3562,6 +3938,408 @@ class MetagenomicsDataProcessingActivity(DataProcessingActivity):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MetagenomicsDataProcessingActivityId):
             self.id = MetagenomicsDataProcessingActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class BulkDensityDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["BulkDensityDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:BulkDensityDataGenerationActivity"
+    class_name: ClassVar[str] = "BulkDensityDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.BulkDensityDataGenerationActivity
+
+    id: Union[str, BulkDensityDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, BulkDensityDataGenerationActivityId):
+            self.id = BulkDensityDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ElementalAnalysisDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ElementalAnalysisDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ElementalAnalysisDataGenerationActivity"
+    class_name: ClassVar[str] = "ElementalAnalysisDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ElementalAnalysisDataGenerationActivity
+
+    id: Union[str, ElementalAnalysisDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ElementalAnalysisDataGenerationActivityId):
+            self.id = ElementalAnalysisDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class EnzymeActivityDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["EnzymeActivityDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:EnzymeActivityDataGenerationActivity"
+    class_name: ClassVar[str] = "EnzymeActivityDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.EnzymeActivityDataGenerationActivity
+
+    id: Union[str, EnzymeActivityDataGenerationActivityId] = None
+    name: str = None
+    incubation_temp_c: Optional[float] = None
+    incubation_time: Optional[str] = None
+    wavelength: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, EnzymeActivityDataGenerationActivityId):
+            self.id = EnzymeActivityDataGenerationActivityId(self.id)
+
+        if self.incubation_temp_c is not None and not isinstance(self.incubation_temp_c, float):
+            self.incubation_temp_c = float(self.incubation_temp_c)
+
+        if self.incubation_time is not None and not isinstance(self.incubation_time, str):
+            self.incubation_time = str(self.incubation_time)
+
+        if self.wavelength is not None and not isinstance(self.wavelength, float):
+            self.wavelength = float(self.wavelength)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class GravimetricWaterContentDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["GravimetricWaterContentDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:GravimetricWaterContentDataGenerationActivity"
+    class_name: ClassVar[str] = "GravimetricWaterContentDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.GravimetricWaterContentDataGenerationActivity
+
+    id: Union[str, GravimetricWaterContentDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, GravimetricWaterContentDataGenerationActivityId):
+            self.id = GravimetricWaterContentDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class HydraulicPropertiesDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["HydraulicPropertiesDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:HydraulicPropertiesDataGenerationActivity"
+    class_name: ClassVar[str] = "HydraulicPropertiesDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.HydraulicPropertiesDataGenerationActivity
+
+    id: Union[str, HydraulicPropertiesDataGenerationActivityId] = None
+    name: str = None
+    fitting_model: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, HydraulicPropertiesDataGenerationActivityId):
+            self.id = HydraulicPropertiesDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.fitting_model):
+            self.MissingRequiredField("fitting_model")
+        if not isinstance(self.fitting_model, str):
+            self.fitting_model = str(self.fitting_model)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class KuoDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["KuoDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:KuoDataGenerationActivity"
+    class_name: ClassVar[str] = "KuoDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.KuoDataGenerationActivity
+
+    id: Union[str, KuoDataGenerationActivityId] = None
+    name: str = None
+    detection_limit: str = None
+    wavelength: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, KuoDataGenerationActivityId):
+            self.id = KuoDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.detection_limit):
+            self.MissingRequiredField("detection_limit")
+        if not isinstance(self.detection_limit, str):
+            self.detection_limit = str(self.detection_limit)
+
+        if self.wavelength is not None and not isinstance(self.wavelength, str):
+            self.wavelength = str(self.wavelength)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MicrobialBiomassDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MicrobialBiomassDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MicrobialBiomassDataGenerationActivity"
+    class_name: ClassVar[str] = "MicrobialBiomassDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MicrobialBiomassDataGenerationActivity
+
+    id: Union[str, MicrobialBiomassDataGenerationActivityId] = None
+    name: str = None
+    detector: str = None
+    injection_volume: str = None
+    sample_volume: str = None
+    number_of_injections: float = None
+    check_standard_spacing: str = None
+    mode: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MicrobialBiomassDataGenerationActivityId):
+            self.id = MicrobialBiomassDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.detector):
+            self.MissingRequiredField("detector")
+        if not isinstance(self.detector, str):
+            self.detector = str(self.detector)
+
+        if self._is_empty(self.injection_volume):
+            self.MissingRequiredField("injection_volume")
+        if not isinstance(self.injection_volume, str):
+            self.injection_volume = str(self.injection_volume)
+
+        if self._is_empty(self.sample_volume):
+            self.MissingRequiredField("sample_volume")
+        if not isinstance(self.sample_volume, str):
+            self.sample_volume = str(self.sample_volume)
+
+        if self._is_empty(self.number_of_injections):
+            self.MissingRequiredField("number_of_injections")
+        if not isinstance(self.number_of_injections, float):
+            self.number_of_injections = float(self.number_of_injections)
+
+        if self._is_empty(self.check_standard_spacing):
+            self.MissingRequiredField("check_standard_spacing")
+        if not isinstance(self.check_standard_spacing, str):
+            self.check_standard_spacing = str(self.check_standard_spacing)
+
+        if self.mode is not None and not isinstance(self.mode, str):
+            self.mode = str(self.mode)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PHDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PHDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PHDataGenerationActivity"
+    class_name: ClassVar[str] = "PH_DataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PHDataGenerationActivity
+
+    id: Union[str, PHDataGenerationActivityId] = None
+    name: str = None
+    calibration: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PHDataGenerationActivityId):
+            self.id = PHDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.calibration):
+            self.MissingRequiredField("calibration")
+        if not isinstance(self.calibration, str):
+            self.calibration = str(self.calibration)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class RespirationDataGenerationActivity(DataGenerationActivity):
+    """
+    Data generation activity for soil respiration analysis.
+    Captures CO2-C efflux measured per gram of soil.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RespirationDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RespirationDataGenerationActivity"
+    class_name: ClassVar[str] = "RespirationDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RespirationDataGenerationActivity
+
+    id: Union[str, RespirationDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RespirationDataGenerationActivityId):
+            self.id = RespirationDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class TOCTNDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TOCTNDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TOCTNDataGenerationActivity"
+    class_name: ClassVar[str] = "TOC_TN_DataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TOCTNDataGenerationActivity
+
+    id: Union[str, TOCTNDataGenerationActivityId] = None
+    name: str = None
+    detector: str = None
+    injection_volume: str = None
+    sample_volume: str = None
+    number_of_injections: float = None
+    column: Optional[str] = None
+    mode: Optional[str] = None
+    check_standard_spacing: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TOCTNDataGenerationActivityId):
+            self.id = TOCTNDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.detector):
+            self.MissingRequiredField("detector")
+        if not isinstance(self.detector, str):
+            self.detector = str(self.detector)
+
+        if self._is_empty(self.injection_volume):
+            self.MissingRequiredField("injection_volume")
+        if not isinstance(self.injection_volume, str):
+            self.injection_volume = str(self.injection_volume)
+
+        if self._is_empty(self.sample_volume):
+            self.MissingRequiredField("sample_volume")
+        if not isinstance(self.sample_volume, str):
+            self.sample_volume = str(self.sample_volume)
+
+        if self._is_empty(self.number_of_injections):
+            self.MissingRequiredField("number_of_injections")
+        if not isinstance(self.number_of_injections, float):
+            self.number_of_injections = float(self.number_of_injections)
+
+        if self.column is not None and not isinstance(self.column, str):
+            self.column = str(self.column)
+
+        if self.mode is not None and not isinstance(self.mode, str):
+            self.mode = str(self.mode)
+
+        if self.check_standard_spacing is not None and not isinstance(self.check_standard_spacing, str):
+            self.check_standard_spacing = str(self.check_standard_spacing)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class TextureDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TextureDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TextureDataGenerationActivity"
+    class_name: ClassVar[str] = "TextureDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TextureDataGenerationActivity
+
+    id: Union[str, TextureDataGenerationActivityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TextureDataGenerationActivityId):
+            self.id = TextureDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XCTDataGenerationActivity(DataGenerationActivity):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XCTDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XCTDataGenerationActivity"
+    class_name: ClassVar[str] = "XCTDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XCTDataGenerationActivity
+
+    id: Union[str, XCTDataGenerationActivityId] = None
+    name: str = None
+    x_ray_power: str = None
+    cu_filter: str = None
+    total_projections_collected: float = None
+    rotation: str = None
+    frames_recording_per_projection: float = None
+    exposure_time_per_frame: str = None
+    image_voxel_size_is: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, XCTDataGenerationActivityId):
+            self.id = XCTDataGenerationActivityId(self.id)
+
+        if self._is_empty(self.x_ray_power):
+            self.MissingRequiredField("x_ray_power")
+        if not isinstance(self.x_ray_power, str):
+            self.x_ray_power = str(self.x_ray_power)
+
+        if self._is_empty(self.cu_filter):
+            self.MissingRequiredField("cu_filter")
+        if not isinstance(self.cu_filter, str):
+            self.cu_filter = str(self.cu_filter)
+
+        if self._is_empty(self.total_projections_collected):
+            self.MissingRequiredField("total_projections_collected")
+        if not isinstance(self.total_projections_collected, float):
+            self.total_projections_collected = float(self.total_projections_collected)
+
+        if self._is_empty(self.rotation):
+            self.MissingRequiredField("rotation")
+        if not isinstance(self.rotation, str):
+            self.rotation = str(self.rotation)
+
+        if self._is_empty(self.frames_recording_per_projection):
+            self.MissingRequiredField("frames_recording_per_projection")
+        if not isinstance(self.frames_recording_per_projection, float):
+            self.frames_recording_per_projection = float(self.frames_recording_per_projection)
+
+        if self._is_empty(self.exposure_time_per_frame):
+            self.MissingRequiredField("exposure_time_per_frame")
+        if not isinstance(self.exposure_time_per_frame, str):
+            self.exposure_time_per_frame = str(self.exposure_time_per_frame)
+
+        if self._is_empty(self.image_voxel_size_is):
+            self.MissingRequiredField("image_voxel_size_is")
+        if not isinstance(self.image_voxel_size_is, str):
+            self.image_voxel_size_is = str(self.image_voxel_size_is)
 
         super().__post_init__(**kwargs)
 
@@ -4252,115 +5030,6 @@ class TextureProduct(ProcessedData):
 
 
 @dataclass(repr=False)
-class TomographyProduct(ProcessedData):
-    """
-    Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TomographyProduct"]
-    class_class_curie: ClassVar[str] = "basalt_schema:TomographyProduct"
-    class_name: ClassVar[str] = "TomographyProduct"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TomographyProduct
-
-    id: Union[str, TomographyProductId] = None
-    name: str = None
-    s3_key: str = None
-    measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    roi_volume_voxel: Optional[float] = None
-    voxel_size: Optional[float] = None
-    connected_pores: Optional[float] = None
-    pore_diameter_min: Optional[float] = None
-    pore_diameter_max: Optional[float] = None
-    pore_diameter_mean: Optional[float] = None
-    pore_diameter_median: Optional[float] = None
-    pore_diameter_variance: Optional[float] = None
-    pore_volume_mean: Optional[float] = None
-    total_pore_volume: Optional[float] = None
-    permeability_x: Optional[float] = None
-    flow_rate_x: Optional[float] = None
-    tortuosity_x: Optional[float] = None
-    permeability_y: Optional[float] = None
-    flow_rate_y: Optional[float] = None
-    tortuosity_y: Optional[float] = None
-    permeability_z: Optional[float] = None
-    flow_rate_z: Optional[float] = None
-    tortuosity_z: Optional[float] = None
-    flag_xct: Optional[str] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, TomographyProductId):
-            self.id = TomographyProductId(self.id)
-
-        if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
-            self.measure_type = ProductMeasureType(self.measure_type)
-
-        if self.roi_volume_voxel is not None and not isinstance(self.roi_volume_voxel, float):
-            self.roi_volume_voxel = float(self.roi_volume_voxel)
-
-        if self.voxel_size is not None and not isinstance(self.voxel_size, float):
-            self.voxel_size = float(self.voxel_size)
-
-        if self.connected_pores is not None and not isinstance(self.connected_pores, float):
-            self.connected_pores = float(self.connected_pores)
-
-        if self.pore_diameter_min is not None and not isinstance(self.pore_diameter_min, float):
-            self.pore_diameter_min = float(self.pore_diameter_min)
-
-        if self.pore_diameter_max is not None and not isinstance(self.pore_diameter_max, float):
-            self.pore_diameter_max = float(self.pore_diameter_max)
-
-        if self.pore_diameter_mean is not None and not isinstance(self.pore_diameter_mean, float):
-            self.pore_diameter_mean = float(self.pore_diameter_mean)
-
-        if self.pore_diameter_median is not None and not isinstance(self.pore_diameter_median, float):
-            self.pore_diameter_median = float(self.pore_diameter_median)
-
-        if self.pore_diameter_variance is not None and not isinstance(self.pore_diameter_variance, float):
-            self.pore_diameter_variance = float(self.pore_diameter_variance)
-
-        if self.pore_volume_mean is not None and not isinstance(self.pore_volume_mean, float):
-            self.pore_volume_mean = float(self.pore_volume_mean)
-
-        if self.total_pore_volume is not None and not isinstance(self.total_pore_volume, float):
-            self.total_pore_volume = float(self.total_pore_volume)
-
-        if self.permeability_x is not None and not isinstance(self.permeability_x, float):
-            self.permeability_x = float(self.permeability_x)
-
-        if self.flow_rate_x is not None and not isinstance(self.flow_rate_x, float):
-            self.flow_rate_x = float(self.flow_rate_x)
-
-        if self.tortuosity_x is not None and not isinstance(self.tortuosity_x, float):
-            self.tortuosity_x = float(self.tortuosity_x)
-
-        if self.permeability_y is not None and not isinstance(self.permeability_y, float):
-            self.permeability_y = float(self.permeability_y)
-
-        if self.flow_rate_y is not None and not isinstance(self.flow_rate_y, float):
-            self.flow_rate_y = float(self.flow_rate_y)
-
-        if self.tortuosity_y is not None and not isinstance(self.tortuosity_y, float):
-            self.tortuosity_y = float(self.tortuosity_y)
-
-        if self.permeability_z is not None and not isinstance(self.permeability_z, float):
-            self.permeability_z = float(self.permeability_z)
-
-        if self.flow_rate_z is not None and not isinstance(self.flow_rate_z, float):
-            self.flow_rate_z = float(self.flow_rate_z)
-
-        if self.tortuosity_z is not None and not isinstance(self.tortuosity_z, float):
-            self.tortuosity_z = float(self.tortuosity_z)
-
-        if self.flag_xct is not None and not isinstance(self.flag_xct, str):
-            self.flag_xct = str(self.flag_xct)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
 class WEOMProduct(YAMLRoot):
     """
     Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar
@@ -4469,6 +5138,7 @@ class XRayDataProduct(ProcessedData):
     Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
 
     Concrete subclasses:
+    - XCTProduct: pore geometry and flow properties (X-ray computed tomography)
     - XRFElementalProduct: elemental concentrations
     - XRDPhaseProduct: mineral phases
     - XASLCFProduct: linear combination fitting results
@@ -4476,6 +5146,7 @@ class XRayDataProduct(ProcessedData):
     Common patterns:
     - s3_key points to the raw or processed X-ray data file in MinIO
     - summary_metrics provides lightweight queryable summaries:
+    XCT: {"connected_pores":1842, "total_pore_volume":3.2e6, "tortuosity_z":1.47}
     XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
     XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
     XAS: {"r_factor":0.000975, "lcf_type":"XANES", "n_standards":3}
@@ -4493,6 +5164,163 @@ class XRayDataProduct(ProcessedData):
     id: Union[str, XRayDataProductId] = None
     name: str = None
     s3_key: str = None
+
+@dataclass(repr=False)
+class XCTProduct(XRayDataProduct):
+    """
+    X-ray computed tomography (XCT) analysis product for pore geometry and flow properties of intact soil cores.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XCTProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XCTProduct"
+    class_name: ClassVar[str] = "XCTProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XCTProduct
+
+    id: Union[str, XCTProductId] = None
+    name: str = None
+    s3_key: str = None
+    measure_type: Optional[Union[str, "ProductMeasureType"]] = None
+    roi_x_voxel: Optional[float] = None
+    roi_y_voxel: Optional[float] = None
+    roi_z_voxel: Optional[float] = None
+    voxel_size_mm_per_voxel: Optional[float] = None
+    porosity_percent: Optional[float] = None
+    connected_pores_fraction: Optional[float] = None
+    pore_connectivity_percent: Optional[float] = None
+    pore_equivalent_diameter_min_mm: Optional[float] = None
+    pore_equivalent_diameter_max_mm: Optional[float] = None
+    pore_equivalent_diameter_mean_mm: Optional[float] = None
+    pore_equivalent_diameter_median_mm: Optional[float] = None
+    pore_equivalent_diameter_variance_mm2: Optional[float] = None
+    pore_volume_min_mm3: Optional[float] = None
+    pore_volume_max_mm3: Optional[float] = None
+    pore_volume_mean_mm3: Optional[float] = None
+    pore_volume_median_mm3: Optional[float] = None
+    pore_volume_variance_mm6: Optional[float] = None
+    pore_area_min_mm2: Optional[float] = None
+    pore_area_max_mm2: Optional[float] = None
+    pore_area_mean_mm2: Optional[float] = None
+    pore_area_median_mm2: Optional[float] = None
+    pore_area_variance_mm4: Optional[float] = None
+    permeability_x_um2: Optional[float] = None
+    flow_rate_x_mm3_per_sec: Optional[float] = None
+    tortuosity_x: Optional[float] = None
+    permeability_y_um2: Optional[float] = None
+    flow_rate_y_mm3_per_sec: Optional[float] = None
+    tortuosity_y: Optional[float] = None
+    permeability_z_um2: Optional[float] = None
+    flow_rate_z_mm3_per_sec: Optional[float] = None
+    tortuosity_z: Optional[float] = None
+    flag_xct: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, XCTProductId):
+            self.id = XCTProductId(self.id)
+
+        if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
+            self.measure_type = ProductMeasureType(self.measure_type)
+
+        if self.roi_x_voxel is not None and not isinstance(self.roi_x_voxel, float):
+            self.roi_x_voxel = float(self.roi_x_voxel)
+
+        if self.roi_y_voxel is not None and not isinstance(self.roi_y_voxel, float):
+            self.roi_y_voxel = float(self.roi_y_voxel)
+
+        if self.roi_z_voxel is not None and not isinstance(self.roi_z_voxel, float):
+            self.roi_z_voxel = float(self.roi_z_voxel)
+
+        if self.voxel_size_mm_per_voxel is not None and not isinstance(self.voxel_size_mm_per_voxel, float):
+            self.voxel_size_mm_per_voxel = float(self.voxel_size_mm_per_voxel)
+
+        if self.porosity_percent is not None and not isinstance(self.porosity_percent, float):
+            self.porosity_percent = float(self.porosity_percent)
+
+        if self.connected_pores_fraction is not None and not isinstance(self.connected_pores_fraction, float):
+            self.connected_pores_fraction = float(self.connected_pores_fraction)
+
+        if self.pore_connectivity_percent is not None and not isinstance(self.pore_connectivity_percent, float):
+            self.pore_connectivity_percent = float(self.pore_connectivity_percent)
+
+        if self.pore_equivalent_diameter_min_mm is not None and not isinstance(self.pore_equivalent_diameter_min_mm, float):
+            self.pore_equivalent_diameter_min_mm = float(self.pore_equivalent_diameter_min_mm)
+
+        if self.pore_equivalent_diameter_max_mm is not None and not isinstance(self.pore_equivalent_diameter_max_mm, float):
+            self.pore_equivalent_diameter_max_mm = float(self.pore_equivalent_diameter_max_mm)
+
+        if self.pore_equivalent_diameter_mean_mm is not None and not isinstance(self.pore_equivalent_diameter_mean_mm, float):
+            self.pore_equivalent_diameter_mean_mm = float(self.pore_equivalent_diameter_mean_mm)
+
+        if self.pore_equivalent_diameter_median_mm is not None and not isinstance(self.pore_equivalent_diameter_median_mm, float):
+            self.pore_equivalent_diameter_median_mm = float(self.pore_equivalent_diameter_median_mm)
+
+        if self.pore_equivalent_diameter_variance_mm2 is not None and not isinstance(self.pore_equivalent_diameter_variance_mm2, float):
+            self.pore_equivalent_diameter_variance_mm2 = float(self.pore_equivalent_diameter_variance_mm2)
+
+        if self.pore_volume_min_mm3 is not None and not isinstance(self.pore_volume_min_mm3, float):
+            self.pore_volume_min_mm3 = float(self.pore_volume_min_mm3)
+
+        if self.pore_volume_max_mm3 is not None and not isinstance(self.pore_volume_max_mm3, float):
+            self.pore_volume_max_mm3 = float(self.pore_volume_max_mm3)
+
+        if self.pore_volume_mean_mm3 is not None and not isinstance(self.pore_volume_mean_mm3, float):
+            self.pore_volume_mean_mm3 = float(self.pore_volume_mean_mm3)
+
+        if self.pore_volume_median_mm3 is not None and not isinstance(self.pore_volume_median_mm3, float):
+            self.pore_volume_median_mm3 = float(self.pore_volume_median_mm3)
+
+        if self.pore_volume_variance_mm6 is not None and not isinstance(self.pore_volume_variance_mm6, float):
+            self.pore_volume_variance_mm6 = float(self.pore_volume_variance_mm6)
+
+        if self.pore_area_min_mm2 is not None and not isinstance(self.pore_area_min_mm2, float):
+            self.pore_area_min_mm2 = float(self.pore_area_min_mm2)
+
+        if self.pore_area_max_mm2 is not None and not isinstance(self.pore_area_max_mm2, float):
+            self.pore_area_max_mm2 = float(self.pore_area_max_mm2)
+
+        if self.pore_area_mean_mm2 is not None and not isinstance(self.pore_area_mean_mm2, float):
+            self.pore_area_mean_mm2 = float(self.pore_area_mean_mm2)
+
+        if self.pore_area_median_mm2 is not None and not isinstance(self.pore_area_median_mm2, float):
+            self.pore_area_median_mm2 = float(self.pore_area_median_mm2)
+
+        if self.pore_area_variance_mm4 is not None and not isinstance(self.pore_area_variance_mm4, float):
+            self.pore_area_variance_mm4 = float(self.pore_area_variance_mm4)
+
+        if self.permeability_x_um2 is not None and not isinstance(self.permeability_x_um2, float):
+            self.permeability_x_um2 = float(self.permeability_x_um2)
+
+        if self.flow_rate_x_mm3_per_sec is not None and not isinstance(self.flow_rate_x_mm3_per_sec, float):
+            self.flow_rate_x_mm3_per_sec = float(self.flow_rate_x_mm3_per_sec)
+
+        if self.tortuosity_x is not None and not isinstance(self.tortuosity_x, float):
+            self.tortuosity_x = float(self.tortuosity_x)
+
+        if self.permeability_y_um2 is not None and not isinstance(self.permeability_y_um2, float):
+            self.permeability_y_um2 = float(self.permeability_y_um2)
+
+        if self.flow_rate_y_mm3_per_sec is not None and not isinstance(self.flow_rate_y_mm3_per_sec, float):
+            self.flow_rate_y_mm3_per_sec = float(self.flow_rate_y_mm3_per_sec)
+
+        if self.tortuosity_y is not None and not isinstance(self.tortuosity_y, float):
+            self.tortuosity_y = float(self.tortuosity_y)
+
+        if self.permeability_z_um2 is not None and not isinstance(self.permeability_z_um2, float):
+            self.permeability_z_um2 = float(self.permeability_z_um2)
+
+        if self.flow_rate_z_mm3_per_sec is not None and not isinstance(self.flow_rate_z_mm3_per_sec, float):
+            self.flow_rate_z_mm3_per_sec = float(self.flow_rate_z_mm3_per_sec)
+
+        if self.tortuosity_z is not None and not isinstance(self.tortuosity_z, float):
+            self.tortuosity_z = float(self.tortuosity_z)
+
+        if self.flag_xct is not None and not isinstance(self.flag_xct, str):
+            self.flag_xct = str(self.flag_xct)
+
+        super().__post_init__(**kwargs)
+
 
 @dataclass(repr=False)
 class XRFElementalProduct(XRayDataProduct):
@@ -5439,6 +6267,116 @@ class XASLCFDataRow(YAMLRoot):
 
 
 @dataclass(repr=False)
+class UVSpectroscopyProduct(ProcessedData):
+    """
+    A compound and its measurements resulting from a
+    UVDataGenerationActivity.One UVDataGenerationActivity may have many
+    "products" representing all compounds detected in the sample.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["UVSpectroscopyProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:UVSpectroscopyProduct"
+    class_name: ClassVar[str] = "UVSpectroscopyProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.UVSpectroscopyProduct
+
+    id: Union[str, UVSpectroscopyProductId] = None
+    name: str = None
+    s3_key: str = None
+    produced_by_uv_run: Optional[Union[str, UVDataGenerationActivityId]] = None
+    compound_name: Optional[Union[str, "ChemicalEntityEnum"]] = None
+    retention_time_min: Optional[float] = None
+    peak_area: Optional[float] = None
+    peak_percent_area: Optional[float] = None
+    peak_height: Optional[float] = None
+    weight_percent: Optional[float] = None
+    concentration_ug_per_uL: Optional[float] = None
+    flag: Optional[Union[str, "ProcessedDataFlag"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, UVSpectroscopyProductId):
+            self.id = UVSpectroscopyProductId(self.id)
+
+        if self.produced_by_uv_run is not None and not isinstance(self.produced_by_uv_run, UVDataGenerationActivityId):
+            self.produced_by_uv_run = UVDataGenerationActivityId(self.produced_by_uv_run)
+
+        if self.compound_name is not None and not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
+
+        if self.retention_time_min is not None and not isinstance(self.retention_time_min, float):
+            self.retention_time_min = float(self.retention_time_min)
+
+        if self.peak_area is not None and not isinstance(self.peak_area, float):
+            self.peak_area = float(self.peak_area)
+
+        if self.peak_percent_area is not None and not isinstance(self.peak_percent_area, float):
+            self.peak_percent_area = float(self.peak_percent_area)
+
+        if self.peak_height is not None and not isinstance(self.peak_height, float):
+            self.peak_height = float(self.peak_height)
+
+        if self.weight_percent is not None and not isinstance(self.weight_percent, float):
+            self.weight_percent = float(self.weight_percent)
+
+        if self.concentration_ug_per_uL is not None and not isinstance(self.concentration_ug_per_uL, float):
+            self.concentration_ug_per_uL = float(self.concentration_ug_per_uL)
+
+        if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
+            self.flag = ProcessedDataFlag(self.flag)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class RIProduct(ProcessedData):
+    """
+    A compound and its measurements resulting from a
+    RIDataGenerationActivity.One RIDataGenerationActivity may have many
+    "products" representing all compounds detected in the sample.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RIProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RIProduct"
+    class_name: ClassVar[str] = "RIProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RIProduct
+
+    id: Union[str, RIProductId] = None
+    name: str = None
+    s3_key: str = None
+    produced_by_ri_run: Optional[Union[str, RIDataGenerationActivityId]] = None
+    compound_name: Optional[Union[str, "ChemicalEntityEnum"]] = None
+    weight_percent: Optional[float] = None
+    concentration_ug_per_uL: Optional[float] = None
+    flag: Optional[Union[str, "ProcessedDataFlag"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RIProductId):
+            self.id = RIProductId(self.id)
+
+        if self.produced_by_ri_run is not None and not isinstance(self.produced_by_ri_run, RIDataGenerationActivityId):
+            self.produced_by_ri_run = RIDataGenerationActivityId(self.produced_by_ri_run)
+
+        if self.compound_name is not None and not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
+
+        if self.weight_percent is not None and not isinstance(self.weight_percent, float):
+            self.weight_percent = float(self.weight_percent)
+
+        if self.concentration_ug_per_uL is not None and not isinstance(self.concentration_ug_per_uL, float):
+            self.concentration_ug_per_uL = float(self.concentration_ug_per_uL)
+
+        if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
+            self.flag = ProcessedDataFlag(self.flag)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Organism(YAMLRoot):
     """
     Reference data representing a biological identity (strain, isolate,
@@ -6343,7 +7281,7 @@ class CommerciallyPurchasedSample(Sample):
     id: Union[str, CommerciallyPurchasedSampleId] = None
     name: str = None
     analysis_type: str = None
-    compound_name: str = None
+    compound_name: Union[str, "ChemicalEntityEnum"] = None
     cas: Optional[str] = None
     experimental_factor: Optional[str] = None
     experimental_factor_other: Optional[str] = None
@@ -6382,8 +7320,8 @@ class CommerciallyPurchasedSample(Sample):
 
         if self._is_empty(self.compound_name):
             self.MissingRequiredField("compound_name")
-        if not isinstance(self.compound_name, str):
-            self.compound_name = str(self.compound_name)
+        if not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
 
         if self.cas is not None and not isinstance(self.cas, str):
             self.cas = str(self.cas)
@@ -7566,7 +8504,7 @@ class OtherUndescribedSample(Sample):
     chem_oxygen_dem: Optional[str] = None
     chloride: Optional[str] = None
     chlorophyll: Optional[str] = None
-    compound_name: Optional[str] = None
+    compound_name: Optional[Union[str, "ChemicalEntityEnum"]] = None
     conduc: Optional[str] = None
     density: Optional[str] = None
     depth: Optional[str] = None
@@ -7873,8 +8811,8 @@ class OtherUndescribedSample(Sample):
         if self.chlorophyll is not None and not isinstance(self.chlorophyll, str):
             self.chlorophyll = str(self.chlorophyll)
 
-        if self.compound_name is not None and not isinstance(self.compound_name, str):
-            self.compound_name = str(self.compound_name)
+        if self.compound_name is not None and not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
 
         if self.conduc is not None and not isinstance(self.conduc, str):
             self.conduc = str(self.conduc)
@@ -9885,7 +10823,7 @@ class SynthesizedMaterialSample(Sample):
     synth_instrument: str = None
     synth_reagents: str = None
     cas: Optional[str] = None
-    compound_name: Optional[str] = None
+    compound_name: Optional[Union[str, "ChemicalEntityEnum"]] = None
     experimental_factor: Optional[str] = None
     experimental_factor_other: Optional[str] = None
     external_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
@@ -9935,8 +10873,8 @@ class SynthesizedMaterialSample(Sample):
         if self.cas is not None and not isinstance(self.cas, str):
             self.cas = str(self.cas)
 
-        if self.compound_name is not None and not isinstance(self.compound_name, str):
-            self.compound_name = str(self.compound_name)
+        if self.compound_name is not None and not isinstance(self.compound_name, ChemicalEntityEnum):
+            self.compound_name = ChemicalEntityEnum(self.compound_name)
 
         if self.experimental_factor is not None and not isinstance(self.experimental_factor, str):
             self.experimental_factor = str(self.experimental_factor)
@@ -10864,7 +11802,7 @@ class ProcessedSample(Sample):
     label_text: Optional[str] = None
     concentration_ug_per_uL: Optional[float] = None
     total_amount_ug: Optional[float] = None
-    volume_uL: Optional[float] = None
+    volume_ul: Optional[float] = None
     sampled_portion: Optional[Union[str, "SamplePortionEnum"]] = None
     replicate: Optional[int] = None
 
@@ -10886,8 +11824,8 @@ class ProcessedSample(Sample):
         if self.total_amount_ug is not None and not isinstance(self.total_amount_ug, float):
             self.total_amount_ug = float(self.total_amount_ug)
 
-        if self.volume_uL is not None and not isinstance(self.volume_uL, float):
-            self.volume_uL = float(self.volume_uL)
+        if self.volume_ul is not None and not isinstance(self.volume_ul, float):
+            self.volume_ul = float(self.volume_ul)
 
         if self.sampled_portion is not None and not isinstance(self.sampled_portion, SamplePortionEnum):
             self.sampled_portion = SamplePortionEnum(self.sampled_portion)
@@ -11786,7 +12724,7 @@ class ChemicalConversionProcess(SampleProcessing):
     name: str = None
     duration_min: Optional[float] = None
     temperature_celsius: Optional[float] = None
-    substances_used: Optional[Union[Union[dict, "PortionOfSubstance"], list[Union[dict, "PortionOfSubstance"]]]] = empty_list()
+    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
     chemical_conversion_category: Optional[Union[str, "ChemicalConversionCategoryEnum"]] = None
     digestion_method: Optional[Union[str, "DigestionMethodEnum"]] = None
     enrichment_type: Optional[Union[str, "EnrichmentTypeEnum"]] = None
@@ -11804,9 +12742,8 @@ class ChemicalConversionProcess(SampleProcessing):
         if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
             self.temperature_celsius = float(self.temperature_celsius)
 
-        if not isinstance(self.substances_used, list):
-            self.substances_used = [self.substances_used] if self.substances_used is not None else []
-        self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
+        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
+            self.substances_used = SubstancesUsedLinkId(self.substances_used)
 
         if self.chemical_conversion_category is not None and not isinstance(self.chemical_conversion_category, ChemicalConversionCategoryEnum):
             self.chemical_conversion_category = ChemicalConversionCategoryEnum(self.chemical_conversion_category)
@@ -11837,7 +12774,7 @@ class Extraction(SampleProcessing):
 
     id: Union[str, ExtractionId] = None
     name: str = None
-    substances_used: Optional[Union[Union[dict, "PortionOfSubstance"], list[Union[dict, "PortionOfSubstance"]]]] = empty_list()
+    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
     starting_mass_mg: Optional[float] = None
     extraction_target: Optional[Union[Union[str, "AnalyteCategoryEnum"], list[Union[str, "AnalyteCategoryEnum"]]]] = empty_list()
     extraction_method: Optional[Union[str, "ExtractionMethodEnum"]] = None
@@ -11848,9 +12785,8 @@ class Extraction(SampleProcessing):
         if not isinstance(self.id, ExtractionId):
             self.id = ExtractionId(self.id)
 
-        if not isinstance(self.substances_used, list):
-            self.substances_used = [self.substances_used] if self.substances_used is not None else []
-        self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
+        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
+            self.substances_used = SubstancesUsedLinkId(self.substances_used)
 
         if self.starting_mass_mg is not None and not isinstance(self.starting_mass_mg, float):
             self.starting_mass_mg = float(self.starting_mass_mg)
@@ -11861,6 +12797,59 @@ class Extraction(SampleProcessing):
 
         if self.extraction_method is not None and not isinstance(self.extraction_method, ExtractionMethodEnum):
             self.extraction_method = ExtractionMethodEnum(self.extraction_method)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class FiltrationProcess(SampleProcessing):
+    """
+    The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by
+    forcing a carrier gas or liquid through a porous medium.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["FiltrationProcess"]
+    class_class_curie: ClassVar[str] = "basalt_schema:FiltrationProcess"
+    class_name: ClassVar[str] = "FiltrationProcess"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.FiltrationProcess
+
+    id: Union[str, FiltrationProcessId] = None
+    name: str = None
+    container_size_ml: Optional[float] = None
+    container_type: Optional[str] = None
+    filter_material: Optional[str] = None
+    filter_pore_size_um: Optional[float] = None
+    is_pressurized: Optional[Union[bool, Bool]] = None
+    separation_method: Optional[str] = None
+    volume_ml: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, FiltrationProcessId):
+            self.id = FiltrationProcessId(self.id)
+
+        if self.container_size_ml is not None and not isinstance(self.container_size_ml, float):
+            self.container_size_ml = float(self.container_size_ml)
+
+        if self.container_type is not None and not isinstance(self.container_type, str):
+            self.container_type = str(self.container_type)
+
+        if self.filter_material is not None and not isinstance(self.filter_material, str):
+            self.filter_material = str(self.filter_material)
+
+        if self.filter_pore_size_um is not None and not isinstance(self.filter_pore_size_um, float):
+            self.filter_pore_size_um = float(self.filter_pore_size_um)
+
+        if self.is_pressurized is not None and not isinstance(self.is_pressurized, Bool):
+            self.is_pressurized = Bool(self.is_pressurized)
+
+        if self.separation_method is not None and not isinstance(self.separation_method, str):
+            self.separation_method = str(self.separation_method)
+
+        if self.volume_ml is not None and not isinstance(self.volume_ml, float):
+            self.volume_ml = float(self.volume_ml)
 
         super().__post_init__(**kwargs)
 
@@ -11881,6 +12870,7 @@ class FractionationProcess(SampleProcessing):
     id: Union[str, FractionationProcessId] = None
     name: str = None
     lims_protocol_instance_id: Optional[int] = None
+    uses_chromatography: Optional[Union[dict, ChromatographyConfiguration]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -11890,6 +12880,9 @@ class FractionationProcess(SampleProcessing):
 
         if self.lims_protocol_instance_id is not None and not isinstance(self.lims_protocol_instance_id, int):
             self.lims_protocol_instance_id = int(self.lims_protocol_instance_id)
+
+        if self.uses_chromatography is not None and not isinstance(self.uses_chromatography, ChromatographyConfiguration):
+            self.uses_chromatography = ChromatographyConfiguration(**as_dict(self.uses_chromatography))
 
         super().__post_init__(**kwargs)
 
@@ -11947,6 +12940,7 @@ class PoolingProcess(SampleProcessing):
     id: Union[str, PoolingProcessId] = None
     name: str = None
     final_mass_mg: Optional[float] = None
+    final_vol_ml: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -11957,36 +12951,74 @@ class PoolingProcess(SampleProcessing):
         if self.final_mass_mg is not None and not isinstance(self.final_mass_mg, float):
             self.final_mass_mg = float(self.final_mass_mg)
 
+        if self.final_vol_ml is not None and not isinstance(self.final_vol_ml, float):
+            self.final_vol_ml = float(self.final_vol_ml)
+
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class PortionOfSubstance(YAMLRoot):
+class SubstancesUsedLink(YAMLRoot):
     """
-    A portion of a substance with specific characteristics.
+    A link between a SampleProcessing activity and a PortionOfSubstance that was used in it.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PortionOfSubstance"]
-    class_class_curie: ClassVar[str] = "basalt_schema:PortionOfSubstance"
-    class_name: ClassVar[str] = "PortionOfSubstance"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PortionOfSubstance
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SubstancesUsedLink"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SubstancesUsedLink"
+    class_name: ClassVar[str] = "SubstancesUsedLink"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SubstancesUsedLink
 
+    id: Union[str, SubstancesUsedLinkId] = None
+    sample_processing_substance: Optional[Union[str, SampleProcessingSubstanceId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SubstancesUsedLinkId):
+            self.id = SubstancesUsedLinkId(self.id)
+
+        if self.sample_processing_substance is not None and not isinstance(self.sample_processing_substance, SampleProcessingSubstanceId):
+            self.sample_processing_substance = SampleProcessingSubstanceId(self.sample_processing_substance)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SampleProcessingSubstance(YAMLRoot):
+    """
+    A portion of a substance with specific characteristics, as used in a SampleProcessing activity. Multiple
+    substances may be used in a single SampleProcessing activity, and the same substance may be used in multiple
+    SampleProcessing activities.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SampleProcessingSubstance"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SampleProcessingSubstance"
+    class_name: ClassVar[str] = "SampleProcessingSubstance"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SampleProcessingSubstance
+
+    id: Union[str, SampleProcessingSubstanceId] = None
+    volume_ml: Optional[float] = None
     known_as: Optional[Union[str, "ChemicalEntityEnum"]] = None
     substance_role: Optional[Union[str, "SubstanceRoleEnum"]] = None
-    volume_mL: Optional[float] = None
     source_concentration_mg_per_ml: Optional[float] = None
     final_concentration_mg_per_ml: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SampleProcessingSubstanceId):
+            self.id = SampleProcessingSubstanceId(self.id)
+
+        if self.volume_ml is not None and not isinstance(self.volume_ml, float):
+            self.volume_ml = float(self.volume_ml)
+
         if self.known_as is not None and not isinstance(self.known_as, ChemicalEntityEnum):
             self.known_as = ChemicalEntityEnum(self.known_as)
 
         if self.substance_role is not None and not isinstance(self.substance_role, SubstanceRoleEnum):
             self.substance_role = SubstanceRoleEnum(self.substance_role)
-
-        if self.volume_mL is not None and not isinstance(self.volume_mL, float):
-            self.volume_mL = float(self.volume_mL)
 
         if self.source_concentration_mg_per_ml is not None and not isinstance(self.source_concentration_mg_per_ml, float):
             self.source_concentration_mg_per_ml = float(self.source_concentration_mg_per_ml)
@@ -12051,6 +13083,8 @@ class ResuspensionProcess(SampleProcessing):
     id: Union[str, ResuspensionProcessId] = None
     name: str = None
     lims_protocol_instance_id: Optional[int] = None
+    final_vol_ml: Optional[float] = None
+    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -12060,6 +13094,12 @@ class ResuspensionProcess(SampleProcessing):
 
         if self.lims_protocol_instance_id is not None and not isinstance(self.lims_protocol_instance_id, int):
             self.lims_protocol_instance_id = int(self.lims_protocol_instance_id)
+
+        if self.final_vol_ml is not None and not isinstance(self.final_vol_ml, float):
+            self.final_vol_ml = float(self.final_vol_ml)
+
+        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
+            self.substances_used = SubstancesUsedLinkId(self.substances_used)
 
         super().__post_init__(**kwargs)
 
@@ -12097,30 +13137,34 @@ class SolidPhaseExtractionProcess(SampleProcessing):
 
 
 @dataclass(repr=False)
-class SubSamplingProcess(SampleProcessing):
+class SubsamplingProcess(SampleProcessing):
     """
     A laboratory subsampling process that takes a portion of an existing sample and produces a derived (processed)
     sample for downstream analysis. (Separating a sample aliquot from the starting material for downstream activity.)
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SubSamplingProcess"]
-    class_class_curie: ClassVar[str] = "basalt_schema:SubSamplingProcess"
-    class_name: ClassVar[str] = "SubSamplingProcess"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SubSamplingProcess
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SubsamplingProcess"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SubsamplingProcess"
+    class_name: ClassVar[str] = "SubsamplingProcess"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SubsamplingProcess
 
-    id: Union[str, SubSamplingProcessId] = None
+    id: Union[str, SubsamplingProcessId] = None
     name: str = None
     final_mass_mg: Optional[float] = None
+    final_vol_ml: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, SubSamplingProcessId):
-            self.id = SubSamplingProcessId(self.id)
+        if not isinstance(self.id, SubsamplingProcessId):
+            self.id = SubsamplingProcessId(self.id)
 
         if self.final_mass_mg is not None and not isinstance(self.final_mass_mg, float):
             self.final_mass_mg = float(self.final_mass_mg)
+
+        if self.final_vol_ml is not None and not isinstance(self.final_vol_ml, float):
+            self.final_vol_ml = float(self.final_vol_ml)
 
         super().__post_init__(**kwargs)
 
@@ -12846,6 +13890,7 @@ class CalibrationTargetEnum(EnumDefinitionImpl):
         title="m/z")
     retention_time = PermissibleValue(text="retention_time")
     retention_index = PermissibleValue(text="retention_index")
+    refractive_index = PermissibleValue(text="refractive_index")
 
     _defn = EnumDefinition(
         name="CalibrationTargetEnum",
@@ -12864,6 +13909,23 @@ class CardinalDirectionEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="CardinalDirectionEnum",
+    )
+
+class ChemicalConversionCategoryEnum(EnumDefinitionImpl):
+
+    addition = PermissibleValue(text="addition")
+    substitution = PermissibleValue(text="substitution")
+    acid_base = PermissibleValue(text="acid_base")
+    reduction_oxidation = PermissibleValue(text="reduction_oxidation")
+    combustion = PermissibleValue(text="combustion")
+    decomposition = PermissibleValue(text="decomposition")
+    protease_cleavage = PermissibleValue(
+        text="protease_cleavage",
+        description="""an enzymatic cleavage which relies on an enzyme with protease activity to act on proteins and to produce polypeptides (protein fragments).""",
+        meaning=OBI["0600056"])
+
+    _defn = EnumDefinition(
+        name="ChemicalConversionCategoryEnum",
     )
 
 class ChemicalEntityEnum(EnumDefinitionImpl):
@@ -12885,6 +13947,9 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     ammonium_bicarbonate = PermissibleValue(
         text="ammonium_bicarbonate",
         meaning=CHEBI["184335"])
+    ammonium_sulfate = PermissibleValue(
+        text="ammonium_sulfate",
+        meaning=CHEBI["62946"])
     amitriptyline = PermissibleValue(
         text="amitriptyline",
         meaning=CHEBI["2666"])
@@ -12894,9 +13959,15 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     chymotrypsin = PermissibleValue(
         text="chymotrypsin",
         meaning=MS["1001306"])
+    deionized_water = PermissibleValue(
+        text="deionized_water",
+        meaning=CHEBI["15377"])
     ethanol = PermissibleValue(
         text="ethanol",
         meaning=CHEBI["16236"])
+    ferric_chloride = PermissibleValue(
+        text="ferric_chloride",
+        meaning=CHEBI["30808"])
     formic_acid = PermissibleValue(
         text="formic_acid",
         meaning=CHEBI["30751"])
@@ -12909,6 +13980,9 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     isopropyl_alcohol = PermissibleValue(
         text="isopropyl_alcohol",
         meaning=CHEBI["17824"])
+    iptg = PermissibleValue(
+        text="iptg",
+        meaning=CHEBI["61448"])
     methanol = PermissibleValue(
         text="methanol",
         meaning=CHEBI["17790"])
@@ -12968,6 +14042,7 @@ class ChromatographyCategoryEnum(EnumDefinitionImpl):
     liquid_chromatography = PermissibleValue(text="liquid_chromatography")
     gas_chromatography = PermissibleValue(text="gas_chromatography")
     solid_phase_extraction = PermissibleValue(text="solid_phase_extraction")
+    high_performance_liquid_chromatography = PermissibleValue(text="high_performance_liquid_chromatography")
 
     _defn = EnumDefinition(
         name="ChromatographyCategoryEnum",
@@ -13075,6 +14150,28 @@ class DeviceTypeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="DeviceTypeEnum",
+    )
+
+class DigestionMethodEnum(EnumDefinitionImpl):
+    """
+    Named protein digestion methods used in sample preparation.
+    """
+    urea = PermissibleValue(
+        text="urea",
+        description="Urea-based in-solution digestion.")
+    s_trap = PermissibleValue(
+        text="s_trap",
+        description="S-Trap-based digestion.")
+    fasp = PermissibleValue(
+        text="fasp",
+        description="Filter-Aided Sample Preparation (FASP) digestion.")
+    other = PermissibleValue(
+        text="other",
+        description="Other digestion method not otherwise specified.")
+
+    _defn = EnumDefinition(
+        name="DigestionMethodEnum",
+        description="Named protein digestion methods used in sample preparation.",
     )
 
 class DoiCategoryEnum(EnumDefinitionImpl):
@@ -13196,6 +14293,28 @@ class EluentIntroductionEnum(EnumDefinitionImpl):
         description="The method used to introduce the eluent into the mass spectrometer.",
     )
 
+class EnrichmentTypeEnum(EnumDefinitionImpl):
+    """
+    Type of targeted peptide or protein enrichment performed.
+    """
+    phosphopeptide = PermissibleValue(
+        text="phosphopeptide",
+        description="Enrichment of phosphopeptides.")
+    acetyl_peptide = PermissibleValue(
+        text="acetyl_peptide",
+        description="Enrichment of acetylated peptides.")
+    ubiquitin_peptide = PermissibleValue(
+        text="ubiquitin_peptide",
+        description="Enrichment of ubiquitinated peptides or diGly-modified peptides.")
+    other = PermissibleValue(
+        text="other",
+        description="Other enrichment type not otherwise specified.")
+
+    _defn = EnumDefinition(
+        name="EnrichmentTypeEnum",
+        description="Type of targeted peptide or protein enrichment performed.",
+    )
+
 class ExecutionResourceEnum(EnumDefinitionImpl):
     """
     The computing resource or facility where the processing was executed.
@@ -13216,6 +14335,31 @@ class ExecutionResourceEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="ExecutionResourceEnum",
         description="The computing resource or facility where the processing was executed.",
+    )
+
+class ExtractionMethodEnum(EnumDefinitionImpl):
+    """
+    A short name for the extraction method applied to the sample.
+    """
+    mplex = PermissibleValue(
+        text="mplex",
+        description="MPLEx (Metabolite, Protein, and Lipid Extraction) protocol.")
+    bead_beating = PermissibleValue(
+        text="bead_beating",
+        description="Bead beating mechanical lysis and extraction.")
+    tca_acetone_precipitation = PermissibleValue(
+        text="tca_acetone_precipitation",
+        description="TCA/Acetone protein precipitation.")
+    cell_lysis_s_trap = PermissibleValue(
+        text="cell_lysis_s_trap",
+        description="Cell lysis and S-Trap extraction.")
+    other = PermissibleValue(
+        text="other",
+        description="Other extraction method not otherwise specified.")
+
+    _defn = EnumDefinition(
+        name="ExtractionMethodEnum",
+        description="A short name for the extraction method applied to the sample.",
     )
 
 class FAOClassEnum(EnumDefinitionImpl):
@@ -13514,6 +14658,28 @@ class IonizationSourceEnum(EnumDefinitionImpl):
         name="IonizationSourceEnum",
     )
 
+class LabelingMethodEnum(EnumDefinitionImpl):
+    """
+    The chemical labeling strategy applied to peptides or proteins.
+    """
+    tmt = PermissibleValue(
+        text="tmt",
+        description="Tandem Mass Tag (TMT) isobaric labeling.")
+    itraq = PermissibleValue(
+        text="itraq",
+        description="iTRAQ isobaric labeling.")
+    label_free = PermissibleValue(
+        text="label_free",
+        description="No chemical labeling (label-free quantification).")
+    other = PermissibleValue(
+        text="other",
+        description="Other labeling method not otherwise specified.")
+
+    _defn = EnumDefinition(
+        name="LabelingMethodEnum",
+        description="The chemical labeling strategy applied to peptides or proteins.",
+    )
+
 class LandUseEnum(EnumDefinitionImpl):
     """
     Land use classifications
@@ -13750,6 +14916,25 @@ class MetaproteomicsAnalysisCategoryEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="MetaproteomicsAnalysisCategoryEnum",
         description="The category of metaproteomics analysis being performed.",
+    )
+
+class MetaproteomicsResultTypeEnum(EnumDefinitionImpl):
+    """
+    The type of metaproteomics results file.
+    """
+    peptide_level = PermissibleValue(
+        text="peptide_level",
+        description="A tabular data file containing peptide-level results.")
+    protein_level = PermissibleValue(
+        text="protein_level",
+        description="A tabular data file containing protein-level results.")
+    aggregation = PermissibleValue(
+        text="aggregation",
+        description="A tabular data file containing aggregated results.")
+
+    _defn = EnumDefinition(
+        name="MetaproteomicsResultTypeEnum",
+        description="The type of metaproteomics results file.",
     )
 
 class ModelEnum(EnumDefinitionImpl):
@@ -14020,6 +15205,28 @@ class NexusRoleEnum(EnumDefinitionImpl):
         setattr(cls, "Science POC",
             PermissibleValue(text="Science POC"))
 
+class NormalizationMethodEnum(EnumDefinitionImpl):
+    """
+    The strategy used to normalize sample amounts or intensities.
+    """
+    equal_mass = PermissibleValue(
+        text="equal_mass",
+        description="Normalization to an equal total protein mass per sample.")
+    equal_volume = PermissibleValue(
+        text="equal_volume",
+        description="Normalization by volume.")
+    spike_in_standard = PermissibleValue(
+        text="spike_in_standard",
+        description="Normalization using an internal spike-in standard.")
+    other = PermissibleValue(
+        text="other",
+        description="Other normalization approach not otherwise specified.")
+
+    _defn = EnumDefinition(
+        name="NormalizationMethodEnum",
+        description="The strategy used to normalize sample amounts or intensities.",
+    )
+
 class NucleotideSequencingEnum(EnumDefinitionImpl):
 
     metagenome = PermissibleValue(
@@ -14250,6 +15457,25 @@ class ProjectStatusEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="ProjectStatusEnum",
+    )
+
+class ProteinAssayTypeEnum(EnumDefinitionImpl):
+    """
+    Type of protein quantification assay performed.
+    """
+    coomassie = PermissibleValue(
+        text="coomassie",
+        description="Coomassie (Bradford-like) protein assay.")
+    bca = PermissibleValue(
+        text="bca",
+        description="Bicinchoninic Acid (BCA) protein assay.")
+    other = PermissibleValue(
+        text="other",
+        description="Other protein assay not otherwise specified.")
+
+    _defn = EnumDefinition(
+        name="ProteinAssayTypeEnum",
+        description="Type of protein quantification assay performed.",
     )
 
 class SampleBaseType(EnumDefinitionImpl):
@@ -14677,6 +15903,53 @@ class StrainTypeEnum(EnumDefinitionImpl):
         description="Types of microbial strains/organisms.",
     )
 
+class SubstanceRoleEnum(EnumDefinitionImpl):
+    """
+    The role or function of the substance in the context of its use.
+    """
+    buffer = PermissibleValue(
+        text="buffer",
+        description="Maintains the pH of the solution within a specific range to stabilize analytes or reactions.",
+        meaning=CHEBI["35225"])
+    acid = PermissibleValue(
+        text="acid",
+        description="Donates a proton or accepts an electron pair in a chemical reaction.",
+        meaning=CHEBI["37527"])
+    base = PermissibleValue(
+        text="base",
+        description="Accepts a proton or donates an electron pair in a chemical reaction.",
+        meaning=CHEBI["22695"])
+    ms_proteolytic_enzyme = PermissibleValue(
+        text="ms_proteolytic_enzyme",
+        description="""Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry based proteomics""",
+        meaning=MS["1002986"])
+    solvent = PermissibleValue(
+        text="solvent",
+        description="Dissolves the sample or reagents to facilitate reactions or extraction.",
+        meaning=CHEBI["46787"])
+    surfactant = PermissibleValue(
+        text="surfactant",
+        description="Reduces surface tension and aids in the solubilization of substances.",
+        meaning=CHEBI["35195"])
+    derivatizing_agent = PermissibleValue(
+        text="derivatizing_agent",
+        description="Chemically modifies analytes to improve detection or separation.")
+    solubilizing_agent = PermissibleValue(text="solubilizing_agent")
+    nutrient = PermissibleValue(
+        text="nutrient",
+        description="""A compound added as an experimental nutrient variable (e.g. nitrogen or iron source at a controlled concentration).""")
+    normalizer = PermissibleValue(
+        text="normalizer",
+        description="""An inert diluent (e.g. DI water) added to bring the well to a target total volume without changing the experimental chemistry.""")
+    inducer = PermissibleValue(
+        text="inducer",
+        description="""A compound added mid-experiment to trigger gene expression or a biological response (e.g. IPTG, arabinose).""")
+
+    _defn = EnumDefinition(
+        name="SubstanceRoleEnum",
+        description="The role or function of the substance in the context of its use.",
+    )
+
 class SyntheticEnvironmentEnum(EnumDefinitionImpl):
 
     pore_scale_micromodels = PermissibleValue(
@@ -14850,6 +16123,25 @@ class TrophicLevelEnum(EnumDefinitionImpl):
         description="Enumeration of trophic levels for organisms.",
     )
 
+class UVDetectorEnum(EnumDefinitionImpl):
+    """
+    UV detector types used in chromatography.
+    """
+    photodiode_array = PermissibleValue(
+        text="photodiode_array",
+        description="Diode Array Detector (DAD)")
+    variable_wavelength = PermissibleValue(
+        text="variable_wavelength",
+        description="Variable Wavelength Detector")
+    fixed_wavelength = PermissibleValue(
+        text="fixed_wavelength",
+        description="Fixed Wavelength Detector")
+
+    _defn = EnumDefinition(
+        name="UVDetectorEnum",
+        description="UV detector types used in chromatography.",
+    )
+
 class VendorEnum(EnumDefinitionImpl):
 
     waters = PermissibleValue(text="waters")
@@ -14920,208 +16212,9 @@ class YesNoEnum(EnumDefinitionImpl):
         setattr(cls, "False",
             PermissibleValue(text="False"))
 
-class ChemicalConversionCategoryEnum(EnumDefinitionImpl):
-
-    addition = PermissibleValue(text="addition")
-    substitution = PermissibleValue(text="substitution")
-    acid_base = PermissibleValue(text="acid_base")
-    reduction_oxidation = PermissibleValue(text="reduction_oxidation")
-    combustion = PermissibleValue(text="combustion")
-    decomposition = PermissibleValue(text="decomposition")
-    protease_cleavage = PermissibleValue(
-        text="protease_cleavage",
-        description="""an enzymatic cleavage which relies on an enzyme with protease activity to act on proteins and to produce polypeptides (protein fragments).""",
-        meaning=OBI["0600056"])
-
-    _defn = EnumDefinition(
-        name="ChemicalConversionCategoryEnum",
-    )
-
-class DigestionMethodEnum(EnumDefinitionImpl):
-    """
-    Named protein digestion methods used in sample preparation.
-    """
-    urea = PermissibleValue(
-        text="urea",
-        description="Urea-based in-solution digestion.")
-    s_trap = PermissibleValue(
-        text="s_trap",
-        description="S-Trap-based digestion.")
-    fasp = PermissibleValue(
-        text="fasp",
-        description="Filter-Aided Sample Preparation (FASP) digestion.")
-    other = PermissibleValue(
-        text="other",
-        description="Other digestion method not otherwise specified.")
-
-    _defn = EnumDefinition(
-        name="DigestionMethodEnum",
-        description="Named protein digestion methods used in sample preparation.",
-    )
-
-class EnrichmentTypeEnum(EnumDefinitionImpl):
-    """
-    Type of targeted peptide or protein enrichment performed.
-    """
-    phosphopeptide = PermissibleValue(
-        text="phosphopeptide",
-        description="Enrichment of phosphopeptides.")
-    acetyl_peptide = PermissibleValue(
-        text="acetyl_peptide",
-        description="Enrichment of acetylated peptides.")
-    ubiquitin_peptide = PermissibleValue(
-        text="ubiquitin_peptide",
-        description="Enrichment of ubiquitinated peptides or diGly-modified peptides.")
-    other = PermissibleValue(
-        text="other",
-        description="Other enrichment type not otherwise specified.")
-
-    _defn = EnumDefinition(
-        name="EnrichmentTypeEnum",
-        description="Type of targeted peptide or protein enrichment performed.",
-    )
-
-class ExtractionMethodEnum(EnumDefinitionImpl):
-    """
-    A short name for the extraction method applied to the sample.
-    """
-    mplex = PermissibleValue(
-        text="mplex",
-        description="MPLEx (Metabolite, Protein, and Lipid Extraction) protocol.")
-    bead_beating = PermissibleValue(
-        text="bead_beating",
-        description="Bead beating mechanical lysis and extraction.")
-    tca_acetone_precipitation = PermissibleValue(
-        text="tca_acetone_precipitation",
-        description="TCA/Acetone protein precipitation.")
-    cell_lysis_s_trap = PermissibleValue(
-        text="cell_lysis_s_trap",
-        description="Cell lysis and S-Trap extraction.")
-    other = PermissibleValue(
-        text="other",
-        description="Other extraction method not otherwise specified.")
-
-    _defn = EnumDefinition(
-        name="ExtractionMethodEnum",
-        description="A short name for the extraction method applied to the sample.",
-    )
-
-class LabelingMethodEnum(EnumDefinitionImpl):
-    """
-    The chemical labeling strategy applied to peptides or proteins.
-    """
-    tmt = PermissibleValue(
-        text="tmt",
-        description="Tandem Mass Tag (TMT) isobaric labeling.")
-    itraq = PermissibleValue(
-        text="itraq",
-        description="iTRAQ isobaric labeling.")
-    label_free = PermissibleValue(
-        text="label_free",
-        description="No chemical labeling (label-free quantification).")
-    other = PermissibleValue(
-        text="other",
-        description="Other labeling method not otherwise specified.")
-
-    _defn = EnumDefinition(
-        name="LabelingMethodEnum",
-        description="The chemical labeling strategy applied to peptides or proteins.",
-    )
-
-class NormalizationMethodEnum(EnumDefinitionImpl):
-    """
-    The strategy used to normalize sample amounts or intensities.
-    """
-    equal_mass = PermissibleValue(
-        text="equal_mass",
-        description="Normalization to an equal total protein mass per sample.")
-    equal_volume = PermissibleValue(
-        text="equal_volume",
-        description="Normalization by volume.")
-    spike_in_standard = PermissibleValue(
-        text="spike_in_standard",
-        description="Normalization using an internal spike-in standard.")
-    other = PermissibleValue(
-        text="other",
-        description="Other normalization approach not otherwise specified.")
-
-    _defn = EnumDefinition(
-        name="NormalizationMethodEnum",
-        description="The strategy used to normalize sample amounts or intensities.",
-    )
-
-class ProteinAssayTypeEnum(EnumDefinitionImpl):
-    """
-    Type of protein quantification assay performed.
-    """
-    coomassie = PermissibleValue(
-        text="coomassie",
-        description="Coomassie (Bradford-like) protein assay.")
-    bca = PermissibleValue(
-        text="bca",
-        description="Bicinchoninic Acid (BCA) protein assay.")
-    other = PermissibleValue(
-        text="other",
-        description="Other protein assay not otherwise specified.")
-
-    _defn = EnumDefinition(
-        name="ProteinAssayTypeEnum",
-        description="Type of protein quantification assay performed.",
-    )
-
-class SubstanceRoleEnum(EnumDefinitionImpl):
-    """
-    The role or function of the substance in the context of its use.
-    """
-    buffer = PermissibleValue(
-        text="buffer",
-        description="Maintains the pH of the solution within a specific range to stabilize analytes or reactions.",
-        meaning=CHEBI["35225"])
-    acid = PermissibleValue(
-        text="acid",
-        description="Donates a proton or accepts an electron pair in a chemical reaction.",
-        meaning=CHEBI["37527"])
-    base = PermissibleValue(
-        text="base",
-        description="Accepts a proton or donates an electron pair in a chemical reaction.",
-        meaning=CHEBI["22695"])
-    ms_proteolytic_enzyme = PermissibleValue(
-        text="ms_proteolytic_enzyme",
-        description="""Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry based proteomics""",
-        meaning=MS["1002986"])
-    solvent = PermissibleValue(
-        text="solvent",
-        description="Dissolves the sample or reagents to facilitate reactions or extraction.",
-        meaning=CHEBI["46787"])
-    surfactant = PermissibleValue(
-        text="surfactant",
-        description="Reduces surface tension and aids in the solubilization of substances.",
-        meaning=CHEBI["35195"])
-    derivatizing_agent = PermissibleValue(
-        text="derivatizing_agent",
-        description="Chemically modifies analytes to improve detection or separation.")
-    solubilizing_agent = PermissibleValue(text="solubilizing_agent")
-
-    _defn = EnumDefinition(
-        name="SubstanceRoleEnum",
-        description="The role or function of the substance in the context of its use.",
-    )
-
 # Slots
 class slots:
     pass
-
-slots.substances_used = Slot(uri=BASALT_SCHEMA.substances_used, name="substances_used", curie=BASALT_SCHEMA.curie('substances_used'),
-                   model_uri=BASALT_SCHEMA.substances_used, domain=None, range=Optional[Union[Union[dict, PortionOfSubstance], list[Union[dict, PortionOfSubstance]]]])
-
-slots.starting_mass_mg = Slot(uri=BASALT_SCHEMA.starting_mass_mg, name="starting_mass_mg", curie=BASALT_SCHEMA.curie('starting_mass_mg'),
-                   model_uri=BASALT_SCHEMA.starting_mass_mg, domain=None, range=Optional[float])
-
-slots.final_mass_mg = Slot(uri=BASALT_SCHEMA.final_mass_mg, name="final_mass_mg", curie=BASALT_SCHEMA.curie('final_mass_mg'),
-                   model_uri=BASALT_SCHEMA.final_mass_mg, domain=None, range=Optional[float])
-
-slots.final_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.final_concentration_mg_per_ml, name="final_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('final_concentration_mg_per_ml'),
-                   model_uri=BASALT_SCHEMA.final_concentration_mg_per_ml, domain=None, range=Optional[float])
 
 slots.acquisition_end_time = Slot(uri=BASALT_SCHEMA.acquisition_end_time, name="acquisition_end_time", curie=BASALT_SCHEMA.curie('acquisition_end_time'),
                    model_uri=BASALT_SCHEMA.acquisition_end_time, domain=None, range=Optional[Union[str, XSDDateTime]])
@@ -15154,27 +16247,22 @@ slots.al_sat_meth = Slot(uri=BASALT_SCHEMA.al_sat_meth, name="al_sat_meth", curi
                    model_uri=BASALT_SCHEMA.al_sat_meth, domain=None, range=Optional[str])
 
 slots.alkalinity = Slot(uri=BASALT_SCHEMA.alkalinity, name="alkalinity", curie=BASALT_SCHEMA.curie('alkalinity'),
-                   model_uri=BASALT_SCHEMA.alkalinity, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(mg|meq)/L$'))
+                   model_uri=BASALT_SCHEMA.alkalinity, domain=None, range=Optional[str])
 
 slots.alkalinity_method = Slot(uri=BASALT_SCHEMA.alkalinity_method, name="alkalinity_method", curie=BASALT_SCHEMA.curie('alkalinity_method'),
                    model_uri=BASALT_SCHEMA.alkalinity_method, domain=None, range=Optional[str])
 
 slots.alkyl_diethers = Slot(uri=BASALT_SCHEMA.alkyl_diethers, name="alkyl_diethers", curie=BASALT_SCHEMA.curie('alkyl_diethers'),
-                   model_uri=BASALT_SCHEMA.alkyl_diethers, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.alkyl_diethers, domain=None, range=Optional[str])
 
 slots.alt = Slot(uri=BASALT_SCHEMA.alt, name="alt", curie=BASALT_SCHEMA.curie('alt'),
-                   model_uri=BASALT_SCHEMA.alt, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?m(?:-\d+(\.\d+)?m)?$'))
+                   model_uri=BASALT_SCHEMA.alt, domain=None, range=Optional[str])
 
 slots.aminopept_act = Slot(uri=BASALT_SCHEMA.aminopept_act, name="aminopept_act", curie=BASALT_SCHEMA.curie('aminopept_act'),
-                   model_uri=BASALT_SCHEMA.aminopept_act, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*mol/L/h$'))
+                   model_uri=BASALT_SCHEMA.aminopept_act, domain=None, range=Optional[str])
 
 slots.ammonium = Slot(uri=BASALT_SCHEMA.ammonium, name="ammonium", curie=BASALT_SCHEMA.curie('ammonium'),
-                   model_uri=BASALT_SCHEMA.ammonium, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.ammonium, domain=None, range=Optional[str])
 
 slots.analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.analysis_type, domain=None, range=Optional[str])
@@ -15192,12 +16280,10 @@ slots.annotation_database = Slot(uri=BASALT_SCHEMA.annotation_database, name="an
                    model_uri=BASALT_SCHEMA.annotation_database, domain=None, range=Optional[Union[str, "AnnotationDatabaseEnum"]])
 
 slots.annual_precpt = Slot(uri=BASALT_SCHEMA.annual_precpt, name="annual_precpt", curie=BASALT_SCHEMA.curie('annual_precpt'),
-                   model_uri=BASALT_SCHEMA.annual_precpt, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*mm$'))
+                   model_uri=BASALT_SCHEMA.annual_precpt, domain=None, range=Optional[str])
 
 slots.annual_temp = Slot(uri=BASALT_SCHEMA.annual_temp, name="annual_temp", curie=BASALT_SCHEMA.curie('annual_temp'),
-                   model_uri=BASALT_SCHEMA.annual_temp, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^-?\d+(\.\d+)?\s*C$'))
+                   model_uri=BASALT_SCHEMA.annual_temp, domain=None, range=Optional[str])
 
 slots.antibiotic_regm = Slot(uri=BASALT_SCHEMA.antibiotic_regm, name="antibiotic_regm", curie=BASALT_SCHEMA.curie('antibiotic_regm'),
                    model_uri=BASALT_SCHEMA.antibiotic_regm, domain=None, range=Optional[str])
@@ -15212,16 +16298,13 @@ slots.average_well_color_development = Slot(uri=BASALT_SCHEMA.average_well_color
                    model_uri=BASALT_SCHEMA.average_well_color_development, domain=None, range=Optional[float])
 
 slots.bac_prod = Slot(uri=BASALT_SCHEMA.bac_prod, name="bac_prod", curie=BASALT_SCHEMA.curie('bac_prod'),
-                   model_uri=BASALT_SCHEMA.bac_prod, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.bac_prod, domain=None, range=Optional[str])
 
 slots.bac_resp = Slot(uri=BASALT_SCHEMA.bac_resp, name="bac_resp", curie=BASALT_SCHEMA.curie('bac_resp'),
-                   model_uri=BASALT_SCHEMA.bac_resp, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.bac_resp, domain=None, range=Optional[str])
 
 slots.bacteria_carb_prod = Slot(uri=BASALT_SCHEMA.bacteria_carb_prod, name="bacteria_carb_prod", curie=BASALT_SCHEMA.curie('bacteria_carb_prod'),
-                   model_uri=BASALT_SCHEMA.bacteria_carb_prod, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.bacteria_carb_prod, domain=None, range=Optional[str])
 
 slots.biochem_oxygen_dem = Slot(uri=BASALT_SCHEMA.biochem_oxygen_dem, name="biochem_oxygen_dem", curie=BASALT_SCHEMA.curie('biochem_oxygen_dem'),
                    model_uri=BASALT_SCHEMA.biochem_oxygen_dem, domain=None, range=Optional[str])
@@ -15236,26 +16319,22 @@ slots.biotic_relationship = Slot(uri=BASALT_SCHEMA.biotic_relationship, name="bi
                    model_uri=BASALT_SCHEMA.biotic_relationship, domain=None, range=Optional[Union[str, "BioticRelationshipEnum"]])
 
 slots.bishomohopanol = Slot(uri=BASALT_SCHEMA.bishomohopanol, name="bishomohopanol", curie=BASALT_SCHEMA.curie('bishomohopanol'),
-                   model_uri=BASALT_SCHEMA.bishomohopanol, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L|ug/g)$'))
+                   model_uri=BASALT_SCHEMA.bishomohopanol, domain=None, range=Optional[str])
 
 slots.blank_mean = Slot(uri=BASALT_SCHEMA.blank_mean, name="blank_mean", curie=BASALT_SCHEMA.curie('blank_mean'),
                    model_uri=BASALT_SCHEMA.blank_mean, domain=None, range=Optional[float])
 
 slots.bromide = Slot(uri=BASALT_SCHEMA.bromide, name="bromide", curie=BASALT_SCHEMA.curie('bromide'),
-                   model_uri=BASALT_SCHEMA.bromide, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*ppm$'))
+                   model_uri=BASALT_SCHEMA.bromide, domain=None, range=Optional[str])
 
 slots.bulk_elect_conductivity = Slot(uri=BASALT_SCHEMA.bulk_elect_conductivity, name="bulk_elect_conductivity", curie=BASALT_SCHEMA.curie('bulk_elect_conductivity'),
-                   model_uri=BASALT_SCHEMA.bulk_elect_conductivity, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*mS/cm$'))
+                   model_uri=BASALT_SCHEMA.bulk_elect_conductivity, domain=None, range=Optional[str])
 
 slots.calcium = Slot(uri=BASALT_SCHEMA.calcium, name="calcium", curie=BASALT_SCHEMA.curie('calcium'),
-                   model_uri=BASALT_SCHEMA.calcium, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/L|umol/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.calcium, domain=None, range=Optional[str])
 
 slots.calibration_data = Slot(uri=BASALT_SCHEMA.calibration_data, name="calibration_data", curie=BASALT_SCHEMA.curie('calibration_data'),
-                   model_uri=BASALT_SCHEMA.calibration_data, domain=None, range=Optional[Union[str, MassSpectrometryInstrumentDataId]])
+                   model_uri=BASALT_SCHEMA.calibration_data, domain=None, range=Optional[Union[str, InstrumentDataId]])
 
 slots.calibration_standard = Slot(uri=BASALT_SCHEMA.calibration_standard, name="calibration_standard", curie=BASALT_SCHEMA.curie('calibration_standard'),
                    model_uri=BASALT_SCHEMA.calibration_standard, domain=None, range=Optional[Union[str, PurchasedMaterialId]])
@@ -15264,12 +16343,10 @@ slots.calibration_target = Slot(uri=BASALT_SCHEMA.calibration_target, name="cali
                    model_uri=BASALT_SCHEMA.calibration_target, domain=None, range=Optional[Union[str, "CalibrationTargetEnum"]])
 
 slots.carb_dioxide = Slot(uri=BASALT_SCHEMA.carb_dioxide, name="carb_dioxide", curie=BASALT_SCHEMA.curie('carb_dioxide'),
-                   model_uri=BASALT_SCHEMA.carb_dioxide, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.carb_dioxide, domain=None, range=Optional[str])
 
 slots.carb_monoxide = Slot(uri=BASALT_SCHEMA.carb_monoxide, name="carb_monoxide", curie=BASALT_SCHEMA.curie('carb_monoxide'),
-                   model_uri=BASALT_SCHEMA.carb_monoxide, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.carb_monoxide, domain=None, range=Optional[str])
 
 slots.carb_nitro_ratio = Slot(uri=BASALT_SCHEMA.carb_nitro_ratio, name="carb_nitro_ratio", curie=BASALT_SCHEMA.curie('carb_nitro_ratio'),
                    model_uri=BASALT_SCHEMA.carb_nitro_ratio, domain=None, range=Optional[str])
@@ -15279,6 +16356,9 @@ slots.cas = Slot(uri=BASALT_SCHEMA.cas, name="cas", curie=BASALT_SCHEMA.curie('c
 
 slots.cbi = Slot(uri=BASALT_SCHEMA.cbi, name="cbi", curie=BASALT_SCHEMA.curie('cbi'),
                    model_uri=BASALT_SCHEMA.cbi, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.channel_number = Slot(uri=BASALT_SCHEMA.channel_number, name="channel_number", curie=BASALT_SCHEMA.curie('channel_number'),
+                   model_uri=BASALT_SCHEMA.channel_number, domain=None, range=Optional[int])
 
 slots.chem_administration = Slot(uri=BASALT_SCHEMA.chem_administration, name="chem_administration", curie=BASALT_SCHEMA.curie('chem_administration'),
                    model_uri=BASALT_SCHEMA.chem_administration, domain=None, range=Optional[str])
@@ -15290,26 +16370,22 @@ slots.chem_oxygen_dem = Slot(uri=BASALT_SCHEMA.chem_oxygen_dem, name="chem_oxyge
                    model_uri=BASALT_SCHEMA.chem_oxygen_dem, domain=None, range=Optional[str])
 
 slots.chloride = Slot(uri=BASALT_SCHEMA.chloride, name="chloride", curie=BASALT_SCHEMA.curie('chloride'),
-                   model_uri=BASALT_SCHEMA.chloride, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.chloride, domain=None, range=Optional[str])
 
 slots.chlorophyll = Slot(uri=BASALT_SCHEMA.chlorophyll, name="chlorophyll", curie=BASALT_SCHEMA.curie('chlorophyll'),
-                   model_uri=BASALT_SCHEMA.chlorophyll, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/m3|ug/L)$'))
+                   model_uri=BASALT_SCHEMA.chlorophyll, domain=None, range=Optional[str])
 
 slots.chromatography_type = Slot(uri=BASALT_SCHEMA.chromatography_type, name="chromatography_type", curie=BASALT_SCHEMA.curie('chromatography_type'),
                    model_uri=BASALT_SCHEMA.chromatography_type, domain=None, range=Union[str, "ChromatographyCategoryEnum"])
 
 slots.collection_date = Slot(uri=BASALT_SCHEMA.collection_date, name="collection_date", curie=BASALT_SCHEMA.curie('collection_date'),
-                   model_uri=BASALT_SCHEMA.collection_date, domain=None, range=Optional[Union[str, XSDDate]],
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.collection_date, domain=None, range=Optional[Union[str, XSDDate]])
 
 slots.collection_mode = Slot(uri=BASALT_SCHEMA.collection_mode, name="collection_mode", curie=BASALT_SCHEMA.curie('collection_mode'),
                    model_uri=BASALT_SCHEMA.collection_mode, domain=None, range=Optional[Union[str, "MassSpectrumCollectionModeEnum"]])
 
 slots.collection_time = Slot(uri=BASALT_SCHEMA.collection_time, name="collection_time", curie=BASALT_SCHEMA.curie('collection_time'),
-                   model_uri=BASALT_SCHEMA.collection_time, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$'))
+                   model_uri=BASALT_SCHEMA.collection_time, domain=None, range=Optional[str])
 
 slots.color_code = Slot(uri=BASALT_SCHEMA.color_code, name="color_code", curie=BASALT_SCHEMA.curie('color_code'),
                    model_uri=BASALT_SCHEMA.color_code, domain=None, range=Optional[Union[str, "ColorCodeEnum"]])
@@ -15333,7 +16409,7 @@ slots.component_name = Slot(uri=BASALT_SCHEMA.component_name, name="component_na
                    model_uri=BASALT_SCHEMA.component_name, domain=None, range=Optional[str])
 
 slots.compound_name = Slot(uri=BASALT_SCHEMA.compound_name, name="compound_name", curie=BASALT_SCHEMA.curie('compound_name'),
-                   model_uri=BASALT_SCHEMA.compound_name, domain=None, range=Optional[str])
+                   model_uri=BASALT_SCHEMA.compound_name, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
 
 slots.concentration_ug_per_uL = Slot(uri=BASALT_SCHEMA.concentration_ug_per_uL, name="concentration_ug_per_uL", curie=BASALT_SCHEMA.curie('concentration_ug_per_uL'),
                    model_uri=BASALT_SCHEMA.concentration_ug_per_uL, domain=None, range=Optional[float])
@@ -15342,14 +16418,16 @@ slots.condition_received = Slot(uri=BASALT_SCHEMA.condition_received, name="cond
                    model_uri=BASALT_SCHEMA.condition_received, domain=None, range=Optional[str])
 
 slots.conduc = Slot(uri=BASALT_SCHEMA.conduc, name="conduc", curie=BASALT_SCHEMA.curie('conduc'),
-                   model_uri=BASALT_SCHEMA.conduc, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.conduc, domain=None, range=Optional[str])
 
 slots.confirmed_receipt = Slot(uri=BASALT_SCHEMA.confirmed_receipt, name="confirmed_receipt", curie=BASALT_SCHEMA.curie('confirmed_receipt'),
                    model_uri=BASALT_SCHEMA.confirmed_receipt, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.construct_component = Slot(uri=BASALT_SCHEMA.construct_component, name="construct_component", curie=BASALT_SCHEMA.curie('construct_component'),
                    model_uri=BASALT_SCHEMA.construct_component, domain=None, range=Optional[Union[str, "ConstructComponentEnum"]])
+
+slots.container_size_ml = Slot(uri=BASALT_SCHEMA.container_size_ml, name="container_size_ml", curie=BASALT_SCHEMA.curie('container_size_ml'),
+                   model_uri=BASALT_SCHEMA.container_size_ml, domain=None, range=Optional[float])
 
 slots.container_type = Slot(uri=BASALT_SCHEMA.container_type, name="container_type", curie=BASALT_SCHEMA.curie('container_type'),
                    model_uri=BASALT_SCHEMA.container_type, domain=None, range=Optional[str])
@@ -15384,6 +16462,9 @@ slots.cur_vegetation_meth = Slot(uri=BASALT_SCHEMA.cur_vegetation_meth, name="cu
 slots.cv_percent = Slot(uri=BASALT_SCHEMA.cv_percent, name="cv_percent", curie=BASALT_SCHEMA.curie('cv_percent'),
                    model_uri=BASALT_SCHEMA.cv_percent, domain=None, range=Optional[float])
 
+slots.cycle_id = Slot(uri=BASALT_SCHEMA.cycle_id, name="cycle_id", curie=BASALT_SCHEMA.curie('cycle_id'),
+                   model_uri=BASALT_SCHEMA.cycle_id, domain=None, range=Optional[int])
+
 slots.date_received = Slot(uri=BASALT_SCHEMA.date_received, name="date_received", curie=BASALT_SCHEMA.curie('date_received'),
                    model_uri=BASALT_SCHEMA.date_received, domain=None, range=Optional[Union[str, XSDDate]])
 
@@ -15391,58 +16472,46 @@ slots.dd_ms2_resolution = Slot(uri=BASALT_SCHEMA.dd_ms2_resolution, name="dd_ms2
                    model_uri=BASALT_SCHEMA.dd_ms2_resolution, domain=None, range=float)
 
 slots.density = Slot(uri=BASALT_SCHEMA.density, name="density", curie=BASALT_SCHEMA.curie('density'),
-                   model_uri=BASALT_SCHEMA.density, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(g/m3|g/cm3)$'))
+                   model_uri=BASALT_SCHEMA.density, domain=None, range=Optional[str])
 
 slots.depth = Slot(uri=BASALT_SCHEMA.depth, name="depth", curie=BASALT_SCHEMA.curie('depth'),
-                   model_uri=BASALT_SCHEMA.depth, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$'))
+                   model_uri=BASALT_SCHEMA.depth, domain=None, range=Optional[str])
 
 slots.description = Slot(uri=BASALT_SCHEMA.description, name="description", curie=BASALT_SCHEMA.curie('description'),
                    model_uri=BASALT_SCHEMA.description, domain=None, range=Optional[str])
 
 slots.diether_lipids = Slot(uri=BASALT_SCHEMA.diether_lipids, name="diether_lipids", curie=BASALT_SCHEMA.curie('diether_lipids'),
-                   model_uri=BASALT_SCHEMA.diether_lipids, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*ng/L$'))
+                   model_uri=BASALT_SCHEMA.diether_lipids, domain=None, range=Optional[str])
 
 slots.diss_carb_dioxide = Slot(uri=BASALT_SCHEMA.diss_carb_dioxide, name="diss_carb_dioxide", curie=BASALT_SCHEMA.curie('diss_carb_dioxide'),
-                   model_uri=BASALT_SCHEMA.diss_carb_dioxide, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol|mg)/L$'))
+                   model_uri=BASALT_SCHEMA.diss_carb_dioxide, domain=None, range=Optional[str])
 
 slots.diss_hydrogen = Slot(uri=BASALT_SCHEMA.diss_hydrogen, name="diss_hydrogen", curie=BASALT_SCHEMA.curie('diss_hydrogen'),
-                   model_uri=BASALT_SCHEMA.diss_hydrogen, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*umol/L$'))
+                   model_uri=BASALT_SCHEMA.diss_hydrogen, domain=None, range=Optional[str])
 
 slots.diss_inorg_carb = Slot(uri=BASALT_SCHEMA.diss_inorg_carb, name="diss_inorg_carb", curie=BASALT_SCHEMA.curie('diss_inorg_carb'),
-                   model_uri=BASALT_SCHEMA.diss_inorg_carb, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L|mg/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.diss_inorg_carb, domain=None, range=Optional[str])
 
 slots.diss_inorg_nitro = Slot(uri=BASALT_SCHEMA.diss_inorg_nitro, name="diss_inorg_nitro", curie=BASALT_SCHEMA.curie('diss_inorg_nitro'),
-                   model_uri=BASALT_SCHEMA.diss_inorg_nitro, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ug/L)$'))
+                   model_uri=BASALT_SCHEMA.diss_inorg_nitro, domain=None, range=Optional[str])
 
 slots.diss_inorg_phosp = Slot(uri=BASALT_SCHEMA.diss_inorg_phosp, name="diss_inorg_phosp", curie=BASALT_SCHEMA.curie('diss_inorg_phosp'),
-                   model_uri=BASALT_SCHEMA.diss_inorg_phosp, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.diss_inorg_phosp, domain=None, range=Optional[str])
 
 slots.diss_org_carb = Slot(uri=BASALT_SCHEMA.diss_org_carb, name="diss_org_carb", curie=BASALT_SCHEMA.curie('diss_org_carb'),
-                   model_uri=BASALT_SCHEMA.diss_org_carb, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L)$'))
+                   model_uri=BASALT_SCHEMA.diss_org_carb, domain=None, range=Optional[str])
 
 slots.diss_org_nitro = Slot(uri=BASALT_SCHEMA.diss_org_nitro, name="diss_org_nitro", curie=BASALT_SCHEMA.curie('diss_org_nitro'),
-                   model_uri=BASALT_SCHEMA.diss_org_nitro, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.diss_org_nitro, domain=None, range=Optional[str])
 
 slots.diss_oxygen = Slot(uri=BASALT_SCHEMA.diss_oxygen, name="diss_oxygen", curie=BASALT_SCHEMA.curie('diss_oxygen'),
-                   model_uri=BASALT_SCHEMA.diss_oxygen, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/kg|mg/L)$'))
+                   model_uri=BASALT_SCHEMA.diss_oxygen, domain=None, range=Optional[str])
 
 slots.donor_organism = Slot(uri=BASALT_SCHEMA.donor_organism, name="donor_organism", curie=BASALT_SCHEMA.curie('donor_organism'),
                    model_uri=BASALT_SCHEMA.donor_organism, domain=None, range=Optional[str])
 
 slots.down_par = Slot(uri=BASALT_SCHEMA.down_par, name="down_par", curie=BASALT_SCHEMA.curie('down_par'),
-                   model_uri=BASALT_SCHEMA.down_par, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.down_par, domain=None, range=Optional[str])
 
 slots.drainage_class = Slot(uri=BASALT_SCHEMA.drainage_class, name="drainage_class", curie=BASALT_SCHEMA.curie('drainage_class'),
                    model_uri=BASALT_SCHEMA.drainage_class, domain=None, range=Optional[Union[str, "DrainageClassEnum"]])
@@ -15454,8 +16523,7 @@ slots.efficiency_percent = Slot(uri=BASALT_SCHEMA.efficiency_percent, name="effi
                    model_uri=BASALT_SCHEMA.efficiency_percent, domain=None, range=Optional[str])
 
 slots.elev = Slot(uri=BASALT_SCHEMA.elev, name="elev", curie=BASALT_SCHEMA.curie('elev'),
-                   model_uri=BASALT_SCHEMA.elev, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*m$'))
+                   model_uri=BASALT_SCHEMA.elev, domain=None, range=Optional[str])
 
 slots.email = Slot(uri=BASALT_SCHEMA.email, name="email", curie=BASALT_SCHEMA.curie('email'),
                    model_uri=BASALT_SCHEMA.email, domain=None, range=Optional[str])
@@ -15470,16 +16538,13 @@ slots.encoded_traits = Slot(uri=BASALT_SCHEMA.encoded_traits, name="encoded_trai
                    model_uri=BASALT_SCHEMA.encoded_traits, domain=None, range=Optional[str])
 
 slots.env_broad_scale = Slot(uri=BASALT_SCHEMA.env_broad_scale, name="env_broad_scale", curie=BASALT_SCHEMA.curie('env_broad_scale'),
-                   model_uri=BASALT_SCHEMA.env_broad_scale, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$'))
+                   model_uri=BASALT_SCHEMA.env_broad_scale, domain=None, range=Optional[str])
 
 slots.env_local_scale = Slot(uri=BASALT_SCHEMA.env_local_scale, name="env_local_scale", curie=BASALT_SCHEMA.curie('env_local_scale'),
-                   model_uri=BASALT_SCHEMA.env_local_scale, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$'))
+                   model_uri=BASALT_SCHEMA.env_local_scale, domain=None, range=Optional[str])
 
 slots.env_medium = Slot(uri=BASALT_SCHEMA.env_medium, name="env_medium", curie=BASALT_SCHEMA.curie('env_medium'),
-                   model_uri=BASALT_SCHEMA.env_medium, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$'))
+                   model_uri=BASALT_SCHEMA.env_medium, domain=None, range=Optional[str])
 
 slots.experimental_factor = Slot(uri=BASALT_SCHEMA.experimental_factor, name="experimental_factor", curie=BASALT_SCHEMA.curie('experimental_factor'),
                    model_uri=BASALT_SCHEMA.experimental_factor, domain=None, range=Optional[str])
@@ -15497,8 +16562,7 @@ slots.extraction_method = Slot(uri=BASALT_SCHEMA.extraction_method, name="extrac
                    model_uri=BASALT_SCHEMA.extraction_method, domain=None, range=Optional[str])
 
 slots.extreme_event = Slot(uri=BASALT_SCHEMA.extreme_event, name="extreme_event", curie=BASALT_SCHEMA.curie('extreme_event'),
-                   model_uri=BASALT_SCHEMA.extreme_event, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.extreme_event, domain=None, range=Optional[str])
 
 slots.fao_class = Slot(uri=BASALT_SCHEMA.fao_class, name="fao_class", curie=BASALT_SCHEMA.curie('fao_class'),
                    model_uri=BASALT_SCHEMA.fao_class, domain=None, range=Optional[Union[str, "FAOClassEnum"]])
@@ -15515,12 +16579,26 @@ slots.file_curie = Slot(uri=BASALT_SCHEMA.file_curie, name="file_curie", curie=B
 slots.filesize = Slot(uri=BASALT_SCHEMA.filesize, name="filesize", curie=BASALT_SCHEMA.curie('filesize'),
                    model_uri=BASALT_SCHEMA.filesize, domain=None, range=Optional[int])
 
+slots.filter_material = Slot(uri=BASALT_SCHEMA.filter_material, name="filter_material", curie=BASALT_SCHEMA.curie('filter_material'),
+                   model_uri=BASALT_SCHEMA.filter_material, domain=None, range=Optional[str])
+
 slots.filter_method = Slot(uri=BASALT_SCHEMA.filter_method, name="filter_method", curie=BASALT_SCHEMA.curie('filter_method'),
                    model_uri=BASALT_SCHEMA.filter_method, domain=None, range=Optional[str])
 
+slots.filter_pore_size_um = Slot(uri=BASALT_SCHEMA.filter_pore_size_um, name="filter_pore_size_um", curie=BASALT_SCHEMA.curie('filter_pore_size_um'),
+                   model_uri=BASALT_SCHEMA.filter_pore_size_um, domain=None, range=Optional[float])
+
+slots.final_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.final_concentration_mg_per_ml, name="final_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('final_concentration_mg_per_ml'),
+                   model_uri=BASALT_SCHEMA.final_concentration_mg_per_ml, domain=None, range=Optional[float])
+
+slots.final_mass_mg = Slot(uri=BASALT_SCHEMA.final_mass_mg, name="final_mass_mg", curie=BASALT_SCHEMA.curie('final_mass_mg'),
+                   model_uri=BASALT_SCHEMA.final_mass_mg, domain=None, range=Optional[float])
+
+slots.final_vol_ml = Slot(uri=BASALT_SCHEMA.final_vol_ml, name="final_vol_ml", curie=BASALT_SCHEMA.curie('final_vol_ml'),
+                   model_uri=BASALT_SCHEMA.final_vol_ml, domain=None, range=Optional[float])
+
 slots.fire = Slot(uri=BASALT_SCHEMA.fire, name="fire", curie=BASALT_SCHEMA.curie('fire'),
-                   model_uri=BASALT_SCHEMA.fire, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.fire, domain=None, range=Optional[str])
 
 slots.first_blh = Slot(uri=BASALT_SCHEMA.first_blh, name="first_blh", curie=BASALT_SCHEMA.curie('first_blh'),
                    model_uri=BASALT_SCHEMA.first_blh, domain=None, range=Optional[float])
@@ -15531,16 +16609,17 @@ slots.first_blh_quality_index = Slot(uri=BASALT_SCHEMA.first_blh_quality_index, 
 slots.first_cbh = Slot(uri=BASALT_SCHEMA.first_cbh, name="first_cbh", curie=BASALT_SCHEMA.curie('first_cbh'),
                    model_uri=BASALT_SCHEMA.first_cbh, domain=None, range=Optional[float])
 
+slots.flag = Slot(uri=BASALT_SCHEMA.flag, name="flag", curie=BASALT_SCHEMA.curie('flag'),
+                   model_uri=BASALT_SCHEMA.flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
 slots.flooding = Slot(uri=BASALT_SCHEMA.flooding, name="flooding", curie=BASALT_SCHEMA.curie('flooding'),
-                   model_uri=BASALT_SCHEMA.flooding, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.flooding, domain=None, range=Optional[str])
 
 slots.flow_rate_ul_min = Slot(uri=BASALT_SCHEMA.flow_rate_ul_min, name="flow_rate_ul_min", curie=BASALT_SCHEMA.curie('flow_rate_ul_min'),
                    model_uri=BASALT_SCHEMA.flow_rate_ul_min, domain=None, range=Optional[float])
 
 slots.fluor = Slot(uri=BASALT_SCHEMA.fluor, name="fluor", curie=BASALT_SCHEMA.curie('fluor'),
-                   model_uri=BASALT_SCHEMA.fluor, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.fluor, domain=None, range=Optional[str])
 
 slots.fragmentation = Slot(uri=BASALT_SCHEMA.fragmentation, name="fragmentation", curie=BASALT_SCHEMA.curie('fragmentation'),
                    model_uri=BASALT_SCHEMA.fragmentation, domain=None, range=Optional[Union[str, "FragmentationEnum"]])
@@ -15567,12 +16646,10 @@ slots.genotype_segment_name = Slot(uri=BASALT_SCHEMA.genotype_segment_name, name
                    model_uri=BASALT_SCHEMA.genotype_segment_name, domain=None, range=Optional[str])
 
 slots.geo_loc_name = Slot(uri=BASALT_SCHEMA.geo_loc_name, name="geo_loc_name", curie=BASALT_SCHEMA.curie('geo_loc_name'),
-                   model_uri=BASALT_SCHEMA.geo_loc_name, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^([^\s-]{12}|[^\s-]+.+[^\s-]+):\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)$'))
+                   model_uri=BASALT_SCHEMA.geo_loc_name, domain=None, range=Optional[str])
 
 slots.glucosidase_act = Slot(uri=BASALT_SCHEMA.glucosidase_act, name="glucosidase_act", curie=BASALT_SCHEMA.curie('glucosidase_act'),
-                   model_uri=BASALT_SCHEMA.glucosidase_act, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*mol/L/h$'))
+                   model_uri=BASALT_SCHEMA.glucosidase_act, domain=None, range=Optional[str])
 
 slots.gravity = Slot(uri=BASALT_SCHEMA.gravity, name="gravity", curie=BASALT_SCHEMA.curie('gravity'),
                    model_uri=BASALT_SCHEMA.gravity, domain=None, range=Optional[str])
@@ -15608,8 +16685,7 @@ slots.horizon_meth = Slot(uri=BASALT_SCHEMA.horizon_meth, name="horizon_meth", c
                    model_uri=BASALT_SCHEMA.horizon_meth, domain=None, range=Optional[str])
 
 slots.host_age = Slot(uri=BASALT_SCHEMA.host_age, name="host_age", curie=BASALT_SCHEMA.curie('host_age'),
-                   model_uri=BASALT_SCHEMA.host_age, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(a|d|h)$'))
+                   model_uri=BASALT_SCHEMA.host_age, domain=None, range=Optional[str])
 
 slots.host_common_name = Slot(uri=BASALT_SCHEMA.host_common_name, name="host_common_name", curie=BASALT_SCHEMA.curie('host_common_name'),
                    model_uri=BASALT_SCHEMA.host_common_name, domain=None, range=Optional[str])
@@ -15618,15 +16694,13 @@ slots.host_disease_stat = Slot(uri=BASALT_SCHEMA.host_disease_stat, name="host_d
                    model_uri=BASALT_SCHEMA.host_disease_stat, domain=None, range=Optional[str])
 
 slots.host_dry_mass = Slot(uri=BASALT_SCHEMA.host_dry_mass, name="host_dry_mass", curie=BASALT_SCHEMA.curie('host_dry_mass'),
-                   model_uri=BASALT_SCHEMA.host_dry_mass, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(kg|g)$'))
+                   model_uri=BASALT_SCHEMA.host_dry_mass, domain=None, range=Optional[str])
 
 slots.host_genotype = Slot(uri=BASALT_SCHEMA.host_genotype, name="host_genotype", curie=BASALT_SCHEMA.curie('host_genotype'),
                    model_uri=BASALT_SCHEMA.host_genotype, domain=None, range=Optional[str])
 
 slots.host_height = Slot(uri=BASALT_SCHEMA.host_height, name="host_height", curie=BASALT_SCHEMA.curie('host_height'),
-                   model_uri=BASALT_SCHEMA.host_height, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(cm|mm|m)$'))
+                   model_uri=BASALT_SCHEMA.host_height, domain=None, range=Optional[str])
 
 slots.host_infra_spec_name = Slot(uri=BASALT_SCHEMA.host_infra_spec_name, name="host_infra_spec_name", curie=BASALT_SCHEMA.curie('host_infra_spec_name'),
                    model_uri=BASALT_SCHEMA.host_infra_spec_name, domain=None, range=Optional[str])
@@ -15644,27 +16718,22 @@ slots.host_phenotype = Slot(uri=BASALT_SCHEMA.host_phenotype, name="host_phenoty
                    model_uri=BASALT_SCHEMA.host_phenotype, domain=None, range=Optional[str])
 
 slots.host_spec_range = Slot(uri=BASALT_SCHEMA.host_spec_range, name="host_spec_range", curie=BASALT_SCHEMA.curie('host_spec_range'),
-                   model_uri=BASALT_SCHEMA.host_spec_range, domain=None, range=Optional[str],
-                   pattern=re.compile(r'NCBITaxon:\d+'))
+                   model_uri=BASALT_SCHEMA.host_spec_range, domain=None, range=Optional[str])
 
 slots.host_symbiont = Slot(uri=BASALT_SCHEMA.host_symbiont, name="host_symbiont", curie=BASALT_SCHEMA.curie('host_symbiont'),
                    model_uri=BASALT_SCHEMA.host_symbiont, domain=None, range=Optional[str])
 
 slots.host_taxid = Slot(uri=BASALT_SCHEMA.host_taxid, name="host_taxid", curie=BASALT_SCHEMA.curie('host_taxid'),
-                   model_uri=BASALT_SCHEMA.host_taxid, domain=None, range=Optional[str],
-                   pattern=re.compile(r'NCBITaxon:\d+'))
+                   model_uri=BASALT_SCHEMA.host_taxid, domain=None, range=Optional[str])
 
 slots.host_tot_mass = Slot(uri=BASALT_SCHEMA.host_tot_mass, name="host_tot_mass", curie=BASALT_SCHEMA.curie('host_tot_mass'),
-                   model_uri=BASALT_SCHEMA.host_tot_mass, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(kg|g)$'))
+                   model_uri=BASALT_SCHEMA.host_tot_mass, domain=None, range=Optional[str])
 
 slots.host_wet_mass = Slot(uri=BASALT_SCHEMA.host_wet_mass, name="host_wet_mass", curie=BASALT_SCHEMA.curie('host_wet_mass'),
-                   model_uri=BASALT_SCHEMA.host_wet_mass, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(kg|g)$'))
+                   model_uri=BASALT_SCHEMA.host_wet_mass, domain=None, range=Optional[str])
 
 slots.humidity = Slot(uri=BASALT_SCHEMA.humidity, name="humidity", curie=BASALT_SCHEMA.curie('humidity'),
-                   model_uri=BASALT_SCHEMA.humidity, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.humidity, domain=None, range=Optional[str])
 
 slots.humidity_regm = Slot(uri=BASALT_SCHEMA.humidity_regm, name="humidity_regm", curie=BASALT_SCHEMA.curie('humidity_regm'),
                    model_uri=BASALT_SCHEMA.humidity_regm, domain=None, range=Optional[str])
@@ -15685,23 +16754,19 @@ slots.indust_eff_percent = Slot(uri=BASALT_SCHEMA.indust_eff_percent, name="indu
                    model_uri=BASALT_SCHEMA.indust_eff_percent, domain=None, range=Optional[str])
 
 slots.infiltration_1 = Slot(uri=BASALT_SCHEMA.infiltration_1, name="infiltration_1", curie=BASALT_SCHEMA.curie('infiltration_1'),
-                   model_uri=BASALT_SCHEMA.infiltration_1, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$'))
+                   model_uri=BASALT_SCHEMA.infiltration_1, domain=None, range=Optional[str])
 
 slots.infiltration_2 = Slot(uri=BASALT_SCHEMA.infiltration_2, name="infiltration_2", curie=BASALT_SCHEMA.curie('infiltration_2'),
-                   model_uri=BASALT_SCHEMA.infiltration_2, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)'))
+                   model_uri=BASALT_SCHEMA.infiltration_2, domain=None, range=Optional[str])
 
 slots.infiltration_notes = Slot(uri=BASALT_SCHEMA.infiltration_notes, name="infiltration_notes", curie=BASALT_SCHEMA.curie('infiltration_notes'),
                    model_uri=BASALT_SCHEMA.infiltration_notes, domain=None, range=Optional[str])
 
 slots.initiation_date_inoculation = Slot(uri=BASALT_SCHEMA.initiation_date_inoculation, name="initiation_date_inoculation", curie=BASALT_SCHEMA.curie('initiation_date_inoculation'),
-                   model_uri=BASALT_SCHEMA.initiation_date_inoculation, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.initiation_date_inoculation, domain=None, range=Optional[str])
 
 slots.initiation_date_plant = Slot(uri=BASALT_SCHEMA.initiation_date_plant, name="initiation_date_plant", curie=BASALT_SCHEMA.curie('initiation_date_plant'),
-                   model_uri=BASALT_SCHEMA.initiation_date_plant, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.initiation_date_plant, domain=None, range=Optional[str])
 
 slots.injection = Slot(uri=BASALT_SCHEMA.injection, name="injection", curie=BASALT_SCHEMA.curie('injection'),
                    model_uri=BASALT_SCHEMA.injection, domain=None, range=str)
@@ -15727,6 +16792,9 @@ slots.internal_calibration = Slot(uri=BASALT_SCHEMA.internal_calibration, name="
 slots.ionization = Slot(uri=BASALT_SCHEMA.ionization, name="ionization", curie=BASALT_SCHEMA.curie('ionization'),
                    model_uri=BASALT_SCHEMA.ionization, domain=None, range=Union[str, "IonizationSourceEnum"])
 
+slots.is_pressurized = Slot(uri=BASALT_SCHEMA.is_pressurized, name="is_pressurized", curie=BASALT_SCHEMA.curie('is_pressurized'),
+                   model_uri=BASALT_SCHEMA.is_pressurized, domain=None, range=Optional[Union[bool, Bool]])
+
 slots.isol_growth_condt = Slot(uri=BASALT_SCHEMA.isol_growth_condt, name="isol_growth_condt", curie=BASALT_SCHEMA.curie('isol_growth_condt'),
                    model_uri=BASALT_SCHEMA.isol_growth_condt, domain=None, range=Optional[str])
 
@@ -15746,8 +16814,7 @@ slots.latitude = Slot(uri=BASALT_SCHEMA.latitude, name="latitude", curie=BASALT_
                    model_uri=BASALT_SCHEMA.latitude, domain=None, range=Optional[float])
 
 slots.light_intensity = Slot(uri=BASALT_SCHEMA.light_intensity, name="light_intensity", curie=BASALT_SCHEMA.curie('light_intensity'),
-                   model_uri=BASALT_SCHEMA.light_intensity, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.light_intensity, domain=None, range=Optional[str])
 
 slots.light_regm = Slot(uri=BASALT_SCHEMA.light_regm, name="light_regm", curie=BASALT_SCHEMA.curie('light_regm'),
                    model_uri=BASALT_SCHEMA.light_regm, domain=None, range=Optional[str])
@@ -15756,8 +16823,7 @@ slots.lims_barcode = Slot(uri=BASALT_SCHEMA.lims_barcode, name="lims_barcode", c
                    model_uri=BASALT_SCHEMA.lims_barcode, domain=None, range=Optional[str])
 
 slots.lims_id = Slot(uri=BASALT_SCHEMA.lims_id, name="lims_id", curie=BASALT_SCHEMA.curie('lims_id'),
-                   model_uri=BASALT_SCHEMA.lims_id, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^INGEST_SAMPLE_\d{9}$'))
+                   model_uri=BASALT_SCHEMA.lims_id, domain=None, range=Optional[str])
 
 slots.lims_protocol_instance_id = Slot(uri=BASALT_SCHEMA.lims_protocol_instance_id, name="lims_protocol_instance_id", curie=BASALT_SCHEMA.curie('lims_protocol_instance_id'),
                    model_uri=BASALT_SCHEMA.lims_protocol_instance_id, domain=None, range=Optional[int])
@@ -15787,8 +16853,7 @@ slots.loop_count = Slot(uri=BASALT_SCHEMA.loop_count, name="loop_count", curie=B
                    model_uri=BASALT_SCHEMA.loop_count, domain=None, range=str)
 
 slots.magnesium = Slot(uri=BASALT_SCHEMA.magnesium, name="magnesium", curie=BASALT_SCHEMA.curie('magnesium'),
-                   model_uri=BASALT_SCHEMA.magnesium, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/kg|mol/L|mg/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.magnesium, domain=None, range=Optional[str])
 
 slots.mass_range_max = Slot(uri=BASALT_SCHEMA.mass_range_max, name="mass_range_max", curie=BASALT_SCHEMA.curie('mass_range_max'),
                    model_uri=BASALT_SCHEMA.mass_range_max, domain=None, range=Optional[float])
@@ -15800,12 +16865,10 @@ slots.md5checksum = Slot(uri=BASALT_SCHEMA.md5checksum, name="md5checksum", curi
                    model_uri=BASALT_SCHEMA.md5checksum, domain=None, range=Optional[str])
 
 slots.mean_frict_vel = Slot(uri=BASALT_SCHEMA.mean_frict_vel, name="mean_frict_vel", curie=BASALT_SCHEMA.curie('mean_frict_vel'),
-                   model_uri=BASALT_SCHEMA.mean_frict_vel, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*m/s$'))
+                   model_uri=BASALT_SCHEMA.mean_frict_vel, domain=None, range=Optional[str])
 
 slots.mean_peak_frict_vel = Slot(uri=BASALT_SCHEMA.mean_peak_frict_vel, name="mean_peak_frict_vel", curie=BASALT_SCHEMA.curie('mean_peak_frict_vel'),
-                   model_uri=BASALT_SCHEMA.mean_peak_frict_vel, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*m/s$'))
+                   model_uri=BASALT_SCHEMA.mean_peak_frict_vel, domain=None, range=Optional[str])
 
 slots.mean_total_cpc_concentration = Slot(uri=BASALT_SCHEMA.mean_total_cpc_concentration, name="mean_total_cpc_concentration", curie=BASALT_SCHEMA.curie('mean_total_cpc_concentration'),
                    model_uri=BASALT_SCHEMA.mean_total_cpc_concentration, domain=None, range=Optional[float])
@@ -15840,9 +16903,11 @@ slots.media_type = Slot(uri=BASALT_SCHEMA.media_type, name="media_type", curie=B
 slots.metaproteomics_analysis_category = Slot(uri=BASALT_SCHEMA.metaproteomics_analysis_category, name="metaproteomics_analysis_category", curie=BASALT_SCHEMA.curie('metaproteomics_analysis_category'),
                    model_uri=BASALT_SCHEMA.metaproteomics_analysis_category, domain=None, range=Optional[Union[str, "MetaproteomicsAnalysisCategoryEnum"]])
 
+slots.metaproteomics_result_type = Slot(uri=BASALT_SCHEMA.metaproteomics_result_type, name="metaproteomics_result_type", curie=BASALT_SCHEMA.curie('metaproteomics_result_type'),
+                   model_uri=BASALT_SCHEMA.metaproteomics_result_type, domain=None, range=Optional[Union[str, "MetaproteomicsResultTypeEnum"]])
+
 slots.methane = Slot(uri=BASALT_SCHEMA.methane, name="methane", curie=BASALT_SCHEMA.curie('methane'),
-                   model_uri=BASALT_SCHEMA.methane, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ppm|ppb)$'))
+                   model_uri=BASALT_SCHEMA.methane, domain=None, range=Optional[str])
 
 slots.method_development = Slot(uri=BASALT_SCHEMA.method_development, name="method_development", curie=BASALT_SCHEMA.curie('method_development'),
                    model_uri=BASALT_SCHEMA.method_development, domain=None, range=Optional[str])
@@ -15860,15 +16925,13 @@ slots.microbial_biomass = Slot(uri=BASALT_SCHEMA.microbial_biomass, name="microb
                    model_uri=BASALT_SCHEMA.microbial_biomass, domain=None, range=Optional[str])
 
 slots.microbial_biomass_c = Slot(uri=BASALT_SCHEMA.microbial_biomass_c, name="microbial_biomass_c", curie=BASALT_SCHEMA.curie('microbial_biomass_c'),
-                   model_uri=BASALT_SCHEMA.microbial_biomass_c, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.microbial_biomass_c, domain=None, range=Optional[str])
 
 slots.microbial_biomass_meth = Slot(uri=BASALT_SCHEMA.microbial_biomass_meth, name="microbial_biomass_meth", curie=BASALT_SCHEMA.curie('microbial_biomass_meth'),
                    model_uri=BASALT_SCHEMA.microbial_biomass_meth, domain=None, range=Optional[str])
 
 slots.microbial_biomass_n = Slot(uri=BASALT_SCHEMA.microbial_biomass_n, name="microbial_biomass_n", curie=BASALT_SCHEMA.curie('microbial_biomass_n'),
-                   model_uri=BASALT_SCHEMA.microbial_biomass_n, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.microbial_biomass_n, domain=None, range=Optional[str])
 
 slots.mineral_nutr_regm = Slot(uri=BASALT_SCHEMA.mineral_nutr_regm, name="mineral_nutr_regm", curie=BASALT_SCHEMA.curie('mineral_nutr_regm'),
                    model_uri=BASALT_SCHEMA.mineral_nutr_regm, domain=None, range=Optional[str])
@@ -15876,8 +16939,8 @@ slots.mineral_nutr_regm = Slot(uri=BASALT_SCHEMA.mineral_nutr_regm, name="minera
 slots.misc_param = Slot(uri=BASALT_SCHEMA.misc_param, name="misc_param", curie=BASALT_SCHEMA.curie('misc_param'),
                    model_uri=BASALT_SCHEMA.misc_param, domain=None, range=Optional[str])
 
-slots.mobile_phases = Slot(uri=BASALT_SCHEMA.mobile_phases, name="mobile_phases", curie=BASALT_SCHEMA.curie('mobile_phases'),
-                   model_uri=BASALT_SCHEMA.mobile_phases, domain=None, range=Optional[Union[Union[str, MobilePhaseSegmentId], list[Union[str, MobilePhaseSegmentId]]]])
+slots.mobile_phase = Slot(uri=BASALT_SCHEMA.mobile_phase, name="mobile_phase", curie=BASALT_SCHEMA.curie('mobile_phase'),
+                   model_uri=BASALT_SCHEMA.mobile_phase, domain=None, range=Optional[Union[str, MobilePhaseId]])
 
 slots.modification_method = Slot(uri=BASALT_SCHEMA.modification_method, name="modification_method", curie=BASALT_SCHEMA.curie('modification_method'),
                    model_uri=BASALT_SCHEMA.modification_method, domain=None, range=Optional[Union[str, "ModificationMethodEnum"]])
@@ -15891,28 +16954,26 @@ slots.n_alkanes = Slot(uri=BASALT_SCHEMA.n_alkanes, name="n_alkanes", curie=BASA
 slots.name = Slot(uri=BASALT_SCHEMA.name, name="name", curie=BASALT_SCHEMA.curie('name'),
                    model_uri=BASALT_SCHEMA.name, domain=None, range=str)
 
+slots.negative_absorbance_margin_au = Slot(uri=BASALT_SCHEMA.negative_absorbance_margin_au, name="negative_absorbance_margin_au", curie=BASALT_SCHEMA.curie('negative_absorbance_margin_au'),
+                   model_uri=BASALT_SCHEMA.negative_absorbance_margin_au, domain=None, range=Optional[float])
+
 slots.neon_domain = Slot(uri=BASALT_SCHEMA.neon_domain, name="neon_domain", curie=BASALT_SCHEMA.curie('neon_domain'),
                    model_uri=BASALT_SCHEMA.neon_domain, domain=None, range=Optional[Union[str, "NEONDomainEnum"]])
 
 slots.neon_plot_id = Slot(uri=BASALT_SCHEMA.neon_plot_id, name="neon_plot_id", curie=BASALT_SCHEMA.curie('neon_plot_id'),
-                   model_uri=BASALT_SCHEMA.neon_plot_id, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[A-Z]{4}_\d{3}$'))
+                   model_uri=BASALT_SCHEMA.neon_plot_id, domain=None, range=Optional[str])
 
 slots.neon_site_code = Slot(uri=BASALT_SCHEMA.neon_site_code, name="neon_site_code", curie=BASALT_SCHEMA.curie('neon_site_code'),
-                   model_uri=BASALT_SCHEMA.neon_site_code, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[A-Z]{4}$'))
+                   model_uri=BASALT_SCHEMA.neon_site_code, domain=None, range=Optional[str])
 
 slots.nitrate = Slot(uri=BASALT_SCHEMA.nitrate, name="nitrate", curie=BASALT_SCHEMA.curie('nitrate'),
-                   model_uri=BASALT_SCHEMA.nitrate, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.nitrate, domain=None, range=Optional[str])
 
 slots.nitrite = Slot(uri=BASALT_SCHEMA.nitrite, name="nitrite", curie=BASALT_SCHEMA.curie('nitrite'),
-                   model_uri=BASALT_SCHEMA.nitrite, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.nitrite, domain=None, range=Optional[str])
 
 slots.nitro = Slot(uri=BASALT_SCHEMA.nitro, name="nitro", curie=BASALT_SCHEMA.curie('nitro'),
-                   model_uri=BASALT_SCHEMA.nitro, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*umol/L$'))
+                   model_uri=BASALT_SCHEMA.nitro, domain=None, range=Optional[str])
 
 slots.non_microb_biomass = Slot(uri=BASALT_SCHEMA.non_microb_biomass, name="non_microb_biomass", curie=BASALT_SCHEMA.curie('non_microb_biomass'),
                    model_uri=BASALT_SCHEMA.non_microb_biomass, domain=None, range=Optional[str])
@@ -15927,16 +16988,13 @@ slots.nucleotide_sequencing_category = Slot(uri=BASALT_SCHEMA.nucleotide_sequenc
                    model_uri=BASALT_SCHEMA.nucleotide_sequencing_category, domain=None, range=Optional[Union[str, "NucleotideSequencingEnum"]])
 
 slots.org_carb = Slot(uri=BASALT_SCHEMA.org_carb, name="org_carb", curie=BASALT_SCHEMA.curie('org_carb'),
-                   model_uri=BASALT_SCHEMA.org_carb, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.org_carb, domain=None, range=Optional[str])
 
 slots.org_matter = Slot(uri=BASALT_SCHEMA.org_matter, name="org_matter", curie=BASALT_SCHEMA.curie('org_matter'),
-                   model_uri=BASALT_SCHEMA.org_matter, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*mg/L$'))
+                   model_uri=BASALT_SCHEMA.org_matter, domain=None, range=Optional[str])
 
 slots.org_nitro = Slot(uri=BASALT_SCHEMA.org_nitro, name="org_nitro", curie=BASALT_SCHEMA.curie('org_nitro'),
-                   model_uri=BASALT_SCHEMA.org_nitro, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.org_nitro, domain=None, range=Optional[str])
 
 slots.org_nitro_method = Slot(uri=BASALT_SCHEMA.org_nitro_method, name="org_nitro_method", curie=BASALT_SCHEMA.curie('org_nitro_method'),
                    model_uri=BASALT_SCHEMA.org_nitro_method, domain=None, range=Optional[str])
@@ -15972,28 +17030,37 @@ slots.other_treatment = Slot(uri=BASALT_SCHEMA.other_treatment, name="other_trea
                    model_uri=BASALT_SCHEMA.other_treatment, domain=None, range=Optional[str])
 
 slots.oxygen = Slot(uri=BASALT_SCHEMA.oxygen, name="oxygen", curie=BASALT_SCHEMA.curie('oxygen'),
-                   model_uri=BASALT_SCHEMA.oxygen, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.oxygen, domain=None, range=Optional[str])
 
 slots.oxygen_relationship = Slot(uri=BASALT_SCHEMA.oxygen_status, name="oxygen_relationship", curie=BASALT_SCHEMA.curie('oxygen_status'),
                    model_uri=BASALT_SCHEMA.oxygen_relationship, domain=None, range=Optional[Union[str, "OxygenStatusEnum"]])
+
+slots.oxygen_saturation_pct = Slot(uri=BASALT_SCHEMA.oxygen_saturation_pct, name="oxygen_saturation_pct", curie=BASALT_SCHEMA.curie('oxygen_saturation_pct'),
+                   model_uri=BASALT_SCHEMA.oxygen_saturation_pct, domain=None, range=Optional[float])
 
 slots.parent_workflow_id = Slot(uri=BASALT_SCHEMA.parent_workflow_id, name="parent_workflow_id", curie=BASALT_SCHEMA.curie('parent_workflow_id'),
                    model_uri=BASALT_SCHEMA.parent_workflow_id, domain=None, range=Optional[Union[str, DataProcessingActivityId]])
 
 slots.part_org_carb = Slot(uri=BASALT_SCHEMA.part_org_carb, name="part_org_carb", curie=BASALT_SCHEMA.curie('part_org_carb'),
-                   model_uri=BASALT_SCHEMA.part_org_carb, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.part_org_carb, domain=None, range=Optional[str])
 
 slots.part_org_nitro = Slot(uri=BASALT_SCHEMA.part_org_nitro, name="part_org_nitro", curie=BASALT_SCHEMA.curie('part_org_nitro'),
-                   model_uri=BASALT_SCHEMA.part_org_nitro, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ug/L)$'))
+                   model_uri=BASALT_SCHEMA.part_org_nitro, domain=None, range=Optional[str])
 
 slots.particle_class = Slot(uri=BASALT_SCHEMA.particle_class, name="particle_class", curie=BASALT_SCHEMA.curie('particle_class'),
                    model_uri=BASALT_SCHEMA.particle_class, domain=None, range=Optional[str])
 
 slots.pathogenicity = Slot(uri=BASALT_SCHEMA.pathogenicity, name="pathogenicity", curie=BASALT_SCHEMA.curie('pathogenicity'),
                    model_uri=BASALT_SCHEMA.pathogenicity, domain=None, range=Optional[str])
+
+slots.peak_area = Slot(uri=BASALT_SCHEMA.peak_area, name="peak_area", curie=BASALT_SCHEMA.curie('peak_area'),
+                   model_uri=BASALT_SCHEMA.peak_area, domain=None, range=Optional[float])
+
+slots.peak_percent_area = Slot(uri=BASALT_SCHEMA.peak_percent_area, name="peak_percent_area", curie=BASALT_SCHEMA.curie('peak_percent_area'),
+                   model_uri=BASALT_SCHEMA.peak_percent_area, domain=None, range=Optional[float])
+
+slots.peak_height = Slot(uri=BASALT_SCHEMA.peak_height, name="peak_height", curie=BASALT_SCHEMA.curie('peak_height'),
+                   model_uri=BASALT_SCHEMA.peak_height, domain=None, range=Optional[float])
 
 slots.perturbation = Slot(uri=BASALT_SCHEMA.perturbation, name="perturbation", curie=BASALT_SCHEMA.curie('perturbation'),
                    model_uri=BASALT_SCHEMA.perturbation, domain=None, range=Optional[str])
@@ -16002,8 +17069,7 @@ slots.pesticide_regm = Slot(uri=BASALT_SCHEMA.pesticide_regm, name="pesticide_re
                    model_uri=BASALT_SCHEMA.pesticide_regm, domain=None, range=Optional[str])
 
 slots.petroleum_hydrocarb = Slot(uri=BASALT_SCHEMA.petroleum_hydrocarb, name="petroleum_hydrocarb", curie=BASALT_SCHEMA.curie('petroleum_hydrocarb'),
-                   model_uri=BASALT_SCHEMA.petroleum_hydrocarb, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*umol/L$'))
+                   model_uri=BASALT_SCHEMA.petroleum_hydrocarb, domain=None, range=Optional[str])
 
 slots.ph = Slot(uri=BASALT_SCHEMA.ph, name="ph", curie=BASALT_SCHEMA.curie('ph'),
                    model_uri=BASALT_SCHEMA.ph, domain=None, range=Optional[float])
@@ -16021,15 +17087,13 @@ slots.ph_target = Slot(uri=BASALT_SCHEMA.ph_target, name="ph_target", curie=BASA
                    model_uri=BASALT_SCHEMA.ph_target, domain=None, range=Optional[float])
 
 slots.phaeopigments = Slot(uri=BASALT_SCHEMA.phaeopigments, name="phaeopigments", curie=BASALT_SCHEMA.curie('phaeopigments'),
-                   model_uri=BASALT_SCHEMA.phaeopigments, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*mg/cm3(;\s*\d+(\.\d+)?\s*mg/cm3)*$'))
+                   model_uri=BASALT_SCHEMA.phaeopigments, domain=None, range=Optional[str])
 
 slots.phenotype = Slot(uri=BASALT_SCHEMA.phenotype, name="phenotype", curie=BASALT_SCHEMA.curie('phenotype'),
                    model_uri=BASALT_SCHEMA.phenotype, domain=None, range=Optional[str])
 
 slots.phosphate = Slot(uri=BASALT_SCHEMA.phosphate, name="phosphate", curie=BASALT_SCHEMA.curie('phosphate'),
-                   model_uri=BASALT_SCHEMA.phosphate, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*umol/L$'))
+                   model_uri=BASALT_SCHEMA.phosphate, domain=None, range=Optional[str])
 
 slots.phosplipid_fatt_acid = Slot(uri=BASALT_SCHEMA.phosplipid_fatt_acid, name="phosplipid_fatt_acid", curie=BASALT_SCHEMA.curie('phosplipid_fatt_acid'),
                    model_uri=BASALT_SCHEMA.phosplipid_fatt_acid, domain=None, range=Optional[str])
@@ -16038,12 +17102,10 @@ slots.photochemical_exposure = Slot(uri=BASALT_SCHEMA.photochemical_exposure, na
                    model_uri=BASALT_SCHEMA.photochemical_exposure, domain=None, range=Optional[Union[str, "PhotochemicalExposureEnum"]])
 
 slots.photon_flux = Slot(uri=BASALT_SCHEMA.photon_flux, name="photon_flux", curie=BASALT_SCHEMA.curie('photon_flux'),
-                   model_uri=BASALT_SCHEMA.photon_flux, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.photon_flux, domain=None, range=Optional[str])
 
 slots.plant_age = Slot(uri=BASALT_SCHEMA.plant_age, name="plant_age", curie=BASALT_SCHEMA.curie('plant_age'),
-                   model_uri=BASALT_SCHEMA.plant_age, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*\w+$'))
+                   model_uri=BASALT_SCHEMA.plant_age, domain=None, range=Optional[str])
 
 slots.plant_common_name = Slot(uri=BASALT_SCHEMA.plant_common_name, name="plant_common_name", curie=BASALT_SCHEMA.curie('plant_common_name'),
                    model_uri=BASALT_SCHEMA.plant_common_name, domain=None, range=Optional[str])
@@ -16052,15 +17114,13 @@ slots.plant_disease_stat = Slot(uri=BASALT_SCHEMA.plant_disease_stat, name="plan
                    model_uri=BASALT_SCHEMA.plant_disease_stat, domain=None, range=Optional[str])
 
 slots.plant_dry_mass = Slot(uri=BASALT_SCHEMA.plant_dry_mass, name="plant_dry_mass", curie=BASALT_SCHEMA.curie('plant_dry_mass'),
-                   model_uri=BASALT_SCHEMA.plant_dry_mass, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(kg|g)$'))
+                   model_uri=BASALT_SCHEMA.plant_dry_mass, domain=None, range=Optional[str])
 
 slots.plant_genotype = Slot(uri=BASALT_SCHEMA.plant_genotype, name="plant_genotype", curie=BASALT_SCHEMA.curie('plant_genotype'),
                    model_uri=BASALT_SCHEMA.plant_genotype, domain=None, range=Optional[str])
 
 slots.plant_growth_med = Slot(uri=BASALT_SCHEMA.plant_growth_med, name="plant_growth_med", curie=BASALT_SCHEMA.curie('plant_growth_med'),
-                   model_uri=BASALT_SCHEMA.plant_growth_med, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^_*\s*[a-zA-Z\s]+\[PECO:\d+\]$'))
+                   model_uri=BASALT_SCHEMA.plant_growth_med, domain=None, range=Optional[str])
 
 slots.plant_product = Slot(uri=BASALT_SCHEMA.plant_product, name="plant_product", curie=BASALT_SCHEMA.curie('plant_product'),
                    model_uri=BASALT_SCHEMA.plant_product, domain=None, range=Optional[str])
@@ -16075,8 +17135,7 @@ slots.plant_taxid = Slot(uri=BASALT_SCHEMA.plant_taxid, name="plant_taxid", curi
                    model_uri=BASALT_SCHEMA.plant_taxid, domain=None, range=Optional[str])
 
 slots.plant_wet_mass = Slot(uri=BASALT_SCHEMA.plant_wet_mass, name="plant_wet_mass", curie=BASALT_SCHEMA.curie('plant_wet_mass'),
-                   model_uri=BASALT_SCHEMA.plant_wet_mass, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(kg|g)$'))
+                   model_uri=BASALT_SCHEMA.plant_wet_mass, domain=None, range=Optional[str])
 
 slots.plate_average = Slot(uri=BASALT_SCHEMA.plate_average, name="plate_average", curie=BASALT_SCHEMA.curie('plate_average'),
                    model_uri=BASALT_SCHEMA.plate_average, domain=None, range=Optional[float])
@@ -16097,12 +17156,10 @@ slots.polarity = Slot(uri=BASALT_SCHEMA.polarity, name="polarity", curie=BASALT_
                    model_uri=BASALT_SCHEMA.polarity, domain=None, range=Union[str, "PolarityEnum"])
 
 slots.porosity = Slot(uri=BASALT_SCHEMA.porosity, name="porosity", curie=BASALT_SCHEMA.curie('porosity'),
-                   model_uri=BASALT_SCHEMA.porosity, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*percent$'))
+                   model_uri=BASALT_SCHEMA.porosity, domain=None, range=Optional[str])
 
 slots.potassium = Slot(uri=BASALT_SCHEMA.potassium, name="potassium", curie=BASALT_SCHEMA.curie('potassium'),
-                   model_uri=BASALT_SCHEMA.potassium, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.potassium, domain=None, range=Optional[str])
 
 slots.pre_treatment = Slot(uri=BASALT_SCHEMA.pre_treatment, name="pre_treatment", curie=BASALT_SCHEMA.curie('pre_treatment'),
                    model_uri=BASALT_SCHEMA.pre_treatment, domain=None, range=Optional[str])
@@ -16111,12 +17168,10 @@ slots.preparation_date = Slot(uri=BASALT_SCHEMA.preparation_date, name="preparat
                    model_uri=BASALT_SCHEMA.preparation_date, domain=None, range=Optional[Union[str, XSDDate]])
 
 slots.pressure = Slot(uri=BASALT_SCHEMA.pressure, name="pressure", curie=BASALT_SCHEMA.curie('pressure'),
-                   model_uri=BASALT_SCHEMA.pressure, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*atm$'))
+                   model_uri=BASALT_SCHEMA.pressure, domain=None, range=Optional[str])
 
 slots.pressure_control = Slot(uri=BASALT_SCHEMA.pressure_control, name="pressure_control", curie=BASALT_SCHEMA.curie('pressure_control'),
-                   model_uri=BASALT_SCHEMA.pressure_control, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*Pa$'))
+                   model_uri=BASALT_SCHEMA.pressure_control, domain=None, range=Optional[str])
 
 slots.previous_land_use = Slot(uri=BASALT_SCHEMA.previous_land_use, name="previous_land_use", curie=BASALT_SCHEMA.curie('previous_land_use'),
                    model_uri=BASALT_SCHEMA.previous_land_use, domain=None, range=Optional[str])
@@ -16125,8 +17180,7 @@ slots.previous_land_use_meth = Slot(uri=BASALT_SCHEMA.previous_land_use_meth, na
                    model_uri=BASALT_SCHEMA.previous_land_use_meth, domain=None, range=Optional[str])
 
 slots.primary_prod = Slot(uri=BASALT_SCHEMA.primary_prod, name="primary_prod", curie=BASALT_SCHEMA.curie('primary_prod'),
-                   model_uri=BASALT_SCHEMA.primary_prod, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.primary_prod, domain=None, range=Optional[str])
 
 slots.primary_treatment = Slot(uri=BASALT_SCHEMA.primary_treatment, name="primary_treatment", curie=BASALT_SCHEMA.curie('primary_treatment'),
                    model_uri=BASALT_SCHEMA.primary_treatment, domain=None, range=Optional[str])
@@ -16139,6 +17193,12 @@ slots.produced_by_ms_run = Slot(uri=BASALT_SCHEMA.produced_by_ms_run, name="prod
 
 slots.produced_by_sequencing_activity = Slot(uri=BASALT_SCHEMA.produced_by_sequencing_activity, name="produced_by_sequencing_activity", curie=BASALT_SCHEMA.curie('produced_by_sequencing_activity'),
                    model_uri=BASALT_SCHEMA.produced_by_sequencing_activity, domain=None, range=Optional[Union[str, NucleotideSequencingId]])
+
+slots.produced_by_ri_run = Slot(uri=BASALT_SCHEMA.produced_by_ri_run, name="produced_by_ri_run", curie=BASALT_SCHEMA.curie('produced_by_ri_run'),
+                   model_uri=BASALT_SCHEMA.produced_by_ri_run, domain=None, range=Optional[Union[str, RIDataGenerationActivityId]])
+
+slots.produced_by_uv_run = Slot(uri=BASALT_SCHEMA.produced_by_uv_run, name="produced_by_uv_run", curie=BASALT_SCHEMA.curie('produced_by_uv_run'),
+                   model_uri=BASALT_SCHEMA.produced_by_uv_run, domain=None, range=Optional[Union[str, UVDataGenerationActivityId]])
 
 slots.product_name = Slot(uri=BASALT_SCHEMA.product_name, name="product_name", curie=BASALT_SCHEMA.curie('product_name'),
                    model_uri=BASALT_SCHEMA.product_name, domain=None, range=Optional[str])
@@ -16180,8 +17240,7 @@ slots.reactor_type = Slot(uri=BASALT_SCHEMA.reactor_type, name="reactor_type", c
                    model_uri=BASALT_SCHEMA.reactor_type, domain=None, range=Optional[str])
 
 slots.redox_potential = Slot(uri=BASALT_SCHEMA.redox_potential, name="redox_potential", curie=BASALT_SCHEMA.curie('redox_potential'),
-                   model_uri=BASALT_SCHEMA.redox_potential, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*mV$'))
+                   model_uri=BASALT_SCHEMA.redox_potential, domain=None, range=Optional[str])
 
 slots.ref_biomaterial = Slot(uri=BASALT_SCHEMA.ref_biomaterial, name="ref_biomaterial", curie=BASALT_SCHEMA.curie('ref_biomaterial'),
                    model_uri=BASALT_SCHEMA.ref_biomaterial, domain=None, range=Optional[str])
@@ -16201,8 +17260,14 @@ slots.replicate_tech = Slot(uri=BASALT_SCHEMA.replicate_tech, name="replicate_te
 slots.resolution = Slot(uri=BASALT_SCHEMA.resolution, name="resolution", curie=BASALT_SCHEMA.curie('resolution'),
                    model_uri=BASALT_SCHEMA.resolution, domain=None, range=Union[str, "MassSpecResolutionEnum"])
 
+slots.resolution_nm = Slot(uri=BASALT_SCHEMA.resolution_nm, name="resolution_nm", curie=BASALT_SCHEMA.curie('resolution_nm'),
+                   model_uri=BASALT_SCHEMA.resolution_nm, domain=None, range=Optional[float])
+
 slots.results_from_ms_processing = Slot(uri=BASALT_SCHEMA.results_from_ms_processing, name="results_from_ms_processing", curie=BASALT_SCHEMA.curie('results_from_ms_processing'),
                    model_uri=BASALT_SCHEMA.results_from_ms_processing, domain=None, range=Optional[Union[str, MassSpectrometryDataProcessingActivityId]])
+
+slots.retention_time_min = Slot(uri=BASALT_SCHEMA.retention_time_min, name="retention_time_min", curie=BASALT_SCHEMA.curie('retention_time_min'),
+                   model_uri=BASALT_SCHEMA.retention_time_min, domain=None, range=Optional[float])
 
 slots.root_cond = Slot(uri=BASALT_SCHEMA.root_cond, name="root_cond", curie=BASALT_SCHEMA.curie('root_cond'),
                    model_uri=BASALT_SCHEMA.root_cond, domain=None, range=Optional[str])
@@ -16238,8 +17303,7 @@ slots.s3_key = Slot(uri=BASALT_SCHEMA.s3_key, name="s3_key", curie=BASALT_SCHEMA
                    model_uri=BASALT_SCHEMA.s3_key, domain=None, range=str)
 
 slots.salinity = Slot(uri=BASALT_SCHEMA.salinity, name="salinity", curie=BASALT_SCHEMA.curie('salinity'),
-                   model_uri=BASALT_SCHEMA.salinity, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(practical salinity unit|percent)$'))
+                   model_uri=BASALT_SCHEMA.salinity, domain=None, range=Optional[str])
 
 slots.salinity_method = Slot(uri=BASALT_SCHEMA.salinity_method, name="salinity_method", curie=BASALT_SCHEMA.curie('salinity_method'),
                    model_uri=BASALT_SCHEMA.salinity_method, domain=None, range=Optional[str])
@@ -16257,8 +17321,7 @@ slots.samp_store_temp = Slot(uri=BASALT_SCHEMA.samp_store_temp, name="samp_store
                    model_uri=BASALT_SCHEMA.samp_store_temp, domain=None, range=Optional[Union[str, "SampleStoreTempEnum"]])
 
 slots.sample_collected = Slot(uri=BASALT_SCHEMA.sample_collected, name="sample_collected", curie=BASALT_SCHEMA.curie('sample_collected'),
-                   model_uri=BASALT_SCHEMA.sample_collected, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.sample_collected, domain=None, range=Optional[str])
 
 slots.sample_collection_dev = Slot(uri=BASALT_SCHEMA.sample_collection_dev, name="sample_collection_dev", curie=BASALT_SCHEMA.curie('sample_collection_dev'),
                    model_uri=BASALT_SCHEMA.sample_collection_dev, domain=None, range=Optional[str])
@@ -16267,8 +17330,7 @@ slots.sample_collection_method = Slot(uri=BASALT_SCHEMA.sample_collection_method
                    model_uri=BASALT_SCHEMA.sample_collection_method, domain=None, range=Optional[str])
 
 slots.sample_end_time = Slot(uri=BASALT_SCHEMA.sample_end_time, name="sample_end_time", curie=BASALT_SCHEMA.curie('sample_end_time'),
-                   model_uri=BASALT_SCHEMA.sample_end_time, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.sample_end_time, domain=None, range=Optional[str])
 
 slots.sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
                    model_uri=BASALT_SCHEMA.sample_id, domain=None, range=Optional[Union[str, SampleId]])
@@ -16283,12 +17345,10 @@ slots.sample_processing = Slot(uri=BASALT_SCHEMA.sample_processing, name="sample
                    model_uri=BASALT_SCHEMA.sample_processing, domain=None, range=Optional[str])
 
 slots.sample_start_time = Slot(uri=BASALT_SCHEMA.sample_start_time, name="sample_start_time", curie=BASALT_SCHEMA.curie('sample_start_time'),
-                   model_uri=BASALT_SCHEMA.sample_start_time, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$'))
+                   model_uri=BASALT_SCHEMA.sample_start_time, domain=None, range=Optional[str])
 
 slots.sample_type = Slot(uri=BASALT_SCHEMA.sample_type, name="sample_type", curie=BASALT_SCHEMA.curie('sample_type'),
-                   model_uri=BASALT_SCHEMA.sample_type, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^_*\s*[a-zA-Z\-]+\s\[[a-zA-Z]+:\d+\]$'))
+                   model_uri=BASALT_SCHEMA.sample_type, domain=None, range=Optional[str])
 
 slots.sampled_at_site = Slot(uri=BASALT_SCHEMA.sampled_at_site, name="sampled_at_site", curie=BASALT_SCHEMA.curie('sampled_at_site'),
                    model_uri=BASALT_SCHEMA.sampled_at_site, domain=None, range=Optional[Union[str, SiteId]])
@@ -16300,8 +17360,10 @@ slots.sampled_portion = Slot(uri=BASALT_SCHEMA.sampled_portion, name="sampled_po
                    model_uri=BASALT_SCHEMA.sampled_portion, domain=None, range=Optional[Union[str, "SamplePortionEnum"]])
 
 slots.sampling_duration = Slot(uri=BASALT_SCHEMA.sampling_duration, name="sampling_duration", curie=BASALT_SCHEMA.curie('sampling_duration'),
-                   model_uri=BASALT_SCHEMA.sampling_duration, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*s$'))
+                   model_uri=BASALT_SCHEMA.sampling_duration, domain=None, range=Optional[str])
+
+slots.sampling_rate_hz = Slot(uri=BASALT_SCHEMA.sampling_rate_hz, name="sampling_rate_hz", curie=BASALT_SCHEMA.curie('sampling_rate_hz'),
+                   model_uri=BASALT_SCHEMA.sampling_rate_hz, domain=None, range=Optional[float])
 
 slots.sampling_set = Slot(uri=BASALT_SCHEMA.sampling_set, name="sampling_set", curie=BASALT_SCHEMA.curie('sampling_set'),
                    model_uri=BASALT_SCHEMA.sampling_set, domain=None, range=Optional[int])
@@ -16313,12 +17375,10 @@ slots.season_environment = Slot(uri=BASALT_SCHEMA.season_environment, name="seas
                    model_uri=BASALT_SCHEMA.season_environment, domain=None, range=Optional[str])
 
 slots.season_precpt = Slot(uri=BASALT_SCHEMA.season_precpt, name="season_precpt", curie=BASALT_SCHEMA.curie('season_precpt'),
-                   model_uri=BASALT_SCHEMA.season_precpt, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*mm$'))
+                   model_uri=BASALT_SCHEMA.season_precpt, domain=None, range=Optional[str])
 
 slots.season_temp = Slot(uri=BASALT_SCHEMA.season_temp, name="season_temp", curie=BASALT_SCHEMA.curie('season_temp'),
-                   model_uri=BASALT_SCHEMA.season_temp, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^-?\d+(\.\d+)?\s*C$'))
+                   model_uri=BASALT_SCHEMA.season_temp, domain=None, range=Optional[str])
 
 slots.second_blh = Slot(uri=BASALT_SCHEMA.second_blh, name="second_blh", curie=BASALT_SCHEMA.curie('second_blh'),
                    model_uri=BASALT_SCHEMA.second_blh, domain=None, range=Optional[float])
@@ -16334,6 +17394,9 @@ slots.secondary_treatment = Slot(uri=BASALT_SCHEMA.secondary_treatment, name="se
 
 slots.sediment_type = Slot(uri=BASALT_SCHEMA.sediment_type, name="sediment_type", curie=BASALT_SCHEMA.curie('sediment_type'),
                    model_uri=BASALT_SCHEMA.sediment_type, domain=None, range=Optional[Union[str, "SedimentTypeEnum"]])
+
+slots.separation_method = Slot(uri=BASALT_SCHEMA.separation_method, name="separation_method", curie=BASALT_SCHEMA.curie('separation_method'),
+                   model_uri=BASALT_SCHEMA.separation_method, domain=None, range=Optional[str])
 
 slots.sequence_order = Slot(uri=BASALT_SCHEMA.sequence_order, name="sequence_order", curie=BASALT_SCHEMA.curie('sequence_order'),
                    model_uri=BASALT_SCHEMA.sequence_order, domain=None, range=Optional[int])
@@ -16666,15 +17729,13 @@ slots.sewage_type = Slot(uri=BASALT_SCHEMA.sewage_type, name="sewage_type", curi
                    model_uri=BASALT_SCHEMA.sewage_type, domain=None, range=Optional[str])
 
 slots.shipped_sample_size = Slot(uri=BASALT_SCHEMA.shipped_sample_size, name="shipped_sample_size", curie=BASALT_SCHEMA.curie('shipped_sample_size'),
-                   model_uri=BASALT_SCHEMA.shipped_sample_size, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.shipped_sample_size, domain=None, range=Optional[str])
 
 slots.sieving = Slot(uri=BASALT_SCHEMA.sieving, name="sieving", curie=BASALT_SCHEMA.curie('sieving'),
                    model_uri=BASALT_SCHEMA.sieving, domain=None, range=Optional[str])
 
 slots.silicate = Slot(uri=BASALT_SCHEMA.silicate, name="silicate", curie=BASALT_SCHEMA.curie('silicate'),
-                   model_uri=BASALT_SCHEMA.silicate, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*umol/L$'))
+                   model_uri=BASALT_SCHEMA.silicate, domain=None, range=Optional[str])
 
 slots.size_frac_low = Slot(uri=BASALT_SCHEMA.size_frac_low, name="size_frac_low", curie=BASALT_SCHEMA.curie('size_frac_low'),
                    model_uri=BASALT_SCHEMA.size_frac_low, domain=None, range=Optional[str])
@@ -16683,19 +17744,16 @@ slots.size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="size_frac_up", c
                    model_uri=BASALT_SCHEMA.size_frac_up, domain=None, range=Optional[str])
 
 slots.slope_aspect = Slot(uri=BASALT_SCHEMA.slope_aspect, name="slope_aspect", curie=BASALT_SCHEMA.curie('slope_aspect'),
-                   model_uri=BASALT_SCHEMA.slope_aspect, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*degrees$'))
+                   model_uri=BASALT_SCHEMA.slope_aspect, domain=None, range=Optional[str])
 
 slots.slope_gradient = Slot(uri=BASALT_SCHEMA.slope_gradient, name="slope_gradient", curie=BASALT_SCHEMA.curie('slope_gradient'),
-                   model_uri=BASALT_SCHEMA.slope_gradient, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*percent$'))
+                   model_uri=BASALT_SCHEMA.slope_gradient, domain=None, range=Optional[str])
 
 slots.sludge_retent_time = Slot(uri=BASALT_SCHEMA.sludge_retent_time, name="sludge_retent_time", curie=BASALT_SCHEMA.curie('sludge_retent_time'),
                    model_uri=BASALT_SCHEMA.sludge_retent_time, domain=None, range=Optional[str])
 
 slots.sodium = Slot(uri=BASALT_SCHEMA.sodium, name="sodium", curie=BASALT_SCHEMA.curie('sodium'),
-                   model_uri=BASALT_SCHEMA.sodium, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*ug/mL$'))
+                   model_uri=BASALT_SCHEMA.sodium, domain=None, range=Optional[str])
 
 slots.soil_horizon = Slot(uri=BASALT_SCHEMA.soil_horizon, name="soil_horizon", curie=BASALT_SCHEMA.curie('soil_horizon'),
                    model_uri=BASALT_SCHEMA.soil_horizon, domain=None, range=Optional[Union[str, "SoilHorizonEnum"]])
@@ -16704,8 +17762,7 @@ slots.soil_sample_type = Slot(uri=BASALT_SCHEMA.soil_sample_type, name="soil_sam
                    model_uri=BASALT_SCHEMA.soil_sample_type, domain=None, range=Optional[Union[str, "SoilSampleTypeEnum"]])
 
 slots.soil_texture = Slot(uri=BASALT_SCHEMA.soil_texture, name="soil_texture", curie=BASALT_SCHEMA.curie('soil_texture'),
-                   model_uri=BASALT_SCHEMA.soil_texture, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(\w+:0\.\d+ )*description:[A-Za-z ]+$'))
+                   model_uri=BASALT_SCHEMA.soil_texture, domain=None, range=Optional[str])
 
 slots.soil_type = Slot(uri=BASALT_SCHEMA.soil_type, name="soil_type", curie=BASALT_SCHEMA.curie('soil_type'),
                    model_uri=BASALT_SCHEMA.soil_type, domain=None, range=Optional[Union[str, "SoilTypeEnum"]])
@@ -16714,8 +17771,7 @@ slots.soil_type_meth = Slot(uri=BASALT_SCHEMA.soil_type_meth, name="soil_type_me
                    model_uri=BASALT_SCHEMA.soil_type_meth, domain=None, range=Optional[str])
 
 slots.solar_irradiance = Slot(uri=BASALT_SCHEMA.solar_irradiance, name="solar_irradiance", curie=BASALT_SCHEMA.curie('solar_irradiance'),
-                   model_uri=BASALT_SCHEMA.solar_irradiance, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(kW/m2/d|erg/cm2/s)$'))
+                   model_uri=BASALT_SCHEMA.solar_irradiance, domain=None, range=Optional[str])
 
 slots.soluble_inorg_mat = Slot(uri=BASALT_SCHEMA.soluble_inorg_mat, name="soluble_inorg_mat", curie=BASALT_SCHEMA.curie('soluble_inorg_mat'),
                    model_uri=BASALT_SCHEMA.soluble_inorg_mat, domain=None, range=Optional[str])
@@ -16724,8 +17780,7 @@ slots.soluble_org_mat = Slot(uri=BASALT_SCHEMA.soluble_org_mat, name="soluble_or
                    model_uri=BASALT_SCHEMA.soluble_org_mat, domain=None, range=Optional[str])
 
 slots.soluble_react_phosp = Slot(uri=BASALT_SCHEMA.soluble_react_phosp, name="soluble_react_phosp", curie=BASALT_SCHEMA.curie('soluble_react_phosp'),
-                   model_uri=BASALT_SCHEMA.soluble_react_phosp, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.soluble_react_phosp, domain=None, range=Optional[str])
 
 slots.source_mat_id = Slot(uri=BASALT_SCHEMA.source_mat_id, name="source_mat_id", curie=BASALT_SCHEMA.curie('source_mat_id'),
                    model_uri=BASALT_SCHEMA.source_mat_id, domain=None, range=Optional[str])
@@ -16737,8 +17792,10 @@ slots.standing_water_regm = Slot(uri=BASALT_SCHEMA.standing_water_regm, name="st
                    model_uri=BASALT_SCHEMA.standing_water_regm, domain=None, range=Optional[str])
 
 slots.start_date_inc = Slot(uri=BASALT_SCHEMA.start_date_inc, name="start_date_inc", curie=BASALT_SCHEMA.curie('start_date_inc'),
-                   model_uri=BASALT_SCHEMA.start_date_inc, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.start_date_inc, domain=None, range=Optional[str])
+
+slots.starting_mass_mg = Slot(uri=BASALT_SCHEMA.starting_mass_mg, name="starting_mass_mg", curie=BASALT_SCHEMA.curie('starting_mass_mg'),
+                   model_uri=BASALT_SCHEMA.starting_mass_mg, domain=None, range=Optional[float])
 
 slots.stationary_phase = Slot(uri=BASALT_SCHEMA.stationary_phase, name="stationary_phase", curie=BASALT_SCHEMA.curie('stationary_phase'),
                    model_uri=BASALT_SCHEMA.stationary_phase, domain=None, range=Optional[str])
@@ -16785,20 +17842,20 @@ slots.strain_type = Slot(uri=BASALT_SCHEMA.strain_type, name="strain_type", curi
 slots.subspecf_gen_lin = Slot(uri=BASALT_SCHEMA.subspecf_gen_lin, name="subspecf_gen_lin", curie=BASALT_SCHEMA.curie('subspecf_gen_lin'),
                    model_uri=BASALT_SCHEMA.subspecf_gen_lin, domain=None, range=Optional[str])
 
+slots.substances_used = Slot(uri=BASALT_SCHEMA.substances_used, name="substances_used", curie=BASALT_SCHEMA.curie('substances_used'),
+                   model_uri=BASALT_SCHEMA.substances_used, domain=None, range=Optional[Union[str, SubstancesUsedLinkId]])
+
 slots.sulfate = Slot(uri=BASALT_SCHEMA.sulfate, name="sulfate", curie=BASALT_SCHEMA.curie('sulfate'),
-                   model_uri=BASALT_SCHEMA.sulfate, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.sulfate, domain=None, range=Optional[str])
 
 slots.sulfide = Slot(uri=BASALT_SCHEMA.sulfide, name="sulfide", curie=BASALT_SCHEMA.curie('sulfide'),
-                   model_uri=BASALT_SCHEMA.sulfide, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.sulfide, domain=None, range=Optional[str])
 
 slots.summary_metrics = Slot(uri=BASALT_SCHEMA.summary_metrics, name="summary_metrics", curie=BASALT_SCHEMA.curie('summary_metrics'),
                    model_uri=BASALT_SCHEMA.summary_metrics, domain=None, range=Optional[str])
 
 slots.suspend_part_matter = Slot(uri=BASALT_SCHEMA.suspend_part_matter, name="suspend_part_matter", curie=BASALT_SCHEMA.curie('suspend_part_matter'),
-                   model_uri=BASALT_SCHEMA.suspend_part_matter, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/L)$'))
+                   model_uri=BASALT_SCHEMA.suspend_part_matter, domain=None, range=Optional[str])
 
 slots.suspend_solids = Slot(uri=BASALT_SCHEMA.suspend_solids, name="suspend_solids", curie=BASALT_SCHEMA.curie('suspend_solids'),
                    model_uri=BASALT_SCHEMA.suspend_solids, domain=None, range=Optional[str])
@@ -16828,8 +17885,7 @@ slots.synth_reagents = Slot(uri=BASALT_SCHEMA.synth_reagents, name="synth_reagen
                    model_uri=BASALT_SCHEMA.synth_reagents, domain=None, range=Optional[str])
 
 slots.synth_start_date = Slot(uri=BASALT_SCHEMA.synth_start_date, name="synth_start_date", curie=BASALT_SCHEMA.curie('synth_start_date'),
-                   model_uri=BASALT_SCHEMA.synth_start_date, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.synth_start_date, domain=None, range=Optional[str])
 
 slots.target_strain = Slot(uri=BASALT_SCHEMA.target_strain, name="target_strain", curie=BASALT_SCHEMA.curie('target_strain'),
                    model_uri=BASALT_SCHEMA.target_strain, domain=None, range=Optional[str])
@@ -16841,8 +17897,7 @@ slots.technical_reps = Slot(uri=BASALT_SCHEMA.technical_reps, name="technical_re
                    model_uri=BASALT_SCHEMA.technical_reps, domain=None, range=Optional[int])
 
 slots.temp = Slot(uri=BASALT_SCHEMA.temp, name="temp", curie=BASALT_SCHEMA.curie('temp'),
-                   model_uri=BASALT_SCHEMA.temp, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^-?\d+(\.\d+)?\s*C$'))
+                   model_uri=BASALT_SCHEMA.temp, domain=None, range=Optional[str])
 
 slots.temperature_celsius = Slot(uri=BASALT_SCHEMA.temperature_celsius, name="temperature_celsius", curie=BASALT_SCHEMA.curie('temperature_celsius'),
                    model_uri=BASALT_SCHEMA.temperature_celsius, domain=None, range=Optional[float])
@@ -16875,46 +17930,37 @@ slots.tiss_cult_growth_med = Slot(uri=BASALT_SCHEMA.tiss_cult_growth_med, name="
                    model_uri=BASALT_SCHEMA.tiss_cult_growth_med, domain=None, range=Optional[str])
 
 slots.tot_carb = Slot(uri=BASALT_SCHEMA.tot_carb, name="tot_carb", curie=BASALT_SCHEMA.curie('tot_carb'),
-                   model_uri=BASALT_SCHEMA.tot_carb, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.tot_carb, domain=None, range=Optional[str])
 
 slots.tot_depth_water_col = Slot(uri=BASALT_SCHEMA.tot_depth_water_col, name="tot_depth_water_col", curie=BASALT_SCHEMA.curie('tot_depth_water_col'),
-                   model_uri=BASALT_SCHEMA.tot_depth_water_col, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*m$'))
+                   model_uri=BASALT_SCHEMA.tot_depth_water_col, domain=None, range=Optional[str])
 
 slots.tot_diss_nitro = Slot(uri=BASALT_SCHEMA.tot_diss_nitro, name="tot_diss_nitro", curie=BASALT_SCHEMA.curie('tot_diss_nitro'),
-                   model_uri=BASALT_SCHEMA.tot_diss_nitro, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L)$'))
+                   model_uri=BASALT_SCHEMA.tot_diss_nitro, domain=None, range=Optional[str])
 
 slots.tot_inorg_nitro = Slot(uri=BASALT_SCHEMA.tot_inorg_nitro, name="tot_inorg_nitro", curie=BASALT_SCHEMA.curie('tot_inorg_nitro'),
-                   model_uri=BASALT_SCHEMA.tot_inorg_nitro, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L)$'))
+                   model_uri=BASALT_SCHEMA.tot_inorg_nitro, domain=None, range=Optional[str])
 
 slots.tot_nitro = Slot(uri=BASALT_SCHEMA.tot_nitro, name="tot_nitro", curie=BASALT_SCHEMA.curie('tot_nitro'),
-                   model_uri=BASALT_SCHEMA.tot_nitro, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L|umol/L|mg/L)$'))
+                   model_uri=BASALT_SCHEMA.tot_nitro, domain=None, range=Optional[str])
 
 slots.tot_nitro_cont_meth = Slot(uri=BASALT_SCHEMA.tot_nitro_cont_meth, name="tot_nitro_cont_meth", curie=BASALT_SCHEMA.curie('tot_nitro_cont_meth'),
                    model_uri=BASALT_SCHEMA.tot_nitro_cont_meth, domain=None, range=Optional[str])
 
 slots.tot_nitro_content = Slot(uri=BASALT_SCHEMA.tot_nitro_content, name="tot_nitro_content", curie=BASALT_SCHEMA.curie('tot_nitro_content'),
-                   model_uri=BASALT_SCHEMA.tot_nitro_content, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.tot_nitro_content, domain=None, range=Optional[str])
 
 slots.tot_org_c_meth = Slot(uri=BASALT_SCHEMA.tot_org_c_meth, name="tot_org_c_meth", curie=BASALT_SCHEMA.curie('tot_org_c_meth'),
                    model_uri=BASALT_SCHEMA.tot_org_c_meth, domain=None, range=Optional[str])
 
 slots.tot_org_carb = Slot(uri=BASALT_SCHEMA.tot_org_carb, name="tot_org_carb", curie=BASALT_SCHEMA.curie('tot_org_carb'),
-                   model_uri=BASALT_SCHEMA.tot_org_carb, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*g C/kg$'))
+                   model_uri=BASALT_SCHEMA.tot_org_carb, domain=None, range=Optional[str])
 
 slots.tot_part_carb = Slot(uri=BASALT_SCHEMA.tot_part_carb, name="tot_part_carb", curie=BASALT_SCHEMA.curie('tot_part_carb'),
-                   model_uri=BASALT_SCHEMA.tot_part_carb, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L|umol/L)$'))
+                   model_uri=BASALT_SCHEMA.tot_part_carb, domain=None, range=Optional[str])
 
 slots.tot_phosp = Slot(uri=BASALT_SCHEMA.tot_phosp, name="tot_phosp", curie=BASALT_SCHEMA.curie('tot_phosp'),
-                   model_uri=BASALT_SCHEMA.tot_phosp, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L|umol/L)$'))
+                   model_uri=BASALT_SCHEMA.tot_phosp, domain=None, range=Optional[str])
 
 slots.tot_phosphate = Slot(uri=BASALT_SCHEMA.tot_phosphate, name="tot_phosphate", curie=BASALT_SCHEMA.curie('tot_phosphate'),
                    model_uri=BASALT_SCHEMA.tot_phosphate, domain=None, range=Optional[str])
@@ -16932,14 +17978,13 @@ slots.trophic_level = Slot(uri=BASALT_SCHEMA.trophic_level, name="trophic_level"
                    model_uri=BASALT_SCHEMA.trophic_level, domain=None, range=Optional[Union[str, "TrophicLevelEnum"]])
 
 slots.turbidity = Slot(uri=BASALT_SCHEMA.turbidity, name="turbidity", curie=BASALT_SCHEMA.curie('turbidity'),
-                   model_uri=BASALT_SCHEMA.turbidity, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.turbidity, domain=None, range=Optional[str])
 
 slots.uninoculated_mean = Slot(uri=BASALT_SCHEMA.uninoculated_mean, name="uninoculated_mean", curie=BASALT_SCHEMA.curie('uninoculated_mean'),
                    model_uri=BASALT_SCHEMA.uninoculated_mean, domain=None, range=Optional[float])
 
 slots.uses_calibration = Slot(uri=BASALT_SCHEMA.uses_calibration, name="uses_calibration", curie=BASALT_SCHEMA.curie('uses_calibration'),
-                   model_uri=BASALT_SCHEMA.uses_calibration, domain=None, range=Optional[Union[str, MassSpectrometryStandardRunId]])
+                   model_uri=BASALT_SCHEMA.uses_calibration, domain=None, range=Optional[Union[str, CalibrationStandardRunId]])
 
 slots.uses_chromatography = Slot(uri=BASALT_SCHEMA.uses_chromatography, name="uses_chromatography", curie=BASALT_SCHEMA.curie('uses_chromatography'),
                    model_uri=BASALT_SCHEMA.uses_chromatography, domain=None, range=Optional[Union[dict, ChromatographyConfiguration]])
@@ -16950,6 +17995,18 @@ slots.uses_ms_configuration = Slot(uri=BASALT_SCHEMA.uses_ms_configuration, name
 slots.uses_raw_ms_data = Slot(uri=BASALT_SCHEMA.uses_raw_ms_data, name="uses_raw_ms_data", curie=BASALT_SCHEMA.curie('uses_raw_ms_data'),
                    model_uri=BASALT_SCHEMA.uses_raw_ms_data, domain=None, range=Optional[Union[str, MassSpectrometryInstrumentDataId]])
 
+slots.uses_raw_ri_data = Slot(uri=BASALT_SCHEMA.uses_raw_ri_data, name="uses_raw_ri_data", curie=BASALT_SCHEMA.curie('uses_raw_ri_data'),
+                   model_uri=BASALT_SCHEMA.uses_raw_ri_data, domain=None, range=Optional[Union[str, InstrumentDataId]])
+
+slots.uses_raw_uv_data = Slot(uri=BASALT_SCHEMA.uses_raw_uv_data, name="uses_raw_uv_data", curie=BASALT_SCHEMA.curie('uses_raw_uv_data'),
+                   model_uri=BASALT_SCHEMA.uses_raw_uv_data, domain=None, range=Optional[Union[str, InstrumentDataId]])
+
+slots.uv_datagen_run = Slot(uri=BASALT_SCHEMA.uv_datagen_run, name="uv_datagen_run", curie=BASALT_SCHEMA.curie('uv_datagen_run'),
+                   model_uri=BASALT_SCHEMA.uv_datagen_run, domain=None, range=Optional[Union[str, UVDataGenerationActivityId]])
+
+slots.uv_detector_type = Slot(uri=BASALT_SCHEMA.uv_detector_type, name="uv_detector_type", curie=BASALT_SCHEMA.curie('uv_detector_type'),
+                   model_uri=BASALT_SCHEMA.uv_detector_type, domain=None, range=Optional[Union[str, "UVDetectorEnum"]])
+
 slots.version = Slot(uri=BASALT_SCHEMA.version, name="version", curie=BASALT_SCHEMA.curie('version'),
                    model_uri=BASALT_SCHEMA.version, domain=None, range=str)
 
@@ -16959,22 +18016,20 @@ slots.volatile_org_comp = Slot(uri=BASALT_SCHEMA.volatile_org_comp, name="volati
 slots.volume_ml = Slot(uri=BASALT_SCHEMA.volume_ml, name="volume_ml", curie=BASALT_SCHEMA.curie('volume_ml'),
                    model_uri=BASALT_SCHEMA.volume_ml, domain=None, range=Optional[float])
 
-slots.volume_uL = Slot(uri=BASALT_SCHEMA.volume_uL, name="volume_uL", curie=BASALT_SCHEMA.curie('volume_uL'),
-                   model_uri=BASALT_SCHEMA.volume_uL, domain=None, range=Optional[float])
+slots.volume_ul = Slot(uri=BASALT_SCHEMA.volume_ul, name="volume_ul", curie=BASALT_SCHEMA.curie('volume_ul'),
+                   model_uri=BASALT_SCHEMA.volume_ul, domain=None, range=Optional[float])
 
 slots.wastewater_type = Slot(uri=BASALT_SCHEMA.wastewater_type, name="wastewater_type", curie=BASALT_SCHEMA.curie('wastewater_type'),
                    model_uri=BASALT_SCHEMA.wastewater_type, domain=None, range=Optional[str])
 
 slots.water_content = Slot(uri=BASALT_SCHEMA.water_content, name="water_content", curie=BASALT_SCHEMA.curie('water_content'),
-                   model_uri=BASALT_SCHEMA.water_content, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.water_content, domain=None, range=Optional[str])
 
 slots.water_content_meth = Slot(uri=BASALT_SCHEMA.water_content_meth, name="water_content_meth", curie=BASALT_SCHEMA.curie('water_content_meth'),
                    model_uri=BASALT_SCHEMA.water_content_meth, domain=None, range=Optional[str])
 
 slots.water_current = Slot(uri=BASALT_SCHEMA.water_current, name="water_current", curie=BASALT_SCHEMA.curie('water_current'),
-                   model_uri=BASALT_SCHEMA.water_current, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.water_current, domain=None, range=Optional[str])
 
 slots.water_temp_regm = Slot(uri=BASALT_SCHEMA.water_temp_regm, name="water_temp_regm", curie=BASALT_SCHEMA.curie('water_temp_regm'),
                    model_uri=BASALT_SCHEMA.water_temp_regm, domain=None, range=Optional[str])
@@ -16985,8 +18040,17 @@ slots.watering_regm = Slot(uri=BASALT_SCHEMA.watering_regm, name="watering_regm"
 slots.wavelength_nm = Slot(uri=BASALT_SCHEMA.wavelength_nm, name="wavelength_nm", curie=BASALT_SCHEMA.curie('wavelength_nm'),
                    model_uri=BASALT_SCHEMA.wavelength_nm, domain=None, range=int)
 
+slots.wavelength_nm_max = Slot(uri=BASALT_SCHEMA.wavelength_nm_max, name="wavelength_nm_max", curie=BASALT_SCHEMA.curie('wavelength_nm_max'),
+                   model_uri=BASALT_SCHEMA.wavelength_nm_max, domain=None, range=Optional[float])
+
+slots.wavelength_nm_min = Slot(uri=BASALT_SCHEMA.wavelength_nm_min, name="wavelength_nm_min", curie=BASALT_SCHEMA.curie('wavelength_nm_min'),
+                   model_uri=BASALT_SCHEMA.wavelength_nm_min, domain=None, range=Optional[float])
+
 slots.weather = Slot(uri=BASALT_SCHEMA.weather, name="weather", curie=BASALT_SCHEMA.curie('weather'),
                    model_uri=BASALT_SCHEMA.weather, domain=None, range=Optional[str])
+
+slots.weight_percent = Slot(uri=BASALT_SCHEMA.weight_percent, name="weight_percent", curie=BASALT_SCHEMA.curie('weight_percent'),
+                   model_uri=BASALT_SCHEMA.weight_percent, domain=None, range=Optional[float])
 
 slots.well_metadata = Slot(uri=BASALT_SCHEMA.well_metadata, name="well_metadata", curie=BASALT_SCHEMA.curie('well_metadata'),
                    model_uri=BASALT_SCHEMA.well_metadata, domain=None, range=Optional[Union[Union[dict, WellMetadata], list[Union[dict, WellMetadata]]]])
@@ -16998,8 +18062,7 @@ slots.wind_direction = Slot(uri=BASALT_SCHEMA.wind_direction, name="wind_directi
                    model_uri=BASALT_SCHEMA.wind_direction, domain=None, range=Optional[Union[str, "CardinalDirectionEnum"]])
 
 slots.wind_speed = Slot(uri=BASALT_SCHEMA.wind_speed, name="wind_speed", curie=BASALT_SCHEMA.curie('wind_speed'),
-                   model_uri=BASALT_SCHEMA.wind_speed, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.wind_speed, domain=None, range=Optional[str])
 
 slots.within_17_oz = Slot(uri=BASALT_SCHEMA.within_17_oz, name="within_17_oz", curie=BASALT_SCHEMA.curie('within_17_oz'),
                    model_uri=BASALT_SCHEMA.within_17_oz, domain=None, range=Optional[str])
@@ -17229,6 +18292,9 @@ slots.processingSampleLink__processing_id = Slot(uri=BASALT_SCHEMA.processing_id
 slots.processingSampleLink__step_number = Slot(uri=BASALT_SCHEMA.step_number, name="processingSampleLink__step_number", curie=BASALT_SCHEMA.curie('step_number'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__step_number, domain=None, range=int)
 
+slots.processingSampleLink__sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="processingSampleLink__sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
+                   model_uri=BASALT_SCHEMA.processingSampleLink__sample_id, domain=None, range=Union[str, SampleId])
+
 slots.processingSampleLink__role = Slot(uri=BASALT_SCHEMA.role, name="processingSampleLink__role", curie=BASALT_SCHEMA.curie('role'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__role, domain=None, range=Union[str, "SampleRole"])
 
@@ -17259,14 +18325,29 @@ slots.configuration__id = Slot(uri=BASALT_SCHEMA.id, name="configuration__id", c
 slots.mobilePhaseSegment__id = Slot(uri=BASALT_SCHEMA.id, name="mobilePhaseSegment__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.mobilePhaseSegment__id, domain=None, range=URIRef)
 
-slots.mobilePhaseSegment__segment_order = Slot(uri=BASALT_SCHEMA.segment_order, name="mobilePhaseSegment__segment_order", curie=BASALT_SCHEMA.curie('segment_order'),
-                   model_uri=BASALT_SCHEMA.mobilePhaseSegment__segment_order, domain=None, range=Optional[int])
+slots.mobilePhaseSegment__mobile_phase_percentage = Slot(uri=BASALT_SCHEMA.mobile_phase_percentage, name="mobilePhaseSegment__mobile_phase_percentage", curie=BASALT_SCHEMA.curie('mobile_phase_percentage'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSegment__mobile_phase_percentage, domain=None, range=Optional[float])
 
-slots.mobilePhaseSegment__substance = Slot(uri=BASALT_SCHEMA.substance, name="mobilePhaseSegment__substance", curie=BASALT_SCHEMA.curie('substance'),
-                   model_uri=BASALT_SCHEMA.mobilePhaseSegment__substance, domain=None, range=Optional[str])
+slots.mobilePhaseSegment__used_in_chromatography_config = Slot(uri=BASALT_SCHEMA.used_in_chromatography_config, name="mobilePhaseSegment__used_in_chromatography_config", curie=BASALT_SCHEMA.curie('used_in_chromatography_config'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSegment__used_in_chromatography_config, domain=None, range=Optional[Union[dict, ChromatographyConfiguration]])
 
-slots.massSpectrometryStandardRun__id = Slot(uri=BASALT_SCHEMA.id, name="massSpectrometryStandardRun__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.massSpectrometryStandardRun__id, domain=None, range=URIRef)
+slots.mobilePhase__id = Slot(uri=BASALT_SCHEMA.id, name="mobilePhase__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.mobilePhase__id, domain=None, range=URIRef)
+
+slots.mobilePhaseSubstance__id = Slot(uri=BASALT_SCHEMA.id, name="mobilePhaseSubstance__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSubstance__id, domain=None, range=URIRef)
+
+slots.mobilePhaseSubstance__in_mobile_phase = Slot(uri=BASALT_SCHEMA.in_mobile_phase, name="mobilePhaseSubstance__in_mobile_phase", curie=BASALT_SCHEMA.curie('in_mobile_phase'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSubstance__in_mobile_phase, domain=None, range=Optional[Union[str, MobilePhaseId]])
+
+slots.mobilePhaseSubstance__substance = Slot(uri=BASALT_SCHEMA.substance, name="mobilePhaseSubstance__substance", curie=BASALT_SCHEMA.curie('substance'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSubstance__substance, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
+
+slots.mobilePhaseSubstance__concentration = Slot(uri=BASALT_SCHEMA.concentration, name="mobilePhaseSubstance__concentration", curie=BASALT_SCHEMA.curie('concentration'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSubstance__concentration, domain=None, range=Optional[str])
+
+slots.calibrationStandardRun__id = Slot(uri=BASALT_SCHEMA.id, name="calibrationStandardRun__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.calibrationStandardRun__id, domain=None, range=URIRef)
 
 slots.purchasedMaterial__id = Slot(uri=BASALT_SCHEMA.id, name="purchasedMaterial__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.purchasedMaterial__id, domain=None, range=URIRef)
@@ -17280,6 +18361,30 @@ slots.wellMetadata__well_type = Slot(uri=BASALT_SCHEMA.well_type, name="wellMeta
 slots.wellMetadata__replicate_group = Slot(uri=BASALT_SCHEMA.replicate_group, name="wellMetadata__replicate_group", curie=BASALT_SCHEMA.curie('replicate_group'),
                    model_uri=BASALT_SCHEMA.wellMetadata__replicate_group, domain=None, range=Optional[str])
 
+slots.wellReagentAddition__compound = Slot(uri=BASALT_SCHEMA.compound, name="wellReagentAddition__compound", curie=BASALT_SCHEMA.curie('compound'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__compound, domain=None, range=Union[str, "ChemicalEntityEnum"])
+
+slots.wellReagentAddition__substance_role = Slot(uri=BASALT_SCHEMA.substance_role, name="wellReagentAddition__substance_role", curie=BASALT_SCHEMA.curie('substance_role'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__substance_role, domain=None, range=Union[str, "SubstanceRoleEnum"])
+
+slots.wellReagentAddition__volume_ul = Slot(uri=BASALT_SCHEMA.volume_ul, name="wellReagentAddition__volume_ul", curie=BASALT_SCHEMA.curie('volume_ul'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__volume_ul, domain=None, range=float)
+
+slots.wellReagentAddition__stock_concentration = Slot(uri=BASALT_SCHEMA.stock_concentration, name="wellReagentAddition__stock_concentration", curie=BASALT_SCHEMA.curie('stock_concentration'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__stock_concentration, domain=None, range=Optional[float])
+
+slots.wellReagentAddition__requested_concentration = Slot(uri=BASALT_SCHEMA.requested_concentration, name="wellReagentAddition__requested_concentration", curie=BASALT_SCHEMA.curie('requested_concentration'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__requested_concentration, domain=None, range=Optional[float])
+
+slots.wellReagentAddition__actual_concentration = Slot(uri=BASALT_SCHEMA.actual_concentration, name="wellReagentAddition__actual_concentration", curie=BASALT_SCHEMA.curie('actual_concentration'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__actual_concentration, domain=None, range=Optional[float])
+
+slots.wellReagentAddition__concentration_unit = Slot(uri=BASALT_SCHEMA.concentration_unit, name="wellReagentAddition__concentration_unit", curie=BASALT_SCHEMA.curie('concentration_unit'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__concentration_unit, domain=None, range=Optional[str])
+
+slots.wellReagentAddition__addition_time = Slot(uri=BASALT_SCHEMA.addition_time, name="wellReagentAddition__addition_time", curie=BASALT_SCHEMA.curie('addition_time'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__addition_time, domain=None, range=Optional[str])
+
 slots.aMP2WellMetadata__media_ref = Slot(uri=BASALT_SCHEMA.media_ref, name="aMP2WellMetadata__media_ref", curie=BASALT_SCHEMA.curie('media_ref'),
                    model_uri=BASALT_SCHEMA.aMP2WellMetadata__media_ref, domain=None, range=Optional[Union[str, ProcessedSampleId]])
 
@@ -17289,8 +18394,8 @@ slots.aMP2WellMetadata__media_volume_ul = Slot(uri=BASALT_SCHEMA.media_volume_ul
 slots.aMP2WellMetadata__inoculum_volume_ul = Slot(uri=BASALT_SCHEMA.inoculum_volume_ul, name="aMP2WellMetadata__inoculum_volume_ul", curie=BASALT_SCHEMA.curie('inoculum_volume_ul'),
                    model_uri=BASALT_SCHEMA.aMP2WellMetadata__inoculum_volume_ul, domain=None, range=float)
 
-slots.aMP2WellMetadata__treatments = Slot(uri=BASALT_SCHEMA.treatments, name="aMP2WellMetadata__treatments", curie=BASALT_SCHEMA.curie('treatments'),
-                   model_uri=BASALT_SCHEMA.aMP2WellMetadata__treatments, domain=None, range=Optional[Union[str, list[str]]])
+slots.aMP2WellMetadata__reagent_additions = Slot(uri=BASALT_SCHEMA.reagent_additions, name="aMP2WellMetadata__reagent_additions", curie=BASALT_SCHEMA.curie('reagent_additions'),
+                   model_uri=BASALT_SCHEMA.aMP2WellMetadata__reagent_additions, domain=None, range=Optional[Union[Union[dict, WellReagentAddition], list[Union[dict, WellReagentAddition]]]])
 
 slots.ecoplateWellMetadata__media_volume_ul = Slot(uri=BASALT_SCHEMA.media_volume_ul, name="ecoplateWellMetadata__media_volume_ul", curie=BASALT_SCHEMA.curie('media_volume_ul'),
                    model_uri=BASALT_SCHEMA.ecoplateWellMetadata__media_volume_ul, domain=None, range=float)
@@ -17312,6 +18417,87 @@ slots.wellReading__value = Slot(uri=BASALT_SCHEMA.value, name="wellReading__valu
 
 slots.wellReading__flag = Slot(uri=BASALT_SCHEMA.flag, name="wellReading__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.wellReading__flag, domain=None, range=Optional[str])
+
+slots.enzymeActivityDataGenerationActivity__incubation_temp_c = Slot(uri=BASALT_SCHEMA.incubation_temp_c, name="enzymeActivityDataGenerationActivity__incubation_temp_c", curie=BASALT_SCHEMA.curie('incubation_temp_c'),
+                   model_uri=BASALT_SCHEMA.enzymeActivityDataGenerationActivity__incubation_temp_c, domain=None, range=Optional[float])
+
+slots.enzymeActivityDataGenerationActivity__incubation_time = Slot(uri=BASALT_SCHEMA.incubation_time, name="enzymeActivityDataGenerationActivity__incubation_time", curie=BASALT_SCHEMA.curie('incubation_time'),
+                   model_uri=BASALT_SCHEMA.enzymeActivityDataGenerationActivity__incubation_time, domain=None, range=Optional[str])
+
+slots.enzymeActivityDataGenerationActivity__wavelength = Slot(uri=BASALT_SCHEMA.wavelength, name="enzymeActivityDataGenerationActivity__wavelength", curie=BASALT_SCHEMA.curie('wavelength'),
+                   model_uri=BASALT_SCHEMA.enzymeActivityDataGenerationActivity__wavelength, domain=None, range=Optional[float])
+
+slots.hydraulicPropertiesDataGenerationActivity__fitting_model = Slot(uri=BASALT_SCHEMA.fitting_model, name="hydraulicPropertiesDataGenerationActivity__fitting_model", curie=BASALT_SCHEMA.curie('fitting_model'),
+                   model_uri=BASALT_SCHEMA.hydraulicPropertiesDataGenerationActivity__fitting_model, domain=None, range=str)
+
+slots.kuoDataGenerationActivity__detection_limit = Slot(uri=BASALT_SCHEMA.detection_limit, name="kuoDataGenerationActivity__detection_limit", curie=BASALT_SCHEMA.curie('detection_limit'),
+                   model_uri=BASALT_SCHEMA.kuoDataGenerationActivity__detection_limit, domain=None, range=str)
+
+slots.kuoDataGenerationActivity__wavelength = Slot(uri=BASALT_SCHEMA.wavelength, name="kuoDataGenerationActivity__wavelength", curie=BASALT_SCHEMA.curie('wavelength'),
+                   model_uri=BASALT_SCHEMA.kuoDataGenerationActivity__wavelength, domain=None, range=Optional[str])
+
+slots.microbialBiomassDataGenerationActivity__detector = Slot(uri=BASALT_SCHEMA.detector, name="microbialBiomassDataGenerationActivity__detector", curie=BASALT_SCHEMA.curie('detector'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__detector, domain=None, range=str)
+
+slots.microbialBiomassDataGenerationActivity__mode = Slot(uri=BASALT_SCHEMA.mode, name="microbialBiomassDataGenerationActivity__mode", curie=BASALT_SCHEMA.curie('mode'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__mode, domain=None, range=Optional[str])
+
+slots.microbialBiomassDataGenerationActivity__injection_volume = Slot(uri=BASALT_SCHEMA.injection_volume, name="microbialBiomassDataGenerationActivity__injection_volume", curie=BASALT_SCHEMA.curie('injection_volume'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__injection_volume, domain=None, range=str)
+
+slots.microbialBiomassDataGenerationActivity__sample_volume = Slot(uri=BASALT_SCHEMA.sample_volume, name="microbialBiomassDataGenerationActivity__sample_volume", curie=BASALT_SCHEMA.curie('sample_volume'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__sample_volume, domain=None, range=str)
+
+slots.microbialBiomassDataGenerationActivity__number_of_injections = Slot(uri=BASALT_SCHEMA.number_of_injections, name="microbialBiomassDataGenerationActivity__number_of_injections", curie=BASALT_SCHEMA.curie('number_of_injections'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__number_of_injections, domain=None, range=float)
+
+slots.microbialBiomassDataGenerationActivity__check_standard_spacing = Slot(uri=BASALT_SCHEMA.check_standard_spacing, name="microbialBiomassDataGenerationActivity__check_standard_spacing", curie=BASALT_SCHEMA.curie('check_standard_spacing'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassDataGenerationActivity__check_standard_spacing, domain=None, range=str)
+
+slots.pHDataGenerationActivity__calibration = Slot(uri=BASALT_SCHEMA.calibration, name="pHDataGenerationActivity__calibration", curie=BASALT_SCHEMA.curie('calibration'),
+                   model_uri=BASALT_SCHEMA.pHDataGenerationActivity__calibration, domain=None, range=str)
+
+slots.tOCTNDataGenerationActivity__column = Slot(uri=BASALT_SCHEMA.column, name="tOCTNDataGenerationActivity__column", curie=BASALT_SCHEMA.curie('column'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__column, domain=None, range=Optional[str])
+
+slots.tOCTNDataGenerationActivity__mode = Slot(uri=BASALT_SCHEMA.mode, name="tOCTNDataGenerationActivity__mode", curie=BASALT_SCHEMA.curie('mode'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__mode, domain=None, range=Optional[str])
+
+slots.tOCTNDataGenerationActivity__detector = Slot(uri=BASALT_SCHEMA.detector, name="tOCTNDataGenerationActivity__detector", curie=BASALT_SCHEMA.curie('detector'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__detector, domain=None, range=str)
+
+slots.tOCTNDataGenerationActivity__injection_volume = Slot(uri=BASALT_SCHEMA.injection_volume, name="tOCTNDataGenerationActivity__injection_volume", curie=BASALT_SCHEMA.curie('injection_volume'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__injection_volume, domain=None, range=str)
+
+slots.tOCTNDataGenerationActivity__sample_volume = Slot(uri=BASALT_SCHEMA.sample_volume, name="tOCTNDataGenerationActivity__sample_volume", curie=BASALT_SCHEMA.curie('sample_volume'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__sample_volume, domain=None, range=str)
+
+slots.tOCTNDataGenerationActivity__number_of_injections = Slot(uri=BASALT_SCHEMA.number_of_injections, name="tOCTNDataGenerationActivity__number_of_injections", curie=BASALT_SCHEMA.curie('number_of_injections'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__number_of_injections, domain=None, range=float)
+
+slots.tOCTNDataGenerationActivity__check_standard_spacing = Slot(uri=BASALT_SCHEMA.check_standard_spacing, name="tOCTNDataGenerationActivity__check_standard_spacing", curie=BASALT_SCHEMA.curie('check_standard_spacing'),
+                   model_uri=BASALT_SCHEMA.tOCTNDataGenerationActivity__check_standard_spacing, domain=None, range=Optional[str])
+
+slots.xCTDataGenerationActivity__x_ray_power = Slot(uri=BASALT_SCHEMA.x_ray_power, name="xCTDataGenerationActivity__x_ray_power", curie=BASALT_SCHEMA.curie('x_ray_power'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__x_ray_power, domain=None, range=str)
+
+slots.xCTDataGenerationActivity__cu_filter = Slot(uri=BASALT_SCHEMA.cu_filter, name="xCTDataGenerationActivity__cu_filter", curie=BASALT_SCHEMA.curie('cu_filter'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__cu_filter, domain=None, range=str)
+
+slots.xCTDataGenerationActivity__total_projections_collected = Slot(uri=BASALT_SCHEMA.total_projections_collected, name="xCTDataGenerationActivity__total_projections_collected", curie=BASALT_SCHEMA.curie('total_projections_collected'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__total_projections_collected, domain=None, range=float)
+
+slots.xCTDataGenerationActivity__rotation = Slot(uri=BASALT_SCHEMA.rotation, name="xCTDataGenerationActivity__rotation", curie=BASALT_SCHEMA.curie('rotation'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__rotation, domain=None, range=str)
+
+slots.xCTDataGenerationActivity__frames_recording_per_projection = Slot(uri=BASALT_SCHEMA.frames_recording_per_projection, name="xCTDataGenerationActivity__frames_recording_per_projection", curie=BASALT_SCHEMA.curie('frames_recording_per_projection'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__frames_recording_per_projection, domain=None, range=float)
+
+slots.xCTDataGenerationActivity__exposure_time_per_frame = Slot(uri=BASALT_SCHEMA.exposure_time_per_frame, name="xCTDataGenerationActivity__exposure_time_per_frame", curie=BASALT_SCHEMA.curie('exposure_time_per_frame'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__exposure_time_per_frame, domain=None, range=str)
+
+slots.xCTDataGenerationActivity__image_voxel_size_is = Slot(uri=BASALT_SCHEMA.image_voxel_size_is, name="xCTDataGenerationActivity__image_voxel_size_is", curie=BASALT_SCHEMA.curie('image_voxel_size_is'),
+                   model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__image_voxel_size_is, domain=None, range=str)
 
 slots.bulkDensityProduct__bulk_density_id = Slot(uri=BASALT_SCHEMA.bulk_density_id, name="bulkDensityProduct__bulk_density_id", curie=BASALT_SCHEMA.curie('bulk_density_id'),
                    model_uri=BASALT_SCHEMA.bulkDensityProduct__bulk_density_id, domain=None, range=Optional[Union[str, QuantityValueId]])
@@ -17550,66 +18736,6 @@ slots.textureProduct__clay_pct_id = Slot(uri=BASALT_SCHEMA.clay_pct_id, name="te
 slots.textureProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="textureProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.textureProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.tomographyProduct__roi_volume_voxel = Slot(uri=BASALT_SCHEMA.roi_volume_voxel, name="tomographyProduct__roi_volume_voxel", curie=BASALT_SCHEMA.curie('roi_volume_voxel'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__roi_volume_voxel, domain=None, range=Optional[float])
-
-slots.tomographyProduct__voxel_size = Slot(uri=BASALT_SCHEMA.voxel_size, name="tomographyProduct__voxel_size", curie=BASALT_SCHEMA.curie('voxel_size'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__voxel_size, domain=None, range=Optional[float])
-
-slots.tomographyProduct__connected_pores = Slot(uri=BASALT_SCHEMA.connected_pores, name="tomographyProduct__connected_pores", curie=BASALT_SCHEMA.curie('connected_pores'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__connected_pores, domain=None, range=Optional[float])
-
-slots.tomographyProduct__pore_diameter_min = Slot(uri=BASALT_SCHEMA.pore_diameter_min, name="tomographyProduct__pore_diameter_min", curie=BASALT_SCHEMA.curie('pore_diameter_min'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__pore_diameter_min, domain=None, range=Optional[float])
-
-slots.tomographyProduct__pore_diameter_max = Slot(uri=BASALT_SCHEMA.pore_diameter_max, name="tomographyProduct__pore_diameter_max", curie=BASALT_SCHEMA.curie('pore_diameter_max'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__pore_diameter_max, domain=None, range=Optional[float])
-
-slots.tomographyProduct__pore_diameter_mean = Slot(uri=BASALT_SCHEMA.pore_diameter_mean, name="tomographyProduct__pore_diameter_mean", curie=BASALT_SCHEMA.curie('pore_diameter_mean'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__pore_diameter_mean, domain=None, range=Optional[float])
-
-slots.tomographyProduct__pore_diameter_median = Slot(uri=BASALT_SCHEMA.pore_diameter_median, name="tomographyProduct__pore_diameter_median", curie=BASALT_SCHEMA.curie('pore_diameter_median'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__pore_diameter_median, domain=None, range=Optional[float])
-
-slots.tomographyProduct__pore_diameter_variance = Slot(uri=BASALT_SCHEMA.pore_diameter_variance, name="tomographyProduct__pore_diameter_variance", curie=BASALT_SCHEMA.curie('pore_diameter_variance'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__pore_diameter_variance, domain=None, range=Optional[float])
-
-slots.tomographyProduct__pore_volume_mean = Slot(uri=BASALT_SCHEMA.pore_volume_mean, name="tomographyProduct__pore_volume_mean", curie=BASALT_SCHEMA.curie('pore_volume_mean'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__pore_volume_mean, domain=None, range=Optional[float])
-
-slots.tomographyProduct__total_pore_volume = Slot(uri=BASALT_SCHEMA.total_pore_volume, name="tomographyProduct__total_pore_volume", curie=BASALT_SCHEMA.curie('total_pore_volume'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__total_pore_volume, domain=None, range=Optional[float])
-
-slots.tomographyProduct__permeability_x = Slot(uri=BASALT_SCHEMA.permeability_x, name="tomographyProduct__permeability_x", curie=BASALT_SCHEMA.curie('permeability_x'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__permeability_x, domain=None, range=Optional[float])
-
-slots.tomographyProduct__flow_rate_x = Slot(uri=BASALT_SCHEMA.flow_rate_x, name="tomographyProduct__flow_rate_x", curie=BASALT_SCHEMA.curie('flow_rate_x'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__flow_rate_x, domain=None, range=Optional[float])
-
-slots.tomographyProduct__tortuosity_x = Slot(uri=BASALT_SCHEMA.tortuosity_x, name="tomographyProduct__tortuosity_x", curie=BASALT_SCHEMA.curie('tortuosity_x'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__tortuosity_x, domain=None, range=Optional[float])
-
-slots.tomographyProduct__permeability_y = Slot(uri=BASALT_SCHEMA.permeability_y, name="tomographyProduct__permeability_y", curie=BASALT_SCHEMA.curie('permeability_y'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__permeability_y, domain=None, range=Optional[float])
-
-slots.tomographyProduct__flow_rate_y = Slot(uri=BASALT_SCHEMA.flow_rate_y, name="tomographyProduct__flow_rate_y", curie=BASALT_SCHEMA.curie('flow_rate_y'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__flow_rate_y, domain=None, range=Optional[float])
-
-slots.tomographyProduct__tortuosity_y = Slot(uri=BASALT_SCHEMA.tortuosity_y, name="tomographyProduct__tortuosity_y", curie=BASALT_SCHEMA.curie('tortuosity_y'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__tortuosity_y, domain=None, range=Optional[float])
-
-slots.tomographyProduct__permeability_z = Slot(uri=BASALT_SCHEMA.permeability_z, name="tomographyProduct__permeability_z", curie=BASALT_SCHEMA.curie('permeability_z'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__permeability_z, domain=None, range=Optional[float])
-
-slots.tomographyProduct__flow_rate_z = Slot(uri=BASALT_SCHEMA.flow_rate_z, name="tomographyProduct__flow_rate_z", curie=BASALT_SCHEMA.curie('flow_rate_z'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__flow_rate_z, domain=None, range=Optional[float])
-
-slots.tomographyProduct__tortuosity_z = Slot(uri=BASALT_SCHEMA.tortuosity_z, name="tomographyProduct__tortuosity_z", curie=BASALT_SCHEMA.curie('tortuosity_z'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__tortuosity_z, domain=None, range=Optional[float])
-
-slots.tomographyProduct__flag_xct = Slot(uri=BASALT_SCHEMA.flag_xct, name="tomographyProduct__flag_xct", curie=BASALT_SCHEMA.curie('flag_xct'),
-                   model_uri=BASALT_SCHEMA.tomographyProduct__flag_xct, domain=None, range=Optional[str])
-
 slots.wEOMProduct__id = Slot(uri=BASALT_SCHEMA.id, name="wEOMProduct__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.wEOMProduct__id, domain=None, range=URIRef)
 
@@ -17642,6 +18768,102 @@ slots.pHProduct__ph = Slot(uri=BASALT_SCHEMA.ph, name="pHProduct__ph", curie=BAS
 
 slots.pHProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="pHProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.pHProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.xCTProduct__roi_x_voxel = Slot(uri=BASALT_SCHEMA.roi_x_voxel, name="xCTProduct__roi_x_voxel", curie=BASALT_SCHEMA.curie('roi_x_voxel'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__roi_x_voxel, domain=None, range=Optional[float])
+
+slots.xCTProduct__roi_y_voxel = Slot(uri=BASALT_SCHEMA.roi_y_voxel, name="xCTProduct__roi_y_voxel", curie=BASALT_SCHEMA.curie('roi_y_voxel'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__roi_y_voxel, domain=None, range=Optional[float])
+
+slots.xCTProduct__roi_z_voxel = Slot(uri=BASALT_SCHEMA.roi_z_voxel, name="xCTProduct__roi_z_voxel", curie=BASALT_SCHEMA.curie('roi_z_voxel'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__roi_z_voxel, domain=None, range=Optional[float])
+
+slots.xCTProduct__voxel_size_mm_per_voxel = Slot(uri=BASALT_SCHEMA.voxel_size_mm_per_voxel, name="xCTProduct__voxel_size_mm_per_voxel", curie=BASALT_SCHEMA.curie('voxel_size_mm_per_voxel'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__voxel_size_mm_per_voxel, domain=None, range=Optional[float])
+
+slots.xCTProduct__porosity_percent = Slot(uri=BASALT_SCHEMA.porosity_percent, name="xCTProduct__porosity_percent", curie=BASALT_SCHEMA.curie('porosity_percent'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__porosity_percent, domain=None, range=Optional[float])
+
+slots.xCTProduct__connected_pores_fraction = Slot(uri=BASALT_SCHEMA.connected_pores_fraction, name="xCTProduct__connected_pores_fraction", curie=BASALT_SCHEMA.curie('connected_pores_fraction'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__connected_pores_fraction, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_connectivity_percent = Slot(uri=BASALT_SCHEMA.pore_connectivity_percent, name="xCTProduct__pore_connectivity_percent", curie=BASALT_SCHEMA.curie('pore_connectivity_percent'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_connectivity_percent, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_equivalent_diameter_min_mm = Slot(uri=BASALT_SCHEMA.pore_equivalent_diameter_min_mm, name="xCTProduct__pore_equivalent_diameter_min_mm", curie=BASALT_SCHEMA.curie('pore_equivalent_diameter_min_mm'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_equivalent_diameter_min_mm, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_equivalent_diameter_max_mm = Slot(uri=BASALT_SCHEMA.pore_equivalent_diameter_max_mm, name="xCTProduct__pore_equivalent_diameter_max_mm", curie=BASALT_SCHEMA.curie('pore_equivalent_diameter_max_mm'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_equivalent_diameter_max_mm, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_equivalent_diameter_mean_mm = Slot(uri=BASALT_SCHEMA.pore_equivalent_diameter_mean_mm, name="xCTProduct__pore_equivalent_diameter_mean_mm", curie=BASALT_SCHEMA.curie('pore_equivalent_diameter_mean_mm'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_equivalent_diameter_mean_mm, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_equivalent_diameter_median_mm = Slot(uri=BASALT_SCHEMA.pore_equivalent_diameter_median_mm, name="xCTProduct__pore_equivalent_diameter_median_mm", curie=BASALT_SCHEMA.curie('pore_equivalent_diameter_median_mm'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_equivalent_diameter_median_mm, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_equivalent_diameter_variance_mm2 = Slot(uri=BASALT_SCHEMA.pore_equivalent_diameter_variance_mm2, name="xCTProduct__pore_equivalent_diameter_variance_mm2", curie=BASALT_SCHEMA.curie('pore_equivalent_diameter_variance_mm2'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_equivalent_diameter_variance_mm2, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_volume_min_mm3 = Slot(uri=BASALT_SCHEMA.pore_volume_min_mm3, name="xCTProduct__pore_volume_min_mm3", curie=BASALT_SCHEMA.curie('pore_volume_min_mm3'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_volume_min_mm3, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_volume_max_mm3 = Slot(uri=BASALT_SCHEMA.pore_volume_max_mm3, name="xCTProduct__pore_volume_max_mm3", curie=BASALT_SCHEMA.curie('pore_volume_max_mm3'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_volume_max_mm3, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_volume_mean_mm3 = Slot(uri=BASALT_SCHEMA.pore_volume_mean_mm3, name="xCTProduct__pore_volume_mean_mm3", curie=BASALT_SCHEMA.curie('pore_volume_mean_mm3'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_volume_mean_mm3, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_volume_median_mm3 = Slot(uri=BASALT_SCHEMA.pore_volume_median_mm3, name="xCTProduct__pore_volume_median_mm3", curie=BASALT_SCHEMA.curie('pore_volume_median_mm3'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_volume_median_mm3, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_volume_variance_mm6 = Slot(uri=BASALT_SCHEMA.pore_volume_variance_mm6, name="xCTProduct__pore_volume_variance_mm6", curie=BASALT_SCHEMA.curie('pore_volume_variance_mm6'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_volume_variance_mm6, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_area_min_mm2 = Slot(uri=BASALT_SCHEMA.pore_area_min_mm2, name="xCTProduct__pore_area_min_mm2", curie=BASALT_SCHEMA.curie('pore_area_min_mm2'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_area_min_mm2, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_area_max_mm2 = Slot(uri=BASALT_SCHEMA.pore_area_max_mm2, name="xCTProduct__pore_area_max_mm2", curie=BASALT_SCHEMA.curie('pore_area_max_mm2'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_area_max_mm2, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_area_mean_mm2 = Slot(uri=BASALT_SCHEMA.pore_area_mean_mm2, name="xCTProduct__pore_area_mean_mm2", curie=BASALT_SCHEMA.curie('pore_area_mean_mm2'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_area_mean_mm2, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_area_median_mm2 = Slot(uri=BASALT_SCHEMA.pore_area_median_mm2, name="xCTProduct__pore_area_median_mm2", curie=BASALT_SCHEMA.curie('pore_area_median_mm2'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_area_median_mm2, domain=None, range=Optional[float])
+
+slots.xCTProduct__pore_area_variance_mm4 = Slot(uri=BASALT_SCHEMA.pore_area_variance_mm4, name="xCTProduct__pore_area_variance_mm4", curie=BASALT_SCHEMA.curie('pore_area_variance_mm4'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__pore_area_variance_mm4, domain=None, range=Optional[float])
+
+slots.xCTProduct__permeability_x_um2 = Slot(uri=BASALT_SCHEMA.permeability_x_um2, name="xCTProduct__permeability_x_um2", curie=BASALT_SCHEMA.curie('permeability_x_um2'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__permeability_x_um2, domain=None, range=Optional[float])
+
+slots.xCTProduct__flow_rate_x_mm3_per_sec = Slot(uri=BASALT_SCHEMA.flow_rate_x_mm3_per_sec, name="xCTProduct__flow_rate_x_mm3_per_sec", curie=BASALT_SCHEMA.curie('flow_rate_x_mm3_per_sec'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__flow_rate_x_mm3_per_sec, domain=None, range=Optional[float])
+
+slots.xCTProduct__tortuosity_x = Slot(uri=BASALT_SCHEMA.tortuosity_x, name="xCTProduct__tortuosity_x", curie=BASALT_SCHEMA.curie('tortuosity_x'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__tortuosity_x, domain=None, range=Optional[float])
+
+slots.xCTProduct__permeability_y_um2 = Slot(uri=BASALT_SCHEMA.permeability_y_um2, name="xCTProduct__permeability_y_um2", curie=BASALT_SCHEMA.curie('permeability_y_um2'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__permeability_y_um2, domain=None, range=Optional[float])
+
+slots.xCTProduct__flow_rate_y_mm3_per_sec = Slot(uri=BASALT_SCHEMA.flow_rate_y_mm3_per_sec, name="xCTProduct__flow_rate_y_mm3_per_sec", curie=BASALT_SCHEMA.curie('flow_rate_y_mm3_per_sec'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__flow_rate_y_mm3_per_sec, domain=None, range=Optional[float])
+
+slots.xCTProduct__tortuosity_y = Slot(uri=BASALT_SCHEMA.tortuosity_y, name="xCTProduct__tortuosity_y", curie=BASALT_SCHEMA.curie('tortuosity_y'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__tortuosity_y, domain=None, range=Optional[float])
+
+slots.xCTProduct__permeability_z_um2 = Slot(uri=BASALT_SCHEMA.permeability_z_um2, name="xCTProduct__permeability_z_um2", curie=BASALT_SCHEMA.curie('permeability_z_um2'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__permeability_z_um2, domain=None, range=Optional[float])
+
+slots.xCTProduct__flow_rate_z_mm3_per_sec = Slot(uri=BASALT_SCHEMA.flow_rate_z_mm3_per_sec, name="xCTProduct__flow_rate_z_mm3_per_sec", curie=BASALT_SCHEMA.curie('flow_rate_z_mm3_per_sec'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__flow_rate_z_mm3_per_sec, domain=None, range=Optional[float])
+
+slots.xCTProduct__tortuosity_z = Slot(uri=BASALT_SCHEMA.tortuosity_z, name="xCTProduct__tortuosity_z", curie=BASALT_SCHEMA.curie('tortuosity_z'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__tortuosity_z, domain=None, range=Optional[float])
+
+slots.xCTProduct__flag_xct = Slot(uri=BASALT_SCHEMA.flag_xct, name="xCTProduct__flag_xct", curie=BASALT_SCHEMA.curie('flag_xct'),
+                   model_uri=BASALT_SCHEMA.xCTProduct__flag_xct, domain=None, range=Optional[str])
 
 slots.xRFElementalProduct__cl_mg_per_kg = Slot(uri=BASALT_SCHEMA.cl_mg_per_kg, name="xRFElementalProduct__cl_mg_per_kg", curie=BASALT_SCHEMA.curie('cl_mg_per_kg'),
                    model_uri=BASALT_SCHEMA.xRFElementalProduct__cl_mg_per_kg, domain=None, range=Optional[float])
@@ -18048,20 +19270,26 @@ slots.normalizationProcess__target_mass_mg = Slot(uri=BASALT_SCHEMA.target_mass_
 slots.normalizationProcess__target_vol_ul = Slot(uri=BASALT_SCHEMA.target_vol_ul, name="normalizationProcess__target_vol_ul", curie=BASALT_SCHEMA.curie('target_vol_ul'),
                    model_uri=BASALT_SCHEMA.normalizationProcess__target_vol_ul, domain=None, range=Optional[float])
 
-slots.portionOfSubstance__known_as = Slot(uri=BASALT_SCHEMA.known_as, name="portionOfSubstance__known_as", curie=BASALT_SCHEMA.curie('known_as'),
-                   model_uri=BASALT_SCHEMA.portionOfSubstance__known_as, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
+slots.substancesUsedLink__id = Slot(uri=BASALT_SCHEMA.id, name="substancesUsedLink__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.substancesUsedLink__id, domain=None, range=URIRef)
 
-slots.portionOfSubstance__substance_role = Slot(uri=BASALT_SCHEMA.substance_role, name="portionOfSubstance__substance_role", curie=BASALT_SCHEMA.curie('substance_role'),
-                   model_uri=BASALT_SCHEMA.portionOfSubstance__substance_role, domain=None, range=Optional[Union[str, "SubstanceRoleEnum"]])
+slots.substancesUsedLink__sample_processing_substance = Slot(uri=BASALT_SCHEMA.sample_processing_substance, name="substancesUsedLink__sample_processing_substance", curie=BASALT_SCHEMA.curie('sample_processing_substance'),
+                   model_uri=BASALT_SCHEMA.substancesUsedLink__sample_processing_substance, domain=None, range=Optional[Union[str, SampleProcessingSubstanceId]])
 
-slots.portionOfSubstance__volume_mL = Slot(uri=BASALT_SCHEMA.volume_mL, name="portionOfSubstance__volume_mL", curie=BASALT_SCHEMA.curie('volume_mL'),
-                   model_uri=BASALT_SCHEMA.portionOfSubstance__volume_mL, domain=None, range=Optional[float])
+slots.sampleProcessingSubstance__id = Slot(uri=BASALT_SCHEMA.id, name="sampleProcessingSubstance__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.sampleProcessingSubstance__id, domain=None, range=URIRef)
 
-slots.portionOfSubstance__source_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.source_concentration_mg_per_ml, name="portionOfSubstance__source_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('source_concentration_mg_per_ml'),
-                   model_uri=BASALT_SCHEMA.portionOfSubstance__source_concentration_mg_per_ml, domain=None, range=Optional[float])
+slots.sampleProcessingSubstance__known_as = Slot(uri=BASALT_SCHEMA.known_as, name="sampleProcessingSubstance__known_as", curie=BASALT_SCHEMA.curie('known_as'),
+                   model_uri=BASALT_SCHEMA.sampleProcessingSubstance__known_as, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
 
-slots.portionOfSubstance__final_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.final_concentration_mg_per_ml, name="portionOfSubstance__final_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('final_concentration_mg_per_ml'),
-                   model_uri=BASALT_SCHEMA.portionOfSubstance__final_concentration_mg_per_ml, domain=None, range=Optional[float])
+slots.sampleProcessingSubstance__substance_role = Slot(uri=BASALT_SCHEMA.substance_role, name="sampleProcessingSubstance__substance_role", curie=BASALT_SCHEMA.curie('substance_role'),
+                   model_uri=BASALT_SCHEMA.sampleProcessingSubstance__substance_role, domain=None, range=Optional[Union[str, "SubstanceRoleEnum"]])
+
+slots.sampleProcessingSubstance__source_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.source_concentration_mg_per_ml, name="sampleProcessingSubstance__source_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('source_concentration_mg_per_ml'),
+                   model_uri=BASALT_SCHEMA.sampleProcessingSubstance__source_concentration_mg_per_ml, domain=None, range=Optional[float])
+
+slots.sampleProcessingSubstance__final_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.final_concentration_mg_per_ml, name="sampleProcessingSubstance__final_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('final_concentration_mg_per_ml'),
+                   model_uri=BASALT_SCHEMA.sampleProcessingSubstance__final_concentration_mg_per_ml, domain=None, range=Optional[float])
 
 slots.proteinQuantification__protein_assay_type = Slot(uri=BASALT_SCHEMA.protein_assay_type, name="proteinQuantification__protein_assay_type", curie=BASALT_SCHEMA.curie('protein_assay_type'),
                    model_uri=BASALT_SCHEMA.proteinQuantification__protein_assay_type, domain=None, range=Union[str, "ProteinAssayTypeEnum"])
@@ -18316,12 +19544,10 @@ slots.organism_trophic_level = Slot(uri=BASALT_SCHEMA.trophic_level, name="organ
                    model_uri=BASALT_SCHEMA.organism_trophic_level, domain=Organism, range=Optional[Union[str, "TrophicLevelEnum"]])
 
 slots.Site_elev = Slot(uri=BASALT_SCHEMA.elev, name="Site_elev", curie=BASALT_SCHEMA.curie('elev'),
-                   model_uri=BASALT_SCHEMA.Site_elev, domain=Site, range=str,
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*m$'))
+                   model_uri=BASALT_SCHEMA.Site_elev, domain=Site, range=str)
 
 slots.Site_geo_loc_name = Slot(uri=BASALT_SCHEMA.geo_loc_name, name="Site_geo_loc_name", curie=BASALT_SCHEMA.curie('geo_loc_name'),
-                   model_uri=BASALT_SCHEMA.Site_geo_loc_name, domain=Site, range=str,
-                   pattern=re.compile(r'^([^\s-]{12}|[^\s-]+.+[^\s-]+):\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)$'))
+                   model_uri=BASALT_SCHEMA.Site_geo_loc_name, domain=Site, range=str)
 
 slots.Site_growth_facil = Slot(uri=BASALT_SCHEMA.growth_facil, name="Site_growth_facil", curie=BASALT_SCHEMA.curie('growth_facil'),
                    model_uri=BASALT_SCHEMA.Site_growth_facil, domain=Site, range=Union[str, "GrowthFacilityEnum"])
@@ -18336,31 +19562,25 @@ slots.AerosolArmSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, nam
                    model_uri=BASALT_SCHEMA.AerosolArmSample_analysis_type, domain=AerosolArmSample, range=str)
 
 slots.AerosolArmSample_carb_dioxide = Slot(uri=BASALT_SCHEMA.carb_dioxide, name="AerosolArmSample_carb_dioxide", curie=BASALT_SCHEMA.curie('carb_dioxide'),
-                   model_uri=BASALT_SCHEMA.AerosolArmSample_carb_dioxide, domain=AerosolArmSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.AerosolArmSample_carb_dioxide, domain=AerosolArmSample, range=Optional[str])
 
 slots.AerosolArmSample_carb_monoxide = Slot(uri=BASALT_SCHEMA.carb_monoxide, name="AerosolArmSample_carb_monoxide", curie=BASALT_SCHEMA.curie('carb_monoxide'),
-                   model_uri=BASALT_SCHEMA.AerosolArmSample_carb_monoxide, domain=AerosolArmSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.AerosolArmSample_carb_monoxide, domain=AerosolArmSample, range=Optional[str])
 
 slots.AerosolArmSample_size_frac_low = Slot(uri=BASALT_SCHEMA.size_frac_low, name="AerosolArmSample_size_frac_low", curie=BASALT_SCHEMA.curie('size_frac_low'),
-                   model_uri=BASALT_SCHEMA.AerosolArmSample_size_frac_low, domain=AerosolArmSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
+                   model_uri=BASALT_SCHEMA.AerosolArmSample_size_frac_low, domain=AerosolArmSample, range=Optional[str])
 
 slots.AerosolArmSample_size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="AerosolArmSample_size_frac_up", curie=BASALT_SCHEMA.curie('size_frac_up'),
-                   model_uri=BASALT_SCHEMA.AerosolArmSample_size_frac_up, domain=AerosolArmSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
+                   model_uri=BASALT_SCHEMA.AerosolArmSample_size_frac_up, domain=AerosolArmSample, range=Optional[str])
 
 slots.AerosolSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="AerosolSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.AerosolSample_analysis_type, domain=AerosolSample, range=str)
 
 slots.AerosolSample_size_frac_low = Slot(uri=BASALT_SCHEMA.size_frac_low, name="AerosolSample_size_frac_low", curie=BASALT_SCHEMA.curie('size_frac_low'),
-                   model_uri=BASALT_SCHEMA.AerosolSample_size_frac_low, domain=AerosolSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
+                   model_uri=BASALT_SCHEMA.AerosolSample_size_frac_low, domain=AerosolSample, range=Optional[str])
 
 slots.AerosolSample_size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="AerosolSample_size_frac_up", curie=BASALT_SCHEMA.curie('size_frac_up'),
-                   model_uri=BASALT_SCHEMA.AerosolSample_size_frac_up, domain=AerosolSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
+                   model_uri=BASALT_SCHEMA.AerosolSample_size_frac_up, domain=AerosolSample, range=Optional[str])
 
 slots.AMP2UserSample_organism_ref = Slot(uri=BASALT_SCHEMA.organism_ref, name="AMP2UserSample_organism_ref", curie=BASALT_SCHEMA.curie('organism_ref'),
                    model_uri=BASALT_SCHEMA.AMP2UserSample_organism_ref, domain=AMP2UserSample, range=Union[str, OrganismId])
@@ -18375,8 +19595,7 @@ slots.AMP2UserSample_name = Slot(uri=BASALT_SCHEMA.name, name="AMP2UserSample_na
                    model_uri=BASALT_SCHEMA.AMP2UserSample_name, domain=AMP2UserSample, range=str)
 
 slots.AMP2UserSample_collection_date = Slot(uri=BASALT_SCHEMA.collection_date, name="AMP2UserSample_collection_date", curie=BASALT_SCHEMA.curie('collection_date'),
-                   model_uri=BASALT_SCHEMA.AMP2UserSample_collection_date, domain=AMP2UserSample, range=Optional[Union[str, XSDDate]],
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.AMP2UserSample_collection_date, domain=AMP2UserSample, range=Optional[Union[str, XSDDate]])
 
 slots.AMP2UserSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="AMP2UserSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.AMP2UserSample_analysis_type, domain=AMP2UserSample, range=Optional[str])
@@ -18385,7 +19604,7 @@ slots.CommerciallyPurchasedSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysi
                    model_uri=BASALT_SCHEMA.CommerciallyPurchasedSample_analysis_type, domain=CommerciallyPurchasedSample, range=str)
 
 slots.CommerciallyPurchasedSample_compound_name = Slot(uri=BASALT_SCHEMA.compound_name, name="CommerciallyPurchasedSample_compound_name", curie=BASALT_SCHEMA.curie('compound_name'),
-                   model_uri=BASALT_SCHEMA.CommerciallyPurchasedSample_compound_name, domain=CommerciallyPurchasedSample, range=str)
+                   model_uri=BASALT_SCHEMA.CommerciallyPurchasedSample_compound_name, domain=CommerciallyPurchasedSample, range=Union[str, "ChemicalEntityEnum"])
 
 slots.CultureEnvironmentalSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="CultureEnvironmentalSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_analysis_type, domain=CultureEnvironmentalSample, range=str)
@@ -18397,8 +19616,7 @@ slots.CultureEnvironmentalSample_host_common_name = Slot(uri=BASALT_SCHEMA.host_
                    model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_host_common_name, domain=CultureEnvironmentalSample, range=str)
 
 slots.CultureEnvironmentalSample_host_taxid = Slot(uri=BASALT_SCHEMA.host_taxid, name="CultureEnvironmentalSample_host_taxid", curie=BASALT_SCHEMA.curie('host_taxid'),
-                   model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_host_taxid, domain=CultureEnvironmentalSample, range=str,
-                   pattern=re.compile(r'NCBITaxon:\d+'))
+                   model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_host_taxid, domain=CultureEnvironmentalSample, range=str)
 
 slots.CultureEnvironmentalSample_isol_growth_condt = Slot(uri=BASALT_SCHEMA.isol_growth_condt, name="CultureEnvironmentalSample_isol_growth_condt", curie=BASALT_SCHEMA.curie('isol_growth_condt'),
                    model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_isol_growth_condt, domain=CultureEnvironmentalSample, range=str)
@@ -18407,19 +19625,16 @@ slots.CultureEnvironmentalSample_non_microb_biomass = Slot(uri=BASALT_SCHEMA.non
                    model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_non_microb_biomass, domain=CultureEnvironmentalSample, range=Optional[str])
 
 slots.CultureEnvironmentalSample_start_date_inc = Slot(uri=BASALT_SCHEMA.start_date_inc, name="CultureEnvironmentalSample_start_date_inc", curie=BASALT_SCHEMA.curie('start_date_inc'),
-                   model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_start_date_inc, domain=CultureEnvironmentalSample, range=str,
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_start_date_inc, domain=CultureEnvironmentalSample, range=str)
 
 slots.FieldDeployedTerraformSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="FieldDeployedTerraformSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_analysis_type, domain=FieldDeployedTerraformSample, range=str)
 
 slots.FieldDeployedTerraformSample_initiation_date_inoculation = Slot(uri=BASALT_SCHEMA.initiation_date_inoculation, name="FieldDeployedTerraformSample_initiation_date_inoculation", curie=BASALT_SCHEMA.curie('initiation_date_inoculation'),
-                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_initiation_date_inoculation, domain=FieldDeployedTerraformSample, range=str,
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_initiation_date_inoculation, domain=FieldDeployedTerraformSample, range=str)
 
 slots.FieldDeployedTerraformSample_initiation_date_plant = Slot(uri=BASALT_SCHEMA.initiation_date_plant, name="FieldDeployedTerraformSample_initiation_date_plant", curie=BASALT_SCHEMA.curie('initiation_date_plant'),
-                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_initiation_date_plant, domain=FieldDeployedTerraformSample, range=str,
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_initiation_date_plant, domain=FieldDeployedTerraformSample, range=str)
 
 slots.FieldDeployedTerraformSample_latitude = Slot(uri=BASALT_SCHEMA.latitude, name="FieldDeployedTerraformSample_latitude", curie=BASALT_SCHEMA.curie('latitude'),
                    model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_latitude, domain=FieldDeployedTerraformSample, range=float)
@@ -18443,8 +19658,7 @@ slots.FieldDeployedTerraformSample_synth_env_treatment = Slot(uri=BASALT_SCHEMA.
                    model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_synth_env_treatment, domain=FieldDeployedTerraformSample, range=str)
 
 slots.FieldDeployedTerraformSample_synth_start_date = Slot(uri=BASALT_SCHEMA.synth_start_date, name="FieldDeployedTerraformSample_synth_start_date", curie=BASALT_SCHEMA.curie('synth_start_date'),
-                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_synth_start_date, domain=FieldDeployedTerraformSample, range=str,
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_synth_start_date, domain=FieldDeployedTerraformSample, range=str)
 
 slots.MixedCultureSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="MixedCultureSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.MixedCultureSample_analysis_type, domain=MixedCultureSample, range=str)
@@ -18456,26 +19670,22 @@ slots.MixedCultureSample_host_common_name = Slot(uri=BASALT_SCHEMA.host_common_n
                    model_uri=BASALT_SCHEMA.MixedCultureSample_host_common_name, domain=MixedCultureSample, range=str)
 
 slots.MixedCultureSample_host_taxid = Slot(uri=BASALT_SCHEMA.host_taxid, name="MixedCultureSample_host_taxid", curie=BASALT_SCHEMA.curie('host_taxid'),
-                   model_uri=BASALT_SCHEMA.MixedCultureSample_host_taxid, domain=MixedCultureSample, range=str,
-                   pattern=re.compile(r'NCBITaxon:\d+'))
+                   model_uri=BASALT_SCHEMA.MixedCultureSample_host_taxid, domain=MixedCultureSample, range=str)
 
 slots.MixedCultureSample_isol_growth_condt = Slot(uri=BASALT_SCHEMA.isol_growth_condt, name="MixedCultureSample_isol_growth_condt", curie=BASALT_SCHEMA.curie('isol_growth_condt'),
                    model_uri=BASALT_SCHEMA.MixedCultureSample_isol_growth_condt, domain=MixedCultureSample, range=str)
 
 slots.MixedCultureSample_start_date_inc = Slot(uri=BASALT_SCHEMA.start_date_inc, name="MixedCultureSample_start_date_inc", curie=BASALT_SCHEMA.curie('start_date_inc'),
-                   model_uri=BASALT_SCHEMA.MixedCultureSample_start_date_inc, domain=MixedCultureSample, range=str,
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.MixedCultureSample_start_date_inc, domain=MixedCultureSample, range=str)
 
 slots.MixedCultureSample_subspecf_gen_lin = Slot(uri=BASALT_SCHEMA.subspecf_gen_lin, name="MixedCultureSample_subspecf_gen_lin", curie=BASALT_SCHEMA.curie('subspecf_gen_lin'),
                    model_uri=BASALT_SCHEMA.MixedCultureSample_subspecf_gen_lin, domain=MixedCultureSample, range=Optional[str])
 
 slots.MonetSoilSample_bulk_elect_conductivity = Slot(uri=BASALT_SCHEMA.bulk_elect_conductivity, name="MonetSoilSample_bulk_elect_conductivity", curie=BASALT_SCHEMA.curie('bulk_elect_conductivity'),
-                   model_uri=BASALT_SCHEMA.MonetSoilSample_bulk_elect_conductivity, domain=MonetSoilSample, range=str,
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*mS/cm|did not collect|failed'))
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_bulk_elect_conductivity, domain=MonetSoilSample, range=str)
 
 slots.MonetSoilSample_depth = Slot(uri=BASALT_SCHEMA.depth, name="MonetSoilSample_depth", curie=BASALT_SCHEMA.curie('depth'),
-                   model_uri=BASALT_SCHEMA.MonetSoilSample_depth, domain=MonetSoilSample, range=str,
-                   pattern=re.compile(r'^\d+(\.\d+)?-\d+(\.\d+)?\s*(m|cm)$'))
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_depth, domain=MonetSoilSample, range=str)
 
 slots.MonetSoilSample_latitude = Slot(uri=BASALT_SCHEMA.latitude, name="MonetSoilSample_latitude", curie=BASALT_SCHEMA.curie('latitude'),
                    model_uri=BASALT_SCHEMA.MonetSoilSample_latitude, domain=MonetSoilSample, range=float)
@@ -18496,23 +19706,19 @@ slots.MonetSoilSample_soil_type_meth = Slot(uri=BASALT_SCHEMA.soil_type_meth, na
                    model_uri=BASALT_SCHEMA.MonetSoilSample_soil_type_meth, domain=MonetSoilSample, range=str)
 
 slots.MonetSoilSample_temp = Slot(uri=BASALT_SCHEMA.temp, name="MonetSoilSample_temp", curie=BASALT_SCHEMA.curie('temp'),
-                   model_uri=BASALT_SCHEMA.MonetSoilSample_temp, domain=MonetSoilSample, range=str,
-                   pattern=re.compile(r'^-?\d+(\.\d+)?\s*C|did not collect|failed'))
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_temp, domain=MonetSoilSample, range=str)
 
 slots.MonetSoilSample_water_content = Slot(uri=BASALT_SCHEMA.water_content, name="MonetSoilSample_water_content", curie=BASALT_SCHEMA.curie('water_content'),
-                   model_uri=BASALT_SCHEMA.MonetSoilSample_water_content, domain=MonetSoilSample, range=str,
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*m3/m3|did not collect|failed'))
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_water_content, domain=MonetSoilSample, range=str)
 
 slots.OtherUndescribedSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="OtherUndescribedSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.OtherUndescribedSample_analysis_type, domain=OtherUndescribedSample, range=str)
 
 slots.OtherUndescribedSample_carb_dioxide = Slot(uri=BASALT_SCHEMA.carb_dioxide, name="OtherUndescribedSample_carb_dioxide", curie=BASALT_SCHEMA.curie('carb_dioxide'),
-                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_carb_dioxide, domain=OtherUndescribedSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_carb_dioxide, domain=OtherUndescribedSample, range=Optional[str])
 
 slots.OtherUndescribedSample_carb_monoxide = Slot(uri=BASALT_SCHEMA.carb_monoxide, name="OtherUndescribedSample_carb_monoxide", curie=BASALT_SCHEMA.curie('carb_monoxide'),
-                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_carb_monoxide, domain=OtherUndescribedSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_carb_monoxide, domain=OtherUndescribedSample, range=Optional[str])
 
 slots.OtherUndescribedSample_latitude = Slot(uri=BASALT_SCHEMA.latitude, name="OtherUndescribedSample_latitude", curie=BASALT_SCHEMA.curie('latitude'),
                    model_uri=BASALT_SCHEMA.OtherUndescribedSample_latitude, domain=OtherUndescribedSample, range=float)
@@ -18521,12 +19727,10 @@ slots.OtherUndescribedSample_longitude = Slot(uri=BASALT_SCHEMA.longitude, name=
                    model_uri=BASALT_SCHEMA.OtherUndescribedSample_longitude, domain=OtherUndescribedSample, range=float)
 
 slots.OtherUndescribedSample_oxygen = Slot(uri=BASALT_SCHEMA.oxygen, name="OtherUndescribedSample_oxygen", curie=BASALT_SCHEMA.curie('oxygen'),
-                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_oxygen, domain=OtherUndescribedSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/L|ppm)$'))
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_oxygen, domain=OtherUndescribedSample, range=Optional[str])
 
 slots.OtherUndescribedSample_sample_type = Slot(uri=BASALT_SCHEMA.sample_type, name="OtherUndescribedSample_sample_type", curie=BASALT_SCHEMA.curie('sample_type'),
-                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_sample_type, domain=OtherUndescribedSample, range=str,
-                   pattern=re.compile(r'^_*\s*[a-zA-Z\-]+\s\[[a-zA-Z]+:\d+\]$'))
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_sample_type, domain=OtherUndescribedSample, range=str)
 
 slots.OtherUndescribedSample_subspecf_gen_lin = Slot(uri=BASALT_SCHEMA.subspecf_gen_lin, name="OtherUndescribedSample_subspecf_gen_lin", curie=BASALT_SCHEMA.curie('subspecf_gen_lin'),
                    model_uri=BASALT_SCHEMA.OtherUndescribedSample_subspecf_gen_lin, domain=OtherUndescribedSample, range=Optional[str])
@@ -18535,12 +19739,10 @@ slots.PlantSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="Pl
                    model_uri=BASALT_SCHEMA.PlantSample_analysis_type, domain=PlantSample, range=str)
 
 slots.PlantSample_host_height = Slot(uri=BASALT_SCHEMA.host_height, name="PlantSample_host_height", curie=BASALT_SCHEMA.curie('host_height'),
-                   model_uri=BASALT_SCHEMA.PlantSample_host_height, domain=PlantSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(cm|mm|m)$'))
+                   model_uri=BASALT_SCHEMA.PlantSample_host_height, domain=PlantSample, range=Optional[str])
 
 slots.PlantSample_host_length = Slot(uri=BASALT_SCHEMA.host_length, name="PlantSample_host_length", curie=BASALT_SCHEMA.curie('host_length'),
-                   model_uri=BASALT_SCHEMA.PlantSample_host_length, domain=PlantSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(cm|mm|m)$'))
+                   model_uri=BASALT_SCHEMA.PlantSample_host_length, domain=PlantSample, range=Optional[str])
 
 slots.PlantSample_host_life_stage = Slot(uri=BASALT_SCHEMA.host_life_stage, name="PlantSample_host_life_stage", curie=BASALT_SCHEMA.curie('host_life_stage'),
                    model_uri=BASALT_SCHEMA.PlantSample_host_life_stage, domain=PlantSample, range=Optional[str])
@@ -18573,8 +19775,7 @@ slots.PureCultureSample_host_common_name = Slot(uri=BASALT_SCHEMA.host_common_na
                    model_uri=BASALT_SCHEMA.PureCultureSample_host_common_name, domain=PureCultureSample, range=str)
 
 slots.PureCultureSample_host_taxid = Slot(uri=BASALT_SCHEMA.host_taxid, name="PureCultureSample_host_taxid", curie=BASALT_SCHEMA.curie('host_taxid'),
-                   model_uri=BASALT_SCHEMA.PureCultureSample_host_taxid, domain=PureCultureSample, range=str,
-                   pattern=re.compile(r'NCBITaxon:\d+'))
+                   model_uri=BASALT_SCHEMA.PureCultureSample_host_taxid, domain=PureCultureSample, range=str)
 
 slots.PureCultureSample_isol_growth_condt = Slot(uri=BASALT_SCHEMA.isol_growth_condt, name="PureCultureSample_isol_growth_condt", curie=BASALT_SCHEMA.curie('isol_growth_condt'),
                    model_uri=BASALT_SCHEMA.PureCultureSample_isol_growth_condt, domain=PureCultureSample, range=str)
@@ -18583,15 +19784,13 @@ slots.PureCultureSample_non_microb_biomass = Slot(uri=BASALT_SCHEMA.non_microb_b
                    model_uri=BASALT_SCHEMA.PureCultureSample_non_microb_biomass, domain=PureCultureSample, range=Optional[str])
 
 slots.PureCultureSample_start_date_inc = Slot(uri=BASALT_SCHEMA.start_date_inc, name="PureCultureSample_start_date_inc", curie=BASALT_SCHEMA.curie('start_date_inc'),
-                   model_uri=BASALT_SCHEMA.PureCultureSample_start_date_inc, domain=PureCultureSample, range=str,
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.PureCultureSample_start_date_inc, domain=PureCultureSample, range=str)
 
 slots.SedimentSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="SedimentSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.SedimentSample_analysis_type, domain=SedimentSample, range=str)
 
 slots.SedimentSample_depth = Slot(uri=BASALT_SCHEMA.depth, name="SedimentSample_depth", curie=BASALT_SCHEMA.curie('depth'),
-                   model_uri=BASALT_SCHEMA.SedimentSample_depth, domain=SedimentSample, range=str,
-                   pattern=re.compile(r'^\d+(\.\d+)?-\d+(\.\d+)?\s*m$'))
+                   model_uri=BASALT_SCHEMA.SedimentSample_depth, domain=SedimentSample, range=str)
 
 slots.SedimentSample_latitude = Slot(uri=BASALT_SCHEMA.latitude, name="SedimentSample_latitude", curie=BASALT_SCHEMA.curie('latitude'),
                    model_uri=BASALT_SCHEMA.SedimentSample_latitude, domain=SedimentSample, range=float)
@@ -18600,26 +19799,22 @@ slots.SedimentSample_longitude = Slot(uri=BASALT_SCHEMA.longitude, name="Sedimen
                    model_uri=BASALT_SCHEMA.SedimentSample_longitude, domain=SedimentSample, range=float)
 
 slots.SedimentSample_microbial_biomass = Slot(uri=BASALT_SCHEMA.microbial_biomass, name="SedimentSample_microbial_biomass", curie=BASALT_SCHEMA.curie('microbial_biomass'),
-                   model_uri=BASALT_SCHEMA.SedimentSample_microbial_biomass, domain=SedimentSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(g/kg sediment|ug/g sediment)$'))
+                   model_uri=BASALT_SCHEMA.SedimentSample_microbial_biomass, domain=SedimentSample, range=Optional[str])
 
 slots.SedimentSample_non_microb_biomass = Slot(uri=BASALT_SCHEMA.non_microb_biomass, name="SedimentSample_non_microb_biomass", curie=BASALT_SCHEMA.curie('non_microb_biomass'),
-                   model_uri=BASALT_SCHEMA.SedimentSample_non_microb_biomass, domain=SedimentSample, range=Optional[str],
-                   pattern=re.compile(r'^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$'))
+                   model_uri=BASALT_SCHEMA.SedimentSample_non_microb_biomass, domain=SedimentSample, range=Optional[str])
 
 slots.SedimentSample_biotic_relationship = Slot(uri=BASALT_SCHEMA.biotic_relationship, name="SedimentSample_biotic_relationship", curie=BASALT_SCHEMA.curie('biotic_relationship'),
                    model_uri=BASALT_SCHEMA.SedimentSample_biotic_relationship, domain=SedimentSample, range=Optional[Union[str, "BioticRelationshipEnum"]])
 
 slots.SoilSample_al_sat = Slot(uri=BASALT_SCHEMA.al_sat, name="SoilSample_al_sat", curie=BASALT_SCHEMA.curie('al_sat'),
-                   model_uri=BASALT_SCHEMA.SoilSample_al_sat, domain=SoilSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*percent$'))
+                   model_uri=BASALT_SCHEMA.SoilSample_al_sat, domain=SoilSample, range=Optional[str])
 
 slots.SoilSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="SoilSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.SoilSample_analysis_type, domain=SoilSample, range=str)
 
 slots.SoilSample_depth = Slot(uri=BASALT_SCHEMA.depth, name="SoilSample_depth", curie=BASALT_SCHEMA.curie('depth'),
-                   model_uri=BASALT_SCHEMA.SoilSample_depth, domain=SoilSample, range=str,
-                   pattern=re.compile(r'^\d+(\.\d+)?-\d+(\.\d+)?\s*m$'))
+                   model_uri=BASALT_SCHEMA.SoilSample_depth, domain=SoilSample, range=str)
 
 slots.SoilSample_heavy_metals = Slot(uri=BASALT_SCHEMA.heavy_metals, name="SoilSample_heavy_metals", curie=BASALT_SCHEMA.curie('heavy_metals'),
                    model_uri=BASALT_SCHEMA.SoilSample_heavy_metals, domain=SoilSample, range=Optional[str])
@@ -18631,20 +19826,16 @@ slots.SoilSample_longitude = Slot(uri=BASALT_SCHEMA.longitude, name="SoilSample_
                    model_uri=BASALT_SCHEMA.SoilSample_longitude, domain=SoilSample, range=float)
 
 slots.SoilSample_microbial_biomass = Slot(uri=BASALT_SCHEMA.microbial_biomass, name="SoilSample_microbial_biomass", curie=BASALT_SCHEMA.curie('microbial_biomass'),
-                   model_uri=BASALT_SCHEMA.SoilSample_microbial_biomass, domain=SoilSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$'))
+                   model_uri=BASALT_SCHEMA.SoilSample_microbial_biomass, domain=SoilSample, range=Optional[str])
 
 slots.SoilSample_non_microb_biomass = Slot(uri=BASALT_SCHEMA.non_microb_biomass, name="SoilSample_non_microb_biomass", curie=BASALT_SCHEMA.curie('non_microb_biomass'),
-                   model_uri=BASALT_SCHEMA.SoilSample_non_microb_biomass, domain=SoilSample, range=Optional[str],
-                   pattern=re.compile(r'^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$'))
+                   model_uri=BASALT_SCHEMA.SoilSample_non_microb_biomass, domain=SoilSample, range=Optional[str])
 
 slots.SoilSample_size_frac_low = Slot(uri=BASALT_SCHEMA.size_frac_low, name="SoilSample_size_frac_low", curie=BASALT_SCHEMA.curie('size_frac_low'),
-                   model_uri=BASALT_SCHEMA.SoilSample_size_frac_low, domain=SoilSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
+                   model_uri=BASALT_SCHEMA.SoilSample_size_frac_low, domain=SoilSample, range=Optional[str])
 
 slots.SoilSample_size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="SoilSample_size_frac_up", curie=BASALT_SCHEMA.curie('size_frac_up'),
-                   model_uri=BASALT_SCHEMA.SoilSample_size_frac_up, domain=SoilSample, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
+                   model_uri=BASALT_SCHEMA.SoilSample_size_frac_up, domain=SoilSample, range=Optional[str])
 
 slots.SynthesizedMaterialSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="SynthesizedMaterialSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.SynthesizedMaterialSample_analysis_type, domain=SynthesizedMaterialSample, range=str)
@@ -18659,12 +19850,10 @@ slots.TerraformSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name
                    model_uri=BASALT_SCHEMA.TerraformSample_analysis_type, domain=TerraformSample, range=str)
 
 slots.TerraformSample_initiation_date_inoculation = Slot(uri=BASALT_SCHEMA.initiation_date_inoculation, name="TerraformSample_initiation_date_inoculation", curie=BASALT_SCHEMA.curie('initiation_date_inoculation'),
-                   model_uri=BASALT_SCHEMA.TerraformSample_initiation_date_inoculation, domain=TerraformSample, range=str,
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.TerraformSample_initiation_date_inoculation, domain=TerraformSample, range=str)
 
 slots.TerraformSample_initiation_date_plant = Slot(uri=BASALT_SCHEMA.initiation_date_plant, name="TerraformSample_initiation_date_plant", curie=BASALT_SCHEMA.curie('initiation_date_plant'),
-                   model_uri=BASALT_SCHEMA.TerraformSample_initiation_date_plant, domain=TerraformSample, range=str,
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.TerraformSample_initiation_date_plant, domain=TerraformSample, range=str)
 
 slots.TerraformSample_synth_env_assembly = Slot(uri=BASALT_SCHEMA.synth_env_assembly, name="TerraformSample_synth_env_assembly", curie=BASALT_SCHEMA.curie('synth_env_assembly'),
                    model_uri=BASALT_SCHEMA.TerraformSample_synth_env_assembly, domain=TerraformSample, range=str)
@@ -18682,15 +19871,13 @@ slots.TerraformSample_synth_env_treatment = Slot(uri=BASALT_SCHEMA.synth_env_tre
                    model_uri=BASALT_SCHEMA.TerraformSample_synth_env_treatment, domain=TerraformSample, range=str)
 
 slots.TerraformSample_synth_start_date = Slot(uri=BASALT_SCHEMA.synth_start_date, name="TerraformSample_synth_start_date", curie=BASALT_SCHEMA.curie('synth_start_date'),
-                   model_uri=BASALT_SCHEMA.TerraformSample_synth_start_date, domain=TerraformSample, range=str,
-                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
+                   model_uri=BASALT_SCHEMA.TerraformSample_synth_start_date, domain=TerraformSample, range=str)
 
 slots.WaterSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="WaterSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
                    model_uri=BASALT_SCHEMA.WaterSample_analysis_type, domain=WaterSample, range=str)
 
 slots.WaterSample_depth = Slot(uri=BASALT_SCHEMA.depth, name="WaterSample_depth", curie=BASALT_SCHEMA.curie('depth'),
-                   model_uri=BASALT_SCHEMA.WaterSample_depth, domain=WaterSample, range=str,
-                   pattern=re.compile(r'^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$'))
+                   model_uri=BASALT_SCHEMA.WaterSample_depth, domain=WaterSample, range=str)
 
 slots.WaterSample_filter_method = Slot(uri=BASALT_SCHEMA.filter_method, name="WaterSample_filter_method", curie=BASALT_SCHEMA.curie('filter_method'),
                    model_uri=BASALT_SCHEMA.WaterSample_filter_method, domain=WaterSample, range=str)
@@ -18702,16 +19889,13 @@ slots.WaterSample_longitude = Slot(uri=BASALT_SCHEMA.longitude, name="WaterSampl
                    model_uri=BASALT_SCHEMA.WaterSample_longitude, domain=WaterSample, range=float)
 
 slots.WaterSample_non_microb_biomass = Slot(uri=BASALT_SCHEMA.non_microb_biomass, name="WaterSample_non_microb_biomass", curie=BASALT_SCHEMA.curie('non_microb_biomass'),
-                   model_uri=BASALT_SCHEMA.WaterSample_non_microb_biomass, domain=WaterSample, range=Optional[str],
-                   pattern=re.compile(r'^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$'))
+                   model_uri=BASALT_SCHEMA.WaterSample_non_microb_biomass, domain=WaterSample, range=Optional[str])
 
 slots.WaterSample_size_frac_low = Slot(uri=BASALT_SCHEMA.size_frac_low, name="WaterSample_size_frac_low", curie=BASALT_SCHEMA.curie('size_frac_low'),
-                   model_uri=BASALT_SCHEMA.WaterSample_size_frac_low, domain=WaterSample, range=str,
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
+                   model_uri=BASALT_SCHEMA.WaterSample_size_frac_low, domain=WaterSample, range=str)
 
 slots.WaterSample_size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="WaterSample_size_frac_up", curie=BASALT_SCHEMA.curie('size_frac_up'),
-                   model_uri=BASALT_SCHEMA.WaterSample_size_frac_up, domain=WaterSample, range=str,
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
+                   model_uri=BASALT_SCHEMA.WaterSample_size_frac_up, domain=WaterSample, range=str)
 
 slots.ProcessedSample_replicate = Slot(uri=BASALT_SCHEMA.replicate, name="ProcessedSample_replicate", curie=BASALT_SCHEMA.curie('replicate'),
                    model_uri=BASALT_SCHEMA.ProcessedSample_replicate, domain=ProcessedSample, range=Optional[int])
@@ -18720,33 +19904,31 @@ slots.CoreSection_core_section = Slot(uri=BASALT_SCHEMA.core_section, name="Core
                    model_uri=BASALT_SCHEMA.CoreSection_core_section, domain=CoreSection, range=Union[str, "CoreSectionEnum"])
 
 slots.AerosolArmSamplingActivity_humidity = Slot(uri=BASALT_SCHEMA.humidity, name="AerosolArmSamplingActivity_humidity", curie=BASALT_SCHEMA.curie('humidity'),
-                   model_uri=BASALT_SCHEMA.AerosolArmSamplingActivity_humidity, domain=AerosolArmSamplingActivity, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.AerosolArmSamplingActivity_humidity, domain=AerosolArmSamplingActivity, range=Optional[str])
 
 slots.MonetSoilSamplingActivity_collection_time = Slot(uri=BASALT_SCHEMA.collection_time, name="MonetSoilSamplingActivity_collection_time", curie=BASALT_SCHEMA.curie('collection_time'),
-                   model_uri=BASALT_SCHEMA.MonetSoilSamplingActivity_collection_time, domain=MonetSoilSamplingActivity, range=str,
-                   pattern=re.compile(r'^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$'))
+                   model_uri=BASALT_SCHEMA.MonetSoilSamplingActivity_collection_time, domain=MonetSoilSamplingActivity, range=str)
 
 slots.MonetSoilSamplingActivity_infiltration_1 = Slot(uri=BASALT_SCHEMA.infiltration_1, name="MonetSoilSamplingActivity_infiltration_1", curie=BASALT_SCHEMA.curie('infiltration_1'),
-                   model_uri=BASALT_SCHEMA.MonetSoilSamplingActivity_infiltration_1, domain=MonetSoilSamplingActivity, range=str,
-                   pattern=re.compile(r'^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$'))
+                   model_uri=BASALT_SCHEMA.MonetSoilSamplingActivity_infiltration_1, domain=MonetSoilSamplingActivity, range=str)
 
 slots.MonetSoilSamplingActivity_infiltration_2 = Slot(uri=BASALT_SCHEMA.infiltration_2, name="MonetSoilSamplingActivity_infiltration_2", curie=BASALT_SCHEMA.curie('infiltration_2'),
-                   model_uri=BASALT_SCHEMA.MonetSoilSamplingActivity_infiltration_2, domain=MonetSoilSamplingActivity, range=str,
-                   pattern=re.compile(r'^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)'))
+                   model_uri=BASALT_SCHEMA.MonetSoilSamplingActivity_infiltration_2, domain=MonetSoilSamplingActivity, range=str)
 
 slots.MonetSoilSamplingActivity_sample_collection_dev = Slot(uri=BASALT_SCHEMA.sample_collection_dev, name="MonetSoilSamplingActivity_sample_collection_dev", curie=BASALT_SCHEMA.curie('sample_collection_dev'),
                    model_uri=BASALT_SCHEMA.MonetSoilSamplingActivity_sample_collection_dev, domain=MonetSoilSamplingActivity, range=str)
 
 slots.OtherUndescribedSamplingActivity_humidity = Slot(uri=BASALT_SCHEMA.humidity, name="OtherUndescribedSamplingActivity_humidity", curie=BASALT_SCHEMA.curie('humidity'),
-                   model_uri=BASALT_SCHEMA.OtherUndescribedSamplingActivity_humidity, domain=OtherUndescribedSamplingActivity, range=Optional[str],
-                   pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSamplingActivity_humidity, domain=OtherUndescribedSamplingActivity, range=Optional[str])
 
 slots.WaterSamplingActivity_sample_collection_dev = Slot(uri=BASALT_SCHEMA.sample_collection_dev, name="WaterSamplingActivity_sample_collection_dev", curie=BASALT_SCHEMA.curie('sample_collection_dev'),
                    model_uri=BASALT_SCHEMA.WaterSamplingActivity_sample_collection_dev, domain=WaterSamplingActivity, range=str)
 
 slots.WaterSamplingActivity_sample_collection_method = Slot(uri=BASALT_SCHEMA.sample_collection_method, name="WaterSamplingActivity_sample_collection_method", curie=BASALT_SCHEMA.curie('sample_collection_method'),
                    model_uri=BASALT_SCHEMA.WaterSamplingActivity_sample_collection_method, domain=WaterSamplingActivity, range=str)
+
+slots.FiltrationProcess_volume_ml = Slot(uri=BASALT_SCHEMA.volume_ml, name="FiltrationProcess_volume_ml", curie=BASALT_SCHEMA.curie('volume_ml'),
+                   model_uri=BASALT_SCHEMA.FiltrationProcess_volume_ml, domain=FiltrationProcess, range=Optional[float])
 
 slots.Study_external_identifiers = Slot(uri=BASALT_SCHEMA.external_identifiers, name="Study_external_identifiers", curie=BASALT_SCHEMA.curie('external_identifiers'),
                    model_uri=BASALT_SCHEMA.Study_external_identifiers, domain=Study, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])

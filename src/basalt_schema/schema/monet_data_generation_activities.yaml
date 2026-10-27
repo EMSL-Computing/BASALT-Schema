@@ -134,7 +134,7 @@ classes:
     attributes:
     slots:
   
-  XrayComputedTomographyDataGenerationActivity:
+  XCTDataGenerationActivity:
     is_a: DataGenerationActivity
     slots:
     attributes:

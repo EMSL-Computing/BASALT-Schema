@@ -96,8 +96,8 @@ enums:
           See src/validation/fticr_schema.yaml.
       xct:
         description: >-
-          X-ray computed tomography pore geometry and flow properties.
-          See src/validation/tomography_schema.yaml.
+          X-ray computed tomography (XCT) pore geometry and flow properties.
+          See src/validation/xct_schema.yaml.
 
 classes:
 
@@ -202,6 +202,6 @@ classes:
             maom_toctn    → TOCTNProductValues          toctn_schema.yaml
             hyprop        → HydraulicPropertiesProduct  hydraulic_properties_schema.yaml
             fticr         → FTICRProduct                fticr_schema.yaml
-            xct           → TomographyProduct           tomography_schema.yaml
+            xct           → XCTProduct                   xct_schema.yaml
         range: string   # placeholder   union types handled in code; each sibling schema covers one branch
         required: true

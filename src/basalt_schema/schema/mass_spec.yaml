@@ -16,7 +16,7 @@ description: |
 
   Relevant to data processing:
   - MassSpectrometryDataProcessingActivity
-  - MassSpectrometryStandardRun
+  - CalibrationStandardRun
 
   Processed data products:
   - MassSpectrometryDataProduct (abstract)
@@ -222,9 +222,9 @@ classes:
       - metaproteomics_analysis_category
 
 
-  MassSpectrometryStandardRun:
+  CalibrationStandardRun:
     description: |-
-      A record of a mass spectrometry standard run with a batch of samples, which is used for calibration and quality control.
+      A record of a standard run with a batch of samples, which is used for calibration and quality control.
     slots:
       - name
       - description
