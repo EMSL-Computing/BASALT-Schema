@@ -43,7 +43,7 @@ def build_model():
     def stage_of(name):                      # process-flow lane
         a = anc_set(name)
         if name == "organism": return "organism"
-        if "DataProduct" in a or "PlateProduct" in a or name in ("MAOMProduct", "WEOMProduct"): return "products"
+        if "DataProduct" in a or "PlateProduct" in a or name in ("HClExtOMProduct", "WEOMProduct"): return "products"
         if "DataProcessingActivity" in a: return "dataproc"
         if "DataGenerationActivity" in a: return "datagen"
         if "SampleProcessing" in a or "LabProcessingActivity" in a or "PurchasedMaterial" in a: return "processing"

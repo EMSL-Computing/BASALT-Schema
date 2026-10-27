@@ -26,8 +26,10 @@ classes:
       Used by CultureGrowth activities AND PlateSetupActivity, which share
       temperature and agitation parameters but live in different branches
       of the sampleProcessing is_a tree.
+      Temperature and duration come from HasTemperatureHold.
+    mixins:
+      - HasTemperatureHold
     slots:
-      - temperature_celsius
       - agitation_speed_rpm
       - oxygen_saturation_pct
 
@@ -71,6 +73,10 @@ classes:
           -> processingSampleLink(role=output_sample)
           -> processedSample(type='prepared_media'); media_ref points here
           -> CultureGrowth / AMP2PlateSetupActivity.media_ref
+
+      Storage of the prepared media batch is recorded as SampleStorage rows on the
+      prepared_media processedSample (storage_condition from StorageConditionEnum,
+      temperature via temperature_celsius / temperature_category).
     slots:
       - media_type
       - volume_ml
@@ -82,10 +88,8 @@ classes:
       - ph_target
       - exposure_sensitivity
       - media_additions
-      - storage_temperature
       - creation_date
     todos:
-      - storage_condt as enum?
       - media range?
 
   # ============================================================================
@@ -103,7 +107,6 @@ classes:
     slots:
       - organism_ref
       - growth_medium
-      - incubation_time_hours
       - container_type
   # ============================================================================
   # StrainPurity   concrete CultureGrowth
@@ -135,6 +138,9 @@ classes:
       Input:  sample(s) via processingSampleLink (role: input_sample)
       Output: processedSample(type='stock_culture') via processingSampleLink
       Refs:   Media (growth medium), Strain
+
+      Long-term storage of the stock (e.g., -80 C in glycerol) is recorded as a
+      SampleStorage row on the stock_culture processedSample, not on this activity.
     slots:
       - preparation_date
 
@@ -167,7 +173,6 @@ classes:
       Refs:   Media (growth medium), Strain
     slots:
       - treatment_type
-      - growth_time
 
 
   # ============================================================================
@@ -196,8 +201,9 @@ classes:
       - setup_instrument
       - sealing_method
       - well_metadata
-    # Inherited from HasIncubationConditions: temperature_celsius, agitation_speed_rpm,
-    #   oxygen_saturation_pct
+    # Inherited from HasIncubationConditions: agitation_speed_rpm, oxygen_saturation_pct,
+    #   and via HasTemperatureHold: temperature_celsius, temperature_category,
+    #   duration_hours, hold_start_time, hold_end_time
 
   # ============================================================================
   # AMP2PlateSetupActivity   concrete PlateSetupActivity

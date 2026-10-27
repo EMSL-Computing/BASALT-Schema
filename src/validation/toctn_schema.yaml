@@ -1,36 +1,36 @@
 ---
 # =============================================================================
-# TOC/TN Analysis   Ingest Validation Schema (WEOM and MAOM/HClExtOM)
+# TOC/TN Analysis   Ingest Validation Schema (WEOM and HClExtOM, formerly MAOM)
 # =============================================================================
-# Source classes: WEOMProduct, MAOMProduct (products.yaml)
+# Source classes: WEOMProduct, HClExtOMProduct (products.yaml)
 # Analysis types: "weom_toctn", "maom_toctn" (lims_processed_data_schema.yaml)
 # Measure level:  Replicate-capable (rep slot in operational schema)
 # CSV output (WEOM):    WEOM_TOC_mg_per_kg, WEOM_TN_mg_per_kg,
 #                       flag_WEOM_TOC, flag_WEOM_TN
-# CSV output (MAOM):    HClExtOM_TOC_mg_per_kg, HClExtOM_TN_mg_per_kg,
+# CSV output (HClExtOM, formerly MAOM):    HClExtOM_TOC_mg_per_kg, HClExtOM_TN_mg_per_kg,
 #                       flag_HClExtOM_TOC, flag_HClExtOM_TN
 #                       (soil_biochemical_properties_schema.yaml)
 #
-# DESIGN NOTE: WEOM and MAOM (HClExtOM) have identical schema shapes   both
+# DESIGN NOTE: WEOM and HClExtOM (formerly MAOM) have identical schema shapes   both
 # measure TOC and TN from different extractions. A single class covers both;
 # analysis_type in the envelope discriminates which product table receives the data.
 #
-# NAMING NOTE: MAOMProduct is renamed HClExtOM in the CSV deliverable to reflect
-# the actual analytical method (HCl extraction), but the operational schema class
-# is still MAOMProduct. The analysis_type key used here is "maom_toctn".
+# NAMING NOTE: The canonical class is HClExtOMProduct (HCl-extractable organic
+# matter), named for the actual analytical method (HCl extraction); CSV columns
+# use the HClExtOM prefix. The analysis_type key used here is still "maom_toctn".
 # Last Updated:  2026-03-16
 # =============================================================================
 
 id: https://emsl-computing.github.io/BASALT-Schema/toctn
 name: toctn_schema
-title: MONet TOC/TN (WEOM and MAOM/HClExtOM) Ingest Schema
+title: MONet TOC/TN (WEOM and HClExtOM, formerly MAOM) Ingest Schema
 description: |-
-  Ingest validation schema for WEOMProduct and MAOMProduct (HClExtOM).
+  Ingest validation schema for WEOMProduct and HClExtOMProduct.
   The two products share an identical schema shape   both measure Total Organic
   Carbon (TOC) and Total Nitrogen (TN) from different soil extractions:
   
     WEOM  (Water Extractable Organic Matter)  → analysis_type = "weom_toctn"
-    MAOM  (Mineral Associated Organic Matter, HCl extraction) → analysis_type = "maom_toctn"
+    HClExtOM (formerly MAOM)  (Mineral Associated Organic Matter, HCl extraction) → analysis_type = "maom_toctn"
   
   The analysis_type field in the LIMSProcessedData envelope determines which
   product table the data is routed to. The payload shape is identical.
@@ -76,12 +76,12 @@ classes:
 
   TOCTNProductValues:
     description: |-
-      TOC/TN product values   shared schema for WEOM and MAOM (HClExtOM).
+      TOC/TN product values   shared schema for WEOM and HClExtOM (formerly MAOM).
       Replicate-level data when replicate field is present in CoreSectionData.
       
       For WEOM (analysis_type = "weom_toctn"):
         CSV columns: WEOM_TOC_mg_per_kg, WEOM_TN_mg_per_kg, flag_WEOM_TOC, flag_WEOM_TN
-      For MAOM/HClExtOM (analysis_type = "maom_toctn"):
+      For HClExtOM (formerly MAOM) (analysis_type = "maom_toctn"):
         CSV columns: HClExtOM_TOC_mg_per_kg, HClExtOM_TN_mg_per_kg, flag_HClExtOM_TOC, flag_HClExtOM_TN
     slots:
       - flag_toc
@@ -90,18 +90,18 @@ classes:
       flag_toc:
         description: |-
           QC flag for the TOC measurement.
-          For WEOM: flag_WEOM_TOC. For MAOM: flag_HClExtOM_TOC.
+          For WEOM: flag_WEOM_TOC. For HClExtOM (formerly MAOM): flag_HClExtOM_TOC.
       flag_tn:
         description: |-
           QC flag for the TN measurement.
-          For WEOM: flag_WEOM_TN. For MAOM: flag_HClExtOM_TN.
+          For WEOM: flag_WEOM_TN. For HClExtOM (formerly MAOM): flag_HClExtOM_TN.
     attributes:
 
       toc:
         description: |-
           Total Organic Carbon in mg/kg dry soil.
           For WEOM: CSV column WEOM_TOC_mg_per_kg.
-          For MAOM: CSV column HClExtOM_TOC_mg_per_kg.
+          For HClExtOM (formerly MAOM): CSV column HClExtOM_TOC_mg_per_kg.
           Minimum value: 0
         range: double
         required: false
@@ -111,7 +111,7 @@ classes:
         description: |-
           Total Nitrogen in mg/kg dry soil.
           For WEOM: CSV column WEOM_TN_mg_per_kg.
-          For MAOM: CSV column HClExtOM_TN_mg_per_kg.
+          For HClExtOM (formerly MAOM): CSV column HClExtOM_TN_mg_per_kg.
           Minimum value: 0
         range: double
         required: false

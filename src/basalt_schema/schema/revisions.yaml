@@ -1,0 +1,119 @@
+---
+id: https://emsl-computing.github.io/BASALT-Schema/revisions
+name: basalt-schema-revisions
+title: BASALT Schema - Revisions
+description: |-
+  Revision tracking for processed data products. A Revision is one immutable,
+  versioned snapshot of a single product for a single sample. Each product type
+  has a concrete Revision subclass, and every Revision points at the
+  DataProcessingActivity that produced it (i.e. when the data was processed and
+  how this revision of the processed data came about).
+
+  Mirrors the DataProductRevision table in monet-api, where product_name selects
+  the product and (processed_data_id, product_name, natural_key, version) is unique.
+  Here the product is encoded by the subclass instead of a product_name string.
+  A schema change creates a new versioned table (pHProduct_v2), so revisions record
+  schema_version and product_table rather than a JSON payload of the values.
+
+  Inheritance hierarchy:
+    Revision (abstract)
+      +-- pHRevision
+      +-- BulkDensityRevision
+      +-- ... one per product
+license: MIT
+
+prefixes:
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
+  linkml: https://w3id.org/linkml/
+default_prefix: basalt_schema
+
+imports:
+  - linkml:types
+  - basalt_schema
+  - products
+  - metagenomics
+  - slots
+
+slots:
+  revises:
+    description: The processed data product (current row) this revision is a snapshot of.
+    range: ProcessedData
+    required: true
+  version_number:
+    description: Monotonic revision number within one natural_key series. The first revision is 1.
+    range: integer
+    minimum_value: 1
+    required: true
+  is_current:
+    description: True when this revision is the one stored on the product table.
+    range: boolean
+    required: true
+  revision_date:
+    description: When this revision was written.
+    range: datetime
+    required: true
+  schema_version:
+    description: >-
+      BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own
+      product table, so the data itself is the row in that table; no copy of the values
+      is kept on the revision.
+    range: string
+    required: true
+
+classes:
+
+  Revision:
+    abstract: true
+    description: |-
+      Abstract base for one versioned snapshot of a processed data product for one
+      sample. Revisions are immutable; a correction is appended as a new revision.
+      Subclasses exist per data product.
+    slots:
+      - revises
+      - version_number
+      - is_current
+      - revision_date
+      - schema_version
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+        required: true
+    unique_keys:
+      revision_identity:
+        unique_key_slots: [revises, natural_key, version_number]
+
+  DataProductRevision:
+    is_a: Revision
+    description: A revision of a generic data product (DataProduct).
+    slots:
+  
+  DataProcessingActivityRevision:
+    is_a: Revision
+    description: A revision of a data processing activity (DataProcessingActivity).
+
+  InstrumentDataRevision:
+    is_a: Revision
+    description: A revision of an instrument (Instrument).
+
+  DataGenerationActivityRevision:
+    is_a: Revision
+    description: A revision of a data generation activity (DataGenerationActivity).
+
+  ProcessedSampleRevision:
+    is_a: Revision
+    description: A revision of a processed sample (ProcessedSample).
+
+  SampleProcessingActivityRevision:
+    is_a: Revision
+    description: A revision of a sample processing activity (SampleProcessingActivity).
+
+  SampleRevision:
+    is_a: Revision
+    description: A revision of a sample (Sample).
+
+  SamplingActivityRevision:
+    is_a: Revision
+    description: A revision of a sampling activity (SamplingActivity).
+
+  

@@ -76,6 +76,7 @@ dataset:
     od_products: 38
     well_readings: 7392
     processing_sample_links: 146
+    sample_storage: 37
 
 # ---------------------------------------------------------------------------
 # PersonValue records referenced by setup_operator_id / instrument_operator_id
@@ -683,7 +684,6 @@ media_preparations:
     ph_target: null
     exposure_sensitivity: null
     media_additions: []
-    storage_temperature: "4 C"
     creation_date: "2026-04-27"
     processing_steps: "weigh; dissolve; sterilise; QC; store"
     # output prepared_media processed sample: urn:amp2:processed-sample:media-LB-lennox-001
@@ -704,7 +704,6 @@ media_preparations:
       - "0.4% glucose (w/v)"
       - "2 mM MgSO4"
       - "0.1 mM CaCl2"
-    storage_temperature: "4 C"
     creation_date: "2026-04-27"
     processing_steps: "weigh; dissolve; sterilise; QC; store"
     # output prepared_media processed sample: urn:amp2:processed-sample:media-M9-glucose-001
@@ -725,7 +724,6 @@ media_preparations:
     media_additions:
       - "20 mM sodium benzoate"
       - "2 mM MgSO4"
-    storage_temperature: "4 C"
     creation_date: "2026-04-28"
     processing_steps: "weigh; dissolve; sterilise; QC; store"
     # output prepared_media processed sample: urn:amp2:processed-sample:media-M9-benzoate-001
@@ -743,7 +741,6 @@ media_preparations:
     ph_target: null
     exposure_sensitivity: null
     media_additions: []
-    storage_temperature: "room temperature"
     creation_date: "2026-04-28"
     processing_steps: "weigh; dissolve; sterilise; QC; store"
     # output prepared_media processed sample: urn:amp2:processed-sample:media-YPD-001
@@ -765,7 +762,6 @@ media_preparations:
     media_additions:
       - "50 ug/mL apramycin"
       - "vanillate added per well"
-    storage_temperature: "4 C"
     creation_date: "2026-04-29"
     processing_steps: "weigh; dissolve; sterilise; QC; store"
     # output prepared_media processed sample: urn:amp2:processed-sample:media-LB-vanillate-001
@@ -784,7 +780,6 @@ media_preparations:
     exposure_sensitivity: null
     media_additions:
       - "15 g/L agar"
-    storage_temperature: "4 C"
     creation_date: "2026-04-20"
     processing_steps: "weigh; dissolve; sterilise; QC; store"
     # output prepared_media processed sample: urn:amp2:processed-sample:media-LB-agar-001
@@ -803,7 +798,6 @@ media_preparations:
     exposure_sensitivity: null
     media_additions:
       - "25% glycerol (v/v)"
-    storage_temperature: "-20 C"
     creation_date: "2026-04-21"
     processing_steps: "weigh; dissolve; sterilise; QC; store"
     # output prepared_media processed sample: urn:amp2:processed-sample:media-glycerol-stock-001
@@ -823,7 +817,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -834,7 +828,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: AG5577-pJE2165-R1
   - id: "urn:amp2:activity:stock-culture-0001"
@@ -845,7 +838,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -856,7 +849,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: AG5577-pJE2165-R1
   - id: "urn:amp2:activity:pre-culture-0001"
@@ -867,7 +859,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -878,7 +870,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: AG5577-pJE2165-R1
   - id: "urn:amp2:activity:experimental-culture-0001"
@@ -889,7 +880,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -900,7 +891,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "vanillate induction (0.5 mM)"
-    growth_time: "4 hours"
 
   # user sample: AG5577-pJE2165-R2
   - id: "urn:amp2:activity:strain-purity-0002"
@@ -911,7 +901,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -922,7 +912,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: AG5577-pJE2165-R2
   - id: "urn:amp2:activity:stock-culture-0002"
@@ -933,7 +922,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -944,7 +933,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: AG5577-pJE2165-R2
   - id: "urn:amp2:activity:pre-culture-0002"
@@ -955,7 +943,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -966,7 +954,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: AG5577-pJE2165-R2
   - id: "urn:amp2:activity:experimental-culture-0002"
@@ -977,7 +964,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:AG5577-pJE2165"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -988,7 +975,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "vanillate induction (0.5 mM)"
-    growth_time: "4 hours"
 
   # user sample: PP_0055-R1
   - id: "urn:amp2:activity:strain-purity-0003"
@@ -999,7 +985,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-0055"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -1010,7 +996,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_0055-R1
   - id: "urn:amp2:activity:stock-culture-0003"
@@ -1021,7 +1006,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-0055"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1032,7 +1017,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_0055-R1
   - id: "urn:amp2:activity:pre-culture-0003"
@@ -1043,7 +1027,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-0055"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1054,7 +1038,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_0055-R1
   - id: "urn:amp2:activity:experimental-culture-0003"
@@ -1065,7 +1048,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-0055"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -1076,7 +1059,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "vanillate induction (0.5 mM)"
-    growth_time: "4 hours"
 
   # user sample: PP_0055-R2
   - id: "urn:amp2:activity:strain-purity-0004"
@@ -1087,7 +1069,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-0055"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -1098,7 +1080,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_0055-R2
   - id: "urn:amp2:activity:stock-culture-0004"
@@ -1109,7 +1090,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-0055"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1120,7 +1101,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_0055-R2
   - id: "urn:amp2:activity:pre-culture-0004"
@@ -1131,7 +1111,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-0055"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1142,7 +1122,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_0055-R2
   - id: "urn:amp2:activity:experimental-culture-0004"
@@ -1153,7 +1132,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-0055"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -1164,7 +1143,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "vanillate induction (0.5 mM)"
-    growth_time: "4 hours"
 
   # user sample: PP_0055-R3
   - id: "urn:amp2:activity:strain-purity-0005"
@@ -1175,7 +1153,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-0055"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -1186,7 +1164,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_0055-R3
   - id: "urn:amp2:activity:stock-culture-0005"
@@ -1197,7 +1174,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-0055"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1208,7 +1185,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_0055-R3
   - id: "urn:amp2:activity:pre-culture-0005"
@@ -1219,7 +1195,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-0055"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1230,7 +1206,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_0055-R3
   - id: "urn:amp2:activity:experimental-culture-0005"
@@ -1241,7 +1216,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-0055"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -1252,7 +1227,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "vanillate induction (0.5 mM)"
-    growth_time: "4 hours"
 
   # user sample: PP_1021-R1
   - id: "urn:amp2:activity:strain-purity-0006"
@@ -1263,7 +1237,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-1021"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -1274,7 +1248,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_1021-R1
   - id: "urn:amp2:activity:stock-culture-0006"
@@ -1285,7 +1258,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-1021"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1296,7 +1269,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_1021-R1
   - id: "urn:amp2:activity:pre-culture-0006"
@@ -1307,7 +1279,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-1021"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1318,7 +1290,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_1021-R1
   - id: "urn:amp2:activity:experimental-culture-0006"
@@ -1329,7 +1300,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-1021"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -1340,7 +1311,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "vanillate induction (0.5 mM)"
-    growth_time: "4 hours"
 
   # user sample: PP_3186-R1
   - id: "urn:amp2:activity:strain-purity-0007"
@@ -1351,7 +1321,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-3186"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -1362,7 +1332,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_3186-R1
   - id: "urn:amp2:activity:stock-culture-0007"
@@ -1373,7 +1342,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-3186"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1384,7 +1353,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_3186-R1
   - id: "urn:amp2:activity:pre-culture-0007"
@@ -1395,7 +1363,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-3186"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1406,7 +1374,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_3186-R1
   - id: "urn:amp2:activity:experimental-culture-0007"
@@ -1417,7 +1384,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-3186"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -1428,7 +1395,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "vanillate induction (0.5 mM)"
-    growth_time: "4 hours"
 
   # user sample: PP_3186-R2
   - id: "urn:amp2:activity:strain-purity-0008"
@@ -1439,7 +1405,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-3186"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -1450,7 +1416,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_3186-R2
   - id: "urn:amp2:activity:stock-culture-0008"
@@ -1461,7 +1426,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-3186"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1472,7 +1437,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_3186-R2
   - id: "urn:amp2:activity:pre-culture-0008"
@@ -1483,7 +1447,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-3186"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1494,7 +1458,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_3186-R2
   - id: "urn:amp2:activity:experimental-culture-0008"
@@ -1505,7 +1468,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-3186"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -1516,7 +1479,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "vanillate induction (0.5 mM)"
-    growth_time: "4 hours"
 
   # user sample: PP_5325-R1
   - id: "urn:amp2:activity:strain-purity-0009"
@@ -1527,7 +1489,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-5325"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -1538,7 +1500,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_5325-R1
   - id: "urn:amp2:activity:stock-culture-0009"
@@ -1549,7 +1510,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-5325"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1560,7 +1521,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_5325-R1
   - id: "urn:amp2:activity:pre-culture-0009"
@@ -1571,7 +1531,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-5325"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1582,7 +1542,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: PP_5325-R1
   - id: "urn:amp2:activity:experimental-culture-0009"
@@ -1593,7 +1552,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:PP-5325"
     media_ref: "urn:amp2:processed-sample:media-LB-vanillate-001"
     growth_medium: "LB + apramycin + vanillate induction medium batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -1604,7 +1563,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "vanillate induction (0.5 mM)"
-    growth_time: "4 hours"
 
   # user sample: KT2440_WT-R1
   - id: "urn:amp2:activity:strain-purity-0010"
@@ -1615,7 +1573,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:KT2440-WT"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -1626,7 +1584,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: KT2440_WT-R1
   - id: "urn:amp2:activity:stock-culture-0010"
@@ -1637,7 +1594,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:KT2440-WT"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1648,7 +1605,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: KT2440_WT-R1
   - id: "urn:amp2:activity:pre-culture-0010"
@@ -1659,7 +1615,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:KT2440-WT"
     media_ref: "urn:amp2:processed-sample:media-LB-lennox-001"
     growth_medium: "LB Lennox broth batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1670,7 +1626,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: KT2440_WT-R1
   - id: "urn:amp2:activity:experimental-culture-0010"
@@ -1681,7 +1636,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:KT2440-WT"
     media_ref: "urn:amp2:processed-sample:media-LB-lennox-001"
     growth_medium: "LB Lennox broth batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -1692,7 +1647,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "none"
-    growth_time: "4 hours"
 
   # user sample: KT2440_WT-R2
   - id: "urn:amp2:activity:strain-purity-0011"
@@ -1703,7 +1657,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:KT2440-WT"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -1714,7 +1668,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: KT2440_WT-R2
   - id: "urn:amp2:activity:stock-culture-0011"
@@ -1725,7 +1678,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:KT2440-WT"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1736,7 +1689,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: KT2440_WT-R2
   - id: "urn:amp2:activity:pre-culture-0011"
@@ -1747,7 +1699,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:KT2440-WT"
     media_ref: "urn:amp2:processed-sample:media-LB-lennox-001"
     growth_medium: "LB Lennox broth batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1758,7 +1710,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: KT2440_WT-R2
   - id: "urn:amp2:activity:experimental-culture-0011"
@@ -1769,7 +1720,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:KT2440-WT"
     media_ref: "urn:amp2:processed-sample:media-LB-lennox-001"
     growth_medium: "LB Lennox broth batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -1780,7 +1731,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "none"
-    growth_time: "4 hours"
 
   # user sample: RHA1_pTE314-R1
   - id: "urn:amp2:activity:strain-purity-0012"
@@ -1791,7 +1741,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -1802,7 +1752,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: RHA1_pTE314-R1
   - id: "urn:amp2:activity:stock-culture-0012"
@@ -1813,7 +1762,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1824,7 +1773,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: RHA1_pTE314-R1
   - id: "urn:amp2:activity:pre-culture-0012"
@@ -1835,7 +1783,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
     media_ref: "urn:amp2:processed-sample:media-M9-benzoate-001"
     growth_medium: "M9 + 20 mM sodium benzoate batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1846,7 +1794,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: RHA1_pTE314-R1
   - id: "urn:amp2:activity:experimental-culture-0012"
@@ -1857,7 +1804,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
     media_ref: "urn:amp2:processed-sample:media-M9-benzoate-001"
     growth_medium: "M9 + 20 mM sodium benzoate batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -1868,7 +1815,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "none"
-    growth_time: "4 hours"
 
   # user sample: RHA1_pTE314-R2
   - id: "urn:amp2:activity:strain-purity-0013"
@@ -1879,7 +1825,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -1890,7 +1836,6 @@ culture_growth_activities:
     contaminant_strains: "Bacillus sp. (first streak only; cleared on re-streak)"
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: RHA1_pTE314-R2
   - id: "urn:amp2:activity:stock-culture-0013"
@@ -1901,7 +1846,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1912,7 +1857,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: RHA1_pTE314-R2
   - id: "urn:amp2:activity:pre-culture-0013"
@@ -1923,7 +1867,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
     media_ref: "urn:amp2:processed-sample:media-M9-benzoate-001"
     growth_medium: "M9 + 20 mM sodium benzoate batch 001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -1934,7 +1878,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: RHA1_pTE314-R2
   - id: "urn:amp2:activity:experimental-culture-0013"
@@ -1945,7 +1888,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:RHA1-pTE314"
     media_ref: "urn:amp2:processed-sample:media-M9-benzoate-001"
     growth_medium: "M9 + 20 mM sodium benzoate batch 001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -1956,7 +1899,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "none"
-    growth_time: "4 hours"
 
   # user sample: IFO0880_LIP1-R1
   - id: "urn:amp2:activity:strain-purity-0014"
@@ -1967,7 +1909,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 48.0
+    duration_hours: 48.0
     temperature_celsius: 25.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -1978,7 +1920,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: IFO0880_LIP1-R1
   - id: "urn:amp2:activity:stock-culture-0014"
@@ -1989,7 +1930,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 25.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -2000,7 +1941,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: IFO0880_LIP1-R1
   - id: "urn:amp2:activity:pre-culture-0014"
@@ -2011,7 +1951,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
     media_ref: "urn:amp2:processed-sample:media-YPD-001"
     growth_medium: "YPD broth batch 001"
-    incubation_time_hours: 18.0
+    duration_hours: 18.0
     temperature_celsius: 25.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -2022,7 +1962,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: IFO0880_LIP1-R1
   - id: "urn:amp2:activity:experimental-culture-0014"
@@ -2033,7 +1972,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
     media_ref: "urn:amp2:processed-sample:media-YPD-001"
     growth_medium: "YPD broth batch 001"
-    incubation_time_hours: 6.0
+    duration_hours: 6.0
     temperature_celsius: 25.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -2044,7 +1983,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "none"
-    growth_time: "6 hours"
 
   # user sample: IFO0880_LIP1-R2
   - id: "urn:amp2:activity:strain-purity-0015"
@@ -2055,7 +1993,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
     media_ref: "urn:amp2:processed-sample:media-LB-agar-001"
     growth_medium: "LB agar purity plate"
-    incubation_time_hours: 48.0
+    duration_hours: 48.0
     temperature_celsius: 25.0
     agitation_speed_rpm: null
     oxygen_saturation_pct: 20.9
@@ -2066,7 +2004,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: IFO0880_LIP1-R2
   - id: "urn:amp2:activity:stock-culture-0015"
@@ -2077,7 +2014,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
     media_ref: "urn:amp2:processed-sample:media-glycerol-stock-001"
     growth_medium: "LB + 25% glycerol"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 25.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -2088,7 +2025,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: "2026-04-30"
     treatment_type: null
-    growth_time: null
 
   # user sample: IFO0880_LIP1-R2
   - id: "urn:amp2:activity:pre-culture-0015"
@@ -2099,7 +2035,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
     media_ref: "urn:amp2:processed-sample:media-YPD-001"
     growth_medium: "YPD broth batch 001"
-    incubation_time_hours: 18.0
+    duration_hours: 18.0
     temperature_celsius: 25.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -2110,7 +2046,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: null
-    growth_time: null
 
   # user sample: IFO0880_LIP1-R2
   - id: "urn:amp2:activity:experimental-culture-0015"
@@ -2121,7 +2056,7 @@ culture_growth_activities:
     organism_ref: "urn:amp2:organism:IFO0880-LIP1"
     media_ref: "urn:amp2:processed-sample:media-YPD-001"
     growth_medium: "YPD broth batch 001"
-    incubation_time_hours: 6.0
+    duration_hours: 6.0
     temperature_celsius: 25.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
@@ -2132,7 +2067,6 @@ culture_growth_activities:
     contaminant_strains: null
     preparation_date: null
     treatment_type: "none"
-    growth_time: "6 hours"
 
 # ---------------------------------------------------------------------------
 # processed_samples  (class: ProcessedSample, is_a Sample)
@@ -2146,7 +2080,6 @@ processed_samples:
     description: "Physical media batch produced by urn:amp2:activity:media-prep-LB-001."
     volume_uL: 2000000.0
     replicate: null
-    storage_location: "Cold room 2 / shelf B"
     label_text: "LB Lennox broth batch 001"
   - id: "urn:amp2:processed-sample:media-M9-glucose-001"
     name: "M9 + 0.4% glucose batch 001"
@@ -2155,7 +2088,6 @@ processed_samples:
     description: "Physical media batch produced by urn:amp2:activity:media-prep-M9-glucose-001."
     volume_uL: 1500000.0
     replicate: null
-    storage_location: "Cold room 2 / shelf B"
     label_text: "M9 + 0.4% glucose batch 001"
   - id: "urn:amp2:processed-sample:media-M9-benzoate-001"
     name: "M9 + 20 mM sodium benzoate batch 001"
@@ -2164,7 +2096,6 @@ processed_samples:
     description: "Physical media batch produced by urn:amp2:activity:media-prep-M9-benzoate-001."
     volume_uL: 1000000.0
     replicate: null
-    storage_location: "Cold room 2 / shelf B"
     label_text: "M9 + 20 mM sodium benzoate batch 001"
   - id: "urn:amp2:processed-sample:media-YPD-001"
     name: "YPD broth batch 001"
@@ -2173,7 +2104,6 @@ processed_samples:
     description: "Physical media batch produced by urn:amp2:activity:media-prep-YPD-001."
     volume_uL: 800000.0
     replicate: null
-    storage_location: "Cold room 2 / shelf B"
     label_text: "YPD broth batch 001"
   - id: "urn:amp2:processed-sample:media-LB-vanillate-001"
     name: "LB + apramycin + vanillate induction medium batch 001"
@@ -2182,7 +2112,6 @@ processed_samples:
     description: "Physical media batch produced by urn:amp2:activity:media-prep-LB-vanillate-001."
     volume_uL: 1200000.0
     replicate: null
-    storage_location: "Cold room 2 / shelf B"
     label_text: "LB + apramycin + vanillate induction medium batch 001"
   - id: "urn:amp2:processed-sample:media-LB-agar-001"
     name: "LB agar purity plates batch 001"
@@ -2191,7 +2120,6 @@ processed_samples:
     description: "Physical media batch produced by urn:amp2:activity:media-prep-LB-agar-001."
     volume_uL: 600000.0
     replicate: null
-    storage_location: "Cold room 2 / shelf B"
     label_text: "LB agar purity plates batch 001"
   - id: "urn:amp2:processed-sample:media-glycerol-stock-001"
     name: "LB + 25% glycerol cryostock medium batch 001"
@@ -2200,7 +2128,6 @@ processed_samples:
     description: "Physical media batch produced by urn:amp2:activity:media-prep-glycerol-stock-001."
     volume_uL: 400000.0
     replicate: null
-    storage_location: "Cold room 2 / shelf B"
     label_text: "LB + 25% glycerol cryostock medium batch 001"
   - id: "urn:amp2:processed-sample:AG5577-pJE2165-R1-stock"
     name: "AG5577-pJE2165-R1 glycerol stock"
@@ -2209,7 +2136,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample AG5577-pJE2165-R1 (urn:amp2:sample:AMP2-0001)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A01"
     label_text: "AG5577-pJE2165-R1 STOCK"
   - id: "urn:amp2:processed-sample:AG5577-pJE2165-R1-preculture"
     name: "AG5577-pJE2165-R1 pre-culture"
@@ -2218,7 +2144,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample AG5577-pJE2165-R1 (urn:amp2:sample:AMP2-0001)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "AG5577-pJE2165-R1 PRE"
   - id: "urn:amp2:processed-sample:AG5577-pJE2165-R1-expculture"
     name: "AG5577-pJE2165-R1 experimental culture"
@@ -2227,7 +2152,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample AG5577-pJE2165-R1 (urn:amp2:sample:AMP2-0001)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "AG5577-pJE2165-R1 EXP"
   - id: "urn:amp2:processed-sample:AG5577-pJE2165-R2-stock"
     name: "AG5577-pJE2165-R2 glycerol stock"
@@ -2236,7 +2160,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample AG5577-pJE2165-R2 (urn:amp2:sample:AMP2-0002)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A01"
     label_text: "AG5577-pJE2165-R2 STOCK"
   - id: "urn:amp2:processed-sample:AG5577-pJE2165-R2-preculture"
     name: "AG5577-pJE2165-R2 pre-culture"
@@ -2245,7 +2168,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample AG5577-pJE2165-R2 (urn:amp2:sample:AMP2-0002)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "AG5577-pJE2165-R2 PRE"
   - id: "urn:amp2:processed-sample:AG5577-pJE2165-R2-expculture"
     name: "AG5577-pJE2165-R2 experimental culture"
@@ -2254,7 +2176,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample AG5577-pJE2165-R2 (urn:amp2:sample:AMP2-0002)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "AG5577-pJE2165-R2 EXP"
   - id: "urn:amp2:processed-sample:PP_0055-R1-stock"
     name: "PP_0055-R1 glycerol stock"
@@ -2263,7 +2184,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample PP_0055-R1 (urn:amp2:sample:AMP2-0003)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A01"
     label_text: "PP_0055-R1 STOCK"
   - id: "urn:amp2:processed-sample:PP_0055-R1-preculture"
     name: "PP_0055-R1 pre-culture"
@@ -2272,7 +2192,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample PP_0055-R1 (urn:amp2:sample:AMP2-0003)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_0055-R1 PRE"
   - id: "urn:amp2:processed-sample:PP_0055-R1-expculture"
     name: "PP_0055-R1 experimental culture"
@@ -2281,7 +2200,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample PP_0055-R1 (urn:amp2:sample:AMP2-0003)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_0055-R1 EXP"
   - id: "urn:amp2:processed-sample:PP_0055-R2-stock"
     name: "PP_0055-R2 glycerol stock"
@@ -2290,7 +2208,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample PP_0055-R2 (urn:amp2:sample:AMP2-0004)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A01"
     label_text: "PP_0055-R2 STOCK"
   - id: "urn:amp2:processed-sample:PP_0055-R2-preculture"
     name: "PP_0055-R2 pre-culture"
@@ -2299,7 +2216,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample PP_0055-R2 (urn:amp2:sample:AMP2-0004)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_0055-R2 PRE"
   - id: "urn:amp2:processed-sample:PP_0055-R2-expculture"
     name: "PP_0055-R2 experimental culture"
@@ -2308,7 +2224,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample PP_0055-R2 (urn:amp2:sample:AMP2-0004)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_0055-R2 EXP"
   - id: "urn:amp2:processed-sample:PP_0055-R3-stock"
     name: "PP_0055-R3 glycerol stock"
@@ -2317,7 +2232,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample PP_0055-R3 (urn:amp2:sample:AMP2-0005)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A01"
     label_text: "PP_0055-R3 STOCK"
   - id: "urn:amp2:processed-sample:PP_0055-R3-preculture"
     name: "PP_0055-R3 pre-culture"
@@ -2326,7 +2240,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample PP_0055-R3 (urn:amp2:sample:AMP2-0005)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_0055-R3 PRE"
   - id: "urn:amp2:processed-sample:PP_0055-R3-expculture"
     name: "PP_0055-R3 experimental culture"
@@ -2335,7 +2248,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample PP_0055-R3 (urn:amp2:sample:AMP2-0005)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_0055-R3 EXP"
   - id: "urn:amp2:processed-sample:PP_1021-R1-stock"
     name: "PP_1021-R1 glycerol stock"
@@ -2344,7 +2256,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample PP_1021-R1 (urn:amp2:sample:AMP2-0006)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A02"
     label_text: "PP_1021-R1 STOCK"
   - id: "urn:amp2:processed-sample:PP_1021-R1-preculture"
     name: "PP_1021-R1 pre-culture"
@@ -2353,7 +2264,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample PP_1021-R1 (urn:amp2:sample:AMP2-0006)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_1021-R1 PRE"
   - id: "urn:amp2:processed-sample:PP_1021-R1-expculture"
     name: "PP_1021-R1 experimental culture"
@@ -2362,7 +2272,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample PP_1021-R1 (urn:amp2:sample:AMP2-0006)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_1021-R1 EXP"
   - id: "urn:amp2:processed-sample:PP_3186-R1-stock"
     name: "PP_3186-R1 glycerol stock"
@@ -2371,7 +2280,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample PP_3186-R1 (urn:amp2:sample:AMP2-0007)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A02"
     label_text: "PP_3186-R1 STOCK"
   - id: "urn:amp2:processed-sample:PP_3186-R1-preculture"
     name: "PP_3186-R1 pre-culture"
@@ -2380,7 +2288,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample PP_3186-R1 (urn:amp2:sample:AMP2-0007)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_3186-R1 PRE"
   - id: "urn:amp2:processed-sample:PP_3186-R1-expculture"
     name: "PP_3186-R1 experimental culture"
@@ -2389,7 +2296,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample PP_3186-R1 (urn:amp2:sample:AMP2-0007)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_3186-R1 EXP"
   - id: "urn:amp2:processed-sample:PP_3186-R2-stock"
     name: "PP_3186-R2 glycerol stock"
@@ -2398,7 +2304,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample PP_3186-R2 (urn:amp2:sample:AMP2-0008)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A02"
     label_text: "PP_3186-R2 STOCK"
   - id: "urn:amp2:processed-sample:PP_3186-R2-preculture"
     name: "PP_3186-R2 pre-culture"
@@ -2407,7 +2312,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample PP_3186-R2 (urn:amp2:sample:AMP2-0008)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_3186-R2 PRE"
   - id: "urn:amp2:processed-sample:PP_3186-R2-expculture"
     name: "PP_3186-R2 experimental culture"
@@ -2416,7 +2320,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample PP_3186-R2 (urn:amp2:sample:AMP2-0008)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_3186-R2 EXP"
   - id: "urn:amp2:processed-sample:PP_5325-R1-stock"
     name: "PP_5325-R1 glycerol stock"
@@ -2425,7 +2328,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample PP_5325-R1 (urn:amp2:sample:AMP2-0009)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A02"
     label_text: "PP_5325-R1 STOCK"
   - id: "urn:amp2:processed-sample:PP_5325-R1-preculture"
     name: "PP_5325-R1 pre-culture"
@@ -2434,7 +2336,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample PP_5325-R1 (urn:amp2:sample:AMP2-0009)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_5325-R1 PRE"
   - id: "urn:amp2:processed-sample:PP_5325-R1-expculture"
     name: "PP_5325-R1 experimental culture"
@@ -2443,7 +2344,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample PP_5325-R1 (urn:amp2:sample:AMP2-0009)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "PP_5325-R1 EXP"
   - id: "urn:amp2:processed-sample:KT2440_WT-R1-stock"
     name: "KT2440_WT-R1 glycerol stock"
@@ -2452,7 +2352,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample KT2440_WT-R1 (urn:amp2:sample:AMP2-0010)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A02"
     label_text: "KT2440_WT-R1 STOCK"
   - id: "urn:amp2:processed-sample:KT2440_WT-R1-preculture"
     name: "KT2440_WT-R1 pre-culture"
@@ -2461,7 +2360,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample KT2440_WT-R1 (urn:amp2:sample:AMP2-0010)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "KT2440_WT-R1 PRE"
   - id: "urn:amp2:processed-sample:KT2440_WT-R1-expculture"
     name: "KT2440_WT-R1 experimental culture"
@@ -2470,7 +2368,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample KT2440_WT-R1 (urn:amp2:sample:AMP2-0010)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "KT2440_WT-R1 EXP"
   - id: "urn:amp2:processed-sample:KT2440_WT-R2-stock"
     name: "KT2440_WT-R2 glycerol stock"
@@ -2479,7 +2376,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample KT2440_WT-R2 (urn:amp2:sample:AMP2-0011)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A03"
     label_text: "KT2440_WT-R2 STOCK"
   - id: "urn:amp2:processed-sample:KT2440_WT-R2-preculture"
     name: "KT2440_WT-R2 pre-culture"
@@ -2488,7 +2384,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample KT2440_WT-R2 (urn:amp2:sample:AMP2-0011)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "KT2440_WT-R2 PRE"
   - id: "urn:amp2:processed-sample:KT2440_WT-R2-expculture"
     name: "KT2440_WT-R2 experimental culture"
@@ -2497,7 +2392,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample KT2440_WT-R2 (urn:amp2:sample:AMP2-0011)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "KT2440_WT-R2 EXP"
   - id: "urn:amp2:processed-sample:RHA1_pTE314-R1-stock"
     name: "RHA1_pTE314-R1 glycerol stock"
@@ -2506,7 +2400,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample RHA1_pTE314-R1 (urn:amp2:sample:AMP2-0012)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A03"
     label_text: "RHA1_pTE314-R1 STOCK"
   - id: "urn:amp2:processed-sample:RHA1_pTE314-R1-preculture"
     name: "RHA1_pTE314-R1 pre-culture"
@@ -2515,7 +2408,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample RHA1_pTE314-R1 (urn:amp2:sample:AMP2-0012)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "RHA1_pTE314-R1 PRE"
   - id: "urn:amp2:processed-sample:RHA1_pTE314-R1-expculture"
     name: "RHA1_pTE314-R1 experimental culture"
@@ -2524,7 +2416,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample RHA1_pTE314-R1 (urn:amp2:sample:AMP2-0012)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "RHA1_pTE314-R1 EXP"
   - id: "urn:amp2:processed-sample:RHA1_pTE314-R2-stock"
     name: "RHA1_pTE314-R2 glycerol stock"
@@ -2533,7 +2424,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample RHA1_pTE314-R2 (urn:amp2:sample:AMP2-0013)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A03"
     label_text: "RHA1_pTE314-R2 STOCK"
   - id: "urn:amp2:processed-sample:RHA1_pTE314-R2-preculture"
     name: "RHA1_pTE314-R2 pre-culture"
@@ -2542,7 +2432,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample RHA1_pTE314-R2 (urn:amp2:sample:AMP2-0013)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "RHA1_pTE314-R2 PRE"
   - id: "urn:amp2:processed-sample:RHA1_pTE314-R2-expculture"
     name: "RHA1_pTE314-R2 experimental culture"
@@ -2551,7 +2440,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample RHA1_pTE314-R2 (urn:amp2:sample:AMP2-0013)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "RHA1_pTE314-R2 EXP"
   - id: "urn:amp2:processed-sample:IFO0880_LIP1-R1-stock"
     name: "IFO0880_LIP1-R1 glycerol stock"
@@ -2560,7 +2448,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample IFO0880_LIP1-R1 (urn:amp2:sample:AMP2-0014)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A03"
     label_text: "IFO0880_LIP1-R1 STOCK"
   - id: "urn:amp2:processed-sample:IFO0880_LIP1-R1-preculture"
     name: "IFO0880_LIP1-R1 pre-culture"
@@ -2569,7 +2456,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample IFO0880_LIP1-R1 (urn:amp2:sample:AMP2-0014)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "IFO0880_LIP1-R1 PRE"
   - id: "urn:amp2:processed-sample:IFO0880_LIP1-R1-expculture"
     name: "IFO0880_LIP1-R1 experimental culture"
@@ -2578,7 +2464,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample IFO0880_LIP1-R1 (urn:amp2:sample:AMP2-0014)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "IFO0880_LIP1-R1 EXP"
   - id: "urn:amp2:processed-sample:IFO0880_LIP1-R2-stock"
     name: "IFO0880_LIP1-R2 glycerol stock"
@@ -2587,7 +2472,6 @@ processed_samples:
     description: "Cryobanked stock culture derived from user sample IFO0880_LIP1-R2 (urn:amp2:sample:AMP2-0015)."
     volume_uL: 1000.0
     replicate: 1
-    storage_location: "Freezer -80 C / rack A03"
     label_text: "IFO0880_LIP1-R2 STOCK"
   - id: "urn:amp2:processed-sample:IFO0880_LIP1-R2-preculture"
     name: "IFO0880_LIP1-R2 pre-culture"
@@ -2596,7 +2480,6 @@ processed_samples:
     description: "Pre-culture inoculum derived from user sample IFO0880_LIP1-R2 (urn:amp2:sample:AMP2-0015)."
     volume_uL: 25000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "IFO0880_LIP1-R2 PRE"
   - id: "urn:amp2:processed-sample:IFO0880_LIP1-R2-expculture"
     name: "IFO0880_LIP1-R2 experimental culture"
@@ -2605,7 +2488,6 @@ processed_samples:
     description: "Normalised experimental culture loaded into plate wells. Traces back to user sample IFO0880_LIP1-R2 (urn:amp2:sample:AMP2-0015)."
     volume_uL: 12000.0
     replicate: 1
-    storage_location: "Incubator 3 / shaker deck"
     label_text: "IFO0880_LIP1-R2 EXP"
   - id: "urn:amp2:processed-sample:plate-AMP2-P001"
     name: "AMP2-P001 inoculated 96-well (8 rows x 12 columns)"
@@ -2614,7 +2496,6 @@ processed_samples:
     description: "Inoculated plate produced by urn:amp2:activity:plate-setup-AMP2-P001; the analyte every OD read points at."
     volume_uL: 19200.0
     replicate: null
-    storage_location: "Incubator 5 / stack 2"
     label_text: "AMP2-P001"
   - id: "urn:amp2:processed-sample:plate-AMP2-P002"
     name: "AMP2-P002 inoculated 96-well (8 rows x 12 columns)"
@@ -2623,7 +2504,6 @@ processed_samples:
     description: "Inoculated plate produced by urn:amp2:activity:plate-setup-AMP2-P002; the analyte every OD read points at."
     volume_uL: 19008.0
     replicate: null
-    storage_location: "Incubator 5 / stack 2"
     label_text: "AMP2-P002"
   - id: "urn:amp2:processed-sample:plate-AMP2-P003"
     name: "AMP2-P003 inoculated 384-well (16 rows A-P x 24 columns)"
@@ -2632,8 +2512,273 @@ processed_samples:
     description: "Inoculated plate produced by urn:amp2:activity:plate-setup-AMP2-P003; the analyte every OD read points at."
     volume_uL: 19200.0
     replicate: null
-    storage_location: "Incubator 5 / stack 2"
     label_text: "AMP2-P003"
+
+# ---------------------------------------------------------------------------
+# sample_storage  (class: SampleStorage, mixin HasTemperatureHold)
+#   A record on a sample, not a SampleProcessing step: storing or freezing
+#   never mints a new sample id or a processing_sample_link.
+# ---------------------------------------------------------------------------
+sample_storage:
+  - id: "urn:amp2:sample-storage:0001"
+    sample_id: "urn:amp2:sample:AMP2-0001"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0002"
+    sample_id: "urn:amp2:sample:AMP2-0002"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0003"
+    sample_id: "urn:amp2:sample:AMP2-0003"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0004"
+    sample_id: "urn:amp2:sample:AMP2-0004"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0005"
+    sample_id: "urn:amp2:sample:AMP2-0005"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0006"
+    sample_id: "urn:amp2:sample:AMP2-0006"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0007"
+    sample_id: "urn:amp2:sample:AMP2-0007"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0008"
+    sample_id: "urn:amp2:sample:AMP2-0008"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0009"
+    sample_id: "urn:amp2:sample:AMP2-0009"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0010"
+    sample_id: "urn:amp2:sample:AMP2-0010"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0011"
+    sample_id: "urn:amp2:sample:AMP2-0011"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0012"
+    sample_id: "urn:amp2:sample:AMP2-0012"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0013"
+    sample_id: "urn:amp2:sample:AMP2-0013"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0014"
+    sample_id: "urn:amp2:sample:AMP2-0014"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0015"
+    sample_id: "urn:amp2:sample:AMP2-0015"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-15T09:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0016"
+    sample_id: "urn:amp2:processed-sample:media-LB-lennox-001"
+    storage_condition: "fresh"
+    temperature_celsius: 4.0
+    temperature_category: "refrigerated"
+    hold_start_time: "2026-04-27T16:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0017"
+    sample_id: "urn:amp2:processed-sample:media-M9-glucose-001"
+    storage_condition: "fresh"
+    temperature_celsius: 4.0
+    temperature_category: "refrigerated"
+    hold_start_time: "2026-04-27T16:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0018"
+    sample_id: "urn:amp2:processed-sample:media-M9-benzoate-001"
+    storage_condition: "fresh"
+    temperature_celsius: 4.0
+    temperature_category: "refrigerated"
+    hold_start_time: "2026-04-28T16:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0019"
+    sample_id: "urn:amp2:processed-sample:media-YPD-001"
+    storage_condition: "fresh"
+    temperature_celsius: null
+    temperature_category: "room_temperature"
+    hold_start_time: "2026-04-28T16:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0020"
+    sample_id: "urn:amp2:processed-sample:media-LB-vanillate-001"
+    storage_condition: "fresh"
+    temperature_celsius: 4.0
+    temperature_category: "refrigerated"
+    hold_start_time: "2026-04-29T16:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0021"
+    sample_id: "urn:amp2:processed-sample:media-LB-agar-001"
+    storage_condition: "fresh"
+    temperature_celsius: 4.0
+    temperature_category: "refrigerated"
+    hold_start_time: "2026-04-20T16:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0022"
+    sample_id: "urn:amp2:processed-sample:media-glycerol-stock-001"
+    storage_condition: "frozen"
+    temperature_celsius: -20.0
+    temperature_category: "frozen_minus20"
+    hold_start_time: "2026-04-21T16:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0023"
+    sample_id: "urn:amp2:processed-sample:AG5577-pJE2165-R1-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0024"
+    sample_id: "urn:amp2:processed-sample:AG5577-pJE2165-R2-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0025"
+    sample_id: "urn:amp2:processed-sample:PP_0055-R1-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0026"
+    sample_id: "urn:amp2:processed-sample:PP_0055-R2-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0027"
+    sample_id: "urn:amp2:processed-sample:PP_0055-R3-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0028"
+    sample_id: "urn:amp2:processed-sample:PP_1021-R1-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0029"
+    sample_id: "urn:amp2:processed-sample:PP_3186-R1-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0030"
+    sample_id: "urn:amp2:processed-sample:PP_3186-R2-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0031"
+    sample_id: "urn:amp2:processed-sample:PP_5325-R1-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0032"
+    sample_id: "urn:amp2:processed-sample:KT2440_WT-R1-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0033"
+    sample_id: "urn:amp2:processed-sample:KT2440_WT-R2-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0034"
+    sample_id: "urn:amp2:processed-sample:RHA1_pTE314-R1-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0035"
+    sample_id: "urn:amp2:processed-sample:RHA1_pTE314-R2-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0036"
+    sample_id: "urn:amp2:processed-sample:IFO0880_LIP1-R1-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
+  - id: "urn:amp2:sample-storage:0037"
+    sample_id: "urn:amp2:processed-sample:IFO0880_LIP1-R2-stock"
+    storage_condition: "frozen"
+    temperature_celsius: -80.0
+    temperature_category: "frozen_minus80"
+    hold_start_time: "2026-04-30T17:00:00"
+    hold_end_time: null
 
 # ---------------------------------------------------------------------------
 # plate_setup_activities  (class: AMP2PlateSetupActivity)

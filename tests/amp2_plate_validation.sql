@@ -11,7 +11,7 @@
 --   media_preparation(id, name, media_type, sterilization_method, ph_adjustment,
 --                     ph_target, creation_date, output_sample_id)
 --   culture_growth_activity(id, activity_type, name, strain_ref, media_ref,
---                            incubation_time_hours, temperature_celsius,
+--                            duration_hours, temperature_celsius,
 --                            treatment_type, input_sample_id, output_sample_id)
 --   plate_setup_activity(id, activity_type, plate_barcode, plate_type, setup_date,
 --                        media_ref, input_sample_id, output_sample_id,

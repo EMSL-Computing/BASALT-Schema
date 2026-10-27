@@ -287,7 +287,7 @@ classes:
       - isol_growth_condt
       - start_date_inc
       
-      # Storage (explicit for clarity, inherited from Sample)
+      # Storage (submission metadata)
       - storage_condition
       - storage_temperature
       
@@ -312,7 +312,7 @@ classes:
         required: true
         description: |-
           Storage condition for this sample (frozen, fresh, etc.).
-          Inherited from Sample; required for AMP2UserSample.
+          Required for AMP2UserSample.
           Aliases: samp_store_cond, storage_cond, storage_condt
       storage_temperature:
         description: |-
@@ -1832,7 +1832,6 @@ classes:
         identifier: true
         range: uuid
     slots:
-      - storage_location
       - label_text
       - concentration_ug_per_uL
       - total_amount_ug
@@ -1842,6 +1841,44 @@ classes:
     slot_usage:
       replicate:
         description: The TECHNICAL replicate number of the processed sample, if applicable.
+
+  SampleStorage:
+    description: |-
+      A record of a sample being held in storage at a temperature. One sample can
+      have many SampleStorage rows (e.g., received at 4 C, then moved to -80 C).
+
+      This is NOT a SampleProcessing step and does not go through
+      ProcessingSampleLink: storing, freezing, or thawing a sample does not change
+      its identity, so no new sample ID is issued. Freezing or drying that changes
+      the material (e.g., lyophilization, preparing a glycerol stock) is modelled
+      as SampleProcessing instead, and the resulting ProcessedSample can then have
+      its own SampleStorage rows.
+
+      This records storage at EMSL. It is separate from the submission metadata
+      on the sample itself (samp_store_temp, storage_condition, etc.), which
+      records what the submitter reported and requested.
+
+      Temperature and timing come from the HasTemperatureHold mixin, shared with
+      incubation, culture growth, and reaction steps.
+    mixins:
+      - HasTemperatureHold
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+    slots:
+      - sample_id
+      - storage_condition
+      - storage_condition_other
+      - substances_used
+    slot_usage:
+      storage_condition:
+        description: Physical state of the sample during this storage period.
+      sample_id:
+        required: true
+        description: The sample being stored.
+      substances_used:
+        description: Cryoprotectants or preservatives the sample is stored in (e.g., glycerol, DMSO, RNAlater).
 
   CoreSection:
     description: A section of a core sample (TOP, MID, BTM).

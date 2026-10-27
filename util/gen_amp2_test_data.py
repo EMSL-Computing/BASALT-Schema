@@ -271,7 +271,6 @@ media_preparations:
     ph_adjustment: true
     ph_target: 7.0
     creation_date: "2026-03-20"
-    storage_temperature: "4 C"
     media_additions:
       - "1% glucose (w/v)"
     output_sample_id: "urn:amp2:ps:M9-glucose-batch-001"
@@ -282,7 +281,7 @@ culture_growth_activities:
     name: "KT2440 pTE314 strain purity check"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_status: "aerobic"
@@ -297,7 +296,7 @@ culture_growth_activities:
     name: "KT2440 pTE314 stock culture preparation"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_status: "aerobic"
@@ -311,7 +310,7 @@ culture_growth_activities:
     name: "KT2440 pTE314 pre-culture"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_status: "aerobic"
@@ -324,13 +323,12 @@ culture_growth_activities:
     name: "KT2440 pTE314 experimental culture — no treatment"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_status: "aerobic"
     container_type: "flask"
     treatment_type: "none"
-    growth_time: "4 hours"
     input_sample_id: "urn:amp2:ps:KT2440-preculture-output-001"
     output_sample_id: "urn:amp2:ps:KT2440-experimental-output-001"
 
@@ -589,7 +587,7 @@ culture_growth_activities:
     name: "KT2440 pre-culture (complex)"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-002"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_status: "aerobic"
@@ -602,13 +600,12 @@ culture_growth_activities:
     name: "KT2440 experimental culture — nickel stress 0.5 mM"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-002"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_status: "aerobic"
     container_type: "flask"
     treatment_type: "nickel_stress"
-    growth_time: "4 hours"
     input_sample_id: "urn:amp2:ps:KT2440-exp-output-complex"
     output_sample_id: "urn:amp2:ps:KT2440-exp-output-complex"
 
@@ -617,13 +614,12 @@ culture_growth_activities:
     name: "BL21-DE3 experimental culture — nickel stress 0.5 mM"
     strain_ref: "urn:amp2:strain:BL21-DE3"
     media_ref: "urn:amp2:ps:NONEXISTENT-MEDIA-999"   # [C2] broken FK — ID does not exist
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 37.0
     agitation_speed_rpm: 220
     oxygen_status: "aerobic"
     container_type: "flask"
     treatment_type: "nickel_stress"
-    growth_time: "4 hours"
     input_sample_id: null
     output_sample_id: "urn:amp2:ps:BL21-exp-output-complex"
 
@@ -683,7 +679,7 @@ def write_vanilla_csvs(out_dir: Path) -> None:
     write_csv(out_dir / "02_media_preparations.csv",
               ["id", "name", "media_type", "volume_ml", "media_recipe",
                "media_formulation", "sterilization_method", "ph_adjustment",
-               "ph_target", "creation_date", "storage_temperature",
+               "ph_target", "creation_date",
                "media_additions", "output_sample_id"],
               [{"id": "urn:amp2:act:media-prep-M9-001",
                 "name": "M9 + 1% glucose preparation",
@@ -695,15 +691,14 @@ def write_vanilla_csvs(out_dir: Path) -> None:
                 "ph_adjustment": True,
                 "ph_target": 7.0,
                 "creation_date": "2026-03-20",
-                "storage_temperature": "4 C",
                 "media_additions": "1% glucose (w/v)",
                 "output_sample_id": "urn:amp2:ps:M9-glucose-batch-001"}])
 
     # 03 culture_activities
     write_csv(out_dir / "03_culture_activities.csv",
               ["id", "activity_type", "name", "strain_ref", "media_ref",
-               "incubation_time_hours", "temperature_celsius", "agitation_speed_rpm",
-               "oxygen_status", "container_type", "treatment_type", "growth_time",
+               "duration_hours", "temperature_celsius", "agitation_speed_rpm",
+               "oxygen_status", "container_type", "treatment_type",
                "preparation_date", "inspection_method", "target_strain",
                "input_sample_id", "output_sample_id"],
               [
@@ -712,7 +707,7 @@ def write_vanilla_csvs(out_dir: Path) -> None:
                    "name": "KT2440 pTE314 strain purity check",
                    "strain_ref": "urn:amp2:strain:KT2440-pTE314",
                    "media_ref": "urn:amp2:ps:M9-glucose-batch-001",
-                   "incubation_time_hours": 24.0,
+                   "duration_hours": 24.0,
                    "temperature_celsius": 30.0,
                    "agitation_speed_rpm": 200,
                    "oxygen_status": "aerobic",
@@ -726,7 +721,7 @@ def write_vanilla_csvs(out_dir: Path) -> None:
                    "name": "KT2440 pTE314 stock culture preparation",
                    "strain_ref": "urn:amp2:strain:KT2440-pTE314",
                    "media_ref": "urn:amp2:ps:M9-glucose-batch-001",
-                   "incubation_time_hours": 16.0,
+                   "duration_hours": 16.0,
                    "temperature_celsius": 30.0,
                    "agitation_speed_rpm": 200,
                    "oxygen_status": "aerobic",
@@ -739,7 +734,7 @@ def write_vanilla_csvs(out_dir: Path) -> None:
                    "name": "KT2440 pTE314 pre-culture",
                    "strain_ref": "urn:amp2:strain:KT2440-pTE314",
                    "media_ref": "urn:amp2:ps:M9-glucose-batch-001",
-                   "incubation_time_hours": 12.0,
+                   "duration_hours": 12.0,
                    "temperature_celsius": 30.0,
                    "agitation_speed_rpm": 200,
                    "oxygen_status": "aerobic",
@@ -751,13 +746,12 @@ def write_vanilla_csvs(out_dir: Path) -> None:
                    "name": "KT2440 pTE314 experimental culture — no treatment",
                    "strain_ref": "urn:amp2:strain:KT2440-pTE314",
                    "media_ref": "urn:amp2:ps:M9-glucose-batch-001",
-                   "incubation_time_hours": 4.0,
+                   "duration_hours": 4.0,
                    "temperature_celsius": 30.0,
                    "agitation_speed_rpm": 200,
                    "oxygen_status": "aerobic",
                    "container_type": "flask",
                    "treatment_type": "none",
-                   "growth_time": "4 hours",
                    "input_sample_id": "urn:amp2:ps:KT2440-preculture-output-001",
                    "output_sample_id": "urn:amp2:ps:KT2440-experimental-output-001"},
               ])
@@ -926,7 +920,7 @@ def write_complex_csvs(out_dir: Path) -> None:
     # 03 culture_activities
     write_csv(out_dir / "03_culture_activities.csv",
               ["id", "activity_type", "name", "strain_ref", "media_ref",
-               "incubation_time_hours", "temperature_celsius", "agitation_speed_rpm",
+               "duration_hours", "temperature_celsius", "agitation_speed_rpm",
                "oxygen_status", "container_type", "treatment_type",
                "input_sample_id", "output_sample_id", "violation_note"],
               [
@@ -935,7 +929,7 @@ def write_complex_csvs(out_dir: Path) -> None:
                    "name": "KT2440 pre-culture (complex)",
                    "strain_ref": "urn:amp2:strain:KT2440-pTE314",
                    "media_ref": "urn:amp2:ps:M9-glucose-batch-002",
-                   "incubation_time_hours": 12.0,
+                   "duration_hours": 12.0,
                    "temperature_celsius": 30.0, "agitation_speed_rpm": 200,
                    "oxygen_status": "aerobic", "container_type": "flask",
                    "input_sample_id": "", "output_sample_id": "urn:amp2:ps:KT2440-exp-output-complex",
@@ -945,7 +939,7 @@ def write_complex_csvs(out_dir: Path) -> None:
                    "name": "KT2440 experimental — nickel stress 0.5 mM",
                    "strain_ref": "urn:amp2:strain:KT2440-pTE314",
                    "media_ref": "urn:amp2:ps:M9-glucose-batch-002",
-                   "incubation_time_hours": 4.0,
+                   "duration_hours": 4.0,
                    "temperature_celsius": 30.0, "agitation_speed_rpm": 200,
                    "oxygen_status": "aerobic", "container_type": "flask",
                    "treatment_type": "nickel_stress",
@@ -957,7 +951,7 @@ def write_complex_csvs(out_dir: Path) -> None:
                    "name": "BL21-DE3 experimental — nickel stress 0.5 mM",
                    "strain_ref": "urn:amp2:strain:BL21-DE3",
                    "media_ref": "urn:amp2:ps:NONEXISTENT-MEDIA-999",  # [C2]
-                   "incubation_time_hours": 4.0,
+                   "duration_hours": 4.0,
                    "temperature_celsius": 37.0, "agitation_speed_rpm": 220,
                    "oxygen_status": "aerobic", "container_type": "flask",
                    "treatment_type": "nickel_stress",
@@ -1101,7 +1095,7 @@ SQL_HARNESS = """\
 --   media_preparation(id, name, media_type, sterilization_method, ph_adjustment,
 --                     ph_target, creation_date, output_sample_id)
 --   culture_growth_activity(id, activity_type, name, strain_ref, media_ref,
---                            incubation_time_hours, temperature_celsius,
+--                            duration_hours, temperature_celsius,
 --                            treatment_type, input_sample_id, output_sample_id)
 --   plate_setup_activity(id, activity_type, plate_barcode, plate_type, setup_date,
 --                        media_ref, input_sample_id, output_sample_id,

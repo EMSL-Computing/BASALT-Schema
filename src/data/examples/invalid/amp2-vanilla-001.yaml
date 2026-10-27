@@ -100,7 +100,6 @@ media_preparations:
     ph_adjustment: true
     ph_target: 7.0
     creation_date: "2026-03-20"
-    storage_temperature: "4 C"
     media_additions:
       - "1% glucose (w/v)"
     output_sample_id: "urn:amp2:ps:M9-glucose-batch-001"
@@ -112,7 +111,7 @@ culture_growth_activities:
     name: "KT2440 pTE314 strain purity check"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
-    incubation_time_hours: 24.0
+    duration_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -128,7 +127,7 @@ culture_growth_activities:
     name: "KT2440 pTE314 stock culture preparation"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
-    incubation_time_hours: 16.0
+    duration_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -143,7 +142,7 @@ culture_growth_activities:
     name: "KT2440 pTE314 pre-culture"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -157,13 +156,12 @@ culture_growth_activities:
     name: "KT2440 pTE314 experimental culture — no treatment"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
     container_type: "flask"
     treatment_type: "none"
-    growth_time: "4 hours"
     input_sample_id: "urn:amp2:ps:KT2440-preculture-output-001"
     output_sample_id: "urn:amp2:ps:KT2440-experimental-output-001"
 

@@ -116,7 +116,7 @@ culture_growth_activities:
     name: "KT2440 pre-culture (complex)"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-002"
-    incubation_time_hours: 12.0
+    duration_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
@@ -130,13 +130,12 @@ culture_growth_activities:
     name: "KT2440 experimental culture — nickel stress 0.5 mM"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-002"
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
     oxygen_saturation_pct: 20.9
     container_type: "flask"
     treatment_type: "nickel_stress"
-    growth_time: "4 hours"
     input_sample_id: "urn:amp2:ps:KT2440-exp-output-complex"
     output_sample_id: "urn:amp2:ps:KT2440-exp-output-complex"
 
@@ -146,13 +145,12 @@ culture_growth_activities:
     name: "BL21-DE3 experimental culture — nickel stress 0.5 mM"
     strain_ref: "urn:amp2:strain:BL21-DE3"
     media_ref: "urn:amp2:ps:NONEXISTENT-MEDIA-999"   # [C2] broken FK — ID does not exist
-    incubation_time_hours: 4.0
+    duration_hours: 4.0
     temperature_celsius: 37.0
     agitation_speed_rpm: 220
     oxygen_saturation_pct: 20.9
     container_type: "flask"
     treatment_type: "nickel_stress"
-    growth_time: "4 hours"
     input_sample_id: null
     output_sample_id: "urn:amp2:ps:BL21-exp-output-complex"
 
