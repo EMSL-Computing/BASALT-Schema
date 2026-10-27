@@ -31,11 +31,13 @@ classes:
       flag:
         range: ProcessedDataFlag
 
-  CMMDigestionProduct:
+  CMM_ICPMS_DigestionProduct:
     is_a: ProcessedData
     description: |-
+      ICP-MS results from a sample digestion targeting critical minerals and materials.
     slots:
       - measure_type
+      - results_from_ms_processing
     attributes:
       Al_ug_per_g:
         range: double
@@ -166,11 +168,13 @@ classes:
       flag_Zn:
         range: ProcessedDataFlag
 
-  CMMExtractionProduct:
+  CMM_ICPMS_ExtractionProduct:
     is_a: ProcessedData
     description: |-
+      ICP-MS results from a sample extraction targeting critical minerals and materials.
     slots:
       - measure_type
+      - results_from_ms_processing
     attributes:
       Al_ug_per_g:
         range: double
@@ -551,6 +555,80 @@ classes:
         description: Soil respiration expressed as µg CO₂-C per gram soil
         range: double
       flag:
+        range: ProcessedDataFlag
+
+  Rhizo_ICPMS_DigestionProduct:
+    is_a: ProcessedData
+    description: |-
+      ICP-MS results from a sample digestion targeting critical minerals and materials in rhizosphere samples.
+    slots:
+      - measure_type
+      - results_from_ms_processing
+    attributes:
+      Al_ug_per_g:
+        range: double
+      Ca_ug_per_g:
+        range: double
+      Co_ug_per_g:
+        range: double
+      Cu_ug_per_g:
+        range: double
+      Fe_ug_per_g:
+        range: double
+      K_ug_per_g:
+        range: double
+      Mg_ug_per_g:
+        range: double
+      Mn_ug_per_g:
+        range: double
+      Ni_ug_per_g:
+        range: double
+      P_ug_per_g:
+        range: double
+      S_ug_per_g:
+        range: double
+      Zn_ug_per_g:
+        range: double
+      flag_Al:
+        range: ProcessedDataFlag
+      flag_Ca:
+        range: ProcessedDataFlag
+      flag_Co:
+        range: ProcessedDataFlag
+      flag_Cu:
+        range: ProcessedDataFlag
+      flag_Fe:
+        range: ProcessedDataFlag
+      flag_K:
+        range: ProcessedDataFlag
+      flag_Mg:
+        range: ProcessedDataFlag
+      flag_Mn:
+        range: ProcessedDataFlag
+      flag_Ni:
+        range: ProcessedDataFlag
+      flag_P:
+        range: ProcessedDataFlag
+      flag_S:
+        range: ProcessedDataFlag
+      flag_Zn:
+        range: ProcessedDataFlag
+
+  Rhizo_ICPMS_ExtractionProduct:
+    is_a: ProcessedData
+    description: |-
+      ICP-MS results from a sample extraction targeting critical minerals and materials in rhizosphere samples.
+    slots:
+      - measure_type
+      - results_from_ms_processing
+    attributes:
+      Co_ug_per_g:
+        range: double
+      Ni_ug_per_g:
+        range: double
+      flag_Co:
+        range: ProcessedDataFlag
+      flag_Ni:
         range: ProcessedDataFlag
 
   TextureProduct:
