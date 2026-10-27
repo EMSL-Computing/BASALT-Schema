@@ -50,7 +50,7 @@ interchangeable:
 | the strain / biological identity | `01_organisms.csv` → `id`, reached via `organism_ref` | `urn:amp2:organism:PP-0055` |
 
 **The sample id is `AMP2UserSample.id`.** Every foreign key in this dataset
-points at that value, including `AMP2WellMetadata.sample`. The organism id
+points at that value, including `AMP2WellMetadata.source_sample`. The organism id
 can never substitute for it: organisms are shared, e.g. `PP_0055` has three
 samples (`AMP2-0003`, `AMP2-0004`, `AMP2-0005`) and `KT2440_WT` has two.
 
@@ -58,7 +58,7 @@ Physically, what gets pipetted into a well is the `experimental_culture`
 ProcessedSample descended from that user sample, not the tube itself. So there
 are two ways to ask a question about a well and they answer different things:
 
-* *"Whose sample is in well D07?"* → `AMP2WellMetadata.sample`, which holds
+* *"Whose sample is in well D07?"* → `AMP2WellMetadata.source_sample`, which holds
   the `AMP2UserSample.id` directly.
 * *"What physical material is in well D07 and how was it made?"* → walk
   `11_processing_sample_links.csv` backwards from the plate setup activity.

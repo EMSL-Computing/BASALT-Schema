@@ -89,7 +89,6 @@ linkml_meta = LinkMLMeta({'default_prefix': 'basalt_schema',
                  'slots',
                  'study',
                  'value_tables',
-                 'zip_download',
                  'linkage_cache'],
      'license': 'CC0-1.0',
      'name': 'basalt-schema',
@@ -2223,8 +2222,7 @@ class Configuration(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
 
 
 class MassSpectrometryConfiguration(Configuration):
@@ -2328,8 +2326,7 @@ class MassSpectrometryConfiguration(Configuration):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
 
 
 class ChromatographyConfiguration(Configuration):
@@ -2427,8 +2424,7 @@ class ChromatographyConfiguration(Configuration):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
 
 
 class MobilePhaseSegment(ConfiguredBaseModel):
@@ -2469,8 +2465,7 @@ class MobilePhaseSegment(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     duration_min: Optional[float] = Field(default=None, alias="duration_min", description="""how long something took, in minutes""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration', 'MobilePhaseSegment']} })
     mobile_phase: Optional[str] = Field(default=None, alias="mobile_phase", description="""Description of a mobile phase used in a chromatography method (e.g., solvents, gradients)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MobilePhaseSegment']} })
     flow_rate_ul_min: Optional[float] = Field(default=None, alias="flow_rate_ul_min", title="flow rate (uL/min)", description="""Flow rate of the mobile phase, in microliters per minute.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration', 'MobilePhaseSegment']} })
@@ -2518,8 +2513,7 @@ class MobilePhase(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
 
 
 class MobilePhaseSubstance(ConfiguredBaseModel):
@@ -2560,8 +2554,7 @@ class MobilePhaseSubstance(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     volume_ul: Optional[float] = Field(default=None, alias="volume_ul", description="""Volume of the entity in microliters""", json_schema_extra = { "linkml_meta": {'domain_of': ['MobilePhaseSubstance',
                        'WellReagentAddition',
                        'ProcessedSample']} })
@@ -2608,8 +2601,7 @@ class CalibrationStandardRun(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -2702,8 +2694,7 @@ class PurchasedMaterial(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     purchased_material_type: str = Field(default=..., alias="purchased_material_type", description="""Discriminator for purchasedMaterial subtype (e.g. 'media', 'strain')""", json_schema_extra = { "linkml_meta": {'domain_of': ['PurchasedMaterial']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -2910,7 +2901,7 @@ class AMP2WellMetadata(WellMetadata):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate'})
 
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -3187,8 +3178,7 @@ class Organism(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the organism.
 May be same as strain_identifier or more descriptive.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -3373,8 +3363,7 @@ class Site(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -3557,8 +3546,7 @@ class Sample(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -4165,8 +4153,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -4763,8 +4750,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -4986,8 +4972,7 @@ Indicates if the sample is subject to CBI restrictions.""", json_schema_extra = 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Sample identifier/name (e.g., \"PP_0055\").
 May match strain_identifier on organism for 1:1 cases,
 but typically unique per sample instance.
@@ -5432,8 +5417,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -6158,8 +6142,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -6301,8 +6284,7 @@ Aliases: samp_store_temp""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -7103,8 +7085,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -7763,8 +7744,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -8264,8 +8244,7 @@ in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta":
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -9455,8 +9434,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -10198,8 +10176,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -10900,8 +10877,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -11829,8 +11805,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -12654,8 +12629,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -13084,8 +13058,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -13840,8 +13813,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -14734,8 +14706,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -14855,8 +14826,7 @@ class ProcessedSample(Sample):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -14964,8 +14934,7 @@ class CoreSection(ProcessedSample):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -15062,8 +15031,7 @@ class SamplingActivity(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -15187,8 +15155,7 @@ class AerosolArmSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -15360,8 +15327,7 @@ class AerosolSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -15507,8 +15473,7 @@ class CommerciallyPurchasedSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -15678,8 +15643,7 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -15798,8 +15762,7 @@ class EngineeredStrainSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -15957,8 +15920,7 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -16128,8 +16090,7 @@ class MixedCultureSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -16293,8 +16254,7 @@ class MonetSoilSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -16481,8 +16441,7 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -16656,8 +16615,7 @@ class PlantSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -16827,8 +16785,7 @@ class PureCultureSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -17002,8 +16959,7 @@ class SedimentSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -17235,8 +17191,7 @@ class SoilSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -17337,8 +17292,7 @@ class SynthesizedMaterialSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -17496,8 +17450,7 @@ class TerraformSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -17671,8 +17624,7 @@ class WaterSamplingActivity(SamplingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -17792,8 +17744,7 @@ class Activity(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -17884,8 +17835,7 @@ class Entity(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -17975,8 +17925,7 @@ class DataProduct(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -18092,7 +18041,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -18128,8 +18077,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -18245,7 +18193,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -18281,8 +18229,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -18396,7 +18343,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -18432,8 +18379,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -18547,7 +18493,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -18583,8 +18529,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -18699,7 +18644,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -18735,8 +18680,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -18847,7 +18791,7 @@ class MetagenomicsProduct(ProcessedData):
          'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/metagenomics'})
 
     mg_workflow_step: Optional[MetagenomicsSteps] = Field(default=None, alias="mg_workflow_step", description="""Metagenomics workflow step that produced this product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -18893,8 +18837,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -19003,7 +18946,7 @@ class MetagenomicsAnnotationProduct(MetagenomicsProduct):
 
     annotation_database: Optional[AnnotationDatabaseEnum] = Field(default=None, alias="annotation_database", description="""Primary annotation database used (e.g., IMG, KEGG)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Metagenomics_AnnotationProduct']} })
     mg_workflow_step: Optional[MetagenomicsSteps] = Field(default=None, alias="mg_workflow_step", description="""Metagenomics workflow step that produced this product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -19049,8 +18992,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -19158,7 +19100,7 @@ class MetagenomicsBinningProduct(MetagenomicsProduct):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/metagenomics'})
 
     mg_workflow_step: Optional[MetagenomicsSteps] = Field(default=None, alias="mg_workflow_step", description="""Metagenomics workflow step that produced this product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -19204,8 +19146,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -19314,7 +19255,7 @@ class MetagenomicsGenePhylogenyProduct(MetagenomicsProduct):
 
     gene_family: Optional[str] = Field(default=None, alias="gene_family", description="""Gene family or marker used for the phylogeny (e.g., 16S, ITS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Metagenomics_GenePhylogenyProduct']} })
     mg_workflow_step: Optional[MetagenomicsSteps] = Field(default=None, alias="mg_workflow_step", description="""Metagenomics workflow step that produced this product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -19360,8 +19301,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -19503,7 +19443,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -19539,8 +19479,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -19680,7 +19619,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -19716,8 +19655,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -19859,7 +19797,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -19895,8 +19833,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -20038,7 +19975,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -20074,8 +20011,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -20220,7 +20156,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -20256,8 +20192,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -20428,7 +20363,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -20464,8 +20399,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -20613,7 +20547,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -20649,8 +20583,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -20797,7 +20730,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -20833,8 +20766,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -20981,7 +20913,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -21017,8 +20949,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -21182,7 +21113,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -21218,8 +21149,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -21361,7 +21291,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -21397,8 +21327,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -21543,7 +21472,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -21579,8 +21508,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -21728,7 +21656,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -21764,8 +21692,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -21911,7 +21838,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -21947,8 +21874,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -22080,7 +22006,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -22116,8 +22042,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -22280,7 +22205,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -22316,8 +22241,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -22521,7 +22445,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -22557,8 +22481,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -22740,7 +22663,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -22776,8 +22699,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -22934,7 +22856,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -22970,8 +22892,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -23108,7 +23029,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -23144,8 +23065,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -23278,7 +23198,7 @@ Direction: structured key-value pairs; per-type schemas TBD:
   lcms:      feature count, identification count, MSI-2 fraction
 Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
     lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample: Optional[str] = Field(default=None, alias="sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -23314,8 +23234,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -23465,8 +23384,7 @@ class InstrumentData(DataProduct):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -23612,8 +23530,7 @@ class MassSpectrometryInstrumentData(InstrumentData):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -23757,8 +23674,7 @@ class NucleotideSequencingInstrumentData(InstrumentData):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -23924,8 +23840,7 @@ class XASInstrumentData(InstrumentData):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -24066,8 +23981,7 @@ class SitePhoto(DataProduct):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -24207,8 +24121,7 @@ class DataGenerationActivity(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -24259,7 +24172,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24317,8 +24230,7 @@ class MassSpectrometryDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -24369,7 +24281,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: datetime  = Field(default=..., alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24422,8 +24334,7 @@ Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivit
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -24474,7 +24385,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24486,7 +24397,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
 class AMP2DataGenerationActivity(PlateDataGenerationActivity):
     """
     AMP2 plate measurement (OD, fluorescence, flow cytometry).
-    analyte -> processedSample(type='amp2_96well_plate')
+    analyzed_sample -> processedSample(type='amp2_96well_plate')
 
     Chained via DataProcessingActivity.parent_workflow to track
     multi-timepoint series on the same plate.
@@ -24536,8 +24447,7 @@ Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivit
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -24588,7 +24498,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24600,7 +24510,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
 class EcoplateDataGenerationActivity(PlateDataGenerationActivity):
     """
     Ecoplate absorbance measurement at a single timepoint.
-    analyte -> processedSample(type='ecoplate_plate')
+    analyzed_sample -> processedSample(type='ecoplate_plate')
     wavelength_nm typically 590 for Biolog EcoPlates.
 
     v1 origin: plate-general.yaml EcoplateDataGenerationActivity
@@ -24647,8 +24557,7 @@ Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivit
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -24699,7 +24608,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24773,8 +24682,7 @@ class NucleotideSequencing(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -24825,7 +24733,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24869,8 +24777,7 @@ class BulkDensityDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -24921,7 +24828,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -24965,8 +24872,7 @@ class ElementalAnalysisDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -25017,7 +24923,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25061,8 +24967,7 @@ class GravimetricWaterContentDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -25113,7 +25018,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25158,8 +25063,7 @@ class HydraulicPropertiesDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -25210,7 +25114,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25257,8 +25161,7 @@ class KuoDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -25309,7 +25212,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25365,8 +25268,7 @@ class MicrobialBiomassDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -25417,7 +25319,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25462,8 +25364,7 @@ class PHDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -25514,7 +25415,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25562,8 +25463,7 @@ class RespirationDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -25614,7 +25514,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25671,8 +25571,7 @@ class TOCTNDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -25723,7 +25622,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25767,8 +25666,7 @@ class TextureDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -25819,7 +25717,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25870,8 +25768,7 @@ class XCTDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -25922,7 +25819,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -25977,8 +25874,7 @@ class DataProcessingActivity(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     parent_workflow: Optional[str] = Field(default=None, alias="parent_workflow", description="""The preceding DataProcessingActivity in a chain of processing steps.
 Absent for the first (or a standalone) step.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
     workflow_steps: Optional[str] = Field(default=None, alias="workflow_steps", description="""Per-run workflow parameters. Previously annotated TODO JSONB in schema.
@@ -26062,8 +25958,7 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     parent_workflow: Optional[str] = Field(default=None, alias="parent_workflow", description="""The preceding DataProcessingActivity in a chain of processing steps.
 Absent for the first (or a standalone) step.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
     workflow_steps: Optional[str] = Field(default=None, alias="workflow_steps", description="""Per-run workflow parameters. Previously annotated TODO JSONB in schema.
@@ -26144,8 +26039,7 @@ class MetagenomicsDataProcessingActivity(DataProcessingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     parent_workflow: Optional[str] = Field(default=None, alias="parent_workflow", description="""The preceding DataProcessingActivity in a chain of processing steps.
 Absent for the first (or a standalone) step.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
     workflow_steps: Optional[str] = Field(default=None, alias="workflow_steps", description="""Per-run workflow parameters. Previously annotated TODO JSONB in schema.
@@ -26219,8 +26113,7 @@ class AlternativeIdentifier(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     alternate_id: str = Field(default=..., alias="alternate_id", json_schema_extra = { "linkml_meta": {'domain_of': ['AlternativeIdentifier']} })
     alternate_identifier_type: AlternateIdentifierType = Field(default=..., alias="alternate_identifier_type", json_schema_extra = { "linkml_meta": {'domain_of': ['AlternativeIdentifier']} })
 
@@ -26260,8 +26153,7 @@ class FunctionalAnnotationIdentifier(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     functional_identifier: str = Field(default=..., alias="functional_identifier", json_schema_extra = { "linkml_meta": {'domain_of': ['FunctionalAnnotationIdentifier']} })
     database: AnnotationDatabaseEnum = Field(default=..., alias="database", json_schema_extra = { "linkml_meta": {'domain_of': ['FunctionalAnnotationIdentifier']} })
 
@@ -26307,8 +26199,7 @@ class Instrument(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -26376,8 +26267,7 @@ class OntologyClass(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     description: Optional[str] = Field(default=None, alias="description", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -26465,8 +26355,7 @@ class ContainerType(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     container_type: Optional[ContainerTypeEnum] = Field(default=None, alias="container_type", description="""Physical container used for the culture or sample (flask, tube, plate, etc.)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureGrowth', 'ContainerType', 'FiltrationProcess']} })
     description: Optional[str] = Field(default=None, alias="description", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
@@ -26564,8 +26453,7 @@ class Custodian(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     person: Optional[str] = Field(default=None, alias="person", description="""A person associated with this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Custodian', 'ProjectParticipant']} })
 
 
@@ -26604,8 +26492,7 @@ class InstrumentAlternativeIdentifier(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     alt_id: Optional[str] = Field(default=None, alias="alt_id", json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentAlternativeIdentifier']} })
     instrument_alt_id_provider: Optional[InstrumentAltIdProviderEnum] = Field(default=None, alias="instrument_alt_id_provider", json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentAlternativeIdentifier']} })
     instrument_id: str = Field(default=..., alias="instrument_id", json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentAlternativeIdentifier', 'InstrumentCustodian']} })
@@ -26649,8 +26536,7 @@ class LabDevice(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     description: Optional[str] = Field(default=None, alias="description", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -26730,8 +26616,7 @@ class SampleProcessing(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -26853,8 +26738,7 @@ Examples: \"100 ug/mL ampicillin\", \"1 mM IPTG\"""", json_schema_extra = { "lin
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -27010,8 +26894,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -27133,8 +27016,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -27254,8 +27136,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -27373,8 +27254,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -27492,8 +27372,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -27614,8 +27493,7 @@ class PlateSetupActivity(HasIncubationConditions, SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -27743,8 +27621,7 @@ produced by an upstream MediaPreparation activity.""", json_schema_extra = { "li
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -27862,8 +27739,7 @@ class EcoplatePlateSetupActivity(PlateSetupActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -27972,8 +27848,7 @@ reaction, or storage), in hours. Shared by all HasTemperatureHold classes.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -28024,7 +27899,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -28054,9 +27929,9 @@ class SampleStorage(HasTemperatureHold):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'mixins': ['HasTemperatureHold'],
-         'slot_usage': {'sample': {'description': 'The sample being stored.',
-                                   'name': 'sample',
-                                   'required': True},
+         'slot_usage': {'source_sample': {'description': 'The sample being stored.',
+                                          'name': 'source_sample',
+                                          'required': True},
                         'storage_condition': {'description': 'Physical state of the '
                                                              'sample during this '
                                                              'storage period.',
@@ -28099,9 +27974,8 @@ class SampleStorage(HasTemperatureHold):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
-    sample: str = Field(default=..., alias="sample", description="""The sample being stored.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+                       'PersonValue']} })
+    source_sample: str = Field(default=..., alias="source_sample", description="""The sample being stored.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
                        'MetagenomicsProduct',
                        'SampleStorage',
                        'ProcessedData']} })
@@ -28228,8 +28102,7 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     processing_id: str = Field(default=..., alias="processing_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
     step_number: int = Field(default=..., alias="step_number", json_schema_extra = { "linkml_meta": {'domain_of': ['MobilePhaseSegment', 'ProcessingSampleLink']} })
     sample_id: str = Field(default=..., alias="sample_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
@@ -28266,7 +28139,7 @@ class XRayDataGenerationActivity(DataGenerationActivity):
     Abstract base class for X-ray analytical methods including XRF (elemental),
     XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits
     acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,
-    analyte, and other core metadata from DataGenerationActivity.
+    analyzed_sample, and other core metadata from DataGenerationActivity.
 
     Concrete subclasses define method-specific measurement parameters.
     Future X-ray methods (e.g., XCT) can extend this class.
@@ -28313,8 +28186,7 @@ class XRayDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -28365,7 +28237,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -28434,8 +28306,7 @@ class XRFDataGenerationActivity(XRayDataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -28486,7 +28357,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -28558,8 +28429,7 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -28610,7 +28480,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -28701,8 +28571,7 @@ class XASDataGenerationActivity(XRayDataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -28753,7 +28622,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -28822,8 +28691,7 @@ class XASLCFDataProcessingActivity(DataProcessingActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     parent_workflow: Optional[str] = Field(default=None, alias="parent_workflow", description="""The preceding DataProcessingActivity in a chain of processing steps.
 Absent for the first (or a standalone) step.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
     workflow_steps: Optional[str] = Field(default=None, alias="workflow_steps", description="""Per-run workflow parameters. Previously annotated TODO JSONB in schema.
@@ -28918,8 +28786,7 @@ class RIDataGenerationActivity(DataGenerationActivity):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -28970,7 +28837,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -29034,8 +28901,7 @@ noise/baseline drift, given in absorbance units.""", json_schema_extra = { "link
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
@@ -29086,7 +28952,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    analyte: Optional[str] = Field(default=None, alias="analyte", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    analyzed_sample: Optional[str] = Field(default=None, alias="analyzed_sample", description="""The ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
     protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
     acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
@@ -29186,8 +29052,7 @@ class UVChannelConfig(Configuration):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
 
 
 class StandardSampleProcessing(SampleProcessing):
@@ -29229,8 +29094,7 @@ class StandardSampleProcessing(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -29317,8 +29181,7 @@ class SampleProcessingProtocol(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -29408,8 +29271,7 @@ class SampleProcessingRun(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -29516,8 +29378,7 @@ reaction, or storage), in hours. Shared by all HasTemperatureHold classes.""", j
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -29619,8 +29480,7 @@ class Dilution(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -29732,8 +29592,7 @@ class Extraction(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -29832,8 +29691,7 @@ class FiltrationProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -29931,8 +29789,7 @@ class FractionationProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -30022,8 +29879,7 @@ class NormalizationProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -30112,8 +29968,7 @@ class PoolingProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -30200,8 +30055,7 @@ class SubstancesUsedLink(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     sample_processing_substance: Optional[str] = Field(default=None, alias="sample_processing_substance", description="""A substance that was used in the SampleProcessing activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SubstancesUsedLink']} })
 
 
@@ -30243,8 +30097,7 @@ class SampleProcessingSubstance(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     volume_ml: Optional[float] = Field(default=None, alias="volume_ml", description="""Volume of the entity in milliliters""", json_schema_extra = { "linkml_meta": {'domain_of': ['MediaPreparation',
                        'FiltrationProcess',
                        'SampleProcessingSubstance']} })
@@ -30303,8 +30156,7 @@ class ProteinQuantification(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -30402,8 +30254,7 @@ class ResuspensionProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -30500,8 +30351,7 @@ class SolidPhaseExtractionProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -30590,8 +30440,7 @@ class SubsamplingProcess(SampleProcessing):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
@@ -30687,8 +30536,7 @@ class Study(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     external_identifiers: Optional[list[str]] = Field(default=None, alias="external_identifiers", description="""List of project- or study-level identifiers (e.g., GOLD study ID) representing this project.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NucleotideSequencing',
                        'AerosolArmSample',
                        'AerosolSample',
@@ -30807,8 +30655,7 @@ class ProjectParticipant(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     person: str = Field(default=..., alias="person", description="""The person who contributed to the study.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Custodian', 'ProjectParticipant']} })
     role: NexusRoleEnum = Field(default=..., alias="role", description="""The role of the contributor in the study (e.g., data analysis, writing).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink', 'ProjectParticipant']} })
 
@@ -31036,8 +30883,7 @@ class PersonValue(ConfiguredBaseModel):
                        'SampleProcessingSubstance',
                        'Study',
                        'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
+                       'PersonValue']} })
     email: Optional[str] = Field(default=None, alias="email", description="""A contactable email address associated with a person or institution.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PersonValue']} })
     first_name: str = Field(default=..., alias="first_name", json_schema_extra = { "linkml_meta": {'domain_of': ['PersonValue']} })
     last_name: str = Field(default=..., alias="last_name", json_schema_extra = { "linkml_meta": {'domain_of': ['PersonValue']} })
@@ -31109,52 +30955,6 @@ class ConditioningValue(ConfiguredBaseModel):
                        'ControlledTermValue',
                        'QuantityValue',
                        'ConditioningValue']} })
-
-
-class ZipDownload(ConfiguredBaseModel):
-    """
-    A zip download record, capturing the details of a zip file download event.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/zip_download'})
-
-    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
-                       'MobilePhaseSegment',
-                       'MobilePhase',
-                       'MobilePhaseSubstance',
-                       'CalibrationStandardRun',
-                       'PurchasedMaterial',
-                       'organism',
-                       'Site',
-                       'Sample',
-                       'SampleStorage',
-                       'SamplingActivity',
-                       'Activity',
-                       'Entity',
-                       'DataProduct',
-                       'DataGenerationActivity',
-                       'DataProcessingActivity',
-                       'AlternativeIdentifier',
-                       'FunctionalAnnotationIdentifier',
-                       'Instrument',
-                       'OntologyClass',
-                       'ContainerType',
-                       'Custodian',
-                       'InstrumentAlternativeIdentifier',
-                       'LabDevice',
-                       'SampleProcessing',
-                       'ProcessingSampleLink',
-                       'SampleProcessingProtocol',
-                       'SampleProcessingRun',
-                       'SubstancesUsedLink',
-                       'SampleProcessingSubstance',
-                       'Study',
-                       'ProjectParticipant',
-                       'PersonValue',
-                       'zipDownload']} })
-    time: datetime  = Field(default=..., alias="time", json_schema_extra = { "linkml_meta": {'domain_of': ['zipDownload']} })
-    user: str = Field(default=..., alias="user", json_schema_extra = { "linkml_meta": {'domain_of': ['zipDownload']} })
-    files: int = Field(default=..., alias="files", json_schema_extra = { "linkml_meta": {'domain_of': ['zipDownload']} })
-    packages: Optional[str] = Field(default=None, alias="packages", json_schema_extra = { "linkml_meta": {'domain_of': ['zipDownload']} })
 
 
 class LinkageCache(ConfiguredBaseModel):
@@ -31388,6 +31188,5 @@ ControlledTermValue.model_rebuild()
 PersonValue.model_rebuild()
 QuantityValue.model_rebuild()
 ConditioningValue.model_rebuild()
-ZipDownload.model_rebuild()
 LinkageCache.model_rebuild()
 

@@ -253,7 +253,7 @@ classes:
       - timepoint_label
     todos:
       - measurement_time stamp
-    # Inherited from DataGenerationActivity: id, analyte,
+    # Inherited from DataGenerationActivity: id, analyzed_sample,
     #   name, acquisition_time, instrument_id, protocol_url,
     #   instrument_operator_id, sequence_order, version
 
@@ -264,7 +264,7 @@ classes:
     is_a: PlateDataGenerationActivity
     description: |-
       AMP2 plate measurement (OD, fluorescence, flow cytometry).
-      analyte -> processedSample(type='amp2_96well_plate')
+      analyzed_sample -> processedSample(type='amp2_96well_plate')
 
       Chained via DataProcessingActivity.parent_workflow to track
       multi-timepoint series on the same plate.
@@ -281,7 +281,7 @@ classes:
     is_a: PlateDataGenerationActivity
     description: |-
       Ecoplate absorbance measurement at a single timepoint.
-      analyte -> processedSample(type='ecoplate_plate')
+      analyzed_sample -> processedSample(type='ecoplate_plate')
       wavelength_nm typically 590 for Biolog EcoPlates.
 
       v1 origin: plate-general.yaml EcoplateDataGenerationActivity
@@ -440,7 +440,7 @@ classes:
       media_ref slot.  Per-well reagent additions (nutrients, normalizers, inducers)
       are captured as structured WellReagentAddition entries in reagent_additions.
     slots:
-      - sample
+      - source_sample
     attributes:
       media_ref:
         description: |-

@@ -1787,14 +1787,14 @@ classes:
       - HasTemperatureHold
     slots:
       - id
-      - sample
+      - source_sample
       - storage_condition
       - storage_condition_other
       - substances_used
     slot_usage:
       storage_condition:
         description: Physical state of the sample during this storage period.
-      sample:
+      source_sample:
         required: true
         description: The sample being stored.
       substances_used:

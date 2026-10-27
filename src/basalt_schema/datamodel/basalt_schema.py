@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-20T16:14:52
+# Generation date: 2026-10-27T15:05:07
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -696,10 +696,6 @@ class PersonValueId(Uuid):
     pass
 
 
-class ZipDownloadId(Uuid):
-    pass
-
-
 @dataclass(repr=False)
 class Activity(YAMLRoot):
     """
@@ -873,7 +869,7 @@ class ProcessedData(DataProduct):
     s3_key: str = None
     summary_metrics: Optional[str] = None
     lims_barcode: Optional[str] = None
-    sample: Optional[Union[str, SampleId]] = None
+    source_sample: Optional[Union[str, SampleId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.summary_metrics is not None and not isinstance(self.summary_metrics, str):
@@ -882,8 +878,8 @@ class ProcessedData(DataProduct):
         if self.lims_barcode is not None and not isinstance(self.lims_barcode, str):
             self.lims_barcode = str(self.lims_barcode)
 
-        if self.sample is not None and not isinstance(self.sample, SampleId):
-            self.sample = SampleId(self.sample)
+        if self.source_sample is not None and not isinstance(self.source_sample, SampleId):
+            self.source_sample = SampleId(self.source_sample)
 
         super().__post_init__(**kwargs)
 
@@ -986,7 +982,7 @@ class DataGenerationActivity(YAMLRoot):
     name: str = None
     sequence_order: Optional[int] = None
     description: Optional[str] = None
-    analyte: Optional[Union[str, ProcessedSampleId]] = None
+    analyzed_sample: Optional[Union[str, ProcessedSampleId]] = None
     protocol_url: Optional[str] = None
     protocol_version: Optional[str] = None
     acquisition_start_time: Optional[Union[str, XSDDateTime]] = None
@@ -1011,8 +1007,8 @@ class DataGenerationActivity(YAMLRoot):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.analyte is not None and not isinstance(self.analyte, ProcessedSampleId):
-            self.analyte = ProcessedSampleId(self.analyte)
+        if self.analyzed_sample is not None and not isinstance(self.analyzed_sample, ProcessedSampleId):
+            self.analyzed_sample = ProcessedSampleId(self.analyzed_sample)
 
         if self.protocol_url is not None and not isinstance(self.protocol_url, str):
             self.protocol_url = str(self.protocol_url)
@@ -1674,7 +1670,7 @@ class XRayDataGenerationActivity(DataGenerationActivity):
     Abstract base class for X-ray analytical methods including XRF (elemental),
     XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits
     acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,
-    analyte, and other core metadata from DataGenerationActivity.
+    analyzed_sample, and other core metadata from DataGenerationActivity.
 
     Concrete subclasses define method-specific measurement parameters.
     Future X-ray methods (e.g., XCT) can extend this class.
@@ -3351,7 +3347,7 @@ class PlateDataGenerationActivity(DataGenerationActivity):
 class AMP2DataGenerationActivity(PlateDataGenerationActivity):
     """
     AMP2 plate measurement (OD, fluorescence, flow cytometry).
-    analyte -> processedSample(type='amp2_96well_plate')
+    analyzed_sample -> processedSample(type='amp2_96well_plate')
 
     Chained via DataProcessingActivity.parent_workflow to track
     multi-timepoint series on the same plate.
@@ -3392,7 +3388,7 @@ class AMP2DataGenerationActivity(PlateDataGenerationActivity):
 class EcoplateDataGenerationActivity(PlateDataGenerationActivity):
     """
     Ecoplate absorbance measurement at a single timepoint.
-    analyte -> processedSample(type='ecoplate_plate')
+    analyzed_sample -> processedSample(type='ecoplate_plate')
     wavelength_nm typically 590 for Biolog EcoPlates.
 
     v1 origin: plate-general.yaml EcoplateDataGenerationActivity
@@ -3650,7 +3646,7 @@ class AMP2WellMetadata(WellMetadata):
     position: str = None
     media_volume_ul: float = None
     inoculum_volume_ul: float = None
-    sample: Optional[Union[str, SampleId]] = None
+    source_sample: Optional[Union[str, SampleId]] = None
     media_ref: Optional[Union[str, ProcessedSampleId]] = None
     reagent_additions: Optional[Union[Union[dict, WellReagentAddition], list[Union[dict, WellReagentAddition]]]] = empty_list()
 
@@ -3665,8 +3661,8 @@ class AMP2WellMetadata(WellMetadata):
         if not isinstance(self.inoculum_volume_ul, float):
             self.inoculum_volume_ul = float(self.inoculum_volume_ul)
 
-        if self.sample is not None and not isinstance(self.sample, SampleId):
-            self.sample = SampleId(self.sample)
+        if self.source_sample is not None and not isinstance(self.source_sample, SampleId):
+            self.source_sample = SampleId(self.source_sample)
 
         if self.media_ref is not None and not isinstance(self.media_ref, ProcessedSampleId):
             self.media_ref = ProcessedSampleId(self.media_ref)
@@ -3834,7 +3830,7 @@ class MetagenomicsProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     mg_workflow_step: Optional[Union[str, "MetagenomicsSteps"]] = None
-    sample: Optional[Union[str, SampleId]] = None
+    source_sample: Optional[Union[str, SampleId]] = None
     provider_name: Optional[Union[dict, "ControlledTermValue"]] = None
     raw_fasta_url: Optional[str] = None
     additional_information: Optional[str] = None
@@ -3843,8 +3839,8 @@ class MetagenomicsProduct(ProcessedData):
         if self.mg_workflow_step is not None and not isinstance(self.mg_workflow_step, MetagenomicsSteps):
             self.mg_workflow_step = MetagenomicsSteps(self.mg_workflow_step)
 
-        if self.sample is not None and not isinstance(self.sample, SampleId):
-            self.sample = SampleId(self.sample)
+        if self.source_sample is not None and not isinstance(self.source_sample, SampleId):
+            self.source_sample = SampleId(self.source_sample)
 
         if self.provider_name is not None and not isinstance(self.provider_name, ControlledTermValue):
             self.provider_name = ControlledTermValue(**as_dict(self.provider_name))
@@ -11914,7 +11910,7 @@ class SampleStorage(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SampleStorage
 
     id: Union[str, SampleStorageId] = None
-    sample: Union[str, SampleId] = None
+    source_sample: Union[str, SampleId] = None
     storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
     storage_condition_other: Optional[str] = None
     substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
@@ -11930,10 +11926,10 @@ class SampleStorage(YAMLRoot):
         if not isinstance(self.id, SampleStorageId):
             self.id = SampleStorageId(self.id)
 
-        if self._is_empty(self.sample):
-            self.MissingRequiredField("sample")
-        if not isinstance(self.sample, SampleId):
-            self.sample = SampleId(self.sample)
+        if self._is_empty(self.source_sample):
+            self.MissingRequiredField("source_sample")
+        if not isinstance(self.source_sample, SampleId):
+            self.source_sample = SampleId(self.source_sample)
 
         if self.storage_condition is not None and not isinstance(self.storage_condition, StorageConditionEnum):
             self.storage_condition = StorageConditionEnum(self.storage_condition)
@@ -13767,51 +13763,6 @@ class ConditioningValue(YAMLRoot):
 
         if self.has_raw_value is not None and not isinstance(self.has_raw_value, str):
             self.has_raw_value = str(self.has_raw_value)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class ZipDownload(YAMLRoot):
-    """
-    A zip download record, capturing the details of a zip file download event.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ZipDownload"]
-    class_class_curie: ClassVar[str] = "basalt_schema:ZipDownload"
-    class_name: ClassVar[str] = "zipDownload"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ZipDownload
-
-    id: Union[str, ZipDownloadId] = None
-    time: Union[str, XSDDateTime] = None
-    user: str = None
-    files: int = None
-    packages: Optional[str] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ZipDownloadId):
-            self.id = ZipDownloadId(self.id)
-
-        if self._is_empty(self.time):
-            self.MissingRequiredField("time")
-        if not isinstance(self.time, XSDDateTime):
-            self.time = XSDDateTime(self.time)
-
-        if self._is_empty(self.user):
-            self.MissingRequiredField("user")
-        if not isinstance(self.user, str):
-            self.user = str(self.user)
-
-        if self._is_empty(self.files):
-            self.MissingRequiredField("files")
-        if not isinstance(self.files, int):
-            self.files = int(self.files)
-
-        if self.packages is not None and not isinstance(self.packages, str):
-            self.packages = str(self.packages)
 
         super().__post_init__(**kwargs)
 
@@ -16465,8 +16416,8 @@ slots.analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="analysis_type"
 slots.analyte_category = Slot(uri=BASALT_SCHEMA.analyte_category, name="analyte_category", curie=BASALT_SCHEMA.curie('analyte_category'),
                    model_uri=BASALT_SCHEMA.analyte_category, domain=None, range=Optional[Union[str, "AnalyteCategoryEnum"]])
 
-slots.analyte = Slot(uri=BASALT_SCHEMA.analyte, name="analyte", curie=BASALT_SCHEMA.curie('analyte'),
-                   model_uri=BASALT_SCHEMA.analyte, domain=None, range=Optional[Union[str, ProcessedSampleId]])
+slots.analyzed_sample = Slot(uri=BASALT_SCHEMA.analyzed_sample, name="analyzed_sample", curie=BASALT_SCHEMA.curie('analyzed_sample'),
+                   model_uri=BASALT_SCHEMA.analyzed_sample, domain=None, range=Optional[Union[str, ProcessedSampleId]])
 
 slots.ances_data = Slot(uri=BASALT_SCHEMA.ances_data, name="ances_data", curie=BASALT_SCHEMA.curie('ances_data'),
                    model_uri=BASALT_SCHEMA.ances_data, domain=None, range=Optional[str])
@@ -17548,8 +17499,8 @@ slots.sample_collection_method = Slot(uri=BASALT_SCHEMA.sample_collection_method
 slots.sample_end_time = Slot(uri=BASALT_SCHEMA.sample_end_time, name="sample_end_time", curie=BASALT_SCHEMA.curie('sample_end_time'),
                    model_uri=BASALT_SCHEMA.sample_end_time, domain=None, range=Optional[str])
 
-slots.sample = Slot(uri=BASALT_SCHEMA.sample, name="sample", curie=BASALT_SCHEMA.curie('sample'),
-                   model_uri=BASALT_SCHEMA.sample, domain=None, range=Optional[Union[str, SampleId]])
+slots.source_sample = Slot(uri=BASALT_SCHEMA.source_sample, name="source_sample", curie=BASALT_SCHEMA.curie('source_sample'),
+                   model_uri=BASALT_SCHEMA.source_sample, domain=None, range=Optional[Union[str, SampleId]])
 
 slots.sample_link = Slot(uri=BASALT_SCHEMA.sample_link, name="sample_link", curie=BASALT_SCHEMA.curie('sample_link'),
                    model_uri=BASALT_SCHEMA.sample_link, domain=None, range=Optional[str])
@@ -19441,21 +19392,6 @@ slots.conditioningValue__pressure = Slot(uri=BASALT_SCHEMA.pressure, name="condi
 slots.conditioningValue__has_raw_value = Slot(uri=BASALT_SCHEMA.has_raw_value, name="conditioningValue__has_raw_value", curie=BASALT_SCHEMA.curie('has_raw_value'),
                    model_uri=BASALT_SCHEMA.conditioningValue__has_raw_value, domain=None, range=Optional[str])
 
-slots.zipDownload__id = Slot(uri=BASALT_SCHEMA.id, name="zipDownload__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.zipDownload__id, domain=None, range=URIRef)
-
-slots.zipDownload__time = Slot(uri=BASALT_SCHEMA.time, name="zipDownload__time", curie=BASALT_SCHEMA.curie('time'),
-                   model_uri=BASALT_SCHEMA.zipDownload__time, domain=None, range=Union[str, XSDDateTime])
-
-slots.zipDownload__user = Slot(uri=BASALT_SCHEMA.user, name="zipDownload__user", curie=BASALT_SCHEMA.curie('user'),
-                   model_uri=BASALT_SCHEMA.zipDownload__user, domain=None, range=str)
-
-slots.zipDownload__files = Slot(uri=BASALT_SCHEMA.files, name="zipDownload__files", curie=BASALT_SCHEMA.curie('files'),
-                   model_uri=BASALT_SCHEMA.zipDownload__files, domain=None, range=int)
-
-slots.zipDownload__packages = Slot(uri=BASALT_SCHEMA.packages, name="zipDownload__packages", curie=BASALT_SCHEMA.curie('packages'),
-                   model_uri=BASALT_SCHEMA.zipDownload__packages, domain=None, range=Optional[str])
-
 slots.linkageCache__ancestor_id = Slot(uri=BASALT_SCHEMA.ancestor_id, name="linkageCache__ancestor_id", curie=BASALT_SCHEMA.curie('ancestor_id'),
                    model_uri=BASALT_SCHEMA.linkageCache__ancestor_id, domain=None, range=Union[str, Uuid])
 
@@ -19894,8 +19830,8 @@ slots.ProcessedSample_replicate = Slot(uri=BASALT_SCHEMA.replicate, name="Proces
 slots.SampleStorage_storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="SampleStorage_storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
                    model_uri=BASALT_SCHEMA.SampleStorage_storage_condition, domain=SampleStorage, range=Optional[Union[str, "StorageConditionEnum"]])
 
-slots.SampleStorage_sample = Slot(uri=BASALT_SCHEMA.sample, name="SampleStorage_sample", curie=BASALT_SCHEMA.curie('sample'),
-                   model_uri=BASALT_SCHEMA.SampleStorage_sample, domain=SampleStorage, range=Union[str, SampleId])
+slots.SampleStorage_source_sample = Slot(uri=BASALT_SCHEMA.source_sample, name="SampleStorage_source_sample", curie=BASALT_SCHEMA.curie('source_sample'),
+                   model_uri=BASALT_SCHEMA.SampleStorage_source_sample, domain=SampleStorage, range=Union[str, SampleId])
 
 slots.SampleStorage_substances_used = Slot(uri=BASALT_SCHEMA.substances_used, name="SampleStorage_substances_used", curie=BASALT_SCHEMA.curie('substances_used'),
                    model_uri=BASALT_SCHEMA.SampleStorage_substances_used, domain=SampleStorage, range=Optional[Union[str, SubstancesUsedLinkId]])

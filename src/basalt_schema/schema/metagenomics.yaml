@@ -67,7 +67,7 @@ classes:
       and add only their type-specific slots.
     slots:
       - mg_workflow_step
-      - sample
+      - source_sample
       - provider_name
       - raw_fasta_url
       - additional_information

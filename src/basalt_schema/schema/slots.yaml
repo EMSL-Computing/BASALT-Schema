@@ -127,7 +127,7 @@ slots:
     description: omics type for easier search, optional
     range: AnalyteCategoryEnum
   
-  analyte:
+  analyzed_sample:
     description: |-
       The ProcessedSample representing the substance analyzed in this activity.
     range: ProcessedSample
@@ -2395,7 +2395,7 @@ slots:
     range: string
     title: sample end time
 
-  sample:
+  source_sample:
     description: Link back to the originating sample
     range: Sample
     required: false

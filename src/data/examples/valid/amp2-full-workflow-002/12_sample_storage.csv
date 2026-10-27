@@ -1,4 +1,4 @@
-id,sample,storage_condition,temperature_celsius,temperature_category,hold_start_time,hold_end_time
+id,source_sample,storage_condition,temperature_celsius,temperature_category,hold_start_time,hold_end_time
 urn:amp2:sample-storage:0001,urn:amp2:sample:AMP2-0001,frozen,-80.0,frozen_minus80,2026-04-15T09:00:00,
 urn:amp2:sample-storage:0002,urn:amp2:sample:AMP2-0002,frozen,-80.0,frozen_minus80,2026-04-15T09:00:00,
 urn:amp2:sample-storage:0003,urn:amp2:sample:AMP2-0003,frozen,-80.0,frozen_minus80,2026-04-15T09:00:00,

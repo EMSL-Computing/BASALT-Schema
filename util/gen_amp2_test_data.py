@@ -148,7 +148,7 @@ def vanilla_well_metadata(pad: int = 6) -> str:
                 lines.append(
                     f'{sp}- {{position: "{pos}", well_type: "sample",'
                     f' replicate_group: "rep_{c}", media_volume_ul: 180.0,'
-                    f' inoculum_volume_ul: 20.0, sample: "KT2440-{pos}"}}'
+                    f' inoculum_volume_ul: 20.0, source_sample: "KT2440-{pos}"}}'
                 )
     return "\n".join(lines)
 
@@ -179,14 +179,14 @@ def complex_well_metadata(pad: int = 6) -> str:
                 lines.append(
                     f'{sp}- {{position: "{pos}", well_type: "sample",'
                     f' media_ref: "{media_ref}", replicate_group: "{rep_group}",'
-                    f' media_volume_ul: 180.0, sample: "{strain_arm}-{pos}"}}'
+                    f' media_volume_ul: 180.0, source_sample: "{strain_arm}-{pos}"}}'
                 )
             else:
                 lines.append(
                     f'{sp}- {{position: "{pos}", well_type: "sample",'
                     f' media_ref: "{media_ref}", replicate_group: "{rep_group}",'
                     f' media_volume_ul: 180.0, inoculum_volume_ul: 20.0,'
-                    f' sample: "{strain_arm}-{pos}"}}'
+                    f' source_sample: "{strain_arm}-{pos}"}}'
                 )
     return "\n".join(lines)
 
@@ -784,15 +784,15 @@ def write_vanilla_csvs(out_dir: Path) -> None:
                 wm_rows.append({"plate_barcode": "EPix1", "position": pos,
                                  "well_type": "blank", "replicate_group": "",
                                  "media_volume_ul": 200.0, "inoculum_volume_ul": 0.0,
-                                 "sample": "", "media_ref_override": ""})
+                                 "source_sample": "", "media_ref_override": ""})
             else:
                 wm_rows.append({"plate_barcode": "EPix1", "position": pos,
                                  "well_type": "sample", "replicate_group": f"rep_{c}",
                                  "media_volume_ul": 180.0, "inoculum_volume_ul": 20.0,
-                                 "sample": f"KT2440-{pos}", "media_ref_override": ""})
+                                 "source_sample": f"KT2440-{pos}", "media_ref_override": ""})
     write_csv(out_dir / "05_well_metadata.csv",
               ["plate_barcode", "position", "well_type", "replicate_group",
-               "media_volume_ul", "inoculum_volume_ul", "sample",
+               "media_volume_ul", "inoculum_volume_ul", "source_sample",
                "media_ref_override"],
               wm_rows)
 
@@ -990,7 +990,7 @@ def write_complex_csvs(out_dir: Path) -> None:
                                  "well_type": "blank", "replicate_group": "",
                                  "media_ref_override": "",
                                  "media_volume_ul": 200.0, "inoculum_volume_ul": 0.0,
-                                 "sample": "", "strain_arm": "",
+                                 "source_sample": "", "strain_arm": "",
                                  "violation_note": ""})
             else:
                 media_ref = m9_id if c <= 6 else lb_id
@@ -1001,13 +1001,13 @@ def write_complex_csvs(out_dir: Path) -> None:
                                  "well_type": "sample", "replicate_group": f"rep_{c}",
                                  "media_ref_override": media_ref,
                                  "media_volume_ul": 180.0, "inoculum_volume_ul": vol,
-                                 "sample": f"{strain_arm}-{pos}",
+                                 "source_sample": f"{strain_arm}-{pos}",
                                  "strain_arm": strain_arm,
                                  "violation_note": note})
     write_csv(out_dir / "05_well_metadata.csv",
               ["plate_barcode", "position", "well_type", "replicate_group",
                "media_ref_override", "media_volume_ul", "inoculum_volume_ul",
-               "sample", "strain_arm", "violation_note"],
+               "source_sample", "strain_arm", "violation_note"],
               wm_rows)
 
     # 06 data_generation_activities (includes duplicate t=8h [C6])

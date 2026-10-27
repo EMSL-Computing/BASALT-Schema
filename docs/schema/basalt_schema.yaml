@@ -28,7 +28,6 @@ imports:
 - slots
 - study
 - value_tables
-- zip_download
 - linkage_cache
 - basalt_schema
 license: CC0-1.0
@@ -3552,12 +3551,12 @@ slots:
     domain_of:
     - MassSpectrometryDataGenerationActivity
     range: AnalyteCategoryEnum
-  analyte:
-    name: analyte
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/analyte
+  analyzed_sample:
+    name: analyzed_sample
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/analyzed_sample
     description: The ProcessedSample representing the substance analyzed in this activity.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:analyte
+    slot_uri: basalt_schema:analyzed_sample
     owner: DataGenerationActivity
     domain_of:
     - DataGenerationActivity
@@ -8951,12 +8950,12 @@ slots:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:sample_end_time
     range: string
-  sample:
-    name: sample
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample
+  source_sample:
+    name: source_sample
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/source_sample
     description: Link back to the originating sample
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:sample
+    slot_uri: basalt_schema:source_sample
     owner: SampleStorage
     domain_of:
     - ProcessedData
@@ -16001,56 +16000,6 @@ slots:
     domain_of:
     - ConditioningValue
     range: string
-  zipDownload__id:
-    name: zipDownload__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/zip_download
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: zipDownload
-    domain_of:
-    - zipDownload
-    range: uuid
-    required: true
-  zipDownload__time:
-    name: zipDownload__time
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/zip_download
-    slot_uri: basalt_schema:time
-    alias: time
-    owner: zipDownload
-    domain_of:
-    - zipDownload
-    range: datetime
-    required: true
-  zipDownload__user:
-    name: zipDownload__user
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/zip_download
-    slot_uri: basalt_schema:user
-    alias: user
-    owner: zipDownload
-    domain_of:
-    - zipDownload
-    range: string
-    required: true
-  zipDownload__files:
-    name: zipDownload__files
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/zip_download
-    slot_uri: basalt_schema:files
-    alias: files
-    owner: zipDownload
-    domain_of:
-    - zipDownload
-    range: integer
-    required: true
-  zipDownload__packages:
-    name: zipDownload__packages
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/zip_download
-    slot_uri: basalt_schema:packages
-    alias: packages
-    owner: zipDownload
-    domain_of:
-    - zipDownload
-    range: string
   linkageCache__ancestor_id:
     name: linkageCache__ancestor_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema/linkage_cache
@@ -18912,20 +18861,20 @@ slots:
     is_usage_slot: true
     usage_slot_name: storage_condition
     range: StorageConditionEnum
-  SampleStorage_sample:
-    name: SampleStorage_sample
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample
+  SampleStorage_source_sample:
+    name: SampleStorage_source_sample
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/source_sample
     description: The sample being stored.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    is_a: sample
+    is_a: source_sample
     domain: SampleStorage
-    slot_uri: basalt_schema:sample
-    alias: sample
+    slot_uri: basalt_schema:source_sample
+    alias: source_sample
     owner: SampleStorage
     domain_of:
     - SampleStorage
     is_usage_slot: true
-    usage_slot_name: sample
+    usage_slot_name: source_sample
     range: Sample
     required: true
   SampleStorage_substances_used:
@@ -19315,7 +19264,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     class_uri: basalt_schema:ProcessedData
   InstrumentData:
     name: InstrumentData
@@ -19411,7 +19360,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -19885,12 +19834,12 @@ classes:
     description: "Abstract base class for X-ray analytical methods including XRF (elemental),\n\
       XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits\n\
       acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,\n\
-      analyte, and other core metadata from DataGenerationActivity.\n\nConcrete subclasses\
-      \ define method-specific measurement parameters.\nFuture X-ray methods (e.g.,\
-      \ XCT) can extend this class.\n\nShared patterns:\n  - Direct instrument output\
-      \ (no computational workflow) is typical for XRF\n  - XRD may optionally link\
-      \ to DataProcessingActivity for Rietveld refinement\n  - XAS acquires raw sweep\
-      \ files as XASInstrumentData, which are later fitted\n    by an XASLCFDataProcessingActivity\
+      analyzed_sample, and other core metadata from DataGenerationActivity.\n\nConcrete\
+      \ subclasses define method-specific measurement parameters.\nFuture X-ray methods\
+      \ (e.g., XCT) can extend this class.\n\nShared patterns:\n  - Direct instrument\
+      \ output (no computational workflow) is typical for XRF\n  - XRD may optionally\
+      \ link to DataProcessingActivity for Rietveld refinement\n  - XAS acquires raw\
+      \ sweep files as XASInstrumentData, which are later fitted\n    by an XASLCFDataProcessingActivity\
       \ to yield an XASLCFProduct\n  - protocol_url should link to vendor SOP or EMSL\
       \ internal protocol documentation"
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -19901,7 +19850,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -19932,7 +19881,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -19964,7 +19913,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -19992,7 +19941,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -20094,7 +20043,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -20120,7 +20069,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -20220,7 +20169,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - results_from_ms_processing
     class_uri: basalt_schema:MassSpectrometryDataProduct
   MSImageProduct:
@@ -20246,7 +20195,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - results_from_ms_processing
     class_uri: basalt_schema:MSImageProduct
   MolecularIdentificationProduct:
@@ -20272,7 +20221,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - results_from_ms_processing
     class_uri: basalt_schema:MolecularIdentificationProduct
   MetaproteomicsProduct:
@@ -20297,7 +20246,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - results_from_ms_processing
     - metaproteomics_result_type
     class_uri: basalt_schema:MetaproteomicsProduct
@@ -20312,7 +20261,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - instrument_used
@@ -20856,7 +20805,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -20870,7 +20819,7 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/AMP2DataGenerationActivity
     description: 'AMP2 plate measurement (OD, fluorescence, flow cytometry).
 
-      analyte -> processedSample(type=''amp2_96well_plate'')
+      analyzed_sample -> processedSample(type=''amp2_96well_plate'')
 
 
       Chained via DataProcessingActivity.parent_workflow to track
@@ -20886,7 +20835,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -20902,7 +20851,7 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/EcoplateDataGenerationActivity
     description: 'Ecoplate absorbance measurement at a single timepoint.
 
-      analyte -> processedSample(type=''ecoplate_plate'')
+      analyzed_sample -> processedSample(type=''ecoplate_plate'')
 
       wavelength_nm typically 590 for Biolog EcoPlates.
 
@@ -20915,7 +20864,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21135,7 +21084,7 @@ classes:
     - wellMetadata__position
     - wellMetadata__well_type
     - wellMetadata__replicate_group
-    - sample
+    - source_sample
     - aMP2WellMetadata__media_ref
     - aMP2WellMetadata__media_volume_ul
     - aMP2WellMetadata__inoculum_volume_ul
@@ -21259,7 +21208,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21330,7 +21279,7 @@ classes:
     - summary_metrics
     - lims_barcode
     - mg_workflow_step
-    - sample
+    - source_sample
     - provider_name
     - raw_fasta_url
     - additional_information
@@ -21360,7 +21309,7 @@ classes:
     - summary_metrics
     - lims_barcode
     - mg_workflow_step
-    - sample
+    - source_sample
     - provider_name
     - raw_fasta_url
     - additional_information
@@ -21390,7 +21339,7 @@ classes:
     - summary_metrics
     - lims_barcode
     - mg_workflow_step
-    - sample
+    - source_sample
     - provider_name
     - raw_fasta_url
     - additional_information
@@ -21420,7 +21369,7 @@ classes:
     - summary_metrics
     - lims_barcode
     - mg_workflow_step
-    - sample
+    - source_sample
     - provider_name
     - raw_fasta_url
     - additional_information
@@ -21458,7 +21407,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21476,7 +21425,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21496,7 +21445,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21524,7 +21473,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21542,7 +21491,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21566,7 +21515,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21594,7 +21543,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21642,7 +21591,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21669,7 +21618,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21687,7 +21636,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21738,7 +21687,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21756,7 +21705,7 @@ classes:
     - sequence_order
     - name
     - description
-    - analyte
+    - analyzed_sample
     - protocol_url
     - protocol_version
     - acquisition_start_time
@@ -21822,7 +21771,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - bulkDensityProduct__bulk_density
     - bulkDensityProduct__flag
@@ -21858,7 +21807,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - elementalAnalysisProduct__total_carbon
     - elementalAnalysisProduct__total_nitrogen
@@ -21916,7 +21865,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h
     - enzymeProduct__flag
@@ -21950,7 +21899,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - gWCMoistureProduct__gwc_percent
     - gWCMoistureProduct__flag
@@ -21985,7 +21934,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - hydraulicPropertiesProduct__alpha
     - hydraulicPropertiesProduct__n
@@ -22042,7 +21991,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - ionsAnalysisProduct__sulfate
     - ionsAnalysisProduct__boron
@@ -22166,7 +22115,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - replicate
     - produced_by_toctn_run
@@ -22228,7 +22177,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - replicate
     - microbialBiomassProduct__mbc
@@ -22289,7 +22238,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - replicate
     - nitrogenAnalysisProduct__no3_n
@@ -22350,7 +22299,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - replicate
     - phosphorusAnalysisProduct__extraction_method
@@ -22396,7 +22345,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - respirationProduct__respiration_co2_c_ug_per_g
     - respirationProduct__flag
@@ -22433,7 +22382,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - textureProduct__sand_pct
     - textureProduct__silt_pct
@@ -22477,7 +22426,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - replicate
     - produced_by_toctn_run
@@ -22537,7 +22486,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - ph
     - pHProduct__flag
@@ -22581,7 +22530,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     class_uri: basalt_schema:XRayDataProduct
   XCTProduct:
     name: XCTProduct
@@ -22605,7 +22554,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - xCTProduct__roi_x_voxel
     - xCTProduct__roi_y_voxel
@@ -22808,7 +22757,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - xRFElementalProduct__cl_mg_per_kg
     - xRFElementalProduct__v_mg_per_kg
@@ -23093,7 +23042,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - xRDPhaseProduct__quartz_percent
     - xRDPhaseProduct__albite_percent
@@ -23388,7 +23337,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - measure_type
     - results_from_xas_processing
     - xas_filename
@@ -23527,7 +23476,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - produced_by_uv_run
     - compound_name
     - retention_time_min
@@ -23561,7 +23510,7 @@ classes:
     - md5checksum
     - summary_metrics
     - lims_barcode
-    - sample
+    - source_sample
     - produced_by_ri_run
     - compound_name
     - weight_percent
@@ -25768,7 +25717,7 @@ classes:
     - HasTemperatureHold
     slots:
     - id
-    - SampleStorage_sample
+    - SampleStorage_source_sample
     - SampleStorage_storage_condition
     - storage_condition_other
     - SampleStorage_substances_used
@@ -25781,8 +25730,8 @@ classes:
       storage_condition:
         name: storage_condition
         description: Physical state of the sample during this storage period.
-      sample:
-        name: sample
+      source_sample:
+        name: source_sample
         description: The sample being stored.
         required: true
       substances_used:
@@ -26870,39 +26819,6 @@ classes:
         name: has_raw_value
         range: string
     class_uri: basalt_schema:ConditioningValue
-  zipDownload:
-    name: zipDownload
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ZipDownload
-    description: A zip download record, capturing the details of a zip file download
-      event.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/zip_download
-    slots:
-    - zipDownload__id
-    - zipDownload__time
-    - zipDownload__user
-    - zipDownload__files
-    - zipDownload__packages
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
-      time:
-        name: time
-        range: datetime
-        required: true
-      user:
-        name: user
-        range: string
-        required: true
-      files:
-        name: files
-        range: integer
-        required: true
-      packages:
-        name: packages
-        range: string
-    class_uri: basalt_schema:ZipDownload
   LinkageCache:
     name: LinkageCache
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/LinkageCache
@@ -26948,6 +26864,6 @@ classes:
         - descendant_id
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-10-20T16:13:27'
-source_file_size: 21355
-generation_date: '2026-10-20T16:14:06'
+source_file_date: '2026-10-27T15:03:51'
+source_file_size: 21361
+generation_date: '2026-10-27T15:04:18'
