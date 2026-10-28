@@ -20,11 +20,14 @@ bulk_density:
 
 Rules:
 
-- `unit.ucum_code` is a [UCUM](https://ucum.org/ucum) code. Use UCUM
-  annotations in curly braces for what is being counted or measured where the
-  lab reports it, e.g. `mg/kg` for mg Fe per kg soil, `ug{CO2-C}/g` for
-  respiration, `meq/(100.g)` for exchangeable cations.
-- Dimensionless values use `1` (ratios, fractions, pH) or `%` (percent).
+- `unit.ucum_code` is a [UCUM](https://ucum.org/ucum) code.
+- When a value is reported "as" an element other than the measured species,
+  name it in a UCUM annotation: `mg{N}/kg` for nitrate-N, `mg{C}/kg` for
+  organic carbon, `ug{CO2-C}/g` for respiration, `ug{pNP}/g/h` for enzyme
+  activity. Plain element concentrations use `mg/kg` (mg Fe per kg soil).
+- Exchangeable cations and CEC use `meq/(100.g)`.
+- Dimensionless values use `1` (ratios, fractions), `%` (percent), or
+  `[pH]`.
 - The description also states the unit in plain text, so it is visible in
   generated docs and CSV templates.
 - If a slot name already contains a unit (`gwc_percent`,
