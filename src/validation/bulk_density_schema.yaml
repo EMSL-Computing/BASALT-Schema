@@ -60,7 +60,7 @@ classes:
       flag:
         description: |-
           QC flag for the bulk density measurement.
-          CSV column: flag_Bulk_density
+          CSV column: flag_density
     attributes:
 
       bulk_density:
@@ -71,5 +71,3 @@ classes:
         range: double
         required: false
         # minimum_value: 0
-        unit:
-          ucum_code: g/cm3

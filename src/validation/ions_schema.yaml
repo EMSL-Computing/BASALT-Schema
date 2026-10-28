@@ -134,41 +134,29 @@ classes:
       - total_bases_flag
     slot_usage:
       sulfate_flag:
-        description: >-
-          QC flag for sulfate. CSV column: flag_SO4S.
+        description: QC flag for sulfate. CSV column: flag_SO4_S.
       boron_flag:
-        description: >-
-          QC flag for boron. CSV column: flag_B.
+        description: QC flag for boron. CSV column: flag_B.
       zinc_flag:
-        description: >-
-          QC flag for zinc. CSV column: flag_Zn.
+        description: QC flag for zinc. CSV column: flag_Zn.
       manganate_flag:
-        description: >-
-          QC flag for manganese. CSV column: flag_Mn.
+        description: QC flag for manganese. CSV column: flag_Mn.
       copper_flag:
-        description: >-
-          QC flag for copper. CSV column: flag_Cu.
+        description: QC flag for copper. CSV column: flag_Cu.
       iron_flag:
-        description: >-
-          QC flag for iron. CSV column: flag_Fe.
+        description: QC flag for iron. CSV column: flag_Fe.
       calcium_flag:
-        description: >-
-          QC flag for calcium. CSV column: flag_Ca.
+        description: QC flag for calcium. CSV column: flag_Ca.
       magnesium_flag:
-        description: >-
-          QC flag for magnesium. CSV column: flag_Mg.
+        description: QC flag for magnesium. CSV column: flag_Mg.
       sodium_flag:
-        description: >-
-          QC flag for sodium. CSV column: flag_Na.
+        description: QC flag for sodium. CSV column: flag_Na.
       potassium_flag:
-        description: >-
-          QC flag for potassium. CSV column: flag_K.
+        description: QC flag for potassium. CSV column: flag_K.
       cation_exchange_capacity_flag:
-        description: >-
-          QC flag for CEC. CSV column: flag_CEC.
+        description: QC flag for CEC. CSV column: flag_CEC.
       total_bases_flag:
-        description: >-
-          QC flag for total bases sum. CSV column: flag_total_bases.
+        description: QC flag for total bases sum. CSV column: flag_total_bases.
     attributes:
 
       # -----------------------------------------------------------------------
@@ -176,96 +164,64 @@ classes:
       # -----------------------------------------------------------------------
 
       sulfate:
-        description: >-
-          Sulfate-Sulfur (SO4-S) in mg/kg. CSV column: SO4_S_mg_per_kg.
+        description: Sulfate-Sulfur (SO4-S) in mg/kg. CSV column: SO4_S_mg_per_kg.
         range: double
         required: false
-        unit:
-          ucum_code: 'mg{S}/kg'
 
       boron:
-        description: >-
-          Boron (B) in mg/kg. CSV column: B_mg_per_kg.
+        description: Boron (B) in mg/kg. CSV column: B_mg_per_kg.
         range: double
         required: false
-        unit:
-          ucum_code: mg/kg
 
       zinc:
-        description: >-
-          Zinc (Zn) in mg/kg. CSV column: Zn_mg_per_kg.
+        description: Zinc (Zn) in mg/kg. CSV column: Zn_mg_per_kg.
         range: double
         required: false
-        unit:
-          ucum_code: mg/kg
 
       manganate:
-        description: >-
-          Manganese (Mn) in mg/kg. CSV column: Mn_mg_per_kg.
+        description: Manganese (Mn) in mg/kg. CSV column: Mn_mg_per_kg.
         range: double
         required: false
-        unit:
-          ucum_code: mg/kg
 
       copper:
-        description: >-
-          Copper (Cu) in mg/kg. CSV column: Cu_mg_per_kg.
+        description: Copper (Cu) in mg/kg. CSV column: Cu_mg_per_kg.
         range: double
         required: false
-        unit:
-          ucum_code: mg/kg
 
       iron:
-        description: >-
-          Iron (Fe) in mg/kg. CSV column: Fe_mg_per_kg.
+        description: Iron (Fe) in mg/kg. CSV column: Fe_mg_per_kg.
         range: double
         required: false
-        unit:
-          ucum_code: mg/kg
 
       # -----------------------------------------------------------------------
       # Exchangeable Cations + CEC (meq/100g)
       # -----------------------------------------------------------------------
 
       calcium:
-        description: >-
-          Calcium (Ca) in meq/100g. CSV column: Ca_meq_per_100g.
+        description: Calcium (Ca) in meq/100g. CSV column: Ca_meq_per_100_g.
         range: double
         required: false
-        unit:
-          ucum_code: meq/(100.g)
 
       magnesium:
-        description: >-
-          Magnesium (Mg) in meq/100g. CSV column: Mg_meq_per_100g.
+        description: Magnesium (Mg) in meq/100g. CSV column: Mg_meq_per_100_g.
         range: double
         required: false
-        unit:
-          ucum_code: meq/(100.g)
 
       sodium:
-        description: >-
-          Sodium (Na) in meq/100g. CSV column: Na_meq_per_100g.
+        description: Sodium (Na) in meq/100g. CSV column: Na_meq_per_100_g.
         range: double
         required: false
-        unit:
-          ucum_code: meq/(100.g)
 
       potassium:
-        description: >-
-          Potassium (K) in meq/100g. CSV column: K_meq_per_100g.
+        description: Potassium (K) in meq/100g. CSV column: K_meq_per_100_g.
         range: double
         required: false
-        unit:
-          ucum_code: meq/(100.g)
 
       cation_exchange_capacity:
         description: |-
-          Cation Exchange Capacity (CEC) in meq/100g. CSV column: CEC_meq_per_100g.
+          Cation Exchange Capacity (CEC) in meq/100g. CSV column: CEC_meq_per_100_g.
         range: double
         required: false
-        unit:
-          ucum_code: meq/(100.g)
 
       total_bases:
         description: |-
@@ -274,5 +230,3 @@ classes:
           CSV output column. Flag exists: flag_total_bases.
         range: double
         required: false
-        unit:
-          ucum_code: meq/(100.g)

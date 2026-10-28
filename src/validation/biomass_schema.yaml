@@ -90,8 +90,6 @@ classes:
         range: double
         required: false
         # minimum_value: 0
-        unit:
-          ucum_code: 'mg{C}/kg'
 
       mbn:
         description: |-
@@ -101,8 +99,6 @@ classes:
         range: double
         required: false
         # minimum_value: 0
-        unit:
-          ucum_code: 'mg{N}/kg'
 
       mbc_avg:
         description: |-
@@ -110,8 +106,6 @@ classes:
           Stored in operational schema
         range: double
         required: false
-        unit:
-          ucum_code: 'mg{C}/kg'
 
       mbn_avg:
         description: |-
@@ -119,5 +113,3 @@ classes:
           Stored in operational schema
         range: double
         required: false
-        unit:
-          ucum_code: 'mg{N}/kg'

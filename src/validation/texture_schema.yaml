@@ -68,7 +68,7 @@ classes:
       flag:
         description: |-
           QC flag applied to the whole texture result (sand/silt/clay together).
-          CSV column: flag_Texture.
+          CSV column: flag_texture.
     attributes:
 
       sand_pct:
@@ -79,8 +79,6 @@ classes:
         required: false
         # minimum_value: 0
         # maximum_value: 100
-        unit:
-          ucum_code: '%'
 
       silt_pct:
         description: |-
@@ -90,8 +88,6 @@ classes:
         required: false
         # minimum_value: 0
         # maximum_value: 100
-        unit:
-          ucum_code: '%'
 
       clay_pct:
         description: |-
@@ -101,5 +97,3 @@ classes:
         required: false
         # minimum_value: 0
         # maximum_value: 100
-        unit:
-          ucum_code: '%'

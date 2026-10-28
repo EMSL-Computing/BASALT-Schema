@@ -77,5 +77,3 @@ classes:
         range: double
         required: false
         minimum_value: 0
-        unit:
-          ucum_code: 'ug{CO2-C}/g'

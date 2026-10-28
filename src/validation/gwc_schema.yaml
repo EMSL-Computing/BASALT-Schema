@@ -75,5 +75,3 @@ classes:
         range: double
         required: false
         # minimum_value: 0   not enforced; organic soils can exceed expected range
-        unit:
-          ucum_code: '%'
