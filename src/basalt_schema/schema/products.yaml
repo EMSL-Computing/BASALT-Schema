@@ -27,7 +27,7 @@ classes:
       - measure_type
     attributes:
       bulk_density:
-        range: QuantityValue
+        range: double
       flag:
         range: ProcessedDataFlag
 
@@ -314,13 +314,13 @@ classes:
       - measure_type
     attributes:
       total_carbon:
-        range: QuantityValue
+        range: double
       total_nitrogen:
-        range: QuantityValue
+        range: double
       total_kjeldahl_nitrogen:
-        range: QuantityValue
+        range: double
       total_sulfur:
-        range: QuantityValue
+        range: double
       flag_total_carbon:
         range: ProcessedDataFlag
       flag_total_nitrogen:
@@ -338,7 +338,7 @@ classes:
       - measure_type
     attributes:
       beta_glucosidase_ug_pnp_per_g_per_h:
-        range: QuantityValue
+        range: double
       flag:
         range: ProcessedDataFlag
 
@@ -350,7 +350,7 @@ classes:
       - measure_type
     attributes:
       gwc_percent:
-        range: QuantityValue
+        range: double
       flag:
         range: ProcessedDataFlag
 
@@ -397,29 +397,29 @@ classes:
       - measure_type
     attributes:
       sulfate:
-        range: QuantityValue
+        range: double
       boron:
-        range: QuantityValue
+        range: double
       zinc:
-        range: QuantityValue
+        range: double
       manganate:
-        range: QuantityValue
+        range: double
       copper:
-        range: QuantityValue
+        range: double
       iron:
-        range: QuantityValue
+        range: double
       calcium:
-        range: QuantityValue
+        range: double
       magnesium:
-        range: QuantityValue
+        range: double
       sodium:
-        range: QuantityValue
+        range: double
       potassium:
-        range: QuantityValue
+        range: double
       total_bases:
-        range: QuantityValue
+        range: double
       cation_exchange_capacity:
-        range: QuantityValue
+        range: double
       flag_sulfate:
         range: ProcessedDataFlag
       flag_boron:
@@ -456,11 +456,11 @@ classes:
       - produced_by_toctn_run
     attributes:
       total_organic_carbon:
-        range: QuantityValue
+        range: double
       total_organic_carbon_avg:
         range: double
       total_nitrogen:
-        range: QuantityValue
+        range: double
       total_nitrogen_avg:
         range: double
       flag_toc:
@@ -482,11 +482,11 @@ classes:
       - replicate
     attributes:
       mbc:
-        range: QuantityValue
+        range: double
       mbc_avg:
         range: double
       mbn:
-        range: QuantityValue
+        range: double
       mbn_avg:
         range: double
       flag_mbc:
@@ -508,11 +508,11 @@ classes:
       - replicate
     attributes:
       no3_n:
-        range: QuantityValue
+        range: double
       no3_n_avg:
         range: double
       nh4_n:
-        range: QuantityValue
+        range: double
       nh4_n_avg:
         range: double
       flag_no3n:
@@ -536,7 +536,7 @@ classes:
       extraction_method:
         range: string
       phosphorus:
-        range: QuantityValue
+        range: double
       phosphorus_avg:
         range: double
       flag:
@@ -640,11 +640,11 @@ classes:
       - measure_type
     attributes:
       sand_pct:
-        range: QuantityValue
+        range: double
       silt_pct:
-        range: QuantityValue
+        range: double
       clay_pct:
-        range: QuantityValue
+        range: double
       flag:
         range: ProcessedDataFlag
 
@@ -659,11 +659,11 @@ classes:
       - produced_by_toctn_run
     attributes:
       total_organic_carbon:
-        range: QuantityValue
+        range: double
       total_organic_carbon_avg:
         range: double
       total_nitrogen:
-        range: QuantityValue
+        range: double
       total_nitrogen_avg:
         range: double
       flag_toc:
