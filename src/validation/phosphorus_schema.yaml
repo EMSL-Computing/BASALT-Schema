@@ -67,7 +67,7 @@ classes:
       flag:
         description: |-
           QC flag for the phosphorus measurement.
-          CSV column: flag_phosphorus.
+          CSV column: flag_P.
           Operational schema also has flag_avg for the replicate average.
     attributes:
 
@@ -87,3 +87,5 @@ classes:
         range: double
         required: false
         # minimum_value: 0
+        unit:
+          ucum_code: 'mg{P}/kg'

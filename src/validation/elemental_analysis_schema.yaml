@@ -83,28 +83,36 @@ classes:
       - flag_total_sulfur
     slot_usage:
       flag_total_carbon:
-        description: QC flag for total carbon. CSV column: flag_total_carbon.
+        description: >-
+          QC flag for total carbon. CSV column: flag_TC.
       flag_total_nitrogen:
-        description: QC flag for total nitrogen. CSV column: flag_total_nitrogen.
+        description: >-
+          QC flag for total nitrogen. CSV column: flag_TN.
       flag_tkn:
-        description: QC flag for TKN. CSV column: flag_tkn.
+        description: >-
+          QC flag for TKN. CSV column: flag_tkn.
       flag_total_sulfur:
-        description: QC flag for total sulfur. CSV column: flag_total_sulfur.
+        description: >-
+          QC flag for total sulfur. CSV column: flag_TS.
     attributes:
 
       total_carbon:
         description: |-
           Total Carbon as weight percent of dry soil (%).
-          CSV column: Total_C_percent.
+          CSV column: Total_Carbon_percent.
         range: double
         required: false
+        unit:
+          ucum_code: '%'
 
       total_nitrogen:
         description: |-
           Total Nitrogen as weight percent of dry soil (%).
-          CSV column: Total_N_percent.
+          CSV column: Total_Nitrogen_percent.
         range: double
         required: false
+        unit:
+          ucum_code: '%'
 
       total_kjeldahl_nitrogen:
         description: |-
@@ -113,10 +121,14 @@ classes:
           currently a CSV output column. Flag: flag_tkn.
         range: double
         required: false
+        unit:
+          ucum_code: '%'
 
       total_sulfur:
         description: |-
           Total Sulfur as weight percent of dry soil (%).
-          CSV column: Total_S_percent.
+          CSV column: Total_Sulfur_percent.
         range: double
         required: false
+        unit:
+          ucum_code: '%'

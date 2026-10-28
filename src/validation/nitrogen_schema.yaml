@@ -71,11 +71,11 @@ classes:
       flag_no3n:
         description: |-
           QC flag for the nitrate-N measurement.
-          CSV column: flag_no3_n.
+          CSV column: flag_NO3N.
       flag_nh4n:
         description: |-
           QC flag for the ammonium-N measurement.
-          CSV column: flag_nh4_n.
+          CSV column: flag_NH4N.
     attributes:
 
       no3_n:
@@ -86,6 +86,8 @@ classes:
         range: double
         required: false
         # minimum_value: 0
+        unit:
+          ucum_code: 'mg{N}/kg'
 
       nh4_n:
         description: |-
@@ -95,3 +97,5 @@ classes:
         range: double
         required: false
         # minimum_value: 0
+        unit:
+          ucum_code: 'mg{N}/kg'

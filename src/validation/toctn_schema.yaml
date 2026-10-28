@@ -106,6 +106,8 @@ classes:
         range: double
         required: false
         # minimum_value: 0
+        unit:
+          ucum_code: 'mg{C}/kg'
 
       tn:
         description: |-
@@ -116,6 +118,8 @@ classes:
         range: double
         required: false
         # minimum_value: 0
+        unit:
+          ucum_code: 'mg{N}/kg'
 
       toc_avg:
         description: |-
@@ -123,6 +127,8 @@ classes:
           Stored in operational schema (total_organic_carbon_avg).
         range: double
         required: false
+        unit:
+          ucum_code: 'mg{C}/kg'
 
       tn_avg:
         description: |-
@@ -130,3 +136,5 @@ classes:
           Stored in operational schema (total_nitrogen_avg).
         range: double
         required: false
+        unit:
+          ucum_code: 'mg{N}/kg'

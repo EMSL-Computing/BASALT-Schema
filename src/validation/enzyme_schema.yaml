@@ -61,7 +61,7 @@ classes:
       flag:
         description: |-
           QC flag for the enzyme activity measurement.
-          CSV column: flag_beta_glucosidase
+          CSV column: flag_Beta_Glucosidase
     attributes:
 
       beta_glucosidase_ug_pnp_per_g_per_h:
@@ -72,3 +72,5 @@ classes:
         range: double
         required: false
         # minimum_value: 0   commented out; negative values possible in background-subtracted assays
+        unit:
+          ucum_code: 'ug{pNP}/g/h'

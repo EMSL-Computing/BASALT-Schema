@@ -69,3 +69,5 @@ classes:
         required: false
         # minimum_value: 0
         # maximum_value: 14
+        unit:
+          ucum_code: '[pH]'

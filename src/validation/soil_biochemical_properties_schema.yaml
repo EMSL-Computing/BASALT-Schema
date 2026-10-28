@@ -9,20 +9,21 @@
 # - NOT used for validation (no min/max constraints included)
 # - Data levels: L2 (sample averages) or L1 (replicate-level data)
 # - This schema is derived from the BASALT Schema as the source of truth https://emsl-computing.github.io/BASALT-Schema
-# - and therefore column names are faithful to the canonical schema, not the zipdownloader as of last update
+# - Column names, descriptions, and units follow the lab column sheet
+#   (docs/Column_Descriptions 1.xlsx, Biogeochemistry tab); units are UCUM codes
+#   in unit.ucum_code
 #
 # This file should be updated when:
 # - Column names are changed in zip_download_blueprint.py
 # - New analytical methods/columns are added
 # - Unit definitions or descriptions are updated in the canonical schema
-# - the ion units meq_per_100g are currently out of step with the source of truth but this should be reconciled soon.
 ##
 # NOTES:
 # - L1 data includes a "Replicate" column; L2 data does not
 # - Some columns may be empty upon download if specific analyses were not performed
 # - Flag columns indicate data quality concerns
 #
-# Last Updated: 2026-01-21
+# Last Updated: 2026-10-28
 # =============================================================================
 
 id: https://emsl-computing.github.io/BASALT-Schema/soil-biochemical-properties
@@ -53,16 +54,642 @@ classes:
       data from multiple analytical methods (pH, texture, nutrients, biomass, etc.)
       into a unified record.
     attributes:
-      
-      # Core Sample Identifiers
-      Sample_Name:
+      Proposal_ID:
         description: |-
-          Composite identifier in format: {Proposal_ID}_{Sampling_Set}_{Core_Section}
-          Example: 60881_1_B
-          This serves as the primary sample identifier in the deliverable.
+          Identifier of proposal, XXXXX.
+          Reported in: FY23, FY24, FY25.
+        range: integer
+        required: true
+
+      Sampling_Set:
+        description: |-
+          Sampling set.
+          Reported in: FY23, FY24, FY25.
+        range: integer
+        required: true
+
+      Core_Section:
+        description: |-
+          Top or bottom layer of each soil core, TOP or BTM.
+          Reported in: FY23, FY24, FY25.
         range: string
         required: true
-        
+
+      Sample_Name:
+        description: |-
+          The combination of Proposal ID, Sampling set, and Core section.
+          Example: 60881_1_B
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: true
+
+      Bulk_density_g_per_cm3:
+        description: |-
+          Bulk density (g per cm3 soil).
+          Source: BulkDensityProduct.bulk_density from canonical schema.
+          Reported in: FY23, FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: g/cm3
+
+      Total_Carbon_percent:
+        description: |-
+          Total carbon content (weight percent).
+          Source: ElementalAnalysisProduct.total_carbon from canonical schema.
+          Reported in: FY23, FY24.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: '%'
+
+      Total_Nitrogen_percent:
+        description: |-
+          Total nitrogen content (weight percent).
+          Source: ElementalAnalysisProduct.total_nitrogen from canonical schema.
+          Reported in: FY23, FY24.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: '%'
+
+      Total_Sulfur_percent:
+        description: |-
+          Total sulfur content (weight percent).
+          Source: ElementalAnalysisProduct.total_sulfur from canonical schema.
+          Reported in: FY23.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: '%'
+
+      Beta_Glucosidase_ug_pNP_per_g_per_h:
+        description: |-
+          Beta-glucosidase activity (ug pNP per g soil per h).
+          Source: EnzymeProduct.beta_glucosidase_ug_pnp_per_g_per_h from canonical schema.
+          Reported in: FY23, FY24.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: 'ug{pNP}/g/h'
+
+      GWC_percent:
+        description: |-
+          Gravimetric water content (percent).
+          Source: GWCMoistureProduct.gwc_percent from canonical schema.
+          GWC = (wet_mass - dry_mass) / dry_mass x 100
+          L2 data: average across replicates
+          L1 data: individual replicate values
+          Reported in: FY23, FY24, FY25.
+          Replicates: 3.
+        range: double
+        required: false
+        unit:
+          ucum_code: '%'
+
+      HClExtOM_TOC_mg_per_kg:
+        description: |-
+          HCl-extractable organic carbon content (mg C per kg soil).
+          Source: HClExtOMProduct.total_organic_carbon from canonical schema.
+          L2 data: average across replicates
+          L1 data: individual replicate values
+          Reported in: FY23, FY24.
+          Replicates: 3.
+        range: double
+        required: false
+        unit:
+          ucum_code: 'mg{C}/kg'
+
+      HClExtOM_TN_mg_per_kg:
+        description: |-
+          HCl-extractable total nitrogen content (mg N per kg soil).
+          Source: HClExtOMProduct.total_nitrogen from canonical schema.
+          L2 data: average across replicates
+          L1 data: individual replicate values
+          Reported in: FY23, FY24.
+          Replicates: 3.
+        range: double
+        required: false
+        unit:
+          ucum_code: 'mg{N}/kg'
+
+      Ca_meq_per_100g:
+        description: |-
+          Calcium content (milliequivalents per 100 grams of soil).
+          Source: IonsAnalysisProduct.calcium from canonical schema.
+          Reported in: FY23, FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: meq/(100.g)
+
+      Mg_meq_per_100g:
+        description: |-
+          Magnesium content (milliequivalents per 100 grams of soil).
+          Source: IonsAnalysisProduct.magnesium from canonical schema.
+          Reported in: FY23, FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: meq/(100.g)
+
+      Na_meq_per_100g:
+        description: |-
+          Sodium content (milliequivalents per 100 grams of soil).
+          Source: IonsAnalysisProduct.sodium from canonical schema.
+          Reported in: FY23, FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: meq/(100.g)
+
+      K_meq_per_100g:
+        description: |-
+          Potassium content (milliequivalents per 100 grams of soil).
+          Source: IonsAnalysisProduct.potassium from canonical schema.
+          Reported in: FY23, FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: meq/(100.g)
+
+      CEC_meq_per_100g:
+        description: |-
+          Cation exchange capacity (milliequivalents per 100 grams of soil).
+          Source: IonsAnalysisProduct.cation_exchange_capacity from canonical schema.
+          Reported in: FY23.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: meq/(100.g)
+
+      SO4_S_mg_per_kg:
+        description: |-
+          Sulfate sulfur content (mg S per kg soil).
+          Source: IonsAnalysisProduct.sulfate from canonical schema.
+          Reported in: FY23, FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: 'mg{S}/kg'
+
+      B_mg_per_kg:
+        description: |-
+          Boron content (mg B per kg soil).
+          Source: IonsAnalysisProduct.boron from canonical schema.
+          Reported in: FY23, FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: mg/kg
+
+      Zn_mg_per_kg:
+        description: |-
+          Zinc content (mg Zn per kg soil).
+          Source: IonsAnalysisProduct.zinc from canonical schema.
+          Reported in: FY23, FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: mg/kg
+
+      Mn_mg_per_kg:
+        description: |-
+          Manganese content (mg Mn per kg soil).
+          Source: IonsAnalysisProduct.manganate from canonical schema.
+          Reported in: FY23, FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: mg/kg
+
+      Cu_mg_per_kg:
+        description: |-
+          Copper content (mg Cu per kg soil).
+          Source: IonsAnalysisProduct.copper from canonical schema.
+          Reported in: FY23, FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: mg/kg
+
+      Fe_mg_per_kg:
+        description: |-
+          Iron content (mg Fe per kg soil).
+          Source: IonsAnalysisProduct.iron from canonical schema.
+          Reported in: FY23, FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: mg/kg
+
+      MBC_mg_per_kg:
+        description: |-
+          Microbial biomass carbon (mg C per kg soil).
+          Source: MicrobialBiomassProduct.mbc from canonical schema.
+          L2 data: average across replicates
+          L1 data: individual replicate values
+          Reported in: FY23, FY24, FY25.
+          Replicates: 3.
+        range: double
+        required: false
+        unit:
+          ucum_code: 'mg{C}/kg'
+
+      MBN_mg_per_kg:
+        description: |-
+          Microbial biomass nitrogen (mg N per kg soil).
+          Source: MicrobialBiomassProduct.mbn from canonical schema.
+          L2 data: average across replicates
+          L1 data: individual replicate values
+          Reported in: FY23, FY24, FY25.
+          Replicates: 3.
+        range: double
+        required: false
+        unit:
+          ucum_code: 'mg{N}/kg'
+
+      NO3_N_mg_per_kg:
+        description: |-
+          Nitrate nitrogen content (mg N per kg soil).
+          Source: NitrogenAnalysisProduct.no3_n from canonical schema.
+          L2 data: average across replicates
+          L1 data: individual replicate values
+          Reported in: FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: 'mg{N}/kg'
+
+      NH4_N_mg_per_kg:
+        description: |-
+          Ammonium nitrogen content (mg N per kg soil).
+          Source: NitrogenAnalysisProduct.nh4_n from canonical schema.
+          L2 data: average across replicates
+          L1 data: individual replicate values
+          Reported in: FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: 'mg{N}/kg'
+
+      PO4_P_mg_per_kg:
+        description: |-
+          Phosphate phosphorus content (mg P per kg soil).
+          Source: PhosphorusAnalysisProduct.phosphorus from canonical schema.
+          L2 data: average across replicates
+          L1 data: individual replicate values
+          Reported in: FY23, FY24, FY25.
+          Replicates: FY23: 3; FY24: 1 to 3; FY25: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: 'mg{P}/kg'
+
+      pH:
+        description: |-
+          Soil pH.
+          Source: pHProduct class from canonical schema.
+          Reported in: FY23, FY24, FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: '[pH]'
+
+      Respiration_CO2_C_ug_per_g:
+        description: |-
+          Potential soil respiration measured as cumulative microbial CO2-C production
+          over a 24-hour burst incubation (ug CO2-C per g dried soil).
+          Source: RespirationProduct.respiration_co2_c_ug_per_g from canonical schema.
+          Reported in: FY25.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: 'ug{CO2-C}/g'
+
+      Sand_percent:
+        description: |-
+          Sand content (percent).
+          Source: TextureProduct.sand_pct from canonical schema.
+          Reported in: FY23, FY24.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: '%'
+
+      Silt_percent:
+        description: |-
+          Silt content (percent).
+          Source: TextureProduct.silt_pct from canonical schema.
+          Reported in: FY23, FY24.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: '%'
+
+      Clay_percent:
+        description: |-
+          Clay content (percent).
+          Source: TextureProduct.clay_pct from canonical schema.
+          Reported in: FY23, FY24.
+          Replicates: 1.
+        range: double
+        required: false
+        unit:
+          ucum_code: '%'
+
+      WEOM_TOC_mg_per_kg:
+        description: |-
+          Water extractable organic carbon content (mg C per kg soil).
+          Source: WEOMProduct.total_organic_carbon from canonical schema.
+          L2 data: average across replicates
+          L1 data: individual replicate values
+          Reported in: FY23, FY24, FY25.
+          Replicates: 3.
+        range: double
+        required: false
+        unit:
+          ucum_code: 'mg{C}/kg'
+
+      WEOM_TN_mg_per_kg:
+        description: |-
+          Water extractable total nitrogen content (mg N per kg soil).
+          Source: WEOMProduct.total_nitrogen from canonical schema.
+          L2 data: average across replicates
+          L1 data: individual replicate values
+          Reported in: FY23, FY24, FY25.
+          Replicates: 3.
+        range: double
+        required: false
+        unit:
+          ucum_code: 'mg{N}/kg'
+
+      flag_Bulk_density:
+        description: |-
+          Data quality flag for bulk density; blank if no flag. See Flag_Definitions.
+          Source: BulkDensityProduct from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_TC:
+        description: |-
+          Data quality flag for total carbon; blank if no flag. See Flag_Definitions.
+          Source: ElementalAnalysisProduct.flag_total_carbon from canonical schema.
+          Reported in: FY23, FY24.
+        range: string
+        required: false
+
+      flag_TN:
+        description: |-
+          Data quality flag for total nitrogen; blank if no flag. See Flag_Definitions.
+          Source: ElementalAnalysisProduct.flag_total_nitrogen from canonical schema.
+          Reported in: FY23, FY24.
+        range: string
+        required: false
+
+      flag_TS:
+        description: |-
+          Data quality flag for total sulfur; blank if no flag. See Flag_Definitions.
+          Source: ElementalAnalysisProduct.flag_total_sulfur from canonical schema.
+          Reported in: FY23.
+        range: string
+        required: false
+
+      flag_Beta_Glucosidase:
+        description: |-
+          Data quality flag for beta-glucosidase activity; blank if no flag. See
+          Flag_Definitions.
+          Source: EnzymeProduct.flag_enzyme from canonical schema.
+          Reported in: FY23, FY24.
+        range: string
+        required: false
+
+      flag_GWC:
+        description: |-
+          Data quality flag for gravimetric water content; blank if no flag. See
+          Flag_Definitions.
+          Source: GWCMoistureProduct.gwc_flag from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_HClExtOM_TOC:
+        description: |-
+          Data quality flag for HCl-extractable organic carbon; blank if no flag. See
+          Flag_Definitions.
+          Source: HClExtOMProduct.flag_toc from canonical schema.
+          Reported in: FY23, FY24.
+        range: string
+        required: false
+
+      flag_HClExtOM_TN:
+        description: |-
+          Data quality flag for HCl-extractable total nitrogen; blank if no flag. See
+          Flag_Definitions.
+          Source: HClExtOMProduct.flag_tn from canonical schema.
+          Reported in: FY23, FY24.
+        range: string
+        required: false
+
+      flag_Ca:
+        description: |-
+          Data quality flag for calcium; blank if no flag. See Flag_Definitions.
+          Source: IonsAnalysisProduct.flag_calcium from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_Mg:
+        description: |-
+          Data quality flag for magnesium; blank if no flag. See Flag_Definitions.
+          Source: IonsAnalysisProduct.flag_magnesium from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_Na:
+        description: |-
+          Data quality flag for sodium; blank if no flag. See Flag_Definitions.
+          Source: IonsAnalysisProduct.flag_sodium from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_K:
+        description: |-
+          Data quality flag for potassium; blank if no flag. See Flag_Definitions.
+          Source: IonsAnalysisProduct.flag_potassium from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_CEC:
+        description: |-
+          Data quality flag for cation exchange capacity; blank if no flag. See
+          Flag_Definitions.
+          Source: IonsAnalysisProduct.flag_cec from canonical schema.
+          Reported in: FY23.
+        range: string
+        required: false
+
+      flag_SO4S:
+        description: |-
+          Data quality flag for sulfate sulfur; blank if no flag. See Flag_Definitions.
+          Source: IonsAnalysisProduct.flag_sulfate from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_B:
+        description: |-
+          Data quality flag for boron; blank if no flag. See Flag_Definitions.
+          Source: IonsAnalysisProduct.flag_boron from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_Zn:
+        description: |-
+          Data quality flag for zinc; blank if no flag. See Flag_Definitions.
+          Source: IonsAnalysisProduct.flag_zinc from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_Mn:
+        description: |-
+          Data quality flag for manganese; blank if no flag. See Flag_Definitions.
+          Source: IonsAnalysisProduct.flag_manganate from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_Cu:
+        description: |-
+          Data quality flag for copper; blank if no flag. See Flag_Definitions.
+          Source: IonsAnalysisProduct.flag_copper from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_Fe:
+        description: |-
+          Data quality flag for iron; blank if no flag. See Flag_Definitions.
+          Source: IonsAnalysisProduct.flag_iron from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_MBC:
+        description: |-
+          Data quality flag for microbial biomass carbon; blank if no flag. See
+          Flag_Definitions.
+          Source: MicrobialBiomassProduct.flag_mbc from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_MBN:
+        description: |-
+          Data quality flag for microbial biomass nitrogen; blank if no flag. See
+          Flag_Definitions.
+          Source: MicrobialBiomassProduct.flag_mbn from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_NO3N:
+        description: |-
+          Data quality flag for nitrate nitrogen; blank if no flag. See Flag_Definitions.
+          Source: NitrogenAnalysisProduct.flag_no3n from canonical schema.
+          Reported in: FY24, FY25.
+        range: string
+        required: false
+
+      flag_NH4N:
+        description: |-
+          Data quality flag for ammonium nitrogen; blank if no flag. See Flag_Definitions.
+          Source: NitrogenAnalysisProduct.flag_nh4n from canonical schema.
+          Reported in: FY24, FY25.
+        range: string
+        required: false
+
+      flag_P:
+        description: |-
+          Data quality flag for phosphate phosphorus; blank if no flag. See
+          Flag_Definitions.
+          Source: PhosphorusAnalysisProduct.flag_phosphorus from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_pH:
+        description: |-
+          Data quality flag for pH; blank if no flag. See Flag_Definitions.
+          Source: pHProduct from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_Respiration:
+        description: |-
+          Data quality flag for respiration; blank if no flag. See Flag_Definitions.
+          Source: RespirationProduct from canonical schema.
+          Reported in: FY25.
+        range: string
+        required: false
+
+      flag_Texture:
+        description: |-
+          Data quality flag for texture (sand, silt, clay); blank if no flag. See
+          Flag_Definitions.
+          Source: TextureProduct (sand/silt/clay) from canonical schema.
+          Reported in: FY23, FY24.
+        range: string
+        required: false
+
+      flag_WEOM_TOC:
+        description: |-
+          Data quality flag for water extractable organic carbon; blank if no flag. See
+          Flag_Definitions.
+          Source: WEOMProduct.flag_toc from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      flag_WEOM_TN:
+        description: |-
+          Data quality flag for water extractable total nitrogen; blank if no flag. See
+          Flag_Definitions.
+          Source: WEOMProduct.flag_tn from canonical schema.
+          Reported in: FY23, FY24, FY25.
+        range: string
+        required: false
+
+      # Not in the lab column sheet (Column_Descriptions.xlsx); kept as-is.
       Replicate:
         description: |-
           Replicate number for the sample (L1 data only).
@@ -71,496 +698,24 @@ classes:
           Only present when l1_checked=True flag is set during download.
         range: integer
         required: false
-        
-      Proposal_ID:
-        description: |-
-          The 5-digit EMSL user proposal/project ID.
-          Corresponds to the EMSL project under which the sample was collected and analyzed.
-        range: integer
-        required: true
-        
-      Sampling_Set:
-        description: |-
-          Identifier for the sampling set or campaign number.
-          Groups samples collected together as part of the same sampling event or study.
-        range: integer
-        required: true
-        
-      Core_Section:
-        description: |-
-          The vertical section of the soil core from which this sample was taken.
-          Common values: TOP, MID, BTM (top, middle, bottom sections of core).
-          Typically represented as single letter: T, M, B.
-        range: string
-        required: true
-      
-      # pH Measurements (pHProduct)
-      pH:
-        description: |-
-          Soil pH measurement (pH units).
-          Source: pHProduct class from canonical schema.
-        range: double
-        required: false
-      
-      # Microbial Biomass (MicrobialBiomassProduct)
-      MBC_mg_per_kg:
-        description: |-
-          Microbial Biomass Carbon in milligrams per kilogram of soil (mg/kg).
-          Source: MicrobialBiomassProduct.mbc from canonical schema.
-          L2 data: average across replicates
-          L1 data: individual replicate values
-        range: double
-        required: false
-        
-      MBN_mg_per_kg:
-        description: |-
-          Microbial Biomass Nitrogen in milligrams per kilogram of soil (mg/kg).
-          Source: MicrobialBiomassProduct.mbn from canonical schema.
-          L2 data: average across replicates
-          L1 data: individual replicate values
-        range: double
-        required: false
-      
-      # Ion Analysis (IonsAnalysisProduct)
-      SO4_S_mg_per_kg:
-        description: |-
-          Sulfate-Sulfur (SO4-S) in milligrams per kilogram of soil (mg/kg).
-          Source: IonsAnalysisProduct.sulfate from canonical schema.
-        range: double
-        required: false
-        
-      B_mg_per_kg:
-        description: |-
-          Boron (B) in milligrams per kilogram of soil (mg/kg).
-          Source: IonsAnalysisProduct.boron from canonical schema.
-        range: double
-        required: false
-        
-      Zn_mg_per_kg:
-        description: |-
-          Zinc (Zn) in milligrams per kilogram of soil (mg/kg).
-          Source: IonsAnalysisProduct.zinc from canonical schema.
-        range: double
-        required: false
-        
-      Mn_mg_per_kg:
-        description: |-
-          Manganese (Mn) in milligrams per kilogram of soil (mg/kg).
-          Source: IonsAnalysisProduct.manganate from canonical schema.
-        range: double
-        required: false
-        
-      Cu_mg_per_kg:
-        description: |-
-          Copper (Cu) in milligrams per kilogram of soil (mg/kg).
-          Source: IonsAnalysisProduct.copper from canonical schema.
-        range: double
-        required: false
-        
-      Fe_mg_per_kg:
-        description: |-
-          Iron (Fe) in milligrams per kilogram of soil (mg/kg).
-          Source: IonsAnalysisProduct.iron from canonical schema.
-        range: double
-        required: false
-        
-      Ca_meq_per_100_g:
-        description: |-
-          Calcium (Ca) in milliequivalents per 100 grams of soil (meq/100g).
-          Source: IonsAnalysisProduct.calcium from canonical schema.
-        range: double
-        required: false
-        
-      Mg_meq_per_100_g:
-        description: |-
-          Magnesium (Mg) in milliequivalents per 100 grams of soil (meq/100g).
-          Source: IonsAnalysisProduct.magnesium from canonical schema.
-        range: double
-        required: false
-        
-      Na_meq_per_100_g:
-        description: |-
-          Sodium (Na) in milliequivalents per 100 grams of soil (meq/100g).
-          Source: IonsAnalysisProduct.sodium from canonical schema.
-        range: double
-        required: false
-        
-      K_meq_per_100_g:
-        description: |-
-          Potassium (K) in milliequivalents per 100 grams of soil (meq/100g).
-          Source: IonsAnalysisProduct.potassium from canonical schema.
-        range: double
-        required: false
-        
-      CEC_meq_per_100_g:
-        description: |-
-          Cation Exchange Capacity in milliequivalents per 100 grams (meq/100g).
-          Source: IonsAnalysisProduct.cation_exchange_capacity from canonical schema.
-        range: double
-        required: false
-      
-      # Elemental Analysis (ElementalAnalysisProduct)
-      Total_C_percent:
-        description: |-
-          Total Carbon as percentage of dry soil weight (%).
-          Source: ElementalAnalysisProduct.total_carbon from canonical schema.
-        range: double
-        required: false
-        
-      Total_N_percent:
-        description: |-
-          Total Nitrogen as percentage of dry soil weight (%).
-          Source: ElementalAnalysisProduct.total_nitrogen from canonical schema.
-        range: double
-        required: false
-        
-      Total_S_percent:
-        description: |-
-          Total Sulfur as percentage of dry soil weight (%).
-          Source: ElementalAnalysisProduct.total_sulfur from canonical schema.
-        range: double
-        required: false
-      
-      # Nitrogen Analysis (NitrogenAnalysisProduct)
-      NH4_N_mg_per_kg:
-        description: |-
-          Ammonium Nitrogen (NH4-N) in milligrams per kilogram of soil (mg/kg).
-          Source: NitrogenAnalysisProduct.nh4_n from canonical schema.
-          L2 data: average across replicates
-          L1 data: individual replicate values
-        range: double
-        required: false
-        
-      NO3_N_mg_per_kg:
-        description: |-
-          Nitrate Nitrogen (NO3-N) in milligrams per kilogram of soil (mg/kg).
-          Source: NitrogenAnalysisProduct.no3_n from canonical schema.
-          L2 data: average across replicates
-          L1 data: individual replicate values
-        range: double
-        required: false
-      
-      # Phosphorus Analysis (PhosphorusAnalysisProduct)
-      PO4_P_mg_per_kg:
-        description: |-
-          Phosphate Phosphorus (PO4-P) in milligrams per kilogram of soil (mg/kg).
-          Source: PhosphorusAnalysisProduct.phosphorus from canonical schema.
-          L2 data: average across replicates
-          L1 data: individual replicate values
-        range: double
-        required: false
-        
+
       PO4_P_extraction:
         description: |-
           Extraction method used for phosphorus analysis.
           Source: PhosphorusAnalysisProduct.extraction_method from canonical schema.
         range: string
         required: false
-      
-      # Moisture Content (GWCMoistureProduct)
-      GWC_percent:
-        description: |-
-          Gravimetric Water Content as percentage (%).
-          Source: GWCMoistureProduct.gwc_percent from canonical schema.
-          Ratio of water mass to dry soil mass, expressed as percentage.
-          GWC = (wet_mass - dry_mass) / dry_mass x 100
-          L2 data: average across replicates
-          L1 data: individual replicate values
-        range: double
-        required: false
-      
-      # Water Extractable Organic Matter (WEOMProduct)
-      WEOM_TOC_mg_per_kg:
-        description: |-
-          Water Extractable Organic Matter - Total Organic Carbon in mg/kg.
-          Source: WEOMProduct.total_organic_carbon from canonical schema.
-          L2 data: average across replicates
-          L1 data: individual replicate values
-        range: double
-        required: false
-        
-      WEOM_TN_mg_per_kg:
-        description: |-
-          Water Extractable Organic Matter - Total Nitrogen in mg/kg.
-          Source: WEOMProduct.total_nitrogen from canonical schema.
-          L2 data: average across replicates
-          L1 data: individual replicate values
-        range: double
-        required: false
-      
-      # Mineral Associated Organic Matter (Formerly MAOMProduct, renamed to HClExtOM)
-      HClExtOM_TOC_mg_per_kg:
-        description: |-
-          Mineral Associated Organic Matter - Total Organic Carbon in mg/kg.
-          Source: HClExtOMProduct.total_organic_carbon from canonical schema.
-          L2 data: average across replicates
-          L1 data: individual replicate values
-        range: double
-        required: false
-        
-      HClExtOM_TN_mg_per_kg:
-        description: |-
-          Mineral Associated Organic Matter - Total Nitrogen in mg/kg.
-          Source: HClExtOMProduct.total_nitrogen from canonical schema.
-          L2 data: average across replicates
-          L1 data: individual replicate values
-        range: double
-        required: false
-      
-      # Texture Analysis (TextureProduct)
-      Clay_percent:
-        description: |-
-          Clay content as percentage of soil by weight (%).
-          Source: TextureProduct.clay_pct from canonical schema.
-        range: double
-        required: false
-        
-      Sand_percent:
-        description: |-
-          Sand content as percentage of soil by weight (%).
-          Source: TextureProduct.sand_pct from canonical schema.
-        range: double
-        required: false
-        
-      Silt_percent:
-        description: |-
-          Silt content as percentage of soil by weight (%).
-          Source: TextureProduct.silt_pct from canonical schema.
-        range: double
-        required: false
-      
-      # Enzyme Activity (EnzymeProduct)
-      Beta_Glucosidase_ug_pNP_per_g_per_h:
-        description: |-
-          Beta-Glucosidase enzyme activity in micrograms para-nitrophenol per gram per hour (ug pNP/g/h).
-          Source: EnzymeProduct.beta_glucosidase_ug_pnp_per_g_per_h from canonical schema.
-        range: double
-        required: false
-      
-      # Bulk Density (BulkDensityProduct)
-      Bulk_density_g_per_cm3:
-        description: |-
-          Soil bulk density in grams per cubic centimeter (g/cm^3).
-          Source: BulkDensityProduct.bulk_density from canonical schema.
-        range: double
-        required: false
-      
-      # Data Quality Flags
-      flag_B:  
-        description: |-
-          Quality flag for Boron measurement.
-          Source: IonsAnalysisProduct.flag_boron from canonical schema.
-        range: string
-        required: false
-      
-      flag_beta_glucosidase:  
-        description: |-
-          Quality flag for Beta-Glucosidase enzyme activity measurement.
-          Source: EnzymeProduct.flag_enzyme from canonical schema.
-        range: string
-        required: false
-      
-      flag_Ca:  
-        description: |-
-          Quality flag for Calcium measurement.
-          Source: IonsAnalysisProduct.flag_calcium from canonical schema.
-        range: string
-        required: false
-      
-      flag_CEC: 
-        description: |-
-          Quality flag for Cation Exchange Capacity measurement.
-          Source: IonsAnalysisProduct.flag_cec from canonical schema.
-        range: string
-        required: false
-      
-      flag_Cu:  
-        description: |-
-          Quality flag for Copper measurement.
-          Source: IonsAnalysisProduct.flag_copper from canonical schema.
-        range: string
-        required: false
-      
-      flag_density:
-        description: |-
-          Quality flag for bulk density measurement.
-          Source: BulkDensityProduct from canonical schema.
-        range: string
-        required: false
-      
-      flag_Fe:  
-        description: |-
-          Quality flag for Iron measurement.
-          Source: IonsAnalysisProduct.flag_iron from canonical schema.
-        range: string
-        required: false
-      
-      flag_GWC:
-        description: |-
-          Quality flag for Gravimetric Water Content measurement.
-          Source: GWCMoistureProduct.gwc_flag from canonical schema.
-        range: string
-        required: false
-      
-      flag_HClExtOM_TN:  # Renamed from flag_MAOM_TN to match HClExtOM naming
-        description: |-
-          Quality flag for Mineral Associated Organic Matter - Total Nitrogen measurement.
-          Source: HClExtOMProduct.flag_tn from canonical schema.
-          Note: MAOM renamed to HClExtOM in schema to match analytical method.
-        range: string
-        required: false
-      
-      flag_HClExtOM_TOC:  # Renamed from flag_MAOM_TOC to match HClExtOM naming
-        description: |-
-          Quality flag for Mineral Associated Organic Matter - Total Organic Carbon measurement.
-          Source: HClExtOMProduct.flag_toc from canonical schema.
-          Note: MAOM renamed to HClExtOM in schema to match analytical method.
-        range: string
-        required: false
-      
-      flag_K:  
-        description: |-
-          Quality flag for Potassium measurement.
-          Source: IonsAnalysisProduct.flag_potassium from canonical schema.
-        range: string
-        required: false
-      
-      flag_MBC:
-        description: |-
-          Quality flag for Microbial Biomass Carbon measurement.
-          Source: MicrobialBiomassProduct.flag_mbc from canonical schema.
-        range: string
-        required: false
-      
-      flag_MBN:
-        description: |-
-          Quality flag for Microbial Biomass Nitrogen measurement.
-          Source: MicrobialBiomassProduct.flag_mbn from canonical schema.
-        range: string
-        required: false
-      
-      flag_Mg:  
-        description: |-
-          Quality flag for Magnesium measurement.
-          Source: IonsAnalysisProduct.flag_magnesium from canonical schema.
-        range: string
-        required: false
-      
-      flag_Mn:  
-        description: |-
-          Quality flag for Manganese measurement.
-          Source: IonsAnalysisProduct.flag_manganate from canonical schema.
-        range: string
-        required: false
-      
-      flag_Na:  
-        description: |-
-          Quality flag for Sodium measurement.
-          Source: IonsAnalysisProduct.flag_sodium from canonical schema.
-        range: string
-        required: false
-      
-      flag_nh4_n: 
-        description: |-
-          Quality flag for Ammonium Nitrogen measurement.
-          Source: NitrogenAnalysisProduct.flag_nh4n from canonical schema.
-        range: string
-        required: false
-      
-      flag_no3_n: 
-        description: |-
-          Quality flag for Nitrate Nitrogen measurement.
-          Source: NitrogenAnalysisProduct.flag_no3n from canonical schema.
-        range: string
-        required: false
-      
-      flag_pH:
-        description: |-
-          Quality flag for pH measurement.
-          Source: pHProduct from canonical schema.
-        range: string
-        required: false
-      
-      flag_phosphorus:  
-        description: |-
-          Quality flag for Phosphate Phosphorus measurement.
-          Source: PhosphorusAnalysisProduct.flag_phosphorus from canonical schema.
-        range: string
-        required: false
-      
-      flag_respiration:
-        description: |-
-          Quality flag for respiration measurement.
-          Source: RespirationProduct from canonical schema.
-        range: string
-        required: false
-      
-      flag_SO4_S: 
-        description: |-
-          Quality flag for Sulfate-Sulfur measurement.
-          Source: IonsAnalysisProduct.flag_sulfate from canonical schema.
-        range: string
-        required: false
-      
-      flag_texture:
-        description: |-
-          Quality flag for texture measurement.
-          Source: TextureProduct (sand/silt/clay) from canonical schema.
-        range: string
-        required: false
-      
+
       flag_tkn:
         description: |-
           Quality flag for elemental analysis measurement.
           Source: ElementalAnalysisProduct from canonical schema.
         range: string
         required: false
-      
+
       flag_total_bases:
         description: |-
           Quality flag for IonsAnalysisProduct measurement.
           Source: IonsAnalysisProduct from canonical schema.
-        range: string
-        required: false
-      
-      flag_total_carbon:  
-        description: |-
-          Quality flag for Total Carbon measurement.
-          Source: ElementalAnalysisProduct.flag_total_carbon from canonical schema.
-        range: string
-        required: false
-      
-      flag_total_nitrogen:  
-        description: |-
-          Quality flag for Total Nitrogen measurement.
-          Source: ElementalAnalysisProduct.flag_total_nitrogen from canonical schema.
-        range: string
-        required: false
-      
-      flag_total_sulfur:  
-        description: |-
-          Quality flag for Total Sulfur measurement.
-          Source: ElementalAnalysisProduct.flag_total_sulfur from canonical schema.
-        range: string
-        required: false
-      
-      flag_WEOM_TN:
-        description: |-
-          Quality flag for Water Extractable Organic Matter - Total Nitrogen measurement.
-          Source: WEOMProduct.flag_tn from canonical schema.
-        range: string
-        required: false
-      
-      flag_WEOM_TOC:
-        description: |-
-          Quality flag for Water Extractable Organic Matter - Total Organic Carbon measurement.
-          Source: WEOMProduct.flag_toc from canonical schema.
-        range: string
-        required: false
-      
-      flag_Zn:  
-        description: |-
-          Quality flag for Zinc measurement.
-          Source: IonsAnalysisProduct.flag_zinc from canonical schema.
         range: string
         required: false
