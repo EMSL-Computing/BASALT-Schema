@@ -390,26 +390,36 @@ classes:
     attributes:
       alpha:
         description: >-
-          Van Genuchten shape parameter alpha (1/cm). Controls the inverse of the
-          air-entry suction; typically fitted by HYPROP-FIT or similar software.
+          van Genuchten scale parameter, inversely proportional to mean pore diameter
+          (per cm). Typically fitted by HYPROP-FIT or similar software.
         range: double
+        unit:
+          ucum_code: /cm
       n:
         description: >-
-          Van Genuchten pore-size distribution index n (dimensionless, n > 1).
-          Controls the slope of the water-retention curve.
+          van Genuchten parameter that describes the pore-size distribution of the soil
+          (dimensionless, n > 1). Controls the slope of the water-retention curve.
         range: double
+        unit:
+          ucum_code: '1'
       theta_r:
         description: >-
-          Residual volumetric water content theta_r (cm3 cm). The water content
-          at which liquid conductivity approaches zero.
+          Residual volumetric water content from HYPROP soil water retention model (cm3
+          water per cm3 soil). The water content at which liquid conductivity approaches
+          zero.
         range: double
+        unit:
+          ucum_code: cm3/cm3
       theta_s:
         description: >-
-          Saturated volumetric water content theta_s (cm3 cm e-3). Approximates
-          total porosity under saturated conditions.
+          Saturated volumetric water content from HYPROP soil water retention model (cm3
+          water per cm3 soil). Approximates total porosity under saturated conditions.
         range: double
+        unit:
+          ucum_code: cm3/cm3
       flag:
-        description: QC flag for the entire VGM fit (e.g. missing sample, failed QC).
+        description: >-
+          Data quality flag for HYPROP water retention parameters; blank if no flag.
         range: ProcessedDataFlag
       
   IonsAnalysisProduct:
