@@ -27,8 +27,12 @@ classes:
       - measure_type
     attributes:
       bulk_density:
+        description: Bulk density (g per cm3 soil).
         range: double
+        unit:
+          ucum_code: g/cm3
       flag:
+        description: Data quality flag for bulk density; blank if no flag.
         range: ProcessedDataFlag
 
   CMM_ICPMS_DigestionProduct:
@@ -314,20 +318,32 @@ classes:
       - measure_type
     attributes:
       total_carbon:
+        description: Total carbon content (weight percent).
         range: double
+        unit:
+          ucum_code: '%'
       total_nitrogen:
+        description: Total nitrogen content (weight percent).
         range: double
+        unit:
+          ucum_code: '%'
       total_kjeldahl_nitrogen:
         range: double
       total_sulfur:
+        description: Total sulfur content (weight percent).
         range: double
+        unit:
+          ucum_code: '%'
       flag_total_carbon:
+        description: Data quality flag for total carbon; blank if no flag.
         range: ProcessedDataFlag
       flag_total_nitrogen:
+        description: Data quality flag for total nitrogen; blank if no flag.
         range: ProcessedDataFlag
       flag_tkn:
         range: ProcessedDataFlag
       flag_total_sulfur:
+        description: Data quality flag for total sulfur; blank if no flag.
         range: ProcessedDataFlag
 
   EnzymeProduct:
@@ -338,8 +354,12 @@ classes:
       - measure_type
     attributes:
       beta_glucosidase_ug_pnp_per_g_per_h:
+        description: Beta-glucosidase activity (ug pNP per g soil per h).
         range: double
+        unit:
+          ucum_code: 'ug{pNP}/g/h'
       flag:
+        description: Data quality flag for beta-glucosidase activity; blank if no flag.
         range: ProcessedDataFlag
 
   GWCMoistureProduct:
@@ -350,8 +370,12 @@ classes:
       - measure_type
     attributes:
       gwc_percent:
+        description: Gravimetric water content (percent).
         range: double
+        unit:
+          ucum_code: '%'
       flag:
+        description: Data quality flag for gravimetric water content; blank if no flag.
         range: ProcessedDataFlag
 
   
@@ -397,58 +421,108 @@ classes:
       - measure_type
     attributes:
       sulfate:
+        description: Sulfate sulfur content (mg S per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{S}/kg'
       boron:
+        description: Boron content (mg B per kg soil).
         range: double
+        unit:
+          ucum_code: mg/kg
       zinc:
+        description: Zinc content (mg Zn per kg soil).
         range: double
+        unit:
+          ucum_code: mg/kg
       manganate:
+        description: Manganese content (mg Mn per kg soil).
         range: double
+        unit:
+          ucum_code: mg/kg
       copper:
+        description: Copper content (mg Cu per kg soil).
         range: double
+        unit:
+          ucum_code: mg/kg
       iron:
+        description: Iron content (mg Fe per kg soil).
         range: double
+        unit:
+          ucum_code: mg/kg
       calcium:
+        description: Calcium content (milliequivalents per 100 grams of soil).
         range: double
+        unit:
+          ucum_code: meq/(100.g)
       magnesium:
+        description: Magnesium content (milliequivalents per 100 grams of soil).
         range: double
+        unit:
+          ucum_code: meq/(100.g)
       sodium:
+        description: Sodium content (milliequivalents per 100 grams of soil).
         range: double
+        unit:
+          ucum_code: meq/(100.g)
       potassium:
+        description: Potassium content (milliequivalents per 100 grams of soil).
         range: double
+        unit:
+          ucum_code: meq/(100.g)
       total_bases:
+        description: >-
+          Sum of exchangeable base cations Ca + Mg + Na + K (milliequivalents per 100
+          grams of soil).
         range: double
+        unit:
+          ucum_code: meq/(100.g)
       cation_exchange_capacity:
+        description: Cation exchange capacity (milliequivalents per 100 grams of soil).
         range: double
+        unit:
+          ucum_code: meq/(100.g)
       flag_sulfate:
+        description: Data quality flag for sulfate sulfur; blank if no flag.
         range: ProcessedDataFlag
       flag_boron:
+        description: Data quality flag for boron; blank if no flag.
         range: ProcessedDataFlag
       flag_zinc:
+        description: Data quality flag for zinc; blank if no flag.
         range: ProcessedDataFlag
       flag_manganate:
+        description: Data quality flag for manganese; blank if no flag.
         range: ProcessedDataFlag
       flag_copper:
+        description: Data quality flag for copper; blank if no flag.
         range: ProcessedDataFlag
       flag_iron:
+        description: Data quality flag for iron; blank if no flag.
         range: ProcessedDataFlag
       flag_calcium:
+        description: Data quality flag for calcium; blank if no flag.
         range: ProcessedDataFlag
       flag_magnesium:
+        description: Data quality flag for magnesium; blank if no flag.
         range: ProcessedDataFlag
       flag_sodium:
+        description: Data quality flag for sodium; blank if no flag.
         range: ProcessedDataFlag
       flag_potassium:
+        description: Data quality flag for potassium; blank if no flag.
         range: ProcessedDataFlag
       flag_total_bases:
+        description: Data quality flag for total bases; blank if no flag.
         range: ProcessedDataFlag
       flag_cec:
+        description: Data quality flag for cation exchange capacity; blank if no flag.
         range: ProcessedDataFlag
 
   HClExtOMProduct:
     is_a: ProcessedData
     description: |-
-      Mineral-Associated Organic Matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
+      HCl-extractable organic matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
       Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
@@ -456,20 +530,44 @@ classes:
       - produced_by_toctn_run
     attributes:
       total_organic_carbon:
+        description: HCl-extractable organic carbon content (mg C per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{C}/kg'
       total_organic_carbon_avg:
+        description: >-
+          Mean of replicate HCl-extractable organic carbon values (mg C per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{C}/kg'
       total_nitrogen:
+        description: HCl-extractable total nitrogen content (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       total_nitrogen_avg:
+        description: >-
+          Mean of replicate HCl-extractable total nitrogen values (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       flag_toc:
+        description: >-
+          Data quality flag for HCl-extractable organic carbon; blank if no flag.
         range: ProcessedDataFlag
       flag_tn:
+        description: >-
+          Data quality flag for HCl-extractable total nitrogen; blank if no flag.
         range: ProcessedDataFlag
       flag_toc_avg:
+        description: >-
+          Data quality flag for the replicate mean of HCl-extractable organic carbon;
+          blank if no flag.
         range: ProcessedDataFlag
       flag_tn_avg:
+        description: >-
+          Data quality flag for the replicate mean of HCl-extractable total nitrogen;
+          blank if no flag.
         range: ProcessedDataFlag
 
   MicrobialBiomassProduct:
@@ -482,20 +580,42 @@ classes:
       - replicate
     attributes:
       mbc:
+        description: Microbial biomass carbon (mg C per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{C}/kg'
       mbc_avg:
+        description: >-
+          Mean of replicate microbial biomass carbon values (mg C per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{C}/kg'
       mbn:
+        description: Microbial biomass nitrogen (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       mbn_avg:
+        description: >-
+          Mean of replicate microbial biomass nitrogen values (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       flag_mbc:
+        description: Data quality flag for microbial biomass carbon; blank if no flag.
         range: ProcessedDataFlag
       flag_mbn:
+        description: Data quality flag for microbial biomass nitrogen; blank if no flag.
         range: ProcessedDataFlag
       flag_mbc_avg:
+        description: >-
+          Data quality flag for the replicate mean of microbial biomass carbon; blank if
+          no flag.
         range: ProcessedDataFlag
       flag_mbn_avg:
+        description: >-
+          Data quality flag for the replicate mean of microbial biomass nitrogen; blank
+          if no flag.
         range: ProcessedDataFlag
 
   NitrogenAnalysisProduct:
@@ -508,20 +628,40 @@ classes:
       - replicate
     attributes:
       no3_n:
+        description: Nitrate nitrogen content (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       no3_n_avg:
+        description: Mean of replicate nitrate nitrogen values (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       nh4_n:
+        description: Ammonium nitrogen content (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       nh4_n_avg:
+        description: Mean of replicate ammonium nitrogen values (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       flag_no3n:
+        description: Data quality flag for nitrate nitrogen; blank if no flag.
         range: ProcessedDataFlag
       flag_nh4n:
+        description: Data quality flag for ammonium nitrogen; blank if no flag.
         range: ProcessedDataFlag
       flag_no3n_avg:
+        description: >-
+          Data quality flag for the replicate mean of nitrate nitrogen; blank if no
+          flag.
         range: ProcessedDataFlag
       flag_nh4n_avg:
+        description: >-
+          Data quality flag for the replicate mean of ammonium nitrogen; blank if no
+          flag.
         range: ProcessedDataFlag
 
   PhosphorusAnalysisProduct:
@@ -536,12 +676,22 @@ classes:
       extraction_method:
         range: string
       phosphorus:
+        description: Phosphate phosphorus content (mg P per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{P}/kg'
       phosphorus_avg:
+        description: Mean of replicate phosphate phosphorus values (mg P per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{P}/kg'
       flag:
+        description: Data quality flag for phosphate phosphorus; blank if no flag.
         range: ProcessedDataFlag
       flag_avg:
+        description: >-
+          Data quality flag for the replicate mean of phosphate phosphorus; blank if no
+          flag.
         range: ProcessedDataFlag
 
   RespirationProduct:
@@ -552,9 +702,14 @@ classes:
       - measure_type
     attributes:
       respiration_co2_c_ug_per_g:
-        description: Soil respiration expressed as µg CO₂-C per gram soil
+        description: >-
+          Potential soil respiration measured as cumulative microbial CO2-C production
+          over a 24-hour burst incubation (ug CO2-C per g dried soil).
         range: double
+        unit:
+          ucum_code: 'ug{CO2-C}/g'
       flag:
+        description: Data quality flag for respiration; blank if no flag.
         range: ProcessedDataFlag
 
   Rhizo_ICPMS_DigestionProduct:
@@ -640,12 +795,22 @@ classes:
       - measure_type
     attributes:
       sand_pct:
+        description: Sand content (percent).
         range: double
+        unit:
+          ucum_code: '%'
       silt_pct:
+        description: Silt content (percent).
         range: double
+        unit:
+          ucum_code: '%'
       clay_pct:
+        description: Clay content (percent).
         range: double
+        unit:
+          ucum_code: '%'
       flag:
+        description: Data quality flag for texture (sand, silt, clay); blank if no flag.
         range: ProcessedDataFlag
 
   WEOMProduct:
@@ -659,20 +824,44 @@ classes:
       - produced_by_toctn_run
     attributes:
       total_organic_carbon:
+        description: Water extractable organic carbon content (mg C per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{C}/kg'
       total_organic_carbon_avg:
+        description: >-
+          Mean of replicate water extractable organic carbon values (mg C per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{C}/kg'
       total_nitrogen:
+        description: Water extractable total nitrogen content (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       total_nitrogen_avg:
+        description: >-
+          Mean of replicate water extractable total nitrogen values (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       flag_toc:
+        description: >-
+          Data quality flag for water extractable organic carbon; blank if no flag.
         range: ProcessedDataFlag
       flag_tn:
+        description: >-
+          Data quality flag for water extractable total nitrogen; blank if no flag.
         range: ProcessedDataFlag
       flag_toc_avg:
+        description: >-
+          Data quality flag for the replicate mean of water extractable organic carbon;
+          blank if no flag.
         range: ProcessedDataFlag
       flag_tn_avg:
+        description: >-
+          Data quality flag for the replicate mean of water extractable total nitrogen;
+          blank if no flag.
         range: ProcessedDataFlag
 
   pHProduct:
@@ -682,8 +871,14 @@ classes:
     slots:
       - measure_type
       - ph
+    slot_usage:
+      ph:
+        description: Soil pH.
+        unit:
+          ucum_code: '[pH]'
     attributes:
       flag:
+        description: Data quality flag for pH; blank if no flag.
         range: ProcessedDataFlag
 
   XRayDataProduct:
