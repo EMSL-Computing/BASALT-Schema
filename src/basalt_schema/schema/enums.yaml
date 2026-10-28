@@ -12,6 +12,7 @@ prefixes:
   schema: http://schema.org/
   CHEBI: http://purl.obolibrary.org/obo/CHEBI_
   OBI: http://purl.obolibrary.org/obo/OBI_
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
   PO: http://purl.obolibrary.org/obo/PO_
   BTO: http://purl.obolibrary.org/obo/BTO_
   MS: http://purl.obolibrary.org/obo/MS_
