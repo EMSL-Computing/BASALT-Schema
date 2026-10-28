@@ -21,6 +21,9 @@ against a None input but not against get_element() returning None for
 schema-opaque types (uuid, numeric).  Those types are intentionally
 undefined in the operational schema and resolved by the API at runtime.
 
+Finally it patches DocGenerator.uri_link so slots with a `unit`
+(unit.ucum_code) render the UCUM code instead of crashing.
+
 Usage
 -----
     uv run python util/gen_doc.py                       # uses defaults
@@ -36,7 +39,8 @@ import sys
 import types
 
 from jinja2 import ChoiceLoader, Environment, FileSystemLoader
-from linkml.generators.docgen import DocGenerator, customize_environment
+from linkml.generators.docgen import DocGenerator
+from linkml_runtime.linkml_model.units import UnitOfMeasure
 
 # ---------------------------------------------------------------------------
 # Defaults (relative to repo root)
@@ -58,7 +62,7 @@ def _build_patched_get_template(custom_dir: str, installed_dir: str):
             ]
         )
         env = Environment(loader=loader)
-        customize_environment(env)
+        self.customize_environment(env)
         return env.get_template(base_file_name)
 
     return _get_template
@@ -85,6 +89,22 @@ def _build_patched_link(original_link):
     return link
 
 
+def _build_patched_uri_link(original_uri_link):
+    """
+    Return a patched `uri_link` method that renders a slot's `unit`
+    (a UnitOfMeasure object, not an element name) as its UCUM code. The
+    stock slot template calls uri_link(element.unit), which crashes with
+    "unhashable type: 'UnitOfMeasure'".
+    """
+
+    def uri_link(self, element, *args, **kwargs):
+        if isinstance(element, UnitOfMeasure):
+            return f"`{element.ucum_code}` (UCUM)" if element.ucum_code else (element.symbol or "")
+        return original_uri_link(self, element, *args, **kwargs)
+
+    return uri_link
+
+
 def main() -> None:
     schema = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_SCHEMA
     out_dir = sys.argv[2] if len(sys.argv) > 2 else DEFAULT_OUT_DIR
@@ -103,6 +123,9 @@ def main() -> None:
     # opaque types (uuid, numeric) that are undefined in the schema
     original_link_func = DocGenerator.link
     gen.link = types.MethodType(_build_patched_link(original_link_func), gen)
+
+    # Patch 3: render UnitOfMeasure values (slot `unit`) as their UCUM code
+    gen.uri_link = types.MethodType(_build_patched_uri_link(DocGenerator.uri_link), gen)
 
     gen.serialize()
     print(f"Documentation written to {out_dir}")
