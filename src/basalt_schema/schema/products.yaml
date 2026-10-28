@@ -1107,7 +1107,7 @@ classes:
           ucum_code: '1'
       flag_xct:
         description: Data quality flag for XCT pore summary metrics; blank if no flag.
-        range: string
+        range: ProcessedDataFlag
 
 
   # ---------------------------------------------------------------------------
