@@ -64,3 +64,12 @@ Rules:
 
 Moving a slot between `double` and `QuantityValue` changes database columns
 and needs a migration.
+
+## Submitted sample metadata: strings with units
+
+Many sample metadata slots (MIxS-style, e.g. `elev`, `depth`, `temp`) are
+currently `range: string`, with the unit written into the value (`12 m`,
+`0-10 cm`) and enforced at submission by the `submission_pattern` annotation.
+The description states the expected unit, e.g. "(Unit: m)". These follow the
+lab's sample metadata template and are left as strings for now; they are the
+natural candidates for `QuantityValue` if provider-specified units are needed.
