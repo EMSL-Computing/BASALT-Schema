@@ -83,6 +83,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'basalt_schema',
                  'metagenomics',
                  'monet_data_generation_activities',
                  'products',
+                 'revisions',
                  'organism',
                  'sample_classes',
                  'sample_processing',
@@ -157,7 +158,7 @@ class AnalysisTypeEnum(str, Enum):
 
 class AnalyteCategoryEnum(str, Enum):
     """
-    bundling common terms for different omics types by biomolecule being analyzed
+    Bundling terms for common analytes
     """
     dna = "dna"
     rna = "rna"
@@ -165,6 +166,7 @@ class AnalyteCategoryEnum(str, Enum):
     metabolite = "metabolite"
     lipid = "lipid"
     natural_organic_matter = "natural_organic_matter"
+    cmm = "cmm"
     unknown = "unknown"
 
 
@@ -242,6 +244,10 @@ class ChemicalConversionCategoryEnum(str, Enum):
     """
     an enzymatic cleavage which relies on an enzyme with protease activity to act on proteins and to produce polypeptides (protein fragments).
     """
+    microwave_digestion = "microwave_digestion"
+    """
+    a digestion process that uses microwave energy to heat the sample and reagents to accelerate the digestion of the sample.
+    """
 
 
 class ChemicalEntityEnum(str, Enum):
@@ -260,6 +266,7 @@ class ChemicalEntityEnum(str, Enum):
     chloroform = "chloroform"
     chymotrypsin = "chymotrypsin"
     deionized_water = "deionized_water"
+    DTPA = "DTPA"
     ethanol = "ethanol"
     ferric_chloride = "ferric_chloride"
     formic_acid = "formic_acid"
@@ -348,7 +355,7 @@ class DeviceTypeEnum(str, Enum):
     thermomixer = "thermomixer"
 
 
-class DigestionMethodEnum(str, Enum):
+class ProteinDigestionMethodEnum(str, Enum):
     """
     Named protein digestion methods used in sample preparation.
     """
@@ -752,6 +759,7 @@ class IonizationSourceEnum(str, Enum):
     atmospheric_pressure_photo_ionization = "atmospheric_pressure_photo_ionization"
     atmospheric_pressure_chemical_ionization = "atmospheric_pressure_chemical_ionization"
     electron_ionization = "electron_ionization"
+    plasma_ionization = "plasma_ionization"
 
 
 class LabelingMethodEnum(str, Enum):
@@ -1053,6 +1061,8 @@ class ModelEnum(str, Enum):
     solarix_15T = "solarix_15T"
     agilent_8890A = "agilent_8890A"
     agilent_7980A = "agilent_7980A"
+    agilent_7500 = "agilent_7500"
+    thermo_element_xr = "thermo_element_xr"
     vortex_genie_2 = "vortex_genie_2"
     novaseq = "novaseq"
     novaseq_6000 = "novaseq_6000"
@@ -1323,14 +1333,47 @@ class PolarityEnum(str, Enum):
 
 
 class ProcessedDataFlag(str, Enum):
+    """
+    Data quality flags for processed data product values; a blank flag means no flag. Definitions follow the Flag_Definitions tab of the lab column sheet (Column_Descriptions.xlsx).
+    """
     Below_Detection = "Below_Detection"
+    """
+    All replicates for the sample were below the method detection limit.
+    """
     Below_Reporting_Limit = "Below_Reporting_Limit"
+    """
+    Value was below the reporting limit of the analytical method.
+    """
     High_Background = "High_Background"
     Out_of_Range = "Out_of_Range"
+    """
+    Measured value fell outside the physically plausible range for the variable and was removed.
+    """
     Outlier = "Outlier"
     Data_not_available = "Data_not_available"
+    """
+    Data are not available for this sample (e.g., sample not received, not analyzed, or not scanned).
+    """
     Failed_QC = "Failed_QC"
+    """
+    No replicate passed quality control, so no value is reported.
+    """
     Insufficient_Material = "Insufficient_Material"
+    """
+    Not enough sample material was available to run the analysis.
+    """
+    In_Queue = "In_Queue"
+    """
+    Sample is awaiting analysis or processing; data will be added in a future release.
+    """
+    No_Pore_Connectivity = "No_Pore_Connectivity"
+    """
+    XCT: no connected pore network was detected at the measured resolution, so connectivity, permeability, flow rate, and tortuosity are blank.
+    """
+    Partial_Connected_Pores = "Partial_Connected_Pores"
+    """
+    XCT: permeability, flow rate and tortuosity are blank for the directions with no connected flow path (X, Y and/or Z). Values for the other directions and all other pore metrics are reported.
+    """
 
 
 class ProductMeasureType(str, Enum):
@@ -2196,6 +2239,7 @@ class Configuration(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2300,6 +2344,7 @@ class MassSpectrometryConfiguration(Configuration):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2398,6 +2443,7 @@ class ChromatographyConfiguration(Configuration):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2439,6 +2485,7 @@ class MobilePhaseSegment(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2487,6 +2534,7 @@ class MobilePhase(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2528,6 +2576,7 @@ class MobilePhaseSubstance(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2575,6 +2624,7 @@ class CalibrationStandardRun(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2668,6 +2718,7 @@ class PurchasedMaterial(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -3082,6 +3133,435 @@ class XASLCFDataRow(ConfiguredBaseModel):
     residual: Optional[float] = Field(default=None, alias="residual", description="""Fit residual at this point (data_val - fit_val)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFDataRow']} })
 
 
+class Revision(ConfiguredBaseModel):
+    """
+    Abstract base for one versioned snapshot of a processed data product for one
+    sample. Revisions are immutable; a correction is appended as a new revision.
+    Subclasses exist per data product.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions',
+         'unique_keys': {'revision_identity': {'unique_key_name': 'revision_identity',
+                                               'unique_key_slots': ['revises',
+                                                                    'version_number']}}})
+
+    revises: str = Field(default=..., alias="revises", description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., alias="version_number", description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., alias="is_current", description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., alias="revision_date", description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., alias="schema_version", description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class DataProductRevision(Revision):
+    """
+    A revision of a generic data product (DataProduct).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., alias="revises", description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., alias="version_number", description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., alias="is_current", description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., alias="revision_date", description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., alias="schema_version", description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class DataProcessingActivityRevision(Revision):
+    """
+    A revision of a data processing activity (DataProcessingActivity).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., alias="revises", description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., alias="version_number", description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., alias="is_current", description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., alias="revision_date", description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., alias="schema_version", description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class InstrumentDataRevision(Revision):
+    """
+    A revision of an instrument (Instrument).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., alias="revises", description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., alias="version_number", description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., alias="is_current", description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., alias="revision_date", description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., alias="schema_version", description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class DataGenerationActivityRevision(Revision):
+    """
+    A revision of a data generation activity (DataGenerationActivity).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., alias="revises", description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., alias="version_number", description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., alias="is_current", description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., alias="revision_date", description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., alias="schema_version", description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class ProcessedSampleRevision(Revision):
+    """
+    A revision of a processed sample (ProcessedSample).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., alias="revises", description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., alias="version_number", description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., alias="is_current", description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., alias="revision_date", description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., alias="schema_version", description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class SampleProcessingActivityRevision(Revision):
+    """
+    A revision of a sample processing activity (SampleProcessingActivity).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., alias="revises", description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., alias="version_number", description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., alias="is_current", description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., alias="revision_date", description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., alias="schema_version", description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class SampleRevision(Revision):
+    """
+    A revision of a sample (Sample).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., alias="revises", description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., alias="version_number", description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., alias="is_current", description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., alias="revision_date", description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., alias="schema_version", description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class SamplingActivityRevision(Revision):
+    """
+    A revision of a sampling activity (SamplingActivity).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., alias="revises", description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., alias="version_number", description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., alias="is_current", description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., alias="revision_date", description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., alias="schema_version", description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
 class Organism(ConfiguredBaseModel):
     """
     Reference data representing a biological identity (strain, isolate,
@@ -3152,6 +3632,7 @@ class Organism(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -3337,6 +3818,7 @@ class Site(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -3409,10 +3891,10 @@ class Site(ConfiguredBaseModel):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    alt: Optional[str] = Field(default=None, alias="alt", title="altitude", description="""Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air. For ARM this can be a range. (Unit: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    alt: Optional[str] = Field(default=None, alias="alt", title="altitude", description="""Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air. (Unit: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?m(?:-\\d+(\\.\\d+)?m)?$'}},
          'domain_of': ['Site']} })
-    annual_precpt: Optional[str] = Field(default=None, alias="annual_precpt", title="mean annual precipitation", description="""The average of all annual precipitation values known or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)""", json_schema_extra = { "linkml_meta": {'aliases': ['average annual precipitation'],
+    annual_precpt: Optional[str] = Field(default=None, alias="annual_precpt", title="mean annual precipitation", description="""The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)""", json_schema_extra = { "linkml_meta": {'aliases': ['average annual precipitation'],
          'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*mm$'}},
          'domain_of': ['Site']} })
@@ -3422,7 +3904,7 @@ class Site(ConfiguredBaseModel):
          'domain_of': ['Site']} })
     atmospheric_data: Optional[str] = Field(default=None, alias="atmospheric_data", title="atmospheric data", description="""Measurement of atmospheric data; can include multiple data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     crop_rotation: Optional[str] = Field(default=None, alias="crop_rotation", title="crop rotation", description="""Whether or not crop is rotated, and if yes, rotation schedule""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
-    cur_land_use: Optional[LandUseEnum] = Field(default=None, alias="cur_land_use", title="current land use", description="""Present state of sample site. This slot is NOT multivalued. Valid entries: badlands, cities, conifers, crop trees, farmstead, gravel, hardwoods, hayland, horticultural plants, industrial areas, intermixed, marshlands, meadows, mines, quarries, mudflats, oil waste, pastureland, permanent snow or ice, rainforest, rangeland, roads, railroads, rock, row crops, saline seeps, salt flats, sand, shrub crops, shrub land, small grains, successional shrub land, swamp, tropical, tundra, vegetable crops, vine crops""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
+    cur_land_use: Optional[LandUseEnum] = Field(default=None, alias="cur_land_use", title="current land use", description="""Present state of sample site.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     cur_vegetation: Optional[str] = Field(default=None, alias="cur_vegetation", title="current vegetation", description="""Vegetation classification from one or more standard classification systems, or agricultural crop""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     cur_vegetation_meth: Optional[str] = Field(default=None, alias="cur_vegetation_meth", title="current vegetation method", description="""Reference or method used in vegetation classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     drainage_class: Optional[DrainageClassEnum] = Field(default=None, alias="drainage_class", title="drainage class", description="""Drainage classification from a standard system such as the USDA system""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
@@ -3434,7 +3916,7 @@ class Site(ConfiguredBaseModel):
     extreme_event: Optional[str] = Field(default=None, alias="extreme_event", title="extreme event", description="""Unusual physical events that may have affected microbial populations. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['Site']} })
-    fao_class: Optional[FAOClassEnum] = Field(default=None, alias="fao_class", title="FAO soil taxonomy classification", description="""Soil classification from the FAO World soil distribution from International Soil Reference and Information Centre (ISRIC). The list of available soil classifications can be found at https://www.isric.org/explore/world-soil-distribution""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
+    fao_class: Optional[FAOClassEnum] = Field(default=None, alias="fao_class", title="FAO soil taxonomy classification", description="""Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at https://www.isric.org/explore/world-soil-distribution""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     fire: Optional[str] = Field(default=None, alias="fire", title="fire", description="""Historical and/or physical evidence of fire. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['Site']} })
@@ -3442,11 +3924,9 @@ class Site(ConfiguredBaseModel):
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['Site']} })
     geo_loc_name: str = Field(default=..., alias="geo_loc_name", title="geographic location name", description="""The geographical origin of the sample as defined by the country or sea name followed by specific region name and site. Formatted as [Country or sea names: region or state, site]""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^([^\\s-]{12}|[^\\s-]+.+[^\\s-]+):\\s?([^\\s-]{12}|[^\\s-]+.+[^\\s-]+)\\s?([^\\s-]{12}|[^\\s-]+.+[^\\s-]+)$'}},
+                                                'value': '^([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+):\\s?([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+),\\s?([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$'}},
          'domain_of': ['Site']} })
-    growth_facil: GrowthFacilityEnum = Field(default=..., alias="growth_facil", title="growth facility", description="""Type of facility or location from where the sample was collected or
-grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`
-attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site', 'AMP2UserSample']} })
+    growth_facil: GrowthFacilityEnum = Field(default=..., alias="growth_facil", title="growth facility", description="""Type of facility or location from where the sample was collected or grown. If \"other\", the \"other_growth_facil\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site', 'AMP2UserSample']} })
     latitude: float = Field(default=..., alias="latitude", title="latitude", description="""Latitude coordinate of the sampling site in WSG 84 format.""", json_schema_extra = { "linkml_meta": {'broad_mappings': ['MIXS:0000009'],
          'domain_of': ['Site',
                        'AerosolArmSample',
@@ -3478,16 +3958,16 @@ attribute to provide additional detail.""", json_schema_extra = { "linkml_meta":
     neon_site_code: Optional[str] = Field(default=None, alias="neon_site_code", title="neon site code", description="""When sampling from a NEON site provide the 4 letter site code (Example: DEJU). If you do not have your NEON site use the code SITE_999.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[A-Z]{4}$'}},
          'domain_of': ['Site']} })
-    neon_plot_id: Optional[str] = Field(default=None, alias="neon_plot_id", title="neon plot identifier", description="""When sampling from a NEON site provide the plot ID from which you sampled. This includes the 4 letter site code followed by the 3 digit ID (Example: DEJU_048). If you do not have your NEON site use the code SITE_999.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    neon_plot_id: Optional[str] = Field(default=None, alias="neon_plot_id", title="neon plot identifier", description="""When sample is from a NEON site, this column contains the 4 letter site code followed by the 3 digit plot ID (Example: DEJU_048). If sample was taken from a NEON site but outside a plot, the plot ID will be shown as 000.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[A-Z]{4}_\\d{3}$'}},
          'domain_of': ['Site'],
          'todos': ['subport mapping - this is submitted as ABCD_123 but we want to '
                    'store it as neon_site_code and neon_plot_id separately']} })
-    other_growth_facil: Optional[str] = Field(default=None, alias="other_growth_facil", title="other growth facility", description="""Please specify growth facility if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
+    other_growth_facil: Optional[str] = Field(default=None, alias="other_growth_facil", title="other growth facility", description="""Specified if \"growth_facil\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     previous_land_use: Optional[str] = Field(default=None, alias="previous_land_use", title="previous land use", description="""Previous land use and dates""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     previous_land_use_meth: Optional[str] = Field(default=None, alias="previous_land_use_meth", title="previous land use method", description="""Reference or method used in determining previous land use and dates""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     profile_position: Optional[ProfilePositionEnum] = Field(default=None, alias="profile_position", title="profile position", description="""Cross-sectional position in the hillslope where sample was collected. Sample area position in relation to surrounding areas""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
-    season_precpt: Optional[str] = Field(default=None, alias="season_precpt", title="mean seasonal precipitation", description="""The average of all seasonal precipitation values known or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)""", json_schema_extra = { "linkml_meta": {'aliases': ['average seasonal precipitation'],
+    season_precpt: Optional[str] = Field(default=None, alias="season_precpt", title="mean seasonal precipitation", description="""The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)""", json_schema_extra = { "linkml_meta": {'aliases': ['average seasonal precipitation'],
          'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*mm$'}},
          'domain_of': ['Site']} })
@@ -3495,7 +3975,7 @@ attribute to provide additional detail.""", json_schema_extra = { "linkml_meta":
          'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
          'domain_of': ['Site']} })
-    slope_aspect: Optional[str] = Field(default=None, alias="slope_aspect", title="slope aspect", description="""The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (degrees); e.g. 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration. (Unit: degrees)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    slope_aspect: Optional[str] = Field(default=None, alias="slope_aspect", title="slope aspect", description="""The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (degrees); e.g., 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration. (Unit: degrees)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*degrees$'}},
          'domain_of': ['Site']} })
     slope_gradient: Optional[str] = Field(default=None, alias="slope_gradient", title="slope gradient", description="""Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer. (Unit: percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
@@ -3520,6 +4000,7 @@ class Sample(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -3691,8 +4172,8 @@ class AerosolArmSample(Sample):
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
     color_code: Optional[ColorCodeEnum] = Field(default=None, alias="color_code", title="color code", description="""Color indicates the max altitude.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""The major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -3705,8 +4186,8 @@ class AerosolArmSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""Entity(ies) in the sample or specimen's local vicinity and which have significant causal influences on the sample or specimen. Values should be terms from the Environment Ontology which are of smaller spatial grain than the entry for env_broad_scale. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -3719,8 +4200,8 @@ class AerosolArmSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""The environmental material immediately surrounding the sample or specimen at the time of sampling. Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -3733,7 +4214,7 @@ class AerosolArmSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. Values should be terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -3745,7 +4226,7 @@ class AerosolArmSample(Sample):
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about your sample that you feel can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about the experiment that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -3775,7 +4256,7 @@ class AerosolArmSample(Sample):
                        'TerraformSample',
                        'WaterSample',
                        'Study']} })
-    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""If you (the user) performed an extraction preparation or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
+    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""Details of extraction, preparation, or processing performed before sending the sample to EMSL. This is only applicable when sending an 'analytical sample'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
                        'AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -3790,7 +4271,7 @@ class AerosolArmSample(Sample):
     first_blh: Optional[float] = Field(default=None, alias="first_blh", title="first boundary layer height", description="""First boundary layer height candidate (meters) (Unit: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample']} })
     first_blh_quality_index: Optional[str] = Field(default=None, alias="first_blh_quality_index", title="first boundary layer height quality", description="""Quality index for first boundary layer height candidate (-999 if no candidate)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample']} })
     first_cbh: Optional[float] = Field(default=None, alias="first_cbh", title="first cloud base height", description="""First cloud base (meters) or vertical visibility (meters) (-999 if no cloud base or vertical visibility) (Unit: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample']} })
-    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -3801,7 +4282,7 @@ class AerosolArmSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""Isotope exposures or additions applied to the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -3845,7 +4326,7 @@ class AerosolArmSample(Sample):
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SedimentSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -3858,7 +4339,7 @@ class AerosolArmSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected, that is not listed in another column.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -3868,7 +4349,7 @@ class AerosolArmSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -3883,7 +4364,7 @@ class AerosolArmSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -3897,7 +4378,7 @@ class AerosolArmSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -3917,7 +4398,9 @@ class AerosolArmSample(Sample):
                                                 'value': '^\\d+(\\.\\d+)?\\s*Pa$'}},
          'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     priority_order: Optional[float] = Field(default=None, alias="priority_order", title="priority order", description="""Indicate the run order priority of your samples""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -3953,7 +4436,7 @@ class AerosolArmSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'todos': ['reconcile replicate modelling']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -4005,7 +4488,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -4067,7 +4550,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -4127,6 +4610,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -4281,8 +4765,8 @@ class AerosolSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
-    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""The major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -4295,8 +4779,8 @@ class AerosolSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""Entity(ies) in the sample or specimen's local vicinity and which have significant causal influences on the sample or specimen. Values should be terms from the Environment Ontology which are of smaller spatial grain than the entry for env_broad_scale. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -4309,8 +4793,8 @@ class AerosolSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""The environmental material immediately surrounding the sample or specimen at the time of sampling. Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -4323,7 +4807,7 @@ class AerosolSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. Values should be terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -4335,7 +4819,7 @@ class AerosolSample(Sample):
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about your sample that you feel can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about the experiment that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -4347,7 +4831,7 @@ class AerosolSample(Sample):
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""If you (the user) performed an extraction preparation or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
+    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""Details of extraction, preparation, or processing performed before sending the sample to EMSL. This is only applicable when sending an 'analytical sample'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
                        'AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -4377,7 +4861,7 @@ class AerosolSample(Sample):
                        'TerraformSample',
                        'WaterSample',
                        'Study']} })
-    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -4388,7 +4872,7 @@ class AerosolSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""Isotope exposures or additions applied to the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -4430,7 +4914,7 @@ class AerosolSample(Sample):
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SedimentSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -4443,7 +4927,7 @@ class AerosolSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected, that is not listed in another column.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -4453,22 +4937,7 @@ class AerosolSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
-                       'AerosolSample',
-                       'CommerciallyPurchasedSample',
-                       'CultureEnvironmentalSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'MonetSoilSample',
-                       'OtherUndescribedSample',
-                       'PlantSample',
-                       'PureCultureSample',
-                       'SedimentSample',
-                       'SoilSample',
-                       'SynthesizedMaterialSample',
-                       'TerraformSample',
-                       'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -4483,7 +4952,22 @@ class AerosolSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample']} })
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -4496,7 +4980,7 @@ class AerosolSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -4518,7 +5002,9 @@ class AerosolSample(Sample):
                                                 'value': '^\\d+(\\.\\d+)?\\s*Pa$'}},
          'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     priority_order: Optional[float] = Field(default=None, alias="priority_order", title="priority order", description="""Indicate the run order priority of your samples""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -4590,7 +5076,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -4618,7 +5104,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -4665,7 +5151,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -4724,6 +5210,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -4870,9 +5357,7 @@ Required - every AMP2UserSample must reference an organism.""", json_schema_extr
     collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date the sample was collected or received from the user.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    growth_facil: Optional[GrowthFacilityEnum] = Field(default=None, alias="growth_facil", title="growth facility", description="""Type of facility or location from where the sample was collected or
-grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`
-attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site', 'AMP2UserSample']} })
+    growth_facil: Optional[GrowthFacilityEnum] = Field(default=None, alias="growth_facil", title="growth facility", description="""Type of facility or location from where the sample was collected or grown. If \"other\", the \"other_growth_facil\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site', 'AMP2UserSample']} })
     isol_growth_condt: Optional[str] = Field(default=None, alias="isol_growth_condt", title="isolation and growth conditions", description="""Publication reference in the form of pubmed ID (PMID), digital object
 identifier (DOI), or URL for isolation and growth condition specifications of the
 organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
@@ -4918,8 +5403,8 @@ Aliases: samp_store_cond, storage_cond, storage_condt""", json_schema_extra = { 
          'exact_mappings': ['MIXS:0000327']} })
     storage_temperature: Optional[str] = Field(default=None, alias="storage_temperature", description="""Storage temperature for this sample (e.g., \"-80 C\").
 Aliases: samp_store_temp""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'EngineeredStrainSample']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     guid_source: Optional[str] = Field(default=None, alias="guid_source", description="""Source system for the sample GUID (e.g., \"LIMS\").""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample']} })
     other_guid_source: Optional[str] = Field(default=None, alias="other_guid_source", description="""Description of GUID source if guid_source = \"other\".""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample']} })
@@ -4946,6 +5431,7 @@ Indicates if the sample is subject to CBI restrictions.""", json_schema_extra = 
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -5062,7 +5548,7 @@ class CommerciallyPurchasedSample(Sample):
                        'CommerciallyPurchasedSample',
                        'OtherUndescribedSample',
                        'SynthesizedMaterialSample']} })
-    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. Values should be terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -5074,7 +5560,7 @@ class CommerciallyPurchasedSample(Sample):
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about your sample that you feel can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about the experiment that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -5107,7 +5593,7 @@ class CommerciallyPurchasedSample(Sample):
     item_number: Optional[str] = Field(default=None, alias="item_number", title="item number", description="""The item number of the purchased material""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'OtherUndescribedSample',
                        'SynthesizedMaterialSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -5120,22 +5606,7 @@ class CommerciallyPurchasedSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
-                       'AerosolSample',
-                       'CommerciallyPurchasedSample',
-                       'CultureEnvironmentalSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'MonetSoilSample',
-                       'OtherUndescribedSample',
-                       'PlantSample',
-                       'PureCultureSample',
-                       'SedimentSample',
-                       'SoilSample',
-                       'SynthesizedMaterialSample',
-                       'TerraformSample',
-                       'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -5150,7 +5621,22 @@ class CommerciallyPurchasedSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample']} })
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -5163,7 +5649,7 @@ class CommerciallyPurchasedSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -5177,7 +5663,7 @@ class CommerciallyPurchasedSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""The relationship of the sample to oxygen, such as aerobic or anaerobic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -5192,7 +5678,9 @@ class CommerciallyPurchasedSample(Sample):
     production_method: Optional[str] = Field(default=None, alias="production_method", title="production method", description="""A DOI or description of how the compound was produced, if the commercially purchased material was altered""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'OtherUndescribedSample',
                        'SynthesizedMaterialSample']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -5264,7 +5752,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -5277,7 +5765,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'TerraformSample']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -5322,7 +5810,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -5373,8 +5861,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. If measurement was started and unsuccessful, enter 'failed'. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(-?\\d+(\\.\\d+)?\\s*C|failed)$'}},
          'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -5391,6 +5879,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -5520,7 +6009,7 @@ class CultureEnvironmentalSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -5552,8 +6041,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""The major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -5566,8 +6055,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""Entity(ies) in the sample or specimen's local vicinity and which have significant causal influences on the sample or specimen. Values should be terms from the Environment Ontology which are of smaller spatial grain than the entry for env_broad_scale. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -5580,8 +6069,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""The environmental material immediately surrounding the sample or specimen at the time of sampling. Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -5594,7 +6083,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. Values should be terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -5606,7 +6095,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about your sample that you feel can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about the experiment that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -5636,7 +6125,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'TerraformSample',
                        'WaterSample',
                        'Study']} })
-    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""If you (the user) performed an extraction preparation or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
+    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""Details of extraction, preparation, or processing performed before sending the sample to EMSL. This is only applicable when sending an 'analytical sample'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
                        'AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -5653,7 +6142,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'PureCultureSample',
                        'SoilSample',
                        'WaterSample']} })
-    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -5706,7 +6195,7 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -5726,7 +6215,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""Isotope exposures or additions applied to the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -5762,7 +6251,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light, including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -5771,7 +6260,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -5799,7 +6288,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -5814,7 +6303,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -5829,7 +6318,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -5842,7 +6331,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -5856,7 +6345,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""The relationship of the sample to oxygen, such as aerobic or anaerobic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -5873,7 +6362,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'MixedCultureSample',
                        'OtherUndescribedSample',
                        'PureCultureSample']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -5922,7 +6413,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'TerraformSample',
                        'WaterSample'],
          'todos': ['reconcile replicate modelling']} })
-    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g. parasite on species X; mutualist with species Y. The target organism is the subject of the relationship and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
+    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
          'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -5932,7 +6423,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample'],
          'exact_mappings': ['MIXS:0000016']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -5984,7 +6475,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -6038,7 +6529,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -6116,6 +6607,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -6258,6 +6750,7 @@ Aliases: samp_store_temp""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -6392,7 +6885,7 @@ class FieldDeployedTerraformSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -6417,8 +6910,8 @@ class FieldDeployedTerraformSample(Sample):
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
     cult_root_med: Optional[str] = Field(default=None, alias="cult_root_med", title="culture rooting medium", description="""Name or reference for the hydroponic or in vitro culture rooting medium; can be the name of a commonly used medium or reference to a specific medium, e.g. Murashige and Skoog medium. If the medium has not been formally published use the rooting medium descriptors.""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
-    depth: Optional[str] = Field(default=None, alias="depth", title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?(-\\d+(\\.\\d+)?)?\\s*m$'}},
+    depth: Optional[str] = Field(default=None, alias="depth", title="depth", description="""The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth is required to be reported as an interval for subsurface samples. (Units: cm or m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*(m|cm)$'}},
          'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -6433,8 +6926,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""The major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -6447,8 +6940,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""Entity(ies) in the sample or specimen's local vicinity and which have significant causal influences on the sample or specimen. Values should be terms from the Environment Ontology which are of smaller spatial grain than the entry for env_broad_scale. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -6461,8 +6954,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""The environmental material immediately surrounding the sample or specimen at the time of sampling. Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -6493,7 +6986,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'TerraformSample',
                        'WaterSample',
                        'Study']} })
-    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -6577,7 +7070,7 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
          'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
-    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -6603,7 +7096,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""Isotope exposures or additions applied to the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -6639,7 +7132,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light, including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -6648,7 +7141,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -6665,7 +7158,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected, that is not listed in another column.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -6679,7 +7172,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -6694,7 +7187,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -6709,7 +7202,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -6722,7 +7215,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -6736,7 +7229,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""The relationship of the sample to oxygen, such as aerobic or anaerobic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -6768,7 +7261,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'TerraformSample',
                        'WaterSample',
                        'ConditioningValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -6876,7 +7371,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -6889,7 +7384,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'TerraformSample']} })
-    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g. parasite on species X; mutualist with species Y. The target organism is the subject of the relationship and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
+    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
          'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -6899,7 +7394,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SoilSample',
                        'TerraformSample'],
          'exact_mappings': ['MIXS:0000016']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -6956,7 +7451,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -7015,8 +7510,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. If measurement was started and unsuccessful, enter 'failed'. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(-?\\d+(\\.\\d+)?\\s*C|failed)$'}},
          'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -7030,8 +7525,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
     tiss_cult_growth_med: Optional[str] = Field(default=None, alias="tiss_cult_growth_med", title="tissue culture growth media", description="""Description of plant tissue culture growth media used""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
-    water_content: Optional[str] = Field(default=None, alias="water_content", title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    water_content: Optional[str] = Field(default=None, alias="water_content", title="water content", description="""Water content measurement read from the Teros ZSC bluetooth sensor. Units: 'm3/m3'. If measurement was started and unsuccessful, value will be 'failed'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(\\d+(\\.\\d+)?\\s*m3/m3|failed)$'}},
          'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -7059,6 +7554,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -7199,7 +7695,7 @@ class MixedCultureSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -7231,7 +7727,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. Values should be terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -7243,7 +7739,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about your sample that you feel can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about the experiment that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -7273,7 +7769,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'TerraformSample',
                        'WaterSample',
                        'Study']} })
-    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""If you (the user) performed an extraction preparation or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
+    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""Details of extraction, preparation, or processing performed before sending the sample to EMSL. This is only applicable when sending an 'analytical sample'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
                        'AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -7285,7 +7781,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'WaterSample',
                        'Extraction']} })
-    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -7338,7 +7834,7 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -7358,7 +7854,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""Isotope exposures or additions applied to the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -7370,7 +7866,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light, including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -7379,7 +7875,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -7400,7 +7896,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -7415,7 +7911,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -7430,7 +7926,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -7443,7 +7939,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -7457,7 +7953,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""The relationship of the sample to oxygen, such as aerobic or anaerobic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -7474,7 +7970,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'MixedCultureSample',
                        'OtherUndescribedSample',
                        'PureCultureSample']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -7523,7 +8021,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'TerraformSample',
                        'WaterSample'],
          'todos': ['reconcile replicate modelling']} })
-    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g. parasite on species X; mutualist with species Y. The target organism is the subject of the relationship and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
+    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
          'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -7569,7 +8067,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -7597,7 +8095,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -7640,7 +8138,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -7718,6 +8216,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -7900,8 +8399,8 @@ class MonetSoilSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""The major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -7914,8 +8413,8 @@ class MonetSoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""Entity(ies) in the sample or specimen's local vicinity and which have significant causal influences on the sample or specimen. Values should be terms from the Environment Ontology which are of smaller spatial grain than the entry for env_broad_scale. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -7928,8 +8427,8 @@ class MonetSoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""The environmental material immediately surrounding the sample or specimen at the time of sampling. Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -7987,7 +8486,7 @@ class MonetSoilSample(Sample):
     lims_id: Optional[str] = Field(default=None, alias="lims_id", title="LIMS ID", description="""An EMSL internal LIMS identifier for your sample. This will be provided by the MPOC and should not be edited.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^INGEST_SAMPLE_\\d{9}$'}},
          'domain_of': ['MonetSoilSample']} })
-    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected, that is not listed in another column.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -7997,22 +8496,7 @@ class MonetSoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
-                       'AerosolSample',
-                       'CommerciallyPurchasedSample',
-                       'CultureEnvironmentalSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'MonetSoilSample',
-                       'OtherUndescribedSample',
-                       'PlantSample',
-                       'PureCultureSample',
-                       'SedimentSample',
-                       'SoilSample',
-                       'SynthesizedMaterialSample',
-                       'TerraformSample',
-                       'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -8027,7 +8511,22 @@ class MonetSoilSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample']} })
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -8040,7 +8539,7 @@ class MonetSoilSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -8054,7 +8553,9 @@ class MonetSoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -8096,7 +8597,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -8127,9 +8628,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    sampling_set: int = Field(default=..., alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: int = Field(default=..., alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     soil_sample_type: SoilSampleTypeEnum = Field(default=..., alias="soil_sample_type", title="soil type", description="""The specific type of soil sample (e.g. soil core, surface layer).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'SoilSample'],
          'todos': ["this is a GSC slot but it's not constrined by an enum, it's a "
                    'string. where did this come from?',
@@ -8138,7 +8637,7 @@ in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta":
                    'database though.']} })
     soil_type: SoilTypeEnum = Field(default=..., alias="soil_type", title="soil type", description="""Soil series name or other lower-level classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'SoilSample']} })
     soil_type_meth: str = Field(default=..., alias="soil_type_meth", title="soil type method", description="""Reference or method used in determining soil series name or other lower-level classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'SoilSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -8218,6 +8717,7 @@ in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta":
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -8352,7 +8852,7 @@ class OtherUndescribedSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000551']} })
-    al_sat: Optional[str] = Field(default=None, alias="al_sat", title="aluminum saturation", description="""Aluminum saturation (esp. For tropical soils)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
+    al_sat: Optional[str] = Field(default=None, alias="al_sat", title="aluminum saturation", description="""Aluminum saturation (esp. For tropical soils) (Unit: percent)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
     al_sat_meth: Optional[str] = Field(default=None, alias="al_sat_meth", title="aluminum saturation method", description="""Reference or method used in determining Al saturation""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
     alkalinity: Optional[str] = Field(default=None, alias="alkalinity", title="alkalinity", description="""The ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate (Unit: mg/L or meq/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(mg|meq)/L$'}},
@@ -8395,7 +8895,7 @@ class OtherUndescribedSample(Sample):
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     biochem_oxygen_dem: Optional[str] = Field(default=None, alias="biochem_oxygen_dem", title="biochemical oxygen demand", description="""a measure of the relative oxygen-depletion effect of a waste contaminant""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     biol_stat: Optional[BiolStatEnum] = Field(default=None, alias="biol_stat", title="biological status", description="""The level of genome modification.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -8411,8 +8911,8 @@ class OtherUndescribedSample(Sample):
     bromide: Optional[str] = Field(default=None, alias="bromide", title="bromide", description="""Concentration of bromide (Unit: ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*ppm$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    bulk_elect_conductivity: Optional[str] = Field(default=None, alias="bulk_elect_conductivity", title="bulk electrical conductivity", description="""Electrical conductivity is a measure of the bulk soil ability to carry electric current which is mostly dictated by the chemistry of and amount of soil water. (Unit: mS/cm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*mS/cm$'}},
+    bulk_elect_conductivity: Optional[str] = Field(default=None, alias="bulk_elect_conductivity", title="bulk electrical conductivity", description="""The bulk electrical conductivity readout from the Teros ZSC bluetooth sensor. If measurement was started and unsuccessful, value is 'failed'. (Unit: mS/cm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(\\d+(\\.\\d+)?\\s*mS/cm|failed)$'}},
          'domain_of': ['MonetSoilSample', 'OtherUndescribedSample', 'SoilSample']} })
     calcium: Optional[str] = Field(default=None, alias="calcium", title="calcium", description="""Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(mg/L|umol/L|ppm)$'}},
@@ -8464,8 +8964,8 @@ class OtherUndescribedSample(Sample):
     density: Optional[str] = Field(default=None, alias="density", title="density", description="""Density of the sample, which is its mass per unit volume (aka volumetric mass density) (Unit: g/m3 or g/cm3)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(g/m3|g/cm3)$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    depth: Optional[str] = Field(default=None, alias="depth", title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?(-\\d+(\\.\\d+)?)?\\s*m$'}},
+    depth: Optional[str] = Field(default=None, alias="depth", title="depth", description="""The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth is required to be reported as an interval for subsurface samples. (Units: cm or m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*(m|cm)$'}},
          'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -8512,8 +9012,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""The major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -8526,8 +9026,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""Entity(ies) in the sample or specimen's local vicinity and which have significant causal influences on the sample or specimen. Values should be terms from the Environment Ontology which are of smaller spatial grain than the entry for env_broad_scale. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -8540,8 +9040,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""The environmental material immediately surrounding the sample or specimen at the time of sampling. Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -8554,7 +9054,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. Values should be terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -8566,7 +9066,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about your sample that you feel can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about the experiment that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -8578,7 +9078,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""If you (the user) performed an extraction preparation or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
+    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""Details of extraction, preparation, or processing performed before sending the sample to EMSL. This is only applicable when sending an 'analytical sample'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
                        'AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -8618,7 +9118,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     fungicide_regm: Optional[str] = Field(default=None, alias="fungicide_regm", title="fungicide regimen", description="""Information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -8650,7 +9150,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    heavy_metals: Optional[str] = Field(default=None, alias="heavy_metals", title="heavy metals", description="""Heavy metals present and concentrations; can include multiple heavy metals and concentrations""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
+    heavy_metals: Optional[str] = Field(default=None, alias="heavy_metals", title="heavy metals", description="""Heavy metals present in the sample and the concentration of the metal, separated by `|` for multiple metals. (Example: mercury,0.09 micrograms per gram|lead,0.05 micrograms per gram""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
     heavy_metals_meth: Optional[str] = Field(default=None, alias="heavy_metals_meth", title="heavy metals method", description="""Reference or method used in determining heavy metals""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
     herbicide_regm: Optional[str] = Field(default=None, alias="herbicide_regm", title="herbicide regimen", description="""Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     host_age: Optional[str] = Field(default=None, alias="host_age", title="host age", description="""Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees. (Unit: a (year) or d (day) or h (hour). Do not include the additional information in ().)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
@@ -8717,7 +9217,7 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
          'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
-    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -8739,7 +9239,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""Isotope exposures or additions applied to the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -8781,7 +9281,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
     light_intensity: Optional[str] = Field(default=None, alias="light_intensity", title="light intensity", description="""Measurement of light intensity. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light, including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -8804,7 +9304,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                                                 'value': '^\\d+(\\.\\d+)?\\s*m/s$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     mechanical_damage: Optional[str] = Field(default=None, alias="mechanical_damage", title="mechanical damage", description="""Information about any mechanical damage exerted on the plant; can include multiple damages and sites""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -8824,7 +9324,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'SedimentSample']} })
     micro_biomass_c_meth: Optional[str] = Field(default=None, alias="micro_biomass_c_meth", title="microbial biomass carbon method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    micro_biomass_n_meth: Optional[str] = Field(default=None, alias="micro_biomass_n_meth", title="microbial biomass nitrogen method", description="""Reference or method used in determining microbial biomass nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    micro_biomass_n_meth: Optional[str] = Field(default=None, alias="micro_biomass_n_meth", title="microbial biomass nitrogen method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     microbial_biomass: Optional[str] = Field(default=None, alias="microbial_biomass", title="microbial biomass", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     microbial_biomass_c: Optional[str] = Field(default=None, alias="microbial_biomass_c", title="microbial biomass carbon", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
@@ -8837,7 +9337,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected, that is not listed in another column.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -8888,7 +9388,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
     org_nitro_method: Optional[str] = Field(default=None, alias="org_nitro_method", title="organic nitrogen method", description="""Method used for obtaining organic nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     org_particles: Optional[str] = Field(default=None, alias="org_particles", title="organic particles", description="""concentration of particles such as faeces, hairs, food, vomit, paper, fibers, plant material, humus etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     organism_count: Optional[str] = Field(default=None, alias="organism_count", title="organism count", description="""Total cell count of any organism (or group of organisms) per gram volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR atp mpn etc.) should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -8903,7 +9403,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -8918,7 +9418,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -8935,7 +9435,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
     oxygen: Optional[str] = Field(default=None, alias="oxygen", title="oxygen", description="""Amount of oxygen measured in the air the day of sampling. Provided by ARM""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$'}},
          'domain_of': ['AerosolSample', 'OtherUndescribedSample']} })
-    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""The relationship of the sample to oxygen, such as aerobic or anaerobic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -8959,7 +9459,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'MixedCultureSample',
                        'OtherUndescribedSample',
                        'PureCultureSample']} })
-    perturbation: Optional[str] = Field(default=None, alias="perturbation", title="perturbation", description="""Type of perturbation, e.g. chemical administration, physical disturbance, etc.; coupled with perturbation regimen, including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    perturbation: Optional[str] = Field(default=None, alias="perturbation", title="perturbation", description="""Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
@@ -8967,12 +9467,12 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
     petroleum_hydrocarb: Optional[str] = Field(default=None, alias="petroleum_hydrocarb", title="petroleum hydrocarbon", description="""Concentration of petroleum hydrocarbon (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    ph: Optional[float] = Field(default=None, alias="ph", title="pH", description="""pH measurement of the sample or liquid portion of sample or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
+    ph: Optional[float] = Field(default=None, alias="ph", title="pH", description="""pH measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    ph_meth: Optional[str] = Field(default=None, alias="ph_meth", title="pH method", description="""Reference or method used in determining ph of the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    ph_meth: Optional[str] = Field(default=None, alias="ph_meth", title="pH method", description="""Reference or method used in determining ph""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
@@ -9017,7 +9517,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
     production_method: Optional[str] = Field(default=None, alias="production_method", title="production method", description="""A DOI or description of how the compound was produced, if the commercially purchased material was altered""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'OtherUndescribedSample',
                        'SynthesizedMaterialSample']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -9076,7 +9578,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'TerraformSample',
                        'WaterSample'],
          'todos': ['reconcile replicate modelling']} })
-    salinity: Optional[str] = Field(default=None, alias="salinity", title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    salinity: Optional[str] = Field(default=None, alias="salinity", title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(practical '
                                                          'salinity unit|percent)$'}},
          'domain_of': ['OtherUndescribedSample',
@@ -9093,7 +9595,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g. parasite on species X; mutualist with species Y. The target organism is the subject of the relationship and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
+    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
          'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -9105,7 +9607,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
          'exact_mappings': ['MIXS:0000016']} })
     samp_capt_status: Optional[str] = Field(default=None, alias="samp_capt_status", title="sample capture status", description="""Reason for the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     samp_dis_stage: Optional[str] = Field(default=None, alias="samp_dis_stage", title="sample disease stage", description="""Stage of the disease at the time of sample collection e.g. inoculation, penetration, infection, growth and reproduction, dissemination of pathogen.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -9157,7 +9659,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -9200,7 +9702,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'OtherUndescribedSample',
                        'SoilSample',
                        'WaterSample']} })
-    size_frac_up: Optional[str] = Field(default=None, alias="size_frac_up", title="size fraction upper threshold", description="""Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    size_frac_up: Optional[str] = Field(default=None, alias="size_frac_up", title="size fraction upper threshold", description="""Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SoilSample',
@@ -9247,7 +9749,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -9319,8 +9821,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. If measurement was started and unsuccessful, enter 'failed'. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(-?\\d+(\\.\\d+)?\\s*C|failed)$'}},
          'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -9380,8 +9882,8 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                    'to PlateSetupActivity, array column, or other)']} })
     volatile_org_comp: Optional[str] = Field(default=None, alias="volatile_org_comp", title="volatile organic compounds", description="""Volatile organic compounds are organic chemicals that have a high vapour pressure at room temperature.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     wastewater_type: Optional[str] = Field(default=None, alias="wastewater_type", title="wasterwater type", description="""the origin of wastewater such as human waste rainfall storm drains etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
-    water_content: Optional[str] = Field(default=None, alias="water_content", title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    water_content: Optional[str] = Field(default=None, alias="water_content", title="water content", description="""Water content measurement read from the Teros ZSC bluetooth sensor. Units: 'm3/m3'. If measurement was started and unsuccessful, value will be 'failed'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(\\d+(\\.\\d+)?\\s*m3/m3|failed)$'}},
          'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -9408,6 +9910,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -9549,7 +10052,7 @@ class PlantSample(Sample):
                        'TerraformSample',
                        'WaterSample']} })
     biol_stat: Optional[BiolStatEnum] = Field(default=None, alias="biol_stat", title="biological status", description="""The level of genome modification.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -9574,8 +10077,8 @@ class PlantSample(Sample):
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
     chem_mutagen: Optional[str] = Field(default=None, alias="chem_mutagen", title="chemical mutagen", description="""Treatment involving use of mutagens; should include the name of mutagen, amount administered, treatment regimen, including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mutagen regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""The major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -9588,8 +10091,8 @@ class PlantSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""Entity(ies) in the sample or specimen's local vicinity and which have significant causal influences on the sample or specimen. Values should be terms from the Environment Ontology which are of smaller spatial grain than the entry for env_broad_scale. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -9602,8 +10105,8 @@ class PlantSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""The environmental material immediately surrounding the sample or specimen at the time of sampling. Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -9616,7 +10119,7 @@ class PlantSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. Values should be terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -9628,7 +10131,7 @@ class PlantSample(Sample):
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about your sample that you feel can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about the experiment that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -9640,7 +10143,7 @@ class PlantSample(Sample):
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""If you (the user) performed an extraction preparation or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
+    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""Details of extraction, preparation, or processing performed before sending the sample to EMSL. This is only applicable when sending an 'analytical sample'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
                        'AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -9672,7 +10175,7 @@ class PlantSample(Sample):
                        'Study']} })
     fertilizer_regm: Optional[str] = Field(default=None, alias="fertilizer_regm", title="fertilizer regimen", description="""Information about treatment involving the use of fertilizers; should include the name of fertilizer, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fertilizer regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     fungicide_regm: Optional[str] = Field(default=None, alias="fungicide_regm", title="fungicide regimen", description="""Information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -9707,7 +10210,7 @@ class PlantSample(Sample):
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -9718,7 +10221,7 @@ class PlantSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""Isotope exposures or additions applied to the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -9754,7 +10257,7 @@ class PlantSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light, including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -9764,7 +10267,7 @@ class PlantSample(Sample):
                        'SoilSample',
                        'TerraformSample']} })
     mechanical_damage: Optional[str] = Field(default=None, alias="mechanical_damage", title="mechanical damage", description="""Information about any mechanical damage exerted on the plant; can include multiple damages and sites""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -9781,7 +10284,7 @@ class PlantSample(Sample):
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected, that is not listed in another column.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -9810,7 +10313,7 @@ class PlantSample(Sample):
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -9825,7 +10328,7 @@ class PlantSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -9840,7 +10343,7 @@ class PlantSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -9853,7 +10356,7 @@ class PlantSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -9893,7 +10396,9 @@ class PlantSample(Sample):
     plant_wet_mass: Optional[str] = Field(default=None, alias="plant_wet_mass", title="plant wet mass", description="""Measurement of wet mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(kg|g)$'}},
          'domain_of': ['PlantSample']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -9946,7 +10451,7 @@ class PlantSample(Sample):
     root_med_regl: Optional[str] = Field(default=None, alias="root_med_regl", title="rooting medium regulators", description="""Growth regulators in the culture rooting medium such as cytokinins, auxins, gybberellins, abscisic acid. Can be multivalued separated by ;. e.g. Naphthaleneacetic Acid 0.5 mg/L""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
     root_med_solid: Optional[str] = Field(default=None, alias="root_med_solid", title="rooting medium solidifier", description="""Specification of the solidifying agent in the culture rooting medium.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
     root_med_suppl: Optional[str] = Field(default=None, alias="root_med_suppl", title="rooting medium organic supplement", description="""Organic supplements of the culture rooting medium such as vitamins, amino acids, organic acids, antibiotics, activated charcoal. Can be multivalued separated by ;. e.g. nicotinic acid 0.5 mg/L""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
-    salinity: Optional[str] = Field(default=None, alias="salinity", title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    salinity: Optional[str] = Field(default=None, alias="salinity", title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(practical '
                                                          'salinity unit|percent)$'}},
          'domain_of': ['OtherUndescribedSample',
@@ -9999,7 +10504,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -10012,7 +10517,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'TerraformSample']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -10070,7 +10575,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -10121,8 +10626,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. If measurement was started and unsuccessful, enter 'failed'. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(-?\\d+(\\.\\d+)?\\s*C|failed)$'}},
          'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -10150,6 +10655,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -10279,7 +10785,7 @@ class PureCultureSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -10311,8 +10817,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""The major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -10325,8 +10831,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""Entity(ies) in the sample or specimen's local vicinity and which have significant causal influences on the sample or specimen. Values should be terms from the Environment Ontology which are of smaller spatial grain than the entry for env_broad_scale. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -10339,8 +10845,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""The environmental material immediately surrounding the sample or specimen at the time of sampling. Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -10353,7 +10859,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. Values should be terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -10365,7 +10871,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about your sample that you feel can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about the experiment that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -10377,7 +10883,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""If you (the user) performed an extraction preparation or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
+    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""Details of extraction, preparation, or processing performed before sending the sample to EMSL. This is only applicable when sending an 'analytical sample'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
                        'AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -10412,7 +10918,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'PureCultureSample',
                        'SoilSample',
                        'WaterSample']} })
-    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -10465,7 +10971,7 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -10485,7 +10991,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""Isotope exposures or additions applied to the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -10497,7 +11003,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light, including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -10506,7 +11012,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -10534,7 +11040,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -10549,7 +11055,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -10564,7 +11070,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -10577,7 +11083,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -10591,7 +11097,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""The relationship of the sample to oxygen, such as aerobic or anaerobic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -10608,7 +11114,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'MixedCultureSample',
                        'OtherUndescribedSample',
                        'PureCultureSample']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -10657,7 +11165,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'TerraformSample',
                        'WaterSample'],
          'todos': ['reconcile replicate modelling']} })
-    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g. parasite on species X; mutualist with species Y. The target organism is the subject of the relationship and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
+    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
          'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -10667,7 +11175,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample'],
          'exact_mappings': ['MIXS:0000016']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -10719,7 +11227,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -10773,7 +11281,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -10851,6 +11359,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -11031,7 +11540,7 @@ class SedimentSample(Sample):
     bacteria_carb_prod: Optional[str] = Field(default=None, alias="bacteria_carb_prod", title="bacterial carbon production", description="""Measurement of bacterial carbon production. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -11077,7 +11586,7 @@ class SedimentSample(Sample):
     density: Optional[str] = Field(default=None, alias="density", title="density", description="""Density of the sample, which is its mass per unit volume (aka volumetric mass density) (Unit: g/m3 or g/cm3)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(g/m3|g/cm3)$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    depth: str = Field(default=..., alias="depth", title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    depth: str = Field(default=..., alias="depth", title="depth", description="""The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth is required to be reported as an interval for subsurface samples. (Units: cm or m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*m$'}},
          'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -11106,8 +11615,8 @@ class SedimentSample(Sample):
     diss_oxygen: Optional[str] = Field(default=None, alias="diss_oxygen", title="dissolved oxygen", description="""Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/kg|mg/L)$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""The major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -11120,8 +11629,8 @@ class SedimentSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""Entity(ies) in the sample or specimen's local vicinity and which have significant causal influences on the sample or specimen. Values should be terms from the Environment Ontology which are of smaller spatial grain than the entry for env_broad_scale. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -11134,8 +11643,8 @@ class SedimentSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""The environmental material immediately surrounding the sample or specimen at the time of sampling. Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -11148,7 +11657,7 @@ class SedimentSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. Values should be terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -11160,7 +11669,7 @@ class SedimentSample(Sample):
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about your sample that you feel can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about the experiment that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -11172,7 +11681,7 @@ class SedimentSample(Sample):
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""If you (the user) performed an extraction preparation or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
+    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""Details of extraction, preparation, or processing performed before sending the sample to EMSL. This is only applicable when sending an 'analytical sample'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
                        'AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -11202,7 +11711,7 @@ class SedimentSample(Sample):
                        'TerraformSample',
                        'WaterSample',
                        'Study']} })
-    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -11215,7 +11724,7 @@ class SedimentSample(Sample):
     glucosidase_act: Optional[str] = Field(default=None, alias="glucosidase_act", title="glucosidase activity", description="""Measurement of glucosidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*mol/L/h$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -11226,7 +11735,7 @@ class SedimentSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""Isotope exposures or additions applied to the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -11262,7 +11771,7 @@ class SedimentSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light, including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -11289,7 +11798,7 @@ class SedimentSample(Sample):
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SedimentSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -11303,7 +11812,7 @@ class SedimentSample(Sample):
                        'TerraformSample',
                        'WaterSample']} })
     micro_biomass_c_meth: Optional[str] = Field(default=None, alias="micro_biomass_c_meth", title="microbial biomass carbon method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    micro_biomass_n_meth: Optional[str] = Field(default=None, alias="micro_biomass_n_meth", title="microbial biomass nitrogen method", description="""Reference or method used in determining microbial biomass nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    micro_biomass_n_meth: Optional[str] = Field(default=None, alias="micro_biomass_n_meth", title="microbial biomass nitrogen method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     microbial_biomass: Optional[str] = Field(default=None, alias="microbial_biomass", title="microbial biomass", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units. (Unit: g/kg sediment or ug/g sediment)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(g/kg '
                                                          'sediment|ug/g sediment)$'}},
@@ -11315,7 +11824,7 @@ class SedimentSample(Sample):
     microbial_biomass_n: Optional[str] = Field(default=None, alias="microbial_biomass_n", title="microbial biomass nitrogen", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected, that is not listed in another column.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -11362,7 +11871,7 @@ class SedimentSample(Sample):
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     org_nitro_method: Optional[str] = Field(default=None, alias="org_nitro_method", title="organic nitrogen method", description="""Method used for obtaining organic nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -11377,7 +11886,7 @@ class SedimentSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -11392,7 +11901,7 @@ class SedimentSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -11405,7 +11914,7 @@ class SedimentSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -11419,7 +11928,7 @@ class SedimentSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""The relationship of the sample to oxygen, such as aerobic or anaerobic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -11435,19 +11944,19 @@ class SedimentSample(Sample):
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     particle_class: Optional[str] = Field(default=None, alias="particle_class", title="particle class", description="""Particles are classified based on their size into six general categories: clay, silt, sand, gravel, cobbles, and boulders. Include amount of particle with units preceded by the name of the particle type; can include multiple values separated by ';'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
-    perturbation: Optional[str] = Field(default=None, alias="perturbation", title="perturbation", description="""Type of perturbation, e.g. chemical administration, physical disturbance, etc.; coupled with perturbation regimen, including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    perturbation: Optional[str] = Field(default=None, alias="perturbation", title="perturbation", description="""Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
     petroleum_hydrocarb: Optional[str] = Field(default=None, alias="petroleum_hydrocarb", title="petroleum hydrocarbon", description="""Concentration of petroleum hydrocarbon (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    ph: Optional[float] = Field(default=None, alias="ph", title="pH", description="""pH measurement of the sample or liquid portion of sample or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
+    ph: Optional[float] = Field(default=None, alias="ph", title="pH", description="""pH measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    ph_meth: Optional[str] = Field(default=None, alias="ph_meth", title="pH method", description="""Reference or method used in determining ph of the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    ph_meth: Optional[str] = Field(default=None, alias="ph_meth", title="pH method", description="""Reference or method used in determining ph""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
@@ -11475,7 +11984,9 @@ class SedimentSample(Sample):
                        'TerraformSample',
                        'WaterSample',
                        'ConditioningValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -11518,7 +12029,7 @@ class SedimentSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'todos': ['reconcile replicate modelling']} })
-    salinity: Optional[str] = Field(default=None, alias="salinity", title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    salinity: Optional[str] = Field(default=None, alias="salinity", title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(practical '
                                                          'salinity unit|percent)$'}},
          'domain_of': ['OtherUndescribedSample',
@@ -11567,7 +12078,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -11590,7 +12101,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SoilSample',
                        'TerraformSample'],
          'exact_mappings': ['MIXS:0000016']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -11658,7 +12169,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -11718,8 +12229,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. If measurement was started and unsuccessful, enter 'failed'. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(-?\\d+(\\.\\d+)?\\s*C|failed)$'}},
          'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -11750,8 +12261,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample'],
          'todos': ['decide how to represent in backend (normalized child table with FK '
                    'to PlateSetupActivity, array column, or other)']} })
-    water_content: Optional[str] = Field(default=None, alias="water_content", title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    water_content: Optional[str] = Field(default=None, alias="water_content", title="water content", description="""Water content measurement read from the Teros ZSC bluetooth sensor. Units: 'm3/m3'. If measurement was started and unsuccessful, value will be 'failed'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(\\d+(\\.\\d+)?\\s*m3/m3|failed)$'}},
          'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -11779,6 +12290,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -11968,7 +12480,7 @@ class SoilSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -11978,8 +12490,8 @@ class SoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    bulk_elect_conductivity: Optional[str] = Field(default=None, alias="bulk_elect_conductivity", title="bulk electrical conductivity", description="""Electrical conductivity is a measure of the bulk soil ability to carry electric current which is mostly dictated by the chemistry of and amount of soil water. (Unit: mS/cm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*mS/cm$'}},
+    bulk_elect_conductivity: Optional[str] = Field(default=None, alias="bulk_elect_conductivity", title="bulk electrical conductivity", description="""The bulk electrical conductivity readout from the Teros ZSC bluetooth sensor. If measurement was started and unsuccessful, value is 'failed'. (Unit: mS/cm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(\\d+(\\.\\d+)?\\s*mS/cm|failed)$'}},
          'domain_of': ['MonetSoilSample', 'OtherUndescribedSample', 'SoilSample']} })
     chem_administration: Optional[str] = Field(default=None, alias="chem_administration", title="chemical administration", description="""List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -11995,7 +12507,7 @@ class SoilSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
-    depth: str = Field(default=..., alias="depth", title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    depth: str = Field(default=..., alias="depth", title="depth", description="""The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth is required to be reported as an interval for subsurface samples. (Units: cm or m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*m$'}},
          'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -12003,8 +12515,8 @@ class SoilSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""The major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -12017,8 +12529,8 @@ class SoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""Entity(ies) in the sample or specimen's local vicinity and which have significant causal influences on the sample or specimen. Values should be terms from the Environment Ontology which are of smaller spatial grain than the entry for env_broad_scale. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -12031,8 +12543,8 @@ class SoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""The environmental material immediately surrounding the sample or specimen at the time of sampling. Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -12045,7 +12557,7 @@ class SoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. Values should be terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -12057,7 +12569,7 @@ class SoilSample(Sample):
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about your sample that you feel can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about the experiment that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -12069,7 +12581,7 @@ class SoilSample(Sample):
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""If you (the user) performed an extraction preparation or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
+    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""Details of extraction, preparation, or processing performed before sending the sample to EMSL. This is only applicable when sending an 'analytical sample'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
                        'AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -12104,7 +12616,7 @@ class SoilSample(Sample):
                        'PureCultureSample',
                        'SoilSample',
                        'WaterSample']} })
-    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -12117,7 +12629,7 @@ class SoilSample(Sample):
     heavy_metals: Optional[str] = Field(default=None, alias="heavy_metals", title="heavy metals", description="""Heavy metals present in the sample and the concentration of the metal. For multiple heavy metals and concentrations, separate them by `|`. (Example: mercury,0.09 micrograms per gram|lead,0.05 micrograms per gram""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
     heavy_metals_meth: Optional[str] = Field(default=None, alias="heavy_metals_meth", title="heavy metals method", description="""Reference or method used in determining heavy metals""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
     horizon_meth: Optional[str] = Field(default=None, alias="horizon_meth", title="soil horizon method", description="""Reference or method used in determining the horizon""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilSample']} })
-    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -12128,7 +12640,7 @@ class SoilSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""Isotope exposures or additions applied to the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -12164,7 +12676,7 @@ class SoilSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light, including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -12174,7 +12686,7 @@ class SoilSample(Sample):
                        'SoilSample',
                        'TerraformSample']} })
     link_addit_analys: Optional[str] = Field(default=None, alias="link_addit_analys", title="link to additional analysis", description="""Link to additional analysis results performed on the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -12188,7 +12700,7 @@ class SoilSample(Sample):
                        'TerraformSample',
                        'WaterSample']} })
     micro_biomass_c_meth: Optional[str] = Field(default=None, alias="micro_biomass_c_meth", title="microbial biomass carbon method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    micro_biomass_n_meth: Optional[str] = Field(default=None, alias="micro_biomass_n_meth", title="microbial biomass nitrogen method", description="""Reference or method used in determining microbial biomass nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    micro_biomass_n_meth: Optional[str] = Field(default=None, alias="micro_biomass_n_meth", title="microbial biomass nitrogen method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     microbial_biomass: Optional[str] = Field(default=None, alias="microbial_biomass", title="microbial biomass", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units. (Unit: g/kg soil or ug/g dry soil)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(g/kg '
                                                          'soil|ug/g dry soil)$'}},
@@ -12200,7 +12712,7 @@ class SoilSample(Sample):
     microbial_biomass_n: Optional[str] = Field(default=None, alias="microbial_biomass_n", title="microbial biomass nitrogen", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected, that is not listed in another column.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -12227,7 +12739,7 @@ class SoilSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -12242,7 +12754,7 @@ class SoilSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -12257,7 +12769,7 @@ class SoilSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -12270,7 +12782,7 @@ class SoilSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -12284,7 +12796,7 @@ class SoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""The relationship of the sample to oxygen, such as aerobic or anaerobic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -12296,20 +12808,22 @@ class SoilSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000015']} })
-    perturbation: Optional[str] = Field(default=None, alias="perturbation", title="perturbation", description="""Type of perturbation, e.g. chemical administration, physical disturbance, etc.; coupled with perturbation regimen, including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    perturbation: Optional[str] = Field(default=None, alias="perturbation", title="perturbation", description="""Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    ph: Optional[float] = Field(default=None, alias="ph", title="pH", description="""pH measurement of the sample or liquid portion of sample or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
+    ph: Optional[float] = Field(default=None, alias="ph", title="pH", description="""pH measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    ph_meth: Optional[str] = Field(default=None, alias="ph_meth", title="pH method", description="""Reference or method used in determining ph of the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    ph_meth: Optional[str] = Field(default=None, alias="ph_meth", title="pH method", description="""Reference or method used in determining ph""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -12345,7 +12859,7 @@ class SoilSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'todos': ['reconcile replicate modelling']} })
-    salinity: Optional[str] = Field(default=None, alias="salinity", title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    salinity: Optional[str] = Field(default=None, alias="salinity", title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(practical '
                                                          'salinity unit|percent)$'}},
          'domain_of': ['OtherUndescribedSample',
@@ -12358,7 +12872,7 @@ class SoilSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g. parasite on species X; mutualist with species Y. The target organism is the subject of the relationship and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
+    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
          'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -12368,7 +12882,7 @@ class SoilSample(Sample):
                        'SoilSample',
                        'TerraformSample'],
          'exact_mappings': ['MIXS:0000016']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -12420,7 +12934,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -12463,14 +12977,14 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'OtherUndescribedSample',
                        'SoilSample',
                        'WaterSample']} })
-    soil_horizon: Optional[SoilHorizonEnum] = Field(default=None, alias="soil_horizon", title="soil horizon", description="""Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilSample'], 'exact_mappings': ['MIXS:0001082']} })
+    soil_horizon: Optional[SoilHorizonEnum] = Field(default=None, alias="soil_horizon", title="soil horizon", description="""Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilSample'], 'exact_mappings': ['MIXS:0001082']} })
     soil_sample_type: Optional[SoilSampleTypeEnum] = Field(default=None, alias="soil_sample_type", title="soil type", description="""The specific type of soil sample (e.g. soil core, surface layer).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'SoilSample'],
          'todos': ["this is a GSC slot but it's not constrined by an enum, it's a "
                    'string. where did this come from?',
                    "BJM 060626 - clarified this slot and enum name from 'soil_type' "
                    "but I'm still not sure we need it. it is populated in the current "
                    'database though.']} })
-    soil_texture: Optional[str] = Field(default=None, alias="soil_texture", title="soil texture", description="""The relative proportion of different grain sizes of mineral particles in a soil as described using a standard system; express as decimal percent sand (50 um to 2 mm) silt (2 um to 50 um) and clay (<2 um) with optional textural name (e.g. sand:0.20 silt:0.25 clay:0.55 description:silty clay loam).""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    soil_texture: Optional[str] = Field(default=None, alias="soil_texture", title="soil texture", description="""The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as decimal percent sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with optional textural name (e.g., sand:0.20, silt:0.25, clay:0.55, description:silty clay loam).""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^(\\w+:0\\.\\d+ '
                                                          ')*description:[A-Za-z ]+$'}},
          'domain_of': ['SoilSample']} })
@@ -12502,7 +13016,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -12553,8 +13067,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. If measurement was started and unsuccessful, enter 'failed'. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(-?\\d+(\\.\\d+)?\\s*C|failed)$'}},
          'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -12574,8 +13088,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
     tot_org_carb: Optional[str] = Field(default=None, alias="tot_org_carb", title="total organic carbon", description="""Total organic carbon content. Provided as gram of Carbon per kg of your sample material. (Unit: g C/kg)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*g C/kg$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    water_content: Optional[str] = Field(default=None, alias="water_content", title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    water_content: Optional[str] = Field(default=None, alias="water_content", title="water content", description="""Water content measurement read from the Teros ZSC bluetooth sensor. Units: 'm3/m3'. If measurement was started and unsuccessful, value will be 'failed'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(\\d+(\\.\\d+)?\\s*m3/m3|failed)$'}},
          'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -12603,6 +13117,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -12718,7 +13233,7 @@ class SynthesizedMaterialSample(Sample):
                        'CommerciallyPurchasedSample',
                        'OtherUndescribedSample',
                        'SynthesizedMaterialSample']} })
-    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. Values should be terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -12730,7 +13245,7 @@ class SynthesizedMaterialSample(Sample):
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about your sample that you feel can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about the experiment that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -12771,7 +13286,7 @@ class SynthesizedMaterialSample(Sample):
     item_number: Optional[str] = Field(default=None, alias="item_number", title="item number", description="""The item number of the purchased material""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'OtherUndescribedSample',
                        'SynthesizedMaterialSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -12786,7 +13301,7 @@ class SynthesizedMaterialSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -12801,7 +13316,7 @@ class SynthesizedMaterialSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -12814,7 +13329,7 @@ class SynthesizedMaterialSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""The relationship of the sample to oxygen, such as aerobic or anaerobic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -12830,7 +13345,9 @@ class SynthesizedMaterialSample(Sample):
     production_method: Optional[str] = Field(default=None, alias="production_method", title="production method", description="""A DOI or description of how the compound was produced, if the commercially purchased material was altered""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'OtherUndescribedSample',
                        'SynthesizedMaterialSample']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -12902,7 +13419,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -12915,7 +13432,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'TerraformSample']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -12960,7 +13477,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -13014,8 +13531,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. If measurement was started and unsuccessful, enter 'failed'. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(-?\\d+(\\.\\d+)?\\s*C|failed)$'}},
          'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -13032,6 +13549,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -13164,7 +13682,7 @@ class TerraformSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -13197,8 +13715,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""The major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -13211,8 +13729,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""Entity(ies) in the sample or specimen's local vicinity and which have significant causal influences on the sample or specimen. Values should be terms from the Environment Ontology which are of smaller spatial grain than the entry for env_broad_scale. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -13225,8 +13743,8 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""The environmental material immediately surrounding the sample or specimen at the time of sampling. Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -13257,7 +13775,7 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'TerraformSample',
                        'WaterSample',
                        'Study']} })
-    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -13341,7 +13859,7 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
          'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
-    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    humidity_regm: Optional[str] = Field(default=None, alias="humidity_regm", title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -13367,7 +13885,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""Isotope exposures or additions applied to the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -13379,7 +13897,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    light_regm: Optional[str] = Field(default=None, alias="light_regm", title="light regimen", description="""Information about treatment(s) involving exposure to light, including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -13388,7 +13906,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -13405,7 +13923,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected, that is not listed in another column.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -13419,7 +13937,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -13434,7 +13952,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -13449,7 +13967,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -13462,7 +13980,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -13476,7 +13994,7 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""The relationship of the sample to oxygen, such as aerobic or anaerobic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -13508,7 +14026,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'TerraformSample',
                        'WaterSample',
                        'ConditioningValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -13616,7 +14136,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
          'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
                    'classes. Defined separately for compatibility with source data '
                    "files using 'sample_name' column headers."]} })
-    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    sample_processing: Optional[str] = Field(default=None, alias="sample_processing", title="sample processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -13629,7 +14149,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'TerraformSample']} })
-    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g. parasite on species X; mutualist with species Y. The target organism is the subject of the relationship and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
+    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, alias="biotic_relationship", title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_biotic_relationship'],
          'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -13639,7 +14159,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SoilSample',
                        'TerraformSample'],
          'exact_mappings': ['MIXS:0000016']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -13684,7 +14204,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -13743,8 +14263,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. If measurement was started and unsuccessful, enter 'failed'. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(-?\\d+(\\.\\d+)?\\s*C|failed)$'}},
          'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -13758,8 +14278,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
     tiss_cult_growth_med: Optional[str] = Field(default=None, alias="tiss_cult_growth_med", title="tissue culture growth media", description="""Description of plant tissue culture growth media used""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
-    water_content: Optional[str] = Field(default=None, alias="water_content", title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    water_content: Optional[str] = Field(default=None, alias="water_content", title="water content", description="""Water content measurement read from the Teros ZSC bluetooth sensor. Units: 'm3/m3'. If measurement was started and unsuccessful, value will be 'failed'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(\\d+(\\.\\d+)?\\s*m3/m3|failed)$'}},
          'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -13787,6 +14307,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -13964,7 +14485,7 @@ class WaterSample(Sample):
     bacteria_carb_prod: Optional[str] = Field(default=None, alias="bacteria_carb_prod", title="bacterial carbon production", description="""Measurement of bacterial carbon production. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    biotic_regm: Optional[str] = Field(default=None, alias="biotic_regm", title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -14014,7 +14535,7 @@ class WaterSample(Sample):
                                                 'value': '^\\d+(\\.\\d+)?\\s*(g/m3|g/cm3)$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     depth: str = Field(default=..., alias="depth", title="depth", description="""The vertical distance below local surface of the water. (Units: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?(-\\d+(\\.\\d+)?)?\\s*m$'}},
+                                                'value': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*(m|cm)$'}},
          'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -14051,8 +14572,8 @@ class WaterSample(Sample):
     down_par: Optional[str] = Field(default=None, alias="down_par", title="downward PAR", description="""Visible waveband radiance and irradiance measurements in the water column. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_broad_scale: Optional[str] = Field(default=None, alias="env_broad_scale", title="broad-scale environmental context", description="""The major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -14065,8 +14586,8 @@ class WaterSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_local_scale: Optional[str] = Field(default=None, alias="env_local_scale", title="local environmental context", description="""Entity(ies) in the sample or specimen's local vicinity and which have significant causal influences on the sample or specimen. Values should be terms from the Environment Ontology which are of smaller spatial grain than the entry for env_broad_scale. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -14079,8 +14600,8 @@ class WaterSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+    env_medium: Optional[str] = Field(default=None, alias="env_medium", title="environmental medium", description="""The environmental material immediately surrounding the sample or specimen at the time of sampling. Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -14093,7 +14614,7 @@ class WaterSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor: Optional[str] = Field(default=None, alias="experimental_factor", title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. Values should be terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -14105,7 +14626,7 @@ class WaterSample(Sample):
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'WaterSample']} })
-    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about your sample that you feel can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    experimental_factor_other: Optional[str] = Field(default=None, alias="experimental_factor_other", title="other experimental factor", description="""Other details about the experiment that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -14135,7 +14656,7 @@ class WaterSample(Sample):
                        'TerraformSample',
                        'WaterSample',
                        'Study']} })
-    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""If you (the user) performed an extraction preparation or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
+    extraction_method: Optional[str] = Field(default=None, alias="extraction_method", title="extraction method", description="""Details of extraction, preparation, or processing performed before sending the sample to EMSL. This is only applicable when sending an 'analytical sample'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct',
                        'AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -14155,7 +14676,7 @@ class WaterSample(Sample):
     fluor: Optional[str] = Field(default=None, alias="fluor", title="fluorescence", description="""Raw or converted fluorescence of water. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    gaseous_environment: Optional[str] = Field(default=None, alias="gaseous_environment", title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -14168,7 +14689,7 @@ class WaterSample(Sample):
     glucosidase_act: Optional[str] = Field(default=None, alias="glucosidase_act", title="glucosidase activity", description="""Measurement of glucosidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*mol/L/h$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    isotope_exposure: Optional[str] = Field(default=None, alias="isotope_exposure", title="isotope exposure", description="""Isotope exposures or additions applied to the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -14219,7 +14740,7 @@ class WaterSample(Sample):
     mean_peak_frict_vel: Optional[str] = Field(default=None, alias="mean_peak_frict_vel", title="mean peak friction velocity", description="""Measurement of mean peak friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*m/s$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    method_development: Optional[str] = Field(default=None, alias="method_development", title="method development", description="""Information about the methodological issue being investigated. Only applicable to \"test\" samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -14232,7 +14753,7 @@ class WaterSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    misc_param: Optional[str] = Field(default=None, alias="misc_param", title="miscellaneous parameter", description="""Any other measurement performed or parameter collected, that is not listed in another column.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -14279,7 +14800,7 @@ class WaterSample(Sample):
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     org_nitro_method: Optional[str] = Field(default=None, alias="org_nitro_method", title="organic nitrogen method", description="""Method used for obtaining organic nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other: Optional[str] = Field(default=None, alias="other", title="other", description="""Other details about the sample that can't be accurately represented in the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -14294,7 +14815,7 @@ class WaterSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Please specify sample storage temperature if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_samp_store_temp: Optional[str] = Field(default=None, alias="other_samp_store_temp", title="other sample storage temperature", description="""Specified if \"samp_store_temp\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -14309,7 +14830,7 @@ class WaterSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Please specify your storage conditions if you selected 'other' and the available values are not appropriate""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
+    other_storage_condt: Optional[str] = Field(default=None, alias="other_storage_condt", title="other storage condition", description="""Specified if \"storage_condt\" = \"other\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -14322,7 +14843,7 @@ class WaterSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    other_treatment: Optional[str] = Field(default=None, alias="other_treatment", title="other treatment", description="""Treatment applied to samples that did not fit in other available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -14336,7 +14857,7 @@ class WaterSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""The relationship of the sample to oxygen, such as aerobic or anaerobic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, alias="oxygen_status", title="oxygen relationship", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -14354,19 +14875,19 @@ class WaterSample(Sample):
     part_org_nitro: Optional[str] = Field(default=None, alias="part_org_nitro", title="particulate organic nitrogen", description="""Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ug/L)$'}},
          'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    perturbation: Optional[str] = Field(default=None, alias="perturbation", title="perturbation", description="""Type of perturbation, e.g. chemical administration, physical disturbance, etc.; coupled with perturbation regimen, including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    perturbation: Optional[str] = Field(default=None, alias="perturbation", title="perturbation", description="""Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
     petroleum_hydrocarb: Optional[str] = Field(default=None, alias="petroleum_hydrocarb", title="petroleum hydrocarbon", description="""Concentration of petroleum hydrocarbon (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    ph: Optional[float] = Field(default=None, alias="ph", title="pH", description="""pH measurement of the sample or liquid portion of sample or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
+    ph: Optional[float] = Field(default=None, alias="ph", title="pH", description="""pH measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    ph_meth: Optional[str] = Field(default=None, alias="ph_meth", title="pH method", description="""Reference or method used in determining ph of the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    ph_meth: Optional[str] = Field(default=None, alias="ph_meth", title="pH method", description="""Reference or method used in determining ph""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
@@ -14397,7 +14918,9 @@ class WaterSample(Sample):
     primary_prod: Optional[str] = Field(default=None, alias="primary_prod", title="primary production", description="""Measurement of primary production generally measured as isotope uptake. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -14440,7 +14963,7 @@ class WaterSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'todos': ['reconcile replicate modelling']} })
-    salinity: Optional[str] = Field(default=None, alias="salinity", title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    salinity: Optional[str] = Field(default=None, alias="salinity", title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(practical '
                                                          'salinity unit|percent)$'}},
          'domain_of': ['OtherUndescribedSample',
@@ -14556,7 +15079,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
+    storage_condition: Optional[StorageConditionEnum] = Field(default=None, alias="storage_condition", title="storage condition", description="""The storage condition of the sample before shipment to EMSL. If \"other\", the \"other_storage_condt\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_store_cond', 'storage_cond', 'storage_condt'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -14602,7 +15125,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
     sulfide: Optional[str] = Field(default=None, alias="sulfide", title="sulfide", description="""Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
          'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
+    samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, alias="samp_store_temp", title="sample storage temperature", description="""The temperature at which samples should be stored upon arrival to EMSL. If \"other\", the \"other_samp_store_temp\" attribute should be completed to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -14635,8 +15158,8 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+    temp: Optional[str] = Field(default=None, alias="temp", title="temperature", description="""Temperature of the sample at the time of sampling. If measurement was started and unsuccessful, enter 'failed'. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(-?\\d+(\\.\\d+)?\\s*C|failed)$'}},
          'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
@@ -14680,6 +15203,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -14800,6 +15324,7 @@ class ProcessedSample(Sample):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -14908,6 +15433,7 @@ class CoreSection(ProcessedSample):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15005,6 +15531,7 @@ class SamplingActivity(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15077,7 +15604,9 @@ class SamplingActivity(ConfiguredBaseModel):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -15102,12 +15631,11 @@ class SamplingActivity(ConfiguredBaseModel):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -15129,6 +15657,7 @@ class AerosolArmSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15201,7 +15730,9 @@ class AerosolArmSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -15226,12 +15757,11 @@ class AerosolArmSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -15242,8 +15772,8 @@ class AerosolSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -15259,8 +15789,8 @@ class AerosolSamplingActivity(SamplingActivity):
     humidity: Optional[str] = Field(default=None, alias="humidity", title="humidity", description="""Amount of water vapor measured in the air the day of sampling. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -15301,6 +15831,7 @@ class AerosolSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15373,7 +15904,9 @@ class AerosolSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -15398,12 +15931,11 @@ class AerosolSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -15414,8 +15946,8 @@ class CommerciallyPurchasedSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -15447,6 +15979,7 @@ class CommerciallyPurchasedSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15519,7 +16052,9 @@ class CommerciallyPurchasedSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -15544,12 +16079,11 @@ class CommerciallyPurchasedSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -15560,8 +16094,8 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -15574,8 +16108,8 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -15601,7 +16135,7 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'SynthesizedMaterialSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample. This can be a citation or description.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
+    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
                        'OtherUndescribedSamplingActivity',
@@ -15617,6 +16151,7 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15689,7 +16224,9 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -15714,12 +16251,11 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -15736,6 +16272,7 @@ class EngineeredStrainSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15808,7 +16345,9 @@ class EngineeredStrainSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -15833,12 +16372,11 @@ class EngineeredStrainSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -15849,8 +16387,8 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -15863,8 +16401,8 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -15878,7 +16416,7 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
                        'SynthesizedMaterialSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample. This can be a citation or description.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
+    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
                        'OtherUndescribedSamplingActivity',
@@ -15894,6 +16432,7 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15966,7 +16505,9 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -15991,12 +16532,11 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -16007,8 +16547,8 @@ class MixedCultureSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -16021,8 +16561,8 @@ class MixedCultureSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -16048,7 +16588,7 @@ class MixedCultureSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'SynthesizedMaterialSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample. This can be a citation or description.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
+    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
                        'OtherUndescribedSamplingActivity',
@@ -16064,6 +16604,7 @@ class MixedCultureSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -16136,7 +16677,9 @@ class MixedCultureSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -16161,12 +16704,11 @@ class MixedCultureSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -16183,8 +16725,8 @@ class MonetSoilSamplingActivity(SamplingActivity):
                         'sample_collection_dev': {'name': 'sample_collection_dev',
                                                   'required': True}}})
 
-    collection_time: str = Field(default=..., alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+    collection_time: str = Field(default=..., alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -16197,13 +16739,11 @@ class MonetSoilSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    infiltration_1: str = Field(default=..., alias="infiltration_1", title="first infiltration time", description="""Amount of time it takes to accomplish the first infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|did '
-                                                         'not collect|failed)$'}},
+    infiltration_1: str = Field(default=..., alias="infiltration_1", title="first infiltration time", description="""Amount of time it took to accomplish the first infiltration activity. If infiltration time was started and unsuccessful, 'failed'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|failed)$'}},
          'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
-    infiltration_2: str = Field(default=..., alias="infiltration_2", title="second infiltration time", description="""Amount of time it takes to accomplish the second infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|did '
-                                                         'not collect|failed)'}},
+    infiltration_2: str = Field(default=..., alias="infiltration_2", title="second infiltration time", description="""Amount of time it took to accomplish the second infiltration activity. If infiltration time was started and unsuccessful, 'failed'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|failed)$'}},
          'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
     infiltration_notes: Optional[str] = Field(default=None, alias="infiltration_notes", title="infiltration notes", description="""Provide any details, issues, or context needed to understand the infiltration activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
     sample_collection_dev: str = Field(default=..., alias="sample_collection_dev", title="sample collection device", description="""The device used to collect an environmental sample. Include dimensions of device if applicable""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
@@ -16218,7 +16758,7 @@ class MonetSoilSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'SynthesizedMaterialSamplingActivity',
                        'WaterSamplingActivity']} })
-    weather: Optional[str] = Field(default=None, alias="weather", title="weather", description="""The state of the atmosphere at a given time and place with respect to variables such as temperature, moisture, wind velocity, and barometric pressure.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity',
+    weather: Optional[str] = Field(default=None, alias="weather", title="weather", description="""The state of the atmosphere at a given time and place, with respect to variables such as temperature, moisture, wind velocity, and barometric pressure.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity',
                        'PlantSamplingActivity',
                        'SedimentSamplingActivity',
                        'SoilSamplingActivity']} })
@@ -16228,6 +16768,7 @@ class MonetSoilSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -16300,7 +16841,9 @@ class MonetSoilSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -16325,12 +16868,11 @@ class MonetSoilSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -16346,8 +16888,8 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
                                                     'and unit, any unit is valid',
                                      'name': 'humidity'}}})
 
-    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -16363,8 +16905,8 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
     humidity: Optional[str] = Field(default=None, alias="humidity", title="humidity", description="""Amount of humidity measured in the air the day of sampling. Provided by iMet. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
          'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -16390,7 +16932,7 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'SynthesizedMaterialSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample. This can be a citation or description.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
+    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
                        'OtherUndescribedSamplingActivity',
@@ -16415,6 +16957,7 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -16487,7 +17030,9 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -16512,12 +17057,11 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -16528,8 +17072,8 @@ class PlantSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -16542,8 +17086,8 @@ class PlantSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -16569,7 +17113,7 @@ class PlantSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'SynthesizedMaterialSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample. This can be a citation or description.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
+    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
                        'OtherUndescribedSamplingActivity',
@@ -16579,7 +17123,7 @@ class PlantSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    weather: Optional[str] = Field(default=None, alias="weather", title="weather", description="""The state of the atmosphere at a given time and place with respect to variables such as temperature, moisture, wind velocity, and barometric pressure.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity',
+    weather: Optional[str] = Field(default=None, alias="weather", title="weather", description="""The state of the atmosphere at a given time and place, with respect to variables such as temperature, moisture, wind velocity, and barometric pressure.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity',
                        'PlantSamplingActivity',
                        'SedimentSamplingActivity',
                        'SoilSamplingActivity']} })
@@ -16589,6 +17133,7 @@ class PlantSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -16661,7 +17206,9 @@ class PlantSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -16686,12 +17233,11 @@ class PlantSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -16702,8 +17248,8 @@ class PureCultureSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -16716,8 +17262,8 @@ class PureCultureSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -16743,7 +17289,7 @@ class PureCultureSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'SynthesizedMaterialSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample. This can be a citation or description.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
+    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
                        'OtherUndescribedSamplingActivity',
@@ -16759,6 +17305,7 @@ class PureCultureSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -16831,7 +17378,9 @@ class PureCultureSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -16856,12 +17405,11 @@ class PureCultureSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -16872,8 +17420,8 @@ class SedimentSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -16886,8 +17434,8 @@ class SedimentSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -16913,7 +17461,7 @@ class SedimentSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'SynthesizedMaterialSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample. This can be a citation or description.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
+    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
                        'OtherUndescribedSamplingActivity',
@@ -16923,7 +17471,7 @@ class SedimentSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    weather: Optional[str] = Field(default=None, alias="weather", title="weather", description="""The state of the atmosphere at a given time and place with respect to variables such as temperature, moisture, wind velocity, and barometric pressure.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity',
+    weather: Optional[str] = Field(default=None, alias="weather", title="weather", description="""The state of the atmosphere at a given time and place, with respect to variables such as temperature, moisture, wind velocity, and barometric pressure.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity',
                        'PlantSamplingActivity',
                        'SedimentSamplingActivity',
                        'SoilSamplingActivity']} })
@@ -16933,6 +17481,7 @@ class SedimentSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17005,7 +17554,9 @@ class SedimentSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -17030,12 +17581,11 @@ class SedimentSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -17092,8 +17642,8 @@ class SoilSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -17106,17 +17656,15 @@ class SoilSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    infiltration_1: Optional[str] = Field(default=None, alias="infiltration_1", title="first infiltration time", description="""Amount of time it takes to accomplish the first infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|did '
-                                                         'not collect|failed)$'}},
+    infiltration_1: Optional[str] = Field(default=None, alias="infiltration_1", title="first infiltration time", description="""Amount of time it took to accomplish the first infiltration activity. If infiltration time was started and unsuccessful, 'failed'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|failed)$'}},
          'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
-    infiltration_2: Optional[str] = Field(default=None, alias="infiltration_2", title="second infiltration time", description="""Amount of time it takes to accomplish the second infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|did '
-                                                         'not collect|failed)'}},
+    infiltration_2: Optional[str] = Field(default=None, alias="infiltration_2", title="second infiltration time", description="""Amount of time it took to accomplish the second infiltration activity. If infiltration time was started and unsuccessful, 'failed'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|failed)$'}},
          'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
     infiltration_notes: Optional[str] = Field(default=None, alias="infiltration_notes", title="infiltration notes", description="""Provide any details, issues, or context needed to understand the infiltration activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -17142,7 +17690,7 @@ class SoilSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'SynthesizedMaterialSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample. This can be a citation or description.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
+    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
                        'OtherUndescribedSamplingActivity',
@@ -17155,7 +17703,7 @@ class SoilSamplingActivity(SamplingActivity):
     wind_direction: Optional[CardinalDirectionEnum] = Field(default=None, alias="wind_direction", title="wind direction", description="""Direction of the wind on the day of sampling. Collected via anemometer. Provide cardinal direction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'OtherUndescribedSamplingActivity',
                        'SoilSamplingActivity']} })
-    weather: Optional[str] = Field(default=None, alias="weather", title="weather", description="""The state of the atmosphere at a given time and place with respect to variables such as temperature, moisture, wind velocity, and barometric pressure.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity',
+    weather: Optional[str] = Field(default=None, alias="weather", title="weather", description="""The state of the atmosphere at a given time and place, with respect to variables such as temperature, moisture, wind velocity, and barometric pressure.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity',
                        'PlantSamplingActivity',
                        'SedimentSamplingActivity',
                        'SoilSamplingActivity']} })
@@ -17165,6 +17713,7 @@ class SoilSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17192,7 +17741,9 @@ class SoilSamplingActivity(SamplingActivity):
                        'Study',
                        'ProjectParticipant',
                        'PersonValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -17217,12 +17768,11 @@ class SoilSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -17233,8 +17783,8 @@ class SynthesizedMaterialSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -17266,6 +17816,7 @@ class SynthesizedMaterialSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17338,7 +17889,9 @@ class SynthesizedMaterialSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -17363,12 +17916,11 @@ class SynthesizedMaterialSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -17379,8 +17931,8 @@ class TerraformSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -17393,8 +17945,8 @@ class TerraformSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -17408,7 +17960,7 @@ class TerraformSamplingActivity(SamplingActivity):
                        'SynthesizedMaterialSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample. This can be a citation or description.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
+    sample_collection_method: Optional[str] = Field(default=None, alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
                        'OtherUndescribedSamplingActivity',
@@ -17424,6 +17976,7 @@ class TerraformSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17496,7 +18049,9 @@ class TerraformSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -17521,12 +18076,11 @@ class TerraformSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -17541,8 +18095,8 @@ class WaterSamplingActivity(SamplingActivity):
                         'sample_collection_method': {'name': 'sample_collection_method',
                                                      'required': True}}})
 
-    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+    collection_time: Optional[str] = Field(default=None, alias="collection_time", title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -17555,8 +18109,8 @@ class WaterSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    sample_collected: Optional[str] = Field(default=None, alias="sample_collected", title="sample collected", description="""This refers to the TOTAL number of cores collected. (Unit: cores)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*cores$'}},
          'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -17582,7 +18136,7 @@ class WaterSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'SynthesizedMaterialSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collection_method: str = Field(default=..., alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample. This can be a citation or description.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
+    sample_collection_method: str = Field(default=..., alias="sample_collection_method", title="sample collection method", description="""The method used to collect an environmental sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
                        'OtherUndescribedSamplingActivity',
@@ -17598,6 +18152,7 @@ class WaterSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17670,7 +18225,9 @@ class WaterSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -17695,12 +18252,11 @@ class WaterSamplingActivity(SamplingActivity):
 campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
-    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+    collection_date: Optional[date] = Field(default=None, alias="collection_date", title="collection date", description="""The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
                                                 'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
-                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+    shipped_sample_size: Optional[str] = Field(default=None, alias="shipped_sample_size", title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include unit of 'core'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*core$'}},
          'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, alias="sampled_at_site", description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
 
@@ -17718,6 +18274,7 @@ class Activity(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17809,6 +18366,7 @@ class Entity(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17899,6 +18457,7 @@ class DataProduct(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17971,7 +18530,9 @@ class DataProduct(ConfiguredBaseModel):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -17992,9 +18553,7 @@ class DataProduct(ConfiguredBaseModel):
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -18051,6 +18610,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18123,7 +18683,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -18144,9 +18706,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -18185,7 +18745,11 @@ class MassSpectrometryDataProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/mass-spec'})
 
-    results_from_ms_processing: Optional[str] = Field(default=None, alias="results_from_ms_processing", description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, alias="results_from_ms_processing", description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -18203,6 +18767,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18275,7 +18840,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -18296,9 +18863,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -18335,7 +18900,11 @@ class MSImageProduct(MassSpectrometryDataProduct):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/mass-spec'})
 
-    results_from_ms_processing: Optional[str] = Field(default=None, alias="results_from_ms_processing", description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, alias="results_from_ms_processing", description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -18353,6 +18922,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18425,7 +18995,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -18446,9 +19018,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -18485,7 +19055,11 @@ class MolecularIdentificationProduct(MassSpectrometryDataProduct):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/mass-spec'})
 
-    results_from_ms_processing: Optional[str] = Field(default=None, alias="results_from_ms_processing", description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, alias="results_from_ms_processing", description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -18503,6 +19077,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18575,7 +19150,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -18596,9 +19173,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -18636,7 +19211,11 @@ class MetaproteomicsProduct(MassSpectrometryDataProduct):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/mass-spec'})
 
     metaproteomics_result_type: Optional[MetaproteomicsResultTypeEnum] = Field(default=None, alias="metaproteomics_result_type", description="""The type of metaproteomics results file.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetaproteomicsProduct']} })
-    results_from_ms_processing: Optional[str] = Field(default=None, alias="results_from_ms_processing", description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, alias="results_from_ms_processing", description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -18654,6 +19233,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18726,7 +19306,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -18747,9 +19329,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -18811,6 +19391,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18883,7 +19464,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -18904,9 +19487,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -18966,6 +19547,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -19038,7 +19620,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -19059,9 +19643,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -19120,6 +19702,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -19192,7 +19775,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -19213,9 +19798,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -19275,6 +19858,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -19347,7 +19931,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -19368,9 +19954,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -19408,6 +19992,8 @@ class BulkDensityProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -19418,6 +20004,8 @@ class BulkDensityProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -19425,8 +20013,8 @@ class BulkDensityProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    bulk_density: Optional[QuantityValue] = Field(default=None, alias="bulk_density", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    bulk_density: Optional[float] = Field(default=None, alias="bulk_density", description="""Bulk density (g per cm3 soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct'], 'unit': {'ucum_code': 'g/cm3'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", description="""Data quality flag for bulk density; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -19453,6 +20041,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -19525,7 +20114,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -19546,9 +20137,577 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
+         'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
+    sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
+be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_name'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'DataProduct'],
+         'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
+                   'classes. Defined separately for compatibility with source data '
+                   "files using 'sample_name' column headers."]} })
+    s3_base_url: Optional[str] = Field(default=None, alias="s3_base_url", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_bucket: Optional[str] = Field(default=None, alias="s3_bucket", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_key: str = Field(default=..., alias="s3_key", description="""MinIO/S3 object key; required for all data products""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    filesize: Optional[int] = Field(default=None, alias="filesize", description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    md5checksum: Optional[str] = Field(default=None, alias="md5checksum", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+
+
+class CMMICPMSDigestionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample digestion targeting critical minerals and materials.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+
+    measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'GWCMoistureProduct',
+                       'HydraulicPropertiesProduct',
+                       'IonsAnalysisProduct',
+                       'HClExtOMProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
+                       'TextureProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'XCTProduct',
+                       'XRFElementalProduct',
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, alias="results_from_ms_processing", description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Al_ug_per_g: Optional[float] = Field(default=None, alias="Al_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Ba_ug_per_g: Optional[float] = Field(default=None, alias="Ba_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Ca_ug_per_g: Optional[float] = Field(default=None, alias="Ca_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Ce_ug_per_g: Optional[float] = Field(default=None, alias="Ce_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Co_ug_per_g: Optional[float] = Field(default=None, alias="Co_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Cr_ug_per_g: Optional[float] = Field(default=None, alias="Cr_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Cu_ug_per_g: Optional[float] = Field(default=None, alias="Cu_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Dy_ug_per_g: Optional[float] = Field(default=None, alias="Dy_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Er_ug_per_g: Optional[float] = Field(default=None, alias="Er_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Eu_ug_per_g: Optional[float] = Field(default=None, alias="Eu_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Fe_ug_per_g: Optional[float] = Field(default=None, alias="Fe_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Gd_ug_per_g: Optional[float] = Field(default=None, alias="Gd_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Ho_ug_per_g: Optional[float] = Field(default=None, alias="Ho_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    K_ug_per_g: Optional[float] = Field(default=None, alias="K_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    La_ug_per_g: Optional[float] = Field(default=None, alias="La_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Li_ug_per_g: Optional[float] = Field(default=None, alias="Li_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Lu_ug_per_g: Optional[float] = Field(default=None, alias="Lu_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Mg_ug_per_g: Optional[float] = Field(default=None, alias="Mg_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Mn_ug_per_g: Optional[float] = Field(default=None, alias="Mn_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Mo_ug_per_g: Optional[float] = Field(default=None, alias="Mo_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Nd_ug_per_g: Optional[float] = Field(default=None, alias="Nd_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Ni_ug_per_g: Optional[float] = Field(default=None, alias="Ni_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Pr_ug_per_g: Optional[float] = Field(default=None, alias="Pr_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Sc_ug_per_g: Optional[float] = Field(default=None, alias="Sc_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Si_ug_per_g: Optional[float] = Field(default=None, alias="Si_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Sm_ug_per_g: Optional[float] = Field(default=None, alias="Sm_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Sr_ug_per_g: Optional[float] = Field(default=None, alias="Sr_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Tb_ug_per_g: Optional[float] = Field(default=None, alias="Tb_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Tm_ug_per_g: Optional[float] = Field(default=None, alias="Tm_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Y_ug_per_g: Optional[float] = Field(default=None, alias="Y_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Yb_ug_per_g: Optional[float] = Field(default=None, alias="Yb_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Zn_ug_per_g: Optional[float] = Field(default=None, alias="Zn_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Al: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Al", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Ba: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ba", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Ca: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ca", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Ce: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ce", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Co: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Co", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Cr: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Cr", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Cu: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Cu", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Dy: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Dy", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Er: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Er", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Eu: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Eu", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Fe: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Fe", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Gd: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Gd", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Ho: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ho", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_K: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_K", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_La: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_La", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Li: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Li", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Lu: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Lu", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Mg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Mg", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Mn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Mn", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Mo: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Mo", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Nd: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Nd", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Ni: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ni", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Pr: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Pr", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Sc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Sc", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Si: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Si", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Sm: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Sm", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Sr: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Sr", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Tb: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Tb", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Tm: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Tm", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Y: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Y", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Yb: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Yb", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Zn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Zn", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
+Direction: structured key-value pairs; per-type schemas TBD:
+  ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+  xrf:       per-element concentration results + QC flag
+  lcms:      feature count, identification count, MSI-2 fraction
+Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
+    lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+                       'MetagenomicsProduct',
+                       'SampleStorage',
+                       'ProcessedData']} })
+    id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+    name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, alias="description", title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'SamplingActivity',
+                       'DataProduct'],
+         'todos': ['should this be an ID? CURIE can use the one NMDC has '
+                   'https://bioregistry.io/reference/emsl.project:60141 where '
+                   'emsl.project is the CURIE prefix']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
+         'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
+    sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
+be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_name'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'DataProduct'],
+         'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
+                   'classes. Defined separately for compatibility with source data '
+                   "files using 'sample_name' column headers."]} })
+    s3_base_url: Optional[str] = Field(default=None, alias="s3_base_url", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_bucket: Optional[str] = Field(default=None, alias="s3_bucket", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_key: str = Field(default=..., alias="s3_key", description="""MinIO/S3 object key; required for all data products""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    filesize: Optional[int] = Field(default=None, alias="filesize", description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    md5checksum: Optional[str] = Field(default=None, alias="md5checksum", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+
+
+class CMMICPMSExtractionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample extraction targeting critical minerals and materials.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+
+    measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'GWCMoistureProduct',
+                       'HydraulicPropertiesProduct',
+                       'IonsAnalysisProduct',
+                       'HClExtOMProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
+                       'TextureProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'XCTProduct',
+                       'XRFElementalProduct',
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, alias="results_from_ms_processing", description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Al_ug_per_g: Optional[float] = Field(default=None, alias="Al_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Ba_ug_per_g: Optional[float] = Field(default=None, alias="Ba_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Ca_ug_per_g: Optional[float] = Field(default=None, alias="Ca_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Ce_ug_per_g: Optional[float] = Field(default=None, alias="Ce_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Co_ug_per_g: Optional[float] = Field(default=None, alias="Co_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Cr_ug_per_g: Optional[float] = Field(default=None, alias="Cr_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Cu_ug_per_g: Optional[float] = Field(default=None, alias="Cu_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Dy_ug_per_g: Optional[float] = Field(default=None, alias="Dy_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Er_ug_per_g: Optional[float] = Field(default=None, alias="Er_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Eu_ug_per_g: Optional[float] = Field(default=None, alias="Eu_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Fe_ug_per_g: Optional[float] = Field(default=None, alias="Fe_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Gd_ug_per_g: Optional[float] = Field(default=None, alias="Gd_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Ho_ug_per_g: Optional[float] = Field(default=None, alias="Ho_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    K_ug_per_g: Optional[float] = Field(default=None, alias="K_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    La_ug_per_g: Optional[float] = Field(default=None, alias="La_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Li_ug_per_g: Optional[float] = Field(default=None, alias="Li_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Lu_ug_per_g: Optional[float] = Field(default=None, alias="Lu_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Mg_ug_per_g: Optional[float] = Field(default=None, alias="Mg_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Mn_ug_per_g: Optional[float] = Field(default=None, alias="Mn_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Mo_ug_per_g: Optional[float] = Field(default=None, alias="Mo_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Nd_ug_per_g: Optional[float] = Field(default=None, alias="Nd_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Ni_ug_per_g: Optional[float] = Field(default=None, alias="Ni_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Pr_ug_per_g: Optional[float] = Field(default=None, alias="Pr_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Sc_ug_per_g: Optional[float] = Field(default=None, alias="Sc_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Si_ug_per_g: Optional[float] = Field(default=None, alias="Si_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Sm_ug_per_g: Optional[float] = Field(default=None, alias="Sm_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Sr_ug_per_g: Optional[float] = Field(default=None, alias="Sr_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Tb_ug_per_g: Optional[float] = Field(default=None, alias="Tb_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Tm_ug_per_g: Optional[float] = Field(default=None, alias="Tm_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Y_ug_per_g: Optional[float] = Field(default=None, alias="Y_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Yb_ug_per_g: Optional[float] = Field(default=None, alias="Yb_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Zn_ug_per_g: Optional[float] = Field(default=None, alias="Zn_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Al: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Al", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Ba: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ba", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Ca: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ca", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Ce: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ce", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Co: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Co", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Cr: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Cr", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Cu: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Cu", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Dy: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Dy", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Er: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Er", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Eu: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Eu", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Fe: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Fe", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Gd: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Gd", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Ho: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ho", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_K: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_K", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_La: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_La", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Li: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Li", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Lu: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Lu", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Mg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Mg", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Mn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Mn", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Mo: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Mo", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Nd: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Nd", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Ni: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ni", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Pr: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Pr", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Sc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Sc", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Si: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Si", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Sm: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Sm", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Sr: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Sr", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Tb: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Tb", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Tm: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Tm", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Y: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Y", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Yb: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Yb", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Zn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Zn", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
+Direction: structured key-value pairs; per-type schemas TBD:
+  ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+  xrf:       per-element concentration results + QC flag
+  lcms:      feature count, identification count, MSI-2 fraction
+Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
+    lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+                       'MetagenomicsProduct',
+                       'SampleStorage',
+                       'ProcessedData']} })
+    id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+    name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, alias="description", title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'SamplingActivity',
+                       'DataProduct'],
+         'todos': ['should this be an ID? CURIE can use the one NMDC has '
+                   'https://bioregistry.io/reference/emsl.project:60141 where '
+                   'emsl.project is the CURIE prefix']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -19587,6 +20746,8 @@ class ElementalAnalysisProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -19597,6 +20758,8 @@ class ElementalAnalysisProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -19604,14 +20767,15 @@ class ElementalAnalysisProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    total_carbon: Optional[QuantityValue] = Field(default=None, alias="total_carbon", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    total_nitrogen: Optional[QuantityValue] = Field(default=None, alias="total_nitrogen", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
-    total_kjeldahl_nitrogen: Optional[QuantityValue] = Field(default=None, alias="total_kjeldahl_nitrogen", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    total_sulfur: Optional[QuantityValue] = Field(default=None, alias="total_sulfur", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    flag_total_carbon: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_total_carbon", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    flag_total_nitrogen: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_total_nitrogen", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    total_carbon: Optional[float] = Field(default=None, alias="total_carbon", description="""Total carbon content (weight percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct'], 'unit': {'ucum_code': '%'}} })
+    total_nitrogen: Optional[float] = Field(default=None, alias="total_nitrogen", description="""Total nitrogen content (weight percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': '%'}} })
+    total_kjeldahl_nitrogen: Optional[float] = Field(default=None, alias="total_kjeldahl_nitrogen", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    total_sulfur: Optional[float] = Field(default=None, alias="total_sulfur", description="""Total sulfur content (weight percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct'], 'unit': {'ucum_code': '%'}} })
+    flag_total_carbon: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_total_carbon", description="""Data quality flag for total carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    flag_total_nitrogen: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_total_nitrogen", description="""Data quality flag for total nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
     flag_tkn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tkn", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    flag_total_sulfur: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_total_sulfur", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    flag_total_sulfur: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_total_sulfur", description="""Data quality flag for total sulfur; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -19629,6 +20793,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -19701,7 +20866,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -19722,9 +20889,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -19762,6 +20927,8 @@ class EnzymeProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -19772,6 +20939,8 @@ class EnzymeProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -19779,8 +20948,8 @@ class EnzymeProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    beta_glucosidase_ug_pnp_per_g_per_h: Optional[QuantityValue] = Field(default=None, alias="beta_glucosidase_ug_pnp_per_g_per_h", json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    beta_glucosidase_ug_pnp_per_g_per_h: Optional[float] = Field(default=None, alias="beta_glucosidase_ug_pnp_per_g_per_h", description="""Beta-glucosidase activity (ug pNP per g soil per h).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeProduct'], 'unit': {'ucum_code': 'ug{pNP}/g/h'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", description="""Data quality flag for beta-glucosidase activity; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -19807,6 +20976,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -19879,7 +21049,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -19900,9 +21072,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -19940,6 +21110,8 @@ class GWCMoistureProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -19950,6 +21122,8 @@ class GWCMoistureProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -19957,8 +21131,8 @@ class GWCMoistureProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    gwc_percent: Optional[QuantityValue] = Field(default=None, alias="gwc_percent", json_schema_extra = { "linkml_meta": {'domain_of': ['GWCMoistureProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    gwc_percent: Optional[float] = Field(default=None, alias="gwc_percent", description="""Gravimetric water content (percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GWCMoistureProduct'], 'unit': {'ucum_code': '%'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", description="""Data quality flag for gravimetric water content; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -19985,6 +21159,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -20057,7 +21232,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -20078,9 +21255,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -20118,6 +21293,8 @@ class HydraulicPropertiesProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -20128,6 +21305,8 @@ class HydraulicPropertiesProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -20135,11 +21314,11 @@ class HydraulicPropertiesProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    alpha: Optional[float] = Field(default=None, alias="alpha", description="""Van Genuchten shape parameter alpha (1/cm). Controls the inverse of the air-entry suction; typically fitted by HYPROP-FIT or similar software.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
-    n: Optional[float] = Field(default=None, alias="n", description="""Van Genuchten pore-size distribution index n (dimensionless, n > 1). Controls the slope of the water-retention curve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
-    theta_r: Optional[float] = Field(default=None, alias="theta_r", description="""Residual volumetric water content theta_r (cm3 cm). The water content at which liquid conductivity approaches zero.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
-    theta_s: Optional[float] = Field(default=None, alias="theta_s", description="""Saturated volumetric water content theta_s (cm3 cm e-3). Approximates total porosity under saturated conditions.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", description="""QC flag for the entire VGM fit (e.g. missing sample, failed QC).""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    alpha: Optional[float] = Field(default=None, alias="alpha", description="""van Genuchten scale parameter, inversely proportional to mean pore diameter (per cm). Typically fitted by HYPROP-FIT or similar software.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct'], 'unit': {'ucum_code': '/cm'}} })
+    n: Optional[float] = Field(default=None, alias="n", description="""van Genuchten parameter that describes the pore-size distribution of the soil (dimensionless, n > 1). Controls the slope of the water-retention curve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct'], 'unit': {'ucum_code': '1'}} })
+    theta_r: Optional[float] = Field(default=None, alias="theta_r", description="""Residual volumetric water content from HYPROP soil water retention model (cm3 water per cm3 soil). The water content at which liquid conductivity approaches zero.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct'], 'unit': {'ucum_code': 'cm3/cm3'}} })
+    theta_s: Optional[float] = Field(default=None, alias="theta_s", description="""Saturated volumetric water content from HYPROP soil water retention model (cm3 water per cm3 soil). Approximates total porosity under saturated conditions.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct'], 'unit': {'ucum_code': 'cm3/cm3'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", description="""Data quality flag for HYPROP water retention parameters; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -20166,6 +21345,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -20238,7 +21418,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -20259,9 +21441,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -20300,6 +21480,8 @@ class IonsAnalysisProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -20310,6 +21492,8 @@ class IonsAnalysisProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -20317,45 +21501,50 @@ class IonsAnalysisProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    sulfate: Optional[QuantityValue] = Field(default=None, alias="sulfate", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+    sulfate: Optional[float] = Field(default=None, alias="sulfate", description="""Sulfate sulfur content (mg S per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
-                       'WaterSample']} })
-    boron: Optional[QuantityValue] = Field(default=None, alias="boron", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    zinc: Optional[QuantityValue] = Field(default=None, alias="zinc", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    manganate: Optional[QuantityValue] = Field(default=None, alias="manganate", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    copper: Optional[QuantityValue] = Field(default=None, alias="copper", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    iron: Optional[QuantityValue] = Field(default=None, alias="iron", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    calcium: Optional[QuantityValue] = Field(default=None, alias="calcium", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'WaterSample'],
+         'unit': {'ucum_code': 'mg{S}/kg'}} })
+    boron: Optional[float] = Field(default=None, alias="boron", description="""Boron content (mg B per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'mg/kg'}} })
+    zinc: Optional[float] = Field(default=None, alias="zinc", description="""Zinc content (mg Zn per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'mg/kg'}} })
+    manganate: Optional[float] = Field(default=None, alias="manganate", description="""Manganese content (mg Mn per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'mg/kg'}} })
+    copper: Optional[float] = Field(default=None, alias="copper", description="""Copper content (mg Cu per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'mg/kg'}} })
+    iron: Optional[float] = Field(default=None, alias="iron", description="""Iron content (mg Fe per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'mg/kg'}} })
+    calcium: Optional[float] = Field(default=None, alias="calcium", description="""Calcium content (milliequivalents per 100 grams of soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
-                       'WaterSample']} })
-    magnesium: Optional[QuantityValue] = Field(default=None, alias="magnesium", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'WaterSample'],
+         'unit': {'ucum_code': 'meq/(100.g)'}} })
+    magnesium: Optional[float] = Field(default=None, alias="magnesium", description="""Magnesium content (milliequivalents per 100 grams of soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
-                       'WaterSample']} })
-    sodium: Optional[QuantityValue] = Field(default=None, alias="sodium", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'WaterSample'],
+         'unit': {'ucum_code': 'meq/(100.g)'}} })
+    sodium: Optional[float] = Field(default=None, alias="sodium", description="""Sodium content (milliequivalents per 100 grams of soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
-                       'WaterSample']} })
-    potassium: Optional[QuantityValue] = Field(default=None, alias="potassium", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'WaterSample'],
+         'unit': {'ucum_code': 'meq/(100.g)'}} })
+    potassium: Optional[float] = Field(default=None, alias="potassium", description="""Potassium content (milliequivalents per 100 grams of soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
-                       'WaterSample']} })
-    total_bases: Optional[QuantityValue] = Field(default=None, alias="total_bases", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    cation_exchange_capacity: Optional[QuantityValue] = Field(default=None, alias="cation_exchange_capacity", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_sulfate: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_sulfate", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_boron: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_boron", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_zinc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_zinc", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_manganate: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_manganate", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_copper: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_copper", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_iron: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_iron", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_calcium: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_calcium", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_magnesium: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_magnesium", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_sodium: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_sodium", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_potassium: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_potassium", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_total_bases: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_total_bases", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_cec: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_cec", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+                       'WaterSample'],
+         'unit': {'ucum_code': 'meq/(100.g)'}} })
+    total_bases: Optional[float] = Field(default=None, alias="total_bases", description="""Sum of exchangeable base cations Ca + Mg + Na + K (milliequivalents per 100 grams of soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'meq/(100.g)'}} })
+    cation_exchange_capacity: Optional[float] = Field(default=None, alias="cation_exchange_capacity", description="""Cation exchange capacity (milliequivalents per 100 grams of soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'meq/(100.g)'}} })
+    flag_sulfate: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_sulfate", description="""Data quality flag for sulfate sulfur; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_boron: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_boron", description="""Data quality flag for boron; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_zinc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_zinc", description="""Data quality flag for zinc; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_manganate: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_manganate", description="""Data quality flag for manganese; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_copper: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_copper", description="""Data quality flag for copper; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_iron: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_iron", description="""Data quality flag for iron; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_calcium: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_calcium", description="""Data quality flag for calcium; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_magnesium: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_magnesium", description="""Data quality flag for magnesium; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_sodium: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_sodium", description="""Data quality flag for sodium; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_potassium: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_potassium", description="""Data quality flag for potassium; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_total_bases: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_total_bases", description="""Data quality flag for total bases; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_cec: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_cec", description="""Data quality flag for cation exchange capacity; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -20373,6 +21562,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -20445,7 +21635,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -20466,9 +21658,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -20501,12 +21691,14 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 class HClExtOMProduct(ProcessedData):
     """
-    Mineral-Associated Organic Matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
+    HCl-extractable organic matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -20517,6 +21709,8 @@ class HClExtOMProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -20532,14 +21726,18 @@ class HClExtOMProduct(ProcessedData):
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
     produced_by_toctn_run: Optional[str] = Field(default=None, alias="produced_by_toctn_run", description="""a reference to the TOC/TN data generation activity that produced this measurement.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_organic_carbon: Optional[QuantityValue] = Field(default=None, alias="total_organic_carbon", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_organic_carbon_avg: Optional[float] = Field(default=None, alias="total_organic_carbon_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_nitrogen: Optional[QuantityValue] = Field(default=None, alias="total_nitrogen", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
-    total_nitrogen_avg: Optional[float] = Field(default=None, alias="total_nitrogen_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_toc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_toc", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_tn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tn", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_toc_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_toc_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_tn_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tn_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    total_organic_carbon: Optional[float] = Field(default=None, alias="total_organic_carbon", description="""HCl-extractable organic carbon content (mg C per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{C}/kg'}} })
+    total_organic_carbon_avg: Optional[float] = Field(default=None, alias="total_organic_carbon_avg", description="""Mean of replicate HCl-extractable organic carbon values (mg C per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{C}/kg'}} })
+    total_nitrogen: Optional[float] = Field(default=None, alias="total_nitrogen", description="""HCl-extractable total nitrogen content (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{N}/kg'}} })
+    total_nitrogen_avg: Optional[float] = Field(default=None, alias="total_nitrogen_avg", description="""Mean of replicate HCl-extractable total nitrogen values (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{N}/kg'}} })
+    flag_toc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_toc", description="""Data quality flag for HCl-extractable organic carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    flag_tn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tn", description="""Data quality flag for HCl-extractable total nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    flag_toc_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_toc_avg", description="""Data quality flag for the replicate mean of HCl-extractable organic carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    flag_tn_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tn_avg", description="""Data quality flag for the replicate mean of HCl-extractable total nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -20557,6 +21755,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -20629,7 +21828,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -20650,9 +21851,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -20691,6 +21890,8 @@ class MicrobialBiomassProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -20701,6 +21902,8 @@ class MicrobialBiomassProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -20715,14 +21918,14 @@ class MicrobialBiomassProduct(ProcessedData):
                        'WEOMProduct',
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
-    mbc: Optional[QuantityValue] = Field(default=None, alias="mbc", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    mbc_avg: Optional[float] = Field(default=None, alias="mbc_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    mbn: Optional[QuantityValue] = Field(default=None, alias="mbn", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    mbn_avg: Optional[float] = Field(default=None, alias="mbn_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    flag_mbc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_mbc", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    flag_mbn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_mbn", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    flag_mbc_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_mbc_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    flag_mbn_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_mbn_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
+    mbc: Optional[float] = Field(default=None, alias="mbc", description="""Microbial biomass carbon (mg C per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct'], 'unit': {'ucum_code': 'mg{C}/kg'}} })
+    mbc_avg: Optional[float] = Field(default=None, alias="mbc_avg", description="""Mean of replicate microbial biomass carbon values (mg C per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct'], 'unit': {'ucum_code': 'mg{C}/kg'}} })
+    mbn: Optional[float] = Field(default=None, alias="mbn", description="""Microbial biomass nitrogen (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct'], 'unit': {'ucum_code': 'mg{N}/kg'}} })
+    mbn_avg: Optional[float] = Field(default=None, alias="mbn_avg", description="""Mean of replicate microbial biomass nitrogen values (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct'], 'unit': {'ucum_code': 'mg{N}/kg'}} })
+    flag_mbc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_mbc", description="""Data quality flag for microbial biomass carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
+    flag_mbn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_mbn", description="""Data quality flag for microbial biomass nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
+    flag_mbc_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_mbc_avg", description="""Data quality flag for the replicate mean of microbial biomass carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
+    flag_mbn_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_mbn_avg", description="""Data quality flag for the replicate mean of microbial biomass nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -20740,6 +21943,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -20812,7 +22016,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -20833,9 +22039,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -20874,6 +22078,8 @@ class NitrogenAnalysisProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -20884,6 +22090,8 @@ class NitrogenAnalysisProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -20898,14 +22106,14 @@ class NitrogenAnalysisProduct(ProcessedData):
                        'WEOMProduct',
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
-    no3_n: Optional[QuantityValue] = Field(default=None, alias="no3_n", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    no3_n_avg: Optional[float] = Field(default=None, alias="no3_n_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    nh4_n: Optional[QuantityValue] = Field(default=None, alias="nh4_n", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    nh4_n_avg: Optional[float] = Field(default=None, alias="nh4_n_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    flag_no3n: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_no3n", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    flag_nh4n: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_nh4n", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    flag_no3n_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_no3n_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    flag_nh4n_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_nh4n_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
+    no3_n: Optional[float] = Field(default=None, alias="no3_n", description="""Nitrate nitrogen content (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct'], 'unit': {'ucum_code': 'mg{N}/kg'}} })
+    no3_n_avg: Optional[float] = Field(default=None, alias="no3_n_avg", description="""Mean of replicate nitrate nitrogen values (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct'], 'unit': {'ucum_code': 'mg{N}/kg'}} })
+    nh4_n: Optional[float] = Field(default=None, alias="nh4_n", description="""Ammonium nitrogen content (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct'], 'unit': {'ucum_code': 'mg{N}/kg'}} })
+    nh4_n_avg: Optional[float] = Field(default=None, alias="nh4_n_avg", description="""Mean of replicate ammonium nitrogen values (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct'], 'unit': {'ucum_code': 'mg{N}/kg'}} })
+    flag_no3n: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_no3n", description="""Data quality flag for nitrate nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
+    flag_nh4n: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_nh4n", description="""Data quality flag for ammonium nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
+    flag_no3n_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_no3n_avg", description="""Data quality flag for the replicate mean of nitrate nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
+    flag_nh4n_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_nh4n_avg", description="""Data quality flag for the replicate mean of ammonium nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -20923,6 +22131,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -20995,7 +22204,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -21016,9 +22227,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -21057,6 +22266,8 @@ class PhosphorusAnalysisProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -21067,6 +22278,8 @@ class PhosphorusAnalysisProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -21093,9 +22306,9 @@ class PhosphorusAnalysisProduct(ProcessedData):
                        'SoilSample',
                        'WaterSample',
                        'Extraction']} })
-    phosphorus: Optional[QuantityValue] = Field(default=None, alias="phosphorus", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
-    phosphorus_avg: Optional[float] = Field(default=None, alias="phosphorus_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    phosphorus: Optional[float] = Field(default=None, alias="phosphorus", description="""Phosphate phosphorus content (mg P per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct'], 'unit': {'ucum_code': 'mg{P}/kg'}} })
+    phosphorus_avg: Optional[float] = Field(default=None, alias="phosphorus_avg", description="""Mean of replicate phosphate phosphorus values (mg P per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct'], 'unit': {'ucum_code': 'mg{P}/kg'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", description="""Data quality flag for phosphate phosphorus; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -21105,7 +22318,7 @@ class PhosphorusAnalysisProduct(ProcessedData):
                        'pHProduct',
                        'UVSpectroscopyProduct',
                        'RIProduct']} })
-    flag_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
+    flag_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_avg", description="""Data quality flag for the replicate mean of phosphate phosphorus; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -21123,6 +22336,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -21195,7 +22409,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -21216,9 +22432,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -21256,6 +22470,8 @@ class RespirationProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -21266,6 +22482,8 @@ class RespirationProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -21273,8 +22491,8 @@ class RespirationProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    respiration_co2_c_ug_per_g: Optional[float] = Field(default=None, alias="respiration_co2_c_ug_per_g", description="""Soil respiration expressed as µg CO₂-C per gram soil""", json_schema_extra = { "linkml_meta": {'domain_of': ['RespirationProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    respiration_co2_c_ug_per_g: Optional[float] = Field(default=None, alias="respiration_co2_c_ug_per_g", description="""Potential soil respiration measured as cumulative microbial CO2-C production over a 24-hour burst incubation (ug CO2-C per g dried soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['RespirationProduct'], 'unit': {'ucum_code': 'ug{CO2-C}/g'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", description="""Data quality flag for respiration; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -21301,6 +22519,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -21373,7 +22592,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -21394,9 +22615,445 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
+         'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
+    sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
+be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_name'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'DataProduct'],
+         'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
+                   'classes. Defined separately for compatibility with source data '
+                   "files using 'sample_name' column headers."]} })
+    s3_base_url: Optional[str] = Field(default=None, alias="s3_base_url", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_bucket: Optional[str] = Field(default=None, alias="s3_bucket", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_key: str = Field(default=..., alias="s3_key", description="""MinIO/S3 object key; required for all data products""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    filesize: Optional[int] = Field(default=None, alias="filesize", description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    md5checksum: Optional[str] = Field(default=None, alias="md5checksum", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+
+
+class RhizoICPMSDigestionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample digestion targeting critical minerals and materials in rhizosphere samples.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+
+    measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'GWCMoistureProduct',
+                       'HydraulicPropertiesProduct',
+                       'IonsAnalysisProduct',
+                       'HClExtOMProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
+                       'TextureProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'XCTProduct',
+                       'XRFElementalProduct',
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, alias="results_from_ms_processing", description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Al_ug_per_g: Optional[float] = Field(default=None, alias="Al_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Ca_ug_per_g: Optional[float] = Field(default=None, alias="Ca_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Co_ug_per_g: Optional[float] = Field(default=None, alias="Co_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Cu_ug_per_g: Optional[float] = Field(default=None, alias="Cu_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Fe_ug_per_g: Optional[float] = Field(default=None, alias="Fe_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    K_ug_per_g: Optional[float] = Field(default=None, alias="K_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Mg_ug_per_g: Optional[float] = Field(default=None, alias="Mg_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Mn_ug_per_g: Optional[float] = Field(default=None, alias="Mn_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Ni_ug_per_g: Optional[float] = Field(default=None, alias="Ni_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    P_ug_per_g: Optional[float] = Field(default=None, alias="P_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['Rhizo_ICPMS_DigestionProduct']} })
+    S_ug_per_g: Optional[float] = Field(default=None, alias="S_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['Rhizo_ICPMS_DigestionProduct']} })
+    Zn_ug_per_g: Optional[float] = Field(default=None, alias="Zn_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Al: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Al", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Ca: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ca", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Co: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Co", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Cu: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Cu", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Fe: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Fe", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_K: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_K", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Mg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Mg", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Mn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Mn", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Ni: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ni", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_P: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_P", json_schema_extra = { "linkml_meta": {'domain_of': ['Rhizo_ICPMS_DigestionProduct']} })
+    flag_S: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_S", json_schema_extra = { "linkml_meta": {'domain_of': ['Rhizo_ICPMS_DigestionProduct']} })
+    flag_Zn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Zn", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
+Direction: structured key-value pairs; per-type schemas TBD:
+  ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+  xrf:       per-element concentration results + QC flag
+  lcms:      feature count, identification count, MSI-2 fraction
+Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
+    lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+                       'MetagenomicsProduct',
+                       'SampleStorage',
+                       'ProcessedData']} })
+    id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+    name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, alias="description", title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'SamplingActivity',
+                       'DataProduct'],
+         'todos': ['should this be an ID? CURIE can use the one NMDC has '
+                   'https://bioregistry.io/reference/emsl.project:60141 where '
+                   'emsl.project is the CURIE prefix']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
+         'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
+    sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
+be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_name'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'DataProduct'],
+         'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
+                   'classes. Defined separately for compatibility with source data '
+                   "files using 'sample_name' column headers."]} })
+    s3_base_url: Optional[str] = Field(default=None, alias="s3_base_url", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_bucket: Optional[str] = Field(default=None, alias="s3_bucket", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_key: str = Field(default=..., alias="s3_key", description="""MinIO/S3 object key; required for all data products""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    filesize: Optional[int] = Field(default=None, alias="filesize", description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    md5checksum: Optional[str] = Field(default=None, alias="md5checksum", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+
+
+class RhizoICPMSExtractionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample extraction targeting critical minerals and materials in rhizosphere samples.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+
+    measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'GWCMoistureProduct',
+                       'HydraulicPropertiesProduct',
+                       'IonsAnalysisProduct',
+                       'HClExtOMProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
+                       'TextureProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'XCTProduct',
+                       'XRFElementalProduct',
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, alias="results_from_ms_processing", description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Co_ug_per_g: Optional[float] = Field(default=None, alias="Co_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Ni_ug_per_g: Optional[float] = Field(default=None, alias="Ni_ug_per_g", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Co: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Co", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Ni: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_Ni", json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
+Direction: structured key-value pairs; per-type schemas TBD:
+  ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+  xrf:       per-element concentration results + QC flag
+  lcms:      feature count, identification count, MSI-2 fraction
+Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
+    lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
+    source_sample: Optional[str] = Field(default=None, alias="source_sample", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+                       'MetagenomicsProduct',
+                       'SampleStorage',
+                       'ProcessedData']} })
+    id: str = Field(default=..., alias="id", description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+    name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, alias="description", title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'SamplingActivity',
+                       'DataProduct'],
+         'todos': ['should this be an ID? CURIE can use the one NMDC has '
+                   'https://bioregistry.io/reference/emsl.project:60141 where '
+                   'emsl.project is the CURIE prefix']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -21435,6 +23092,8 @@ class TextureProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -21445,6 +23104,8 @@ class TextureProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -21452,10 +23113,10 @@ class TextureProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    sand_pct: Optional[QuantityValue] = Field(default=None, alias="sand_pct", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
-    silt_pct: Optional[QuantityValue] = Field(default=None, alias="silt_pct", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
-    clay_pct: Optional[QuantityValue] = Field(default=None, alias="clay_pct", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    sand_pct: Optional[float] = Field(default=None, alias="sand_pct", description="""Sand content (percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct'], 'unit': {'ucum_code': '%'}} })
+    silt_pct: Optional[float] = Field(default=None, alias="silt_pct", description="""Silt content (percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct'], 'unit': {'ucum_code': '%'}} })
+    clay_pct: Optional[float] = Field(default=None, alias="clay_pct", description="""Clay content (percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct'], 'unit': {'ucum_code': '%'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", description="""Data quality flag for texture (sand, silt, clay); blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -21482,6 +23143,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -21554,7 +23216,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -21575,9 +23239,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -21616,6 +23278,8 @@ class WEOMProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -21626,6 +23290,8 @@ class WEOMProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -21641,14 +23307,18 @@ class WEOMProduct(ProcessedData):
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
     produced_by_toctn_run: Optional[str] = Field(default=None, alias="produced_by_toctn_run", description="""a reference to the TOC/TN data generation activity that produced this measurement.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_organic_carbon: Optional[QuantityValue] = Field(default=None, alias="total_organic_carbon", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_organic_carbon_avg: Optional[float] = Field(default=None, alias="total_organic_carbon_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_nitrogen: Optional[QuantityValue] = Field(default=None, alias="total_nitrogen", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
-    total_nitrogen_avg: Optional[float] = Field(default=None, alias="total_nitrogen_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_toc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_toc", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_tn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tn", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_toc_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_toc_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_tn_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tn_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    total_organic_carbon: Optional[float] = Field(default=None, alias="total_organic_carbon", description="""Water extractable organic carbon content (mg C per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{C}/kg'}} })
+    total_organic_carbon_avg: Optional[float] = Field(default=None, alias="total_organic_carbon_avg", description="""Mean of replicate water extractable organic carbon values (mg C per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{C}/kg'}} })
+    total_nitrogen: Optional[float] = Field(default=None, alias="total_nitrogen", description="""Water extractable total nitrogen content (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{N}/kg'}} })
+    total_nitrogen_avg: Optional[float] = Field(default=None, alias="total_nitrogen_avg", description="""Mean of replicate water extractable total nitrogen values (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{N}/kg'}} })
+    flag_toc: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_toc", description="""Data quality flag for water extractable organic carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    flag_tn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tn", description="""Data quality flag for water extractable total nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    flag_toc_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_toc_avg", description="""Data quality flag for the replicate mean of water extractable organic carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    flag_tn_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tn_avg", description="""Data quality flag for the replicate mean of water extractable total nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -21666,6 +23336,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -21738,7 +23409,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -21759,9 +23432,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -21796,9 +23467,14 @@ class PHProduct(ProcessedData):
     """
     Soil pH analysis product, typically derived via pH meter or similar instrument.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products',
+         'slot_usage': {'ph': {'description': 'Soil pH.',
+                               'name': 'ph',
+                               'unit': {'ucum_code': '[pH]'}}}})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -21809,6 +23485,8 @@ class PHProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -21816,12 +23494,13 @@ class PHProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    ph: Optional[float] = Field(default=None, alias="ph", title="pH", description="""pH measurement of the sample or liquid portion of sample or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
+    ph: Optional[float] = Field(default=None, alias="ph", title="pH", description="""Soil pH.""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
-                       'WaterSample']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'WaterSample'],
+         'unit': {'ucum_code': '[pH]'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", description="""Data quality flag for pH; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -21848,6 +23527,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -21920,7 +23600,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -21941,9 +23623,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -22016,6 +23696,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -22088,7 +23769,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -22109,9 +23792,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -22149,6 +23830,8 @@ class XCTProduct(XRayDataProduct):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -22159,6 +23842,8 @@ class XCTProduct(XRayDataProduct):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -22166,38 +23851,38 @@ class XCTProduct(XRayDataProduct):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    roi_x_voxel: Optional[float] = Field(default=None, alias="roi_x_voxel", description="""Number of voxels in X direction of ROI. Previously roi_volume_voxel.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    roi_y_voxel: Optional[float] = Field(default=None, alias="roi_y_voxel", description="""Number of voxels in Y direction of ROI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    roi_z_voxel: Optional[float] = Field(default=None, alias="roi_z_voxel", description="""Number of voxels in Z direction of ROI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    voxel_size_mm_per_voxel: Optional[float] = Field(default=None, alias="voxel_size_mm_per_voxel", description="""Linear dimension of a voxel (mm/voxel). Previously voxel_size.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    porosity_percent: Optional[float] = Field(default=None, alias="porosity_percent", description="""Percentage of total pore volume to total volume of ROI (%). Previously total_pore_volume.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    connected_pores_fraction: Optional[float] = Field(default=None, alias="connected_pores_fraction", description="""Fraction of connected pore volume out of total volume (unitless).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_connectivity_percent: Optional[float] = Field(default=None, alias="pore_connectivity_percent", description="""Percentage of connected pore volume to all pore volume (%).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_equivalent_diameter_min_mm: Optional[float] = Field(default=None, alias="pore_equivalent_diameter_min_mm", description="""Minimum equivalent pore diameter (mm). Previously pore_diameter_min.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_equivalent_diameter_max_mm: Optional[float] = Field(default=None, alias="pore_equivalent_diameter_max_mm", description="""Maximum equivalent pore diameter (mm). Previously pore_diameter_max.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_equivalent_diameter_mean_mm: Optional[float] = Field(default=None, alias="pore_equivalent_diameter_mean_mm", description="""Mean equivalent pore diameter (mm). Previously pore_diameter_mean.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_equivalent_diameter_median_mm: Optional[float] = Field(default=None, alias="pore_equivalent_diameter_median_mm", description="""Median equivalent pore diameter (mm). Previously pore_diameter_median.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_equivalent_diameter_variance_mm2: Optional[float] = Field(default=None, alias="pore_equivalent_diameter_variance_mm2", description="""Variance of equivalent pore diameter (mm^2). Previously pore_diameter_variance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_volume_min_mm3: Optional[float] = Field(default=None, alias="pore_volume_min_mm3", description="""Minimum volume of pores (mm^3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_volume_max_mm3: Optional[float] = Field(default=None, alias="pore_volume_max_mm3", description="""Maximum volume of pores (mm^3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_volume_mean_mm3: Optional[float] = Field(default=None, alias="pore_volume_mean_mm3", description="""Mean volume of pores (mm^3). Previously pore_volume_mean.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_volume_median_mm3: Optional[float] = Field(default=None, alias="pore_volume_median_mm3", description="""Median volume of pores (mm^3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_volume_variance_mm6: Optional[float] = Field(default=None, alias="pore_volume_variance_mm6", description="""Variance of volume of pores (mm^6).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_area_min_mm2: Optional[float] = Field(default=None, alias="pore_area_min_mm2", description="""Minimum area of pores (mm^2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_area_max_mm2: Optional[float] = Field(default=None, alias="pore_area_max_mm2", description="""Maximum area of pores (mm^2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_area_mean_mm2: Optional[float] = Field(default=None, alias="pore_area_mean_mm2", description="""Mean area of pores (mm^2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_area_median_mm2: Optional[float] = Field(default=None, alias="pore_area_median_mm2", description="""Median area of pores (mm^2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_area_variance_mm4: Optional[float] = Field(default=None, alias="pore_area_variance_mm4", description="""Variance of area of pores (mm^4).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    permeability_x_um2: Optional[float] = Field(default=None, alias="permeability_x_um2", description="""Absolute permeability from pore network model in X direction (um^2). Previously permeability_x.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    flow_rate_x_mm3_per_sec: Optional[float] = Field(default=None, alias="flow_rate_x_mm3_per_sec", description="""Total flow rate from pore network model in X direction (mm^3/s). Previously flow_rate_x.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    tortuosity_x: Optional[float] = Field(default=None, alias="tortuosity_x", description="""Tortuosity from pore network model in X direction (unitless).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    permeability_y_um2: Optional[float] = Field(default=None, alias="permeability_y_um2", description="""Absolute permeability from pore network model in Y direction (um^2). Previously permeability_y.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    flow_rate_y_mm3_per_sec: Optional[float] = Field(default=None, alias="flow_rate_y_mm3_per_sec", description="""Total flow rate from pore network model in Y direction (mm^3/s). Previously flow_rate_y.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    tortuosity_y: Optional[float] = Field(default=None, alias="tortuosity_y", description="""Tortuosity from pore network model in Y direction (unitless).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    permeability_z_um2: Optional[float] = Field(default=None, alias="permeability_z_um2", description="""Absolute permeability from pore network model in Z direction (um^2). Previously permeability_z.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    flow_rate_z_mm3_per_sec: Optional[float] = Field(default=None, alias="flow_rate_z_mm3_per_sec", description="""Total flow rate from pore network model in Z direction (mm^3/s). Previously flow_rate_z.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    tortuosity_z: Optional[float] = Field(default=None, alias="tortuosity_z", description="""Tortuosity from pore network model in Z direction (unitless).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    flag_xct: Optional[str] = Field(default=None, alias="flag_xct", description="""Data quality flag for the XCT analysis.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    roi_x_voxel: Optional[float] = Field(default=None, alias="roi_x_voxel", description="""Size of the region of interest (ROI) along the X-axis (voxel). FY23 reported ROI dimensions as a single ROI_volume_voxel value (x by y by z).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '{voxel}'}} })
+    roi_y_voxel: Optional[float] = Field(default=None, alias="roi_y_voxel", description="""Size of the region of interest (ROI) along the Y-axis (voxel).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '{voxel}'}} })
+    roi_z_voxel: Optional[float] = Field(default=None, alias="roi_z_voxel", description="""Size of the region of interest (ROI) along the Z-axis (voxel).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '{voxel}'}} })
+    voxel_size_mm_per_voxel: Optional[float] = Field(default=None, alias="voxel_size_mm_per_voxel", description="""Linear voxel size, i.e. scan resolution (mm per voxel).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm/{voxel}'}} })
+    porosity_percent: Optional[float] = Field(default=None, alias="porosity_percent", description="""Total pore volume as a percentage of total ROI (soil) volume (percent). FY23 column: total_pore_volume_percent.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '%'}} })
+    connected_pores_fraction: Optional[float] = Field(default=None, alias="connected_pores_fraction", description="""Connected pore volume as a fraction of total ROI (soil) volume, i.e. connected porosity (fraction, 0 to 1).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '1'}} })
+    pore_connectivity_percent: Optional[float] = Field(default=None, alias="pore_connectivity_percent", description="""Connected pore volume as a percentage of total pore volume (percent). FY23 column: connected_pores_percent.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '%'}} })
+    pore_equivalent_diameter_min_mm: Optional[float] = Field(default=None, alias="pore_equivalent_diameter_min_mm", description="""Minimum pore equivalent diameter (diameter of a sphere with the same volume as the pore) (mm). FY23 column: pore_diameter_min_mm.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm'}} })
+    pore_equivalent_diameter_max_mm: Optional[float] = Field(default=None, alias="pore_equivalent_diameter_max_mm", description="""Maximum pore equivalent diameter (mm). FY23 column: pore_diameter_max_mm.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm'}} })
+    pore_equivalent_diameter_mean_mm: Optional[float] = Field(default=None, alias="pore_equivalent_diameter_mean_mm", description="""Mean pore equivalent diameter (mm). FY23 column: pore_diameter_mean_mm.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm'}} })
+    pore_equivalent_diameter_median_mm: Optional[float] = Field(default=None, alias="pore_equivalent_diameter_median_mm", description="""Median pore equivalent diameter (mm). FY23 column: pore_diameter_median_mm.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm'}} })
+    pore_equivalent_diameter_variance_mm2: Optional[float] = Field(default=None, alias="pore_equivalent_diameter_variance_mm2", description="""Variance of pore equivalent diameter (mm2). FY23 column: pore_diameter_variance_mm2.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm2'}} })
+    pore_volume_min_mm3: Optional[float] = Field(default=None, alias="pore_volume_min_mm3", description="""Minimum individual pore volume (mm3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3'}} })
+    pore_volume_max_mm3: Optional[float] = Field(default=None, alias="pore_volume_max_mm3", description="""Maximum individual pore volume (mm3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3'}} })
+    pore_volume_mean_mm3: Optional[float] = Field(default=None, alias="pore_volume_mean_mm3", description="""Mean individual pore volume (mm3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3'}} })
+    pore_volume_median_mm3: Optional[float] = Field(default=None, alias="pore_volume_median_mm3", description="""Median individual pore volume (mm3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3'}} })
+    pore_volume_variance_mm6: Optional[float] = Field(default=None, alias="pore_volume_variance_mm6", description="""Variance of individual pore volume (mm6).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm6'}} })
+    pore_area_min_mm2: Optional[float] = Field(default=None, alias="pore_area_min_mm2", description="""Minimum individual pore surface area (mm2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm2'}} })
+    pore_area_max_mm2: Optional[float] = Field(default=None, alias="pore_area_max_mm2", description="""Maximum individual pore surface area (mm2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm2'}} })
+    pore_area_mean_mm2: Optional[float] = Field(default=None, alias="pore_area_mean_mm2", description="""Mean individual pore surface area (mm2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm2'}} })
+    pore_area_median_mm2: Optional[float] = Field(default=None, alias="pore_area_median_mm2", description="""Median individual pore surface area (mm2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm2'}} })
+    pore_area_variance_mm4: Optional[float] = Field(default=None, alias="pore_area_variance_mm4", description="""Variance of individual pore surface area (mm4).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm4'}} })
+    permeability_x_um2: Optional[float] = Field(default=None, alias="permeability_x_um2", description="""Absolute permeability of the pore network model along the X-axis (um2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'um2'}} })
+    flow_rate_x_mm3_per_sec: Optional[float] = Field(default=None, alias="flow_rate_x_mm3_per_sec", description="""Volumetric flow rate through the pore network along the X-axis (mm3 per second).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3/s'}} })
+    tortuosity_x: Optional[float] = Field(default=None, alias="tortuosity_x", description="""Tortuosity of the soil column along the X-axis (ratio).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '1'}} })
+    permeability_y_um2: Optional[float] = Field(default=None, alias="permeability_y_um2", description="""Absolute permeability of the pore network model along the Y-axis (um2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'um2'}} })
+    flow_rate_y_mm3_per_sec: Optional[float] = Field(default=None, alias="flow_rate_y_mm3_per_sec", description="""Volumetric flow rate through the pore network along the Y-axis (mm3 per second).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3/s'}} })
+    tortuosity_y: Optional[float] = Field(default=None, alias="tortuosity_y", description="""Tortuosity of the soil column along the Y-axis (ratio).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '1'}} })
+    permeability_z_um2: Optional[float] = Field(default=None, alias="permeability_z_um2", description="""Absolute permeability of the pore network model along the Z-axis (um2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'um2'}} })
+    flow_rate_z_mm3_per_sec: Optional[float] = Field(default=None, alias="flow_rate_z_mm3_per_sec", description="""Volumetric flow rate through the pore network along the Z-axis (mm3 per second).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3/s'}} })
+    tortuosity_z: Optional[float] = Field(default=None, alias="tortuosity_z", description="""Tortuosity of the soil column along the Z-axis (ratio).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '1'}} })
+    flag_xct: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_xct", description="""Data quality flag for XCT pore summary metrics; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -22215,6 +23900,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -22287,7 +23973,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -22308,9 +23996,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -22367,6 +24053,8 @@ class XRFElementalProduct(XRayDataProduct):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -22377,6 +24065,8 @@ class XRFElementalProduct(XRayDataProduct):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -22455,6 +24145,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -22527,7 +24218,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -22548,9 +24241,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -22619,6 +24310,8 @@ class XRDPhaseProduct(XRayDataProduct):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -22629,6 +24322,8 @@ class XRDPhaseProduct(XRayDataProduct):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -22673,6 +24368,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -22745,7 +24441,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -22766,9 +24464,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -22808,6 +24504,8 @@ class XASLCFProduct(XRayDataProduct):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -22818,6 +24516,8 @@ class XASLCFProduct(XRayDataProduct):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -22866,6 +24566,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -22938,7 +24639,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -22959,9 +24662,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -23039,6 +24740,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23111,7 +24813,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -23132,9 +24836,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -23208,6 +24910,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23280,7 +24983,9 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -23301,9 +25006,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -23358,6 +25061,7 @@ class InstrumentData(DataProduct):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23430,7 +25134,9 @@ class InstrumentData(DataProduct):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -23451,9 +25157,7 @@ class InstrumentData(DataProduct):
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -23504,6 +25208,7 @@ class MassSpectrometryInstrumentData(InstrumentData):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23576,7 +25281,9 @@ class MassSpectrometryInstrumentData(InstrumentData):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -23597,9 +25304,7 @@ class MassSpectrometryInstrumentData(InstrumentData):
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -23648,6 +25353,7 @@ class NucleotideSequencingInstrumentData(InstrumentData):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23720,7 +25426,9 @@ class NucleotideSequencingInstrumentData(InstrumentData):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -23741,9 +25449,7 @@ class NucleotideSequencingInstrumentData(InstrumentData):
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -23814,6 +25520,7 @@ class XASInstrumentData(InstrumentData):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23886,7 +25593,9 @@ class XASInstrumentData(InstrumentData):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -23907,9 +25616,7 @@ class XASInstrumentData(InstrumentData):
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -23955,6 +25662,7 @@ class SitePhoto(DataProduct):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24027,7 +25735,9 @@ class SitePhoto(DataProduct):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""EMSL's 5-digit code identifying the proposal/project. More details about each project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>""", json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[0-9]{5}$'}},
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -24048,9 +25758,7 @@ class SitePhoto(DataProduct):
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sequential number indicating a set of cores collected a project. One set of cores includes A, B, and C1-4 cores (see Core_Depth).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
     core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
          'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
     sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
@@ -24095,6 +25803,7 @@ class DataGenerationActivity(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24204,6 +25913,7 @@ class MassSpectrometryDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24308,6 +26018,7 @@ Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivit
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24421,6 +26132,7 @@ Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivit
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24531,6 +26243,7 @@ Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivit
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24656,6 +26369,7 @@ class NucleotideSequencing(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24751,6 +26465,7 @@ class BulkDensityDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24846,6 +26561,7 @@ class ElementalAnalysisDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24941,6 +26657,7 @@ class GravimetricWaterContentDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25037,6 +26754,7 @@ class HydraulicPropertiesDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25135,6 +26853,7 @@ class KuoDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25242,6 +26961,7 @@ class MicrobialBiomassDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25338,6 +27058,7 @@ class PHDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25437,6 +27158,7 @@ class RespirationDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25545,6 +27267,7 @@ class TOCTNDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25640,6 +27363,7 @@ class TextureDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25742,6 +27466,7 @@ class XCTDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25848,6 +27573,7 @@ class DataProcessingActivity(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25932,6 +27658,7 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26013,6 +27740,7 @@ class MetagenomicsDataProcessingActivity(DataProcessingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26087,6 +27815,7 @@ class AlternativeIdentifier(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26127,6 +27856,7 @@ class FunctionalAnnotationIdentifier(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26173,6 +27903,7 @@ class Instrument(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26241,6 +27972,7 @@ class OntologyClass(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26329,6 +28061,7 @@ class ContainerType(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26427,6 +28160,7 @@ class Custodian(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26466,6 +28200,7 @@ class InstrumentAlternativeIdentifier(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26510,6 +28245,7 @@ class LabDevice(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26590,6 +28326,7 @@ class SampleProcessing(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26712,6 +28449,7 @@ Examples: \"100 ug/mL ampicillin\", \"1 mM IPTG\"""", json_schema_extra = { "lin
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26868,6 +28606,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26990,6 +28729,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27110,6 +28850,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27228,6 +28969,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27346,6 +29088,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27467,6 +29210,7 @@ class PlateSetupActivity(HasIncubationConditions, SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27595,6 +29339,7 @@ produced by an upstream MediaPreparation activity.""", json_schema_extra = { "li
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27713,6 +29458,7 @@ class EcoplatePlateSetupActivity(PlateSetupActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27822,6 +29568,7 @@ reaction, or storage), in hours. Shared by all HasTemperatureHold classes.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27948,6 +29695,7 @@ class SampleStorage(HasTemperatureHold):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28076,6 +29824,7 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28160,6 +29909,7 @@ class XRayDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28280,6 +30030,7 @@ class XRFDataGenerationActivity(XRayDataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28403,6 +30154,7 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28545,6 +30297,7 @@ class XASDataGenerationActivity(XRayDataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28665,6 +30418,7 @@ class XASLCFDataProcessingActivity(DataProcessingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28760,6 +30514,7 @@ class RIDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28875,6 +30630,7 @@ noise/baseline drift, given in absorbance units.""", json_schema_extra = { "link
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29026,6 +30782,7 @@ class UVChannelConfig(Configuration):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29068,6 +30825,7 @@ class StandardSampleProcessing(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29155,6 +30913,7 @@ class SampleProcessingProtocol(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29245,6 +31004,7 @@ class SampleProcessingRun(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29332,7 +31092,7 @@ class ChemicalConversionProcess(HasTemperatureHold, SampleProcessing):
                        'Extraction',
                        'ResuspensionProcess']} })
     chemical_conversion_category: Optional[ChemicalConversionCategoryEnum] = Field(default=None, alias="chemical_conversion_category", description="""The category of chemical conversion process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalConversionProcess']} })
-    digestion_method: Optional[DigestionMethodEnum] = Field(default=None, alias="digestion_method", description="""Named digestion method applied, when the category is protease_cleavage.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalConversionProcess']} })
+    protein_digestion_method: Optional[ProteinDigestionMethodEnum] = Field(default=None, alias="protein_digestion_method", description="""Named digestion method applied, when the category is protease_cleavage.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalConversionProcess']} })
     enrichment_type: Optional[EnrichmentTypeEnum] = Field(default=None, alias="enrichment_type", description="""Type of enrichment performed, when this process is an enrichment step.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalConversionProcess']} })
     labeling_method: Optional[LabelingMethodEnum] = Field(default=None, alias="labeling_method", description="""Chemical labeling strategy applied in this process (e.g., TMT).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalConversionProcess']} })
     temperature_celsius: Optional[float] = Field(default=None, alias="temperature_celsius", description="""Temperature at which the method/process/activity was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration',
@@ -29352,6 +31112,7 @@ reaction, or storage), in hours. Shared by all HasTemperatureHold classes.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29454,6 +31215,7 @@ class Dilution(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29566,6 +31328,7 @@ class Extraction(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29665,6 +31428,7 @@ class FiltrationProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29763,6 +31527,7 @@ class FractionationProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29853,6 +31618,7 @@ class NormalizationProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29942,6 +31708,7 @@ class PoolingProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30029,6 +31796,7 @@ class SubstancesUsedLink(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30057,6 +31825,7 @@ class SubstancesUsedLink(ConfiguredBaseModel):
                        'ProjectParticipant',
                        'PersonValue']} })
     sample_processing_substance: Optional[str] = Field(default=None, alias="sample_processing_substance", description="""A substance that was used in the SampleProcessing activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SubstancesUsedLink']} })
+    sample_processing_id: Optional[str] = Field(default=None, alias="sample_processing_id", description="""The SampleProcessing activity in which the substance was used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SubstancesUsedLink']} })
 
 
 class SampleProcessingSubstance(ConfiguredBaseModel):
@@ -30071,6 +31840,7 @@ class SampleProcessingSubstance(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30130,6 +31900,7 @@ class ProteinQuantification(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30228,6 +31999,7 @@ class ResuspensionProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30325,6 +32097,7 @@ class SolidPhaseExtractionProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30414,6 +32187,7 @@ class SubsamplingProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30510,6 +32284,7 @@ class Study(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30629,6 +32404,7 @@ class ProjectParticipant(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30857,6 +32633,7 @@ class PersonValue(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30895,7 +32672,10 @@ class PersonValue(ConfiguredBaseModel):
 
 class QuantityValue(ConfiguredBaseModel):
     """
-    A quantity value with numeric value and optional unit
+    A quantity value with numeric value and its own unit. Use only for slots
+    whose unit can differ from record to record (e.g. provider-supplied
+    values); lab data products with protocol-fixed units use range: double
+    with unit.ucum_code instead. See docs/background/units.md.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/value-tables'})
 
@@ -30925,7 +32705,7 @@ class QuantityValue(ConfiguredBaseModel):
                        'ControlledTermValue',
                        'QuantityValue']} })
     has_value_unit: Optional[str] = Field(default=None, alias="has_value_unit", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
-    has_unit: Optional[str] = Field(default=None, alias="has_unit", description="""The human-readable unit name""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
+    has_unit: Optional[str] = Field(default=None, alias="has_unit", description="""Unit of the value as a UCUM code (https://ucum.org/ucum), e.g. mm, g/cm3, mg/kg.""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
     has_numeric_value: Optional[float] = Field(default=None, alias="has_numeric_value", description="""The numeric value of the quantity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
     has_minimum_numeric_value: Optional[float] = Field(default=None, alias="has_minimum_numeric_value", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
     has_maximum_numeric_value: Optional[float] = Field(default=None, alias="has_maximum_numeric_value", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
@@ -31031,6 +32811,15 @@ XASIonChamber.model_rebuild()
 XASLCFStandard.model_rebuild()
 XASLCFSpeciesProportion.model_rebuild()
 XASLCFDataRow.model_rebuild()
+Revision.model_rebuild()
+DataProductRevision.model_rebuild()
+DataProcessingActivityRevision.model_rebuild()
+InstrumentDataRevision.model_rebuild()
+DataGenerationActivityRevision.model_rebuild()
+ProcessedSampleRevision.model_rebuild()
+SampleProcessingActivityRevision.model_rebuild()
+SampleRevision.model_rebuild()
+SamplingActivityRevision.model_rebuild()
 Organism.model_rebuild()
 Site.model_rebuild()
 Sample.model_rebuild()
@@ -31083,6 +32872,8 @@ MetagenomicsAnnotationProduct.model_rebuild()
 MetagenomicsBinningProduct.model_rebuild()
 MetagenomicsGenePhylogenyProduct.model_rebuild()
 BulkDensityProduct.model_rebuild()
+CMMICPMSDigestionProduct.model_rebuild()
+CMMICPMSExtractionProduct.model_rebuild()
 ElementalAnalysisProduct.model_rebuild()
 EnzymeProduct.model_rebuild()
 GWCMoistureProduct.model_rebuild()
@@ -31093,6 +32884,8 @@ MicrobialBiomassProduct.model_rebuild()
 NitrogenAnalysisProduct.model_rebuild()
 PhosphorusAnalysisProduct.model_rebuild()
 RespirationProduct.model_rebuild()
+RhizoICPMSDigestionProduct.model_rebuild()
+RhizoICPMSExtractionProduct.model_rebuild()
 TextureProduct.model_rebuild()
 WEOMProduct.model_rebuild()
 PHProduct.model_rebuild()
