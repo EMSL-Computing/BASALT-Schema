@@ -917,100 +917,186 @@ classes:
       - measure_type
     attributes:
       roi_x_voxel:
-        description: Number of voxels in X direction of ROI. Previously roi_volume_voxel.
+        description: >-
+          Size of the region of interest (ROI) along the X-axis (voxel). FY23 reported
+          ROI dimensions as a single ROI_volume_voxel value (x by y by z).
         range: double
+        unit:
+          ucum_code: '{voxel}'
       roi_y_voxel:
-        description: Number of voxels in Y direction of ROI.
+        description: Size of the region of interest (ROI) along the Y-axis (voxel).
         range: double
+        unit:
+          ucum_code: '{voxel}'
       roi_z_voxel:
-        description: Number of voxels in Z direction of ROI.
+        description: Size of the region of interest (ROI) along the Z-axis (voxel).
         range: double
+        unit:
+          ucum_code: '{voxel}'
       voxel_size_mm_per_voxel:
-        description: Linear dimension of a voxel (mm/voxel). Previously voxel_size.
+        description: Linear voxel size, i.e. scan resolution (mm per voxel).
         range: double
+        unit:
+          ucum_code: 'mm/{voxel}'
       porosity_percent:
-        description: Percentage of total pore volume to total volume of ROI (%). Previously total_pore_volume.
+        description: >-
+          Total pore volume as a percentage of total ROI (soil) volume (percent). FY23
+          column: total_pore_volume_percent.
         range: double
+        unit:
+          ucum_code: '%'
       connected_pores_fraction:
-        description: Fraction of connected pore volume out of total volume (unitless).
+        description: >-
+          Connected pore volume as a fraction of total ROI (soil) volume, i.e. connected
+          porosity (fraction, 0 to 1).
         range: double
+        unit:
+          ucum_code: '1'
       pore_connectivity_percent:
-        description: Percentage of connected pore volume to all pore volume (%).
+        description: >-
+          Connected pore volume as a percentage of total pore volume (percent). FY23
+          column: connected_pores_percent.
         range: double
+        unit:
+          ucum_code: '%'
       pore_equivalent_diameter_min_mm:
-        description: Minimum equivalent pore diameter (mm). Previously pore_diameter_min.
+        description: >-
+          Minimum pore equivalent diameter (diameter of a sphere with the same volume as
+          the pore) (mm). FY23 column: pore_diameter_min_mm.
         range: double
+        unit:
+          ucum_code: mm
       pore_equivalent_diameter_max_mm:
-        description: Maximum equivalent pore diameter (mm). Previously pore_diameter_max.
+        description: >-
+          Maximum pore equivalent diameter (mm). FY23 column: pore_diameter_max_mm.
         range: double
+        unit:
+          ucum_code: mm
       pore_equivalent_diameter_mean_mm:
-        description: Mean equivalent pore diameter (mm). Previously pore_diameter_mean.
+        description: >-
+          Mean pore equivalent diameter (mm). FY23 column: pore_diameter_mean_mm.
         range: double
+        unit:
+          ucum_code: mm
       pore_equivalent_diameter_median_mm:
-        description: Median equivalent pore diameter (mm). Previously pore_diameter_median.
+        description: >-
+          Median pore equivalent diameter (mm). FY23 column: pore_diameter_median_mm.
         range: double
+        unit:
+          ucum_code: mm
       pore_equivalent_diameter_variance_mm2:
-        description: Variance of equivalent pore diameter (mm^2). Previously pore_diameter_variance.
+        description: >-
+          Variance of pore equivalent diameter (mm2). FY23 column:
+          pore_diameter_variance_mm2.
         range: double
+        unit:
+          ucum_code: mm2
       pore_volume_min_mm3:
-        description: Minimum volume of pores (mm^3).
+        description: Minimum individual pore volume (mm3).
         range: double
+        unit:
+          ucum_code: mm3
       pore_volume_max_mm3:
-        description: Maximum volume of pores (mm^3).
+        description: Maximum individual pore volume (mm3).
         range: double
+        unit:
+          ucum_code: mm3
       pore_volume_mean_mm3:
-        description: Mean volume of pores (mm^3). Previously pore_volume_mean.
+        description: Mean individual pore volume (mm3).
         range: double
+        unit:
+          ucum_code: mm3
       pore_volume_median_mm3:
-        description: Median volume of pores (mm^3).
+        description: Median individual pore volume (mm3).
         range: double
+        unit:
+          ucum_code: mm3
       pore_volume_variance_mm6:
-        description: Variance of volume of pores (mm^6).
+        description: Variance of individual pore volume (mm6).
         range: double
+        unit:
+          ucum_code: mm6
       pore_area_min_mm2:
-        description: Minimum area of pores (mm^2).
+        description: Minimum individual pore surface area (mm2).
         range: double
+        unit:
+          ucum_code: mm2
       pore_area_max_mm2:
-        description: Maximum area of pores (mm^2).
+        description: Maximum individual pore surface area (mm2).
         range: double
+        unit:
+          ucum_code: mm2
       pore_area_mean_mm2:
-        description: Mean area of pores (mm^2).
+        description: Mean individual pore surface area (mm2).
         range: double
+        unit:
+          ucum_code: mm2
       pore_area_median_mm2:
-        description: Median area of pores (mm^2).
+        description: Median individual pore surface area (mm2).
         range: double
+        unit:
+          ucum_code: mm2
       pore_area_variance_mm4:
-        description: Variance of area of pores (mm^4).
+        description: Variance of individual pore surface area (mm4).
         range: double
+        unit:
+          ucum_code: mm4
       permeability_x_um2:
-        description: Absolute permeability from pore network model in X direction (um^2). Previously permeability_x.
+        description: >-
+          Absolute permeability of the pore network model along the X-axis (um2).
         range: double
+        unit:
+          ucum_code: um2
       flow_rate_x_mm3_per_sec:
-        description: Total flow rate from pore network model in X direction (mm^3/s). Previously flow_rate_x.
+        description: >-
+          Volumetric flow rate through the pore network along the X-axis (mm3 per
+          second).
         range: double
+        unit:
+          ucum_code: mm3/s
       tortuosity_x:
-        description: Tortuosity from pore network model in X direction (unitless).
+        description: Tortuosity of the soil column along the X-axis (ratio).
         range: double
+        unit:
+          ucum_code: '1'
       permeability_y_um2:
-        description: Absolute permeability from pore network model in Y direction (um^2). Previously permeability_y.
+        description: >-
+          Absolute permeability of the pore network model along the Y-axis (um2).
         range: double
+        unit:
+          ucum_code: um2
       flow_rate_y_mm3_per_sec:
-        description: Total flow rate from pore network model in Y direction (mm^3/s). Previously flow_rate_y.
+        description: >-
+          Volumetric flow rate through the pore network along the Y-axis (mm3 per
+          second).
         range: double
+        unit:
+          ucum_code: mm3/s
       tortuosity_y:
-        description: Tortuosity from pore network model in Y direction (unitless).
+        description: Tortuosity of the soil column along the Y-axis (ratio).
         range: double
+        unit:
+          ucum_code: '1'
       permeability_z_um2:
-        description: Absolute permeability from pore network model in Z direction (um^2). Previously permeability_z.
+        description: >-
+          Absolute permeability of the pore network model along the Z-axis (um2).
         range: double
+        unit:
+          ucum_code: um2
       flow_rate_z_mm3_per_sec:
-        description: Total flow rate from pore network model in Z direction (mm^3/s). Previously flow_rate_z.
+        description: >-
+          Volumetric flow rate through the pore network along the Z-axis (mm3 per
+          second).
         range: double
+        unit:
+          ucum_code: mm3/s
       tortuosity_z:
-        description: Tortuosity from pore network model in Z direction (unitless).
+        description: Tortuosity of the soil column along the Z-axis (ratio).
         range: double
+        unit:
+          ucum_code: '1'
       flag_xct:
-        description: Data quality flag for the XCT analysis.
+        description: Data quality flag for XCT pore summary metrics; blank if no flag.
         range: string
 
 
