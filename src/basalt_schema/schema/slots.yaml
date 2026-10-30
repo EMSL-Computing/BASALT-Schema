@@ -65,8 +65,7 @@ slots:
       - MIXS:0000551
 
   al_sat:
-    description: >-
-      Aluminum saturation (esp. For tropical soils) (Unit: percent)
+    description: Aluminum saturation (esp. For tropical soils)
     range: string
     title: aluminum saturation
 
@@ -98,11 +97,7 @@ slots:
 
   alt:
     description: >-
-      Heights of objects such as airplanes, space shuttles, rockets, atmospheric
-      balloons and heights of places such as atmospheric layers and clouds. It is used
-      to measure the height of an object which is above the earth's surface. In this
-      context, the altitude measurement is the vertical distance between the earth's
-      surface above sea level and the sampled position in the air. (Unit: m)
+      Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air. For ARM this can be a range. (Unit: m)
     range: string
     title: altitude
     annotations:
@@ -148,9 +143,9 @@ slots:
     required: false
 
   annual_precpt:
-    description: >-
-      The average of all annual precipitation values known, or an estimated equivalent
-      value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)
+    description: 'The average of all annual precipitation values known or an estimated
+      equivalent value derived by such methods as regional indexes or Isohyetal maps.
+      (Unit: mm)'
     range: string
     title: mean annual precipitation
     aliases:
@@ -222,19 +217,18 @@ slots:
     title: biological status
 
   biotic_regm:
-    description: >-
-      Information about treatment(s) involving use of biotic factors, such as bacteria,
-      viruses or fungi.
+    description: Information about treatment(s) involving use of biotic factors such
+      as bacteria, viruses, or fungi.
     range: string
     title: biotic regimen
 
   biotic_relationship:
-    description: >-
-      Description of relationship(s) between the subject organism and other organism(s)
-      it is associated with. E.g., parasite on species X; mutualist with species Y. The
-      target organism is the subject of the relationship, and the other organism(s) is
-      the object
     title: observed biotic relationship
+    description: >-
+      Description of relationship(s) between the subject organism and other
+      organism(s) it is associated with. E.g. parasite on species X; mutualist with
+      species Y. The target organism is the subject of the relationship and the other
+      organism(s) is the object
     range: BioticRelationshipEnum
     exact_mappings:
       - MIXS:0000016
@@ -261,11 +255,11 @@ slots:
     title: bromide
 
   bulk_elect_conductivity:
-    description: >-
-      The bulk electrical conductivity readout from the Teros ZSC bluetooth sensor. If
-      measurement was started and unsuccessful, value is 'failed'. (Unit: mS/cm)
+    description: 'Electrical conductivity is a measure of the bulk soil ability to carry
+      electric current which is mostly dictated by the chemistry of and amount of soil
+      water. (Unit: mS/cm)'
     annotations:
-      submission_pattern: '^(\d+(\.\d+)?\s*mS/cm|failed)$'
+      submission_pattern: ^\d+(\.\d+)?\s*mS/cm$
     range: string
     title: bulk electrical conductivity
 
@@ -371,9 +365,9 @@ slots:
     required: true
 
   collection_date:
-    description: >-
-      The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire
-      collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)
+    description: |-
+      'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
+      (YYYY-MM)'
     annotations:
       submission_pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
     title: collection date
@@ -384,11 +378,11 @@ slots:
     range: MassSpectrumCollectionModeEnum
   
   collection_time:
-    description: >-
-      The time of sampling as an instance (single point). Required format: HH:MM:SS in
-      24-hour time format.
+    description: 'The time of sampling as an instance (single point). Required format:
+      HH:MM:SS in 24-hour time format. Don''t forget the second! (Unit: hh:mm:ss or
+      HH:MM:SS)'
     annotations:
-      submission_pattern: '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'
+      submission_pattern: ^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$
     range: string
     title: collection time
 
@@ -509,8 +503,12 @@ slots:
     title: culture rooting medium
 
   cur_land_use:
-    description: >-
-      Present state of sample site.
+    description: 'Present state of sample site. This slot is NOT multivalued. Valid
+      entries: badlands, cities, conifers, crop trees, farmstead, gravel, hardwoods, hayland,
+      horticultural plants, industrial areas, intermixed, marshlands, meadows, mines, quarries,
+      mudflats, oil waste, pastureland, permanent snow or ice, rainforest, rangeland, roads,
+      railroads, rock, row crops, saline seeps, salt flats, sand, shrub crops, shrub land, small
+      grains, successional shrub land, swamp, tropical, tundra, vegetable crops, vine crops'
     range: LandUseEnum
     title: current land use
 
@@ -559,12 +557,11 @@ slots:
     title: density
 
   depth:
-    description: >-
-      The vertical distance below local surface. For sediment or soil samples depth is
-      measured from sediment or soil surface, respectively. Depth is required to be
-      reported as an interval for subsurface samples. (Units: cm or m)
+    description: 'The vertical distance below local surface. For sediment or soil samples,
+      depth is measured from sediment or soil surface respectively. Depth is required
+      to be reported as an interval for subsurface samples. (Units: m)'
     annotations:
-      submission_pattern: '^\d+(\.\d+)?-\d+(\.\d+)?\s*(m|cm)$'
+      submission_pattern: ^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$
     range: string
     title: depth
 
@@ -726,51 +723,53 @@ slots:
 
   env_broad_scale:
     description: >-
-      The major environmental system the sample or specimen came from. The system
-      identified should have a coarse spatial grain, to provide the general
-      environmental context of where the sampling was done (e.g. in the desert or a
-      rainforest). Values should be terms from the Environment Ontology. See
-      https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.
+      'Report the major environmental system the sample or specimen came
+      from. The system identified should have a coarse spatial grain to provide the
+      general environmental context of where the sampling was done (e.g. in the desert
+      or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
+      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
     annotations:
-      submission_pattern: '^_*\s*[a-zA-Z\s\-]+\[ENVO:\d+\]$'
+      submission_pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
     range: string
     title: broad-scale environmental context
 
   env_local_scale:
     description: >-
-      Entity(ies) in the sample or specimen's local vicinity and which have significant
-      causal influences on the sample or specimen. Values should be terms from the
-      Environment Ontology which are of smaller spatial grain than the entry for
-      env_broad_scale. See
-      https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.
+      'Report the entity which are in your sample or specimens local vicinity
+      and which you believe have significant causal influences on your sample or specimen.
+      Please use terms that are present in ENVO and which are of smaller spatial grain
+      than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker
+      identified here: http://www.obofoundry.org/ontology/envo.html'
     annotations:
-      submission_pattern: '^_*\s*[a-zA-Z\s\-]+\[ENVO:\d+\]$'
+      submission_pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
     range: string
     title: local environmental context
 
   env_medium:
     description: >-
-      The environmental material immediately surrounding the sample or specimen at the
-      time of sampling. Values should be terms from the Environment Ontology. See
-      https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.
+      'Report the environmental material immediately surrounding the sample
+      or specimen at the time of sampling. We recommend using subclasses of ''environmental
+      material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation
+      about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'
     annotations:
-      submission_pattern: '^_*\s*[a-zA-Z\s\-]+\[ENVO:\d+\]$'
+      submission_pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
     range: string
     title: environmental medium
 
   experimental_factor:
     description: >-
-      Experimental factors are essentially the variable aspects of an experiment design
-      which can be used to describe an experiment, or set of experiments, in an
-      increasingly detailed manner. Values should be terms from Experimental Factor
-      Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI).
+      Experimental factors are essentially the variable aspects of an experiment
+      design which can be used to describe an experiment or set of experiments in an
+      increasingly detailed manner. This field accepts ontology terms from Experimental
+      Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For
+      a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO;
+      for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
     range: string
     title: experimental factor
 
   experimental_factor_other:
-    description: >-
-      Other details about the experiment that can't be accurately represented in the
-      available columns.
+    description: Other details about your sample that you feel can't be accurately represented
+      in the available columns.
     range: string
     title: other experimental factor
 
@@ -786,8 +785,9 @@ slots:
 
   extraction_method:
     description: >-
-      Details of extraction, preparation, or processing performed before sending the
-      sample to EMSL. This is only applicable when sending an 'analytical sample'.
+      If you (the user) performed an extraction preparation or processing before
+      sending the sample to EMSL, what was it? This is only applicable when sending an
+      'analytical sample'. See README for more details on types of samples.
     range: string
     title: extraction method
 
@@ -800,9 +800,9 @@ slots:
     title: extreme event
 
   fao_class:
-    description: >-
-      Soil classification from the FAO World Reference Database for Soil Resources. The
-      list can be found at https://www.isric.org/explore/world-soil-distribution
+    description: Soil classification from the FAO World soil distribution from International
+      Soil Reference and Information Centre (ISRIC). The list of available soil classifications
+      can be found at https://www.isric.org/explore/world-soil-distribution
     range: FAOClassEnum
     title: FAO soil taxonomy classification
 
@@ -912,10 +912,9 @@ slots:
     title: fungicide regimen
 
   gaseous_environment:
-    description: >-
-      Use of conditions with differing gaseous environments; should include the name of
-      gaseous compound, amount administered, treatment duration, interval and total
-      experimental duration; can include multiple gaseous environment regimens
+    description: Use of conditions with differing gaseous environments; should include
+      the name of gaseous compound, amount administered, treatment duration, interval, and
+      total experimental duration; can include multiple gaseous environment regimens
     range: string
     title: gaseous environment
 
@@ -958,7 +957,7 @@ slots:
       sea name followed by specific region name and site. Formatted as [Country or sea
       names: region or state, site]'
     annotations:
-      submission_pattern: '^([^\s-]{1,2}|[^\s-]+.+[^\s-]+):\s?([^\s-]{1,2}|[^\s-]+.+[^\s-]+),\s?([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'
+      submission_pattern: ^([^\s-]{12}|[^\s-]+.+[^\s-]+):\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)$
     range: string
     title: geographic location name
 
@@ -979,10 +978,10 @@ slots:
     title: gravity
 
   growth_facil:
-    description: >-
-      Type of facility or location from where the sample was collected or grown. If
-      "other", the "other_growth_facil" attribute should be completed to provide
-      additional detail.
+    description: |-
+       Type of facility or location from where the sample was collected or
+       grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`
+       attribute to provide additional detail.
     range: GrowthFacilityEnum
     title: growth facility
 
@@ -1013,10 +1012,7 @@ slots:
     range: string
 
   heavy_metals:
-    description: >-
-      Heavy metals present in the sample and the concentration of the metal, separated
-      by `|` for multiple metals. (Example: mercury,0.09 micrograms per gram|lead,0.05
-      micrograms per gram
+    description: Heavy metals present and concentrations; can include multiple heavy metals and concentrations
     range: string
     title: heavy metals
 
@@ -1168,12 +1164,8 @@ slots:
     title: humidity
 
   humidity_regm:
-    description: >-
-      Information about treatment involving an exposure to varying degree of humidity;
-      information about treatment involving use of growth hormones; should include
-      amount of humidity administered, treatment regimen including how many times the
-      treatment was repeated, how long each treatment lasted, and the start and end time
-      of the entire treatment; can include multiple regimens
+    description: Information about treatment involving an exposure to varying degrees
+      of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     range: string
     title: humidity regimen
 
@@ -1211,22 +1203,22 @@ slots:
     title: industrial effluent percent
 
   infiltration_1:
-    description: >-
-      Amount of time it took to accomplish the first infiltration activity. If
-      infiltration time was started and unsuccessful, 'failed'. Units and format of
-      mm:ss required. (Example: 15:20 mm:ss)
+    description: 'Amount of time it takes to accomplish the first infiltration activity.
+      If infiltration time was started and unsuccessful enter ''failed'' if infiltration
+      time was not attempted enter ''did not collect''. Units and format of mm:ss required.
+      (Example: 15:20 mm:ss)'
     annotations:
-      submission_pattern: '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|failed)$'
+      submission_pattern: ^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$
     range: string
     title: first infiltration time
 
   infiltration_2:
-    description: >-
-      Amount of time it took to accomplish the second infiltration activity. If
-      infiltration time was started and unsuccessful, 'failed'. Units and format of
-      mm:ss required. (Example: 15:20 mm:ss)
+    description: 'Amount of time it takes to accomplish the second infiltration activity.
+      If infiltration time was started and unsuccessful enter ''failed'' if infiltration
+      time was not attempted enter ''did not collect''. Units and format of mm:ss required.
+      (Example: 15:20 mm:ss)'
     annotations:
-      submission_pattern: '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|failed)$'
+      submission_pattern: ^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)
     range: string
     title: second infiltration time
 
@@ -1311,8 +1303,7 @@ slots:
     required: true
 
   isotope_exposure:
-    description: >-
-      Isotope exposures or additions applied to the sample.
+    description: List isotope exposure or addition applied to your sample.
     range: string
     title: isotope exposure
 
@@ -1340,9 +1331,8 @@ slots:
     title: light intensity
 
   light_regm:
-    description: >-
-      Information about treatment(s) involving exposure to light, including both light
-      intensity and quality.
+    description: Information about treatment(s) involving exposure to light including
+      both light intensity and quality.
     range: string
     title: light regimen
 
@@ -1514,9 +1504,8 @@ slots:
     title: methane
 
   method_development:
-    description: >-
-      Information about the methodological issue being investigated. Only applicable to
-      "test" samples.
+    description: If your samples are TEST sample ONLY, please provide information on
+      what you're hoping this test will resolve.
     range: string
     title: method development
 
@@ -1531,8 +1520,7 @@ slots:
     title: microbial biomass carbon method
 
   micro_biomass_n_meth:
-    description: >-
-      Reference or method used in determining microbial biomass
+    description: Reference or method used in determining microbial biomass nitrogen
     range: string
     title: microbial biomass nitrogen method
 
@@ -1578,9 +1566,8 @@ slots:
     title: mineral nutrient regimen
 
   misc_param:
-    description: >-
-      Any other measurement performed or parameter collected, that is not listed in
-      another column.
+    description: Any other measurement performed or parameter collected that is not
+      listed here
     range: string
     title: miscellaneous parameter
 
@@ -1633,10 +1620,9 @@ slots:
     title: NEON domain
 
   neon_plot_id:
-    description: >-
-      When sample is from a NEON site, this column contains the 4 letter site code
-      followed by the 3 digit plot ID (Example: DEJU_048). If sample was taken from a
-      NEON site but outside a plot, the plot ID will be shown as 000.
+    description: 'When sampling from a NEON site provide the plot ID from which you
+      sampled. This includes the 4 letter site code followed by the 3 digit ID (Example:
+      DEJU_048). If you do not have your NEON site use the code SITE_999.'
     annotations:
       submission_pattern: ^[A-Z]{4}_\d{3}$
     range: string
@@ -1759,15 +1745,13 @@ slots:
       - strain_id
 
   other:
-    description: >-
-      Other details about the sample that can't be accurately represented in the
-      available columns.
+    description: Other/additional details about your sample that you feel can't be accurately
+      represented in ANY of the available columns.
     range: string
     title: other
 
   other_growth_facil:
-    description: >-
-      Specified if "growth_facil" = "other"
+    description: Please specify growth facility if you selected 'other'
     range: string
     title: other growth facility
 
@@ -1777,20 +1761,20 @@ slots:
     range: string
 
   other_samp_store_temp:
-    description: >-
-      Specified if "samp_store_temp" = "other"
+    description: Please specify sample storage temperature if you selected 'other'
     range: string
     title: other sample storage temperature
 
   other_storage_condt:
-    description: >-
-      Specified if "storage_condt" = "other"
+    description: Please specify your storage conditions if you selected 'other' and the available
+      values are not appropriate
     range: string
     title: other storage condition
 
   other_treatment:
-    description: >-
-      Treatment applied to samples that did not fit in other available columns.
+    description: Many sample treatment descriptor columns are available. If a treatment
+      is applied to your samples and the provided treatment terms do not satisfy please
+      add it here. Multiple treatments can be entered here separated by ;
     range: string
     title: other treatment
 
@@ -1803,9 +1787,8 @@ slots:
     title: oxygen
 
   oxygen_relationship:
-    description: >-
-      Oxygenation status of sample
     title: oxygen relationship
+    description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     range: OxygenStatusEnum
     exact_mappings:
       - MIXS:0000015
@@ -1871,10 +1854,9 @@ slots:
     range: PersonValue
 
   perturbation:
-    description: >-
-      Type of perturbation, e.g. chemical administration, physical disturbance, etc.,
-      coupled with perturbation regimen including how many times the perturbation was
-      repeated, how long each perturbation lasted, and the start and end time of the
+    description: Type of perturbation, e.g. chemical administration, physical disturbance,
+      etc.; coupled with perturbation regimen, including how many times the perturbation
+      was repeated, how long each perturbation lasted, and the start and end time of the
       entire perturbation period; can include multiple perturbation types
     range: string
     title: perturbation
@@ -1895,9 +1877,8 @@ slots:
     title: petroleum hydrocarbon
 
   ph:
-    description: >-
-      pH measurement of the sample, or liquid portion of sample, or aqueous phase of the
-      fluid.
+    description: pH measurement of the sample or liquid portion of sample or aqueous
+      phase of the fluid
     range: double
     title: pH
 
@@ -1907,8 +1888,7 @@ slots:
     required: false
 
   ph_meth:
-    description: >-
-      Reference or method used in determining ph
+    description: Reference or method used in determining ph of the sample
     range: string
     title: pH method
 
@@ -2169,9 +2149,6 @@ slots:
     title: profile position
 
   project:
-    description: >-
-      EMSL's 5-digit code identifying the proposal/project. More details about each
-      project can be found at https://sc-data.emsl.pnnl.gov/?projectId=<Proposal_ID>
     title: Project
     aliases:
       - study
@@ -2179,11 +2156,11 @@ slots:
       - project_id
       - proposal
       - proposal_id
+    description: |-
+      Identifier for the user project associated with the entity or activity. 
     range: integer
     todos:
       - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141 where emsl.project is the CURIE prefix
-    annotations:
-      submission_pattern: '^[0-9]{5}$'
 
   propagation:
     description: |-
@@ -2344,13 +2321,12 @@ slots:
     required: true
 
   salinity:
-    description: >-
-      Salinity is the total concentration of all dissolved salts in a sample. While
-      salinity can be measured by a complete chemical analysis, this method is difficult
-      and time consuming. More often, it is instead derived from the conductivity
-      measurement. This is known as practical salinity. These derivations compare the
-      specific conductance of the sample to a salinity standard such as seawater (Unit:
-      practical salinity unit or percent)
+    description: 'Salinity is the total concentration of all dissolved salts in
+      a sample. While salinity can be measured by a complete chemical analysis, this
+      method is difficult and time consuming. More often it is instead derived from
+      the conductivity measurement. This is known as practical salinity. These derivations
+      compare the specific conductance of the sample to a salinity standard such
+      as seawater (Unit: practical salinity unit or percent)'
     annotations:
       submission_pattern: ^\d+(\.\d+)?\s*(practical salinity unit|percent)$
     range: string
@@ -2382,10 +2358,9 @@ slots:
     title: sample disease stage
 
   samp_store_temp:
-    description: >-
-      The temperature at which samples should be stored upon arrival to EMSL. If
-      "other", the "other_samp_store_temp" attribute should be completed to provide
-      additional detail.
+    description: The temperature at which your samples should be stored upon arrival.
+      This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
+      attribute to provide additional detail.
     range: SampleStoreTempEnum
     title: sample storage temperature
     aliases:
@@ -2393,10 +2368,11 @@ slots:
       - storage_temperature
 
   sample_collected:
-    description: >-
-      This refers to the TOTAL number of cores collected. (Unit: cores)
+    description: This refers to the TOTAL amount of sample collected from the experiment.
+      NOT the amount sent to EMSL or collected for a specific analysis. Provide value
+      and unit, any unit is valid
     annotations:
-      submission_pattern: '^\d+(\.\d+)?\s*cores$'
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: sample collected
 
@@ -2407,8 +2383,7 @@ slots:
     title: sample collection device
 
   sample_collection_method:
-    description: >-
-      The method used to collect an environmental sample
+    description: The method used to collect an environmental sample. This can be a citation or description.
     range: string
     title: sample collection method
 
@@ -2448,9 +2423,8 @@ slots:
       - samp_name
 
   sample_processing:
-    description: >-
-      A brief description of any processing applied to the sample during or after
-      retrieving the sample from environment, or a link to the relevant protocol(s)
+    description: A brief description of any processing applied to the sample during
+      or after retrieving the sample from environment or a link to the relevant protocol(s)
       performed.
     range: string
     title: sample processing
@@ -2497,10 +2471,11 @@ slots:
     title: sampling rate
 
   sampling_set:
-    description: >-
-      Sequential number indicating a set of cores collected a project. One set of cores
-      includes A, B, and C1-4 cores (see Core_Depth).
     title: sampling set
+    description: |-
+      Sampling set number for grouping related samples collected together.
+      This is a user-defined sequential integer that can be used to link samples collected
+      in the same sampling event or campaign.
     range: integer
 
   sealing_method:
@@ -2516,9 +2491,9 @@ slots:
     title: season environment
 
   season_precpt:
-    description: >-
-      The average of all seasonal precipitation values known, or an estimated equivalent
-      value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)
+    description: 'The average of all seasonal precipitation values known or an estimated
+      equivalent value derived by such methods as regional indexes or Isohyetal maps.
+      (Unit: mm)'
     annotations:
       submission_pattern: ^\d+(\.\d+)?\s*mm$
     range: string
@@ -3018,10 +2993,9 @@ slots:
     title: sewage type
 
   shipped_sample_size:
-    description: >-
-      Total amount of sample sent to EMSL. Must include unit of 'core'.
+    description: Total amount of sample sent to EMSL. Must include units.
     annotations:
-      submission_pattern: '^\d+(\.\d+)?\s*core$'
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: shipped sample size
 
@@ -3045,18 +3019,16 @@ slots:
     title: size fraction lower threshold
 
   size_frac_up:
-    description: >-
-      Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials
-      larger than the size threshold are excluded from the sample (Unit: um)
+    description: Refers to the mesh/pore size used to retain the sample. Materials smaller
+      than the size threshold are excluded from the sample
     range: string
     title: size fraction upper threshold
 
   slope_aspect:
-    description: >-
-      The direction a slope faces. While looking down a slope use a compass to record
-      the direction you are facing (degrees); e.g., 315 degrees. This measure provides
-      an indication of sun and wind exposure that will influence soil temperature and
-      evapotranspiration. (Unit: degrees)
+    description: 'The direction a slope faces. While looking down a slope use a compass
+      to record the direction you are facing (degrees); e.g. 315 degrees. This measure
+      provides an indication of sun and wind exposure that will influence soil temperature
+      and evapotranspiration. (Unit: degrees)'
     annotations:
       submission_pattern: ^\d+(\.\d+)?\s*degrees$
     range: string
@@ -3085,10 +3057,8 @@ slots:
     title: sodium
 
   soil_horizon:
-    description: >-
-      Specific layer in the land area which measures parallel to the soil surface and
-      possesses physical characteristics which differ from the layers above and beneath
     title: soil horizon
+    description: Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath.
     exact_mappings:
       - MIXS:0001082
     range: SoilHorizonEnum
@@ -3102,11 +3072,10 @@ slots:
       - BJM 060626 - clarified this slot and enum name from 'soil_type' but I'm still not sure we need it. it is populated in the current database though.
   
   soil_texture:
-    description: >-
-      The relative proportion of different grain sizes of mineral particles in a soil,
-      as described using a standard system; express as decimal percent sand (50 um to 2
-      mm), silt (2 um to 50 um), and clay (<2 um) with optional textural name (e.g.,
-      sand:0.20, silt:0.25, clay:0.55, description:silty clay loam).
+    description: The relative proportion of different grain sizes of mineral particles
+      in a soil as described using a standard system; express as decimal percent sand
+      (50 um to 2 mm) silt (2 um to 50 um) and clay (<2 um) with optional textural name
+      (e.g. sand:0.20 silt:0.25 clay:0.55 description:silty clay loam).
     annotations:
       submission_pattern: ^(\w+:0\.\d+ )*description:[A-Za-z ]+$
     range: string
@@ -3207,10 +3176,8 @@ slots:
     description: The concentration of the sample or analyte in the input sample before this activity, in milligrams per milliliter.
 
   storage_condition:
-    description: >-
-      The storage condition of the sample before shipment to EMSL. If "other", the
-      "other_storage_condt" attribute should be completed to provide additional detail.
     title: storage condition
+    description: The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.
     range: StorageConditionEnum
     exact_mappings:
       - MIXS:0000327
@@ -3409,11 +3376,9 @@ slots:
     title: technical replicates
 
   temp:
-    description: >-
-      Temperature of the sample at the time of sampling. If measurement was started and
-      unsuccessful, enter 'failed'. (Units: C)
+    description: 'Temperature of the sample at the time of sampling. (Units: C)'
     annotations:
-      submission_pattern: '^(-?\d+(\.\d+)?\s*C|failed)$'
+      submission_pattern: ^-?\d+(\.\d+)?\s*C$
     range: string
     title: temperature
 
@@ -3668,11 +3633,9 @@ slots:
     title: wasterwater type
 
   water_content:
-    description: >-
-      Water content measurement read from the Teros ZSC bluetooth sensor. Units:
-      'm3/m3'. If measurement was started and unsuccessful, value will be 'failed'.
+    description: Water content measurement. Provide value and unit any unit is valid
     annotations:
-      submission_pattern: '^(\d+(\.\d+)?\s*m3/m3|failed)$'
+      submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: water content
 
@@ -3721,9 +3684,8 @@ slots:
     title: minimum wavelength
 
   weather:
-    description: >-
-      The state of the atmosphere at a given time and place, with respect to variables
-      such as temperature, moisture, wind velocity, and barometric pressure.
+    description: The state of the atmosphere at a given time and place with respect
+      to variables such as temperature, moisture, wind velocity, and barometric pressure.
     range: string
     title: weather
 
