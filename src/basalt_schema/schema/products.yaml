@@ -27,8 +27,12 @@ classes:
       - measure_type
     attributes:
       bulk_density:
-        range: QuantityValue
+        description: Bulk density (g per cm3 soil).
+        range: double
+        unit:
+          ucum_code: g/cm3
       flag:
+        description: Data quality flag for bulk density; blank if no flag.
         range: ProcessedDataFlag
 
   CMM_ICPMS_DigestionProduct:
@@ -314,20 +318,32 @@ classes:
       - measure_type
     attributes:
       total_carbon:
-        range: QuantityValue
+        description: Total carbon content (weight percent).
+        range: double
+        unit:
+          ucum_code: '%'
       total_nitrogen:
-        range: QuantityValue
+        description: Total nitrogen content (weight percent).
+        range: double
+        unit:
+          ucum_code: '%'
       total_kjeldahl_nitrogen:
-        range: QuantityValue
+        range: double
       total_sulfur:
-        range: QuantityValue
+        description: Total sulfur content (weight percent).
+        range: double
+        unit:
+          ucum_code: '%'
       flag_total_carbon:
+        description: Data quality flag for total carbon; blank if no flag.
         range: ProcessedDataFlag
       flag_total_nitrogen:
+        description: Data quality flag for total nitrogen; blank if no flag.
         range: ProcessedDataFlag
       flag_tkn:
         range: ProcessedDataFlag
       flag_total_sulfur:
+        description: Data quality flag for total sulfur; blank if no flag.
         range: ProcessedDataFlag
 
   EnzymeProduct:
@@ -338,8 +354,12 @@ classes:
       - measure_type
     attributes:
       beta_glucosidase_ug_pnp_per_g_per_h:
-        range: QuantityValue
+        description: Beta-glucosidase activity (ug pNP per g soil per h).
+        range: double
+        unit:
+          ucum_code: 'ug{pNP}/g/h'
       flag:
+        description: Data quality flag for beta-glucosidase activity; blank if no flag.
         range: ProcessedDataFlag
 
   GWCMoistureProduct:
@@ -350,8 +370,12 @@ classes:
       - measure_type
     attributes:
       gwc_percent:
-        range: QuantityValue
+        description: Gravimetric water content (percent).
+        range: double
+        unit:
+          ucum_code: '%'
       flag:
+        description: Data quality flag for gravimetric water content; blank if no flag.
         range: ProcessedDataFlag
 
   
@@ -366,26 +390,36 @@ classes:
     attributes:
       alpha:
         description: >-
-          Van Genuchten shape parameter alpha (1/cm). Controls the inverse of the
-          air-entry suction; typically fitted by HYPROP-FIT or similar software.
+          van Genuchten scale parameter, inversely proportional to mean pore diameter
+          (per cm). Typically fitted by HYPROP-FIT or similar software.
         range: double
+        unit:
+          ucum_code: /cm
       n:
         description: >-
-          Van Genuchten pore-size distribution index n (dimensionless, n > 1).
-          Controls the slope of the water-retention curve.
+          van Genuchten parameter that describes the pore-size distribution of the soil
+          (dimensionless, n > 1). Controls the slope of the water-retention curve.
         range: double
+        unit:
+          ucum_code: '1'
       theta_r:
         description: >-
-          Residual volumetric water content theta_r (cm3 cm). The water content
-          at which liquid conductivity approaches zero.
+          Residual volumetric water content from HYPROP soil water retention model (cm3
+          water per cm3 soil). The water content at which liquid conductivity approaches
+          zero.
         range: double
+        unit:
+          ucum_code: cm3/cm3
       theta_s:
         description: >-
-          Saturated volumetric water content theta_s (cm3 cm e-3). Approximates
-          total porosity under saturated conditions.
+          Saturated volumetric water content from HYPROP soil water retention model (cm3
+          water per cm3 soil). Approximates total porosity under saturated conditions.
         range: double
+        unit:
+          ucum_code: cm3/cm3
       flag:
-        description: QC flag for the entire VGM fit (e.g. missing sample, failed QC).
+        description: >-
+          Data quality flag for HYPROP water retention parameters; blank if no flag.
         range: ProcessedDataFlag
       
   IonsAnalysisProduct:
@@ -397,58 +431,108 @@ classes:
       - measure_type
     attributes:
       sulfate:
-        range: QuantityValue
+        description: Sulfate sulfur content (mg S per kg soil).
+        range: double
+        unit:
+          ucum_code: 'mg{S}/kg'
       boron:
-        range: QuantityValue
+        description: Boron content (mg B per kg soil).
+        range: double
+        unit:
+          ucum_code: mg/kg
       zinc:
-        range: QuantityValue
+        description: Zinc content (mg Zn per kg soil).
+        range: double
+        unit:
+          ucum_code: mg/kg
       manganate:
-        range: QuantityValue
+        description: Manganese content (mg Mn per kg soil).
+        range: double
+        unit:
+          ucum_code: mg/kg
       copper:
-        range: QuantityValue
+        description: Copper content (mg Cu per kg soil).
+        range: double
+        unit:
+          ucum_code: mg/kg
       iron:
-        range: QuantityValue
+        description: Iron content (mg Fe per kg soil).
+        range: double
+        unit:
+          ucum_code: mg/kg
       calcium:
-        range: QuantityValue
+        description: Calcium content (milliequivalents per 100 grams of soil).
+        range: double
+        unit:
+          ucum_code: meq/(100.g)
       magnesium:
-        range: QuantityValue
+        description: Magnesium content (milliequivalents per 100 grams of soil).
+        range: double
+        unit:
+          ucum_code: meq/(100.g)
       sodium:
-        range: QuantityValue
+        description: Sodium content (milliequivalents per 100 grams of soil).
+        range: double
+        unit:
+          ucum_code: meq/(100.g)
       potassium:
-        range: QuantityValue
+        description: Potassium content (milliequivalents per 100 grams of soil).
+        range: double
+        unit:
+          ucum_code: meq/(100.g)
       total_bases:
-        range: QuantityValue
+        description: >-
+          Sum of exchangeable base cations Ca + Mg + Na + K (milliequivalents per 100
+          grams of soil).
+        range: double
+        unit:
+          ucum_code: meq/(100.g)
       cation_exchange_capacity:
-        range: QuantityValue
+        description: Cation exchange capacity (milliequivalents per 100 grams of soil).
+        range: double
+        unit:
+          ucum_code: meq/(100.g)
       flag_sulfate:
+        description: Data quality flag for sulfate sulfur; blank if no flag.
         range: ProcessedDataFlag
       flag_boron:
+        description: Data quality flag for boron; blank if no flag.
         range: ProcessedDataFlag
       flag_zinc:
+        description: Data quality flag for zinc; blank if no flag.
         range: ProcessedDataFlag
       flag_manganate:
+        description: Data quality flag for manganese; blank if no flag.
         range: ProcessedDataFlag
       flag_copper:
+        description: Data quality flag for copper; blank if no flag.
         range: ProcessedDataFlag
       flag_iron:
+        description: Data quality flag for iron; blank if no flag.
         range: ProcessedDataFlag
       flag_calcium:
+        description: Data quality flag for calcium; blank if no flag.
         range: ProcessedDataFlag
       flag_magnesium:
+        description: Data quality flag for magnesium; blank if no flag.
         range: ProcessedDataFlag
       flag_sodium:
+        description: Data quality flag for sodium; blank if no flag.
         range: ProcessedDataFlag
       flag_potassium:
+        description: Data quality flag for potassium; blank if no flag.
         range: ProcessedDataFlag
       flag_total_bases:
+        description: Data quality flag for total bases; blank if no flag.
         range: ProcessedDataFlag
       flag_cec:
+        description: Data quality flag for cation exchange capacity; blank if no flag.
         range: ProcessedDataFlag
 
   HClExtOMProduct:
     is_a: ProcessedData
     description: |-
-      Mineral-Associated Organic Matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
+      HCl-extractable organic matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
       Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
@@ -456,20 +540,44 @@ classes:
       - produced_by_toctn_run
     attributes:
       total_organic_carbon:
-        range: QuantityValue
+        description: HCl-extractable organic carbon content (mg C per kg soil).
+        range: double
+        unit:
+          ucum_code: 'mg{C}/kg'
       total_organic_carbon_avg:
+        description: >-
+          Mean of replicate HCl-extractable organic carbon values (mg C per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{C}/kg'
       total_nitrogen:
-        range: QuantityValue
-      total_nitrogen_avg:
+        description: HCl-extractable total nitrogen content (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
+      total_nitrogen_avg:
+        description: >-
+          Mean of replicate HCl-extractable total nitrogen values (mg N per kg soil).
+        range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       flag_toc:
+        description: >-
+          Data quality flag for HCl-extractable organic carbon; blank if no flag.
         range: ProcessedDataFlag
       flag_tn:
+        description: >-
+          Data quality flag for HCl-extractable total nitrogen; blank if no flag.
         range: ProcessedDataFlag
       flag_toc_avg:
+        description: >-
+          Data quality flag for the replicate mean of HCl-extractable organic carbon;
+          blank if no flag.
         range: ProcessedDataFlag
       flag_tn_avg:
+        description: >-
+          Data quality flag for the replicate mean of HCl-extractable total nitrogen;
+          blank if no flag.
         range: ProcessedDataFlag
 
   MicrobialBiomassProduct:
@@ -482,20 +590,42 @@ classes:
       - replicate
     attributes:
       mbc:
-        range: QuantityValue
+        description: Microbial biomass carbon (mg C per kg soil).
+        range: double
+        unit:
+          ucum_code: 'mg{C}/kg'
       mbc_avg:
+        description: >-
+          Mean of replicate microbial biomass carbon values (mg C per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{C}/kg'
       mbn:
-        range: QuantityValue
-      mbn_avg:
+        description: Microbial biomass nitrogen (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
+      mbn_avg:
+        description: >-
+          Mean of replicate microbial biomass nitrogen values (mg N per kg soil).
+        range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       flag_mbc:
+        description: Data quality flag for microbial biomass carbon; blank if no flag.
         range: ProcessedDataFlag
       flag_mbn:
+        description: Data quality flag for microbial biomass nitrogen; blank if no flag.
         range: ProcessedDataFlag
       flag_mbc_avg:
+        description: >-
+          Data quality flag for the replicate mean of microbial biomass carbon; blank if
+          no flag.
         range: ProcessedDataFlag
       flag_mbn_avg:
+        description: >-
+          Data quality flag for the replicate mean of microbial biomass nitrogen; blank
+          if no flag.
         range: ProcessedDataFlag
 
   NitrogenAnalysisProduct:
@@ -508,20 +638,40 @@ classes:
       - replicate
     attributes:
       no3_n:
-        range: QuantityValue
+        description: Nitrate nitrogen content (mg N per kg soil).
+        range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       no3_n_avg:
+        description: Mean of replicate nitrate nitrogen values (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       nh4_n:
-        range: QuantityValue
-      nh4_n_avg:
+        description: Ammonium nitrogen content (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
+      nh4_n_avg:
+        description: Mean of replicate ammonium nitrogen values (mg N per kg soil).
+        range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       flag_no3n:
+        description: Data quality flag for nitrate nitrogen; blank if no flag.
         range: ProcessedDataFlag
       flag_nh4n:
+        description: Data quality flag for ammonium nitrogen; blank if no flag.
         range: ProcessedDataFlag
       flag_no3n_avg:
+        description: >-
+          Data quality flag for the replicate mean of nitrate nitrogen; blank if no
+          flag.
         range: ProcessedDataFlag
       flag_nh4n_avg:
+        description: >-
+          Data quality flag for the replicate mean of ammonium nitrogen; blank if no
+          flag.
         range: ProcessedDataFlag
 
   PhosphorusAnalysisProduct:
@@ -536,12 +686,22 @@ classes:
       extraction_method:
         range: string
       phosphorus:
-        range: QuantityValue
-      phosphorus_avg:
+        description: Phosphate phosphorus content (mg P per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{P}/kg'
+      phosphorus_avg:
+        description: Mean of replicate phosphate phosphorus values (mg P per kg soil).
+        range: double
+        unit:
+          ucum_code: 'mg{P}/kg'
       flag:
+        description: Data quality flag for phosphate phosphorus; blank if no flag.
         range: ProcessedDataFlag
       flag_avg:
+        description: >-
+          Data quality flag for the replicate mean of phosphate phosphorus; blank if no
+          flag.
         range: ProcessedDataFlag
 
   RespirationProduct:
@@ -552,9 +712,14 @@ classes:
       - measure_type
     attributes:
       respiration_co2_c_ug_per_g:
-        description: Soil respiration expressed as µg CO₂-C per gram soil
+        description: >-
+          Potential soil respiration measured as cumulative microbial CO2-C production
+          over a 24-hour burst incubation (ug CO2-C per g dried soil).
         range: double
+        unit:
+          ucum_code: 'ug{CO2-C}/g'
       flag:
+        description: Data quality flag for respiration; blank if no flag.
         range: ProcessedDataFlag
 
   Rhizo_ICPMS_DigestionProduct:
@@ -640,12 +805,22 @@ classes:
       - measure_type
     attributes:
       sand_pct:
-        range: QuantityValue
+        description: Sand content (percent).
+        range: double
+        unit:
+          ucum_code: '%'
       silt_pct:
-        range: QuantityValue
+        description: Silt content (percent).
+        range: double
+        unit:
+          ucum_code: '%'
       clay_pct:
-        range: QuantityValue
+        description: Clay content (percent).
+        range: double
+        unit:
+          ucum_code: '%'
       flag:
+        description: Data quality flag for texture (sand, silt, clay); blank if no flag.
         range: ProcessedDataFlag
 
   WEOMProduct:
@@ -659,20 +834,44 @@ classes:
       - produced_by_toctn_run
     attributes:
       total_organic_carbon:
-        range: QuantityValue
+        description: Water extractable organic carbon content (mg C per kg soil).
+        range: double
+        unit:
+          ucum_code: 'mg{C}/kg'
       total_organic_carbon_avg:
+        description: >-
+          Mean of replicate water extractable organic carbon values (mg C per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{C}/kg'
       total_nitrogen:
-        range: QuantityValue
-      total_nitrogen_avg:
+        description: Water extractable total nitrogen content (mg N per kg soil).
         range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
+      total_nitrogen_avg:
+        description: >-
+          Mean of replicate water extractable total nitrogen values (mg N per kg soil).
+        range: double
+        unit:
+          ucum_code: 'mg{N}/kg'
       flag_toc:
+        description: >-
+          Data quality flag for water extractable organic carbon; blank if no flag.
         range: ProcessedDataFlag
       flag_tn:
+        description: >-
+          Data quality flag for water extractable total nitrogen; blank if no flag.
         range: ProcessedDataFlag
       flag_toc_avg:
+        description: >-
+          Data quality flag for the replicate mean of water extractable organic carbon;
+          blank if no flag.
         range: ProcessedDataFlag
       flag_tn_avg:
+        description: >-
+          Data quality flag for the replicate mean of water extractable total nitrogen;
+          blank if no flag.
         range: ProcessedDataFlag
 
   pHProduct:
@@ -682,8 +881,14 @@ classes:
     slots:
       - measure_type
       - ph
+    slot_usage:
+      ph:
+        description: Soil pH.
+        unit:
+          ucum_code: '[pH]'
     attributes:
       flag:
+        description: Data quality flag for pH; blank if no flag.
         range: ProcessedDataFlag
 
   XRayDataProduct:
@@ -722,101 +927,187 @@ classes:
       - measure_type
     attributes:
       roi_x_voxel:
-        description: Number of voxels in X direction of ROI. Previously roi_volume_voxel.
+        description: >-
+          Size of the region of interest (ROI) along the X-axis (voxel). FY23 reported
+          ROI dimensions as a single ROI_volume_voxel value (x by y by z).
         range: double
+        unit:
+          ucum_code: '{voxel}'
       roi_y_voxel:
-        description: Number of voxels in Y direction of ROI.
+        description: Size of the region of interest (ROI) along the Y-axis (voxel).
         range: double
+        unit:
+          ucum_code: '{voxel}'
       roi_z_voxel:
-        description: Number of voxels in Z direction of ROI.
+        description: Size of the region of interest (ROI) along the Z-axis (voxel).
         range: double
+        unit:
+          ucum_code: '{voxel}'
       voxel_size_mm_per_voxel:
-        description: Linear dimension of a voxel (mm/voxel). Previously voxel_size.
+        description: Linear voxel size, i.e. scan resolution (mm per voxel).
         range: double
+        unit:
+          ucum_code: 'mm/{voxel}'
       porosity_percent:
-        description: Percentage of total pore volume to total volume of ROI (%). Previously total_pore_volume.
+        description: >-
+          Total pore volume as a percentage of total ROI (soil) volume (percent). FY23
+          column: total_pore_volume_percent.
         range: double
+        unit:
+          ucum_code: '%'
       connected_pores_fraction:
-        description: Fraction of connected pore volume out of total volume (unitless).
+        description: >-
+          Connected pore volume as a fraction of total ROI (soil) volume, i.e. connected
+          porosity (fraction, 0 to 1).
         range: double
+        unit:
+          ucum_code: '1'
       pore_connectivity_percent:
-        description: Percentage of connected pore volume to all pore volume (%).
+        description: >-
+          Connected pore volume as a percentage of total pore volume (percent). FY23
+          column: connected_pores_percent.
         range: double
+        unit:
+          ucum_code: '%'
       pore_equivalent_diameter_min_mm:
-        description: Minimum equivalent pore diameter (mm). Previously pore_diameter_min.
+        description: >-
+          Minimum pore equivalent diameter (diameter of a sphere with the same volume as
+          the pore) (mm). FY23 column: pore_diameter_min_mm.
         range: double
+        unit:
+          ucum_code: mm
       pore_equivalent_diameter_max_mm:
-        description: Maximum equivalent pore diameter (mm). Previously pore_diameter_max.
+        description: >-
+          Maximum pore equivalent diameter (mm). FY23 column: pore_diameter_max_mm.
         range: double
+        unit:
+          ucum_code: mm
       pore_equivalent_diameter_mean_mm:
-        description: Mean equivalent pore diameter (mm). Previously pore_diameter_mean.
+        description: >-
+          Mean pore equivalent diameter (mm). FY23 column: pore_diameter_mean_mm.
         range: double
+        unit:
+          ucum_code: mm
       pore_equivalent_diameter_median_mm:
-        description: Median equivalent pore diameter (mm). Previously pore_diameter_median.
+        description: >-
+          Median pore equivalent diameter (mm). FY23 column: pore_diameter_median_mm.
         range: double
+        unit:
+          ucum_code: mm
       pore_equivalent_diameter_variance_mm2:
-        description: Variance of equivalent pore diameter (mm^2). Previously pore_diameter_variance.
+        description: >-
+          Variance of pore equivalent diameter (mm2). FY23 column:
+          pore_diameter_variance_mm2.
         range: double
+        unit:
+          ucum_code: mm2
       pore_volume_min_mm3:
-        description: Minimum volume of pores (mm^3).
+        description: Minimum individual pore volume (mm3).
         range: double
+        unit:
+          ucum_code: mm3
       pore_volume_max_mm3:
-        description: Maximum volume of pores (mm^3).
+        description: Maximum individual pore volume (mm3).
         range: double
+        unit:
+          ucum_code: mm3
       pore_volume_mean_mm3:
-        description: Mean volume of pores (mm^3). Previously pore_volume_mean.
+        description: Mean individual pore volume (mm3).
         range: double
+        unit:
+          ucum_code: mm3
       pore_volume_median_mm3:
-        description: Median volume of pores (mm^3).
+        description: Median individual pore volume (mm3).
         range: double
+        unit:
+          ucum_code: mm3
       pore_volume_variance_mm6:
-        description: Variance of volume of pores (mm^6).
+        description: Variance of individual pore volume (mm6).
         range: double
+        unit:
+          ucum_code: mm6
       pore_area_min_mm2:
-        description: Minimum area of pores (mm^2).
+        description: Minimum individual pore surface area (mm2).
         range: double
+        unit:
+          ucum_code: mm2
       pore_area_max_mm2:
-        description: Maximum area of pores (mm^2).
+        description: Maximum individual pore surface area (mm2).
         range: double
+        unit:
+          ucum_code: mm2
       pore_area_mean_mm2:
-        description: Mean area of pores (mm^2).
+        description: Mean individual pore surface area (mm2).
         range: double
+        unit:
+          ucum_code: mm2
       pore_area_median_mm2:
-        description: Median area of pores (mm^2).
+        description: Median individual pore surface area (mm2).
         range: double
+        unit:
+          ucum_code: mm2
       pore_area_variance_mm4:
-        description: Variance of area of pores (mm^4).
+        description: Variance of individual pore surface area (mm4).
         range: double
+        unit:
+          ucum_code: mm4
       permeability_x_um2:
-        description: Absolute permeability from pore network model in X direction (um^2). Previously permeability_x.
+        description: >-
+          Absolute permeability of the pore network model along the X-axis (um2).
         range: double
+        unit:
+          ucum_code: um2
       flow_rate_x_mm3_per_sec:
-        description: Total flow rate from pore network model in X direction (mm^3/s). Previously flow_rate_x.
+        description: >-
+          Volumetric flow rate through the pore network along the X-axis (mm3 per
+          second).
         range: double
+        unit:
+          ucum_code: mm3/s
       tortuosity_x:
-        description: Tortuosity from pore network model in X direction (unitless).
+        description: Tortuosity of the soil column along the X-axis (ratio).
         range: double
+        unit:
+          ucum_code: '1'
       permeability_y_um2:
-        description: Absolute permeability from pore network model in Y direction (um^2). Previously permeability_y.
+        description: >-
+          Absolute permeability of the pore network model along the Y-axis (um2).
         range: double
+        unit:
+          ucum_code: um2
       flow_rate_y_mm3_per_sec:
-        description: Total flow rate from pore network model in Y direction (mm^3/s). Previously flow_rate_y.
+        description: >-
+          Volumetric flow rate through the pore network along the Y-axis (mm3 per
+          second).
         range: double
+        unit:
+          ucum_code: mm3/s
       tortuosity_y:
-        description: Tortuosity from pore network model in Y direction (unitless).
+        description: Tortuosity of the soil column along the Y-axis (ratio).
         range: double
+        unit:
+          ucum_code: '1'
       permeability_z_um2:
-        description: Absolute permeability from pore network model in Z direction (um^2). Previously permeability_z.
+        description: >-
+          Absolute permeability of the pore network model along the Z-axis (um2).
         range: double
+        unit:
+          ucum_code: um2
       flow_rate_z_mm3_per_sec:
-        description: Total flow rate from pore network model in Z direction (mm^3/s). Previously flow_rate_z.
+        description: >-
+          Volumetric flow rate through the pore network along the Z-axis (mm3 per
+          second).
         range: double
+        unit:
+          ucum_code: mm3/s
       tortuosity_z:
-        description: Tortuosity from pore network model in Z direction (unitless).
+        description: Tortuosity of the soil column along the Z-axis (ratio).
         range: double
+        unit:
+          ucum_code: '1'
       flag_xct:
-        description: Data quality flag for the XCT analysis.
-        range: string
+        description: Data quality flag for XCT pore summary metrics; blank if no flag.
+        range: ProcessedDataFlag
 
 
   # ---------------------------------------------------------------------------

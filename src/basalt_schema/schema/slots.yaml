@@ -723,11 +723,11 @@ slots:
 
   env_broad_scale:
     description: >-
-      'Report the major environmental system the sample or specimen came
-      from. The system identified should have a coarse spatial grain to provide the
-      general environmental context of where the sampling was done (e.g. in the desert
-      or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
-      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
+      The major environmental system the sample or specimen came from. The system
+      identified should have a coarse spatial grain, to provide the general
+      environmental context of where the sampling was done (e.g. in the desert or a
+      rainforest). Values should be terms from the Environment Ontology. See
+      https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.
     annotations:
       submission_pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
     range: string

@@ -201,7 +201,7 @@ otherwise, it is a generic standin for an instrument model.
     id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     vendor = Column(Enum('waters', 'agilent', 'bruker', 'thermo_fisher', 'perkin_elmer', 'scientific_industries', 'illumina', 'nikon', 'fia_lab', 'shimadzu', 'regen_ag_lab', 'kuo', 'rigaku', 'panalytical', 'aps_anl', name='VendorEnum'))
-    model = Column(Enum('exploris_21T', 'exploris_240', 'exploris_480', 'ltq_orbitrap_velos', 'orbitrap_fusion_lumos', 'orbitrap_eclipse_tribid', 'orbitrap_q_exactive', 'orbitrap_iqx_tribrid', 'orbitrap_exploris_120', 'solarix_7T', 'solarix_12T', 'solarix_15T', 'agilent_8890A', 'agilent_7980A', 'vortex_genie_2', 'novaseq', 'novaseq_6000', 'novaseq_x', 'hiseq', 'hiseq_1000', 'hiseq_1500', 'hiseq_2000', 'hiseq_2500', 'hiseq_3000', 'hiseq_4000', 'hiseq_x_ten', 'miniseq', 'miseq', 'nextseq_1000', 'nextseq', 'nextseq_500', 'nextseq_550', 'gridion', 'minion', 'promethion', 'rs_II', 'sequel', 'sequel_II', 'revio', 'scimax', 'ed_400_with_rs_422', 'mettler_toledo_30029066', 'mettler_toledo_30266628', 'ums_hyprop2_020210', 'fialyzer_1000', 'fialyzer_1001', 'fialyzer_1002', 'orbitrap_q_exactive_plus', 'toc_5000A', 'toc_lcsh', 'sr_1', 'xth320', 'aps_20bm', 'xmap12b', name='ModelEnum'))
+    model = Column(Enum('exploris_21T', 'exploris_240', 'exploris_480', 'ltq_orbitrap_velos', 'orbitrap_fusion_lumos', 'orbitrap_eclipse_tribid', 'orbitrap_q_exactive', 'orbitrap_iqx_tribrid', 'orbitrap_exploris_120', 'solarix_7T', 'solarix_12T', 'solarix_15T', 'agilent_8890A', 'agilent_7980A', 'agilent_7500', 'thermo_element_xr', 'vortex_genie_2', 'novaseq', 'novaseq_6000', 'novaseq_x', 'hiseq', 'hiseq_1000', 'hiseq_1500', 'hiseq_2000', 'hiseq_2500', 'hiseq_3000', 'hiseq_4000', 'hiseq_x_ten', 'miniseq', 'miseq', 'nextseq_1000', 'nextseq', 'nextseq_500', 'nextseq_550', 'gridion', 'minion', 'promethion', 'rs_II', 'sequel', 'sequel_II', 'revio', 'scimax', 'ed_400_with_rs_422', 'mettler_toledo_30029066', 'mettler_toledo_30266628', 'ums_hyprop2_020210', 'fialyzer_1000', 'fialyzer_1001', 'fialyzer_1002', 'orbitrap_q_exactive_plus', 'toc_5000A', 'toc_lcsh', 'sr_1', 'xth320', 'aps_20bm', 'xmap12b', name='ModelEnum'))
     serial_number = Column(Text())
     lims_resource_id = Column(Integer())
     location = Column(Text())
@@ -624,7 +624,7 @@ class MobilePhaseSubstance(Base):
     id = Column(UUID(), primary_key=True, nullable=False )
     volume_ul = Column(Float())
     in_mobile_phase = Column(UUID(), ForeignKey('MobilePhase.id'))
-    substance = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    substance = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'DTPA', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
     concentration = Column(Text())
     
 
@@ -796,7 +796,7 @@ addition_time for the inducer scenario.
     __tablename__ = 'WellReagentAddition'
 
     id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    compound = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'), nullable=False )
+    compound = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'DTPA', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'), nullable=False )
     substance_role = Column(Enum('buffer', 'acid', 'base', 'ms_proteolytic_enzyme', 'solvent', 'surfactant', 'derivatizing_agent', 'solubilizing_agent', 'nutrient', 'normalizer', 'inducer', name='SubstanceRoleEnum'), nullable=False )
     volume_ul = Column(Float(), nullable=False )
     stock_concentration = Column(Float())
@@ -1050,6 +1050,37 @@ Corresponds to one row in LAM_XAS_LCF_DROWS.
 
     def __repr__(self):
         return f"XASLCFDataRow(id={self.id},row_num={self.row_num},x_val={self.x_val},data_val={self.data_val},fit_val={self.fit_val},residual={self.residual},XASLCFProduct_id={self.XASLCFProduct_id},)"
+
+
+
+    
+
+
+class Revision(Base):
+    """
+    Abstract base for one versioned snapshot of a processed data product for one
+sample. Revisions are immutable; a correction is appended as a new revision.
+Subclasses exist per data product.
+    """
+    __tablename__ = 'Revision'
+
+    revises = Column(UUID(), ForeignKey('ProcessedData.id'), nullable=False )
+    version_number = Column(Integer(), nullable=False )
+    is_current = Column(Boolean(), nullable=False )
+    revision_date = Column(DateTime(), nullable=False )
+    schema_version = Column(Text(), nullable=False )
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+    # Unique constraints
+    __table_args__ = (
+        UniqueConstraint('revises', 'version_number'),
+    )
+    
+
+    def __repr__(self):
+        return f"Revision(revises={self.revises},version_number={self.version_number},is_current={self.is_current},revision_date={self.revision_date},schema_version={self.schema_version},id={self.id},)"
 
 
 
@@ -1314,12 +1345,13 @@ class SubstancesUsedLink(Base):
 
     id = Column(UUID(), primary_key=True, nullable=False )
     sample_processing_substance = Column(UUID(), ForeignKey('SampleProcessingSubstance.id'))
+    sample_processing_id = Column(UUID(), ForeignKey('SampleProcessing.id'))
     
 
     
 
     def __repr__(self):
-        return f"SubstancesUsedLink(id={self.id},sample_processing_substance={self.sample_processing_substance},)"
+        return f"SubstancesUsedLink(id={self.id},sample_processing_substance={self.sample_processing_substance},sample_processing_id={self.sample_processing_id},)"
 
 
 
@@ -1334,7 +1366,7 @@ class SampleProcessingSubstance(Base):
 
     id = Column(UUID(), primary_key=True, nullable=False )
     volume_ml = Column(Float())
-    known_as = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    known_as = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'DTPA', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
     substance_role = Column(Enum('buffer', 'acid', 'base', 'ms_proteolytic_enzyme', 'solvent', 'surfactant', 'derivatizing_agent', 'solubilizing_agent', 'nutrient', 'normalizer', 'inducer', name='SubstanceRoleEnum'))
     source_concentration_mg_per_ml = Column(Float())
     final_concentration_mg_per_ml = Column(Float())
@@ -1564,7 +1596,10 @@ class PersonValue(Base):
 
 class QuantityValue(Base):
     """
-    A quantity value with numeric value and optional unit
+    A quantity value with numeric value and its own unit. Use only for slots
+whose unit can differ from record to record (e.g. provider-supplied
+values); lab data products with protocol-fixed units use range: double
+with unit.ucum_code instead. See docs/background/units.md.
     """
     __tablename__ = 'QuantityValue'
 
@@ -2137,7 +2172,7 @@ class Extraction_extraction_target(Base):
     __tablename__ = 'Extraction_extraction_target'
 
     Extraction_id = Column(UUID(), ForeignKey('Extraction.id'), primary_key=True)
-    extraction_target = Column(Enum('dna', 'rna', 'protein', 'metabolite', 'lipid', 'natural_organic_matter', 'unknown', name='AnalyteCategoryEnum'), primary_key=True)
+    extraction_target = Column(Enum('dna', 'rna', 'protein', 'metabolite', 'lipid', 'natural_organic_matter', 'cmm', 'unknown', name='AnalyteCategoryEnum'), primary_key=True)
     
 
     
@@ -2573,7 +2608,7 @@ class MassSpectrometryDataGenerationActivity(DataGenerationActivity):
     """
     __tablename__ = 'MassSpectrometryDataGenerationActivity'
 
-    analyte_category = Column(Enum('dna', 'rna', 'protein', 'metabolite', 'lipid', 'natural_organic_matter', 'unknown', name='AnalyteCategoryEnum'))
+    analyte_category = Column(Enum('dna', 'rna', 'protein', 'metabolite', 'lipid', 'natural_organic_matter', 'cmm', 'unknown', name='AnalyteCategoryEnum'))
     id = Column(UUID(), primary_key=True, nullable=False )
     sequence_order = Column(Integer())
     name = Column(Text(), nullable=False )
@@ -2614,7 +2649,7 @@ class MassSpectrometryConfiguration(Configuration):
 
     uid = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     injection = Column(Text(), nullable=False )
-    ionization = Column(Enum('electrospray_ionization', 'matrix_assisted_laser_desorption_ionization', 'atmospheric_pressure_photo_ionization', 'atmospheric_pressure_chemical_ionization', 'electron_ionization', name='IonizationSourceEnum'), nullable=False )
+    ionization = Column(Enum('electrospray_ionization', 'matrix_assisted_laser_desorption_ionization', 'atmospheric_pressure_photo_ionization', 'atmospheric_pressure_chemical_ionization', 'electron_ionization', 'plasma_ionization', name='IonizationSourceEnum'), nullable=False )
     fragmentation = Column(Enum('HCD', 'CID', 'ETD', name='FragmentationEnum'))
     polarity = Column(Enum('positive', 'negative', name='PolarityEnum'), nullable=False )
     resolution = Column(Enum('high', 'low', name='MassSpecResolutionEnum'), nullable=False )
@@ -3575,6 +3610,238 @@ class XCTDataGenerationActivity(DataGenerationActivity):
     
 
 
+class DataProductRevision(Revision):
+    """
+    A revision of a generic data product (DataProduct).
+    """
+    __tablename__ = 'DataProductRevision'
+
+    revises = Column(UUID(), ForeignKey('ProcessedData.id'), nullable=False )
+    version_number = Column(Integer(), nullable=False )
+    is_current = Column(Boolean(), nullable=False )
+    revision_date = Column(DateTime(), nullable=False )
+    schema_version = Column(Text(), nullable=False )
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"DataProductRevision(revises={self.revises},version_number={self.version_number},is_current={self.is_current},revision_date={self.revision_date},schema_version={self.schema_version},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class DataProcessingActivityRevision(Revision):
+    """
+    A revision of a data processing activity (DataProcessingActivity).
+    """
+    __tablename__ = 'DataProcessingActivityRevision'
+
+    revises = Column(UUID(), ForeignKey('ProcessedData.id'), nullable=False )
+    version_number = Column(Integer(), nullable=False )
+    is_current = Column(Boolean(), nullable=False )
+    revision_date = Column(DateTime(), nullable=False )
+    schema_version = Column(Text(), nullable=False )
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"DataProcessingActivityRevision(revises={self.revises},version_number={self.version_number},is_current={self.is_current},revision_date={self.revision_date},schema_version={self.schema_version},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class InstrumentDataRevision(Revision):
+    """
+    A revision of an instrument (Instrument).
+    """
+    __tablename__ = 'InstrumentDataRevision'
+
+    revises = Column(UUID(), ForeignKey('ProcessedData.id'), nullable=False )
+    version_number = Column(Integer(), nullable=False )
+    is_current = Column(Boolean(), nullable=False )
+    revision_date = Column(DateTime(), nullable=False )
+    schema_version = Column(Text(), nullable=False )
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"InstrumentDataRevision(revises={self.revises},version_number={self.version_number},is_current={self.is_current},revision_date={self.revision_date},schema_version={self.schema_version},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class DataGenerationActivityRevision(Revision):
+    """
+    A revision of a data generation activity (DataGenerationActivity).
+    """
+    __tablename__ = 'DataGenerationActivityRevision'
+
+    revises = Column(UUID(), ForeignKey('ProcessedData.id'), nullable=False )
+    version_number = Column(Integer(), nullable=False )
+    is_current = Column(Boolean(), nullable=False )
+    revision_date = Column(DateTime(), nullable=False )
+    schema_version = Column(Text(), nullable=False )
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"DataGenerationActivityRevision(revises={self.revises},version_number={self.version_number},is_current={self.is_current},revision_date={self.revision_date},schema_version={self.schema_version},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class ProcessedSampleRevision(Revision):
+    """
+    A revision of a processed sample (ProcessedSample).
+    """
+    __tablename__ = 'ProcessedSampleRevision'
+
+    revises = Column(UUID(), ForeignKey('ProcessedData.id'), nullable=False )
+    version_number = Column(Integer(), nullable=False )
+    is_current = Column(Boolean(), nullable=False )
+    revision_date = Column(DateTime(), nullable=False )
+    schema_version = Column(Text(), nullable=False )
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"ProcessedSampleRevision(revises={self.revises},version_number={self.version_number},is_current={self.is_current},revision_date={self.revision_date},schema_version={self.schema_version},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class SampleProcessingActivityRevision(Revision):
+    """
+    A revision of a sample processing activity (SampleProcessingActivity).
+    """
+    __tablename__ = 'SampleProcessingActivityRevision'
+
+    revises = Column(UUID(), ForeignKey('ProcessedData.id'), nullable=False )
+    version_number = Column(Integer(), nullable=False )
+    is_current = Column(Boolean(), nullable=False )
+    revision_date = Column(DateTime(), nullable=False )
+    schema_version = Column(Text(), nullable=False )
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"SampleProcessingActivityRevision(revises={self.revises},version_number={self.version_number},is_current={self.is_current},revision_date={self.revision_date},schema_version={self.schema_version},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class SampleRevision(Revision):
+    """
+    A revision of a sample (Sample).
+    """
+    __tablename__ = 'SampleRevision'
+
+    revises = Column(UUID(), ForeignKey('ProcessedData.id'), nullable=False )
+    version_number = Column(Integer(), nullable=False )
+    is_current = Column(Boolean(), nullable=False )
+    revision_date = Column(DateTime(), nullable=False )
+    schema_version = Column(Text(), nullable=False )
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"SampleRevision(revises={self.revises},version_number={self.version_number},is_current={self.is_current},revision_date={self.revision_date},schema_version={self.schema_version},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class SamplingActivityRevision(Revision):
+    """
+    A revision of a sampling activity (SamplingActivity).
+    """
+    __tablename__ = 'SamplingActivityRevision'
+
+    revises = Column(UUID(), ForeignKey('ProcessedData.id'), nullable=False )
+    version_number = Column(Integer(), nullable=False )
+    is_current = Column(Boolean(), nullable=False )
+    revision_date = Column(DateTime(), nullable=False )
+    schema_version = Column(Text(), nullable=False )
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"SamplingActivityRevision(revises={self.revises},version_number={self.version_number},is_current={self.is_current},revision_date={self.revision_date},schema_version={self.schema_version},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
 class AerosolArmSample(Sample):
     """
     An aerosol sample collected by the ARM facility.
@@ -3796,7 +4063,7 @@ class CommerciallyPurchasedSample(Sample):
 
     analysis_type = Column(Text(), nullable=False )
     cas = Column(Text())
-    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'), nullable=False )
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'DTPA', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'), nullable=False )
     experimental_factor = Column(Text())
     experimental_factor_other = Column(Text())
     item_number = Column(Text())
@@ -4260,7 +4527,7 @@ class OtherUndescribedSample(Sample):
     chem_oxygen_dem = Column(Text())
     chloride = Column(Text())
     chlorophyll = Column(Text())
-    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'DTPA', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
     conduc = Column(Text())
     density = Column(Text())
     depth = Column(Text())
@@ -4935,7 +5202,7 @@ class SynthesizedMaterialSample(Sample):
 
     analysis_type = Column(Text(), nullable=False )
     cas = Column(Text())
-    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'DTPA', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
     experimental_factor = Column(Text())
     experimental_factor_other = Column(Text())
     genetic_mod = Column(Text())
@@ -5878,8 +6145,8 @@ class ChemicalConversionProcess(SampleProcessing):
     __tablename__ = 'ChemicalConversionProcess'
 
     substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
-    chemical_conversion_category = Column(Enum('addition', 'substitution', 'acid_base', 'reduction_oxidation', 'combustion', 'decomposition', 'protease_cleavage', name='ChemicalConversionCategoryEnum'))
-    digestion_method = Column(Enum('urea', 's_trap', 'fasp', 'other', name='DigestionMethodEnum'))
+    chemical_conversion_category = Column(Enum('addition', 'substitution', 'acid_base', 'reduction_oxidation', 'combustion', 'decomposition', 'protease_cleavage', 'microwave_digestion', name='ChemicalConversionCategoryEnum'))
+    protein_digestion_method = Column(Enum('urea', 's_trap', 'fasp', 'other', name='ProteinDigestionMethodEnum'))
     enrichment_type = Column(Enum('phosphopeptide', 'acetyl_peptide', 'ubiquitin_peptide', 'other', name='EnrichmentTypeEnum'))
     labeling_method = Column(Enum('tmt', 'itraq', 'label_free', 'other', name='LabelingMethodEnum'))
     temperature_celsius = Column(Float())
@@ -5896,7 +6163,7 @@ class ChemicalConversionProcess(SampleProcessing):
     
 
     def __repr__(self):
-        return f"ChemicalConversionProcess(substances_used={self.substances_used},chemical_conversion_category={self.chemical_conversion_category},digestion_method={self.digestion_method},enrichment_type={self.enrichment_type},labeling_method={self.labeling_method},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},id={self.id},name={self.name},description={self.description},in_protocol={self.in_protocol},)"
+        return f"ChemicalConversionProcess(substances_used={self.substances_used},chemical_conversion_category={self.chemical_conversion_category},protein_digestion_method={self.protein_digestion_method},enrichment_type={self.enrichment_type},labeling_method={self.labeling_method},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},id={self.id},name={self.name},description={self.description},in_protocol={self.in_protocol},)"
 
 
 
@@ -6957,7 +7224,8 @@ class BulkDensityProduct(ProcessedData):
     __tablename__ = 'BulkDensityProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    bulk_density = Column(Float())
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -6973,14 +7241,220 @@ class BulkDensityProduct(ProcessedData):
     s3_key = Column(Text(), nullable=False )
     filesize = Column(Integer())
     md5checksum = Column(Text())
-    bulk_density_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    bulk_density = relationship("QuantityValue", uselist=False, foreign_keys=[bulk_density_id])
     
 
     
 
     def __repr__(self):
-        return f"BulkDensityProduct(measure_type={self.measure_type},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},bulk_density_id={self.bulk_density_id},)"
+        return f"BulkDensityProduct(measure_type={self.measure_type},bulk_density={self.bulk_density},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class CMM_ICPMS_DigestionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample digestion targeting critical minerals and materials.
+    """
+    __tablename__ = 'CMM_ICPMS_DigestionProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    results_from_ms_processing = Column(UUID(), ForeignKey('MassSpectrometryDataProcessingActivity.id'))
+    Al_ug_per_g = Column(Float())
+    Ba_ug_per_g = Column(Float())
+    Ca_ug_per_g = Column(Float())
+    Ce_ug_per_g = Column(Float())
+    Co_ug_per_g = Column(Float())
+    Cr_ug_per_g = Column(Float())
+    Cu_ug_per_g = Column(Float())
+    Dy_ug_per_g = Column(Float())
+    Er_ug_per_g = Column(Float())
+    Eu_ug_per_g = Column(Float())
+    Fe_ug_per_g = Column(Float())
+    Gd_ug_per_g = Column(Float())
+    Ho_ug_per_g = Column(Float())
+    K_ug_per_g = Column(Float())
+    La_ug_per_g = Column(Float())
+    Li_ug_per_g = Column(Float())
+    Lu_ug_per_g = Column(Float())
+    Mg_ug_per_g = Column(Float())
+    Mn_ug_per_g = Column(Float())
+    Mo_ug_per_g = Column(Float())
+    Nd_ug_per_g = Column(Float())
+    Ni_ug_per_g = Column(Float())
+    Pr_ug_per_g = Column(Float())
+    Sc_ug_per_g = Column(Float())
+    Si_ug_per_g = Column(Float())
+    Sm_ug_per_g = Column(Float())
+    Sr_ug_per_g = Column(Float())
+    Tb_ug_per_g = Column(Float())
+    Tm_ug_per_g = Column(Float())
+    Y_ug_per_g = Column(Float())
+    Yb_ug_per_g = Column(Float())
+    Zn_ug_per_g = Column(Float())
+    flag_Al = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ba = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ca = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ce = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Co = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Cr = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Cu = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Dy = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Er = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Eu = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Fe = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Gd = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ho = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_K = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_La = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Li = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Lu = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Mg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Mn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Mo = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Nd = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ni = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Pr = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Sc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Si = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Sm = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Sr = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Tb = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Tm = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Y = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Yb = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Zn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    source_sample = Column(UUID(), ForeignKey('Sample.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    
+
+    
+
+    def __repr__(self):
+        return f"CMM_ICPMS_DigestionProduct(measure_type={self.measure_type},results_from_ms_processing={self.results_from_ms_processing},Al_ug_per_g={self.Al_ug_per_g},Ba_ug_per_g={self.Ba_ug_per_g},Ca_ug_per_g={self.Ca_ug_per_g},Ce_ug_per_g={self.Ce_ug_per_g},Co_ug_per_g={self.Co_ug_per_g},Cr_ug_per_g={self.Cr_ug_per_g},Cu_ug_per_g={self.Cu_ug_per_g},Dy_ug_per_g={self.Dy_ug_per_g},Er_ug_per_g={self.Er_ug_per_g},Eu_ug_per_g={self.Eu_ug_per_g},Fe_ug_per_g={self.Fe_ug_per_g},Gd_ug_per_g={self.Gd_ug_per_g},Ho_ug_per_g={self.Ho_ug_per_g},K_ug_per_g={self.K_ug_per_g},La_ug_per_g={self.La_ug_per_g},Li_ug_per_g={self.Li_ug_per_g},Lu_ug_per_g={self.Lu_ug_per_g},Mg_ug_per_g={self.Mg_ug_per_g},Mn_ug_per_g={self.Mn_ug_per_g},Mo_ug_per_g={self.Mo_ug_per_g},Nd_ug_per_g={self.Nd_ug_per_g},Ni_ug_per_g={self.Ni_ug_per_g},Pr_ug_per_g={self.Pr_ug_per_g},Sc_ug_per_g={self.Sc_ug_per_g},Si_ug_per_g={self.Si_ug_per_g},Sm_ug_per_g={self.Sm_ug_per_g},Sr_ug_per_g={self.Sr_ug_per_g},Tb_ug_per_g={self.Tb_ug_per_g},Tm_ug_per_g={self.Tm_ug_per_g},Y_ug_per_g={self.Y_ug_per_g},Yb_ug_per_g={self.Yb_ug_per_g},Zn_ug_per_g={self.Zn_ug_per_g},flag_Al={self.flag_Al},flag_Ba={self.flag_Ba},flag_Ca={self.flag_Ca},flag_Ce={self.flag_Ce},flag_Co={self.flag_Co},flag_Cr={self.flag_Cr},flag_Cu={self.flag_Cu},flag_Dy={self.flag_Dy},flag_Er={self.flag_Er},flag_Eu={self.flag_Eu},flag_Fe={self.flag_Fe},flag_Gd={self.flag_Gd},flag_Ho={self.flag_Ho},flag_K={self.flag_K},flag_La={self.flag_La},flag_Li={self.flag_Li},flag_Lu={self.flag_Lu},flag_Mg={self.flag_Mg},flag_Mn={self.flag_Mn},flag_Mo={self.flag_Mo},flag_Nd={self.flag_Nd},flag_Ni={self.flag_Ni},flag_Pr={self.flag_Pr},flag_Sc={self.flag_Sc},flag_Si={self.flag_Si},flag_Sm={self.flag_Sm},flag_Sr={self.flag_Sr},flag_Tb={self.flag_Tb},flag_Tm={self.flag_Tm},flag_Y={self.flag_Y},flag_Yb={self.flag_Yb},flag_Zn={self.flag_Zn},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class CMM_ICPMS_ExtractionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample extraction targeting critical minerals and materials.
+    """
+    __tablename__ = 'CMM_ICPMS_ExtractionProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    results_from_ms_processing = Column(UUID(), ForeignKey('MassSpectrometryDataProcessingActivity.id'))
+    Al_ug_per_g = Column(Float())
+    Ba_ug_per_g = Column(Float())
+    Ca_ug_per_g = Column(Float())
+    Ce_ug_per_g = Column(Float())
+    Co_ug_per_g = Column(Float())
+    Cr_ug_per_g = Column(Float())
+    Cu_ug_per_g = Column(Float())
+    Dy_ug_per_g = Column(Float())
+    Er_ug_per_g = Column(Float())
+    Eu_ug_per_g = Column(Float())
+    Fe_ug_per_g = Column(Float())
+    Gd_ug_per_g = Column(Float())
+    Ho_ug_per_g = Column(Float())
+    K_ug_per_g = Column(Float())
+    La_ug_per_g = Column(Float())
+    Li_ug_per_g = Column(Float())
+    Lu_ug_per_g = Column(Float())
+    Mg_ug_per_g = Column(Float())
+    Mn_ug_per_g = Column(Float())
+    Mo_ug_per_g = Column(Float())
+    Nd_ug_per_g = Column(Float())
+    Ni_ug_per_g = Column(Float())
+    Pr_ug_per_g = Column(Float())
+    Sc_ug_per_g = Column(Float())
+    Si_ug_per_g = Column(Float())
+    Sm_ug_per_g = Column(Float())
+    Sr_ug_per_g = Column(Float())
+    Tb_ug_per_g = Column(Float())
+    Tm_ug_per_g = Column(Float())
+    Y_ug_per_g = Column(Float())
+    Yb_ug_per_g = Column(Float())
+    Zn_ug_per_g = Column(Float())
+    flag_Al = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ba = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ca = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ce = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Co = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Cr = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Cu = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Dy = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Er = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Eu = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Fe = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Gd = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ho = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_K = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_La = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Li = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Lu = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Mg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Mn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Mo = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Nd = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ni = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Pr = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Sc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Si = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Sm = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Sr = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Tb = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Tm = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Y = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Yb = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Zn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    source_sample = Column(UUID(), ForeignKey('Sample.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    
+
+    
+
+    def __repr__(self):
+        return f"CMM_ICPMS_ExtractionProduct(measure_type={self.measure_type},results_from_ms_processing={self.results_from_ms_processing},Al_ug_per_g={self.Al_ug_per_g},Ba_ug_per_g={self.Ba_ug_per_g},Ca_ug_per_g={self.Ca_ug_per_g},Ce_ug_per_g={self.Ce_ug_per_g},Co_ug_per_g={self.Co_ug_per_g},Cr_ug_per_g={self.Cr_ug_per_g},Cu_ug_per_g={self.Cu_ug_per_g},Dy_ug_per_g={self.Dy_ug_per_g},Er_ug_per_g={self.Er_ug_per_g},Eu_ug_per_g={self.Eu_ug_per_g},Fe_ug_per_g={self.Fe_ug_per_g},Gd_ug_per_g={self.Gd_ug_per_g},Ho_ug_per_g={self.Ho_ug_per_g},K_ug_per_g={self.K_ug_per_g},La_ug_per_g={self.La_ug_per_g},Li_ug_per_g={self.Li_ug_per_g},Lu_ug_per_g={self.Lu_ug_per_g},Mg_ug_per_g={self.Mg_ug_per_g},Mn_ug_per_g={self.Mn_ug_per_g},Mo_ug_per_g={self.Mo_ug_per_g},Nd_ug_per_g={self.Nd_ug_per_g},Ni_ug_per_g={self.Ni_ug_per_g},Pr_ug_per_g={self.Pr_ug_per_g},Sc_ug_per_g={self.Sc_ug_per_g},Si_ug_per_g={self.Si_ug_per_g},Sm_ug_per_g={self.Sm_ug_per_g},Sr_ug_per_g={self.Sr_ug_per_g},Tb_ug_per_g={self.Tb_ug_per_g},Tm_ug_per_g={self.Tm_ug_per_g},Y_ug_per_g={self.Y_ug_per_g},Yb_ug_per_g={self.Yb_ug_per_g},Zn_ug_per_g={self.Zn_ug_per_g},flag_Al={self.flag_Al},flag_Ba={self.flag_Ba},flag_Ca={self.flag_Ca},flag_Ce={self.flag_Ce},flag_Co={self.flag_Co},flag_Cr={self.flag_Cr},flag_Cu={self.flag_Cu},flag_Dy={self.flag_Dy},flag_Er={self.flag_Er},flag_Eu={self.flag_Eu},flag_Fe={self.flag_Fe},flag_Gd={self.flag_Gd},flag_Ho={self.flag_Ho},flag_K={self.flag_K},flag_La={self.flag_La},flag_Li={self.flag_Li},flag_Lu={self.flag_Lu},flag_Mg={self.flag_Mg},flag_Mn={self.flag_Mn},flag_Mo={self.flag_Mo},flag_Nd={self.flag_Nd},flag_Ni={self.flag_Ni},flag_Pr={self.flag_Pr},flag_Sc={self.flag_Sc},flag_Si={self.flag_Si},flag_Sm={self.flag_Sm},flag_Sr={self.flag_Sr},flag_Tb={self.flag_Tb},flag_Tm={self.flag_Tm},flag_Y={self.flag_Y},flag_Yb={self.flag_Yb},flag_Zn={self.flag_Zn},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
 
 
 
@@ -7000,10 +7474,14 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     __tablename__ = 'ElementalAnalysisProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    flag_total_carbon = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_total_nitrogen = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tkn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_total_sulfur = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    total_carbon = Column(Float())
+    total_nitrogen = Column(Float())
+    total_kjeldahl_nitrogen = Column(Float())
+    total_sulfur = Column(Float())
+    flag_total_carbon = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_total_nitrogen = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_tkn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_total_sulfur = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7019,20 +7497,12 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     s3_key = Column(Text(), nullable=False )
     filesize = Column(Integer())
     md5checksum = Column(Text())
-    total_carbon_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    total_carbon = relationship("QuantityValue", uselist=False, foreign_keys=[total_carbon_id])
-    total_nitrogen_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    total_nitrogen = relationship("QuantityValue", uselist=False, foreign_keys=[total_nitrogen_id])
-    total_kjeldahl_nitrogen_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    total_kjeldahl_nitrogen = relationship("QuantityValue", uselist=False, foreign_keys=[total_kjeldahl_nitrogen_id])
-    total_sulfur_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    total_sulfur = relationship("QuantityValue", uselist=False, foreign_keys=[total_sulfur_id])
     
 
     
 
     def __repr__(self):
-        return f"ElementalAnalysisProduct(measure_type={self.measure_type},flag_total_carbon={self.flag_total_carbon},flag_total_nitrogen={self.flag_total_nitrogen},flag_tkn={self.flag_tkn},flag_total_sulfur={self.flag_total_sulfur},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},total_carbon_id={self.total_carbon_id},total_nitrogen_id={self.total_nitrogen_id},total_kjeldahl_nitrogen_id={self.total_kjeldahl_nitrogen_id},total_sulfur_id={self.total_sulfur_id},)"
+        return f"ElementalAnalysisProduct(measure_type={self.measure_type},total_carbon={self.total_carbon},total_nitrogen={self.total_nitrogen},total_kjeldahl_nitrogen={self.total_kjeldahl_nitrogen},total_sulfur={self.total_sulfur},flag_total_carbon={self.flag_total_carbon},flag_total_nitrogen={self.flag_total_nitrogen},flag_tkn={self.flag_tkn},flag_total_sulfur={self.flag_total_sulfur},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
 
 
 
@@ -7051,7 +7521,8 @@ class EnzymeProduct(ProcessedData):
     __tablename__ = 'EnzymeProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    beta_glucosidase_ug_pnp_per_g_per_h = Column(Float())
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7067,14 +7538,12 @@ class EnzymeProduct(ProcessedData):
     s3_key = Column(Text(), nullable=False )
     filesize = Column(Integer())
     md5checksum = Column(Text())
-    beta_glucosidase_ug_pnp_per_g_per_h_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    beta_glucosidase_ug_pnp_per_g_per_h = relationship("QuantityValue", uselist=False, foreign_keys=[beta_glucosidase_ug_pnp_per_g_per_h_id])
     
 
     
 
     def __repr__(self):
-        return f"EnzymeProduct(measure_type={self.measure_type},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},beta_glucosidase_ug_pnp_per_g_per_h_id={self.beta_glucosidase_ug_pnp_per_g_per_h_id},)"
+        return f"EnzymeProduct(measure_type={self.measure_type},beta_glucosidase_ug_pnp_per_g_per_h={self.beta_glucosidase_ug_pnp_per_g_per_h},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
 
 
 
@@ -7093,7 +7562,8 @@ class GWCMoistureProduct(ProcessedData):
     __tablename__ = 'GWCMoistureProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    gwc_percent = Column(Float())
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7109,14 +7579,12 @@ class GWCMoistureProduct(ProcessedData):
     s3_key = Column(Text(), nullable=False )
     filesize = Column(Integer())
     md5checksum = Column(Text())
-    gwc_percent_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    gwc_percent = relationship("QuantityValue", uselist=False, foreign_keys=[gwc_percent_id])
     
 
     
 
     def __repr__(self):
-        return f"GWCMoistureProduct(measure_type={self.measure_type},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},gwc_percent_id={self.gwc_percent_id},)"
+        return f"GWCMoistureProduct(measure_type={self.measure_type},gwc_percent={self.gwc_percent},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
 
 
 
@@ -7139,7 +7607,7 @@ class HydraulicPropertiesProduct(ProcessedData):
     n = Column(Float())
     theta_r = Column(Float())
     theta_s = Column(Float())
-    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7180,18 +7648,30 @@ Individual QC flags for each ion using ProcessedDataFlag enum.
     __tablename__ = 'IonsAnalysisProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    flag_sulfate = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_boron = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_zinc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_manganate = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_copper = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_iron = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_calcium = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_magnesium = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_sodium = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_potassium = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_total_bases = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_cec = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    sulfate = Column(Float())
+    boron = Column(Float())
+    zinc = Column(Float())
+    manganate = Column(Float())
+    copper = Column(Float())
+    iron = Column(Float())
+    calcium = Column(Float())
+    magnesium = Column(Float())
+    sodium = Column(Float())
+    potassium = Column(Float())
+    total_bases = Column(Float())
+    cation_exchange_capacity = Column(Float())
+    flag_sulfate = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_boron = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_zinc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_manganate = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_copper = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_iron = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_calcium = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_magnesium = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_sodium = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_potassium = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_total_bases = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_cec = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7207,36 +7687,12 @@ Individual QC flags for each ion using ProcessedDataFlag enum.
     s3_key = Column(Text(), nullable=False )
     filesize = Column(Integer())
     md5checksum = Column(Text())
-    sulfate_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    sulfate = relationship("QuantityValue", uselist=False, foreign_keys=[sulfate_id])
-    boron_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    boron = relationship("QuantityValue", uselist=False, foreign_keys=[boron_id])
-    zinc_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    zinc = relationship("QuantityValue", uselist=False, foreign_keys=[zinc_id])
-    manganate_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    manganate = relationship("QuantityValue", uselist=False, foreign_keys=[manganate_id])
-    copper_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    copper = relationship("QuantityValue", uselist=False, foreign_keys=[copper_id])
-    iron_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    iron = relationship("QuantityValue", uselist=False, foreign_keys=[iron_id])
-    calcium_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    calcium = relationship("QuantityValue", uselist=False, foreign_keys=[calcium_id])
-    magnesium_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    magnesium = relationship("QuantityValue", uselist=False, foreign_keys=[magnesium_id])
-    sodium_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    sodium = relationship("QuantityValue", uselist=False, foreign_keys=[sodium_id])
-    potassium_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    potassium = relationship("QuantityValue", uselist=False, foreign_keys=[potassium_id])
-    total_bases_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    total_bases = relationship("QuantityValue", uselist=False, foreign_keys=[total_bases_id])
-    cation_exchange_capacity_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    cation_exchange_capacity = relationship("QuantityValue", uselist=False, foreign_keys=[cation_exchange_capacity_id])
     
 
     
 
     def __repr__(self):
-        return f"IonsAnalysisProduct(measure_type={self.measure_type},flag_sulfate={self.flag_sulfate},flag_boron={self.flag_boron},flag_zinc={self.flag_zinc},flag_manganate={self.flag_manganate},flag_copper={self.flag_copper},flag_iron={self.flag_iron},flag_calcium={self.flag_calcium},flag_magnesium={self.flag_magnesium},flag_sodium={self.flag_sodium},flag_potassium={self.flag_potassium},flag_total_bases={self.flag_total_bases},flag_cec={self.flag_cec},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},sulfate_id={self.sulfate_id},boron_id={self.boron_id},zinc_id={self.zinc_id},manganate_id={self.manganate_id},copper_id={self.copper_id},iron_id={self.iron_id},calcium_id={self.calcium_id},magnesium_id={self.magnesium_id},sodium_id={self.sodium_id},potassium_id={self.potassium_id},total_bases_id={self.total_bases_id},cation_exchange_capacity_id={self.cation_exchange_capacity_id},)"
+        return f"IonsAnalysisProduct(measure_type={self.measure_type},sulfate={self.sulfate},boron={self.boron},zinc={self.zinc},manganate={self.manganate},copper={self.copper},iron={self.iron},calcium={self.calcium},magnesium={self.magnesium},sodium={self.sodium},potassium={self.potassium},total_bases={self.total_bases},cation_exchange_capacity={self.cation_exchange_capacity},flag_sulfate={self.flag_sulfate},flag_boron={self.flag_boron},flag_zinc={self.flag_zinc},flag_manganate={self.flag_manganate},flag_copper={self.flag_copper},flag_iron={self.flag_iron},flag_calcium={self.flag_calcium},flag_magnesium={self.flag_magnesium},flag_sodium={self.flag_sodium},flag_potassium={self.flag_potassium},flag_total_bases={self.flag_total_bases},flag_cec={self.flag_cec},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
 
 
 
@@ -7250,7 +7706,7 @@ Individual QC flags for each ion using ProcessedDataFlag enum.
 
 class HClExtOMProduct(ProcessedData):
     """
-    Mineral-Associated Organic Matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
+    HCl-extractable organic matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'HClExtOMProduct'
@@ -7258,12 +7714,14 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     replicate = Column(Integer())
     produced_by_toctn_run = Column(UUID(), ForeignKey('TOC_TN_DataGenerationActivity.id'))
+    total_organic_carbon = Column(Float())
     total_organic_carbon_avg = Column(Float())
+    total_nitrogen = Column(Float())
     total_nitrogen_avg = Column(Float())
-    flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_toc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_toc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_tn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7279,16 +7737,12 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     s3_key = Column(Text(), nullable=False )
     filesize = Column(Integer())
     md5checksum = Column(Text())
-    total_organic_carbon_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    total_organic_carbon = relationship("QuantityValue", uselist=False, foreign_keys=[total_organic_carbon_id])
-    total_nitrogen_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    total_nitrogen = relationship("QuantityValue", uselist=False, foreign_keys=[total_nitrogen_id])
     
 
     
 
     def __repr__(self):
-        return f"HClExtOMProduct(measure_type={self.measure_type},replicate={self.replicate},produced_by_toctn_run={self.produced_by_toctn_run},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},total_organic_carbon_id={self.total_organic_carbon_id},total_nitrogen_id={self.total_nitrogen_id},)"
+        return f"HClExtOMProduct(measure_type={self.measure_type},replicate={self.replicate},produced_by_toctn_run={self.produced_by_toctn_run},total_organic_carbon={self.total_organic_carbon},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen={self.total_nitrogen},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
 
 
 
@@ -7309,12 +7763,14 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     replicate = Column(Integer())
+    mbc = Column(Float())
     mbc_avg = Column(Float())
+    mbn = Column(Float())
     mbn_avg = Column(Float())
-    flag_mbc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_mbn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_mbc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_mbn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_mbc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_mbn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_mbc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_mbn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7330,16 +7786,12 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     s3_key = Column(Text(), nullable=False )
     filesize = Column(Integer())
     md5checksum = Column(Text())
-    mbc_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    mbc = relationship("QuantityValue", uselist=False, foreign_keys=[mbc_id])
-    mbn_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    mbn = relationship("QuantityValue", uselist=False, foreign_keys=[mbn_id])
     
 
     
 
     def __repr__(self):
-        return f"MicrobialBiomassProduct(measure_type={self.measure_type},replicate={self.replicate},mbc_avg={self.mbc_avg},mbn_avg={self.mbn_avg},flag_mbc={self.flag_mbc},flag_mbn={self.flag_mbn},flag_mbc_avg={self.flag_mbc_avg},flag_mbn_avg={self.flag_mbn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},mbc_id={self.mbc_id},mbn_id={self.mbn_id},)"
+        return f"MicrobialBiomassProduct(measure_type={self.measure_type},replicate={self.replicate},mbc={self.mbc},mbc_avg={self.mbc_avg},mbn={self.mbn},mbn_avg={self.mbn_avg},flag_mbc={self.flag_mbc},flag_mbn={self.flag_mbn},flag_mbc_avg={self.flag_mbc_avg},flag_mbn_avg={self.flag_mbn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
 
 
 
@@ -7360,12 +7812,14 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     replicate = Column(Integer())
+    no3_n = Column(Float())
     no3_n_avg = Column(Float())
+    nh4_n = Column(Float())
     nh4_n_avg = Column(Float())
-    flag_no3n = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_nh4n = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_no3n_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_nh4n_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_no3n = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_nh4n = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_no3n_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_nh4n_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7381,16 +7835,12 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     s3_key = Column(Text(), nullable=False )
     filesize = Column(Integer())
     md5checksum = Column(Text())
-    no3_n_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    no3_n = relationship("QuantityValue", uselist=False, foreign_keys=[no3_n_id])
-    nh4_n_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nh4_n = relationship("QuantityValue", uselist=False, foreign_keys=[nh4_n_id])
     
 
     
 
     def __repr__(self):
-        return f"NitrogenAnalysisProduct(measure_type={self.measure_type},replicate={self.replicate},no3_n_avg={self.no3_n_avg},nh4_n_avg={self.nh4_n_avg},flag_no3n={self.flag_no3n},flag_nh4n={self.flag_nh4n},flag_no3n_avg={self.flag_no3n_avg},flag_nh4n_avg={self.flag_nh4n_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},no3_n_id={self.no3_n_id},nh4_n_id={self.nh4_n_id},)"
+        return f"NitrogenAnalysisProduct(measure_type={self.measure_type},replicate={self.replicate},no3_n={self.no3_n},no3_n_avg={self.no3_n_avg},nh4_n={self.nh4_n},nh4_n_avg={self.nh4_n_avg},flag_no3n={self.flag_no3n},flag_nh4n={self.flag_nh4n},flag_no3n_avg={self.flag_no3n_avg},flag_nh4n_avg={self.flag_nh4n_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
 
 
 
@@ -7412,9 +7862,10 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     replicate = Column(Integer())
     extraction_method = Column(Text())
+    phosphorus = Column(Float())
     phosphorus_avg = Column(Float())
-    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7430,14 +7881,12 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     s3_key = Column(Text(), nullable=False )
     filesize = Column(Integer())
     md5checksum = Column(Text())
-    phosphorus_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    phosphorus = relationship("QuantityValue", uselist=False, foreign_keys=[phosphorus_id])
     
 
     
 
     def __repr__(self):
-        return f"PhosphorusAnalysisProduct(measure_type={self.measure_type},replicate={self.replicate},extraction_method={self.extraction_method},phosphorus_avg={self.phosphorus_avg},flag={self.flag},flag_avg={self.flag_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},phosphorus_id={self.phosphorus_id},)"
+        return f"PhosphorusAnalysisProduct(measure_type={self.measure_type},replicate={self.replicate},extraction_method={self.extraction_method},phosphorus={self.phosphorus},phosphorus_avg={self.phosphorus_avg},flag={self.flag},flag_avg={self.flag_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
 
 
 
@@ -7457,7 +7906,7 @@ class RespirationProduct(ProcessedData):
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     respiration_co2_c_ug_per_g = Column(Float())
-    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7490,15 +7939,38 @@ class RespirationProduct(ProcessedData):
     
 
 
-class TextureProduct(ProcessedData):
+class Rhizo_ICPMS_DigestionProduct(ProcessedData):
     """
-    Soil texture analysis product, typically derived via hydrometer or similar instrument.
-Individual QC flags for each measurement using ProcessedDataFlag enum.
+    ICP-MS results from a sample digestion targeting critical minerals and materials in rhizosphere samples.
     """
-    __tablename__ = 'TextureProduct'
+    __tablename__ = 'Rhizo_ICPMS_DigestionProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    results_from_ms_processing = Column(UUID(), ForeignKey('MassSpectrometryDataProcessingActivity.id'))
+    Al_ug_per_g = Column(Float())
+    Ca_ug_per_g = Column(Float())
+    Co_ug_per_g = Column(Float())
+    Cu_ug_per_g = Column(Float())
+    Fe_ug_per_g = Column(Float())
+    K_ug_per_g = Column(Float())
+    Mg_ug_per_g = Column(Float())
+    Mn_ug_per_g = Column(Float())
+    Ni_ug_per_g = Column(Float())
+    P_ug_per_g = Column(Float())
+    S_ug_per_g = Column(Float())
+    Zn_ug_per_g = Column(Float())
+    flag_Al = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ca = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Co = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Cu = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Fe = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_K = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Mg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Mn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ni = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_P = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_S = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Zn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7514,18 +7986,100 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     s3_key = Column(Text(), nullable=False )
     filesize = Column(Integer())
     md5checksum = Column(Text())
-    sand_pct_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    sand_pct = relationship("QuantityValue", uselist=False, foreign_keys=[sand_pct_id])
-    silt_pct_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    silt_pct = relationship("QuantityValue", uselist=False, foreign_keys=[silt_pct_id])
-    clay_pct_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    clay_pct = relationship("QuantityValue", uselist=False, foreign_keys=[clay_pct_id])
     
 
     
 
     def __repr__(self):
-        return f"TextureProduct(measure_type={self.measure_type},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},sand_pct_id={self.sand_pct_id},silt_pct_id={self.silt_pct_id},clay_pct_id={self.clay_pct_id},)"
+        return f"Rhizo_ICPMS_DigestionProduct(measure_type={self.measure_type},results_from_ms_processing={self.results_from_ms_processing},Al_ug_per_g={self.Al_ug_per_g},Ca_ug_per_g={self.Ca_ug_per_g},Co_ug_per_g={self.Co_ug_per_g},Cu_ug_per_g={self.Cu_ug_per_g},Fe_ug_per_g={self.Fe_ug_per_g},K_ug_per_g={self.K_ug_per_g},Mg_ug_per_g={self.Mg_ug_per_g},Mn_ug_per_g={self.Mn_ug_per_g},Ni_ug_per_g={self.Ni_ug_per_g},P_ug_per_g={self.P_ug_per_g},S_ug_per_g={self.S_ug_per_g},Zn_ug_per_g={self.Zn_ug_per_g},flag_Al={self.flag_Al},flag_Ca={self.flag_Ca},flag_Co={self.flag_Co},flag_Cu={self.flag_Cu},flag_Fe={self.flag_Fe},flag_K={self.flag_K},flag_Mg={self.flag_Mg},flag_Mn={self.flag_Mn},flag_Ni={self.flag_Ni},flag_P={self.flag_P},flag_S={self.flag_S},flag_Zn={self.flag_Zn},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class Rhizo_ICPMS_ExtractionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample extraction targeting critical minerals and materials in rhizosphere samples.
+    """
+    __tablename__ = 'Rhizo_ICPMS_ExtractionProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    results_from_ms_processing = Column(UUID(), ForeignKey('MassSpectrometryDataProcessingActivity.id'))
+    Co_ug_per_g = Column(Float())
+    Ni_ug_per_g = Column(Float())
+    flag_Co = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_Ni = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    source_sample = Column(UUID(), ForeignKey('Sample.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    
+
+    
+
+    def __repr__(self):
+        return f"Rhizo_ICPMS_ExtractionProduct(measure_type={self.measure_type},results_from_ms_processing={self.results_from_ms_processing},Co_ug_per_g={self.Co_ug_per_g},Ni_ug_per_g={self.Ni_ug_per_g},flag_Co={self.flag_Co},flag_Ni={self.flag_Ni},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class TextureProduct(ProcessedData):
+    """
+    Soil texture analysis product, typically derived via hydrometer or similar instrument.
+Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
+    __tablename__ = 'TextureProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    sand_pct = Column(Float())
+    silt_pct = Column(Float())
+    clay_pct = Column(Float())
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    source_sample = Column(UUID(), ForeignKey('Sample.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    
+
+    
+
+    def __repr__(self):
+        return f"TextureProduct(measure_type={self.measure_type},sand_pct={self.sand_pct},silt_pct={self.silt_pct},clay_pct={self.clay_pct},flag={self.flag},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
 
 
 
@@ -7547,12 +8101,14 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     replicate = Column(Integer())
     produced_by_toctn_run = Column(UUID(), ForeignKey('TOC_TN_DataGenerationActivity.id'))
+    total_organic_carbon = Column(Float())
     total_organic_carbon_avg = Column(Float())
+    total_nitrogen = Column(Float())
     total_nitrogen_avg = Column(Float())
-    flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_toc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_tn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_toc = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_tn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_toc_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_tn_avg = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7568,16 +8124,12 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     s3_key = Column(Text(), nullable=False )
     filesize = Column(Integer())
     md5checksum = Column(Text())
-    total_organic_carbon_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    total_organic_carbon = relationship("QuantityValue", uselist=False, foreign_keys=[total_organic_carbon_id])
-    total_nitrogen_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    total_nitrogen = relationship("QuantityValue", uselist=False, foreign_keys=[total_nitrogen_id])
     
 
     
 
     def __repr__(self):
-        return f"WEOMProduct(measure_type={self.measure_type},replicate={self.replicate},produced_by_toctn_run={self.produced_by_toctn_run},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},total_organic_carbon_id={self.total_organic_carbon_id},total_nitrogen_id={self.total_nitrogen_id},)"
+        return f"WEOMProduct(measure_type={self.measure_type},replicate={self.replicate},produced_by_toctn_run={self.produced_by_toctn_run},total_organic_carbon={self.total_organic_carbon},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen={self.total_nitrogen},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},source_sample={self.source_sample},id={self.id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},)"
 
 
 
@@ -7597,7 +8149,7 @@ class PHProduct(ProcessedData):
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     ph = Column(Float())
-    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7773,14 +8325,14 @@ UVDataGenerationActivity.One UVDataGenerationActivity may have many
     __tablename__ = 'UVSpectroscopyProduct'
 
     produced_by_uv_run = Column(UUID(), ForeignKey('UVDataGenerationActivity.id'))
-    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'DTPA', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
     retention_time_min = Column(Float())
     peak_area = Column(Float())
     peak_percent_area = Column(Float())
     peak_height = Column(Float())
     weight_percent = Column(Float())
     concentration_ug_per_uL = Column(Float())
-    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -7822,10 +8374,10 @@ RIDataGenerationActivity.One RIDataGenerationActivity may have many
     __tablename__ = 'RIProduct'
 
     produced_by_ri_run = Column(UUID(), ForeignKey('RIDataGenerationActivity.id'))
-    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
+    compound_name = Column(Enum('acetonitrile', 'acetic_acid', 'alphaLP', 'ammonium_acetate', 'ammonium_bicarbonate', 'ammonium_sulfate', 'amitriptyline', 'Arg-C', 'Asp-N', 'chloroform', 'chymotrypsin', 'deionized_water', 'DTPA', 'ethanol', 'ferric_chloride', 'formic_acid', 'glucose', 'Glu-C', 'hydrochloric_acid', 'isopropyl_alcohol', 'iptg', 'Lys-C', 'Lys-N', 'N-methyl-N-trimethylsilyltrifluoroacetamide', 'methanol', 'methoxyamine', 'medronic_acid', 'phosphoric_acid', 'trimethylchlorosilane', 'trypsin', 'water', name='ChemicalEntityEnum'))
     weight_percent = Column(Float())
     concentration_ug_per_uL = Column(Float())
-    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -8183,7 +8735,7 @@ class XCTProduct(XRayDataProduct):
     permeability_z_um2 = Column(Float())
     flow_rate_z_mm3_per_sec = Column(Float())
     tortuosity_z = Column(Float())
-    flag_xct = Column(Text())
+    flag_xct = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -8269,33 +8821,33 @@ Required enum additions to enums.yaml:
     pb_mg_per_kg = Column(Float())
     th_mg_per_kg = Column(Float())
     u_mg_per_kg = Column(Float())
-    flag_cl = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_v = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_cr = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_ni = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_cu = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_zn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_ga = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_as = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_se = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_br = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_rb = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_sr = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_y = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_nb = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_mo = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_ag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_cd = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_in = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_sn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_sb = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_cs = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_ba = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_la = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_ce = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_pb = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_th = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_u = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_cl = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_v = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_cr = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_ni = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_cu = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_zn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_ga = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_as = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_se = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_br = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_rb = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_sr = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_y = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_nb = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_mo = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_ag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_cd = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_in = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_sn = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_sb = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_cs = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_ba = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_la = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_ce = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_pb = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_th = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_u = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))
@@ -8376,16 +8928,16 @@ Required enum additions to enums.yaml:
     pyrite_percent = Column(Float())
     halite_percent = Column(Float())
     gypsum_percent = Column(Float())
-    flag_quartz = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_albite = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_microcline = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_muscovite = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_kaolinite = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_chlorite = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_hornblende = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_pyrite = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_halite = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
-    flag_gypsum = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='ProcessedDataFlag'))
+    flag_quartz = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_albite = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_microcline = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_muscovite = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_kaolinite = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_chlorite = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_hornblende = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_pyrite = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_halite = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
+    flag_gypsum = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', 'In_Queue', 'No_Pore_Connectivity', 'Partial_Connected_Pores', name='ProcessedDataFlag'))
     summary_metrics = Column(Text())
     lims_barcode = Column(Text())
     source_sample = Column(UUID(), ForeignKey('Sample.id'))

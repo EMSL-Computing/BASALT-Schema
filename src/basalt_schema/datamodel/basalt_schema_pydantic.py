@@ -85,6 +85,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'basalt_schema',
                  'metagenomics',
                  'monet_data_generation_activities',
                  'products',
+                 'revisions',
                  'organism',
                  'sample_classes',
                  'sample_processing',
@@ -159,7 +160,7 @@ class AnalysisTypeEnum(str, Enum):
 
 class AnalyteCategoryEnum(str, Enum):
     """
-    bundling common terms for different omics types by biomolecule being analyzed
+    Bundling terms for common analytes
     """
     dna = "dna"
     rna = "rna"
@@ -167,6 +168,7 @@ class AnalyteCategoryEnum(str, Enum):
     metabolite = "metabolite"
     lipid = "lipid"
     natural_organic_matter = "natural_organic_matter"
+    cmm = "cmm"
     unknown = "unknown"
 
 
@@ -244,6 +246,10 @@ class ChemicalConversionCategoryEnum(str, Enum):
     """
     an enzymatic cleavage which relies on an enzyme with protease activity to act on proteins and to produce polypeptides (protein fragments).
     """
+    microwave_digestion = "microwave_digestion"
+    """
+    a digestion process that uses microwave energy to heat the sample and reagents to accelerate the digestion of the sample.
+    """
 
 
 class ChemicalEntityEnum(str, Enum):
@@ -262,6 +268,7 @@ class ChemicalEntityEnum(str, Enum):
     chloroform = "chloroform"
     chymotrypsin = "chymotrypsin"
     deionized_water = "deionized_water"
+    DTPA = "DTPA"
     ethanol = "ethanol"
     ferric_chloride = "ferric_chloride"
     formic_acid = "formic_acid"
@@ -350,7 +357,7 @@ class DeviceTypeEnum(str, Enum):
     thermomixer = "thermomixer"
 
 
-class DigestionMethodEnum(str, Enum):
+class ProteinDigestionMethodEnum(str, Enum):
     """
     Named protein digestion methods used in sample preparation.
     """
@@ -754,6 +761,7 @@ class IonizationSourceEnum(str, Enum):
     atmospheric_pressure_photo_ionization = "atmospheric_pressure_photo_ionization"
     atmospheric_pressure_chemical_ionization = "atmospheric_pressure_chemical_ionization"
     electron_ionization = "electron_ionization"
+    plasma_ionization = "plasma_ionization"
 
 
 class LabelingMethodEnum(str, Enum):
@@ -1055,6 +1063,8 @@ class ModelEnum(str, Enum):
     solarix_15T = "solarix_15T"
     agilent_8890A = "agilent_8890A"
     agilent_7980A = "agilent_7980A"
+    agilent_7500 = "agilent_7500"
+    thermo_element_xr = "thermo_element_xr"
     vortex_genie_2 = "vortex_genie_2"
     novaseq = "novaseq"
     novaseq_6000 = "novaseq_6000"
@@ -1325,14 +1335,47 @@ class PolarityEnum(str, Enum):
 
 
 class ProcessedDataFlag(str, Enum):
+    """
+    Data quality flags for processed data product values; a blank flag means no flag. Definitions follow the Flag_Definitions tab of the lab column sheet (Column_Descriptions.xlsx).
+    """
     Below_Detection = "Below_Detection"
+    """
+    All replicates for the sample were below the method detection limit.
+    """
     Below_Reporting_Limit = "Below_Reporting_Limit"
+    """
+    Value was below the reporting limit of the analytical method.
+    """
     High_Background = "High_Background"
     Out_of_Range = "Out_of_Range"
+    """
+    Measured value fell outside the physically plausible range for the variable and was removed.
+    """
     Outlier = "Outlier"
     Data_not_available = "Data_not_available"
+    """
+    Data are not available for this sample (e.g., sample not received, not analyzed, or not scanned).
+    """
     Failed_QC = "Failed_QC"
+    """
+    No replicate passed quality control, so no value is reported.
+    """
     Insufficient_Material = "Insufficient_Material"
+    """
+    Not enough sample material was available to run the analysis.
+    """
+    In_Queue = "In_Queue"
+    """
+    Sample is awaiting analysis or processing; data will be added in a future release.
+    """
+    No_Pore_Connectivity = "No_Pore_Connectivity"
+    """
+    XCT: no connected pore network was detected at the measured resolution, so connectivity, permeability, flow rate, and tortuosity are blank.
+    """
+    Partial_Connected_Pores = "Partial_Connected_Pores"
+    """
+    XCT: permeability, flow rate and tortuosity are blank for the directions with no connected flow path (X, Y and/or Z). Values for the other directions and all other pore metrics are reported.
+    """
 
 
 class ProductMeasureType(str, Enum):
@@ -2198,6 +2241,7 @@ class Configuration(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2302,6 +2346,7 @@ class MassSpectrometryConfiguration(Configuration):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2400,6 +2445,7 @@ class ChromatographyConfiguration(Configuration):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2441,6 +2487,7 @@ class MobilePhaseSegment(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2489,6 +2536,7 @@ class MobilePhase(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2530,6 +2578,7 @@ class MobilePhaseSubstance(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2577,6 +2626,7 @@ class CalibrationStandardRun(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -2670,6 +2720,7 @@ class PurchasedMaterial(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -3084,6 +3135,435 @@ class XASLCFDataRow(ConfiguredBaseModel):
     residual: Optional[float] = Field(default=None, description="""Fit residual at this point (data_val - fit_val)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFDataRow']} })
 
 
+class Revision(ConfiguredBaseModel):
+    """
+    Abstract base for one versioned snapshot of a processed data product for one
+    sample. Revisions are immutable; a correction is appended as a new revision.
+    Subclasses exist per data product.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions',
+         'unique_keys': {'revision_identity': {'unique_key_name': 'revision_identity',
+                                               'unique_key_slots': ['revises',
+                                                                    'version_number']}}})
+
+    revises: str = Field(default=..., description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class DataProductRevision(Revision):
+    """
+    A revision of a generic data product (DataProduct).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class DataProcessingActivityRevision(Revision):
+    """
+    A revision of a data processing activity (DataProcessingActivity).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class InstrumentDataRevision(Revision):
+    """
+    A revision of an instrument (Instrument).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class DataGenerationActivityRevision(Revision):
+    """
+    A revision of a data generation activity (DataGenerationActivity).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class ProcessedSampleRevision(Revision):
+    """
+    A revision of a processed sample (ProcessedSample).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class SampleProcessingActivityRevision(Revision):
+    """
+    A revision of a sample processing activity (SampleProcessingActivity).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class SampleRevision(Revision):
+    """
+    A revision of a sample (Sample).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
+class SamplingActivityRevision(Revision):
+    """
+    A revision of a sampling activity (SamplingActivity).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/revisions'})
+
+    revises: str = Field(default=..., description="""The processed data product (current row) this revision is a snapshot of.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    version_number: int = Field(default=..., description="""Monotonic revision number per revised product. The first revision is 1.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    is_current: bool = Field(default=..., description="""True when this revision is the one stored on the product table.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    revision_date: datetime  = Field(default=..., description="""When this revision was written.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    schema_version: str = Field(default=..., description="""BASALT git tag (e.g. v0.3.0) that the revised data follows. Each tag gets its own product table, so the data itself is the row in that table; no copy of the values is kept on the revision.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Revision']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+
+
 class Organism(ConfiguredBaseModel):
     """
     Reference data representing a biological identity (strain, isolate,
@@ -3154,6 +3634,7 @@ class Organism(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -3339,6 +3820,7 @@ class Site(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -3522,6 +4004,7 @@ class Sample(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -4129,6 +4612,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -4726,6 +5210,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -4948,6 +5433,7 @@ Indicates if the sample is subject to CBI restrictions.""", json_schema_extra = 
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -5393,6 +5879,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -6118,6 +6605,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -6260,6 +6748,7 @@ Aliases: samp_store_temp""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -7061,6 +7550,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -7720,6 +8210,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -8220,6 +8711,7 @@ in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta":
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -9410,6 +9902,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -10152,6 +10645,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -10853,6 +11347,7 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -11781,6 +12276,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -12605,6 +13101,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -13034,6 +13531,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -13789,6 +14287,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -14682,6 +15181,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -14802,6 +15302,7 @@ class ProcessedSample(Sample):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -14910,6 +15411,7 @@ class CoreSection(ProcessedSample):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15007,6 +15509,7 @@ class SamplingActivity(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15131,6 +15634,7 @@ class AerosolArmSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15303,6 +15807,7 @@ class AerosolSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15449,6 +15954,7 @@ class CommerciallyPurchasedSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15619,6 +16125,7 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15738,6 +16245,7 @@ class EngineeredStrainSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -15896,6 +16404,7 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -16066,6 +16575,7 @@ class MixedCultureSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -16230,6 +16740,7 @@ class MonetSoilSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -16417,6 +16928,7 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -16591,6 +17103,7 @@ class PlantSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -16761,6 +17274,7 @@ class PureCultureSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -16935,6 +17449,7 @@ class SedimentSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17167,6 +17682,7 @@ class SoilSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17268,6 +17784,7 @@ class SynthesizedMaterialSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17426,6 +17943,7 @@ class TerraformSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17600,6 +18118,7 @@ class WaterSamplingActivity(SamplingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17720,6 +18239,7 @@ class Activity(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17811,6 +18331,7 @@ class Entity(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -17901,6 +18422,7 @@ class DataProduct(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18053,6 +18575,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18187,7 +18710,11 @@ class MassSpectrometryDataProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/mass-spec'})
 
-    results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -18205,6 +18732,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18337,7 +18865,11 @@ class MSImageProduct(MassSpectrometryDataProduct):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/mass-spec'})
 
-    results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -18355,6 +18887,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18487,7 +19020,11 @@ class MolecularIdentificationProduct(MassSpectrometryDataProduct):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/mass-spec'})
 
-    results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -18505,6 +19042,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18638,7 +19176,11 @@ class MetaproteomicsProduct(MassSpectrometryDataProduct):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/mass-spec'})
 
     metaproteomics_result_type: Optional[MetaproteomicsResultTypeEnum] = Field(default=None, description="""The type of metaproteomics results file.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetaproteomicsProduct']} })
-    results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -18656,6 +19198,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18813,6 +19356,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -18968,6 +19512,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -19122,6 +19667,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -19277,6 +19823,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -19410,6 +19957,8 @@ class BulkDensityProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -19420,6 +19969,8 @@ class BulkDensityProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -19427,8 +19978,8 @@ class BulkDensityProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    bulk_density: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    bulk_density: Optional[float] = Field(default=None, description="""Bulk density (g per cm3 soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct'], 'unit': {'ucum_code': 'g/cm3'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for bulk density; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -19455,6 +20006,577 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+    name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    project: Optional[int] = Field(default=None, title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'SamplingActivity',
+                       'DataProduct'],
+         'todos': ['should this be an ID? CURIE can use the one NMDC has '
+                   'https://bioregistry.io/reference/emsl.project:60141 where '
+                   'emsl.project is the CURIE prefix']} })
+    sampling_set: Optional[int] = Field(default=None, title="sampling set", description="""Sampling set number for grouping related samples collected together.
+This is a user-defined sequential integer that can be used to link samples collected
+in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    core_section: Optional[CoreSectionEnum] = Field(default=None, title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
+         'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
+    sample_name: Optional[str] = Field(default=None, title="sample name", description="""The name or label that is present on the shipped sample. This should
+be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_name'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'DataProduct'],
+         'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
+                   'classes. Defined separately for compatibility with source data '
+                   "files using 'sample_name' column headers."]} })
+    s3_base_url: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_bucket: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_key: str = Field(default=..., description="""MinIO/S3 object key; required for all data products""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    filesize: Optional[int] = Field(default=None, description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    md5checksum: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+
+
+class CMMICPMSDigestionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample digestion targeting critical minerals and materials.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+
+    measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'GWCMoistureProduct',
+                       'HydraulicPropertiesProduct',
+                       'IonsAnalysisProduct',
+                       'HClExtOMProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
+                       'TextureProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'XCTProduct',
+                       'XRFElementalProduct',
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Al_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Ba_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Ca_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Ce_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Co_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Cr_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Cu_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Dy_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Er_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Eu_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Fe_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Gd_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Ho_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    K_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    La_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Li_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Lu_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Mg_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Mn_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Mo_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Nd_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Ni_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Pr_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Sc_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Si_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Sm_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Sr_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Tb_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Tm_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Y_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Yb_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Zn_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Al: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Ba: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Ca: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Ce: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Co: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Cr: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Cu: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Dy: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Er: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Eu: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Fe: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Gd: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Ho: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_K: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_La: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Li: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Lu: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Mg: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Mn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Mo: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Nd: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Ni: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Pr: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Sc: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Si: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Sm: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Sr: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Tb: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Tm: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Y: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Yb: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Zn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
+Direction: structured key-value pairs; per-type schemas TBD:
+  ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+  xrf:       per-element concentration results + QC flag
+  lcms:      feature count, identification count, MSI-2 fraction
+Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
+    lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
+    source_sample: Optional[str] = Field(default=None, description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+                       'MetagenomicsProduct',
+                       'SampleStorage',
+                       'ProcessedData']} })
+    id: str = Field(default=..., description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+    name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    project: Optional[int] = Field(default=None, title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'SamplingActivity',
+                       'DataProduct'],
+         'todos': ['should this be an ID? CURIE can use the one NMDC has '
+                   'https://bioregistry.io/reference/emsl.project:60141 where '
+                   'emsl.project is the CURIE prefix']} })
+    sampling_set: Optional[int] = Field(default=None, title="sampling set", description="""Sampling set number for grouping related samples collected together.
+This is a user-defined sequential integer that can be used to link samples collected
+in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    core_section: Optional[CoreSectionEnum] = Field(default=None, title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
+         'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
+    sample_name: Optional[str] = Field(default=None, title="sample name", description="""The name or label that is present on the shipped sample. This should
+be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_name'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'DataProduct'],
+         'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
+                   'classes. Defined separately for compatibility with source data '
+                   "files using 'sample_name' column headers."]} })
+    s3_base_url: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_bucket: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_key: str = Field(default=..., description="""MinIO/S3 object key; required for all data products""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    filesize: Optional[int] = Field(default=None, description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    md5checksum: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+
+
+class CMMICPMSExtractionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample extraction targeting critical minerals and materials.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+
+    measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'GWCMoistureProduct',
+                       'HydraulicPropertiesProduct',
+                       'IonsAnalysisProduct',
+                       'HClExtOMProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
+                       'TextureProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'XCTProduct',
+                       'XRFElementalProduct',
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Al_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Ba_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Ca_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Ce_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Co_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Cr_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Cu_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Dy_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Er_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Eu_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Fe_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Gd_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Ho_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    K_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    La_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Li_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Lu_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Mg_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Mn_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Mo_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Nd_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Ni_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Pr_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Sc_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Si_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Sm_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Sr_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Tb_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Tm_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Y_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Yb_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    Zn_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Al: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Ba: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Ca: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Ce: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Co: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Cr: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Cu: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Dy: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Er: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Eu: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Fe: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Gd: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Ho: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_K: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_La: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Li: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Lu: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Mg: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Mn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Mo: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Nd: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Ni: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Pr: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Sc: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Si: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Sm: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Sr: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Tb: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Tm: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Y: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Yb: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct', 'CMM_ICPMS_ExtractionProduct']} })
+    flag_Zn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
+Direction: structured key-value pairs; per-type schemas TBD:
+  ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+  xrf:       per-element concentration results + QC flag
+  lcms:      feature count, identification count, MSI-2 fraction
+Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
+    lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
+    source_sample: Optional[str] = Field(default=None, description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+                       'MetagenomicsProduct',
+                       'SampleStorage',
+                       'ProcessedData']} })
+    id: str = Field(default=..., description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -19589,6 +20711,8 @@ class ElementalAnalysisProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -19599,6 +20723,8 @@ class ElementalAnalysisProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -19606,14 +20732,15 @@ class ElementalAnalysisProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    total_carbon: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    total_nitrogen: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
-    total_kjeldahl_nitrogen: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    total_sulfur: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    flag_total_carbon: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    flag_total_nitrogen: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    total_carbon: Optional[float] = Field(default=None, description="""Total carbon content (weight percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct'], 'unit': {'ucum_code': '%'}} })
+    total_nitrogen: Optional[float] = Field(default=None, description="""Total nitrogen content (weight percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': '%'}} })
+    total_kjeldahl_nitrogen: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    total_sulfur: Optional[float] = Field(default=None, description="""Total sulfur content (weight percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct'], 'unit': {'ucum_code': '%'}} })
+    flag_total_carbon: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for total carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    flag_total_nitrogen: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for total nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
     flag_tkn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
-    flag_total_sulfur: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
+    flag_total_sulfur: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for total sulfur; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -19631,6 +20758,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -19764,6 +20892,8 @@ class EnzymeProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -19774,6 +20904,8 @@ class EnzymeProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -19781,8 +20913,8 @@ class EnzymeProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    beta_glucosidase_ug_pnp_per_g_per_h: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    beta_glucosidase_ug_pnp_per_g_per_h: Optional[float] = Field(default=None, description="""Beta-glucosidase activity (ug pNP per g soil per h).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeProduct'], 'unit': {'ucum_code': 'ug{pNP}/g/h'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for beta-glucosidase activity; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -19809,6 +20941,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -19942,6 +21075,8 @@ class GWCMoistureProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -19952,6 +21087,8 @@ class GWCMoistureProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -19959,8 +21096,8 @@ class GWCMoistureProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    gwc_percent: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['GWCMoistureProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    gwc_percent: Optional[float] = Field(default=None, description="""Gravimetric water content (percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GWCMoistureProduct'], 'unit': {'ucum_code': '%'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for gravimetric water content; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -19987,6 +21124,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -20120,6 +21258,8 @@ class HydraulicPropertiesProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -20130,6 +21270,8 @@ class HydraulicPropertiesProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -20137,11 +21279,11 @@ class HydraulicPropertiesProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    alpha: Optional[float] = Field(default=None, description="""Van Genuchten shape parameter alpha (1/cm). Controls the inverse of the air-entry suction; typically fitted by HYPROP-FIT or similar software.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
-    n: Optional[float] = Field(default=None, description="""Van Genuchten pore-size distribution index n (dimensionless, n > 1). Controls the slope of the water-retention curve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
-    theta_r: Optional[float] = Field(default=None, description="""Residual volumetric water content theta_r (cm3 cm). The water content at which liquid conductivity approaches zero.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
-    theta_s: Optional[float] = Field(default=None, description="""Saturated volumetric water content theta_s (cm3 cm e-3). Approximates total porosity under saturated conditions.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""QC flag for the entire VGM fit (e.g. missing sample, failed QC).""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    alpha: Optional[float] = Field(default=None, description="""van Genuchten scale parameter, inversely proportional to mean pore diameter (per cm). Typically fitted by HYPROP-FIT or similar software.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct'], 'unit': {'ucum_code': '/cm'}} })
+    n: Optional[float] = Field(default=None, description="""van Genuchten parameter that describes the pore-size distribution of the soil (dimensionless, n > 1). Controls the slope of the water-retention curve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct'], 'unit': {'ucum_code': '1'}} })
+    theta_r: Optional[float] = Field(default=None, description="""Residual volumetric water content from HYPROP soil water retention model (cm3 water per cm3 soil). The water content at which liquid conductivity approaches zero.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct'], 'unit': {'ucum_code': 'cm3/cm3'}} })
+    theta_s: Optional[float] = Field(default=None, description="""Saturated volumetric water content from HYPROP soil water retention model (cm3 water per cm3 soil). Approximates total porosity under saturated conditions.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct'], 'unit': {'ucum_code': 'cm3/cm3'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for HYPROP water retention parameters; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -20168,6 +21310,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -20302,6 +21445,8 @@ class IonsAnalysisProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -20312,6 +21457,8 @@ class IonsAnalysisProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -20319,45 +21466,50 @@ class IonsAnalysisProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    sulfate: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+    sulfate: Optional[float] = Field(default=None, description="""Sulfate sulfur content (mg S per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
-                       'WaterSample']} })
-    boron: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    zinc: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    manganate: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    copper: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    iron: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    calcium: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'WaterSample'],
+         'unit': {'ucum_code': 'mg{S}/kg'}} })
+    boron: Optional[float] = Field(default=None, description="""Boron content (mg B per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'mg/kg'}} })
+    zinc: Optional[float] = Field(default=None, description="""Zinc content (mg Zn per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'mg/kg'}} })
+    manganate: Optional[float] = Field(default=None, description="""Manganese content (mg Mn per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'mg/kg'}} })
+    copper: Optional[float] = Field(default=None, description="""Copper content (mg Cu per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'mg/kg'}} })
+    iron: Optional[float] = Field(default=None, description="""Iron content (mg Fe per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'mg/kg'}} })
+    calcium: Optional[float] = Field(default=None, description="""Calcium content (milliequivalents per 100 grams of soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
-                       'WaterSample']} })
-    magnesium: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'WaterSample'],
+         'unit': {'ucum_code': 'meq/(100.g)'}} })
+    magnesium: Optional[float] = Field(default=None, description="""Magnesium content (milliequivalents per 100 grams of soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
-                       'WaterSample']} })
-    sodium: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'WaterSample'],
+         'unit': {'ucum_code': 'meq/(100.g)'}} })
+    sodium: Optional[float] = Field(default=None, description="""Sodium content (milliequivalents per 100 grams of soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
-                       'WaterSample']} })
-    potassium: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
+                       'WaterSample'],
+         'unit': {'ucum_code': 'meq/(100.g)'}} })
+    potassium: Optional[float] = Field(default=None, description="""Potassium content (milliequivalents per 100 grams of soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
-                       'WaterSample']} })
-    total_bases: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    cation_exchange_capacity: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_sulfate: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_boron: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_zinc: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_manganate: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_copper: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_iron: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_calcium: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_magnesium: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_sodium: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_potassium: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_total_bases: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
-    flag_cec: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+                       'WaterSample'],
+         'unit': {'ucum_code': 'meq/(100.g)'}} })
+    total_bases: Optional[float] = Field(default=None, description="""Sum of exchangeable base cations Ca + Mg + Na + K (milliequivalents per 100 grams of soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'meq/(100.g)'}} })
+    cation_exchange_capacity: Optional[float] = Field(default=None, description="""Cation exchange capacity (milliequivalents per 100 grams of soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct'], 'unit': {'ucum_code': 'meq/(100.g)'}} })
+    flag_sulfate: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for sulfate sulfur; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_boron: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for boron; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_zinc: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for zinc; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_manganate: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for manganese; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_copper: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for copper; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_iron: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for iron; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_calcium: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for calcium; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_magnesium: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for magnesium; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_sodium: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for sodium; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_potassium: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for potassium; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_total_bases: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for total bases; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
+    flag_cec: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for cation exchange capacity; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -20375,6 +21527,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -20503,12 +21656,14 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 class HClExtOMProduct(ProcessedData):
     """
-    Mineral-Associated Organic Matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
+    HCl-extractable organic matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -20519,6 +21674,8 @@ class HClExtOMProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -20534,14 +21691,18 @@ class HClExtOMProduct(ProcessedData):
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
     produced_by_toctn_run: Optional[str] = Field(default=None, description="""a reference to the TOC/TN data generation activity that produced this measurement.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_organic_carbon: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_organic_carbon_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_nitrogen: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
-    total_nitrogen_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_toc: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_tn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_toc_avg: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_tn_avg: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    total_organic_carbon: Optional[float] = Field(default=None, description="""HCl-extractable organic carbon content (mg C per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{C}/kg'}} })
+    total_organic_carbon_avg: Optional[float] = Field(default=None, description="""Mean of replicate HCl-extractable organic carbon values (mg C per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{C}/kg'}} })
+    total_nitrogen: Optional[float] = Field(default=None, description="""HCl-extractable total nitrogen content (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{N}/kg'}} })
+    total_nitrogen_avg: Optional[float] = Field(default=None, description="""Mean of replicate HCl-extractable total nitrogen values (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{N}/kg'}} })
+    flag_toc: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for HCl-extractable organic carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    flag_tn: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for HCl-extractable total nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    flag_toc_avg: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for the replicate mean of HCl-extractable organic carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    flag_tn_avg: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for the replicate mean of HCl-extractable total nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -20559,6 +21720,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -20693,6 +21855,8 @@ class MicrobialBiomassProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -20703,6 +21867,8 @@ class MicrobialBiomassProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -20717,14 +21883,14 @@ class MicrobialBiomassProduct(ProcessedData):
                        'WEOMProduct',
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
-    mbc: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    mbc_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    mbn: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    mbn_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    flag_mbc: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    flag_mbn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    flag_mbc_avg: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
-    flag_mbn_avg: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
+    mbc: Optional[float] = Field(default=None, description="""Microbial biomass carbon (mg C per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct'], 'unit': {'ucum_code': 'mg{C}/kg'}} })
+    mbc_avg: Optional[float] = Field(default=None, description="""Mean of replicate microbial biomass carbon values (mg C per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct'], 'unit': {'ucum_code': 'mg{C}/kg'}} })
+    mbn: Optional[float] = Field(default=None, description="""Microbial biomass nitrogen (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct'], 'unit': {'ucum_code': 'mg{N}/kg'}} })
+    mbn_avg: Optional[float] = Field(default=None, description="""Mean of replicate microbial biomass nitrogen values (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct'], 'unit': {'ucum_code': 'mg{N}/kg'}} })
+    flag_mbc: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for microbial biomass carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
+    flag_mbn: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for microbial biomass nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
+    flag_mbc_avg: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for the replicate mean of microbial biomass carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
+    flag_mbn_avg: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for the replicate mean of microbial biomass nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MicrobialBiomassProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -20742,6 +21908,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -20876,6 +22043,8 @@ class NitrogenAnalysisProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -20886,6 +22055,8 @@ class NitrogenAnalysisProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -20900,14 +22071,14 @@ class NitrogenAnalysisProduct(ProcessedData):
                        'WEOMProduct',
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
-    no3_n: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    no3_n_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    nh4_n: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    nh4_n_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    flag_no3n: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    flag_nh4n: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    flag_no3n_avg: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
-    flag_nh4n_avg: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
+    no3_n: Optional[float] = Field(default=None, description="""Nitrate nitrogen content (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct'], 'unit': {'ucum_code': 'mg{N}/kg'}} })
+    no3_n_avg: Optional[float] = Field(default=None, description="""Mean of replicate nitrate nitrogen values (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct'], 'unit': {'ucum_code': 'mg{N}/kg'}} })
+    nh4_n: Optional[float] = Field(default=None, description="""Ammonium nitrogen content (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct'], 'unit': {'ucum_code': 'mg{N}/kg'}} })
+    nh4_n_avg: Optional[float] = Field(default=None, description="""Mean of replicate ammonium nitrogen values (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct'], 'unit': {'ucum_code': 'mg{N}/kg'}} })
+    flag_no3n: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for nitrate nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
+    flag_nh4n: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for ammonium nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
+    flag_no3n_avg: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for the replicate mean of nitrate nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
+    flag_nh4n_avg: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for the replicate mean of ammonium nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NitrogenAnalysisProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -20925,6 +22096,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -21059,6 +22231,8 @@ class PhosphorusAnalysisProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -21069,6 +22243,8 @@ class PhosphorusAnalysisProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -21095,9 +22271,9 @@ class PhosphorusAnalysisProduct(ProcessedData):
                        'SoilSample',
                        'WaterSample',
                        'Extraction']} })
-    phosphorus: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
-    phosphorus_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    phosphorus: Optional[float] = Field(default=None, description="""Phosphate phosphorus content (mg P per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct'], 'unit': {'ucum_code': 'mg{P}/kg'}} })
+    phosphorus_avg: Optional[float] = Field(default=None, description="""Mean of replicate phosphate phosphorus values (mg P per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct'], 'unit': {'ucum_code': 'mg{P}/kg'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for phosphate phosphorus; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -21107,7 +22283,7 @@ class PhosphorusAnalysisProduct(ProcessedData):
                        'pHProduct',
                        'UVSpectroscopyProduct',
                        'RIProduct']} })
-    flag_avg: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
+    flag_avg: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for the replicate mean of phosphate phosphorus; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhosphorusAnalysisProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -21125,6 +22301,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -21258,6 +22435,8 @@ class RespirationProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -21268,6 +22447,8 @@ class RespirationProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -21275,8 +22456,8 @@ class RespirationProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    respiration_co2_c_ug_per_g: Optional[float] = Field(default=None, description="""Soil respiration expressed as µg CO₂-C per gram soil""", json_schema_extra = { "linkml_meta": {'domain_of': ['RespirationProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    respiration_co2_c_ug_per_g: Optional[float] = Field(default=None, description="""Potential soil respiration measured as cumulative microbial CO2-C production over a 24-hour burst incubation (ug CO2-C per g dried soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['RespirationProduct'], 'unit': {'ucum_code': 'ug{CO2-C}/g'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for respiration; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -21303,6 +22484,445 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+    name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    project: Optional[int] = Field(default=None, title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'SamplingActivity',
+                       'DataProduct'],
+         'todos': ['should this be an ID? CURIE can use the one NMDC has '
+                   'https://bioregistry.io/reference/emsl.project:60141 where '
+                   'emsl.project is the CURIE prefix']} })
+    sampling_set: Optional[int] = Field(default=None, title="sampling set", description="""Sampling set number for grouping related samples collected together.
+This is a user-defined sequential integer that can be used to link samples collected
+in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    core_section: Optional[CoreSectionEnum] = Field(default=None, title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
+         'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
+    sample_name: Optional[str] = Field(default=None, title="sample name", description="""The name or label that is present on the shipped sample. This should
+be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_name'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'DataProduct'],
+         'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
+                   'classes. Defined separately for compatibility with source data '
+                   "files using 'sample_name' column headers."]} })
+    s3_base_url: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_bucket: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_key: str = Field(default=..., description="""MinIO/S3 object key; required for all data products""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    filesize: Optional[int] = Field(default=None, description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    md5checksum: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+
+
+class RhizoICPMSDigestionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample digestion targeting critical minerals and materials in rhizosphere samples.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+
+    measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'GWCMoistureProduct',
+                       'HydraulicPropertiesProduct',
+                       'IonsAnalysisProduct',
+                       'HClExtOMProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
+                       'TextureProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'XCTProduct',
+                       'XRFElementalProduct',
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Al_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Ca_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Co_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Cu_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Fe_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    K_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Mg_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Mn_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    Ni_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    P_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Rhizo_ICPMS_DigestionProduct']} })
+    S_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Rhizo_ICPMS_DigestionProduct']} })
+    Zn_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Al: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Ca: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Co: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Cu: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Fe: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_K: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Mg: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Mn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    flag_Ni: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_P: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Rhizo_ICPMS_DigestionProduct']} })
+    flag_S: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Rhizo_ICPMS_DigestionProduct']} })
+    flag_Zn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct']} })
+    summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
+Direction: structured key-value pairs; per-type schemas TBD:
+  ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+  xrf:       per-element concentration results + QC flag
+  lcms:      feature count, identification count, MSI-2 fraction
+Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
+    lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
+    source_sample: Optional[str] = Field(default=None, description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+                       'MetagenomicsProduct',
+                       'SampleStorage',
+                       'ProcessedData']} })
+    id: str = Field(default=..., description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SampleStorage',
+                       'SamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'SubstancesUsedLink',
+                       'SampleProcessingSubstance',
+                       'Study',
+                       'ProjectParticipant',
+                       'PersonValue']} })
+    name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    project: Optional[int] = Field(default=None, title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'SamplingActivity',
+                       'DataProduct'],
+         'todos': ['should this be an ID? CURIE can use the one NMDC has '
+                   'https://bioregistry.io/reference/emsl.project:60141 where '
+                   'emsl.project is the CURIE prefix']} })
+    sampling_set: Optional[int] = Field(default=None, title="sampling set", description="""Sampling set number for grouping related samples collected together.
+This is a user-defined sequential integer that can be used to link samples collected
+in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    core_section: Optional[CoreSectionEnum] = Field(default=None, title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
+         'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
+    sample_name: Optional[str] = Field(default=None, title="sample name", description="""The name or label that is present on the shipped sample. This should
+be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_name'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'DataProduct'],
+         'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
+                   'classes. Defined separately for compatibility with source data '
+                   "files using 'sample_name' column headers."]} })
+    s3_base_url: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_bucket: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_key: str = Field(default=..., description="""MinIO/S3 object key; required for all data products""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    filesize: Optional[int] = Field(default=None, description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    md5checksum: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+
+
+class RhizoICPMSExtractionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample extraction targeting critical minerals and materials in rhizosphere samples.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+
+    measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'GWCMoistureProduct',
+                       'HydraulicPropertiesProduct',
+                       'IonsAnalysisProduct',
+                       'HClExtOMProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
+                       'TextureProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'XCTProduct',
+                       'XRFElementalProduct',
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
+    results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Co_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    Ni_ug_per_g: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Co: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    flag_Ni: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct']} })
+    summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
+Direction: structured key-value pairs; per-type schemas TBD:
+  ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+  xrf:       per-element concentration results + QC flag
+  lcms:      feature count, identification count, MSI-2 fraction
+Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
+    lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
+    source_sample: Optional[str] = Field(default=None, description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata',
+                       'MetagenomicsProduct',
+                       'SampleStorage',
+                       'ProcessedData']} })
+    id: str = Field(default=..., description="""Unique identifier for this record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MobilePhase',
+                       'MobilePhaseSubstance',
+                       'CalibrationStandardRun',
+                       'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -21437,6 +23057,8 @@ class TextureProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -21447,6 +23069,8 @@ class TextureProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -21454,10 +23078,10 @@ class TextureProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    sand_pct: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
-    silt_pct: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
-    clay_pct: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+    sand_pct: Optional[float] = Field(default=None, description="""Sand content (percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct'], 'unit': {'ucum_code': '%'}} })
+    silt_pct: Optional[float] = Field(default=None, description="""Silt content (percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct'], 'unit': {'ucum_code': '%'}} })
+    clay_pct: Optional[float] = Field(default=None, description="""Clay content (percent).""", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct'], 'unit': {'ucum_code': '%'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for texture (sand, silt, clay); blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -21484,6 +23108,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -21618,6 +23243,8 @@ class WEOMProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -21628,6 +23255,8 @@ class WEOMProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -21643,14 +23272,18 @@ class WEOMProduct(ProcessedData):
                        'ProcessedSample'],
          'todos': ['reconcile replicate modelling']} })
     produced_by_toctn_run: Optional[str] = Field(default=None, description="""a reference to the TOC/TN data generation activity that produced this measurement.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_organic_carbon: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_organic_carbon_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    total_nitrogen: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct']} })
-    total_nitrogen_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_toc: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_tn: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_toc_avg: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
-    flag_tn_avg: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    total_organic_carbon: Optional[float] = Field(default=None, description="""Water extractable organic carbon content (mg C per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{C}/kg'}} })
+    total_organic_carbon_avg: Optional[float] = Field(default=None, description="""Mean of replicate water extractable organic carbon values (mg C per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{C}/kg'}} })
+    total_nitrogen: Optional[float] = Field(default=None, description="""Water extractable total nitrogen content (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{N}/kg'}} })
+    total_nitrogen_avg: Optional[float] = Field(default=None, description="""Mean of replicate water extractable total nitrogen values (mg N per kg soil).""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct'],
+         'unit': {'ucum_code': 'mg{N}/kg'}} })
+    flag_toc: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for water extractable organic carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    flag_tn: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for water extractable total nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    flag_toc_avg: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for the replicate mean of water extractable organic carbon; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
+    flag_tn_avg: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for the replicate mean of water extractable total nitrogen; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HClExtOMProduct', 'WEOMProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -21668,6 +23301,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -21798,9 +23432,14 @@ class PHProduct(ProcessedData):
     """
     Soil pH analysis product, typically derived via pH meter or similar instrument.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products',
+         'slot_usage': {'ph': {'description': 'Soil pH.',
+                               'name': 'ph',
+                               'unit': {'ucum_code': '[pH]'}}}})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -21811,6 +23450,8 @@ class PHProduct(ProcessedData):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -21818,12 +23459,13 @@ class PHProduct(ProcessedData):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    ph: Optional[float] = Field(default=None, title="pH", description="""pH measurement of the sample or liquid portion of sample or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
+    ph: Optional[float] = Field(default=None, title="pH", description="""Soil pH.""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
-                       'WaterSample']} })
-    flag: Optional[ProcessedDataFlag] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'WaterSample'],
+         'unit': {'ucum_code': '[pH]'}} })
+    flag: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for pH; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
                        'HydraulicPropertiesProduct',
@@ -21850,6 +23492,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -22018,6 +23661,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -22151,6 +23795,8 @@ class XCTProduct(XRayDataProduct):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -22161,6 +23807,8 @@ class XCTProduct(XRayDataProduct):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -22168,38 +23816,38 @@ class XCTProduct(XRayDataProduct):
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
-    roi_x_voxel: Optional[float] = Field(default=None, description="""Number of voxels in X direction of ROI. Previously roi_volume_voxel.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    roi_y_voxel: Optional[float] = Field(default=None, description="""Number of voxels in Y direction of ROI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    roi_z_voxel: Optional[float] = Field(default=None, description="""Number of voxels in Z direction of ROI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    voxel_size_mm_per_voxel: Optional[float] = Field(default=None, description="""Linear dimension of a voxel (mm/voxel). Previously voxel_size.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    porosity_percent: Optional[float] = Field(default=None, description="""Percentage of total pore volume to total volume of ROI (%). Previously total_pore_volume.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    connected_pores_fraction: Optional[float] = Field(default=None, description="""Fraction of connected pore volume out of total volume (unitless).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_connectivity_percent: Optional[float] = Field(default=None, description="""Percentage of connected pore volume to all pore volume (%).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_equivalent_diameter_min_mm: Optional[float] = Field(default=None, description="""Minimum equivalent pore diameter (mm). Previously pore_diameter_min.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_equivalent_diameter_max_mm: Optional[float] = Field(default=None, description="""Maximum equivalent pore diameter (mm). Previously pore_diameter_max.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_equivalent_diameter_mean_mm: Optional[float] = Field(default=None, description="""Mean equivalent pore diameter (mm). Previously pore_diameter_mean.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_equivalent_diameter_median_mm: Optional[float] = Field(default=None, description="""Median equivalent pore diameter (mm). Previously pore_diameter_median.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_equivalent_diameter_variance_mm2: Optional[float] = Field(default=None, description="""Variance of equivalent pore diameter (mm^2). Previously pore_diameter_variance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_volume_min_mm3: Optional[float] = Field(default=None, description="""Minimum volume of pores (mm^3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_volume_max_mm3: Optional[float] = Field(default=None, description="""Maximum volume of pores (mm^3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_volume_mean_mm3: Optional[float] = Field(default=None, description="""Mean volume of pores (mm^3). Previously pore_volume_mean.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_volume_median_mm3: Optional[float] = Field(default=None, description="""Median volume of pores (mm^3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_volume_variance_mm6: Optional[float] = Field(default=None, description="""Variance of volume of pores (mm^6).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_area_min_mm2: Optional[float] = Field(default=None, description="""Minimum area of pores (mm^2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_area_max_mm2: Optional[float] = Field(default=None, description="""Maximum area of pores (mm^2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_area_mean_mm2: Optional[float] = Field(default=None, description="""Mean area of pores (mm^2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_area_median_mm2: Optional[float] = Field(default=None, description="""Median area of pores (mm^2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    pore_area_variance_mm4: Optional[float] = Field(default=None, description="""Variance of area of pores (mm^4).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    permeability_x_um2: Optional[float] = Field(default=None, description="""Absolute permeability from pore network model in X direction (um^2). Previously permeability_x.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    flow_rate_x_mm3_per_sec: Optional[float] = Field(default=None, description="""Total flow rate from pore network model in X direction (mm^3/s). Previously flow_rate_x.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    tortuosity_x: Optional[float] = Field(default=None, description="""Tortuosity from pore network model in X direction (unitless).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    permeability_y_um2: Optional[float] = Field(default=None, description="""Absolute permeability from pore network model in Y direction (um^2). Previously permeability_y.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    flow_rate_y_mm3_per_sec: Optional[float] = Field(default=None, description="""Total flow rate from pore network model in Y direction (mm^3/s). Previously flow_rate_y.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    tortuosity_y: Optional[float] = Field(default=None, description="""Tortuosity from pore network model in Y direction (unitless).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    permeability_z_um2: Optional[float] = Field(default=None, description="""Absolute permeability from pore network model in Z direction (um^2). Previously permeability_z.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    flow_rate_z_mm3_per_sec: Optional[float] = Field(default=None, description="""Total flow rate from pore network model in Z direction (mm^3/s). Previously flow_rate_z.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    tortuosity_z: Optional[float] = Field(default=None, description="""Tortuosity from pore network model in Z direction (unitless).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
-    flag_xct: Optional[str] = Field(default=None, description="""Data quality flag for the XCT analysis.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    roi_x_voxel: Optional[float] = Field(default=None, description="""Size of the region of interest (ROI) along the X-axis (voxel). FY23 reported ROI dimensions as a single ROI_volume_voxel value (x by y by z).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '{voxel}'}} })
+    roi_y_voxel: Optional[float] = Field(default=None, description="""Size of the region of interest (ROI) along the Y-axis (voxel).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '{voxel}'}} })
+    roi_z_voxel: Optional[float] = Field(default=None, description="""Size of the region of interest (ROI) along the Z-axis (voxel).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '{voxel}'}} })
+    voxel_size_mm_per_voxel: Optional[float] = Field(default=None, description="""Linear voxel size, i.e. scan resolution (mm per voxel).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm/{voxel}'}} })
+    porosity_percent: Optional[float] = Field(default=None, description="""Total pore volume as a percentage of total ROI (soil) volume (percent). FY23 column: total_pore_volume_percent.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '%'}} })
+    connected_pores_fraction: Optional[float] = Field(default=None, description="""Connected pore volume as a fraction of total ROI (soil) volume, i.e. connected porosity (fraction, 0 to 1).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '1'}} })
+    pore_connectivity_percent: Optional[float] = Field(default=None, description="""Connected pore volume as a percentage of total pore volume (percent). FY23 column: connected_pores_percent.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '%'}} })
+    pore_equivalent_diameter_min_mm: Optional[float] = Field(default=None, description="""Minimum pore equivalent diameter (diameter of a sphere with the same volume as the pore) (mm). FY23 column: pore_diameter_min_mm.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm'}} })
+    pore_equivalent_diameter_max_mm: Optional[float] = Field(default=None, description="""Maximum pore equivalent diameter (mm). FY23 column: pore_diameter_max_mm.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm'}} })
+    pore_equivalent_diameter_mean_mm: Optional[float] = Field(default=None, description="""Mean pore equivalent diameter (mm). FY23 column: pore_diameter_mean_mm.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm'}} })
+    pore_equivalent_diameter_median_mm: Optional[float] = Field(default=None, description="""Median pore equivalent diameter (mm). FY23 column: pore_diameter_median_mm.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm'}} })
+    pore_equivalent_diameter_variance_mm2: Optional[float] = Field(default=None, description="""Variance of pore equivalent diameter (mm2). FY23 column: pore_diameter_variance_mm2.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm2'}} })
+    pore_volume_min_mm3: Optional[float] = Field(default=None, description="""Minimum individual pore volume (mm3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3'}} })
+    pore_volume_max_mm3: Optional[float] = Field(default=None, description="""Maximum individual pore volume (mm3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3'}} })
+    pore_volume_mean_mm3: Optional[float] = Field(default=None, description="""Mean individual pore volume (mm3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3'}} })
+    pore_volume_median_mm3: Optional[float] = Field(default=None, description="""Median individual pore volume (mm3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3'}} })
+    pore_volume_variance_mm6: Optional[float] = Field(default=None, description="""Variance of individual pore volume (mm6).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm6'}} })
+    pore_area_min_mm2: Optional[float] = Field(default=None, description="""Minimum individual pore surface area (mm2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm2'}} })
+    pore_area_max_mm2: Optional[float] = Field(default=None, description="""Maximum individual pore surface area (mm2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm2'}} })
+    pore_area_mean_mm2: Optional[float] = Field(default=None, description="""Mean individual pore surface area (mm2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm2'}} })
+    pore_area_median_mm2: Optional[float] = Field(default=None, description="""Median individual pore surface area (mm2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm2'}} })
+    pore_area_variance_mm4: Optional[float] = Field(default=None, description="""Variance of individual pore surface area (mm4).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm4'}} })
+    permeability_x_um2: Optional[float] = Field(default=None, description="""Absolute permeability of the pore network model along the X-axis (um2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'um2'}} })
+    flow_rate_x_mm3_per_sec: Optional[float] = Field(default=None, description="""Volumetric flow rate through the pore network along the X-axis (mm3 per second).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3/s'}} })
+    tortuosity_x: Optional[float] = Field(default=None, description="""Tortuosity of the soil column along the X-axis (ratio).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '1'}} })
+    permeability_y_um2: Optional[float] = Field(default=None, description="""Absolute permeability of the pore network model along the Y-axis (um2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'um2'}} })
+    flow_rate_y_mm3_per_sec: Optional[float] = Field(default=None, description="""Volumetric flow rate through the pore network along the Y-axis (mm3 per second).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3/s'}} })
+    tortuosity_y: Optional[float] = Field(default=None, description="""Tortuosity of the soil column along the Y-axis (ratio).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '1'}} })
+    permeability_z_um2: Optional[float] = Field(default=None, description="""Absolute permeability of the pore network model along the Z-axis (um2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'um2'}} })
+    flow_rate_z_mm3_per_sec: Optional[float] = Field(default=None, description="""Volumetric flow rate through the pore network along the Z-axis (mm3 per second).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': 'mm3/s'}} })
+    tortuosity_z: Optional[float] = Field(default=None, description="""Tortuosity of the soil column along the Z-axis (ratio).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct'], 'unit': {'ucum_code': '1'}} })
+    flag_xct: Optional[ProcessedDataFlag] = Field(default=None, description="""Data quality flag for XCT pore summary metrics; blank if no flag.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -22217,6 +23865,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -22369,6 +24018,8 @@ class XRFElementalProduct(XRayDataProduct):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -22379,6 +24030,8 @@ class XRFElementalProduct(XRayDataProduct):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -22457,6 +24110,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -22621,6 +24275,8 @@ class XRDPhaseProduct(XRayDataProduct):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -22631,6 +24287,8 @@ class XRDPhaseProduct(XRayDataProduct):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -22675,6 +24333,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -22810,6 +24469,8 @@ class XASLCFProduct(XRayDataProduct):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'CMM_ICPMS_DigestionProduct',
+                       'CMM_ICPMS_ExtractionProduct',
                        'ElementalAnalysisProduct',
                        'EnzymeProduct',
                        'GWCMoistureProduct',
@@ -22820,6 +24481,8 @@ class XASLCFProduct(XRayDataProduct):
                        'NitrogenAnalysisProduct',
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
+                       'Rhizo_ICPMS_DigestionProduct',
+                       'Rhizo_ICPMS_ExtractionProduct',
                        'TextureProduct',
                        'WEOMProduct',
                        'pHProduct',
@@ -22868,6 +24531,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23041,6 +24705,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23210,6 +24875,7 @@ Interim DB storage: JSONB column retained until formal typed class exists.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23360,6 +25026,7 @@ class InstrumentData(DataProduct):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23506,6 +25173,7 @@ class MassSpectrometryInstrumentData(InstrumentData):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23650,6 +25318,7 @@ class NucleotideSequencingInstrumentData(InstrumentData):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23816,6 +25485,7 @@ class XASInstrumentData(InstrumentData):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -23957,6 +25627,7 @@ class SitePhoto(DataProduct):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24097,6 +25768,7 @@ class DataGenerationActivity(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24206,6 +25878,7 @@ class MassSpectrometryDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24310,6 +25983,7 @@ Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivit
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24423,6 +26097,7 @@ Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivit
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24533,6 +26208,7 @@ Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivit
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24658,6 +26334,7 @@ class NucleotideSequencing(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24753,6 +26430,7 @@ class BulkDensityDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24848,6 +26526,7 @@ class ElementalAnalysisDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -24943,6 +26622,7 @@ class GravimetricWaterContentDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25039,6 +26719,7 @@ class HydraulicPropertiesDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25137,6 +26818,7 @@ class KuoDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25244,6 +26926,7 @@ class MicrobialBiomassDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25340,6 +27023,7 @@ class PHDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25439,6 +27123,7 @@ class RespirationDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25547,6 +27232,7 @@ class TOCTNDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25642,6 +27328,7 @@ class TextureDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25744,6 +27431,7 @@ class XCTDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25850,6 +27538,7 @@ class DataProcessingActivity(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -25934,6 +27623,7 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26015,6 +27705,7 @@ class MetagenomicsDataProcessingActivity(DataProcessingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26089,6 +27780,7 @@ class AlternativeIdentifier(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26129,6 +27821,7 @@ class FunctionalAnnotationIdentifier(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26175,6 +27868,7 @@ class Instrument(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26243,6 +27937,7 @@ class OntologyClass(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26331,6 +28026,7 @@ class ContainerType(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26429,6 +28125,7 @@ class Custodian(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26468,6 +28165,7 @@ class InstrumentAlternativeIdentifier(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26512,6 +28210,7 @@ class LabDevice(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26592,6 +28291,7 @@ class SampleProcessing(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26714,6 +28414,7 @@ Examples: \"100 ug/mL ampicillin\", \"1 mM IPTG\"""", json_schema_extra = { "lin
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26870,6 +28571,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -26992,6 +28694,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27112,6 +28815,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27230,6 +28934,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27348,6 +29053,7 @@ is associated with.""", json_schema_extra = { "linkml_meta": {'aliases': ['strai
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27469,6 +29175,7 @@ class PlateSetupActivity(HasIncubationConditions, SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27597,6 +29304,7 @@ produced by an upstream MediaPreparation activity.""", json_schema_extra = { "li
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27715,6 +29423,7 @@ class EcoplatePlateSetupActivity(PlateSetupActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27824,6 +29533,7 @@ reaction, or storage), in hours. Shared by all HasTemperatureHold classes.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -27950,6 +29660,7 @@ class SampleStorage(HasTemperatureHold):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28078,6 +29789,7 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28162,6 +29874,7 @@ class XRayDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28282,6 +29995,7 @@ class XRFDataGenerationActivity(XRayDataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28405,6 +30119,7 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28547,6 +30262,7 @@ class XASDataGenerationActivity(XRayDataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28667,6 +30383,7 @@ class XASLCFDataProcessingActivity(DataProcessingActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28762,6 +30479,7 @@ class RIDataGenerationActivity(DataGenerationActivity):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -28877,6 +30595,7 @@ noise/baseline drift, given in absorbance units.""", json_schema_extra = { "link
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29028,6 +30747,7 @@ class UVChannelConfig(Configuration):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29070,6 +30790,7 @@ class StandardSampleProcessing(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29157,6 +30878,7 @@ class SampleProcessingProtocol(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29247,6 +30969,7 @@ class SampleProcessingRun(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29334,7 +31057,7 @@ class ChemicalConversionProcess(HasTemperatureHold, SampleProcessing):
                        'Extraction',
                        'ResuspensionProcess']} })
     chemical_conversion_category: Optional[ChemicalConversionCategoryEnum] = Field(default=None, description="""The category of chemical conversion process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalConversionProcess']} })
-    digestion_method: Optional[DigestionMethodEnum] = Field(default=None, description="""Named digestion method applied, when the category is protease_cleavage.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalConversionProcess']} })
+    protein_digestion_method: Optional[ProteinDigestionMethodEnum] = Field(default=None, description="""Named digestion method applied, when the category is protease_cleavage.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalConversionProcess']} })
     enrichment_type: Optional[EnrichmentTypeEnum] = Field(default=None, description="""Type of enrichment performed, when this process is an enrichment step.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalConversionProcess']} })
     labeling_method: Optional[LabelingMethodEnum] = Field(default=None, description="""Chemical labeling strategy applied in this process (e.g., TMT).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalConversionProcess']} })
     temperature_celsius: Optional[float] = Field(default=None, description="""Temperature at which the method/process/activity was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration',
@@ -29354,6 +31077,7 @@ reaction, or storage), in hours. Shared by all HasTemperatureHold classes.""", j
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29456,6 +31180,7 @@ class Dilution(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29568,6 +31293,7 @@ class Extraction(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29667,6 +31393,7 @@ class FiltrationProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29765,6 +31492,7 @@ class FractionationProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29855,6 +31583,7 @@ class NormalizationProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -29944,6 +31673,7 @@ class PoolingProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30031,6 +31761,7 @@ class SubstancesUsedLink(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30059,6 +31790,7 @@ class SubstancesUsedLink(ConfiguredBaseModel):
                        'ProjectParticipant',
                        'PersonValue']} })
     sample_processing_substance: Optional[str] = Field(default=None, description="""A substance that was used in the SampleProcessing activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SubstancesUsedLink']} })
+    sample_processing_id: Optional[str] = Field(default=None, description="""The SampleProcessing activity in which the substance was used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SubstancesUsedLink']} })
 
 
 class SampleProcessingSubstance(ConfiguredBaseModel):
@@ -30073,6 +31805,7 @@ class SampleProcessingSubstance(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30132,6 +31865,7 @@ class ProteinQuantification(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30230,6 +31964,7 @@ class ResuspensionProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30327,6 +32062,7 @@ class SolidPhaseExtractionProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30416,6 +32152,7 @@ class SubsamplingProcess(SampleProcessing):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30512,6 +32249,7 @@ class Study(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30631,6 +32369,7 @@ class ProjectParticipant(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30859,6 +32598,7 @@ class PersonValue(ConfiguredBaseModel):
                        'MobilePhaseSubstance',
                        'CalibrationStandardRun',
                        'PurchasedMaterial',
+                       'Revision',
                        'organism',
                        'Site',
                        'Sample',
@@ -30897,7 +32637,10 @@ class PersonValue(ConfiguredBaseModel):
 
 class QuantityValue(ConfiguredBaseModel):
     """
-    A quantity value with numeric value and optional unit
+    A quantity value with numeric value and its own unit. Use only for slots
+    whose unit can differ from record to record (e.g. provider-supplied
+    values); lab data products with protocol-fixed units use range: double
+    with unit.ucum_code instead. See docs/background/units.md.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/value-tables'})
 
@@ -30927,7 +32670,7 @@ class QuantityValue(ConfiguredBaseModel):
                        'ControlledTermValue',
                        'QuantityValue']} })
     has_value_unit: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
-    has_unit: Optional[str] = Field(default=None, description="""The human-readable unit name""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
+    has_unit: Optional[str] = Field(default=None, description="""Unit of the value as a UCUM code (https://ucum.org/ucum), e.g. mm, g/cm3, mg/kg.""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
     has_numeric_value: Optional[float] = Field(default=None, description="""The numeric value of the quantity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
     has_minimum_numeric_value: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
     has_maximum_numeric_value: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue']} })
@@ -31033,6 +32776,15 @@ XASIonChamber.model_rebuild()
 XASLCFStandard.model_rebuild()
 XASLCFSpeciesProportion.model_rebuild()
 XASLCFDataRow.model_rebuild()
+Revision.model_rebuild()
+DataProductRevision.model_rebuild()
+DataProcessingActivityRevision.model_rebuild()
+InstrumentDataRevision.model_rebuild()
+DataGenerationActivityRevision.model_rebuild()
+ProcessedSampleRevision.model_rebuild()
+SampleProcessingActivityRevision.model_rebuild()
+SampleRevision.model_rebuild()
+SamplingActivityRevision.model_rebuild()
 Organism.model_rebuild()
 Site.model_rebuild()
 Sample.model_rebuild()
@@ -31085,6 +32837,8 @@ MetagenomicsAnnotationProduct.model_rebuild()
 MetagenomicsBinningProduct.model_rebuild()
 MetagenomicsGenePhylogenyProduct.model_rebuild()
 BulkDensityProduct.model_rebuild()
+CMMICPMSDigestionProduct.model_rebuild()
+CMMICPMSExtractionProduct.model_rebuild()
 ElementalAnalysisProduct.model_rebuild()
 EnzymeProduct.model_rebuild()
 GWCMoistureProduct.model_rebuild()
@@ -31095,6 +32849,8 @@ MicrobialBiomassProduct.model_rebuild()
 NitrogenAnalysisProduct.model_rebuild()
 PhosphorusAnalysisProduct.model_rebuild()
 RespirationProduct.model_rebuild()
+RhizoICPMSDigestionProduct.model_rebuild()
+RhizoICPMSExtractionProduct.model_rebuild()
 TextureProduct.model_rebuild()
 WEOMProduct.model_rebuild()
 PHProduct.model_rebuild()

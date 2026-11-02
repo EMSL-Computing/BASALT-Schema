@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-27T15:05:07
+# Generation date: 2026-10-30T10:50:04
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -376,6 +376,14 @@ class BulkDensityProductId(ProcessedDataId):
     pass
 
 
+class CMMICPMSDigestionProductId(ProcessedDataId):
+    pass
+
+
+class CMMICPMSExtractionProductId(ProcessedDataId):
+    pass
+
+
 class ElementalAnalysisProductId(ProcessedDataId):
     pass
 
@@ -413,6 +421,14 @@ class PhosphorusAnalysisProductId(ProcessedDataId):
 
 
 class RespirationProductId(ProcessedDataId):
+    pass
+
+
+class RhizoICPMSDigestionProductId(ProcessedDataId):
+    pass
+
+
+class RhizoICPMSExtractionProductId(ProcessedDataId):
     pass
 
 
@@ -457,6 +473,42 @@ class UVSpectroscopyProductId(ProcessedDataId):
 
 
 class RIProductId(ProcessedDataId):
+    pass
+
+
+class RevisionId(Uuid):
+    pass
+
+
+class DataProductRevisionId(RevisionId):
+    pass
+
+
+class DataProcessingActivityRevisionId(RevisionId):
+    pass
+
+
+class InstrumentDataRevisionId(RevisionId):
+    pass
+
+
+class DataGenerationActivityRevisionId(RevisionId):
+    pass
+
+
+class ProcessedSampleRevisionId(RevisionId):
+    pass
+
+
+class SampleProcessingActivityRevisionId(RevisionId):
+    pass
+
+
+class SampleRevisionId(RevisionId):
+    pass
+
+
+class SamplingActivityRevisionId(RevisionId):
     pass
 
 
@@ -4398,7 +4450,7 @@ class BulkDensityProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    bulk_density: Optional[Union[dict, "QuantityValue"]] = None
+    bulk_density: Optional[float] = None
     flag: Optional[Union[str, "ProcessedDataFlag"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -4410,11 +4462,589 @@ class BulkDensityProduct(ProcessedData):
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)
 
-        if self.bulk_density is not None and not isinstance(self.bulk_density, QuantityValue):
-            self.bulk_density = QuantityValue(**as_dict(self.bulk_density))
+        if self.bulk_density is not None and not isinstance(self.bulk_density, float):
+            self.bulk_density = float(self.bulk_density)
 
         if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
             self.flag = ProcessedDataFlag(self.flag)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CMMICPMSDigestionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample digestion targeting critical minerals and materials.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["CMMICPMSDigestionProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:CMMICPMSDigestionProduct"
+    class_name: ClassVar[str] = "CMM_ICPMS_DigestionProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.CMMICPMSDigestionProduct
+
+    id: Union[str, CMMICPMSDigestionProductId] = None
+    name: str = None
+    s3_key: str = None
+    measure_type: Optional[Union[str, "ProductMeasureType"]] = None
+    results_from_ms_processing: Optional[Union[str, MassSpectrometryDataProcessingActivityId]] = None
+    Al_ug_per_g: Optional[float] = None
+    Ba_ug_per_g: Optional[float] = None
+    Ca_ug_per_g: Optional[float] = None
+    Ce_ug_per_g: Optional[float] = None
+    Co_ug_per_g: Optional[float] = None
+    Cr_ug_per_g: Optional[float] = None
+    Cu_ug_per_g: Optional[float] = None
+    Dy_ug_per_g: Optional[float] = None
+    Er_ug_per_g: Optional[float] = None
+    Eu_ug_per_g: Optional[float] = None
+    Fe_ug_per_g: Optional[float] = None
+    Gd_ug_per_g: Optional[float] = None
+    Ho_ug_per_g: Optional[float] = None
+    K_ug_per_g: Optional[float] = None
+    La_ug_per_g: Optional[float] = None
+    Li_ug_per_g: Optional[float] = None
+    Lu_ug_per_g: Optional[float] = None
+    Mg_ug_per_g: Optional[float] = None
+    Mn_ug_per_g: Optional[float] = None
+    Mo_ug_per_g: Optional[float] = None
+    Nd_ug_per_g: Optional[float] = None
+    Ni_ug_per_g: Optional[float] = None
+    Pr_ug_per_g: Optional[float] = None
+    Sc_ug_per_g: Optional[float] = None
+    Si_ug_per_g: Optional[float] = None
+    Sm_ug_per_g: Optional[float] = None
+    Sr_ug_per_g: Optional[float] = None
+    Tb_ug_per_g: Optional[float] = None
+    Tm_ug_per_g: Optional[float] = None
+    Y_ug_per_g: Optional[float] = None
+    Yb_ug_per_g: Optional[float] = None
+    Zn_ug_per_g: Optional[float] = None
+    flag_Al: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ba: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ca: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ce: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Co: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Cr: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Cu: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Dy: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Er: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Eu: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Fe: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Gd: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ho: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_K: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_La: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Li: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Lu: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Mg: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Mn: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Mo: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Nd: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ni: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Pr: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Sc: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Si: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Sm: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Sr: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Tb: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Tm: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Y: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Yb: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Zn: Optional[Union[str, "ProcessedDataFlag"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CMMICPMSDigestionProductId):
+            self.id = CMMICPMSDigestionProductId(self.id)
+
+        if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
+            self.measure_type = ProductMeasureType(self.measure_type)
+
+        if self.results_from_ms_processing is not None and not isinstance(self.results_from_ms_processing, MassSpectrometryDataProcessingActivityId):
+            self.results_from_ms_processing = MassSpectrometryDataProcessingActivityId(self.results_from_ms_processing)
+
+        if self.Al_ug_per_g is not None and not isinstance(self.Al_ug_per_g, float):
+            self.Al_ug_per_g = float(self.Al_ug_per_g)
+
+        if self.Ba_ug_per_g is not None and not isinstance(self.Ba_ug_per_g, float):
+            self.Ba_ug_per_g = float(self.Ba_ug_per_g)
+
+        if self.Ca_ug_per_g is not None and not isinstance(self.Ca_ug_per_g, float):
+            self.Ca_ug_per_g = float(self.Ca_ug_per_g)
+
+        if self.Ce_ug_per_g is not None and not isinstance(self.Ce_ug_per_g, float):
+            self.Ce_ug_per_g = float(self.Ce_ug_per_g)
+
+        if self.Co_ug_per_g is not None and not isinstance(self.Co_ug_per_g, float):
+            self.Co_ug_per_g = float(self.Co_ug_per_g)
+
+        if self.Cr_ug_per_g is not None and not isinstance(self.Cr_ug_per_g, float):
+            self.Cr_ug_per_g = float(self.Cr_ug_per_g)
+
+        if self.Cu_ug_per_g is not None and not isinstance(self.Cu_ug_per_g, float):
+            self.Cu_ug_per_g = float(self.Cu_ug_per_g)
+
+        if self.Dy_ug_per_g is not None and not isinstance(self.Dy_ug_per_g, float):
+            self.Dy_ug_per_g = float(self.Dy_ug_per_g)
+
+        if self.Er_ug_per_g is not None and not isinstance(self.Er_ug_per_g, float):
+            self.Er_ug_per_g = float(self.Er_ug_per_g)
+
+        if self.Eu_ug_per_g is not None and not isinstance(self.Eu_ug_per_g, float):
+            self.Eu_ug_per_g = float(self.Eu_ug_per_g)
+
+        if self.Fe_ug_per_g is not None and not isinstance(self.Fe_ug_per_g, float):
+            self.Fe_ug_per_g = float(self.Fe_ug_per_g)
+
+        if self.Gd_ug_per_g is not None and not isinstance(self.Gd_ug_per_g, float):
+            self.Gd_ug_per_g = float(self.Gd_ug_per_g)
+
+        if self.Ho_ug_per_g is not None and not isinstance(self.Ho_ug_per_g, float):
+            self.Ho_ug_per_g = float(self.Ho_ug_per_g)
+
+        if self.K_ug_per_g is not None and not isinstance(self.K_ug_per_g, float):
+            self.K_ug_per_g = float(self.K_ug_per_g)
+
+        if self.La_ug_per_g is not None and not isinstance(self.La_ug_per_g, float):
+            self.La_ug_per_g = float(self.La_ug_per_g)
+
+        if self.Li_ug_per_g is not None and not isinstance(self.Li_ug_per_g, float):
+            self.Li_ug_per_g = float(self.Li_ug_per_g)
+
+        if self.Lu_ug_per_g is not None and not isinstance(self.Lu_ug_per_g, float):
+            self.Lu_ug_per_g = float(self.Lu_ug_per_g)
+
+        if self.Mg_ug_per_g is not None and not isinstance(self.Mg_ug_per_g, float):
+            self.Mg_ug_per_g = float(self.Mg_ug_per_g)
+
+        if self.Mn_ug_per_g is not None and not isinstance(self.Mn_ug_per_g, float):
+            self.Mn_ug_per_g = float(self.Mn_ug_per_g)
+
+        if self.Mo_ug_per_g is not None and not isinstance(self.Mo_ug_per_g, float):
+            self.Mo_ug_per_g = float(self.Mo_ug_per_g)
+
+        if self.Nd_ug_per_g is not None and not isinstance(self.Nd_ug_per_g, float):
+            self.Nd_ug_per_g = float(self.Nd_ug_per_g)
+
+        if self.Ni_ug_per_g is not None and not isinstance(self.Ni_ug_per_g, float):
+            self.Ni_ug_per_g = float(self.Ni_ug_per_g)
+
+        if self.Pr_ug_per_g is not None and not isinstance(self.Pr_ug_per_g, float):
+            self.Pr_ug_per_g = float(self.Pr_ug_per_g)
+
+        if self.Sc_ug_per_g is not None and not isinstance(self.Sc_ug_per_g, float):
+            self.Sc_ug_per_g = float(self.Sc_ug_per_g)
+
+        if self.Si_ug_per_g is not None and not isinstance(self.Si_ug_per_g, float):
+            self.Si_ug_per_g = float(self.Si_ug_per_g)
+
+        if self.Sm_ug_per_g is not None and not isinstance(self.Sm_ug_per_g, float):
+            self.Sm_ug_per_g = float(self.Sm_ug_per_g)
+
+        if self.Sr_ug_per_g is not None and not isinstance(self.Sr_ug_per_g, float):
+            self.Sr_ug_per_g = float(self.Sr_ug_per_g)
+
+        if self.Tb_ug_per_g is not None and not isinstance(self.Tb_ug_per_g, float):
+            self.Tb_ug_per_g = float(self.Tb_ug_per_g)
+
+        if self.Tm_ug_per_g is not None and not isinstance(self.Tm_ug_per_g, float):
+            self.Tm_ug_per_g = float(self.Tm_ug_per_g)
+
+        if self.Y_ug_per_g is not None and not isinstance(self.Y_ug_per_g, float):
+            self.Y_ug_per_g = float(self.Y_ug_per_g)
+
+        if self.Yb_ug_per_g is not None and not isinstance(self.Yb_ug_per_g, float):
+            self.Yb_ug_per_g = float(self.Yb_ug_per_g)
+
+        if self.Zn_ug_per_g is not None and not isinstance(self.Zn_ug_per_g, float):
+            self.Zn_ug_per_g = float(self.Zn_ug_per_g)
+
+        if self.flag_Al is not None and not isinstance(self.flag_Al, ProcessedDataFlag):
+            self.flag_Al = ProcessedDataFlag(self.flag_Al)
+
+        if self.flag_Ba is not None and not isinstance(self.flag_Ba, ProcessedDataFlag):
+            self.flag_Ba = ProcessedDataFlag(self.flag_Ba)
+
+        if self.flag_Ca is not None and not isinstance(self.flag_Ca, ProcessedDataFlag):
+            self.flag_Ca = ProcessedDataFlag(self.flag_Ca)
+
+        if self.flag_Ce is not None and not isinstance(self.flag_Ce, ProcessedDataFlag):
+            self.flag_Ce = ProcessedDataFlag(self.flag_Ce)
+
+        if self.flag_Co is not None and not isinstance(self.flag_Co, ProcessedDataFlag):
+            self.flag_Co = ProcessedDataFlag(self.flag_Co)
+
+        if self.flag_Cr is not None and not isinstance(self.flag_Cr, ProcessedDataFlag):
+            self.flag_Cr = ProcessedDataFlag(self.flag_Cr)
+
+        if self.flag_Cu is not None and not isinstance(self.flag_Cu, ProcessedDataFlag):
+            self.flag_Cu = ProcessedDataFlag(self.flag_Cu)
+
+        if self.flag_Dy is not None and not isinstance(self.flag_Dy, ProcessedDataFlag):
+            self.flag_Dy = ProcessedDataFlag(self.flag_Dy)
+
+        if self.flag_Er is not None and not isinstance(self.flag_Er, ProcessedDataFlag):
+            self.flag_Er = ProcessedDataFlag(self.flag_Er)
+
+        if self.flag_Eu is not None and not isinstance(self.flag_Eu, ProcessedDataFlag):
+            self.flag_Eu = ProcessedDataFlag(self.flag_Eu)
+
+        if self.flag_Fe is not None and not isinstance(self.flag_Fe, ProcessedDataFlag):
+            self.flag_Fe = ProcessedDataFlag(self.flag_Fe)
+
+        if self.flag_Gd is not None and not isinstance(self.flag_Gd, ProcessedDataFlag):
+            self.flag_Gd = ProcessedDataFlag(self.flag_Gd)
+
+        if self.flag_Ho is not None and not isinstance(self.flag_Ho, ProcessedDataFlag):
+            self.flag_Ho = ProcessedDataFlag(self.flag_Ho)
+
+        if self.flag_K is not None and not isinstance(self.flag_K, ProcessedDataFlag):
+            self.flag_K = ProcessedDataFlag(self.flag_K)
+
+        if self.flag_La is not None and not isinstance(self.flag_La, ProcessedDataFlag):
+            self.flag_La = ProcessedDataFlag(self.flag_La)
+
+        if self.flag_Li is not None and not isinstance(self.flag_Li, ProcessedDataFlag):
+            self.flag_Li = ProcessedDataFlag(self.flag_Li)
+
+        if self.flag_Lu is not None and not isinstance(self.flag_Lu, ProcessedDataFlag):
+            self.flag_Lu = ProcessedDataFlag(self.flag_Lu)
+
+        if self.flag_Mg is not None and not isinstance(self.flag_Mg, ProcessedDataFlag):
+            self.flag_Mg = ProcessedDataFlag(self.flag_Mg)
+
+        if self.flag_Mn is not None and not isinstance(self.flag_Mn, ProcessedDataFlag):
+            self.flag_Mn = ProcessedDataFlag(self.flag_Mn)
+
+        if self.flag_Mo is not None and not isinstance(self.flag_Mo, ProcessedDataFlag):
+            self.flag_Mo = ProcessedDataFlag(self.flag_Mo)
+
+        if self.flag_Nd is not None and not isinstance(self.flag_Nd, ProcessedDataFlag):
+            self.flag_Nd = ProcessedDataFlag(self.flag_Nd)
+
+        if self.flag_Ni is not None and not isinstance(self.flag_Ni, ProcessedDataFlag):
+            self.flag_Ni = ProcessedDataFlag(self.flag_Ni)
+
+        if self.flag_Pr is not None and not isinstance(self.flag_Pr, ProcessedDataFlag):
+            self.flag_Pr = ProcessedDataFlag(self.flag_Pr)
+
+        if self.flag_Sc is not None and not isinstance(self.flag_Sc, ProcessedDataFlag):
+            self.flag_Sc = ProcessedDataFlag(self.flag_Sc)
+
+        if self.flag_Si is not None and not isinstance(self.flag_Si, ProcessedDataFlag):
+            self.flag_Si = ProcessedDataFlag(self.flag_Si)
+
+        if self.flag_Sm is not None and not isinstance(self.flag_Sm, ProcessedDataFlag):
+            self.flag_Sm = ProcessedDataFlag(self.flag_Sm)
+
+        if self.flag_Sr is not None and not isinstance(self.flag_Sr, ProcessedDataFlag):
+            self.flag_Sr = ProcessedDataFlag(self.flag_Sr)
+
+        if self.flag_Tb is not None and not isinstance(self.flag_Tb, ProcessedDataFlag):
+            self.flag_Tb = ProcessedDataFlag(self.flag_Tb)
+
+        if self.flag_Tm is not None and not isinstance(self.flag_Tm, ProcessedDataFlag):
+            self.flag_Tm = ProcessedDataFlag(self.flag_Tm)
+
+        if self.flag_Y is not None and not isinstance(self.flag_Y, ProcessedDataFlag):
+            self.flag_Y = ProcessedDataFlag(self.flag_Y)
+
+        if self.flag_Yb is not None and not isinstance(self.flag_Yb, ProcessedDataFlag):
+            self.flag_Yb = ProcessedDataFlag(self.flag_Yb)
+
+        if self.flag_Zn is not None and not isinstance(self.flag_Zn, ProcessedDataFlag):
+            self.flag_Zn = ProcessedDataFlag(self.flag_Zn)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CMMICPMSExtractionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample extraction targeting critical minerals and materials.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["CMMICPMSExtractionProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:CMMICPMSExtractionProduct"
+    class_name: ClassVar[str] = "CMM_ICPMS_ExtractionProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.CMMICPMSExtractionProduct
+
+    id: Union[str, CMMICPMSExtractionProductId] = None
+    name: str = None
+    s3_key: str = None
+    measure_type: Optional[Union[str, "ProductMeasureType"]] = None
+    results_from_ms_processing: Optional[Union[str, MassSpectrometryDataProcessingActivityId]] = None
+    Al_ug_per_g: Optional[float] = None
+    Ba_ug_per_g: Optional[float] = None
+    Ca_ug_per_g: Optional[float] = None
+    Ce_ug_per_g: Optional[float] = None
+    Co_ug_per_g: Optional[float] = None
+    Cr_ug_per_g: Optional[float] = None
+    Cu_ug_per_g: Optional[float] = None
+    Dy_ug_per_g: Optional[float] = None
+    Er_ug_per_g: Optional[float] = None
+    Eu_ug_per_g: Optional[float] = None
+    Fe_ug_per_g: Optional[float] = None
+    Gd_ug_per_g: Optional[float] = None
+    Ho_ug_per_g: Optional[float] = None
+    K_ug_per_g: Optional[float] = None
+    La_ug_per_g: Optional[float] = None
+    Li_ug_per_g: Optional[float] = None
+    Lu_ug_per_g: Optional[float] = None
+    Mg_ug_per_g: Optional[float] = None
+    Mn_ug_per_g: Optional[float] = None
+    Mo_ug_per_g: Optional[float] = None
+    Nd_ug_per_g: Optional[float] = None
+    Ni_ug_per_g: Optional[float] = None
+    Pr_ug_per_g: Optional[float] = None
+    Sc_ug_per_g: Optional[float] = None
+    Si_ug_per_g: Optional[float] = None
+    Sm_ug_per_g: Optional[float] = None
+    Sr_ug_per_g: Optional[float] = None
+    Tb_ug_per_g: Optional[float] = None
+    Tm_ug_per_g: Optional[float] = None
+    Y_ug_per_g: Optional[float] = None
+    Yb_ug_per_g: Optional[float] = None
+    Zn_ug_per_g: Optional[float] = None
+    flag_Al: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ba: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ca: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ce: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Co: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Cr: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Cu: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Dy: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Er: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Eu: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Fe: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Gd: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ho: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_K: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_La: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Li: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Lu: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Mg: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Mn: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Mo: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Nd: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ni: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Pr: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Sc: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Si: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Sm: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Sr: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Tb: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Tm: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Y: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Yb: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Zn: Optional[Union[str, "ProcessedDataFlag"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CMMICPMSExtractionProductId):
+            self.id = CMMICPMSExtractionProductId(self.id)
+
+        if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
+            self.measure_type = ProductMeasureType(self.measure_type)
+
+        if self.results_from_ms_processing is not None and not isinstance(self.results_from_ms_processing, MassSpectrometryDataProcessingActivityId):
+            self.results_from_ms_processing = MassSpectrometryDataProcessingActivityId(self.results_from_ms_processing)
+
+        if self.Al_ug_per_g is not None and not isinstance(self.Al_ug_per_g, float):
+            self.Al_ug_per_g = float(self.Al_ug_per_g)
+
+        if self.Ba_ug_per_g is not None and not isinstance(self.Ba_ug_per_g, float):
+            self.Ba_ug_per_g = float(self.Ba_ug_per_g)
+
+        if self.Ca_ug_per_g is not None and not isinstance(self.Ca_ug_per_g, float):
+            self.Ca_ug_per_g = float(self.Ca_ug_per_g)
+
+        if self.Ce_ug_per_g is not None and not isinstance(self.Ce_ug_per_g, float):
+            self.Ce_ug_per_g = float(self.Ce_ug_per_g)
+
+        if self.Co_ug_per_g is not None and not isinstance(self.Co_ug_per_g, float):
+            self.Co_ug_per_g = float(self.Co_ug_per_g)
+
+        if self.Cr_ug_per_g is not None and not isinstance(self.Cr_ug_per_g, float):
+            self.Cr_ug_per_g = float(self.Cr_ug_per_g)
+
+        if self.Cu_ug_per_g is not None and not isinstance(self.Cu_ug_per_g, float):
+            self.Cu_ug_per_g = float(self.Cu_ug_per_g)
+
+        if self.Dy_ug_per_g is not None and not isinstance(self.Dy_ug_per_g, float):
+            self.Dy_ug_per_g = float(self.Dy_ug_per_g)
+
+        if self.Er_ug_per_g is not None and not isinstance(self.Er_ug_per_g, float):
+            self.Er_ug_per_g = float(self.Er_ug_per_g)
+
+        if self.Eu_ug_per_g is not None and not isinstance(self.Eu_ug_per_g, float):
+            self.Eu_ug_per_g = float(self.Eu_ug_per_g)
+
+        if self.Fe_ug_per_g is not None and not isinstance(self.Fe_ug_per_g, float):
+            self.Fe_ug_per_g = float(self.Fe_ug_per_g)
+
+        if self.Gd_ug_per_g is not None and not isinstance(self.Gd_ug_per_g, float):
+            self.Gd_ug_per_g = float(self.Gd_ug_per_g)
+
+        if self.Ho_ug_per_g is not None and not isinstance(self.Ho_ug_per_g, float):
+            self.Ho_ug_per_g = float(self.Ho_ug_per_g)
+
+        if self.K_ug_per_g is not None and not isinstance(self.K_ug_per_g, float):
+            self.K_ug_per_g = float(self.K_ug_per_g)
+
+        if self.La_ug_per_g is not None and not isinstance(self.La_ug_per_g, float):
+            self.La_ug_per_g = float(self.La_ug_per_g)
+
+        if self.Li_ug_per_g is not None and not isinstance(self.Li_ug_per_g, float):
+            self.Li_ug_per_g = float(self.Li_ug_per_g)
+
+        if self.Lu_ug_per_g is not None and not isinstance(self.Lu_ug_per_g, float):
+            self.Lu_ug_per_g = float(self.Lu_ug_per_g)
+
+        if self.Mg_ug_per_g is not None and not isinstance(self.Mg_ug_per_g, float):
+            self.Mg_ug_per_g = float(self.Mg_ug_per_g)
+
+        if self.Mn_ug_per_g is not None and not isinstance(self.Mn_ug_per_g, float):
+            self.Mn_ug_per_g = float(self.Mn_ug_per_g)
+
+        if self.Mo_ug_per_g is not None and not isinstance(self.Mo_ug_per_g, float):
+            self.Mo_ug_per_g = float(self.Mo_ug_per_g)
+
+        if self.Nd_ug_per_g is not None and not isinstance(self.Nd_ug_per_g, float):
+            self.Nd_ug_per_g = float(self.Nd_ug_per_g)
+
+        if self.Ni_ug_per_g is not None and not isinstance(self.Ni_ug_per_g, float):
+            self.Ni_ug_per_g = float(self.Ni_ug_per_g)
+
+        if self.Pr_ug_per_g is not None and not isinstance(self.Pr_ug_per_g, float):
+            self.Pr_ug_per_g = float(self.Pr_ug_per_g)
+
+        if self.Sc_ug_per_g is not None and not isinstance(self.Sc_ug_per_g, float):
+            self.Sc_ug_per_g = float(self.Sc_ug_per_g)
+
+        if self.Si_ug_per_g is not None and not isinstance(self.Si_ug_per_g, float):
+            self.Si_ug_per_g = float(self.Si_ug_per_g)
+
+        if self.Sm_ug_per_g is not None and not isinstance(self.Sm_ug_per_g, float):
+            self.Sm_ug_per_g = float(self.Sm_ug_per_g)
+
+        if self.Sr_ug_per_g is not None and not isinstance(self.Sr_ug_per_g, float):
+            self.Sr_ug_per_g = float(self.Sr_ug_per_g)
+
+        if self.Tb_ug_per_g is not None and not isinstance(self.Tb_ug_per_g, float):
+            self.Tb_ug_per_g = float(self.Tb_ug_per_g)
+
+        if self.Tm_ug_per_g is not None and not isinstance(self.Tm_ug_per_g, float):
+            self.Tm_ug_per_g = float(self.Tm_ug_per_g)
+
+        if self.Y_ug_per_g is not None and not isinstance(self.Y_ug_per_g, float):
+            self.Y_ug_per_g = float(self.Y_ug_per_g)
+
+        if self.Yb_ug_per_g is not None and not isinstance(self.Yb_ug_per_g, float):
+            self.Yb_ug_per_g = float(self.Yb_ug_per_g)
+
+        if self.Zn_ug_per_g is not None and not isinstance(self.Zn_ug_per_g, float):
+            self.Zn_ug_per_g = float(self.Zn_ug_per_g)
+
+        if self.flag_Al is not None and not isinstance(self.flag_Al, ProcessedDataFlag):
+            self.flag_Al = ProcessedDataFlag(self.flag_Al)
+
+        if self.flag_Ba is not None and not isinstance(self.flag_Ba, ProcessedDataFlag):
+            self.flag_Ba = ProcessedDataFlag(self.flag_Ba)
+
+        if self.flag_Ca is not None and not isinstance(self.flag_Ca, ProcessedDataFlag):
+            self.flag_Ca = ProcessedDataFlag(self.flag_Ca)
+
+        if self.flag_Ce is not None and not isinstance(self.flag_Ce, ProcessedDataFlag):
+            self.flag_Ce = ProcessedDataFlag(self.flag_Ce)
+
+        if self.flag_Co is not None and not isinstance(self.flag_Co, ProcessedDataFlag):
+            self.flag_Co = ProcessedDataFlag(self.flag_Co)
+
+        if self.flag_Cr is not None and not isinstance(self.flag_Cr, ProcessedDataFlag):
+            self.flag_Cr = ProcessedDataFlag(self.flag_Cr)
+
+        if self.flag_Cu is not None and not isinstance(self.flag_Cu, ProcessedDataFlag):
+            self.flag_Cu = ProcessedDataFlag(self.flag_Cu)
+
+        if self.flag_Dy is not None and not isinstance(self.flag_Dy, ProcessedDataFlag):
+            self.flag_Dy = ProcessedDataFlag(self.flag_Dy)
+
+        if self.flag_Er is not None and not isinstance(self.flag_Er, ProcessedDataFlag):
+            self.flag_Er = ProcessedDataFlag(self.flag_Er)
+
+        if self.flag_Eu is not None and not isinstance(self.flag_Eu, ProcessedDataFlag):
+            self.flag_Eu = ProcessedDataFlag(self.flag_Eu)
+
+        if self.flag_Fe is not None and not isinstance(self.flag_Fe, ProcessedDataFlag):
+            self.flag_Fe = ProcessedDataFlag(self.flag_Fe)
+
+        if self.flag_Gd is not None and not isinstance(self.flag_Gd, ProcessedDataFlag):
+            self.flag_Gd = ProcessedDataFlag(self.flag_Gd)
+
+        if self.flag_Ho is not None and not isinstance(self.flag_Ho, ProcessedDataFlag):
+            self.flag_Ho = ProcessedDataFlag(self.flag_Ho)
+
+        if self.flag_K is not None and not isinstance(self.flag_K, ProcessedDataFlag):
+            self.flag_K = ProcessedDataFlag(self.flag_K)
+
+        if self.flag_La is not None and not isinstance(self.flag_La, ProcessedDataFlag):
+            self.flag_La = ProcessedDataFlag(self.flag_La)
+
+        if self.flag_Li is not None and not isinstance(self.flag_Li, ProcessedDataFlag):
+            self.flag_Li = ProcessedDataFlag(self.flag_Li)
+
+        if self.flag_Lu is not None and not isinstance(self.flag_Lu, ProcessedDataFlag):
+            self.flag_Lu = ProcessedDataFlag(self.flag_Lu)
+
+        if self.flag_Mg is not None and not isinstance(self.flag_Mg, ProcessedDataFlag):
+            self.flag_Mg = ProcessedDataFlag(self.flag_Mg)
+
+        if self.flag_Mn is not None and not isinstance(self.flag_Mn, ProcessedDataFlag):
+            self.flag_Mn = ProcessedDataFlag(self.flag_Mn)
+
+        if self.flag_Mo is not None and not isinstance(self.flag_Mo, ProcessedDataFlag):
+            self.flag_Mo = ProcessedDataFlag(self.flag_Mo)
+
+        if self.flag_Nd is not None and not isinstance(self.flag_Nd, ProcessedDataFlag):
+            self.flag_Nd = ProcessedDataFlag(self.flag_Nd)
+
+        if self.flag_Ni is not None and not isinstance(self.flag_Ni, ProcessedDataFlag):
+            self.flag_Ni = ProcessedDataFlag(self.flag_Ni)
+
+        if self.flag_Pr is not None and not isinstance(self.flag_Pr, ProcessedDataFlag):
+            self.flag_Pr = ProcessedDataFlag(self.flag_Pr)
+
+        if self.flag_Sc is not None and not isinstance(self.flag_Sc, ProcessedDataFlag):
+            self.flag_Sc = ProcessedDataFlag(self.flag_Sc)
+
+        if self.flag_Si is not None and not isinstance(self.flag_Si, ProcessedDataFlag):
+            self.flag_Si = ProcessedDataFlag(self.flag_Si)
+
+        if self.flag_Sm is not None and not isinstance(self.flag_Sm, ProcessedDataFlag):
+            self.flag_Sm = ProcessedDataFlag(self.flag_Sm)
+
+        if self.flag_Sr is not None and not isinstance(self.flag_Sr, ProcessedDataFlag):
+            self.flag_Sr = ProcessedDataFlag(self.flag_Sr)
+
+        if self.flag_Tb is not None and not isinstance(self.flag_Tb, ProcessedDataFlag):
+            self.flag_Tb = ProcessedDataFlag(self.flag_Tb)
+
+        if self.flag_Tm is not None and not isinstance(self.flag_Tm, ProcessedDataFlag):
+            self.flag_Tm = ProcessedDataFlag(self.flag_Tm)
+
+        if self.flag_Y is not None and not isinstance(self.flag_Y, ProcessedDataFlag):
+            self.flag_Y = ProcessedDataFlag(self.flag_Y)
+
+        if self.flag_Yb is not None and not isinstance(self.flag_Yb, ProcessedDataFlag):
+            self.flag_Yb = ProcessedDataFlag(self.flag_Yb)
+
+        if self.flag_Zn is not None and not isinstance(self.flag_Zn, ProcessedDataFlag):
+            self.flag_Zn = ProcessedDataFlag(self.flag_Zn)
 
         super().__post_init__(**kwargs)
 
@@ -4436,10 +5066,10 @@ class ElementalAnalysisProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    total_carbon: Optional[Union[dict, "QuantityValue"]] = None
-    total_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
-    total_kjeldahl_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
-    total_sulfur: Optional[Union[dict, "QuantityValue"]] = None
+    total_carbon: Optional[float] = None
+    total_nitrogen: Optional[float] = None
+    total_kjeldahl_nitrogen: Optional[float] = None
+    total_sulfur: Optional[float] = None
     flag_total_carbon: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_total_nitrogen: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_tkn: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -4454,17 +5084,17 @@ class ElementalAnalysisProduct(ProcessedData):
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)
 
-        if self.total_carbon is not None and not isinstance(self.total_carbon, QuantityValue):
-            self.total_carbon = QuantityValue(**as_dict(self.total_carbon))
+        if self.total_carbon is not None and not isinstance(self.total_carbon, float):
+            self.total_carbon = float(self.total_carbon)
 
-        if self.total_nitrogen is not None and not isinstance(self.total_nitrogen, QuantityValue):
-            self.total_nitrogen = QuantityValue(**as_dict(self.total_nitrogen))
+        if self.total_nitrogen is not None and not isinstance(self.total_nitrogen, float):
+            self.total_nitrogen = float(self.total_nitrogen)
 
-        if self.total_kjeldahl_nitrogen is not None and not isinstance(self.total_kjeldahl_nitrogen, QuantityValue):
-            self.total_kjeldahl_nitrogen = QuantityValue(**as_dict(self.total_kjeldahl_nitrogen))
+        if self.total_kjeldahl_nitrogen is not None and not isinstance(self.total_kjeldahl_nitrogen, float):
+            self.total_kjeldahl_nitrogen = float(self.total_kjeldahl_nitrogen)
 
-        if self.total_sulfur is not None and not isinstance(self.total_sulfur, QuantityValue):
-            self.total_sulfur = QuantityValue(**as_dict(self.total_sulfur))
+        if self.total_sulfur is not None and not isinstance(self.total_sulfur, float):
+            self.total_sulfur = float(self.total_sulfur)
 
         if self.flag_total_carbon is not None and not isinstance(self.flag_total_carbon, ProcessedDataFlag):
             self.flag_total_carbon = ProcessedDataFlag(self.flag_total_carbon)
@@ -4497,7 +5127,7 @@ class EnzymeProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    beta_glucosidase_ug_pnp_per_g_per_h: Optional[Union[dict, "QuantityValue"]] = None
+    beta_glucosidase_ug_pnp_per_g_per_h: Optional[float] = None
     flag: Optional[Union[str, "ProcessedDataFlag"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -4509,8 +5139,8 @@ class EnzymeProduct(ProcessedData):
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)
 
-        if self.beta_glucosidase_ug_pnp_per_g_per_h is not None and not isinstance(self.beta_glucosidase_ug_pnp_per_g_per_h, QuantityValue):
-            self.beta_glucosidase_ug_pnp_per_g_per_h = QuantityValue(**as_dict(self.beta_glucosidase_ug_pnp_per_g_per_h))
+        if self.beta_glucosidase_ug_pnp_per_g_per_h is not None and not isinstance(self.beta_glucosidase_ug_pnp_per_g_per_h, float):
+            self.beta_glucosidase_ug_pnp_per_g_per_h = float(self.beta_glucosidase_ug_pnp_per_g_per_h)
 
         if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
             self.flag = ProcessedDataFlag(self.flag)
@@ -4535,7 +5165,7 @@ class GWCMoistureProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    gwc_percent: Optional[Union[dict, "QuantityValue"]] = None
+    gwc_percent: Optional[float] = None
     flag: Optional[Union[str, "ProcessedDataFlag"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -4547,8 +5177,8 @@ class GWCMoistureProduct(ProcessedData):
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)
 
-        if self.gwc_percent is not None and not isinstance(self.gwc_percent, QuantityValue):
-            self.gwc_percent = QuantityValue(**as_dict(self.gwc_percent))
+        if self.gwc_percent is not None and not isinstance(self.gwc_percent, float):
+            self.gwc_percent = float(self.gwc_percent)
 
         if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
             self.flag = ProcessedDataFlag(self.flag)
@@ -4623,18 +5253,18 @@ class IonsAnalysisProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    sulfate: Optional[Union[dict, "QuantityValue"]] = None
-    boron: Optional[Union[dict, "QuantityValue"]] = None
-    zinc: Optional[Union[dict, "QuantityValue"]] = None
-    manganate: Optional[Union[dict, "QuantityValue"]] = None
-    copper: Optional[Union[dict, "QuantityValue"]] = None
-    iron: Optional[Union[dict, "QuantityValue"]] = None
-    calcium: Optional[Union[dict, "QuantityValue"]] = None
-    magnesium: Optional[Union[dict, "QuantityValue"]] = None
-    sodium: Optional[Union[dict, "QuantityValue"]] = None
-    potassium: Optional[Union[dict, "QuantityValue"]] = None
-    total_bases: Optional[Union[dict, "QuantityValue"]] = None
-    cation_exchange_capacity: Optional[Union[dict, "QuantityValue"]] = None
+    sulfate: Optional[float] = None
+    boron: Optional[float] = None
+    zinc: Optional[float] = None
+    manganate: Optional[float] = None
+    copper: Optional[float] = None
+    iron: Optional[float] = None
+    calcium: Optional[float] = None
+    magnesium: Optional[float] = None
+    sodium: Optional[float] = None
+    potassium: Optional[float] = None
+    total_bases: Optional[float] = None
+    cation_exchange_capacity: Optional[float] = None
     flag_sulfate: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_boron: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_zinc: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -4657,41 +5287,41 @@ class IonsAnalysisProduct(ProcessedData):
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)
 
-        if self.sulfate is not None and not isinstance(self.sulfate, QuantityValue):
-            self.sulfate = QuantityValue(**as_dict(self.sulfate))
+        if self.sulfate is not None and not isinstance(self.sulfate, float):
+            self.sulfate = float(self.sulfate)
 
-        if self.boron is not None and not isinstance(self.boron, QuantityValue):
-            self.boron = QuantityValue(**as_dict(self.boron))
+        if self.boron is not None and not isinstance(self.boron, float):
+            self.boron = float(self.boron)
 
-        if self.zinc is not None and not isinstance(self.zinc, QuantityValue):
-            self.zinc = QuantityValue(**as_dict(self.zinc))
+        if self.zinc is not None and not isinstance(self.zinc, float):
+            self.zinc = float(self.zinc)
 
-        if self.manganate is not None and not isinstance(self.manganate, QuantityValue):
-            self.manganate = QuantityValue(**as_dict(self.manganate))
+        if self.manganate is not None and not isinstance(self.manganate, float):
+            self.manganate = float(self.manganate)
 
-        if self.copper is not None and not isinstance(self.copper, QuantityValue):
-            self.copper = QuantityValue(**as_dict(self.copper))
+        if self.copper is not None and not isinstance(self.copper, float):
+            self.copper = float(self.copper)
 
-        if self.iron is not None and not isinstance(self.iron, QuantityValue):
-            self.iron = QuantityValue(**as_dict(self.iron))
+        if self.iron is not None and not isinstance(self.iron, float):
+            self.iron = float(self.iron)
 
-        if self.calcium is not None and not isinstance(self.calcium, QuantityValue):
-            self.calcium = QuantityValue(**as_dict(self.calcium))
+        if self.calcium is not None and not isinstance(self.calcium, float):
+            self.calcium = float(self.calcium)
 
-        if self.magnesium is not None and not isinstance(self.magnesium, QuantityValue):
-            self.magnesium = QuantityValue(**as_dict(self.magnesium))
+        if self.magnesium is not None and not isinstance(self.magnesium, float):
+            self.magnesium = float(self.magnesium)
 
-        if self.sodium is not None and not isinstance(self.sodium, QuantityValue):
-            self.sodium = QuantityValue(**as_dict(self.sodium))
+        if self.sodium is not None and not isinstance(self.sodium, float):
+            self.sodium = float(self.sodium)
 
-        if self.potassium is not None and not isinstance(self.potassium, QuantityValue):
-            self.potassium = QuantityValue(**as_dict(self.potassium))
+        if self.potassium is not None and not isinstance(self.potassium, float):
+            self.potassium = float(self.potassium)
 
-        if self.total_bases is not None and not isinstance(self.total_bases, QuantityValue):
-            self.total_bases = QuantityValue(**as_dict(self.total_bases))
+        if self.total_bases is not None and not isinstance(self.total_bases, float):
+            self.total_bases = float(self.total_bases)
 
-        if self.cation_exchange_capacity is not None and not isinstance(self.cation_exchange_capacity, QuantityValue):
-            self.cation_exchange_capacity = QuantityValue(**as_dict(self.cation_exchange_capacity))
+        if self.cation_exchange_capacity is not None and not isinstance(self.cation_exchange_capacity, float):
+            self.cation_exchange_capacity = float(self.cation_exchange_capacity)
 
         if self.flag_sulfate is not None and not isinstance(self.flag_sulfate, ProcessedDataFlag):
             self.flag_sulfate = ProcessedDataFlag(self.flag_sulfate)
@@ -4735,7 +5365,7 @@ class IonsAnalysisProduct(ProcessedData):
 @dataclass(repr=False)
 class HClExtOMProduct(ProcessedData):
     """
-    Mineral-Associated Organic Matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN
+    HCl-extractable organic matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN
     measurement.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
@@ -4752,9 +5382,9 @@ class HClExtOMProduct(ProcessedData):
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
     produced_by_toctn_run: Optional[Union[str, TOCTNDataGenerationActivityId]] = None
-    total_organic_carbon: Optional[Union[dict, "QuantityValue"]] = None
+    total_organic_carbon: Optional[float] = None
     total_organic_carbon_avg: Optional[float] = None
-    total_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
+    total_nitrogen: Optional[float] = None
     total_nitrogen_avg: Optional[float] = None
     flag_toc: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_tn: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -4776,14 +5406,14 @@ class HClExtOMProduct(ProcessedData):
         if self.produced_by_toctn_run is not None and not isinstance(self.produced_by_toctn_run, TOCTNDataGenerationActivityId):
             self.produced_by_toctn_run = TOCTNDataGenerationActivityId(self.produced_by_toctn_run)
 
-        if self.total_organic_carbon is not None and not isinstance(self.total_organic_carbon, QuantityValue):
-            self.total_organic_carbon = QuantityValue(**as_dict(self.total_organic_carbon))
+        if self.total_organic_carbon is not None and not isinstance(self.total_organic_carbon, float):
+            self.total_organic_carbon = float(self.total_organic_carbon)
 
         if self.total_organic_carbon_avg is not None and not isinstance(self.total_organic_carbon_avg, float):
             self.total_organic_carbon_avg = float(self.total_organic_carbon_avg)
 
-        if self.total_nitrogen is not None and not isinstance(self.total_nitrogen, QuantityValue):
-            self.total_nitrogen = QuantityValue(**as_dict(self.total_nitrogen))
+        if self.total_nitrogen is not None and not isinstance(self.total_nitrogen, float):
+            self.total_nitrogen = float(self.total_nitrogen)
 
         if self.total_nitrogen_avg is not None and not isinstance(self.total_nitrogen_avg, float):
             self.total_nitrogen_avg = float(self.total_nitrogen_avg)
@@ -4822,9 +5452,9 @@ class MicrobialBiomassProduct(ProcessedData):
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
-    mbc: Optional[Union[dict, "QuantityValue"]] = None
+    mbc: Optional[float] = None
     mbc_avg: Optional[float] = None
-    mbn: Optional[Union[dict, "QuantityValue"]] = None
+    mbn: Optional[float] = None
     mbn_avg: Optional[float] = None
     flag_mbc: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_mbn: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -4843,14 +5473,14 @@ class MicrobialBiomassProduct(ProcessedData):
         if self.replicate is not None and not isinstance(self.replicate, int):
             self.replicate = int(self.replicate)
 
-        if self.mbc is not None and not isinstance(self.mbc, QuantityValue):
-            self.mbc = QuantityValue(**as_dict(self.mbc))
+        if self.mbc is not None and not isinstance(self.mbc, float):
+            self.mbc = float(self.mbc)
 
         if self.mbc_avg is not None and not isinstance(self.mbc_avg, float):
             self.mbc_avg = float(self.mbc_avg)
 
-        if self.mbn is not None and not isinstance(self.mbn, QuantityValue):
-            self.mbn = QuantityValue(**as_dict(self.mbn))
+        if self.mbn is not None and not isinstance(self.mbn, float):
+            self.mbn = float(self.mbn)
 
         if self.mbn_avg is not None and not isinstance(self.mbn_avg, float):
             self.mbn_avg = float(self.mbn_avg)
@@ -4888,9 +5518,9 @@ class NitrogenAnalysisProduct(ProcessedData):
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
-    no3_n: Optional[Union[dict, "QuantityValue"]] = None
+    no3_n: Optional[float] = None
     no3_n_avg: Optional[float] = None
-    nh4_n: Optional[Union[dict, "QuantityValue"]] = None
+    nh4_n: Optional[float] = None
     nh4_n_avg: Optional[float] = None
     flag_no3n: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_nh4n: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -4909,14 +5539,14 @@ class NitrogenAnalysisProduct(ProcessedData):
         if self.replicate is not None and not isinstance(self.replicate, int):
             self.replicate = int(self.replicate)
 
-        if self.no3_n is not None and not isinstance(self.no3_n, QuantityValue):
-            self.no3_n = QuantityValue(**as_dict(self.no3_n))
+        if self.no3_n is not None and not isinstance(self.no3_n, float):
+            self.no3_n = float(self.no3_n)
 
         if self.no3_n_avg is not None and not isinstance(self.no3_n_avg, float):
             self.no3_n_avg = float(self.no3_n_avg)
 
-        if self.nh4_n is not None and not isinstance(self.nh4_n, QuantityValue):
-            self.nh4_n = QuantityValue(**as_dict(self.nh4_n))
+        if self.nh4_n is not None and not isinstance(self.nh4_n, float):
+            self.nh4_n = float(self.nh4_n)
 
         if self.nh4_n_avg is not None and not isinstance(self.nh4_n_avg, float):
             self.nh4_n_avg = float(self.nh4_n_avg)
@@ -4955,7 +5585,7 @@ class PhosphorusAnalysisProduct(ProcessedData):
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
     extraction_method: Optional[str] = None
-    phosphorus: Optional[Union[dict, "QuantityValue"]] = None
+    phosphorus: Optional[float] = None
     phosphorus_avg: Optional[float] = None
     flag: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_avg: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -4975,8 +5605,8 @@ class PhosphorusAnalysisProduct(ProcessedData):
         if self.extraction_method is not None and not isinstance(self.extraction_method, str):
             self.extraction_method = str(self.extraction_method)
 
-        if self.phosphorus is not None and not isinstance(self.phosphorus, QuantityValue):
-            self.phosphorus = QuantityValue(**as_dict(self.phosphorus))
+        if self.phosphorus is not None and not isinstance(self.phosphorus, float):
+            self.phosphorus = float(self.phosphorus)
 
         if self.phosphorus_avg is not None and not isinstance(self.phosphorus_avg, float):
             self.phosphorus_avg = float(self.phosphorus_avg)
@@ -5028,6 +5658,184 @@ class RespirationProduct(ProcessedData):
 
 
 @dataclass(repr=False)
+class RhizoICPMSDigestionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample digestion targeting critical minerals and materials in rhizosphere samples.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RhizoICPMSDigestionProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RhizoICPMSDigestionProduct"
+    class_name: ClassVar[str] = "Rhizo_ICPMS_DigestionProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RhizoICPMSDigestionProduct
+
+    id: Union[str, RhizoICPMSDigestionProductId] = None
+    name: str = None
+    s3_key: str = None
+    measure_type: Optional[Union[str, "ProductMeasureType"]] = None
+    results_from_ms_processing: Optional[Union[str, MassSpectrometryDataProcessingActivityId]] = None
+    Al_ug_per_g: Optional[float] = None
+    Ca_ug_per_g: Optional[float] = None
+    Co_ug_per_g: Optional[float] = None
+    Cu_ug_per_g: Optional[float] = None
+    Fe_ug_per_g: Optional[float] = None
+    K_ug_per_g: Optional[float] = None
+    Mg_ug_per_g: Optional[float] = None
+    Mn_ug_per_g: Optional[float] = None
+    Ni_ug_per_g: Optional[float] = None
+    P_ug_per_g: Optional[float] = None
+    S_ug_per_g: Optional[float] = None
+    Zn_ug_per_g: Optional[float] = None
+    flag_Al: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ca: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Co: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Cu: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Fe: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_K: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Mg: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Mn: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ni: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_P: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_S: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Zn: Optional[Union[str, "ProcessedDataFlag"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RhizoICPMSDigestionProductId):
+            self.id = RhizoICPMSDigestionProductId(self.id)
+
+        if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
+            self.measure_type = ProductMeasureType(self.measure_type)
+
+        if self.results_from_ms_processing is not None and not isinstance(self.results_from_ms_processing, MassSpectrometryDataProcessingActivityId):
+            self.results_from_ms_processing = MassSpectrometryDataProcessingActivityId(self.results_from_ms_processing)
+
+        if self.Al_ug_per_g is not None and not isinstance(self.Al_ug_per_g, float):
+            self.Al_ug_per_g = float(self.Al_ug_per_g)
+
+        if self.Ca_ug_per_g is not None and not isinstance(self.Ca_ug_per_g, float):
+            self.Ca_ug_per_g = float(self.Ca_ug_per_g)
+
+        if self.Co_ug_per_g is not None and not isinstance(self.Co_ug_per_g, float):
+            self.Co_ug_per_g = float(self.Co_ug_per_g)
+
+        if self.Cu_ug_per_g is not None and not isinstance(self.Cu_ug_per_g, float):
+            self.Cu_ug_per_g = float(self.Cu_ug_per_g)
+
+        if self.Fe_ug_per_g is not None and not isinstance(self.Fe_ug_per_g, float):
+            self.Fe_ug_per_g = float(self.Fe_ug_per_g)
+
+        if self.K_ug_per_g is not None and not isinstance(self.K_ug_per_g, float):
+            self.K_ug_per_g = float(self.K_ug_per_g)
+
+        if self.Mg_ug_per_g is not None and not isinstance(self.Mg_ug_per_g, float):
+            self.Mg_ug_per_g = float(self.Mg_ug_per_g)
+
+        if self.Mn_ug_per_g is not None and not isinstance(self.Mn_ug_per_g, float):
+            self.Mn_ug_per_g = float(self.Mn_ug_per_g)
+
+        if self.Ni_ug_per_g is not None and not isinstance(self.Ni_ug_per_g, float):
+            self.Ni_ug_per_g = float(self.Ni_ug_per_g)
+
+        if self.P_ug_per_g is not None and not isinstance(self.P_ug_per_g, float):
+            self.P_ug_per_g = float(self.P_ug_per_g)
+
+        if self.S_ug_per_g is not None and not isinstance(self.S_ug_per_g, float):
+            self.S_ug_per_g = float(self.S_ug_per_g)
+
+        if self.Zn_ug_per_g is not None and not isinstance(self.Zn_ug_per_g, float):
+            self.Zn_ug_per_g = float(self.Zn_ug_per_g)
+
+        if self.flag_Al is not None and not isinstance(self.flag_Al, ProcessedDataFlag):
+            self.flag_Al = ProcessedDataFlag(self.flag_Al)
+
+        if self.flag_Ca is not None and not isinstance(self.flag_Ca, ProcessedDataFlag):
+            self.flag_Ca = ProcessedDataFlag(self.flag_Ca)
+
+        if self.flag_Co is not None and not isinstance(self.flag_Co, ProcessedDataFlag):
+            self.flag_Co = ProcessedDataFlag(self.flag_Co)
+
+        if self.flag_Cu is not None and not isinstance(self.flag_Cu, ProcessedDataFlag):
+            self.flag_Cu = ProcessedDataFlag(self.flag_Cu)
+
+        if self.flag_Fe is not None and not isinstance(self.flag_Fe, ProcessedDataFlag):
+            self.flag_Fe = ProcessedDataFlag(self.flag_Fe)
+
+        if self.flag_K is not None and not isinstance(self.flag_K, ProcessedDataFlag):
+            self.flag_K = ProcessedDataFlag(self.flag_K)
+
+        if self.flag_Mg is not None and not isinstance(self.flag_Mg, ProcessedDataFlag):
+            self.flag_Mg = ProcessedDataFlag(self.flag_Mg)
+
+        if self.flag_Mn is not None and not isinstance(self.flag_Mn, ProcessedDataFlag):
+            self.flag_Mn = ProcessedDataFlag(self.flag_Mn)
+
+        if self.flag_Ni is not None and not isinstance(self.flag_Ni, ProcessedDataFlag):
+            self.flag_Ni = ProcessedDataFlag(self.flag_Ni)
+
+        if self.flag_P is not None and not isinstance(self.flag_P, ProcessedDataFlag):
+            self.flag_P = ProcessedDataFlag(self.flag_P)
+
+        if self.flag_S is not None and not isinstance(self.flag_S, ProcessedDataFlag):
+            self.flag_S = ProcessedDataFlag(self.flag_S)
+
+        if self.flag_Zn is not None and not isinstance(self.flag_Zn, ProcessedDataFlag):
+            self.flag_Zn = ProcessedDataFlag(self.flag_Zn)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class RhizoICPMSExtractionProduct(ProcessedData):
+    """
+    ICP-MS results from a sample extraction targeting critical minerals and materials in rhizosphere samples.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RhizoICPMSExtractionProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RhizoICPMSExtractionProduct"
+    class_name: ClassVar[str] = "Rhizo_ICPMS_ExtractionProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RhizoICPMSExtractionProduct
+
+    id: Union[str, RhizoICPMSExtractionProductId] = None
+    name: str = None
+    s3_key: str = None
+    measure_type: Optional[Union[str, "ProductMeasureType"]] = None
+    results_from_ms_processing: Optional[Union[str, MassSpectrometryDataProcessingActivityId]] = None
+    Co_ug_per_g: Optional[float] = None
+    Ni_ug_per_g: Optional[float] = None
+    flag_Co: Optional[Union[str, "ProcessedDataFlag"]] = None
+    flag_Ni: Optional[Union[str, "ProcessedDataFlag"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RhizoICPMSExtractionProductId):
+            self.id = RhizoICPMSExtractionProductId(self.id)
+
+        if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
+            self.measure_type = ProductMeasureType(self.measure_type)
+
+        if self.results_from_ms_processing is not None and not isinstance(self.results_from_ms_processing, MassSpectrometryDataProcessingActivityId):
+            self.results_from_ms_processing = MassSpectrometryDataProcessingActivityId(self.results_from_ms_processing)
+
+        if self.Co_ug_per_g is not None and not isinstance(self.Co_ug_per_g, float):
+            self.Co_ug_per_g = float(self.Co_ug_per_g)
+
+        if self.Ni_ug_per_g is not None and not isinstance(self.Ni_ug_per_g, float):
+            self.Ni_ug_per_g = float(self.Ni_ug_per_g)
+
+        if self.flag_Co is not None and not isinstance(self.flag_Co, ProcessedDataFlag):
+            self.flag_Co = ProcessedDataFlag(self.flag_Co)
+
+        if self.flag_Ni is not None and not isinstance(self.flag_Ni, ProcessedDataFlag):
+            self.flag_Ni = ProcessedDataFlag(self.flag_Ni)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class TextureProduct(ProcessedData):
     """
     Soil texture analysis product, typically derived via hydrometer or similar instrument.
@@ -5044,9 +5852,9 @@ class TextureProduct(ProcessedData):
     name: str = None
     s3_key: str = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
-    sand_pct: Optional[Union[dict, "QuantityValue"]] = None
-    silt_pct: Optional[Union[dict, "QuantityValue"]] = None
-    clay_pct: Optional[Union[dict, "QuantityValue"]] = None
+    sand_pct: Optional[float] = None
+    silt_pct: Optional[float] = None
+    clay_pct: Optional[float] = None
     flag: Optional[Union[str, "ProcessedDataFlag"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -5058,14 +5866,14 @@ class TextureProduct(ProcessedData):
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)
 
-        if self.sand_pct is not None and not isinstance(self.sand_pct, QuantityValue):
-            self.sand_pct = QuantityValue(**as_dict(self.sand_pct))
+        if self.sand_pct is not None and not isinstance(self.sand_pct, float):
+            self.sand_pct = float(self.sand_pct)
 
-        if self.silt_pct is not None and not isinstance(self.silt_pct, QuantityValue):
-            self.silt_pct = QuantityValue(**as_dict(self.silt_pct))
+        if self.silt_pct is not None and not isinstance(self.silt_pct, float):
+            self.silt_pct = float(self.silt_pct)
 
-        if self.clay_pct is not None and not isinstance(self.clay_pct, QuantityValue):
-            self.clay_pct = QuantityValue(**as_dict(self.clay_pct))
+        if self.clay_pct is not None and not isinstance(self.clay_pct, float):
+            self.clay_pct = float(self.clay_pct)
 
         if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
             self.flag = ProcessedDataFlag(self.flag)
@@ -5093,9 +5901,9 @@ class WEOMProduct(ProcessedData):
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
     produced_by_toctn_run: Optional[Union[str, TOCTNDataGenerationActivityId]] = None
-    total_organic_carbon: Optional[Union[dict, "QuantityValue"]] = None
+    total_organic_carbon: Optional[float] = None
     total_organic_carbon_avg: Optional[float] = None
-    total_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
+    total_nitrogen: Optional[float] = None
     total_nitrogen_avg: Optional[float] = None
     flag_toc: Optional[Union[str, "ProcessedDataFlag"]] = None
     flag_tn: Optional[Union[str, "ProcessedDataFlag"]] = None
@@ -5117,14 +5925,14 @@ class WEOMProduct(ProcessedData):
         if self.produced_by_toctn_run is not None and not isinstance(self.produced_by_toctn_run, TOCTNDataGenerationActivityId):
             self.produced_by_toctn_run = TOCTNDataGenerationActivityId(self.produced_by_toctn_run)
 
-        if self.total_organic_carbon is not None and not isinstance(self.total_organic_carbon, QuantityValue):
-            self.total_organic_carbon = QuantityValue(**as_dict(self.total_organic_carbon))
+        if self.total_organic_carbon is not None and not isinstance(self.total_organic_carbon, float):
+            self.total_organic_carbon = float(self.total_organic_carbon)
 
         if self.total_organic_carbon_avg is not None and not isinstance(self.total_organic_carbon_avg, float):
             self.total_organic_carbon_avg = float(self.total_organic_carbon_avg)
 
-        if self.total_nitrogen is not None and not isinstance(self.total_nitrogen, QuantityValue):
-            self.total_nitrogen = QuantityValue(**as_dict(self.total_nitrogen))
+        if self.total_nitrogen is not None and not isinstance(self.total_nitrogen, float):
+            self.total_nitrogen = float(self.total_nitrogen)
 
         if self.total_nitrogen_avg is not None and not isinstance(self.total_nitrogen_avg, float):
             self.total_nitrogen_avg = float(self.total_nitrogen_avg)
@@ -5262,7 +6070,7 @@ class XCTProduct(XRayDataProduct):
     permeability_z_um2: Optional[float] = None
     flow_rate_z_mm3_per_sec: Optional[float] = None
     tortuosity_z: Optional[float] = None
-    flag_xct: Optional[str] = None
+    flag_xct: Optional[Union[str, "ProcessedDataFlag"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -5366,8 +6174,8 @@ class XCTProduct(XRayDataProduct):
         if self.tortuosity_z is not None and not isinstance(self.tortuosity_z, float):
             self.tortuosity_z = float(self.tortuosity_z)
 
-        if self.flag_xct is not None and not isinstance(self.flag_xct, str):
-            self.flag_xct = str(self.flag_xct)
+        if self.flag_xct is not None and not isinstance(self.flag_xct, ProcessedDataFlag):
+            self.flag_xct = ProcessedDataFlag(self.flag_xct)
 
         super().__post_init__(**kwargs)
 
@@ -6422,6 +7230,285 @@ class RIProduct(ProcessedData):
 
         if self.flag is not None and not isinstance(self.flag, ProcessedDataFlag):
             self.flag = ProcessedDataFlag(self.flag)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Revision(YAMLRoot):
+    """
+    Abstract base for one versioned snapshot of a processed data product for one
+    sample. Revisions are immutable; a correction is appended as a new revision.
+    Subclasses exist per data product.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Revision"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Revision"
+    class_name: ClassVar[str] = "Revision"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Revision
+
+    id: Union[str, RevisionId] = None
+    revises: Union[str, ProcessedDataId] = None
+    version_number: int = None
+    is_current: Union[bool, Bool] = None
+    revision_date: Union[str, XSDDateTime] = None
+    schema_version: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.revises):
+            self.MissingRequiredField("revises")
+        if not isinstance(self.revises, ProcessedDataId):
+            self.revises = ProcessedDataId(self.revises)
+
+        if self._is_empty(self.version_number):
+            self.MissingRequiredField("version_number")
+        if not isinstance(self.version_number, int):
+            self.version_number = int(self.version_number)
+
+        if self._is_empty(self.is_current):
+            self.MissingRequiredField("is_current")
+        if not isinstance(self.is_current, Bool):
+            self.is_current = Bool(self.is_current)
+
+        if self._is_empty(self.revision_date):
+            self.MissingRequiredField("revision_date")
+        if not isinstance(self.revision_date, XSDDateTime):
+            self.revision_date = XSDDateTime(self.revision_date)
+
+        if self._is_empty(self.schema_version):
+            self.MissingRequiredField("schema_version")
+        if not isinstance(self.schema_version, str):
+            self.schema_version = str(self.schema_version)
+
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RevisionId):
+            self.id = RevisionId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DataProductRevision(Revision):
+    """
+    A revision of a generic data product (DataProduct).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["DataProductRevision"]
+    class_class_curie: ClassVar[str] = "basalt_schema:DataProductRevision"
+    class_name: ClassVar[str] = "DataProductRevision"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.DataProductRevision
+
+    id: Union[str, DataProductRevisionId] = None
+    revises: Union[str, ProcessedDataId] = None
+    version_number: int = None
+    is_current: Union[bool, Bool] = None
+    revision_date: Union[str, XSDDateTime] = None
+    schema_version: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DataProductRevisionId):
+            self.id = DataProductRevisionId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DataProcessingActivityRevision(Revision):
+    """
+    A revision of a data processing activity (DataProcessingActivity).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["DataProcessingActivityRevision"]
+    class_class_curie: ClassVar[str] = "basalt_schema:DataProcessingActivityRevision"
+    class_name: ClassVar[str] = "DataProcessingActivityRevision"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.DataProcessingActivityRevision
+
+    id: Union[str, DataProcessingActivityRevisionId] = None
+    revises: Union[str, ProcessedDataId] = None
+    version_number: int = None
+    is_current: Union[bool, Bool] = None
+    revision_date: Union[str, XSDDateTime] = None
+    schema_version: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DataProcessingActivityRevisionId):
+            self.id = DataProcessingActivityRevisionId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class InstrumentDataRevision(Revision):
+    """
+    A revision of an instrument (Instrument).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["InstrumentDataRevision"]
+    class_class_curie: ClassVar[str] = "basalt_schema:InstrumentDataRevision"
+    class_name: ClassVar[str] = "InstrumentDataRevision"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.InstrumentDataRevision
+
+    id: Union[str, InstrumentDataRevisionId] = None
+    revises: Union[str, ProcessedDataId] = None
+    version_number: int = None
+    is_current: Union[bool, Bool] = None
+    revision_date: Union[str, XSDDateTime] = None
+    schema_version: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, InstrumentDataRevisionId):
+            self.id = InstrumentDataRevisionId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DataGenerationActivityRevision(Revision):
+    """
+    A revision of a data generation activity (DataGenerationActivity).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["DataGenerationActivityRevision"]
+    class_class_curie: ClassVar[str] = "basalt_schema:DataGenerationActivityRevision"
+    class_name: ClassVar[str] = "DataGenerationActivityRevision"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.DataGenerationActivityRevision
+
+    id: Union[str, DataGenerationActivityRevisionId] = None
+    revises: Union[str, ProcessedDataId] = None
+    version_number: int = None
+    is_current: Union[bool, Bool] = None
+    revision_date: Union[str, XSDDateTime] = None
+    schema_version: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DataGenerationActivityRevisionId):
+            self.id = DataGenerationActivityRevisionId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProcessedSampleRevision(Revision):
+    """
+    A revision of a processed sample (ProcessedSample).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ProcessedSampleRevision"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ProcessedSampleRevision"
+    class_name: ClassVar[str] = "ProcessedSampleRevision"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ProcessedSampleRevision
+
+    id: Union[str, ProcessedSampleRevisionId] = None
+    revises: Union[str, ProcessedDataId] = None
+    version_number: int = None
+    is_current: Union[bool, Bool] = None
+    revision_date: Union[str, XSDDateTime] = None
+    schema_version: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ProcessedSampleRevisionId):
+            self.id = ProcessedSampleRevisionId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SampleProcessingActivityRevision(Revision):
+    """
+    A revision of a sample processing activity (SampleProcessingActivity).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SampleProcessingActivityRevision"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SampleProcessingActivityRevision"
+    class_name: ClassVar[str] = "SampleProcessingActivityRevision"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SampleProcessingActivityRevision
+
+    id: Union[str, SampleProcessingActivityRevisionId] = None
+    revises: Union[str, ProcessedDataId] = None
+    version_number: int = None
+    is_current: Union[bool, Bool] = None
+    revision_date: Union[str, XSDDateTime] = None
+    schema_version: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SampleProcessingActivityRevisionId):
+            self.id = SampleProcessingActivityRevisionId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SampleRevision(Revision):
+    """
+    A revision of a sample (Sample).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SampleRevision"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SampleRevision"
+    class_name: ClassVar[str] = "SampleRevision"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SampleRevision
+
+    id: Union[str, SampleRevisionId] = None
+    revises: Union[str, ProcessedDataId] = None
+    version_number: int = None
+    is_current: Union[bool, Bool] = None
+    revision_date: Union[str, XSDDateTime] = None
+    schema_version: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SampleRevisionId):
+            self.id = SampleRevisionId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SamplingActivityRevision(Revision):
+    """
+    A revision of a sampling activity (SamplingActivity).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SamplingActivityRevision"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SamplingActivityRevision"
+    class_name: ClassVar[str] = "SamplingActivityRevision"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SamplingActivityRevision
+
+    id: Union[str, SamplingActivityRevisionId] = None
+    revises: Union[str, ProcessedDataId] = None
+    version_number: int = None
+    is_current: Union[bool, Bool] = None
+    revision_date: Union[str, XSDDateTime] = None
+    schema_version: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SamplingActivityRevisionId):
+            self.id = SamplingActivityRevisionId(self.id)
 
         super().__post_init__(**kwargs)
 
@@ -12846,7 +13933,7 @@ class ChemicalConversionProcess(SampleProcessing):
     name: str = None
     substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
     chemical_conversion_category: Optional[Union[str, "ChemicalConversionCategoryEnum"]] = None
-    digestion_method: Optional[Union[str, "DigestionMethodEnum"]] = None
+    protein_digestion_method: Optional[Union[str, "ProteinDigestionMethodEnum"]] = None
     enrichment_type: Optional[Union[str, "EnrichmentTypeEnum"]] = None
     labeling_method: Optional[Union[str, "LabelingMethodEnum"]] = None
     temperature_celsius: Optional[float] = None
@@ -12867,8 +13954,8 @@ class ChemicalConversionProcess(SampleProcessing):
         if self.chemical_conversion_category is not None and not isinstance(self.chemical_conversion_category, ChemicalConversionCategoryEnum):
             self.chemical_conversion_category = ChemicalConversionCategoryEnum(self.chemical_conversion_category)
 
-        if self.digestion_method is not None and not isinstance(self.digestion_method, DigestionMethodEnum):
-            self.digestion_method = DigestionMethodEnum(self.digestion_method)
+        if self.protein_digestion_method is not None and not isinstance(self.protein_digestion_method, ProteinDigestionMethodEnum):
+            self.protein_digestion_method = ProteinDigestionMethodEnum(self.protein_digestion_method)
 
         if self.enrichment_type is not None and not isinstance(self.enrichment_type, EnrichmentTypeEnum):
             self.enrichment_type = EnrichmentTypeEnum(self.enrichment_type)
@@ -13160,6 +14247,7 @@ class SubstancesUsedLink(YAMLRoot):
 
     id: Union[str, SubstancesUsedLinkId] = None
     sample_processing_substance: Optional[Union[str, SampleProcessingSubstanceId]] = None
+    sample_processing_id: Optional[Union[str, SampleProcessingId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -13169,6 +14257,9 @@ class SubstancesUsedLink(YAMLRoot):
 
         if self.sample_processing_substance is not None and not isinstance(self.sample_processing_substance, SampleProcessingSubstanceId):
             self.sample_processing_substance = SampleProcessingSubstanceId(self.sample_processing_substance)
+
+        if self.sample_processing_id is not None and not isinstance(self.sample_processing_id, SampleProcessingId):
+            self.sample_processing_id = SampleProcessingId(self.sample_processing_id)
 
         super().__post_init__(**kwargs)
 
@@ -13691,7 +14782,10 @@ class PersonValue(YAMLRoot):
 @dataclass(repr=False)
 class QuantityValue(YAMLRoot):
     """
-    A quantity value with numeric value and optional unit
+    A quantity value with numeric value and its own unit. Use only for slots
+    whose unit can differ from record to record (e.g. provider-supplied
+    values); lab data products with protocol-fixed units use range: double
+    with unit.ucum_code instead. See docs/background/units.md.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -13912,7 +15006,7 @@ class AnalysisTypeEnum(EnumDefinitionImpl):
 
 class AnalyteCategoryEnum(EnumDefinitionImpl):
     """
-    bundling common terms for different omics types by biomolecule being analyzed
+    Bundling terms for common analytes
     """
     dna = PermissibleValue(text="dna")
     rna = PermissibleValue(text="rna")
@@ -13920,11 +15014,12 @@ class AnalyteCategoryEnum(EnumDefinitionImpl):
     metabolite = PermissibleValue(text="metabolite")
     lipid = PermissibleValue(text="lipid")
     natural_organic_matter = PermissibleValue(text="natural_organic_matter")
+    cmm = PermissibleValue(text="cmm")
     unknown = PermissibleValue(text="unknown")
 
     _defn = EnumDefinition(
         name="AnalyteCategoryEnum",
-        description="bundling common terms for different omics types by biomolecule being analyzed",
+        description="Bundling terms for common analytes",
     )
 
 class AnnotationDatabaseEnum(EnumDefinitionImpl):
@@ -14031,6 +15126,10 @@ class ChemicalConversionCategoryEnum(EnumDefinitionImpl):
         text="protease_cleavage",
         description="""an enzymatic cleavage which relies on an enzyme with protease activity to act on proteins and to produce polypeptides (protein fragments).""",
         meaning=OBI["0600056"])
+    microwave_digestion = PermissibleValue(
+        text="microwave_digestion",
+        description="""a digestion process that uses microwave energy to heat the sample and reagents to accelerate the digestion of the sample.""",
+        meaning=CHMO["0001496"])
 
     _defn = EnumDefinition(
         name="ChemicalConversionCategoryEnum",
@@ -14070,6 +15169,9 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     deionized_water = PermissibleValue(
         text="deionized_water",
         meaning=CHEBI["15377"])
+    DTPA = PermissibleValue(
+        text="DTPA",
+        meaning=CHEBI["35739"])
     ethanol = PermissibleValue(
         text="ethanol",
         meaning=CHEBI["16236"])
@@ -14260,7 +15362,7 @@ class DeviceTypeEnum(EnumDefinitionImpl):
         name="DeviceTypeEnum",
     )
 
-class DigestionMethodEnum(EnumDefinitionImpl):
+class ProteinDigestionMethodEnum(EnumDefinitionImpl):
     """
     Named protein digestion methods used in sample preparation.
     """
@@ -14278,7 +15380,7 @@ class DigestionMethodEnum(EnumDefinitionImpl):
         description="Other digestion method not otherwise specified.")
 
     _defn = EnumDefinition(
-        name="DigestionMethodEnum",
+        name="ProteinDigestionMethodEnum",
         description="Named protein digestion methods used in sample preparation.",
     )
 
@@ -14767,6 +15869,7 @@ class IonizationSourceEnum(EnumDefinitionImpl):
     atmospheric_pressure_photo_ionization = PermissibleValue(text="atmospheric_pressure_photo_ionization")
     atmospheric_pressure_chemical_ionization = PermissibleValue(text="atmospheric_pressure_chemical_ionization")
     electron_ionization = PermissibleValue(text="electron_ionization")
+    plasma_ionization = PermissibleValue(text="plasma_ionization")
 
     _defn = EnumDefinition(
         name="IonizationSourceEnum",
@@ -15067,6 +16170,8 @@ class ModelEnum(EnumDefinitionImpl):
     solarix_15T = PermissibleValue(text="solarix_15T")
     agilent_8890A = PermissibleValue(text="agilent_8890A")
     agilent_7980A = PermissibleValue(text="agilent_7980A")
+    agilent_7500 = PermissibleValue(text="agilent_7500")
+    thermo_element_xr = PermissibleValue(text="thermo_element_xr")
     vortex_genie_2 = PermissibleValue(text="vortex_genie_2")
     novaseq = PermissibleValue(text="novaseq")
     novaseq_6000 = PermissibleValue(
@@ -15511,18 +16616,43 @@ class PolarityEnum(EnumDefinitionImpl):
     )
 
 class ProcessedDataFlag(EnumDefinitionImpl):
-
-    Below_Detection = PermissibleValue(text="Below_Detection")
-    Below_Reporting_Limit = PermissibleValue(text="Below_Reporting_Limit")
+    """
+    Data quality flags for processed data product values; a blank flag means no flag. Definitions follow the
+    Flag_Definitions tab of the lab column sheet (Column_Descriptions.xlsx).
+    """
+    Below_Detection = PermissibleValue(
+        text="Below_Detection",
+        description="All replicates for the sample were below the method detection limit.")
+    Below_Reporting_Limit = PermissibleValue(
+        text="Below_Reporting_Limit",
+        description="Value was below the reporting limit of the analytical method.")
     High_Background = PermissibleValue(text="High_Background")
-    Out_of_Range = PermissibleValue(text="Out_of_Range")
+    Out_of_Range = PermissibleValue(
+        text="Out_of_Range",
+        description="Measured value fell outside the physically plausible range for the variable and was removed.")
     Outlier = PermissibleValue(text="Outlier")
-    Data_not_available = PermissibleValue(text="Data_not_available")
-    Failed_QC = PermissibleValue(text="Failed_QC")
-    Insufficient_Material = PermissibleValue(text="Insufficient_Material")
+    Data_not_available = PermissibleValue(
+        text="Data_not_available",
+        description="""Data are not available for this sample (e.g., sample not received, not analyzed, or not scanned).""")
+    Failed_QC = PermissibleValue(
+        text="Failed_QC",
+        description="No replicate passed quality control, so no value is reported.")
+    Insufficient_Material = PermissibleValue(
+        text="Insufficient_Material",
+        description="Not enough sample material was available to run the analysis.")
+    In_Queue = PermissibleValue(
+        text="In_Queue",
+        description="Sample is awaiting analysis or processing; data will be added in a future release.")
+    No_Pore_Connectivity = PermissibleValue(
+        text="No_Pore_Connectivity",
+        description="""XCT: no connected pore network was detected at the measured resolution, so connectivity, permeability, flow rate, and tortuosity are blank.""")
+    Partial_Connected_Pores = PermissibleValue(
+        text="Partial_Connected_Pores",
+        description="""XCT: permeability, flow rate and tortuosity are blank for the directions with no connected flow path (X, Y and/or Z). Values for the other directions and all other pore metrics are reported.""")
 
     _defn = EnumDefinition(
         name="ProcessedDataFlag",
+        description="""Data quality flags for processed data product values; a blank flag means no flag. Definitions follow the Flag_Definitions tab of the lab column sheet (Column_Descriptions.xlsx).""",
     )
 
 class ProductMeasureType(EnumDefinitionImpl):
@@ -16361,6 +17491,21 @@ class YesNoEnum(EnumDefinitionImpl):
 # Slots
 class slots:
     pass
+
+slots.revises = Slot(uri=BASALT_SCHEMA.revises, name="revises", curie=BASALT_SCHEMA.curie('revises'),
+                   model_uri=BASALT_SCHEMA.revises, domain=None, range=Union[str, ProcessedDataId])
+
+slots.version_number = Slot(uri=BASALT_SCHEMA.version_number, name="version_number", curie=BASALT_SCHEMA.curie('version_number'),
+                   model_uri=BASALT_SCHEMA.version_number, domain=None, range=int)
+
+slots.is_current = Slot(uri=BASALT_SCHEMA.is_current, name="is_current", curie=BASALT_SCHEMA.curie('is_current'),
+                   model_uri=BASALT_SCHEMA.is_current, domain=None, range=Union[bool, Bool])
+
+slots.revision_date = Slot(uri=BASALT_SCHEMA.revision_date, name="revision_date", curie=BASALT_SCHEMA.curie('revision_date'),
+                   model_uri=BASALT_SCHEMA.revision_date, domain=None, range=Union[str, XSDDateTime])
+
+slots.schema_version = Slot(uri=BASALT_SCHEMA.schema_version, name="schema_version", curie=BASALT_SCHEMA.curie('schema_version'),
+                   model_uri=BASALT_SCHEMA.schema_version, domain=None, range=str)
 
 slots.acquisition_end_time = Slot(uri=BASALT_SCHEMA.acquisition_end_time, name="acquisition_end_time", curie=BASALT_SCHEMA.curie('acquisition_end_time'),
                    model_uri=BASALT_SCHEMA.acquisition_end_time, domain=None, range=Optional[Union[str, XSDDateTime]])
@@ -18607,22 +19752,406 @@ slots.xCTDataGenerationActivity__image_voxel_size_is = Slot(uri=BASALT_SCHEMA.im
                    model_uri=BASALT_SCHEMA.xCTDataGenerationActivity__image_voxel_size_is, domain=None, range=str)
 
 slots.bulkDensityProduct__bulk_density = Slot(uri=BASALT_SCHEMA.bulk_density, name="bulkDensityProduct__bulk_density", curie=BASALT_SCHEMA.curie('bulk_density'),
-                   model_uri=BASALT_SCHEMA.bulkDensityProduct__bulk_density, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.bulkDensityProduct__bulk_density, domain=None, range=Optional[float])
 
 slots.bulkDensityProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="bulkDensityProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.bulkDensityProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
+slots.cMMICPMSDigestionProduct__Al_ug_per_g = Slot(uri=BASALT_SCHEMA.Al_ug_per_g, name="cMMICPMSDigestionProduct__Al_ug_per_g", curie=BASALT_SCHEMA.curie('Al_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Al_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Ba_ug_per_g = Slot(uri=BASALT_SCHEMA.Ba_ug_per_g, name="cMMICPMSDigestionProduct__Ba_ug_per_g", curie=BASALT_SCHEMA.curie('Ba_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Ba_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Ca_ug_per_g = Slot(uri=BASALT_SCHEMA.Ca_ug_per_g, name="cMMICPMSDigestionProduct__Ca_ug_per_g", curie=BASALT_SCHEMA.curie('Ca_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Ca_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Ce_ug_per_g = Slot(uri=BASALT_SCHEMA.Ce_ug_per_g, name="cMMICPMSDigestionProduct__Ce_ug_per_g", curie=BASALT_SCHEMA.curie('Ce_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Ce_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Co_ug_per_g = Slot(uri=BASALT_SCHEMA.Co_ug_per_g, name="cMMICPMSDigestionProduct__Co_ug_per_g", curie=BASALT_SCHEMA.curie('Co_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Co_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Cr_ug_per_g = Slot(uri=BASALT_SCHEMA.Cr_ug_per_g, name="cMMICPMSDigestionProduct__Cr_ug_per_g", curie=BASALT_SCHEMA.curie('Cr_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Cr_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Cu_ug_per_g = Slot(uri=BASALT_SCHEMA.Cu_ug_per_g, name="cMMICPMSDigestionProduct__Cu_ug_per_g", curie=BASALT_SCHEMA.curie('Cu_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Cu_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Dy_ug_per_g = Slot(uri=BASALT_SCHEMA.Dy_ug_per_g, name="cMMICPMSDigestionProduct__Dy_ug_per_g", curie=BASALT_SCHEMA.curie('Dy_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Dy_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Er_ug_per_g = Slot(uri=BASALT_SCHEMA.Er_ug_per_g, name="cMMICPMSDigestionProduct__Er_ug_per_g", curie=BASALT_SCHEMA.curie('Er_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Er_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Eu_ug_per_g = Slot(uri=BASALT_SCHEMA.Eu_ug_per_g, name="cMMICPMSDigestionProduct__Eu_ug_per_g", curie=BASALT_SCHEMA.curie('Eu_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Eu_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Fe_ug_per_g = Slot(uri=BASALT_SCHEMA.Fe_ug_per_g, name="cMMICPMSDigestionProduct__Fe_ug_per_g", curie=BASALT_SCHEMA.curie('Fe_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Fe_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Gd_ug_per_g = Slot(uri=BASALT_SCHEMA.Gd_ug_per_g, name="cMMICPMSDigestionProduct__Gd_ug_per_g", curie=BASALT_SCHEMA.curie('Gd_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Gd_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Ho_ug_per_g = Slot(uri=BASALT_SCHEMA.Ho_ug_per_g, name="cMMICPMSDigestionProduct__Ho_ug_per_g", curie=BASALT_SCHEMA.curie('Ho_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Ho_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__K_ug_per_g = Slot(uri=BASALT_SCHEMA.K_ug_per_g, name="cMMICPMSDigestionProduct__K_ug_per_g", curie=BASALT_SCHEMA.curie('K_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__K_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__La_ug_per_g = Slot(uri=BASALT_SCHEMA.La_ug_per_g, name="cMMICPMSDigestionProduct__La_ug_per_g", curie=BASALT_SCHEMA.curie('La_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__La_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Li_ug_per_g = Slot(uri=BASALT_SCHEMA.Li_ug_per_g, name="cMMICPMSDigestionProduct__Li_ug_per_g", curie=BASALT_SCHEMA.curie('Li_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Li_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Lu_ug_per_g = Slot(uri=BASALT_SCHEMA.Lu_ug_per_g, name="cMMICPMSDigestionProduct__Lu_ug_per_g", curie=BASALT_SCHEMA.curie('Lu_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Lu_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Mg_ug_per_g = Slot(uri=BASALT_SCHEMA.Mg_ug_per_g, name="cMMICPMSDigestionProduct__Mg_ug_per_g", curie=BASALT_SCHEMA.curie('Mg_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Mg_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Mn_ug_per_g = Slot(uri=BASALT_SCHEMA.Mn_ug_per_g, name="cMMICPMSDigestionProduct__Mn_ug_per_g", curie=BASALT_SCHEMA.curie('Mn_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Mn_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Mo_ug_per_g = Slot(uri=BASALT_SCHEMA.Mo_ug_per_g, name="cMMICPMSDigestionProduct__Mo_ug_per_g", curie=BASALT_SCHEMA.curie('Mo_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Mo_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Nd_ug_per_g = Slot(uri=BASALT_SCHEMA.Nd_ug_per_g, name="cMMICPMSDigestionProduct__Nd_ug_per_g", curie=BASALT_SCHEMA.curie('Nd_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Nd_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Ni_ug_per_g = Slot(uri=BASALT_SCHEMA.Ni_ug_per_g, name="cMMICPMSDigestionProduct__Ni_ug_per_g", curie=BASALT_SCHEMA.curie('Ni_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Ni_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Pr_ug_per_g = Slot(uri=BASALT_SCHEMA.Pr_ug_per_g, name="cMMICPMSDigestionProduct__Pr_ug_per_g", curie=BASALT_SCHEMA.curie('Pr_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Pr_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Sc_ug_per_g = Slot(uri=BASALT_SCHEMA.Sc_ug_per_g, name="cMMICPMSDigestionProduct__Sc_ug_per_g", curie=BASALT_SCHEMA.curie('Sc_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Sc_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Si_ug_per_g = Slot(uri=BASALT_SCHEMA.Si_ug_per_g, name="cMMICPMSDigestionProduct__Si_ug_per_g", curie=BASALT_SCHEMA.curie('Si_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Si_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Sm_ug_per_g = Slot(uri=BASALT_SCHEMA.Sm_ug_per_g, name="cMMICPMSDigestionProduct__Sm_ug_per_g", curie=BASALT_SCHEMA.curie('Sm_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Sm_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Sr_ug_per_g = Slot(uri=BASALT_SCHEMA.Sr_ug_per_g, name="cMMICPMSDigestionProduct__Sr_ug_per_g", curie=BASALT_SCHEMA.curie('Sr_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Sr_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Tb_ug_per_g = Slot(uri=BASALT_SCHEMA.Tb_ug_per_g, name="cMMICPMSDigestionProduct__Tb_ug_per_g", curie=BASALT_SCHEMA.curie('Tb_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Tb_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Tm_ug_per_g = Slot(uri=BASALT_SCHEMA.Tm_ug_per_g, name="cMMICPMSDigestionProduct__Tm_ug_per_g", curie=BASALT_SCHEMA.curie('Tm_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Tm_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Y_ug_per_g = Slot(uri=BASALT_SCHEMA.Y_ug_per_g, name="cMMICPMSDigestionProduct__Y_ug_per_g", curie=BASALT_SCHEMA.curie('Y_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Y_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Yb_ug_per_g = Slot(uri=BASALT_SCHEMA.Yb_ug_per_g, name="cMMICPMSDigestionProduct__Yb_ug_per_g", curie=BASALT_SCHEMA.curie('Yb_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Yb_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__Zn_ug_per_g = Slot(uri=BASALT_SCHEMA.Zn_ug_per_g, name="cMMICPMSDigestionProduct__Zn_ug_per_g", curie=BASALT_SCHEMA.curie('Zn_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__Zn_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSDigestionProduct__flag_Al = Slot(uri=BASALT_SCHEMA.flag_Al, name="cMMICPMSDigestionProduct__flag_Al", curie=BASALT_SCHEMA.curie('flag_Al'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Al, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Ba = Slot(uri=BASALT_SCHEMA.flag_Ba, name="cMMICPMSDigestionProduct__flag_Ba", curie=BASALT_SCHEMA.curie('flag_Ba'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Ba, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Ca = Slot(uri=BASALT_SCHEMA.flag_Ca, name="cMMICPMSDigestionProduct__flag_Ca", curie=BASALT_SCHEMA.curie('flag_Ca'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Ca, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Ce = Slot(uri=BASALT_SCHEMA.flag_Ce, name="cMMICPMSDigestionProduct__flag_Ce", curie=BASALT_SCHEMA.curie('flag_Ce'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Ce, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Co = Slot(uri=BASALT_SCHEMA.flag_Co, name="cMMICPMSDigestionProduct__flag_Co", curie=BASALT_SCHEMA.curie('flag_Co'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Co, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Cr = Slot(uri=BASALT_SCHEMA.flag_Cr, name="cMMICPMSDigestionProduct__flag_Cr", curie=BASALT_SCHEMA.curie('flag_Cr'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Cr, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Cu = Slot(uri=BASALT_SCHEMA.flag_Cu, name="cMMICPMSDigestionProduct__flag_Cu", curie=BASALT_SCHEMA.curie('flag_Cu'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Cu, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Dy = Slot(uri=BASALT_SCHEMA.flag_Dy, name="cMMICPMSDigestionProduct__flag_Dy", curie=BASALT_SCHEMA.curie('flag_Dy'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Dy, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Er = Slot(uri=BASALT_SCHEMA.flag_Er, name="cMMICPMSDigestionProduct__flag_Er", curie=BASALT_SCHEMA.curie('flag_Er'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Er, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Eu = Slot(uri=BASALT_SCHEMA.flag_Eu, name="cMMICPMSDigestionProduct__flag_Eu", curie=BASALT_SCHEMA.curie('flag_Eu'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Eu, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Fe = Slot(uri=BASALT_SCHEMA.flag_Fe, name="cMMICPMSDigestionProduct__flag_Fe", curie=BASALT_SCHEMA.curie('flag_Fe'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Fe, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Gd = Slot(uri=BASALT_SCHEMA.flag_Gd, name="cMMICPMSDigestionProduct__flag_Gd", curie=BASALT_SCHEMA.curie('flag_Gd'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Gd, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Ho = Slot(uri=BASALT_SCHEMA.flag_Ho, name="cMMICPMSDigestionProduct__flag_Ho", curie=BASALT_SCHEMA.curie('flag_Ho'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Ho, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_K = Slot(uri=BASALT_SCHEMA.flag_K, name="cMMICPMSDigestionProduct__flag_K", curie=BASALT_SCHEMA.curie('flag_K'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_K, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_La = Slot(uri=BASALT_SCHEMA.flag_La, name="cMMICPMSDigestionProduct__flag_La", curie=BASALT_SCHEMA.curie('flag_La'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_La, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Li = Slot(uri=BASALT_SCHEMA.flag_Li, name="cMMICPMSDigestionProduct__flag_Li", curie=BASALT_SCHEMA.curie('flag_Li'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Li, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Lu = Slot(uri=BASALT_SCHEMA.flag_Lu, name="cMMICPMSDigestionProduct__flag_Lu", curie=BASALT_SCHEMA.curie('flag_Lu'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Lu, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Mg = Slot(uri=BASALT_SCHEMA.flag_Mg, name="cMMICPMSDigestionProduct__flag_Mg", curie=BASALT_SCHEMA.curie('flag_Mg'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Mg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Mn = Slot(uri=BASALT_SCHEMA.flag_Mn, name="cMMICPMSDigestionProduct__flag_Mn", curie=BASALT_SCHEMA.curie('flag_Mn'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Mn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Mo = Slot(uri=BASALT_SCHEMA.flag_Mo, name="cMMICPMSDigestionProduct__flag_Mo", curie=BASALT_SCHEMA.curie('flag_Mo'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Mo, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Nd = Slot(uri=BASALT_SCHEMA.flag_Nd, name="cMMICPMSDigestionProduct__flag_Nd", curie=BASALT_SCHEMA.curie('flag_Nd'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Nd, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Ni = Slot(uri=BASALT_SCHEMA.flag_Ni, name="cMMICPMSDigestionProduct__flag_Ni", curie=BASALT_SCHEMA.curie('flag_Ni'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Ni, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Pr = Slot(uri=BASALT_SCHEMA.flag_Pr, name="cMMICPMSDigestionProduct__flag_Pr", curie=BASALT_SCHEMA.curie('flag_Pr'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Pr, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Sc = Slot(uri=BASALT_SCHEMA.flag_Sc, name="cMMICPMSDigestionProduct__flag_Sc", curie=BASALT_SCHEMA.curie('flag_Sc'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Sc, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Si = Slot(uri=BASALT_SCHEMA.flag_Si, name="cMMICPMSDigestionProduct__flag_Si", curie=BASALT_SCHEMA.curie('flag_Si'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Si, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Sm = Slot(uri=BASALT_SCHEMA.flag_Sm, name="cMMICPMSDigestionProduct__flag_Sm", curie=BASALT_SCHEMA.curie('flag_Sm'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Sm, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Sr = Slot(uri=BASALT_SCHEMA.flag_Sr, name="cMMICPMSDigestionProduct__flag_Sr", curie=BASALT_SCHEMA.curie('flag_Sr'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Sr, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Tb = Slot(uri=BASALT_SCHEMA.flag_Tb, name="cMMICPMSDigestionProduct__flag_Tb", curie=BASALT_SCHEMA.curie('flag_Tb'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Tb, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Tm = Slot(uri=BASALT_SCHEMA.flag_Tm, name="cMMICPMSDigestionProduct__flag_Tm", curie=BASALT_SCHEMA.curie('flag_Tm'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Tm, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Y = Slot(uri=BASALT_SCHEMA.flag_Y, name="cMMICPMSDigestionProduct__flag_Y", curie=BASALT_SCHEMA.curie('flag_Y'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Y, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Yb = Slot(uri=BASALT_SCHEMA.flag_Yb, name="cMMICPMSDigestionProduct__flag_Yb", curie=BASALT_SCHEMA.curie('flag_Yb'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Yb, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSDigestionProduct__flag_Zn = Slot(uri=BASALT_SCHEMA.flag_Zn, name="cMMICPMSDigestionProduct__flag_Zn", curie=BASALT_SCHEMA.curie('flag_Zn'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSDigestionProduct__flag_Zn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__Al_ug_per_g = Slot(uri=BASALT_SCHEMA.Al_ug_per_g, name="cMMICPMSExtractionProduct__Al_ug_per_g", curie=BASALT_SCHEMA.curie('Al_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Al_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Ba_ug_per_g = Slot(uri=BASALT_SCHEMA.Ba_ug_per_g, name="cMMICPMSExtractionProduct__Ba_ug_per_g", curie=BASALT_SCHEMA.curie('Ba_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Ba_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Ca_ug_per_g = Slot(uri=BASALT_SCHEMA.Ca_ug_per_g, name="cMMICPMSExtractionProduct__Ca_ug_per_g", curie=BASALT_SCHEMA.curie('Ca_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Ca_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Ce_ug_per_g = Slot(uri=BASALT_SCHEMA.Ce_ug_per_g, name="cMMICPMSExtractionProduct__Ce_ug_per_g", curie=BASALT_SCHEMA.curie('Ce_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Ce_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Co_ug_per_g = Slot(uri=BASALT_SCHEMA.Co_ug_per_g, name="cMMICPMSExtractionProduct__Co_ug_per_g", curie=BASALT_SCHEMA.curie('Co_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Co_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Cr_ug_per_g = Slot(uri=BASALT_SCHEMA.Cr_ug_per_g, name="cMMICPMSExtractionProduct__Cr_ug_per_g", curie=BASALT_SCHEMA.curie('Cr_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Cr_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Cu_ug_per_g = Slot(uri=BASALT_SCHEMA.Cu_ug_per_g, name="cMMICPMSExtractionProduct__Cu_ug_per_g", curie=BASALT_SCHEMA.curie('Cu_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Cu_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Dy_ug_per_g = Slot(uri=BASALT_SCHEMA.Dy_ug_per_g, name="cMMICPMSExtractionProduct__Dy_ug_per_g", curie=BASALT_SCHEMA.curie('Dy_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Dy_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Er_ug_per_g = Slot(uri=BASALT_SCHEMA.Er_ug_per_g, name="cMMICPMSExtractionProduct__Er_ug_per_g", curie=BASALT_SCHEMA.curie('Er_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Er_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Eu_ug_per_g = Slot(uri=BASALT_SCHEMA.Eu_ug_per_g, name="cMMICPMSExtractionProduct__Eu_ug_per_g", curie=BASALT_SCHEMA.curie('Eu_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Eu_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Fe_ug_per_g = Slot(uri=BASALT_SCHEMA.Fe_ug_per_g, name="cMMICPMSExtractionProduct__Fe_ug_per_g", curie=BASALT_SCHEMA.curie('Fe_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Fe_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Gd_ug_per_g = Slot(uri=BASALT_SCHEMA.Gd_ug_per_g, name="cMMICPMSExtractionProduct__Gd_ug_per_g", curie=BASALT_SCHEMA.curie('Gd_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Gd_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Ho_ug_per_g = Slot(uri=BASALT_SCHEMA.Ho_ug_per_g, name="cMMICPMSExtractionProduct__Ho_ug_per_g", curie=BASALT_SCHEMA.curie('Ho_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Ho_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__K_ug_per_g = Slot(uri=BASALT_SCHEMA.K_ug_per_g, name="cMMICPMSExtractionProduct__K_ug_per_g", curie=BASALT_SCHEMA.curie('K_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__K_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__La_ug_per_g = Slot(uri=BASALT_SCHEMA.La_ug_per_g, name="cMMICPMSExtractionProduct__La_ug_per_g", curie=BASALT_SCHEMA.curie('La_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__La_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Li_ug_per_g = Slot(uri=BASALT_SCHEMA.Li_ug_per_g, name="cMMICPMSExtractionProduct__Li_ug_per_g", curie=BASALT_SCHEMA.curie('Li_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Li_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Lu_ug_per_g = Slot(uri=BASALT_SCHEMA.Lu_ug_per_g, name="cMMICPMSExtractionProduct__Lu_ug_per_g", curie=BASALT_SCHEMA.curie('Lu_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Lu_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Mg_ug_per_g = Slot(uri=BASALT_SCHEMA.Mg_ug_per_g, name="cMMICPMSExtractionProduct__Mg_ug_per_g", curie=BASALT_SCHEMA.curie('Mg_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Mg_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Mn_ug_per_g = Slot(uri=BASALT_SCHEMA.Mn_ug_per_g, name="cMMICPMSExtractionProduct__Mn_ug_per_g", curie=BASALT_SCHEMA.curie('Mn_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Mn_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Mo_ug_per_g = Slot(uri=BASALT_SCHEMA.Mo_ug_per_g, name="cMMICPMSExtractionProduct__Mo_ug_per_g", curie=BASALT_SCHEMA.curie('Mo_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Mo_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Nd_ug_per_g = Slot(uri=BASALT_SCHEMA.Nd_ug_per_g, name="cMMICPMSExtractionProduct__Nd_ug_per_g", curie=BASALT_SCHEMA.curie('Nd_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Nd_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Ni_ug_per_g = Slot(uri=BASALT_SCHEMA.Ni_ug_per_g, name="cMMICPMSExtractionProduct__Ni_ug_per_g", curie=BASALT_SCHEMA.curie('Ni_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Ni_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Pr_ug_per_g = Slot(uri=BASALT_SCHEMA.Pr_ug_per_g, name="cMMICPMSExtractionProduct__Pr_ug_per_g", curie=BASALT_SCHEMA.curie('Pr_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Pr_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Sc_ug_per_g = Slot(uri=BASALT_SCHEMA.Sc_ug_per_g, name="cMMICPMSExtractionProduct__Sc_ug_per_g", curie=BASALT_SCHEMA.curie('Sc_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Sc_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Si_ug_per_g = Slot(uri=BASALT_SCHEMA.Si_ug_per_g, name="cMMICPMSExtractionProduct__Si_ug_per_g", curie=BASALT_SCHEMA.curie('Si_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Si_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Sm_ug_per_g = Slot(uri=BASALT_SCHEMA.Sm_ug_per_g, name="cMMICPMSExtractionProduct__Sm_ug_per_g", curie=BASALT_SCHEMA.curie('Sm_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Sm_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Sr_ug_per_g = Slot(uri=BASALT_SCHEMA.Sr_ug_per_g, name="cMMICPMSExtractionProduct__Sr_ug_per_g", curie=BASALT_SCHEMA.curie('Sr_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Sr_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Tb_ug_per_g = Slot(uri=BASALT_SCHEMA.Tb_ug_per_g, name="cMMICPMSExtractionProduct__Tb_ug_per_g", curie=BASALT_SCHEMA.curie('Tb_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Tb_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Tm_ug_per_g = Slot(uri=BASALT_SCHEMA.Tm_ug_per_g, name="cMMICPMSExtractionProduct__Tm_ug_per_g", curie=BASALT_SCHEMA.curie('Tm_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Tm_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Y_ug_per_g = Slot(uri=BASALT_SCHEMA.Y_ug_per_g, name="cMMICPMSExtractionProduct__Y_ug_per_g", curie=BASALT_SCHEMA.curie('Y_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Y_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Yb_ug_per_g = Slot(uri=BASALT_SCHEMA.Yb_ug_per_g, name="cMMICPMSExtractionProduct__Yb_ug_per_g", curie=BASALT_SCHEMA.curie('Yb_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Yb_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__Zn_ug_per_g = Slot(uri=BASALT_SCHEMA.Zn_ug_per_g, name="cMMICPMSExtractionProduct__Zn_ug_per_g", curie=BASALT_SCHEMA.curie('Zn_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__Zn_ug_per_g, domain=None, range=Optional[float])
+
+slots.cMMICPMSExtractionProduct__flag_Al = Slot(uri=BASALT_SCHEMA.flag_Al, name="cMMICPMSExtractionProduct__flag_Al", curie=BASALT_SCHEMA.curie('flag_Al'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Al, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Ba = Slot(uri=BASALT_SCHEMA.flag_Ba, name="cMMICPMSExtractionProduct__flag_Ba", curie=BASALT_SCHEMA.curie('flag_Ba'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Ba, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Ca = Slot(uri=BASALT_SCHEMA.flag_Ca, name="cMMICPMSExtractionProduct__flag_Ca", curie=BASALT_SCHEMA.curie('flag_Ca'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Ca, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Ce = Slot(uri=BASALT_SCHEMA.flag_Ce, name="cMMICPMSExtractionProduct__flag_Ce", curie=BASALT_SCHEMA.curie('flag_Ce'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Ce, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Co = Slot(uri=BASALT_SCHEMA.flag_Co, name="cMMICPMSExtractionProduct__flag_Co", curie=BASALT_SCHEMA.curie('flag_Co'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Co, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Cr = Slot(uri=BASALT_SCHEMA.flag_Cr, name="cMMICPMSExtractionProduct__flag_Cr", curie=BASALT_SCHEMA.curie('flag_Cr'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Cr, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Cu = Slot(uri=BASALT_SCHEMA.flag_Cu, name="cMMICPMSExtractionProduct__flag_Cu", curie=BASALT_SCHEMA.curie('flag_Cu'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Cu, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Dy = Slot(uri=BASALT_SCHEMA.flag_Dy, name="cMMICPMSExtractionProduct__flag_Dy", curie=BASALT_SCHEMA.curie('flag_Dy'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Dy, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Er = Slot(uri=BASALT_SCHEMA.flag_Er, name="cMMICPMSExtractionProduct__flag_Er", curie=BASALT_SCHEMA.curie('flag_Er'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Er, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Eu = Slot(uri=BASALT_SCHEMA.flag_Eu, name="cMMICPMSExtractionProduct__flag_Eu", curie=BASALT_SCHEMA.curie('flag_Eu'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Eu, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Fe = Slot(uri=BASALT_SCHEMA.flag_Fe, name="cMMICPMSExtractionProduct__flag_Fe", curie=BASALT_SCHEMA.curie('flag_Fe'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Fe, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Gd = Slot(uri=BASALT_SCHEMA.flag_Gd, name="cMMICPMSExtractionProduct__flag_Gd", curie=BASALT_SCHEMA.curie('flag_Gd'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Gd, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Ho = Slot(uri=BASALT_SCHEMA.flag_Ho, name="cMMICPMSExtractionProduct__flag_Ho", curie=BASALT_SCHEMA.curie('flag_Ho'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Ho, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_K = Slot(uri=BASALT_SCHEMA.flag_K, name="cMMICPMSExtractionProduct__flag_K", curie=BASALT_SCHEMA.curie('flag_K'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_K, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_La = Slot(uri=BASALT_SCHEMA.flag_La, name="cMMICPMSExtractionProduct__flag_La", curie=BASALT_SCHEMA.curie('flag_La'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_La, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Li = Slot(uri=BASALT_SCHEMA.flag_Li, name="cMMICPMSExtractionProduct__flag_Li", curie=BASALT_SCHEMA.curie('flag_Li'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Li, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Lu = Slot(uri=BASALT_SCHEMA.flag_Lu, name="cMMICPMSExtractionProduct__flag_Lu", curie=BASALT_SCHEMA.curie('flag_Lu'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Lu, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Mg = Slot(uri=BASALT_SCHEMA.flag_Mg, name="cMMICPMSExtractionProduct__flag_Mg", curie=BASALT_SCHEMA.curie('flag_Mg'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Mg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Mn = Slot(uri=BASALT_SCHEMA.flag_Mn, name="cMMICPMSExtractionProduct__flag_Mn", curie=BASALT_SCHEMA.curie('flag_Mn'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Mn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Mo = Slot(uri=BASALT_SCHEMA.flag_Mo, name="cMMICPMSExtractionProduct__flag_Mo", curie=BASALT_SCHEMA.curie('flag_Mo'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Mo, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Nd = Slot(uri=BASALT_SCHEMA.flag_Nd, name="cMMICPMSExtractionProduct__flag_Nd", curie=BASALT_SCHEMA.curie('flag_Nd'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Nd, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Ni = Slot(uri=BASALT_SCHEMA.flag_Ni, name="cMMICPMSExtractionProduct__flag_Ni", curie=BASALT_SCHEMA.curie('flag_Ni'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Ni, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Pr = Slot(uri=BASALT_SCHEMA.flag_Pr, name="cMMICPMSExtractionProduct__flag_Pr", curie=BASALT_SCHEMA.curie('flag_Pr'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Pr, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Sc = Slot(uri=BASALT_SCHEMA.flag_Sc, name="cMMICPMSExtractionProduct__flag_Sc", curie=BASALT_SCHEMA.curie('flag_Sc'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Sc, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Si = Slot(uri=BASALT_SCHEMA.flag_Si, name="cMMICPMSExtractionProduct__flag_Si", curie=BASALT_SCHEMA.curie('flag_Si'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Si, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Sm = Slot(uri=BASALT_SCHEMA.flag_Sm, name="cMMICPMSExtractionProduct__flag_Sm", curie=BASALT_SCHEMA.curie('flag_Sm'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Sm, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Sr = Slot(uri=BASALT_SCHEMA.flag_Sr, name="cMMICPMSExtractionProduct__flag_Sr", curie=BASALT_SCHEMA.curie('flag_Sr'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Sr, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Tb = Slot(uri=BASALT_SCHEMA.flag_Tb, name="cMMICPMSExtractionProduct__flag_Tb", curie=BASALT_SCHEMA.curie('flag_Tb'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Tb, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Tm = Slot(uri=BASALT_SCHEMA.flag_Tm, name="cMMICPMSExtractionProduct__flag_Tm", curie=BASALT_SCHEMA.curie('flag_Tm'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Tm, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Y = Slot(uri=BASALT_SCHEMA.flag_Y, name="cMMICPMSExtractionProduct__flag_Y", curie=BASALT_SCHEMA.curie('flag_Y'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Y, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Yb = Slot(uri=BASALT_SCHEMA.flag_Yb, name="cMMICPMSExtractionProduct__flag_Yb", curie=BASALT_SCHEMA.curie('flag_Yb'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Yb, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.cMMICPMSExtractionProduct__flag_Zn = Slot(uri=BASALT_SCHEMA.flag_Zn, name="cMMICPMSExtractionProduct__flag_Zn", curie=BASALT_SCHEMA.curie('flag_Zn'),
+                   model_uri=BASALT_SCHEMA.cMMICPMSExtractionProduct__flag_Zn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
 slots.elementalAnalysisProduct__total_carbon = Slot(uri=BASALT_SCHEMA.total_carbon, name="elementalAnalysisProduct__total_carbon", curie=BASALT_SCHEMA.curie('total_carbon'),
-                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_carbon, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_carbon, domain=None, range=Optional[float])
 
 slots.elementalAnalysisProduct__total_nitrogen = Slot(uri=BASALT_SCHEMA.total_nitrogen, name="elementalAnalysisProduct__total_nitrogen", curie=BASALT_SCHEMA.curie('total_nitrogen'),
-                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_nitrogen, domain=None, range=Optional[float])
 
 slots.elementalAnalysisProduct__total_kjeldahl_nitrogen = Slot(uri=BASALT_SCHEMA.total_kjeldahl_nitrogen, name="elementalAnalysisProduct__total_kjeldahl_nitrogen", curie=BASALT_SCHEMA.curie('total_kjeldahl_nitrogen'),
-                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_kjeldahl_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_kjeldahl_nitrogen, domain=None, range=Optional[float])
 
 slots.elementalAnalysisProduct__total_sulfur = Slot(uri=BASALT_SCHEMA.total_sulfur, name="elementalAnalysisProduct__total_sulfur", curie=BASALT_SCHEMA.curie('total_sulfur'),
-                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_sulfur, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_sulfur, domain=None, range=Optional[float])
 
 slots.elementalAnalysisProduct__flag_total_carbon = Slot(uri=BASALT_SCHEMA.flag_total_carbon, name="elementalAnalysisProduct__flag_total_carbon", curie=BASALT_SCHEMA.curie('flag_total_carbon'),
                    model_uri=BASALT_SCHEMA.elementalAnalysisProduct__flag_total_carbon, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
@@ -18637,13 +20166,13 @@ slots.elementalAnalysisProduct__flag_total_sulfur = Slot(uri=BASALT_SCHEMA.flag_
                    model_uri=BASALT_SCHEMA.elementalAnalysisProduct__flag_total_sulfur, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h = Slot(uri=BASALT_SCHEMA.beta_glucosidase_ug_pnp_per_g_per_h, name="enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h", curie=BASALT_SCHEMA.curie('beta_glucosidase_ug_pnp_per_g_per_h'),
-                   model_uri=BASALT_SCHEMA.enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h, domain=None, range=Optional[float])
 
 slots.enzymeProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="enzymeProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.enzymeProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.gWCMoistureProduct__gwc_percent = Slot(uri=BASALT_SCHEMA.gwc_percent, name="gWCMoistureProduct__gwc_percent", curie=BASALT_SCHEMA.curie('gwc_percent'),
-                   model_uri=BASALT_SCHEMA.gWCMoistureProduct__gwc_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.gWCMoistureProduct__gwc_percent, domain=None, range=Optional[float])
 
 slots.gWCMoistureProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="gWCMoistureProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.gWCMoistureProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
@@ -18664,40 +20193,40 @@ slots.hydraulicPropertiesProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="hydr
                    model_uri=BASALT_SCHEMA.hydraulicPropertiesProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.ionsAnalysisProduct__sulfate = Slot(uri=BASALT_SCHEMA.sulfate, name="ionsAnalysisProduct__sulfate", curie=BASALT_SCHEMA.curie('sulfate'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__sulfate, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__sulfate, domain=None, range=Optional[float])
 
 slots.ionsAnalysisProduct__boron = Slot(uri=BASALT_SCHEMA.boron, name="ionsAnalysisProduct__boron", curie=BASALT_SCHEMA.curie('boron'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__boron, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__boron, domain=None, range=Optional[float])
 
 slots.ionsAnalysisProduct__zinc = Slot(uri=BASALT_SCHEMA.zinc, name="ionsAnalysisProduct__zinc", curie=BASALT_SCHEMA.curie('zinc'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__zinc, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__zinc, domain=None, range=Optional[float])
 
 slots.ionsAnalysisProduct__manganate = Slot(uri=BASALT_SCHEMA.manganate, name="ionsAnalysisProduct__manganate", curie=BASALT_SCHEMA.curie('manganate'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__manganate, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__manganate, domain=None, range=Optional[float])
 
 slots.ionsAnalysisProduct__copper = Slot(uri=BASALT_SCHEMA.copper, name="ionsAnalysisProduct__copper", curie=BASALT_SCHEMA.curie('copper'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__copper, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__copper, domain=None, range=Optional[float])
 
 slots.ionsAnalysisProduct__iron = Slot(uri=BASALT_SCHEMA.iron, name="ionsAnalysisProduct__iron", curie=BASALT_SCHEMA.curie('iron'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__iron, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__iron, domain=None, range=Optional[float])
 
 slots.ionsAnalysisProduct__calcium = Slot(uri=BASALT_SCHEMA.calcium, name="ionsAnalysisProduct__calcium", curie=BASALT_SCHEMA.curie('calcium'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__calcium, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__calcium, domain=None, range=Optional[float])
 
 slots.ionsAnalysisProduct__magnesium = Slot(uri=BASALT_SCHEMA.magnesium, name="ionsAnalysisProduct__magnesium", curie=BASALT_SCHEMA.curie('magnesium'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__magnesium, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__magnesium, domain=None, range=Optional[float])
 
 slots.ionsAnalysisProduct__sodium = Slot(uri=BASALT_SCHEMA.sodium, name="ionsAnalysisProduct__sodium", curie=BASALT_SCHEMA.curie('sodium'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__sodium, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__sodium, domain=None, range=Optional[float])
 
 slots.ionsAnalysisProduct__potassium = Slot(uri=BASALT_SCHEMA.potassium, name="ionsAnalysisProduct__potassium", curie=BASALT_SCHEMA.curie('potassium'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__potassium, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__potassium, domain=None, range=Optional[float])
 
 slots.ionsAnalysisProduct__total_bases = Slot(uri=BASALT_SCHEMA.total_bases, name="ionsAnalysisProduct__total_bases", curie=BASALT_SCHEMA.curie('total_bases'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__total_bases, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__total_bases, domain=None, range=Optional[float])
 
 slots.ionsAnalysisProduct__cation_exchange_capacity = Slot(uri=BASALT_SCHEMA.cation_exchange_capacity, name="ionsAnalysisProduct__cation_exchange_capacity", curie=BASALT_SCHEMA.curie('cation_exchange_capacity'),
-                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__cation_exchange_capacity, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__cation_exchange_capacity, domain=None, range=Optional[float])
 
 slots.ionsAnalysisProduct__flag_sulfate = Slot(uri=BASALT_SCHEMA.flag_sulfate, name="ionsAnalysisProduct__flag_sulfate", curie=BASALT_SCHEMA.curie('flag_sulfate'),
                    model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_sulfate, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
@@ -18736,13 +20265,13 @@ slots.ionsAnalysisProduct__flag_cec = Slot(uri=BASALT_SCHEMA.flag_cec, name="ion
                    model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_cec, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.hClExtOMProduct__total_organic_carbon = Slot(uri=BASALT_SCHEMA.total_organic_carbon, name="hClExtOMProduct__total_organic_carbon", curie=BASALT_SCHEMA.curie('total_organic_carbon'),
-                   model_uri=BASALT_SCHEMA.hClExtOMProduct__total_organic_carbon, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.hClExtOMProduct__total_organic_carbon, domain=None, range=Optional[float])
 
 slots.hClExtOMProduct__total_organic_carbon_avg = Slot(uri=BASALT_SCHEMA.total_organic_carbon_avg, name="hClExtOMProduct__total_organic_carbon_avg", curie=BASALT_SCHEMA.curie('total_organic_carbon_avg'),
                    model_uri=BASALT_SCHEMA.hClExtOMProduct__total_organic_carbon_avg, domain=None, range=Optional[float])
 
 slots.hClExtOMProduct__total_nitrogen = Slot(uri=BASALT_SCHEMA.total_nitrogen, name="hClExtOMProduct__total_nitrogen", curie=BASALT_SCHEMA.curie('total_nitrogen'),
-                   model_uri=BASALT_SCHEMA.hClExtOMProduct__total_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.hClExtOMProduct__total_nitrogen, domain=None, range=Optional[float])
 
 slots.hClExtOMProduct__total_nitrogen_avg = Slot(uri=BASALT_SCHEMA.total_nitrogen_avg, name="hClExtOMProduct__total_nitrogen_avg", curie=BASALT_SCHEMA.curie('total_nitrogen_avg'),
                    model_uri=BASALT_SCHEMA.hClExtOMProduct__total_nitrogen_avg, domain=None, range=Optional[float])
@@ -18760,13 +20289,13 @@ slots.hClExtOMProduct__flag_tn_avg = Slot(uri=BASALT_SCHEMA.flag_tn_avg, name="h
                    model_uri=BASALT_SCHEMA.hClExtOMProduct__flag_tn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.microbialBiomassProduct__mbc = Slot(uri=BASALT_SCHEMA.mbc, name="microbialBiomassProduct__mbc", curie=BASALT_SCHEMA.curie('mbc'),
-                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbc, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbc, domain=None, range=Optional[float])
 
 slots.microbialBiomassProduct__mbc_avg = Slot(uri=BASALT_SCHEMA.mbc_avg, name="microbialBiomassProduct__mbc_avg", curie=BASALT_SCHEMA.curie('mbc_avg'),
                    model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbc_avg, domain=None, range=Optional[float])
 
 slots.microbialBiomassProduct__mbn = Slot(uri=BASALT_SCHEMA.mbn, name="microbialBiomassProduct__mbn", curie=BASALT_SCHEMA.curie('mbn'),
-                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbn, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbn, domain=None, range=Optional[float])
 
 slots.microbialBiomassProduct__mbn_avg = Slot(uri=BASALT_SCHEMA.mbn_avg, name="microbialBiomassProduct__mbn_avg", curie=BASALT_SCHEMA.curie('mbn_avg'),
                    model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbn_avg, domain=None, range=Optional[float])
@@ -18784,13 +20313,13 @@ slots.microbialBiomassProduct__flag_mbn_avg = Slot(uri=BASALT_SCHEMA.flag_mbn_av
                    model_uri=BASALT_SCHEMA.microbialBiomassProduct__flag_mbn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.nitrogenAnalysisProduct__no3_n = Slot(uri=BASALT_SCHEMA.no3_n, name="nitrogenAnalysisProduct__no3_n", curie=BASALT_SCHEMA.curie('no3_n'),
-                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__no3_n, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__no3_n, domain=None, range=Optional[float])
 
 slots.nitrogenAnalysisProduct__no3_n_avg = Slot(uri=BASALT_SCHEMA.no3_n_avg, name="nitrogenAnalysisProduct__no3_n_avg", curie=BASALT_SCHEMA.curie('no3_n_avg'),
                    model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__no3_n_avg, domain=None, range=Optional[float])
 
 slots.nitrogenAnalysisProduct__nh4_n = Slot(uri=BASALT_SCHEMA.nh4_n, name="nitrogenAnalysisProduct__nh4_n", curie=BASALT_SCHEMA.curie('nh4_n'),
-                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__nh4_n, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__nh4_n, domain=None, range=Optional[float])
 
 slots.nitrogenAnalysisProduct__nh4_n_avg = Slot(uri=BASALT_SCHEMA.nh4_n_avg, name="nitrogenAnalysisProduct__nh4_n_avg", curie=BASALT_SCHEMA.curie('nh4_n_avg'),
                    model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__nh4_n_avg, domain=None, range=Optional[float])
@@ -18811,7 +20340,7 @@ slots.phosphorusAnalysisProduct__extraction_method = Slot(uri=BASALT_SCHEMA.extr
                    model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__extraction_method, domain=None, range=Optional[str])
 
 slots.phosphorusAnalysisProduct__phosphorus = Slot(uri=BASALT_SCHEMA.phosphorus, name="phosphorusAnalysisProduct__phosphorus", curie=BASALT_SCHEMA.curie('phosphorus'),
-                   model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__phosphorus, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__phosphorus, domain=None, range=Optional[float])
 
 slots.phosphorusAnalysisProduct__phosphorus_avg = Slot(uri=BASALT_SCHEMA.phosphorus_avg, name="phosphorusAnalysisProduct__phosphorus_avg", curie=BASALT_SCHEMA.curie('phosphorus_avg'),
                    model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__phosphorus_avg, domain=None, range=Optional[float])
@@ -18828,26 +20357,110 @@ slots.respirationProduct__respiration_co2_c_ug_per_g = Slot(uri=BASALT_SCHEMA.re
 slots.respirationProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="respirationProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.respirationProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
+slots.rhizoICPMSDigestionProduct__Al_ug_per_g = Slot(uri=BASALT_SCHEMA.Al_ug_per_g, name="rhizoICPMSDigestionProduct__Al_ug_per_g", curie=BASALT_SCHEMA.curie('Al_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__Al_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSDigestionProduct__Ca_ug_per_g = Slot(uri=BASALT_SCHEMA.Ca_ug_per_g, name="rhizoICPMSDigestionProduct__Ca_ug_per_g", curie=BASALT_SCHEMA.curie('Ca_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__Ca_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSDigestionProduct__Co_ug_per_g = Slot(uri=BASALT_SCHEMA.Co_ug_per_g, name="rhizoICPMSDigestionProduct__Co_ug_per_g", curie=BASALT_SCHEMA.curie('Co_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__Co_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSDigestionProduct__Cu_ug_per_g = Slot(uri=BASALT_SCHEMA.Cu_ug_per_g, name="rhizoICPMSDigestionProduct__Cu_ug_per_g", curie=BASALT_SCHEMA.curie('Cu_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__Cu_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSDigestionProduct__Fe_ug_per_g = Slot(uri=BASALT_SCHEMA.Fe_ug_per_g, name="rhizoICPMSDigestionProduct__Fe_ug_per_g", curie=BASALT_SCHEMA.curie('Fe_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__Fe_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSDigestionProduct__K_ug_per_g = Slot(uri=BASALT_SCHEMA.K_ug_per_g, name="rhizoICPMSDigestionProduct__K_ug_per_g", curie=BASALT_SCHEMA.curie('K_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__K_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSDigestionProduct__Mg_ug_per_g = Slot(uri=BASALT_SCHEMA.Mg_ug_per_g, name="rhizoICPMSDigestionProduct__Mg_ug_per_g", curie=BASALT_SCHEMA.curie('Mg_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__Mg_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSDigestionProduct__Mn_ug_per_g = Slot(uri=BASALT_SCHEMA.Mn_ug_per_g, name="rhizoICPMSDigestionProduct__Mn_ug_per_g", curie=BASALT_SCHEMA.curie('Mn_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__Mn_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSDigestionProduct__Ni_ug_per_g = Slot(uri=BASALT_SCHEMA.Ni_ug_per_g, name="rhizoICPMSDigestionProduct__Ni_ug_per_g", curie=BASALT_SCHEMA.curie('Ni_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__Ni_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSDigestionProduct__P_ug_per_g = Slot(uri=BASALT_SCHEMA.P_ug_per_g, name="rhizoICPMSDigestionProduct__P_ug_per_g", curie=BASALT_SCHEMA.curie('P_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__P_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSDigestionProduct__S_ug_per_g = Slot(uri=BASALT_SCHEMA.S_ug_per_g, name="rhizoICPMSDigestionProduct__S_ug_per_g", curie=BASALT_SCHEMA.curie('S_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__S_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSDigestionProduct__Zn_ug_per_g = Slot(uri=BASALT_SCHEMA.Zn_ug_per_g, name="rhizoICPMSDigestionProduct__Zn_ug_per_g", curie=BASALT_SCHEMA.curie('Zn_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__Zn_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSDigestionProduct__flag_Al = Slot(uri=BASALT_SCHEMA.flag_Al, name="rhizoICPMSDigestionProduct__flag_Al", curie=BASALT_SCHEMA.curie('flag_Al'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__flag_Al, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSDigestionProduct__flag_Ca = Slot(uri=BASALT_SCHEMA.flag_Ca, name="rhizoICPMSDigestionProduct__flag_Ca", curie=BASALT_SCHEMA.curie('flag_Ca'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__flag_Ca, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSDigestionProduct__flag_Co = Slot(uri=BASALT_SCHEMA.flag_Co, name="rhizoICPMSDigestionProduct__flag_Co", curie=BASALT_SCHEMA.curie('flag_Co'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__flag_Co, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSDigestionProduct__flag_Cu = Slot(uri=BASALT_SCHEMA.flag_Cu, name="rhizoICPMSDigestionProduct__flag_Cu", curie=BASALT_SCHEMA.curie('flag_Cu'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__flag_Cu, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSDigestionProduct__flag_Fe = Slot(uri=BASALT_SCHEMA.flag_Fe, name="rhizoICPMSDigestionProduct__flag_Fe", curie=BASALT_SCHEMA.curie('flag_Fe'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__flag_Fe, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSDigestionProduct__flag_K = Slot(uri=BASALT_SCHEMA.flag_K, name="rhizoICPMSDigestionProduct__flag_K", curie=BASALT_SCHEMA.curie('flag_K'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__flag_K, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSDigestionProduct__flag_Mg = Slot(uri=BASALT_SCHEMA.flag_Mg, name="rhizoICPMSDigestionProduct__flag_Mg", curie=BASALT_SCHEMA.curie('flag_Mg'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__flag_Mg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSDigestionProduct__flag_Mn = Slot(uri=BASALT_SCHEMA.flag_Mn, name="rhizoICPMSDigestionProduct__flag_Mn", curie=BASALT_SCHEMA.curie('flag_Mn'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__flag_Mn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSDigestionProduct__flag_Ni = Slot(uri=BASALT_SCHEMA.flag_Ni, name="rhizoICPMSDigestionProduct__flag_Ni", curie=BASALT_SCHEMA.curie('flag_Ni'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__flag_Ni, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSDigestionProduct__flag_P = Slot(uri=BASALT_SCHEMA.flag_P, name="rhizoICPMSDigestionProduct__flag_P", curie=BASALT_SCHEMA.curie('flag_P'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__flag_P, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSDigestionProduct__flag_S = Slot(uri=BASALT_SCHEMA.flag_S, name="rhizoICPMSDigestionProduct__flag_S", curie=BASALT_SCHEMA.curie('flag_S'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__flag_S, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSDigestionProduct__flag_Zn = Slot(uri=BASALT_SCHEMA.flag_Zn, name="rhizoICPMSDigestionProduct__flag_Zn", curie=BASALT_SCHEMA.curie('flag_Zn'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSDigestionProduct__flag_Zn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSExtractionProduct__Co_ug_per_g = Slot(uri=BASALT_SCHEMA.Co_ug_per_g, name="rhizoICPMSExtractionProduct__Co_ug_per_g", curie=BASALT_SCHEMA.curie('Co_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSExtractionProduct__Co_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSExtractionProduct__Ni_ug_per_g = Slot(uri=BASALT_SCHEMA.Ni_ug_per_g, name="rhizoICPMSExtractionProduct__Ni_ug_per_g", curie=BASALT_SCHEMA.curie('Ni_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSExtractionProduct__Ni_ug_per_g, domain=None, range=Optional[float])
+
+slots.rhizoICPMSExtractionProduct__flag_Co = Slot(uri=BASALT_SCHEMA.flag_Co, name="rhizoICPMSExtractionProduct__flag_Co", curie=BASALT_SCHEMA.curie('flag_Co'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSExtractionProduct__flag_Co, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
+slots.rhizoICPMSExtractionProduct__flag_Ni = Slot(uri=BASALT_SCHEMA.flag_Ni, name="rhizoICPMSExtractionProduct__flag_Ni", curie=BASALT_SCHEMA.curie('flag_Ni'),
+                   model_uri=BASALT_SCHEMA.rhizoICPMSExtractionProduct__flag_Ni, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+
 slots.textureProduct__sand_pct = Slot(uri=BASALT_SCHEMA.sand_pct, name="textureProduct__sand_pct", curie=BASALT_SCHEMA.curie('sand_pct'),
-                   model_uri=BASALT_SCHEMA.textureProduct__sand_pct, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.textureProduct__sand_pct, domain=None, range=Optional[float])
 
 slots.textureProduct__silt_pct = Slot(uri=BASALT_SCHEMA.silt_pct, name="textureProduct__silt_pct", curie=BASALT_SCHEMA.curie('silt_pct'),
-                   model_uri=BASALT_SCHEMA.textureProduct__silt_pct, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.textureProduct__silt_pct, domain=None, range=Optional[float])
 
 slots.textureProduct__clay_pct = Slot(uri=BASALT_SCHEMA.clay_pct, name="textureProduct__clay_pct", curie=BASALT_SCHEMA.curie('clay_pct'),
-                   model_uri=BASALT_SCHEMA.textureProduct__clay_pct, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.textureProduct__clay_pct, domain=None, range=Optional[float])
 
 slots.textureProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="textureProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
                    model_uri=BASALT_SCHEMA.textureProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.wEOMProduct__total_organic_carbon = Slot(uri=BASALT_SCHEMA.total_organic_carbon, name="wEOMProduct__total_organic_carbon", curie=BASALT_SCHEMA.curie('total_organic_carbon'),
-                   model_uri=BASALT_SCHEMA.wEOMProduct__total_organic_carbon, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.wEOMProduct__total_organic_carbon, domain=None, range=Optional[float])
 
 slots.wEOMProduct__total_organic_carbon_avg = Slot(uri=BASALT_SCHEMA.total_organic_carbon_avg, name="wEOMProduct__total_organic_carbon_avg", curie=BASALT_SCHEMA.curie('total_organic_carbon_avg'),
                    model_uri=BASALT_SCHEMA.wEOMProduct__total_organic_carbon_avg, domain=None, range=Optional[float])
 
 slots.wEOMProduct__total_nitrogen = Slot(uri=BASALT_SCHEMA.total_nitrogen, name="wEOMProduct__total_nitrogen", curie=BASALT_SCHEMA.curie('total_nitrogen'),
-                   model_uri=BASALT_SCHEMA.wEOMProduct__total_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=BASALT_SCHEMA.wEOMProduct__total_nitrogen, domain=None, range=Optional[float])
 
 slots.wEOMProduct__total_nitrogen_avg = Slot(uri=BASALT_SCHEMA.total_nitrogen_avg, name="wEOMProduct__total_nitrogen_avg", curie=BASALT_SCHEMA.curie('total_nitrogen_avg'),
                    model_uri=BASALT_SCHEMA.wEOMProduct__total_nitrogen_avg, domain=None, range=Optional[float])
@@ -18961,7 +20574,7 @@ slots.xCTProduct__tortuosity_z = Slot(uri=BASALT_SCHEMA.tortuosity_z, name="xCTP
                    model_uri=BASALT_SCHEMA.xCTProduct__tortuosity_z, domain=None, range=Optional[float])
 
 slots.xCTProduct__flag_xct = Slot(uri=BASALT_SCHEMA.flag_xct, name="xCTProduct__flag_xct", curie=BASALT_SCHEMA.curie('flag_xct'),
-                   model_uri=BASALT_SCHEMA.xCTProduct__flag_xct, domain=None, range=Optional[str])
+                   model_uri=BASALT_SCHEMA.xCTProduct__flag_xct, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
 slots.xRFElementalProduct__cl_mg_per_kg = Slot(uri=BASALT_SCHEMA.cl_mg_per_kg, name="xRFElementalProduct__cl_mg_per_kg", curie=BASALT_SCHEMA.curie('cl_mg_per_kg'),
                    model_uri=BASALT_SCHEMA.xRFElementalProduct__cl_mg_per_kg, domain=None, range=Optional[float])
@@ -19209,6 +20822,9 @@ slots.xASLCFProduct__species_proportions = Slot(uri=BASALT_SCHEMA.species_propor
 slots.xASLCFProduct__lcf_data_rows = Slot(uri=BASALT_SCHEMA.lcf_data_rows, name="xASLCFProduct__lcf_data_rows", curie=BASALT_SCHEMA.curie('lcf_data_rows'),
                    model_uri=BASALT_SCHEMA.xASLCFProduct__lcf_data_rows, domain=None, range=Optional[Union[Union[dict, XASLCFDataRow], list[Union[dict, XASLCFDataRow]]]])
 
+slots.revision__id = Slot(uri=BASALT_SCHEMA.id, name="revision__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.revision__id, domain=None, range=URIRef)
+
 slots.engineeredStrainSample__cbi = Slot(uri=BASALT_SCHEMA.cbi, name="engineeredStrainSample__cbi", curie=BASALT_SCHEMA.curie('cbi'),
                    model_uri=BASALT_SCHEMA.engineeredStrainSample__cbi, domain=None, range=str)
 
@@ -19221,8 +20837,8 @@ slots.engineeredStrainSample__storage_temperature = Slot(uri=BASALT_SCHEMA.stora
 slots.chemicalConversionProcess__chemical_conversion_category = Slot(uri=BASALT_SCHEMA.chemical_conversion_category, name="chemicalConversionProcess__chemical_conversion_category", curie=BASALT_SCHEMA.curie('chemical_conversion_category'),
                    model_uri=BASALT_SCHEMA.chemicalConversionProcess__chemical_conversion_category, domain=None, range=Optional[Union[str, "ChemicalConversionCategoryEnum"]])
 
-slots.chemicalConversionProcess__digestion_method = Slot(uri=BASALT_SCHEMA.digestion_method, name="chemicalConversionProcess__digestion_method", curie=BASALT_SCHEMA.curie('digestion_method'),
-                   model_uri=BASALT_SCHEMA.chemicalConversionProcess__digestion_method, domain=None, range=Optional[Union[str, "DigestionMethodEnum"]])
+slots.chemicalConversionProcess__protein_digestion_method = Slot(uri=BASALT_SCHEMA.protein_digestion_method, name="chemicalConversionProcess__protein_digestion_method", curie=BASALT_SCHEMA.curie('protein_digestion_method'),
+                   model_uri=BASALT_SCHEMA.chemicalConversionProcess__protein_digestion_method, domain=None, range=Optional[Union[str, "ProteinDigestionMethodEnum"]])
 
 slots.chemicalConversionProcess__enrichment_type = Slot(uri=BASALT_SCHEMA.enrichment_type, name="chemicalConversionProcess__enrichment_type", curie=BASALT_SCHEMA.curie('enrichment_type'),
                    model_uri=BASALT_SCHEMA.chemicalConversionProcess__enrichment_type, domain=None, range=Optional[Union[str, "EnrichmentTypeEnum"]])
@@ -19247,6 +20863,9 @@ slots.substancesUsedLink__id = Slot(uri=BASALT_SCHEMA.id, name="substancesUsedLi
 
 slots.substancesUsedLink__sample_processing_substance = Slot(uri=BASALT_SCHEMA.sample_processing_substance, name="substancesUsedLink__sample_processing_substance", curie=BASALT_SCHEMA.curie('sample_processing_substance'),
                    model_uri=BASALT_SCHEMA.substancesUsedLink__sample_processing_substance, domain=None, range=Optional[Union[str, SampleProcessingSubstanceId]])
+
+slots.substancesUsedLink__sample_processing_id = Slot(uri=BASALT_SCHEMA.sample_processing_id, name="substancesUsedLink__sample_processing_id", curie=BASALT_SCHEMA.curie('sample_processing_id'),
+                   model_uri=BASALT_SCHEMA.substancesUsedLink__sample_processing_id, domain=None, range=Optional[Union[str, SampleProcessingId]])
 
 slots.sampleProcessingSubstance__known_as = Slot(uri=BASALT_SCHEMA.known_as, name="sampleProcessingSubstance__known_as", curie=BASALT_SCHEMA.curie('known_as'),
                    model_uri=BASALT_SCHEMA.sampleProcessingSubstance__known_as, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
@@ -19415,6 +21034,9 @@ slots.MassSpectrometryDataGenerationActivity_acquisition_end_time = Slot(uri=BAS
 
 slots.NucleotideSequencing_external_identifiers = Slot(uri=BASALT_SCHEMA.external_identifiers, name="NucleotideSequencing_external_identifiers", curie=BASALT_SCHEMA.curie('external_identifiers'),
                    model_uri=BASALT_SCHEMA.NucleotideSequencing_external_identifiers, domain=NucleotideSequencing, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+
+slots.pHProduct_ph = Slot(uri=BASALT_SCHEMA.ph, name="pHProduct_ph", curie=BASALT_SCHEMA.curie('ph'),
+                   model_uri=BASALT_SCHEMA.pHProduct_ph, domain=PHProduct, range=Optional[float])
 
 slots.XASAmplifier_amp_index = Slot(uri=BASALT_SCHEMA.amp_index, name="XASAmplifier_amp_index", curie=BASALT_SCHEMA.curie('amp_index'),
                    model_uri=BASALT_SCHEMA.XASAmplifier_amp_index, domain=XASAmplifier, range=int)

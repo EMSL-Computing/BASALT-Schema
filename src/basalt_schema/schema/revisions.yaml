@@ -40,7 +40,7 @@ slots:
     range: ProcessedData
     required: true
   version_number:
-    description: Monotonic revision number within one natural_key series. The first revision is 1.
+    description: Monotonic revision number per revised product. The first revision is 1.
     range: integer
     minimum_value: 1
     required: true
@@ -81,7 +81,7 @@ classes:
         required: true
     unique_keys:
       revision_identity:
-        unique_key_slots: [revises, natural_key, version_number]
+        unique_key_slots: [revises, version_number]
 
   DataProductRevision:
     is_a: Revision

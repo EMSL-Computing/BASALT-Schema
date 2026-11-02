@@ -73,6 +73,7 @@ watch:
 nav:
   - Home: index.md
   - BASALT Schema: elements/index.md
+  - Units and Quantities: background/units.md
   - BASALT Schema Visualizer: https://emsl-computing.github.io/BASALT-Schema/files/schema-explorer.html
   - LAMBDA-BER Schema: https://lambda-ber.github.io/lambda-ber-schema/
   - About: about.md

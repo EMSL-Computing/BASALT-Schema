@@ -12,6 +12,7 @@ prefixes:
   schema: http://schema.org/
   CHEBI: http://purl.obolibrary.org/obo/CHEBI_
   OBI: http://purl.obolibrary.org/obo/OBI_
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
   PO: http://purl.obolibrary.org/obo/PO_
   BTO: http://purl.obolibrary.org/obo/BTO_
   MS: http://purl.obolibrary.org/obo/MS_
@@ -1559,15 +1560,44 @@ enums:
         text: negative
 
   ProcessedDataFlag:
+    description: >-
+      Data quality flags for processed data product values; a blank flag means
+      no flag. Definitions follow the Flag_Definitions tab of the lab column
+      sheet (Column_Descriptions.xlsx).
     permissible_values:
       Below_Detection:
+        description: All replicates for the sample were below the method detection limit.
       Below_Reporting_Limit:
+        description: Value was below the reporting limit of the analytical method.
       High_Background:
       Out_of_Range:
+        description: >-
+          Measured value fell outside the physically plausible range for the
+          variable and was removed.
       Outlier:
       Data_not_available:
+        description: >-
+          Data are not available for this sample (e.g., sample not received, not
+          analyzed, or not scanned).
+        aliases:
+          - Data_Not_Available
       Failed_QC:
+        description: No replicate passed quality control, so no value is reported.
       Insufficient_Material:
+        description: Not enough sample material was available to run the analysis.
+      In_Queue:
+        description: >-
+          Sample is awaiting analysis or processing; data will be added in a
+          future release.
+      No_Pore_Connectivity:
+        description: >-
+          XCT: no connected pore network was detected at the measured resolution,
+          so connectivity, permeability, flow rate, and tortuosity are blank.
+      Partial_Connected_Pores:
+        description: >-
+          XCT: permeability, flow rate and tortuosity are blank for the directions
+          with no connected flow path (X, Y and/or Z). Values for the other
+          directions and all other pore metrics are reported.
 
   ProductMeasureType:
     permissible_values:

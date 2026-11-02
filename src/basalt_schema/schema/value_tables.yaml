@@ -89,11 +89,15 @@ classes:
   QuantityValue:
     slots:
       - description
-    description: A quantity value with numeric value and optional unit
+    description: |-
+      A quantity value with numeric value and its own unit. Use only for slots
+      whose unit can differ from record to record (e.g. provider-supplied
+      values); lab data products with protocol-fixed units use range: double
+      with unit.ucum_code instead. See docs/background/units.md.
     attributes:
       has_value_unit:
       has_unit:
-        description: The human-readable unit name
+        description: Unit of the value as a UCUM code (https://ucum.org/ucum), e.g. mm, g/cm3, mg/kg.
       has_numeric_value:
         description: The numeric value of the quantity
         range: double
