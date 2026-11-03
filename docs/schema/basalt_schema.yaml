@@ -6154,7 +6154,7 @@ slots:
       belongs to. All ProcessingSampleLink rows in one chain share this value, which
       is what makes "give me every step of this chain" a single indexed query and
       what anchors step_number. Optional: a standalone StandardSampleProcessing needs
-      no run, because its processing already identifies the whole group.'
+      no run, because its processing_id already identifies the whole group.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:in_run
     owner: ProcessingSampleLink
@@ -12844,11 +12844,11 @@ slots:
     - ProcessingSampleLink
     range: uuid
     required: true
-  processingSampleLink__processing:
-    name: processingSampleLink__processing
+  processingSampleLink__processing_id:
+    name: processingSampleLink__processing_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:processing
-    alias: processing
+    slot_uri: basalt_schema:processing_id
+    alias: processing_id
     owner: ProcessingSampleLink
     domain_of:
     - ProcessingSampleLink
@@ -12864,11 +12864,11 @@ slots:
     - ProcessingSampleLink
     range: integer
     required: true
-  processingSampleLink__sample:
-    name: processingSampleLink__sample
+  processingSampleLink__sample_id:
+    name: processingSampleLink__sample_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:sample
-    alias: sample
+    slot_uri: basalt_schema:sample_id
+    alias: sample_id
     owner: ProcessingSampleLink
     domain_of:
     - ProcessingSampleLink
@@ -12876,8 +12876,8 @@ slots:
     required: true
   processingSampleLink__role:
     name: processingSampleLink__role
-    description: Whether sample was consumed by (input_sample) or produced by (output_sample)
-      processing.
+    description: Whether sample_id was consumed by (input_sample) or produced by (output_sample)
+      processing_id.
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slot_uri: basalt_schema:role
     alias: role
@@ -21446,9 +21446,9 @@ classes:
       \ No sample\nor activity class carries a scalar pointer to its counterpart,\
       \ so there is\nexactly one representation of the lineage graph and no way for\
       \ two encodings\nto disagree.\n\nDirection is carried by role:\n  role = input_sample\
-      \   ->  sample was consumed by processing\n  role = output_sample  ->  sample\
-      \ (a ProcessedSample) was produced by it\n\nA minimal step is therefore two\
-      \ rows: one input edge and one output edge.\nBecause role is per-row rather\
+      \   ->  sample_id was consumed by processing_id\n  role = output_sample  ->\
+      \  sample_id (a ProcessedSample) was produced by it\n\nA minimal step is therefore\
+      \ two rows: one input edge and one output edge.\nBecause role is per-row rather\
       \ than per-activity, fan-in and fan-out are\nexpressed natively -- a PoolingProcess\
       \ is N input rows to 1 output row, and a\nFractionationProcess is 1 input row\
       \ to N output rows. Lineage is a DAG, not a\nchain, and this table is what makes\
@@ -21456,38 +21456,38 @@ classes:
       \ chain. It is only meaningful\nrelative to in_run, which names the chain the\
       \ edge belongs to; see\nSampleProcessingRun."
     comments:
-    - 'Invariant not expressible in LinkML: all rows sharing a processing must agree
-      on in_run, since a step belongs to exactly one run. Enforce with a database-level
+    - 'Invariant not expressible in LinkML: all rows sharing a processing_id must
+      agree on in_run, since a step belongs to exactly one run. Enforce with a database-level
       check or a validation rule.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
     - in_run
     - processingSampleLink__id
-    - processingSampleLink__processing
+    - processingSampleLink__processing_id
     - processingSampleLink__step_number
-    - processingSampleLink__sample
+    - processingSampleLink__sample_id
     - processingSampleLink__role
     attributes:
       id:
         name: id
         identifier: true
         range: uuid
-      processing:
-        name: processing
+      processing_id:
+        name: processing_id
         range: SampleProcessing
         required: true
       step_number:
         name: step_number
         range: integer
         required: true
-      sample:
-        name: sample
+      sample_id:
+        name: sample_id
         range: Sample
         required: true
       role:
         name: role
-        description: Whether sample was consumed by (input_sample) or produced by
-          (output_sample) processing.
+        description: Whether sample_id was consumed by (input_sample) or produced
+          by (output_sample) processing_id.
         range: SampleRole
         required: true
     class_uri: basalt_schema:ProcessingSampleLink
@@ -21495,8 +21495,8 @@ classes:
       unique_sample_process_step:
         unique_key_name: unique_sample_process_step
         unique_key_slots:
-        - sample
-        - processing
+        - sample_id
+        - processing_id
         - step_number
         - role
   FunctionalAnnotationCount:
@@ -29691,6 +29691,6 @@ classes:
         - descendant_id
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-11-03T11:16:07'
-source_file_size: 21235
-generation_date: '2026-11-03T11:17:10'
+source_file_date: '2026-11-03T11:21:40'
+source_file_size: 21265
+generation_date: '2026-11-03T11:22:00'

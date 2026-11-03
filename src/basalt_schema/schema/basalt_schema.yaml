@@ -412,8 +412,8 @@ classes:
       to disagree.
 
       Direction is carried by role:
-        role = input_sample   ->  sample was consumed by processing
-        role = output_sample  ->  sample (a ProcessedSample) was produced by it
+        role = input_sample   ->  sample_id was consumed by processing_id
+        role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
 
       A minimal step is therefore two rows: one input edge and one output edge.
       Because role is per-row rather than per-activity, fan-in and fan-out are
@@ -428,33 +428,33 @@ classes:
       id:
         identifier: true
         range: uuid
-      processing:
+      processing_id:
         range: SampleProcessing
         required: true
       step_number:
         range: integer
         required: true
-      sample:
+      sample_id:
         range: Sample
         required: true
       role:
         range: SampleRole
         required: true
         description: >-
-          Whether sample was consumed by (input_sample) or produced by
-          (output_sample) processing.
+          Whether sample_id was consumed by (input_sample) or produced by
+          (output_sample) processing_id.
     unique_keys:
       unique_sample_process_step:
         unique_key_slots:
-          - sample
-          - processing
+          - sample_id
+          - processing_id
           - step_number
           - role
     slots:
       - in_run
     comments:
       - >-
-        Invariant not expressible in LinkML: all rows sharing a processing must
+        Invariant not expressible in LinkML: all rows sharing a processing_id must
         agree on in_run, since a step belongs to exactly one run. Enforce with a
         database-level check or a validation rule.
 

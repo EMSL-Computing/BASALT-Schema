@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-11-03T11:17:39
+# Generation date: 2026-11-03T11:21:58
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -1566,8 +1566,8 @@ class ProcessingSampleLink(YAMLRoot):
     to disagree.
 
     Direction is carried by role:
-    role = input_sample   ->  sample was consumed by processing
-    role = output_sample  ->  sample (a ProcessedSample) was produced by it
+    role = input_sample   ->  sample_id was consumed by processing_id
+    role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
 
     A minimal step is therefore two rows: one input edge and one output edge.
     Because role is per-row rather than per-activity, fan-in and fan-out are
@@ -1587,9 +1587,9 @@ class ProcessingSampleLink(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ProcessingSampleLink
 
     id: Union[str, ProcessingSampleLinkId] = None
-    processing: Union[str, SampleProcessingId] = None
+    processing_id: Union[str, SampleProcessingId] = None
     step_number: int = None
-    sample: Union[str, SampleId] = None
+    sample_id: Union[str, SampleId] = None
     role: Union[str, "SampleRole"] = None
     in_run: Optional[Union[str, SampleProcessingRunId]] = None
 
@@ -1599,20 +1599,20 @@ class ProcessingSampleLink(YAMLRoot):
         if not isinstance(self.id, ProcessingSampleLinkId):
             self.id = ProcessingSampleLinkId(self.id)
 
-        if self._is_empty(self.processing):
-            self.MissingRequiredField("processing")
-        if not isinstance(self.processing, SampleProcessingId):
-            self.processing = SampleProcessingId(self.processing)
+        if self._is_empty(self.processing_id):
+            self.MissingRequiredField("processing_id")
+        if not isinstance(self.processing_id, SampleProcessingId):
+            self.processing_id = SampleProcessingId(self.processing_id)
 
         if self._is_empty(self.step_number):
             self.MissingRequiredField("step_number")
         if not isinstance(self.step_number, int):
             self.step_number = int(self.step_number)
 
-        if self._is_empty(self.sample):
-            self.MissingRequiredField("sample")
-        if not isinstance(self.sample, SampleId):
-            self.sample = SampleId(self.sample)
+        if self._is_empty(self.sample_id):
+            self.MissingRequiredField("sample_id")
+        if not isinstance(self.sample_id, SampleId):
+            self.sample_id = SampleId(self.sample_id)
 
         if self._is_empty(self.role):
             self.MissingRequiredField("role")
@@ -19460,14 +19460,14 @@ slots.labDevice__activity_speed_id = Slot(uri=BASALT_SCHEMA.activity_speed_id, n
 slots.processingSampleLink__id = Slot(uri=BASALT_SCHEMA.id, name="processingSampleLink__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__id, domain=None, range=URIRef)
 
-slots.processingSampleLink__processing = Slot(uri=BASALT_SCHEMA.processing, name="processingSampleLink__processing", curie=BASALT_SCHEMA.curie('processing'),
-                   model_uri=BASALT_SCHEMA.processingSampleLink__processing, domain=None, range=Union[str, SampleProcessingId])
+slots.processingSampleLink__processing_id = Slot(uri=BASALT_SCHEMA.processing_id, name="processingSampleLink__processing_id", curie=BASALT_SCHEMA.curie('processing_id'),
+                   model_uri=BASALT_SCHEMA.processingSampleLink__processing_id, domain=None, range=Union[str, SampleProcessingId])
 
 slots.processingSampleLink__step_number = Slot(uri=BASALT_SCHEMA.step_number, name="processingSampleLink__step_number", curie=BASALT_SCHEMA.curie('step_number'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__step_number, domain=None, range=int)
 
-slots.processingSampleLink__sample = Slot(uri=BASALT_SCHEMA.sample, name="processingSampleLink__sample", curie=BASALT_SCHEMA.curie('sample'),
-                   model_uri=BASALT_SCHEMA.processingSampleLink__sample, domain=None, range=Union[str, SampleId])
+slots.processingSampleLink__sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="processingSampleLink__sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
+                   model_uri=BASALT_SCHEMA.processingSampleLink__sample_id, domain=None, range=Union[str, SampleId])
 
 slots.processingSampleLink__role = Slot(uri=BASALT_SCHEMA.role, name="processingSampleLink__role", curie=BASALT_SCHEMA.curie('role'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__role, domain=None, range=Union[str, "SampleRole"])
@@ -21382,3 +21382,4 @@ slots.Study_external_identifiers = Slot(uri=BASALT_SCHEMA.external_identifiers, 
 
 slots.ProjectParticipant_person = Slot(uri=BASALT_SCHEMA.person, name="ProjectParticipant_person", curie=BASALT_SCHEMA.curie('person'),
                    model_uri=BASALT_SCHEMA.ProjectParticipant_person, domain=ProjectParticipant, range=Union[str, PersonValueId])
+

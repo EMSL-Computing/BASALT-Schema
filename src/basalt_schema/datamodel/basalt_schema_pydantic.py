@@ -29448,8 +29448,8 @@ class ProcessingSampleLink(ConfiguredBaseModel):
     to disagree.
 
     Direction is carried by role:
-      role = input_sample   ->  sample was consumed by processing
-      role = output_sample  ->  sample (a ProcessedSample) was produced by it
+      role = input_sample   ->  sample_id was consumed by processing_id
+      role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
 
     A minimal step is therefore two rows: one input edge and one output edge.
     Because role is per-row rather than per-activity, fan-in and fan-out are
@@ -29462,17 +29462,17 @@ class ProcessingSampleLink(ConfiguredBaseModel):
     SampleProcessingRun.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['Invariant not expressible in LinkML: all rows sharing a '
-                      'processing must agree on in_run, since a step belongs to '
+                      'processing_id must agree on in_run, since a step belongs to '
                       'exactly one run. Enforce with a database-level check or a '
                       'validation rule.'],
          'from_schema': 'https://emsl-computing.github.io/BASALT-Schema',
          'unique_keys': {'unique_sample_process_step': {'unique_key_name': 'unique_sample_process_step',
-                                                        'unique_key_slots': ['sample',
-                                                                             'processing',
+                                                        'unique_key_slots': ['sample_id',
+                                                                             'processing_id',
                                                                              'step_number',
                                                                              'role']}}})
 
-    in_run: Optional[str] = Field(default=None, description="""The SampleProcessingRun (one concrete execution) that this edge belongs to. All ProcessingSampleLink rows in one chain share this value, which is what makes \"give me every step of this chain\" a single indexed query and what anchors step_number. Optional: a standalone StandardSampleProcessing needs no run, because its processing already identifies the whole group.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
+    in_run: Optional[str] = Field(default=None, description="""The SampleProcessingRun (one concrete execution) that this edge belongs to. All ProcessingSampleLink rows in one chain share this value, which is what makes \"give me every step of this chain\" a single indexed query and what anchors step_number. Optional: a standalone StandardSampleProcessing needs no run, because its processing_id already identifies the whole group.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MobilePhase',
@@ -29505,10 +29505,10 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'Study',
                        'ProjectParticipant',
                        'PersonValue']} })
-    processing: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
+    processing_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
     step_number: int = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['MobilePhaseSegment', 'ProcessingSampleLink']} })
-    sample: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
-    role: SampleRole = Field(default=..., description="""Whether sample was consumed by (input_sample) or produced by (output_sample) processing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink', 'ProjectParticipant']} })
+    sample_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
+    role: SampleRole = Field(default=..., description="""Whether sample_id was consumed by (input_sample) or produced by (output_sample) processing_id.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink', 'ProjectParticipant']} })
 
 
 class FunctionalAnnotationCount(ConfiguredBaseModel):

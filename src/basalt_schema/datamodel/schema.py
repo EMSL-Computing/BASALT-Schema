@@ -435,8 +435,8 @@ exactly one representation of the lineage graph and no way for two encodings
 to disagree.
 
 Direction is carried by role:
-  role = input_sample   ->  sample was consumed by processing
-  role = output_sample  ->  sample (a ProcessedSample) was produced by it
+  role = input_sample   ->  sample_id was consumed by processing_id
+  role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
 
 A minimal step is therefore two rows: one input edge and one output edge.
 Because role is per-row rather than per-activity, fan-in and fan-out are
@@ -452,21 +452,21 @@ SampleProcessingRun.
 
     in_run = Column(UUID(), ForeignKey('SampleProcessingRun.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    processing = Column(UUID(), ForeignKey('SampleProcessing.id'), nullable=False )
+    processing_id = Column(UUID(), ForeignKey('SampleProcessing.id'), nullable=False )
     step_number = Column(Integer(), nullable=False )
-    sample = Column(UUID(), ForeignKey('Sample.id'), nullable=False )
+    sample_id = Column(UUID(), ForeignKey('Sample.id'), nullable=False )
     role = Column(Enum('input_sample', 'output_sample', name='SampleRole'), nullable=False )
     
 
     
     # Unique constraints
     __table_args__ = (
-        UniqueConstraint('sample', 'processing', 'step_number', 'role'),
+        UniqueConstraint('sample_id', 'processing_id', 'step_number', 'role'),
     )
     
 
     def __repr__(self):
-        return f"ProcessingSampleLink(in_run={self.in_run},id={self.id},processing={self.processing},step_number={self.step_number},sample={self.sample},role={self.role},)"
+        return f"ProcessingSampleLink(in_run={self.in_run},id={self.id},processing_id={self.processing_id},step_number={self.step_number},sample_id={self.sample_id},role={self.role},)"
 
 
 
