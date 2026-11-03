@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-30T10:50:04
+# Generation date: 2026-11-03T11:17:39
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -149,10 +149,6 @@ class ContainerTypeId(Uuid):
 
 
 class CustodianId(Uuid):
-    pass
-
-
-class InstrumentAlternativeIdentifierId(Uuid):
     pass
 
 
@@ -712,10 +708,6 @@ class PoolingProcessId(SampleProcessingId):
     pass
 
 
-class SubstancesUsedLinkId(Uuid):
-    pass
-
-
 class SampleProcessingSubstanceId(Uuid):
     pass
 
@@ -1106,6 +1098,7 @@ class DataProcessingActivity(YAMLRoot):
     software_version: Optional[str] = None
     software_poc: Optional[str] = None
     execution_resource: Optional[Union[str, "ExecutionResourceEnum"]] = None
+    functional_annotations: Optional[Union[Union[dict, "FunctionalAnnotationCount"], list[Union[dict, "FunctionalAnnotationCount"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1142,6 +1135,10 @@ class DataProcessingActivity(YAMLRoot):
         if self.execution_resource is not None and not isinstance(self.execution_resource, ExecutionResourceEnum):
             self.execution_resource = ExecutionResourceEnum(self.execution_resource)
 
+        if not isinstance(self.functional_annotations, list):
+            self.functional_annotations = [self.functional_annotations] if self.functional_annotations is not None else []
+        self.functional_annotations = [v if isinstance(v, FunctionalAnnotationCount) else FunctionalAnnotationCount(**as_dict(v)) for v in self.functional_annotations]
+
         super().__post_init__(**kwargs)
 
 
@@ -1157,6 +1154,7 @@ class AlternativeIdentifier(YAMLRoot):
     id: Union[str, AlternativeIdentifierId] = None
     alternate_id: str = None
     alternate_identifier_type: Union[str, "AlternateIdentifierType"] = None
+    provider: Optional[Union[str, "InstrumentAltIdProviderEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1173,6 +1171,9 @@ class AlternativeIdentifier(YAMLRoot):
             self.MissingRequiredField("alternate_identifier_type")
         if not isinstance(self.alternate_identifier_type, AlternateIdentifierType):
             self.alternate_identifier_type = AlternateIdentifierType(self.alternate_identifier_type)
+
+        if self.provider is not None and not isinstance(self.provider, InstrumentAltIdProviderEnum):
+            self.provider = InstrumentAltIdProviderEnum(self.provider)
 
         super().__post_init__(**kwargs)
 
@@ -1236,6 +1237,8 @@ class Instrument(YAMLRoot):
     instrument_parameters: Optional[str] = None
     mass_analyzer_type: Optional[Union[str, "MassAnalyzerEnum"]] = None
     other_properties: Optional[str] = None
+    alternative_identifiers: Optional[Union[dict[Union[str, AlternativeIdentifierId], Union[dict, AlternativeIdentifier]], list[Union[dict, AlternativeIdentifier]]]] = empty_dict()
+    custodians: Optional[Union[Union[str, CustodianId], list[Union[str, CustodianId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1277,6 +1280,12 @@ class Instrument(YAMLRoot):
 
         if self.other_properties is not None and not isinstance(self.other_properties, str):
             self.other_properties = str(self.other_properties)
+
+        self._normalize_inlined_as_list(slot_name="alternative_identifiers", slot_type=AlternativeIdentifier, key_name="id", keyed=True)
+
+        if not isinstance(self.custodians, list):
+            self.custodians = [self.custodians] if self.custodians is not None else []
+        self.custodians = [v if isinstance(v, CustodianId) else CustodianId(v) for v in self.custodians]
 
         super().__post_init__(**kwargs)
 
@@ -1410,40 +1419,6 @@ class Custodian(YAMLRoot):
 
         if self.person is not None and not isinstance(self.person, PersonValueId):
             self.person = PersonValueId(self.person)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class InstrumentAlternativeIdentifier(YAMLRoot):
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["InstrumentAlternativeIdentifier"]
-    class_class_curie: ClassVar[str] = "basalt_schema:InstrumentAlternativeIdentifier"
-    class_name: ClassVar[str] = "InstrumentAlternativeIdentifier"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.InstrumentAlternativeIdentifier
-
-    id: Union[str, InstrumentAlternativeIdentifierId] = None
-    instrument_id: Union[str, InstrumentId] = None
-    alt_id: Optional[Union[str, AlternativeIdentifierId]] = None
-    instrument_alt_id_provider: Optional[Union[str, "InstrumentAltIdProviderEnum"]] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, InstrumentAlternativeIdentifierId):
-            self.id = InstrumentAlternativeIdentifierId(self.id)
-
-        if self._is_empty(self.instrument_id):
-            self.MissingRequiredField("instrument_id")
-        if not isinstance(self.instrument_id, InstrumentId):
-            self.instrument_id = InstrumentId(self.instrument_id)
-
-        if self.alt_id is not None and not isinstance(self.alt_id, AlternativeIdentifierId):
-            self.alt_id = AlternativeIdentifierId(self.alt_id)
-
-        if self.instrument_alt_id_provider is not None and not isinstance(self.instrument_alt_id_provider, InstrumentAltIdProviderEnum):
-            self.instrument_alt_id_provider = InstrumentAltIdProviderEnum(self.instrument_alt_id_provider)
 
         super().__post_init__(**kwargs)
 
@@ -1591,8 +1566,8 @@ class ProcessingSampleLink(YAMLRoot):
     to disagree.
 
     Direction is carried by role:
-    role = input_sample   ->  sample_id was consumed by processing_id
-    role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
+    role = input_sample   ->  sample was consumed by processing
+    role = output_sample  ->  sample (a ProcessedSample) was produced by it
 
     A minimal step is therefore two rows: one input edge and one output edge.
     Because role is per-row rather than per-activity, fan-in and fan-out are
@@ -1612,9 +1587,9 @@ class ProcessingSampleLink(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ProcessingSampleLink
 
     id: Union[str, ProcessingSampleLinkId] = None
-    processing_id: Union[str, SampleProcessingId] = None
+    processing: Union[str, SampleProcessingId] = None
     step_number: int = None
-    sample_id: Union[str, SampleId] = None
+    sample: Union[str, SampleId] = None
     role: Union[str, "SampleRole"] = None
     in_run: Optional[Union[str, SampleProcessingRunId]] = None
 
@@ -1624,20 +1599,20 @@ class ProcessingSampleLink(YAMLRoot):
         if not isinstance(self.id, ProcessingSampleLinkId):
             self.id = ProcessingSampleLinkId(self.id)
 
-        if self._is_empty(self.processing_id):
-            self.MissingRequiredField("processing_id")
-        if not isinstance(self.processing_id, SampleProcessingId):
-            self.processing_id = SampleProcessingId(self.processing_id)
+        if self._is_empty(self.processing):
+            self.MissingRequiredField("processing")
+        if not isinstance(self.processing, SampleProcessingId):
+            self.processing = SampleProcessingId(self.processing)
 
         if self._is_empty(self.step_number):
             self.MissingRequiredField("step_number")
         if not isinstance(self.step_number, int):
             self.step_number = int(self.step_number)
 
-        if self._is_empty(self.sample_id):
-            self.MissingRequiredField("sample_id")
-        if not isinstance(self.sample_id, SampleId):
-            self.sample_id = SampleId(self.sample_id)
+        if self._is_empty(self.sample):
+            self.MissingRequiredField("sample")
+        if not isinstance(self.sample, SampleId):
+            self.sample = SampleId(self.sample)
 
         if self._is_empty(self.role):
             self.MissingRequiredField("role")
@@ -1651,64 +1626,26 @@ class ProcessingSampleLink(YAMLRoot):
 
 
 @dataclass(repr=False)
-class InstrumentCustodian(YAMLRoot):
+class FunctionalAnnotationCount(YAMLRoot):
     """
-    A link between an instrument and a custodian (person) responsible for it.
-    This class captures the relationship between an instrument and the person
-    who is responsible for its maintenance, calibration, and proper use.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["InstrumentCustodian"]
-    class_class_curie: ClassVar[str] = "basalt_schema:InstrumentCustodian"
-    class_name: ClassVar[str] = "InstrumentCustodian"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.InstrumentCustodian
-
-    instrument_id: Union[str, InstrumentId] = None
-    custodian_id: Union[str, CustodianId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.instrument_id):
-            self.MissingRequiredField("instrument_id")
-        if not isinstance(self.instrument_id, InstrumentId):
-            self.instrument_id = InstrumentId(self.instrument_id)
-
-        if self._is_empty(self.custodian_id):
-            self.MissingRequiredField("custodian_id")
-        if not isinstance(self.custodian_id, CustodianId):
-            self.custodian_id = CustodianId(self.custodian_id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class WorkflowExecutionFunctionalAnnotation(YAMLRoot):
-    """
-    A link between a workflow execution and a functional annotation identifier.
-    This class captures the relationship between a workflow execution and the
-    functional annotation identifier that was used in the analysis.
+    One functional annotation identifier used by a DataProcessingActivity, with
+    its count. Owned by the activity through its functional_annotations slot.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["WorkflowExecutionFunctionalAnnotation"]
-    class_class_curie: ClassVar[str] = "basalt_schema:WorkflowExecutionFunctionalAnnotation"
-    class_name: ClassVar[str] = "WorkflowExecutionFunctionalAnnotation"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.WorkflowExecutionFunctionalAnnotation
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["FunctionalAnnotationCount"]
+    class_class_curie: ClassVar[str] = "basalt_schema:FunctionalAnnotationCount"
+    class_name: ClassVar[str] = "FunctionalAnnotationCount"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.FunctionalAnnotationCount
 
-    workflow_id: Union[str, DataProcessingActivityId] = None
-    functional_annotation_id: Union[str, FunctionalAnnotationIdentifierId] = None
+    annotation: Union[str, FunctionalAnnotationIdentifierId] = None
     count: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.workflow_id):
-            self.MissingRequiredField("workflow_id")
-        if not isinstance(self.workflow_id, DataProcessingActivityId):
-            self.workflow_id = DataProcessingActivityId(self.workflow_id)
-
-        if self._is_empty(self.functional_annotation_id):
-            self.MissingRequiredField("functional_annotation_id")
-        if not isinstance(self.functional_annotation_id, FunctionalAnnotationIdentifierId):
-            self.functional_annotation_id = FunctionalAnnotationIdentifierId(self.functional_annotation_id)
+        if self._is_empty(self.annotation):
+            self.MissingRequiredField("annotation")
+        if not isinstance(self.annotation, FunctionalAnnotationIdentifierId):
+            self.annotation = FunctionalAnnotationIdentifierId(self.annotation)
 
         if self.count is not None and not isinstance(self.count, float):
             self.count = float(self.count)
@@ -13000,7 +12937,7 @@ class SampleStorage(YAMLRoot):
     source_sample: Union[str, SampleId] = None
     storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
     storage_condition_other: Optional[str] = None
-    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
+    substances_used: Optional[Union[dict[Union[str, SampleProcessingSubstanceId], Union[dict, "SampleProcessingSubstance"]], list[Union[dict, "SampleProcessingSubstance"]]]] = empty_dict()
     temperature_celsius: Optional[float] = None
     temperature_category: Optional[Union[str, "TemperatureCategoryEnum"]] = None
     duration_hours: Optional[float] = None
@@ -13024,8 +12961,7 @@ class SampleStorage(YAMLRoot):
         if self.storage_condition_other is not None and not isinstance(self.storage_condition_other, str):
             self.storage_condition_other = str(self.storage_condition_other)
 
-        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
-            self.substances_used = SubstancesUsedLinkId(self.substances_used)
+        self._normalize_inlined_as_list(slot_name="substances_used", slot_type=SampleProcessingSubstance, key_name="id", keyed=True)
 
         if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
             self.temperature_celsius = float(self.temperature_celsius)
@@ -13931,7 +13867,7 @@ class ChemicalConversionProcess(SampleProcessing):
 
     id: Union[str, ChemicalConversionProcessId] = None
     name: str = None
-    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
+    substances_used: Optional[Union[dict[Union[str, SampleProcessingSubstanceId], Union[dict, "SampleProcessingSubstance"]], list[Union[dict, "SampleProcessingSubstance"]]]] = empty_dict()
     chemical_conversion_category: Optional[Union[str, "ChemicalConversionCategoryEnum"]] = None
     protein_digestion_method: Optional[Union[str, "ProteinDigestionMethodEnum"]] = None
     enrichment_type: Optional[Union[str, "EnrichmentTypeEnum"]] = None
@@ -13948,8 +13884,7 @@ class ChemicalConversionProcess(SampleProcessing):
         if not isinstance(self.id, ChemicalConversionProcessId):
             self.id = ChemicalConversionProcessId(self.id)
 
-        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
-            self.substances_used = SubstancesUsedLinkId(self.substances_used)
+        self._normalize_inlined_as_list(slot_name="substances_used", slot_type=SampleProcessingSubstance, key_name="id", keyed=True)
 
         if self.chemical_conversion_category is not None and not isinstance(self.chemical_conversion_category, ChemicalConversionCategoryEnum):
             self.chemical_conversion_category = ChemicalConversionCategoryEnum(self.chemical_conversion_category)
@@ -14001,7 +13936,7 @@ class Dilution(SampleProcessing):
     starting_concentration_mg_per_ml: Optional[float] = None
     final_concentration_mg_per_ml: Optional[float] = None
     dilution_factor: Optional[float] = None
-    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
+    substances_used: Optional[Union[dict[Union[str, SampleProcessingSubstanceId], Union[dict, "SampleProcessingSubstance"]], list[Union[dict, "SampleProcessingSubstance"]]]] = empty_dict()
     informed_by_result: Optional[Union[str, DataProductId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -14027,8 +13962,7 @@ class Dilution(SampleProcessing):
         if self.dilution_factor is not None and not isinstance(self.dilution_factor, float):
             self.dilution_factor = float(self.dilution_factor)
 
-        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
-            self.substances_used = SubstancesUsedLinkId(self.substances_used)
+        self._normalize_inlined_as_list(slot_name="substances_used", slot_type=SampleProcessingSubstance, key_name="id", keyed=True)
 
         if self.informed_by_result is not None and not isinstance(self.informed_by_result, DataProductId):
             self.informed_by_result = DataProductId(self.informed_by_result)
@@ -14050,7 +13984,7 @@ class Extraction(SampleProcessing):
 
     id: Union[str, ExtractionId] = None
     name: str = None
-    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
+    substances_used: Optional[Union[dict[Union[str, SampleProcessingSubstanceId], Union[dict, "SampleProcessingSubstance"]], list[Union[dict, "SampleProcessingSubstance"]]]] = empty_dict()
     starting_mass_mg: Optional[float] = None
     extraction_method: Optional[Union[str, "ExtractionMethodEnum"]] = None
     extraction_target: Optional[Union[Union[str, "AnalyteCategoryEnum"], list[Union[str, "AnalyteCategoryEnum"]]]] = empty_list()
@@ -14061,8 +13995,7 @@ class Extraction(SampleProcessing):
         if not isinstance(self.id, ExtractionId):
             self.id = ExtractionId(self.id)
 
-        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
-            self.substances_used = SubstancesUsedLinkId(self.substances_used)
+        self._normalize_inlined_as_list(slot_name="substances_used", slot_type=SampleProcessingSubstance, key_name="id", keyed=True)
 
         if self.starting_mass_mg is not None and not isinstance(self.starting_mass_mg, float):
             self.starting_mass_mg = float(self.starting_mass_mg)
@@ -14234,42 +14167,11 @@ class PoolingProcess(SampleProcessing):
 
 
 @dataclass(repr=False)
-class SubstancesUsedLink(YAMLRoot):
-    """
-    A link between a SampleProcessing activity and a PortionOfSubstance that was used in it.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SubstancesUsedLink"]
-    class_class_curie: ClassVar[str] = "basalt_schema:SubstancesUsedLink"
-    class_name: ClassVar[str] = "SubstancesUsedLink"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SubstancesUsedLink
-
-    id: Union[str, SubstancesUsedLinkId] = None
-    sample_processing_substance: Optional[Union[str, SampleProcessingSubstanceId]] = None
-    sample_processing_id: Optional[Union[str, SampleProcessingId]] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, SubstancesUsedLinkId):
-            self.id = SubstancesUsedLinkId(self.id)
-
-        if self.sample_processing_substance is not None and not isinstance(self.sample_processing_substance, SampleProcessingSubstanceId):
-            self.sample_processing_substance = SampleProcessingSubstanceId(self.sample_processing_substance)
-
-        if self.sample_processing_id is not None and not isinstance(self.sample_processing_id, SampleProcessingId):
-            self.sample_processing_id = SampleProcessingId(self.sample_processing_id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
 class SampleProcessingSubstance(YAMLRoot):
     """
-    A portion of a substance with specific characteristics, as used in a SampleProcessing activity. Multiple
-    substances may be used in a single SampleProcessing activity, and the same substance may be used in multiple
-    SampleProcessing activities.
+    A portion of a substance with specific characteristics, as used in a SampleProcessing activity. Each record
+    describes one use: an activity owns its substances through its substances_used slot, and the volume and
+    concentrations here belong to that use only.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -14364,7 +14266,7 @@ class ResuspensionProcess(SampleProcessing):
     name: str = None
     lims_protocol_instance_id: Optional[int] = None
     final_vol_ml: Optional[float] = None
-    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
+    substances_used: Optional[Union[dict[Union[str, SampleProcessingSubstanceId], Union[dict, SampleProcessingSubstance]], list[Union[dict, SampleProcessingSubstance]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -14378,8 +14280,7 @@ class ResuspensionProcess(SampleProcessing):
         if self.final_vol_ml is not None and not isinstance(self.final_vol_ml, float):
             self.final_vol_ml = float(self.final_vol_ml)
 
-        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
-            self.substances_used = SubstancesUsedLinkId(self.substances_used)
+        self._normalize_inlined_as_list(slot_name="substances_used", slot_type=SampleProcessingSubstance, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -19155,7 +19056,7 @@ slots.subspecf_gen_lin = Slot(uri=BASALT_SCHEMA.subspecf_gen_lin, name="subspecf
                    model_uri=BASALT_SCHEMA.subspecf_gen_lin, domain=None, range=Optional[str])
 
 slots.substances_used = Slot(uri=BASALT_SCHEMA.substances_used, name="substances_used", curie=BASALT_SCHEMA.curie('substances_used'),
-                   model_uri=BASALT_SCHEMA.substances_used, domain=None, range=Optional[Union[str, SubstancesUsedLinkId]])
+                   model_uri=BASALT_SCHEMA.substances_used, domain=None, range=Optional[Union[dict[Union[str, SampleProcessingSubstanceId], Union[dict, SampleProcessingSubstance]], list[Union[dict, SampleProcessingSubstance]]]])
 
 slots.sulfate = Slot(uri=BASALT_SCHEMA.sulfate, name="sulfate", curie=BASALT_SCHEMA.curie('sulfate'),
                    model_uri=BASALT_SCHEMA.sulfate, domain=None, range=Optional[str])
@@ -19451,11 +19352,17 @@ slots.dataProcessingActivity__software_poc = Slot(uri=BASALT_SCHEMA.software_poc
 slots.dataProcessingActivity__execution_resource = Slot(uri=BASALT_SCHEMA.execution_resource, name="dataProcessingActivity__execution_resource", curie=BASALT_SCHEMA.curie('execution_resource'),
                    model_uri=BASALT_SCHEMA.dataProcessingActivity__execution_resource, domain=None, range=Optional[Union[str, "ExecutionResourceEnum"]])
 
+slots.dataProcessingActivity__functional_annotations = Slot(uri=BASALT_SCHEMA.functional_annotations, name="dataProcessingActivity__functional_annotations", curie=BASALT_SCHEMA.curie('functional_annotations'),
+                   model_uri=BASALT_SCHEMA.dataProcessingActivity__functional_annotations, domain=None, range=Optional[Union[Union[dict, FunctionalAnnotationCount], list[Union[dict, FunctionalAnnotationCount]]]])
+
 slots.alternativeIdentifier__alternate_id = Slot(uri=BASALT_SCHEMA.alternate_id, name="alternativeIdentifier__alternate_id", curie=BASALT_SCHEMA.curie('alternate_id'),
                    model_uri=BASALT_SCHEMA.alternativeIdentifier__alternate_id, domain=None, range=str)
 
 slots.alternativeIdentifier__alternate_identifier_type = Slot(uri=BASALT_SCHEMA.alternate_identifier_type, name="alternativeIdentifier__alternate_identifier_type", curie=BASALT_SCHEMA.curie('alternate_identifier_type'),
                    model_uri=BASALT_SCHEMA.alternativeIdentifier__alternate_identifier_type, domain=None, range=Union[str, "AlternateIdentifierType"])
+
+slots.alternativeIdentifier__provider = Slot(uri=BASALT_SCHEMA.provider, name="alternativeIdentifier__provider", curie=BASALT_SCHEMA.curie('provider'),
+                   model_uri=BASALT_SCHEMA.alternativeIdentifier__provider, domain=None, range=Optional[Union[str, "InstrumentAltIdProviderEnum"]])
 
 slots.functionalAnnotationIdentifier__functional_identifier = Slot(uri=BASALT_SCHEMA.functional_identifier, name="functionalAnnotationIdentifier__functional_identifier", curie=BASALT_SCHEMA.curie('functional_identifier'),
                    model_uri=BASALT_SCHEMA.functionalAnnotationIdentifier__functional_identifier, domain=None, range=str)
@@ -19496,6 +19403,12 @@ slots.instrument__mass_analyzer_type = Slot(uri=BASALT_SCHEMA.mass_analyzer_type
 slots.instrument__other_properties = Slot(uri=BASALT_SCHEMA.other_properties, name="instrument__other_properties", curie=BASALT_SCHEMA.curie('other_properties'),
                    model_uri=BASALT_SCHEMA.instrument__other_properties, domain=None, range=Optional[str])
 
+slots.instrument__alternative_identifiers = Slot(uri=BASALT_SCHEMA.alternative_identifiers, name="instrument__alternative_identifiers", curie=BASALT_SCHEMA.curie('alternative_identifiers'),
+                   model_uri=BASALT_SCHEMA.instrument__alternative_identifiers, domain=None, range=Optional[Union[dict[Union[str, AlternativeIdentifierId], Union[dict, AlternativeIdentifier]], list[Union[dict, AlternativeIdentifier]]]])
+
+slots.instrument__custodians = Slot(uri=BASALT_SCHEMA.custodians, name="instrument__custodians", curie=BASALT_SCHEMA.curie('custodians'),
+                   model_uri=BASALT_SCHEMA.instrument__custodians, domain=None, range=Optional[Union[Union[str, CustodianId], list[Union[str, CustodianId]]]])
+
 slots.ontologyClass__description = Slot(uri=BASALT_SCHEMA.description, name="ontologyClass__description", curie=BASALT_SCHEMA.curie('description'),
                    model_uri=BASALT_SCHEMA.ontologyClass__description, domain=None, range=Optional[str])
 
@@ -19532,18 +19445,6 @@ slots.containerAxis__name = Slot(uri=BASALT_SCHEMA.name, name="containerAxis__na
 slots.containerAxis__values = Slot(uri=BASALT_SCHEMA.values, name="containerAxis__values", curie=BASALT_SCHEMA.curie('values'),
                    model_uri=BASALT_SCHEMA.containerAxis__values, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.instrumentAlternativeIdentifier__id = Slot(uri=BASALT_SCHEMA.id, name="instrumentAlternativeIdentifier__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.instrumentAlternativeIdentifier__id, domain=None, range=URIRef)
-
-slots.instrumentAlternativeIdentifier__alt_id = Slot(uri=BASALT_SCHEMA.alt_id, name="instrumentAlternativeIdentifier__alt_id", curie=BASALT_SCHEMA.curie('alt_id'),
-                   model_uri=BASALT_SCHEMA.instrumentAlternativeIdentifier__alt_id, domain=None, range=Optional[Union[str, AlternativeIdentifierId]])
-
-slots.instrumentAlternativeIdentifier__instrument_alt_id_provider = Slot(uri=BASALT_SCHEMA.instrument_alt_id_provider, name="instrumentAlternativeIdentifier__instrument_alt_id_provider", curie=BASALT_SCHEMA.curie('instrument_alt_id_provider'),
-                   model_uri=BASALT_SCHEMA.instrumentAlternativeIdentifier__instrument_alt_id_provider, domain=None, range=Optional[Union[str, "InstrumentAltIdProviderEnum"]])
-
-slots.instrumentAlternativeIdentifier__instrument_id = Slot(uri=BASALT_SCHEMA.instrument_id, name="instrumentAlternativeIdentifier__instrument_id", curie=BASALT_SCHEMA.curie('instrument_id'),
-                   model_uri=BASALT_SCHEMA.instrumentAlternativeIdentifier__instrument_id, domain=None, range=Union[str, InstrumentId])
-
 slots.labDevice__description = Slot(uri=BASALT_SCHEMA.description, name="labDevice__description", curie=BASALT_SCHEMA.curie('description'),
                    model_uri=BASALT_SCHEMA.labDevice__description, domain=None, range=Optional[str])
 
@@ -19559,32 +19460,23 @@ slots.labDevice__activity_speed_id = Slot(uri=BASALT_SCHEMA.activity_speed_id, n
 slots.processingSampleLink__id = Slot(uri=BASALT_SCHEMA.id, name="processingSampleLink__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__id, domain=None, range=URIRef)
 
-slots.processingSampleLink__processing_id = Slot(uri=BASALT_SCHEMA.processing_id, name="processingSampleLink__processing_id", curie=BASALT_SCHEMA.curie('processing_id'),
-                   model_uri=BASALT_SCHEMA.processingSampleLink__processing_id, domain=None, range=Union[str, SampleProcessingId])
+slots.processingSampleLink__processing = Slot(uri=BASALT_SCHEMA.processing, name="processingSampleLink__processing", curie=BASALT_SCHEMA.curie('processing'),
+                   model_uri=BASALT_SCHEMA.processingSampleLink__processing, domain=None, range=Union[str, SampleProcessingId])
 
 slots.processingSampleLink__step_number = Slot(uri=BASALT_SCHEMA.step_number, name="processingSampleLink__step_number", curie=BASALT_SCHEMA.curie('step_number'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__step_number, domain=None, range=int)
 
-slots.processingSampleLink__sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="processingSampleLink__sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
-                   model_uri=BASALT_SCHEMA.processingSampleLink__sample_id, domain=None, range=Union[str, SampleId])
+slots.processingSampleLink__sample = Slot(uri=BASALT_SCHEMA.sample, name="processingSampleLink__sample", curie=BASALT_SCHEMA.curie('sample'),
+                   model_uri=BASALT_SCHEMA.processingSampleLink__sample, domain=None, range=Union[str, SampleId])
 
 slots.processingSampleLink__role = Slot(uri=BASALT_SCHEMA.role, name="processingSampleLink__role", curie=BASALT_SCHEMA.curie('role'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__role, domain=None, range=Union[str, "SampleRole"])
 
-slots.instrumentCustodian__instrument_id = Slot(uri=BASALT_SCHEMA.instrument_id, name="instrumentCustodian__instrument_id", curie=BASALT_SCHEMA.curie('instrument_id'),
-                   model_uri=BASALT_SCHEMA.instrumentCustodian__instrument_id, domain=None, range=Union[str, InstrumentId])
+slots.functionalAnnotationCount__annotation = Slot(uri=BASALT_SCHEMA.annotation, name="functionalAnnotationCount__annotation", curie=BASALT_SCHEMA.curie('annotation'),
+                   model_uri=BASALT_SCHEMA.functionalAnnotationCount__annotation, domain=None, range=Union[str, FunctionalAnnotationIdentifierId])
 
-slots.instrumentCustodian__custodian_id = Slot(uri=BASALT_SCHEMA.custodian_id, name="instrumentCustodian__custodian_id", curie=BASALT_SCHEMA.curie('custodian_id'),
-                   model_uri=BASALT_SCHEMA.instrumentCustodian__custodian_id, domain=None, range=Union[str, CustodianId])
-
-slots.workflowExecutionFunctionalAnnotation__workflow_id = Slot(uri=BASALT_SCHEMA.workflow_id, name="workflowExecutionFunctionalAnnotation__workflow_id", curie=BASALT_SCHEMA.curie('workflow_id'),
-                   model_uri=BASALT_SCHEMA.workflowExecutionFunctionalAnnotation__workflow_id, domain=None, range=Union[str, DataProcessingActivityId])
-
-slots.workflowExecutionFunctionalAnnotation__functional_annotation_id = Slot(uri=BASALT_SCHEMA.functional_annotation_id, name="workflowExecutionFunctionalAnnotation__functional_annotation_id", curie=BASALT_SCHEMA.curie('functional_annotation_id'),
-                   model_uri=BASALT_SCHEMA.workflowExecutionFunctionalAnnotation__functional_annotation_id, domain=None, range=Union[str, FunctionalAnnotationIdentifierId])
-
-slots.workflowExecutionFunctionalAnnotation__count = Slot(uri=BASALT_SCHEMA.count, name="workflowExecutionFunctionalAnnotation__count", curie=BASALT_SCHEMA.curie('count'),
-                   model_uri=BASALT_SCHEMA.workflowExecutionFunctionalAnnotation__count, domain=None, range=Optional[float])
+slots.functionalAnnotationCount__count = Slot(uri=BASALT_SCHEMA.count, name="functionalAnnotationCount__count", curie=BASALT_SCHEMA.curie('count'),
+                   model_uri=BASALT_SCHEMA.functionalAnnotationCount__count, domain=None, range=Optional[float])
 
 slots.changelog__version = Slot(uri=BASALT_SCHEMA.version, name="changelog__version", curie=BASALT_SCHEMA.curie('version'),
                    model_uri=BASALT_SCHEMA.changelog__version, domain=None, range=URIRef)
@@ -20858,15 +20750,6 @@ slots.normalizationProcess__target_mass_mg = Slot(uri=BASALT_SCHEMA.target_mass_
 slots.normalizationProcess__target_vol_ul = Slot(uri=BASALT_SCHEMA.target_vol_ul, name="normalizationProcess__target_vol_ul", curie=BASALT_SCHEMA.curie('target_vol_ul'),
                    model_uri=BASALT_SCHEMA.normalizationProcess__target_vol_ul, domain=None, range=Optional[float])
 
-slots.substancesUsedLink__id = Slot(uri=BASALT_SCHEMA.id, name="substancesUsedLink__id", curie=BASALT_SCHEMA.curie('id'),
-                   model_uri=BASALT_SCHEMA.substancesUsedLink__id, domain=None, range=URIRef)
-
-slots.substancesUsedLink__sample_processing_substance = Slot(uri=BASALT_SCHEMA.sample_processing_substance, name="substancesUsedLink__sample_processing_substance", curie=BASALT_SCHEMA.curie('sample_processing_substance'),
-                   model_uri=BASALT_SCHEMA.substancesUsedLink__sample_processing_substance, domain=None, range=Optional[Union[str, SampleProcessingSubstanceId]])
-
-slots.substancesUsedLink__sample_processing_id = Slot(uri=BASALT_SCHEMA.sample_processing_id, name="substancesUsedLink__sample_processing_id", curie=BASALT_SCHEMA.curie('sample_processing_id'),
-                   model_uri=BASALT_SCHEMA.substancesUsedLink__sample_processing_id, domain=None, range=Optional[Union[str, SampleProcessingId]])
-
 slots.sampleProcessingSubstance__known_as = Slot(uri=BASALT_SCHEMA.known_as, name="sampleProcessingSubstance__known_as", curie=BASALT_SCHEMA.curie('known_as'),
                    model_uri=BASALT_SCHEMA.sampleProcessingSubstance__known_as, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
 
@@ -21456,7 +21339,7 @@ slots.SampleStorage_source_sample = Slot(uri=BASALT_SCHEMA.source_sample, name="
                    model_uri=BASALT_SCHEMA.SampleStorage_source_sample, domain=SampleStorage, range=Union[str, SampleId])
 
 slots.SampleStorage_substances_used = Slot(uri=BASALT_SCHEMA.substances_used, name="SampleStorage_substances_used", curie=BASALT_SCHEMA.curie('substances_used'),
-                   model_uri=BASALT_SCHEMA.SampleStorage_substances_used, domain=SampleStorage, range=Optional[Union[str, SubstancesUsedLinkId]])
+                   model_uri=BASALT_SCHEMA.SampleStorage_substances_used, domain=SampleStorage, range=Optional[Union[dict[Union[str, SampleProcessingSubstanceId], Union[dict, "SampleProcessingSubstance"]], list[Union[dict, "SampleProcessingSubstance"]]]])
 
 slots.CoreSection_core_section = Slot(uri=BASALT_SCHEMA.core_section, name="CoreSection_core_section", curie=BASALT_SCHEMA.curie('core_section'),
                    model_uri=BASALT_SCHEMA.CoreSection_core_section, domain=CoreSection, range=Union[str, "CoreSectionEnum"])

@@ -213,6 +213,13 @@ classes:
         range: string
       execution_resource:
         range: ExecutionResourceEnum
+      functional_annotations:
+        range: FunctionalAnnotationCount
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          The functional annotation identifiers this activity used, each with its
+          count.
 
   AlternativeIdentifier:
     slots:
@@ -224,6 +231,9 @@ classes:
       alternate_identifier_type:
         range: AlternateIdentifierType
         required: true
+      provider:
+        range: InstrumentAltIdProviderEnum
+        description: The system that issued this identifier (e.g., NEXUS, DMS).
 
   FunctionalAnnotationIdentifier:
     slots:
@@ -273,6 +283,17 @@ classes:
       other_properties:
         range: string
         description: Other important properties of the instrument that are not captured in other fields.
+      alternative_identifiers:
+        range: AlternativeIdentifier
+        multivalued: true
+        inlined_as_list: true
+        description: Identifiers for this instrument issued by other systems (e.g., NEXUS, DMS).
+      custodians:
+        range: Custodian
+        multivalued: true
+        description: >-
+          People responsible for the instrument's maintenance, calibration, and
+          proper use.
 
   OntologyClass: # table has no data
     slots:
@@ -328,19 +349,6 @@ classes:
     slots:
       - id
       - person
-
-  InstrumentAlternativeIdentifier:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      alt_id:
-        range: AlternativeIdentifier
-      instrument_alt_id_provider:
-        range: InstrumentAltIdProviderEnum
-      instrument_id:
-        range: Instrument
-        required: true
 
   LabDevice:
     description: |-
@@ -404,8 +412,8 @@ classes:
       to disagree.
 
       Direction is carried by role:
-        role = input_sample   ->  sample_id was consumed by processing_id
-        role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
+        role = input_sample   ->  sample was consumed by processing
+        role = output_sample  ->  sample (a ProcessedSample) was produced by it
 
       A minimal step is therefore two rows: one input edge and one output edge.
       Because role is per-row rather than per-activity, fan-in and fan-out are
@@ -420,60 +428,42 @@ classes:
       id:
         identifier: true
         range: uuid
-      processing_id:
+      processing:
         range: SampleProcessing
         required: true
       step_number:
         range: integer
         required: true
-      sample_id:
+      sample:
         range: Sample
         required: true
       role:
         range: SampleRole
         required: true
         description: >-
-          Whether sample_id was consumed by (input_sample) or produced by
-          (output_sample) processing_id.
+          Whether sample was consumed by (input_sample) or produced by
+          (output_sample) processing.
     unique_keys:
       unique_sample_process_step:
         unique_key_slots:
-          - sample_id
-          - processing_id
+          - sample
+          - processing
           - step_number
           - role
     slots:
       - in_run
     comments:
       - >-
-        Invariant not expressible in LinkML: all rows sharing a processing_id must
+        Invariant not expressible in LinkML: all rows sharing a processing must
         agree on in_run, since a step belongs to exactly one run. Enforce with a
         database-level check or a validation rule.
 
-  InstrumentCustodian:
+  FunctionalAnnotationCount:
     description: |-
-      A link between an instrument and a custodian (person) responsible for it.
-      This class captures the relationship between an instrument and the person
-      who is responsible for its maintenance, calibration, and proper use.
+      One functional annotation identifier used by a DataProcessingActivity, with
+      its count. Owned by the activity through its functional_annotations slot.
     attributes:
-      instrument_id:
-        range: Instrument
-        required: true
-      custodian_id:
-        range: Custodian
-        required: true
-
-
-  WorkflowExecutionFunctionalAnnotation:
-    description: |-
-      A link between a workflow execution and a functional annotation identifier.
-      This class captures the relationship between a workflow execution and the
-      functional annotation identifier that was used in the analysis.
-    attributes:
-      workflow_id:
-        range: DataProcessingActivity
-        required: true
-      functional_annotation_id:
+      annotation:
         range: FunctionalAnnotationIdentifier
         required: true
       count:

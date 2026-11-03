@@ -9,7 +9,7 @@ description: |-
 
   Population: nightly refresh job using recursive CTE across:
     - ProcessingSampleLink (sample -> processed sample chains). Hops are formed by
-      self-joining the table on processing_id: an input_sample row joined to an
+      self-joining the table on processing: an input_sample row joined to an
       output_sample row for the same activity yields one (ancestor, descendant) edge.
       This is the only source of sample-processing edges; no scalar FK duplicates them.
     - DataProcessingActivity.parent_workflow (workflow chains)

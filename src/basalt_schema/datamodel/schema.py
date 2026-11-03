@@ -136,6 +136,10 @@ be specified on workflow subclasses.
     software_poc = Column(Text())
     execution_resource = Column(Enum('nersc_cori', 'nersc_perlmutter', 'emsl_rzr', 'emsl_tahoma', name='ExecutionResourceEnum'))
     
+    
+    # One-To-Many: OneToAnyMapping(source_class='DataProcessingActivity', source_slot='functional_annotations', mapping_type=None, target_class='FunctionalAnnotationCount', target_slot='DataProcessingActivity_id', join_class=None, uses_join_table=None, multivalued=False)
+    functional_annotations = relationship( "FunctionalAnnotationCount", foreign_keys="[FunctionalAnnotationCount.DataProcessingActivity_id]")
+    
 
     
 
@@ -156,12 +160,14 @@ class AlternativeIdentifier(Base):
     id = Column(UUID(), primary_key=True, nullable=False )
     alternate_id = Column(Text(), nullable=False )
     alternate_identifier_type = Column(Enum('instrument_alt_id', name='AlternateIdentifierType'), nullable=False )
+    provider = Column(Enum('nexus', 'dms', name='InstrumentAltIdProviderEnum'))
+    Instrument_id = Column(UUID(), ForeignKey('Instrument.id'))
     
 
     
 
     def __repr__(self):
-        return f"AlternativeIdentifier(id={self.id},alternate_id={self.alternate_id},alternate_identifier_type={self.alternate_identifier_type},)"
+        return f"AlternativeIdentifier(id={self.id},alternate_id={self.alternate_id},alternate_identifier_type={self.alternate_identifier_type},provider={self.provider},Instrument_id={self.Instrument_id},)"
 
 
 
@@ -210,6 +216,14 @@ otherwise, it is a generic standin for an instrument model.
     instrument_parameters = Column(Text())
     mass_analyzer_type = Column(Enum('quadrupole', 'time_of_flight', 'orbitrap', 'ion_trap', 'ion_cyclotron_resonance', 'fourier_transform_ion_cyclotron_resonance', name='MassAnalyzerEnum'))
     other_properties = Column(Text())
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='Instrument', source_slot='alternative_identifiers', mapping_type=None, target_class='AlternativeIdentifier', target_slot='Instrument_id', join_class=None, uses_join_table=None, multivalued=False)
+    alternative_identifiers = relationship( "AlternativeIdentifier", foreign_keys="[AlternativeIdentifier.Instrument_id]")
+    
+    
+    # ManyToMany
+    custodians = relationship( "Custodian", secondary="Instrument_custodians")
     
 
     
@@ -324,28 +338,6 @@ class Custodian(Base):
     
 
 
-class InstrumentAlternativeIdentifier(Base):
-    """
-    
-    """
-    __tablename__ = 'InstrumentAlternativeIdentifier'
-
-    id = Column(UUID(), primary_key=True, nullable=False )
-    alt_id = Column(UUID(), ForeignKey('AlternativeIdentifier.id'))
-    instrument_alt_id_provider = Column(Enum('nexus', 'dms', name='InstrumentAltIdProviderEnum'))
-    instrument_id = Column(UUID(), ForeignKey('Instrument.id'), nullable=False )
-    
-
-    
-
-    def __repr__(self):
-        return f"InstrumentAlternativeIdentifier(id={self.id},alt_id={self.alt_id},instrument_alt_id_provider={self.instrument_alt_id_provider},instrument_id={self.instrument_id},)"
-
-
-
-    
-
-
 class LabDevice(Base):
     """
     A lab device is a physical instrument or equipment used in a laboratory setting for conducting experiments, measurements, or analyses. It can include various types of instruments such as microscopes, spectrometers, centrifuges, and other specialized equipment. Lab devices are essential for performing scientific research and obtaining accurate data.
@@ -443,8 +435,8 @@ exactly one representation of the lineage graph and no way for two encodings
 to disagree.
 
 Direction is carried by role:
-  role = input_sample   ->  sample_id was consumed by processing_id
-  role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
+  role = input_sample   ->  sample was consumed by processing
+  role = output_sample  ->  sample (a ProcessedSample) was produced by it
 
 A minimal step is therefore two rows: one input edge and one output edge.
 Because role is per-row rather than per-activity, fan-in and fan-out are
@@ -460,68 +452,47 @@ SampleProcessingRun.
 
     in_run = Column(UUID(), ForeignKey('SampleProcessingRun.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
-    processing_id = Column(UUID(), ForeignKey('SampleProcessing.id'), nullable=False )
+    processing = Column(UUID(), ForeignKey('SampleProcessing.id'), nullable=False )
     step_number = Column(Integer(), nullable=False )
-    sample_id = Column(UUID(), ForeignKey('Sample.id'), nullable=False )
+    sample = Column(UUID(), ForeignKey('Sample.id'), nullable=False )
     role = Column(Enum('input_sample', 'output_sample', name='SampleRole'), nullable=False )
     
 
     
     # Unique constraints
     __table_args__ = (
-        UniqueConstraint('sample_id', 'processing_id', 'step_number', 'role'),
+        UniqueConstraint('sample', 'processing', 'step_number', 'role'),
     )
     
 
     def __repr__(self):
-        return f"ProcessingSampleLink(in_run={self.in_run},id={self.id},processing_id={self.processing_id},step_number={self.step_number},sample_id={self.sample_id},role={self.role},)"
+        return f"ProcessingSampleLink(in_run={self.in_run},id={self.id},processing={self.processing},step_number={self.step_number},sample={self.sample},role={self.role},)"
 
 
 
     
 
 
-class InstrumentCustodian(Base):
+class FunctionalAnnotationCount(Base):
     """
-    A link between an instrument and a custodian (person) responsible for it.
-This class captures the relationship between an instrument and the person
-who is responsible for its maintenance, calibration, and proper use.
+    One functional annotation identifier used by a DataProcessingActivity, with
+its count. Owned by the activity through its functional_annotations slot.
     """
-    __tablename__ = 'InstrumentCustodian'
+    __tablename__ = 'FunctionalAnnotationCount'
 
     id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    instrument_id = Column(UUID(), ForeignKey('Instrument.id'), nullable=False )
-    custodian_id = Column(UUID(), ForeignKey('Custodian.id'), nullable=False )
-    
-
-    
-
-    def __repr__(self):
-        return f"InstrumentCustodian(id={self.id},instrument_id={self.instrument_id},custodian_id={self.custodian_id},)"
-
-
-
-    
-
-
-class WorkflowExecutionFunctionalAnnotation(Base):
-    """
-    A link between a workflow execution and a functional annotation identifier.
-This class captures the relationship between a workflow execution and the
-functional annotation identifier that was used in the analysis.
-    """
-    __tablename__ = 'WorkflowExecutionFunctionalAnnotation'
-
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    workflow_id = Column(UUID(), ForeignKey('DataProcessingActivity.id'), nullable=False )
-    functional_annotation_id = Column(UUID(), ForeignKey('FunctionalAnnotationIdentifier.id'), nullable=False )
+    annotation = Column(UUID(), ForeignKey('FunctionalAnnotationIdentifier.id'), nullable=False )
     count = Column(Float())
+    DataProcessingActivity_id = Column(UUID(), ForeignKey('DataProcessingActivity.id'))
+    XASLCFDataProcessingActivity_id = Column(UUID(), ForeignKey('XASLCFDataProcessingActivity.id'))
+    MassSpectrometryDataProcessingActivity_id = Column(UUID(), ForeignKey('MassSpectrometryDataProcessingActivity.id'))
+    MetagenomicsDataProcessingActivity_id = Column(UUID(), ForeignKey('MetagenomicsDataProcessingActivity.id'))
     
 
     
 
     def __repr__(self):
-        return f"WorkflowExecutionFunctionalAnnotation(id={self.id},workflow_id={self.workflow_id},functional_annotation_id={self.functional_annotation_id},count={self.count},)"
+        return f"FunctionalAnnotationCount(id={self.id},annotation={self.annotation},count={self.count},DataProcessingActivity_id={self.DataProcessingActivity_id},XASLCFDataProcessingActivity_id={self.XASLCFDataProcessingActivity_id},MassSpectrometryDataProcessingActivity_id={self.MassSpectrometryDataProcessingActivity_id},MetagenomicsDataProcessingActivity_id={self.MetagenomicsDataProcessingActivity_id},)"
 
 
 
@@ -1247,18 +1218,21 @@ incubation, culture growth, and reaction steps.
     source_sample = Column(UUID(), ForeignKey('Sample.id'), nullable=False )
     storage_condition = Column(Enum('fresh', 'frozen', 'lyophilized', 'other', name='StorageConditionEnum'))
     storage_condition_other = Column(Text())
-    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
     temperature_celsius = Column(Float())
     temperature_category = Column(Enum('room_temperature', 'refrigerated', 'frozen_minus20', 'frozen_minus80', 'liquid_nitrogen', 'other', name='TemperatureCategoryEnum'))
     duration_hours = Column(Float())
     hold_start_time = Column(DateTime())
     hold_end_time = Column(DateTime())
     
+    
+    # One-To-Many: OneToAnyMapping(source_class='SampleStorage', source_slot='substances_used', mapping_type=None, target_class='SampleProcessingSubstance', target_slot='SampleStorage_id', join_class=None, uses_join_table=None, multivalued=False)
+    substances_used = relationship( "SampleProcessingSubstance", foreign_keys="[SampleProcessingSubstance.SampleStorage_id]")
+    
 
     
 
     def __repr__(self):
-        return f"SampleStorage(id={self.id},source_sample={self.source_sample},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},substances_used={self.substances_used},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
+        return f"SampleStorage(id={self.id},source_sample={self.source_sample},storage_condition={self.storage_condition},storage_condition_other={self.storage_condition_other},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},)"
 
 
 
@@ -1337,30 +1311,9 @@ A run may cover several starting samples (a PoolingProcess run) or produce sever
     
 
 
-class SubstancesUsedLink(Base):
-    """
-    A link between a SampleProcessing activity and a PortionOfSubstance that was used in it.
-    """
-    __tablename__ = 'SubstancesUsedLink'
-
-    id = Column(UUID(), primary_key=True, nullable=False )
-    sample_processing_substance = Column(UUID(), ForeignKey('SampleProcessingSubstance.id'))
-    sample_processing_id = Column(UUID(), ForeignKey('SampleProcessing.id'))
-    
-
-    
-
-    def __repr__(self):
-        return f"SubstancesUsedLink(id={self.id},sample_processing_substance={self.sample_processing_substance},sample_processing_id={self.sample_processing_id},)"
-
-
-
-    
-
-
 class SampleProcessingSubstance(Base):
     """
-    A portion of a substance with specific characteristics, as used in a  SampleProcessing activity. Multiple substances may be used in a single  SampleProcessing activity, and the same substance may be used in multiple  SampleProcessing activities.
+    A portion of a substance with specific characteristics, as used in a  SampleProcessing activity. Each record describes one use: an activity owns its substances through its substances_used slot, and the volume and concentrations here belong to that use only.
     """
     __tablename__ = 'SampleProcessingSubstance'
 
@@ -1370,12 +1323,17 @@ class SampleProcessingSubstance(Base):
     substance_role = Column(Enum('buffer', 'acid', 'base', 'ms_proteolytic_enzyme', 'solvent', 'surfactant', 'derivatizing_agent', 'solubilizing_agent', 'nutrient', 'normalizer', 'inducer', name='SubstanceRoleEnum'))
     source_concentration_mg_per_ml = Column(Float())
     final_concentration_mg_per_ml = Column(Float())
+    SampleStorage_id = Column(UUID(), ForeignKey('SampleStorage.id'))
+    ChemicalConversionProcess_id = Column(UUID(), ForeignKey('ChemicalConversionProcess.id'))
+    Dilution_id = Column(UUID(), ForeignKey('Dilution.id'))
+    Extraction_id = Column(UUID(), ForeignKey('Extraction.id'))
+    ResuspensionProcess_id = Column(UUID(), ForeignKey('ResuspensionProcess.id'))
     
 
     
 
     def __repr__(self):
-        return f"SampleProcessingSubstance(id={self.id},volume_ml={self.volume_ml},known_as={self.known_as},substance_role={self.substance_role},source_concentration_mg_per_ml={self.source_concentration_mg_per_ml},final_concentration_mg_per_ml={self.final_concentration_mg_per_ml},)"
+        return f"SampleProcessingSubstance(id={self.id},volume_ml={self.volume_ml},known_as={self.known_as},substance_role={self.substance_role},source_concentration_mg_per_ml={self.source_concentration_mg_per_ml},final_concentration_mg_per_ml={self.final_concentration_mg_per_ml},SampleStorage_id={self.SampleStorage_id},ChemicalConversionProcess_id={self.ChemicalConversionProcess_id},Dilution_id={self.Dilution_id},Extraction_id={self.Extraction_id},ResuspensionProcess_id={self.ResuspensionProcess_id},)"
 
 
 
@@ -1699,6 +1657,26 @@ below as the closest equivalent.
 
     def __repr__(self):
         return f"LinkageCache(id={self.id},ancestor_type={self.ancestor_type},descendant_type={self.descendant_type},hop_depth={self.hop_depth},path={self.path},computed_at={self.computed_at},ancestor_id={self.ancestor_id},descendant_id={self.descendant_id},)"
+
+
+
+    
+
+
+class Instrument_custodians(Base):
+    """
+    
+    """
+    __tablename__ = 'Instrument_custodians'
+
+    Instrument_id = Column(UUID(), ForeignKey('Instrument.id'), primary_key=True)
+    custodians_id = Column(UUID(), ForeignKey('Custodian.id'), primary_key=True)
+    
+
+    
+
+    def __repr__(self):
+        return f"Instrument_custodians(Instrument_id={self.Instrument_id},custodians_id={self.custodians_id},)"
 
 
 
@@ -2470,6 +2448,10 @@ XAS data. One instance represents a single .lcf fit run.
     # ManyToMany
     uses_xas_raw_data = relationship( "XASInstrumentData", secondary="XASLCFDataProcessingActivity_uses_xas_raw_data")
     
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASLCFDataProcessingActivity', source_slot='functional_annotations', mapping_type=None, target_class='FunctionalAnnotationCount', target_slot='XASLCFDataProcessingActivity_id', join_class=None, uses_join_table=None, multivalued=False)
+    functional_annotations = relationship( "FunctionalAnnotationCount", foreign_keys="[FunctionalAnnotationCount.XASLCFDataProcessingActivity_id]")
+    
 
     
 
@@ -2738,6 +2720,10 @@ slots including used_software and version.
     software_version = Column(Text())
     software_poc = Column(Text())
     execution_resource = Column(Enum('nersc_cori', 'nersc_perlmutter', 'emsl_rzr', 'emsl_tahoma', name='ExecutionResourceEnum'))
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='MassSpectrometryDataProcessingActivity', source_slot='functional_annotations', mapping_type=None, target_class='FunctionalAnnotationCount', target_slot='MassSpectrometryDataProcessingActivity_id', join_class=None, uses_join_table=None, multivalued=False)
+    functional_annotations = relationship( "FunctionalAnnotationCount", foreign_keys="[FunctionalAnnotationCount.MassSpectrometryDataProcessingActivity_id]")
     
 
     
@@ -3154,6 +3140,10 @@ inherited type attribute (string); expected values:
     software_version = Column(Text())
     software_poc = Column(Text())
     execution_resource = Column(Enum('nersc_cori', 'nersc_perlmutter', 'emsl_rzr', 'emsl_tahoma', name='ExecutionResourceEnum'))
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='MetagenomicsDataProcessingActivity', source_slot='functional_annotations', mapping_type=None, target_class='FunctionalAnnotationCount', target_slot='MetagenomicsDataProcessingActivity_id', join_class=None, uses_join_table=None, multivalued=False)
+    functional_annotations = relationship( "FunctionalAnnotationCount", foreign_keys="[FunctionalAnnotationCount.MetagenomicsDataProcessingActivity_id]")
     
 
     
@@ -6144,7 +6134,6 @@ class ChemicalConversionProcess(SampleProcessing):
     """
     __tablename__ = 'ChemicalConversionProcess'
 
-    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
     chemical_conversion_category = Column(Enum('addition', 'substitution', 'acid_base', 'reduction_oxidation', 'combustion', 'decomposition', 'protease_cleavage', 'microwave_digestion', name='ChemicalConversionCategoryEnum'))
     protein_digestion_method = Column(Enum('urea', 's_trap', 'fasp', 'other', name='ProteinDigestionMethodEnum'))
     enrichment_type = Column(Enum('phosphopeptide', 'acetyl_peptide', 'ubiquitin_peptide', 'other', name='EnrichmentTypeEnum'))
@@ -6159,11 +6148,15 @@ class ChemicalConversionProcess(SampleProcessing):
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     
+    
+    # One-To-Many: OneToAnyMapping(source_class='ChemicalConversionProcess', source_slot='substances_used', mapping_type=None, target_class='SampleProcessingSubstance', target_slot='ChemicalConversionProcess_id', join_class=None, uses_join_table=None, multivalued=False)
+    substances_used = relationship( "SampleProcessingSubstance", foreign_keys="[SampleProcessingSubstance.ChemicalConversionProcess_id]")
+    
 
     
 
     def __repr__(self):
-        return f"ChemicalConversionProcess(substances_used={self.substances_used},chemical_conversion_category={self.chemical_conversion_category},protein_digestion_method={self.protein_digestion_method},enrichment_type={self.enrichment_type},labeling_method={self.labeling_method},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},id={self.id},name={self.name},description={self.description},in_protocol={self.in_protocol},)"
+        return f"ChemicalConversionProcess(chemical_conversion_category={self.chemical_conversion_category},protein_digestion_method={self.protein_digestion_method},enrichment_type={self.enrichment_type},labeling_method={self.labeling_method},temperature_celsius={self.temperature_celsius},temperature_category={self.temperature_category},duration_hours={self.duration_hours},hold_start_time={self.hold_start_time},hold_end_time={self.hold_end_time},id={self.id},name={self.name},description={self.description},in_protocol={self.in_protocol},)"
 
 
 
@@ -6186,18 +6179,21 @@ class Dilution(SampleProcessing):
     starting_concentration_mg_per_ml = Column(Float())
     final_concentration_mg_per_ml = Column(Float())
     dilution_factor = Column(Float())
-    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
     informed_by_result = Column(UUID(), ForeignKey('DataProduct.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     
+    
+    # One-To-Many: OneToAnyMapping(source_class='Dilution', source_slot='substances_used', mapping_type=None, target_class='SampleProcessingSubstance', target_slot='Dilution_id', join_class=None, uses_join_table=None, multivalued=False)
+    substances_used = relationship( "SampleProcessingSubstance", foreign_keys="[SampleProcessingSubstance.Dilution_id]")
+    
 
     
 
     def __repr__(self):
-        return f"Dilution(dilution_analyte={self.dilution_analyte},target_concentration_ug_per_ul={self.target_concentration_ug_per_ul},starting_concentration_mg_per_ml={self.starting_concentration_mg_per_ml},final_concentration_mg_per_ml={self.final_concentration_mg_per_ml},dilution_factor={self.dilution_factor},substances_used={self.substances_used},informed_by_result={self.informed_by_result},id={self.id},name={self.name},description={self.description},in_protocol={self.in_protocol},)"
+        return f"Dilution(dilution_analyte={self.dilution_analyte},target_concentration_ug_per_ul={self.target_concentration_ug_per_ul},starting_concentration_mg_per_ml={self.starting_concentration_mg_per_ml},final_concentration_mg_per_ml={self.final_concentration_mg_per_ml},dilution_factor={self.dilution_factor},informed_by_result={self.informed_by_result},id={self.id},name={self.name},description={self.description},in_protocol={self.in_protocol},)"
 
 
 
@@ -6215,13 +6211,16 @@ class Extraction(SampleProcessing):
     """
     __tablename__ = 'Extraction'
 
-    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
     starting_mass_mg = Column(Float())
     extraction_method = Column(Enum('mplex', 'bead_beating', 'tca_acetone_precipitation', 'cell_lysis_s_trap', 'other', 'monet_weom', 'monet_heom', name='ExtractionMethodEnum'))
     id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='Extraction', source_slot='substances_used', mapping_type=None, target_class='SampleProcessingSubstance', target_slot='Extraction_id', join_class=None, uses_join_table=None, multivalued=False)
+    substances_used = relationship( "SampleProcessingSubstance", foreign_keys="[SampleProcessingSubstance.Extraction_id]")
     
     
     extraction_target_rel = relationship( "Extraction_extraction_target" )
@@ -6232,7 +6231,7 @@ class Extraction(SampleProcessing):
     
 
     def __repr__(self):
-        return f"Extraction(substances_used={self.substances_used},starting_mass_mg={self.starting_mass_mg},extraction_method={self.extraction_method},id={self.id},name={self.name},description={self.description},in_protocol={self.in_protocol},)"
+        return f"Extraction(starting_mass_mg={self.starting_mass_mg},extraction_method={self.extraction_method},id={self.id},name={self.name},description={self.description},in_protocol={self.in_protocol},)"
 
 
 
@@ -6406,17 +6405,20 @@ class ResuspensionProcess(SampleProcessing):
 
     lims_protocol_instance_id = Column(Integer())
     final_vol_ml = Column(Float())
-    substances_used = Column(UUID(), ForeignKey('SubstancesUsedLink.id'))
     id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
     description = Column(Text())
     in_protocol = Column(UUID(), ForeignKey('SampleProcessingProtocol.id'))
     
+    
+    # One-To-Many: OneToAnyMapping(source_class='ResuspensionProcess', source_slot='substances_used', mapping_type=None, target_class='SampleProcessingSubstance', target_slot='ResuspensionProcess_id', join_class=None, uses_join_table=None, multivalued=False)
+    substances_used = relationship( "SampleProcessingSubstance", foreign_keys="[SampleProcessingSubstance.ResuspensionProcess_id]")
+    
 
     
 
     def __repr__(self):
-        return f"ResuspensionProcess(lims_protocol_instance_id={self.lims_protocol_instance_id},final_vol_ml={self.final_vol_ml},substances_used={self.substances_used},id={self.id},name={self.name},description={self.description},in_protocol={self.in_protocol},)"
+        return f"ResuspensionProcess(lims_protocol_instance_id={self.lims_protocol_instance_id},final_vol_ml={self.final_vol_ml},id={self.id},name={self.name},description={self.description},in_protocol={self.in_protocol},)"
 
 
 
