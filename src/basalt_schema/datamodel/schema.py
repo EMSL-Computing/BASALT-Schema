@@ -149,7 +149,7 @@ be specified on workflow subclasses.
 
 class AlternativeIdentifier(Base):
     """
-    
+    An identifier for a record issued by another system or provider, stored together with the type of identifier it is.
     """
     __tablename__ = 'AlternativeIdentifier'
 
@@ -170,7 +170,7 @@ class AlternativeIdentifier(Base):
 
 class FunctionalAnnotationIdentifier(Base):
     """
-    
+    An identifier for a functional annotation term (e.g. a KEGG, COG or Pfam entry) together with the reference database that issued it.
     """
     __tablename__ = 'FunctionalAnnotationIdentifier'
 
@@ -224,7 +224,7 @@ otherwise, it is a generic standin for an instrument model.
 
 class OntologyClass(Base):
     """
-    
+    A term from an external ontology, with its name, description and any alternative identifiers.
     """
     __tablename__ = 'OntologyClass'
 
@@ -246,7 +246,7 @@ class OntologyClass(Base):
 
 class ContainerType(Base):
     """
-    
+    A kind of physical container (e.g. a tube, plate or vial), described by its type, size and the axes used to address positions within it.
     """
     __tablename__ = 'ContainerType'
 
@@ -281,7 +281,7 @@ class ContainerType(Base):
 
 class ContainerAxis(Base):
     """
-    
+    One addressable dimension of a container (e.g. the rows or columns of a well plate) and the labels used along it.
     """
     __tablename__ = 'ContainerAxis'
 
@@ -306,7 +306,7 @@ class ContainerAxis(Base):
 
 class Custodian(Base):
     """
-    
+    A person responsible for an instrument, including its maintenance, calibration and proper use.
     """
     __tablename__ = 'Custodian'
 
@@ -326,7 +326,7 @@ class Custodian(Base):
 
 class InstrumentAlternativeIdentifier(Base):
     """
-    
+    A link between an instrument and an alternative identifier assigned to it by an external provider.
     """
     __tablename__ = 'InstrumentAlternativeIdentifier'
 
@@ -1105,7 +1105,7 @@ Relationship to samples:
   - AMP2UserSample.organism_ref points here
   - CultureGrowth activities reference via organism_ref (aliased as strain_ref)
     """
-    __tablename__ = 'organism'
+    __tablename__ = 'Organism'
 
     id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
@@ -1138,7 +1138,7 @@ Relationship to samples:
     
 
     def __repr__(self):
-        return f"organism(id={self.id},name={self.name},description={self.description},strain_identifier={self.strain_identifier},organism_name={self.organism_name},taxonomy_id={self.taxonomy_id},host_common_name={self.host_common_name},host_taxid={self.host_taxid},strain_source={self.strain_source},strain_type={self.strain_type},modification_method={self.modification_method},strain_description={self.strain_description},strain_mutation={self.strain_mutation},phenotype={self.phenotype},trait={self.trait},encoded_traits={self.encoded_traits},genotype_segment_category={self.genotype_segment_category},genotype_segment_name={self.genotype_segment_name},component_name={self.component_name},construct_component={self.construct_component},donor_organism={self.donor_organism},component_description={self.component_description},trophic_level={self.trophic_level},pathogenicity={self.pathogenicity},host_spec_range={self.host_spec_range},propagation={self.propagation},)"
+        return f"Organism(id={self.id},name={self.name},description={self.description},strain_identifier={self.strain_identifier},organism_name={self.organism_name},taxonomy_id={self.taxonomy_id},host_common_name={self.host_common_name},host_taxid={self.host_taxid},strain_source={self.strain_source},strain_type={self.strain_type},modification_method={self.modification_method},strain_description={self.strain_description},strain_mutation={self.strain_mutation},phenotype={self.phenotype},trait={self.trait},encoded_traits={self.encoded_traits},genotype_segment_category={self.genotype_segment_category},genotype_segment_name={self.genotype_segment_name},component_name={self.component_name},construct_component={self.construct_component},donor_organism={self.donor_organism},component_description={self.component_description},trophic_level={self.trophic_level},pathogenicity={self.pathogenicity},host_spec_range={self.host_spec_range},propagation={self.propagation},)"
 
 
 
@@ -2826,7 +2826,7 @@ PreCultureGrowth, ExperimentalCulture.
     """
     __tablename__ = 'CultureGrowth'
 
-    organism_ref = Column(UUID(), ForeignKey('organism.id'))
+    organism_ref = Column(UUID(), ForeignKey('Organism.id'))
     growth_medium = Column(Text())
     container_type = Column(Text())
     agitation_speed_rpm = Column(Integer())
@@ -4021,7 +4021,7 @@ Workflow integration:
     """
     __tablename__ = 'AMP2UserSample'
 
-    organism_ref = Column(UUID(), ForeignKey('organism.id'), nullable=False )
+    organism_ref = Column(UUID(), ForeignKey('Organism.id'), nullable=False )
     collection_date = Column(Date())
     growth_facil = Column(Enum('field', 'commercially_purchased', 'experimental_garden', 'field_incubation', 'greenhouse', 'growth_chamber', 'lab_incubation', 'open_top_chamber', 'other', name='GrowthFacilityEnum'))
     isol_growth_condt = Column(Text())
@@ -4208,7 +4208,7 @@ and carries only sample-instance-specific slots.
     """
     __tablename__ = 'EngineeredStrainSample'
 
-    organism_ref = Column(UUID(), ForeignKey('organism.id'))
+    organism_ref = Column(UUID(), ForeignKey('Organism.id'))
     cbi = Column(Text(), nullable=False )
     storage_condition = Column(Text(), nullable=False )
     storage_temperature = Column(Text())
@@ -6777,7 +6777,7 @@ Refs:   Media (growth medium), Strain (target organism)
     inspection_method = Column(Text())
     target_strain = Column(Text())
     contaminant_strains = Column(Text())
-    organism_ref = Column(UUID(), ForeignKey('organism.id'))
+    organism_ref = Column(UUID(), ForeignKey('Organism.id'))
     growth_medium = Column(Text())
     container_type = Column(Text())
     agitation_speed_rpm = Column(Integer())
@@ -6822,7 +6822,7 @@ SampleStorage row on the stock_culture processedSample, not on this activity.
     __tablename__ = 'StockCulturePreparation'
 
     preparation_date = Column(Date())
-    organism_ref = Column(UUID(), ForeignKey('organism.id'))
+    organism_ref = Column(UUID(), ForeignKey('Organism.id'))
     growth_medium = Column(Text())
     container_type = Column(Text())
     agitation_speed_rpm = Column(Integer())
@@ -6864,7 +6864,7 @@ Refs:   Media (growth medium), Strain
     """
     __tablename__ = 'PreCultureGrowth'
 
-    organism_ref = Column(UUID(), ForeignKey('organism.id'))
+    organism_ref = Column(UUID(), ForeignKey('Organism.id'))
     growth_medium = Column(Text())
     container_type = Column(Text())
     agitation_speed_rpm = Column(Integer())
@@ -6907,7 +6907,7 @@ Refs:   Media (growth medium), Strain
     __tablename__ = 'ExperimentalCulture'
 
     treatment_type = Column(Text())
-    organism_ref = Column(UUID(), ForeignKey('organism.id'))
+    organism_ref = Column(UUID(), ForeignKey('Organism.id'))
     growth_medium = Column(Text())
     container_type = Column(Text())
     agitation_speed_rpm = Column(Integer())

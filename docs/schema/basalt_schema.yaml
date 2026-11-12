@@ -56,6 +56,7 @@ types:
   uuid:
     name: uuid
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Uuid
+    description: A universally unique identifier.
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     typeof: string
     base: str
@@ -64,6 +65,7 @@ types:
   timestamp_tz:
     name: timestamp_tz
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/TimestampTz
+    description: A date and time.
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     typeof: datetime
     base: XSDDateTime
@@ -4336,9 +4338,9 @@ slots:
     title: construct component description
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:component_description
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: string
   component_name:
     name: component_name
@@ -4350,9 +4352,9 @@ slots:
     title: construct component name
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:component_name
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: string
   compound_name:
     name: compound_name
@@ -4423,9 +4425,9 @@ slots:
     title: construct component
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:construct_component
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: ConstructComponentEnum
   container_size_ml:
     name: container_size_ml
@@ -4667,7 +4669,7 @@ slots:
     - Configuration
     - CalibrationStandardRun
     - PurchasedMaterial
-    - organism
+    - Organism
     - Site
     - Sample
     - SamplingActivity
@@ -4867,9 +4869,9 @@ slots:
     title: donor organism
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:donor_organism
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: string
   down_par:
     name: down_par
@@ -5008,7 +5010,7 @@ slots:
     slot_uri: basalt_schema:encoded_traits
     owner: TerraformSample
     domain_of:
-    - organism
+    - Organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
@@ -5023,11 +5025,10 @@ slots:
       submission_pattern:
         tag: submission_pattern
         value: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
-    description: '''Report the major environmental system the sample or specimen came
-      from. The system identified should have a coarse spatial grain to provide the
-      general environmental context of where the sampling was done (e.g. in the desert
-      or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
-      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
+    description: The major environmental system the sample or specimen came from.
+      The system identified should have a coarse spatial grain, to provide the general
+      environmental context of where the sampling was done (e.g. in the desert or
+      a rainforest). Values should be terms from the Environment Ontology. See https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.
     title: broad-scale environmental context
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:env_broad_scale
@@ -5571,9 +5572,9 @@ slots:
     title: genotype segment category
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:genotype_segment_category
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: GenotypeSegmentEnum
   genotype_segment_name:
     name: genotype_segment_name
@@ -5586,9 +5587,9 @@ slots:
     title: genotype segment name
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:genotype_segment_name
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: string
   geo_loc_name:
     name: geo_loc_name
@@ -5819,7 +5820,7 @@ slots:
     slot_uri: basalt_schema:host_common_name
     owner: TerraformSample
     domain_of:
-    - organism
+    - Organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
@@ -5964,7 +5965,7 @@ slots:
     slot_uri: basalt_schema:host_spec_range
     owner: TerraformSample
     domain_of:
-    - organism
+    - Organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
@@ -6001,7 +6002,7 @@ slots:
     slot_uri: basalt_schema:host_taxid
     owner: TerraformSample
     domain_of:
-    - organism
+    - Organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
@@ -6112,7 +6113,7 @@ slots:
     - MobilePhaseSubstance
     - CalibrationStandardRun
     - PurchasedMaterial
-    - organism
+    - Organism
     - Site
     - Sample
     - SampleStorage
@@ -7103,9 +7104,9 @@ slots:
     - genetic_modification_method
     - transformation_method
     slot_uri: basalt_schema:modification_method
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: ModificationMethodEnum
   ms_raw_file_type:
     name: ms_raw_file_type
@@ -7147,7 +7148,7 @@ slots:
     - Configuration
     - CalibrationStandardRun
     - PurchasedMaterial
-    - organism
+    - Organism
     - Site
     - Sample
     - SamplingActivity
@@ -7433,22 +7434,18 @@ slots:
     range: string
   organism_name:
     name: organism_name
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/name
-    description: 'Human-readable name for the organism.
-
-      May be same as strain_identifier or more descriptive.'
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/organism_name
+    description: Provide the scientific name (genus and species) of the host organism.
+    title: organism name
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    is_a: name
-    domain: organism
-    slot_uri: basalt_schema:name
-    alias: name
-    owner: organism
+    aliases:
+    - scientific_name
+    - species_name
+    slot_uri: basalt_schema:organism_name
+    owner: Organism
     domain_of:
-    - organism
-    is_usage_slot: true
-    usage_slot_name: name
+    - Organism
     range: string
-    required: true
   organism_ref:
     name: organism_ref
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/organism_ref
@@ -7467,7 +7464,7 @@ slots:
     - CultureGrowth
     - AMP2UserSample
     - EngineeredStrainSample
-    range: organism
+    range: Organism
     required: false
   other:
     name: other
@@ -7716,7 +7713,7 @@ slots:
     slot_uri: basalt_schema:pathogenicity
     owner: PureCultureSample
     domain_of:
-    - organism
+    - Organism
     - CultureEnvironmentalSample
     - MixedCultureSample
     - OtherUndescribedSample
@@ -7911,9 +7908,9 @@ slots:
     title: phenotype
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:phenotype
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: string
   phosphate:
     name: phosphate
@@ -8493,7 +8490,7 @@ slots:
     slot_uri: basalt_schema:propagation
     owner: TerraformSample
     domain_of:
-    - organism
+    - Organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
@@ -11062,9 +11059,9 @@ slots:
     - strain_desc
     - strain_notes
     slot_uri: basalt_schema:strain_description
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: string
   strain_identifier:
     name: strain_identifier
@@ -11077,9 +11074,9 @@ slots:
     - strain_id
     - strain_name
     slot_uri: basalt_schema:strain_identifier
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: string
     required: true
   strain_mutation:
@@ -11090,9 +11087,9 @@ slots:
       For complex constructs, use genotype_segment_* and component_* slots.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:strain_mutation
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: string
   strain_name:
     name: strain_name
@@ -11108,7 +11105,7 @@ slots:
     description: FK reference to a Strain purchasedMaterial used in the activity
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:strain_ref
-    range: organism
+    range: Organism
     required: false
   strain_source:
     name: strain_source
@@ -11123,9 +11120,9 @@ slots:
     - source_institution
     - strain_origin
     slot_uri: basalt_schema:strain_source
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: string
   strain_type:
     name: strain_type
@@ -11135,9 +11132,9 @@ slots:
     aliases:
     - organism_type
     slot_uri: basalt_schema:strain_type
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: StrainTypeEnum
   subspecf_gen_lin:
     name: subspecf_gen_lin
@@ -11401,9 +11398,9 @@ slots:
     - ncbi_taxon_id
     - taxon_id
     slot_uri: basalt_schema:taxonomy_id
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: string
   technical_reps:
     name: technical_reps
@@ -11802,9 +11799,9 @@ slots:
       Example: "Bacterial Resistance", "Other"'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:trait
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     range: IntendedTraitEnum
   treatment_type:
     name: treatment_type
@@ -11828,7 +11825,7 @@ slots:
     slot_uri: basalt_schema:trophic_level
     owner: PureCultureSample
     domain_of:
-    - organism
+    - Organism
     - CultureEnvironmentalSample
     - MixedCultureSample
     - OtherUndescribedSample
@@ -18074,8 +18071,8 @@ slots:
     usage_slot_name: x_val
     range: float
     required: true
-  organism_strain_identifier:
-    name: organism_strain_identifier
+  Organism_strain_identifier:
+    name: Organism_strain_identifier
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/strain_identifier
     description: 'Primary human-readable identifier for this organism.
 
@@ -18085,34 +18082,55 @@ slots:
     - strain_id
     - strain_name
     is_a: strain_identifier
-    domain: organism
+    domain: Organism
     slot_uri: basalt_schema:strain_identifier
     alias: strain_identifier
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     is_usage_slot: true
     usage_slot_name: strain_identifier
     range: string
     required: true
-  organism_organism_name:
-    name: organism_organism_name
+  Organism_name:
+    name: Organism_name
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/name
-    description: Scientific name of the organism (e.g., "Pseudomonas putida").
+    description: 'Human-readable name for the organism.
+
+      May be same as strain_identifier or more descriptive.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    is_a: organism_name
-    domain: organism
+    is_a: name
+    domain: Organism
     slot_uri: basalt_schema:name
     alias: name
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
+    is_usage_slot: true
+    usage_slot_name: name
+    range: string
+    required: true
+  Organism_organism_name:
+    name: Organism_organism_name
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/organism_name
+    description: Scientific name of the organism (e.g., "Pseudomonas putida").
+    title: organism name
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    aliases:
+    - scientific_name
+    - species_name
+    is_a: organism_name
+    domain: Organism
+    slot_uri: basalt_schema:organism_name
+    alias: organism_name
+    owner: Organism
+    domain_of:
+    - Organism
     is_usage_slot: true
     usage_slot_name: organism_name
     range: string
-    required: true
-  organism_strain_source:
-    name: organism_strain_source
+  Organism_strain_source:
+    name: Organism_strain_source
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/strain_source
     description: 'Provenance of the organism. Can be an institution
 
@@ -18125,17 +18143,17 @@ slots:
     - source_institution
     - strain_origin
     is_a: strain_source
-    domain: organism
+    domain: Organism
     slot_uri: basalt_schema:strain_source
     alias: strain_source
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     is_usage_slot: true
     usage_slot_name: strain_source
     range: string
-  organism_strain_mutation:
-    name: organism_strain_mutation
+  Organism_strain_mutation:
+    name: Organism_strain_mutation
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/strain_mutation
     description: 'Primary genetic modification or plasmid carried (e.g., "pTE314").
 
@@ -18144,17 +18162,17 @@ slots:
       and component_* slots.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     is_a: strain_mutation
-    domain: organism
+    domain: Organism
     slot_uri: basalt_schema:strain_mutation
     alias: strain_mutation
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     is_usage_slot: true
     usage_slot_name: strain_mutation
     range: string
-  organism_modification_method:
-    name: organism_modification_method
+  Organism_modification_method:
+    name: Organism_modification_method
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/modification_method
     description: 'Method used to introduce genetic modification.
 
@@ -18165,17 +18183,17 @@ slots:
     - genetic_modification_method
     - transformation_method
     is_a: modification_method
-    domain: organism
+    domain: Organism
     slot_uri: basalt_schema:modification_method
     alias: modification_method
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     is_usage_slot: true
     usage_slot_name: modification_method
     range: ModificationMethodEnum
-  organism_trophic_level:
-    name: organism_trophic_level
+  Organism_trophic_level:
+    name: Organism_trophic_level
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/trophic_level
     description: 'Trophic levels are the feeding position in a food chain. Microbes
       can
@@ -18184,12 +18202,12 @@ slots:
     title: trophic level
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     is_a: trophic_level
-    domain: organism
+    domain: Organism
     slot_uri: basalt_schema:trophic_level
     alias: trophic_level
-    owner: organism
+    owner: Organism
     domain_of:
-    - organism
+    - Organism
     is_usage_slot: true
     usage_slot_name: trophic_level
     range: TrophicLevelEnum
@@ -18486,7 +18504,7 @@ slots:
     - AMP2UserSample
     is_usage_slot: true
     usage_slot_name: organism_ref
-    range: organism
+    range: Organism
     required: true
   AMP2UserSample_storage_condition:
     name: AMP2UserSample_storage_condition
@@ -21178,6 +21196,8 @@ classes:
   AlternativeIdentifier:
     name: AlternativeIdentifier
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/AlternativeIdentifier
+    description: An identifier for a record issued by another system or provider,
+      stored together with the type of identifier it is.
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
     - id
@@ -21196,6 +21216,8 @@ classes:
   FunctionalAnnotationIdentifier:
     name: FunctionalAnnotationIdentifier
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/FunctionalAnnotationIdentifier
+    description: An identifier for a functional annotation term (e.g. a KEGG, COG
+      or Pfam entry) together with the reference database that issued it.
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
     - id
@@ -21278,6 +21300,8 @@ classes:
   OntologyClass:
     name: OntologyClass
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/OntologyClass
+    description: A term from an external ontology, with its name, description and
+      any alternative identifiers.
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
     - id
@@ -21298,6 +21322,8 @@ classes:
   ContainerType:
     name: ContainerType
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ContainerType
+    description: A kind of physical container (e.g. a tube, plate or vial), described
+      by its type, size and the axes used to address positions within it.
     todos:
     - reconcile with enums and in media_strain_culture_plate.yaml
     - potentially delete along with ContainerAxis? What are these for?
@@ -21345,6 +21371,8 @@ classes:
   ContainerAxis:
     name: ContainerAxis
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ContainerAxis
+    description: One addressable dimension of a container (e.g. the rows or columns
+      of a well plate) and the labels used along it.
     todos:
     - I'm only including this in case we need it to sync up with L7 in some way
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -21363,6 +21391,8 @@ classes:
   Custodian:
     name: Custodian
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Custodian
+    description: A person responsible for an instrument, including its maintenance,
+      calibration and proper use.
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
     - id
@@ -21371,6 +21401,8 @@ classes:
   InstrumentAlternativeIdentifier:
     name: InstrumentAlternativeIdentifier
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/InstrumentAlternativeIdentifier
+    description: A link between an instrument and an alternative identifier assigned
+      to it by an external provider.
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
     - instrumentAlternativeIdentifier__id
@@ -26423,8 +26455,8 @@ classes:
     - schema_version
     - revision__id
     class_uri: basalt_schema:SamplingActivityRevision
-  organism:
-    name: organism
+  Organism:
+    name: Organism
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Organism
     description: "Reference data representing a biological identity (strain, isolate,\n\
       engineered construct, etc.) that can be instantiated by multiple\nphysical samples.\n\
@@ -26440,17 +26472,18 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/organism
     slots:
     - id
-    - organism_organism_name
+    - Organism_name
     - description
-    - organism_strain_identifier
+    - Organism_strain_identifier
+    - Organism_organism_name
     - taxonomy_id
     - host_common_name
     - host_taxid
-    - organism_strain_source
+    - Organism_strain_source
     - strain_type
-    - organism_modification_method
+    - Organism_modification_method
     - strain_description
-    - organism_strain_mutation
+    - Organism_strain_mutation
     - phenotype
     - trait
     - encoded_traits
@@ -26460,7 +26493,7 @@ classes:
     - construct_component
     - donor_organism
     - component_description
-    - organism_trophic_level
+    - Organism_trophic_level
     - pathogenicity
     - host_spec_range
     - propagation
@@ -29783,6 +29816,6 @@ classes:
         - descendant_id
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-10-28T10:25:55'
-source_file_size: 21375
-generation_date: '2026-10-30T10:49:29'
+source_file_date: '2026-11-12T11:16:38'
+source_file_size: 22447
+generation_date: '2026-11-12T11:22:57'
