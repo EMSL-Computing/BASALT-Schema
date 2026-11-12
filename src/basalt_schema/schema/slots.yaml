@@ -1738,7 +1738,7 @@ slots:
       FK reference to an organism representing the biological identity
       strain, isolate, engineered construct) that this sample or activity
       is associated with.
-    range: organism
+    range: Organism
     required: false
     aliases:
       - strain_ref
@@ -3230,7 +3230,7 @@ slots:
     
   strain_ref:
     description: FK reference to a Strain purchasedMaterial used in the activity
-    range: organism
+    range: Organism
     required: false
 
   strain_source:
