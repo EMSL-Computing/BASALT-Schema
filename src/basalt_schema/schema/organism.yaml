@@ -24,7 +24,7 @@ imports:
 
 classes:
 
-  organism:
+  Organism:
     description: |-
       Reference data representing a biological identity (strain, isolate,
       engineered construct, etc.) that can be instantiated by multiple
