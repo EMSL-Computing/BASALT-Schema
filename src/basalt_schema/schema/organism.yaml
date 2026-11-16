@@ -48,6 +48,7 @@ classes:
       - description
       - strain_identifier
       - organism_name
+      - taxonomy_id
       - host_common_name
       - host_taxid
       
