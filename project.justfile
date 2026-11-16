@@ -38,4 +38,4 @@ gen-excel:
 # e.g. `just check-breaking`, `just check-breaking origin/dev`
 [group('model development')]
 check-breaking base=`git describe --tags --abbrev=0`:
-  uv run python util/schema_diff.py --base {{ base }}
+  uv run python util/schema_diff.py --base {{ base }} --suggest-version

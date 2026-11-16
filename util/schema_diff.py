@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import difflib
+import re
 import subprocess
 import sys
 import tarfile
@@ -178,8 +179,32 @@ def compare(base: SchemaView, head: SchemaView) -> Report:
 # --------------------------------------------------------------------------- #
 
 
-def to_markdown(report: Report, title: str) -> str:
+def suggest_version(base_ref: str, report: Report) -> tuple[str, str] | None:
+    """Next semver for a release, given changes since the tag ``base_ref``.
+
+    Pre-1.0 (0.y.z), breaking changes bump the minor version, per semver's
+    convention that anything may change in 0.x; from 1.0 on they bump major.
+    """
+    m = re.fullmatch(r"v?(\d+)\.(\d+)\.(\d+)", base_ref)
+    if not m:
+        return None
+    major, minor, patch = map(int, m.groups())
+    if report.breaking:
+        reason = "breaking changes"
+        nxt = (0, minor + 1, 0) if major == 0 else (major + 1, 0, 0)
+    elif report.info:
+        reason = "backwards-compatible additions"
+        nxt = (major, minor + 1, 0)
+    else:
+        reason = "no schema changes"
+        nxt = (major, minor, patch + 1)
+    return "{}.{}.{}".format(*nxt), reason
+
+
+def to_markdown(report: Report, title: str, version_note: str | None = None) -> str:
     lines = [f"### {title}", ""]
+    if version_note:
+        lines += [version_note, ""]
     if report.breaking:
         lines.append(f"**{len(report.breaking)} breaking change(s)**")
         lines += [f"- {x}" for x in report.breaking]
@@ -200,15 +225,25 @@ def main() -> int:
     p.add_argument("--title", default=None, help="heading for the markdown report")
     p.add_argument("--output", type=Path, help="write markdown report here (default: stdout)")
     p.add_argument("--fail-on-breaking", action="store_true", help="exit 1 if breaking changes found")
+    p.add_argument("--suggest-version", action="store_true",
+                   help="treat --base as a release tag and suggest the next version")
     args = p.parse_args()
 
     with tempfile.TemporaryDirectory() as b_tmp, tempfile.TemporaryDirectory() as h_tmp:
         base = load(args.base, Path(b_tmp))
         head = load(args.head, Path(h_tmp))
         report = compare(base, head)
+        head_version = head.schema.version
+
+    version_note = None
+    if args.suggest_version and (sv := suggest_version(args.base, report)):
+        nxt, reason = sv
+        version_note = f"**Suggested next release: `v{nxt}`** ({reason} since `{args.base}`)."
+        if head_version and head_version != nxt:
+            version_note += f" Schema `version:` is currently `{head_version}`."
 
     title = args.title or f"Schema changes vs `{args.base}`"
-    md = to_markdown(report, title)
+    md = to_markdown(report, title, version_note)
     if args.output:
         args.output.write_text(md, encoding="utf-8")
     else:

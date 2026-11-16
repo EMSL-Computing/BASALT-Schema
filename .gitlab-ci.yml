@@ -42,7 +42,7 @@ breaking-changes:
     - |
       if [ -n "$LAST_TAG" ]; then
         uv run python util/schema_diff.py --base "$LAST_TAG" \
-          --title "Schema changes since \`$LAST_TAG\`" --output tag-report.md
+          --title "Schema changes since \`$LAST_TAG\`" --output tag-report.md --suggest-version
       else
         printf '### No tags yet\n\nNo release to compare against.\n' > tag-report.md
       fi
