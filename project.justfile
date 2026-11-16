@@ -33,3 +33,9 @@ gen-viz:
 [group('model development')]
 gen-excel:
   uv run gen-project {{ config_yaml }} -I excel -d {{ dest }} {{ source_schema_path }}
+
+# Report breaking schema changes vs a git ref (default: the latest tag).
+# e.g. `just check-breaking`, `just check-breaking origin/dev`
+[group('model development')]
+check-breaking base=`git describe --tags --abbrev=0`:
+  uv run python util/schema_diff.py --base {{ base }}
