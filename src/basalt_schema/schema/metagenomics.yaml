@@ -17,7 +17,7 @@ description: |
 
   Each product class carries only its type-specific slots; shared S3/file slots
   are inherited from dataProduct via processedData via MetagenomicsProduct.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/

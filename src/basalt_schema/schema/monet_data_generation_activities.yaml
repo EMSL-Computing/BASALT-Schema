@@ -4,7 +4,7 @@ title: BASALT Schema - Data Generation Activities for MONet Campaigns
 description: |-
   Method-specific subclasses of DataGenerationActivity to represent the various analysis methods used in MONet campaigns.
   Most classes correspond to a DataProduct in products.yaml.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/

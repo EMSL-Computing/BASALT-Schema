@@ -34,7 +34,7 @@ description: |-
   
   The analysis_type field in the LIMSProcessedData envelope determines which
   product table the data is routed to. The payload shape is identical.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/

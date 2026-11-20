@@ -18,7 +18,7 @@ description: |-
   
   GWC = (wet_mass − dry_mass) / dry_mass × 100
   Expressed as a percentage of dry soil mass.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/

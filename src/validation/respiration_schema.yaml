@@ -19,7 +19,7 @@ description: |-
   Validation schema for soil respiration analysis products.
   Covers data ingested from LIMS into the /lims/processed/ API endpoint.
   This schema represents the JSON contract for a single RespirationProductValues payload.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/

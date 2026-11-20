@@ -15,7 +15,7 @@ title: MONet pH Analysis Ingest Schema
 description: |-
   Ingest validation schema for pHProduct.
   Describes the product_values payload for analysis_type = "ph".
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/

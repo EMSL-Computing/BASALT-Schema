@@ -22,7 +22,7 @@ description: |-
   
   Sand + Silt + Clay fractions expressed as weight percent.
   The three values should sum to ~100%; this is validated in code.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/

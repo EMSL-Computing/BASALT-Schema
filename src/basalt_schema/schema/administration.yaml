@@ -3,7 +3,7 @@ name: basalt-schema-administration
 title: BASALT Schema - Administration
 description: |-
   Administration-related classes for BASALT.
-license: MIT
+license: CC0-1.0
 see_also:
   - https://emsl-computing.github.io/BASALT-Schema
   - https://github.com/EMSL-Computing/BASALT-Schema

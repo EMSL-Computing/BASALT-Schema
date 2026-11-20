@@ -9,7 +9,7 @@ full_name: Maia Kapur
 gh_action_docs_preview: true
 gh_action_pypi: false
 github_org: mkapur-pnnl
-license: MIT
+license: CC0-1.0
 project_description: Data schema for analysis database at EMSL (PNNL).
 project_name: basalt-schema
 project_slug: basalt_schema

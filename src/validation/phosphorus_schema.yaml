@@ -22,7 +22,7 @@ description: |-
   
   Extraction method (Olsen, Mehlich-3, Bray, etc.) must accompany the value
   because interpretation depends on method.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/

@@ -20,7 +20,7 @@ description: |-
   the normalized truth; this table is the query accelerator derived from it. Use in_run
   when you want the steps themselves, and LinkageCache when you only want the endpoints
   (which starting sample produced which final analyte) without walking the chain.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/

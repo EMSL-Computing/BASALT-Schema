@@ -20,7 +20,7 @@ description: |-
       +-- pHRevision
       +-- BulkDensityRevision
       +-- ... one per product
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
