@@ -37,7 +37,7 @@ description: |-
   
   These are sample-level summary metrics derived from the full spectral
   molecular formula assignment. Raw peak data lives in separate instrument files.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/

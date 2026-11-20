@@ -42,7 +42,7 @@ description: |-
   Pore metrics are computed from image segmentation of the 3D volume.
   Flow properties (permeability, tortuosity) are computed via lattice-Boltzmann
   or similar simulation on the segmented pore network.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/

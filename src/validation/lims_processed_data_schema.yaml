@@ -31,7 +31,7 @@ description: |-
   
   One payload = one analysis result for one core section.
   The API routes the payload to the correct internal tables based on analysis_type.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/

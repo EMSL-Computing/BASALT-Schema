@@ -59,10 +59,14 @@ imports:
 types:
   uuid:
     typeof: string
+    description: >-
+      A universally unique identifier.
     uri: xsd:string
     pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$'
   timestamp_tz:
     typeof: datetime
+    description: >-
+      A date and time.
     uri: xsd:dateTime
 
 classes:
@@ -222,6 +226,8 @@ classes:
           count.
 
   AlternativeIdentifier:
+    description: >-
+      An identifier for a record issued by another system or provider, stored together with the type of identifier it is.
     slots:
       - id
     attributes:
@@ -236,6 +242,8 @@ classes:
         description: The system that issued this identifier (e.g., NEXUS, DMS).
 
   FunctionalAnnotationIdentifier:
+    description: >-
+      An identifier for a functional annotation term (e.g. a KEGG, COG or Pfam entry) together with the reference database that issued it.
     slots:
       - id
     attributes:
@@ -296,6 +304,8 @@ classes:
           proper use.
 
   OntologyClass: # table has no data
+    description: >-
+      A term from an external ontology, with its name, description and any alternative identifiers.
     slots:
       - id
     attributes:
@@ -307,6 +317,8 @@ classes:
         range: string
 
   ContainerType:
+    description: >-
+      A kind of physical container (e.g. a tube, plate or vial), described by its type, size and the axes used to address positions within it.
     slots:
       - id
       - container_type
@@ -336,6 +348,8 @@ classes:
     - potentially delete along with ContainerAxis? What are these for?
 
   ContainerAxis: #container_axis.yml - L7
+    description: >-
+      One addressable dimension of a container (e.g. the rows or columns of a well plate) and the labels used along it.
     attributes:
       name:
         range: string     
@@ -346,6 +360,8 @@ classes:
     - I'm only including this in case we need it to sync up with L7 in some way
 
   Custodian:
+    description: >-
+      A person responsible for an instrument, including its maintenance, calibration and proper use.
     slots:
       - id
       - person

@@ -17,7 +17,7 @@ description: |-
   Ingest validation schema for EnzymeProduct.
   Describes the product_values payload for analysis_type = "enzyme".
   Currently covers beta-glucosidase only.  
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/

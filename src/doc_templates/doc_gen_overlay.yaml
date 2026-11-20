@@ -22,7 +22,7 @@ title: BASALT Schema (Doc-Gen Overlay)
 description: |-
   Documentation-generation overlay for the BASALT Schema.
   Imports the operational schema and resolves opaque types for rendering only.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/

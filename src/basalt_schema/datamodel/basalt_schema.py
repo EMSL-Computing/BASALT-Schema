@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-11-03T11:21:58
+# Generation date: 2026-11-20T12:37:44
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -82,6 +82,7 @@ DEFAULT_ = BASALT_SCHEMA
 
 # Types
 class Uuid(String):
+    """ A universally unique identifier. """
     type_class_uri = XSD["string"]
     type_class_curie = "xsd:string"
     type_name = "uuid"
@@ -89,6 +90,7 @@ class Uuid(String):
 
 
 class TimestampTz(Datetime):
+    """ A date and time. """
     type_class_uri = XSD["dateTime"]
     type_class_curie = "xsd:dateTime"
     type_name = "timestamp_tz"
@@ -1144,6 +1146,9 @@ class DataProcessingActivity(YAMLRoot):
 
 @dataclass(repr=False)
 class AlternativeIdentifier(YAMLRoot):
+    """
+    An identifier for a record issued by another system or provider, stored together with the type of identifier it is.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["AlternativeIdentifier"]
@@ -1180,6 +1185,10 @@ class AlternativeIdentifier(YAMLRoot):
 
 @dataclass(repr=False)
 class FunctionalAnnotationIdentifier(YAMLRoot):
+    """
+    An identifier for a functional annotation term (e.g. a KEGG, COG or Pfam entry) together with the reference
+    database that issued it.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["FunctionalAnnotationIdentifier"]
@@ -1292,6 +1301,9 @@ class Instrument(YAMLRoot):
 
 @dataclass(repr=False)
 class OntologyClass(YAMLRoot):
+    """
+    A term from an external ontology, with its name, description and any alternative identifiers.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["OntologyClass"]
@@ -1324,6 +1336,10 @@ class OntologyClass(YAMLRoot):
 
 @dataclass(repr=False)
 class ContainerType(YAMLRoot):
+    """
+    A kind of physical container (e.g. a tube, plate or vial), described by its type, size and the axes used to
+    address positions within it.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ContainerType"]
@@ -1378,6 +1394,9 @@ class ContainerType(YAMLRoot):
 
 @dataclass(repr=False)
 class ContainerAxis(YAMLRoot):
+    """
+    One addressable dimension of a container (e.g. the rows or columns of a well plate) and the labels used along it.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ContainerAxis"]
@@ -1401,6 +1420,9 @@ class ContainerAxis(YAMLRoot):
 
 @dataclass(repr=False)
 class Custodian(YAMLRoot):
+    """
+    A person responsible for an instrument, including its maintenance, calibration and proper use.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Custodian"]
@@ -7473,13 +7495,14 @@ class Organism(YAMLRoot):
 
     class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Organism"]
     class_class_curie: ClassVar[str] = "basalt_schema:Organism"
-    class_name: ClassVar[str] = "organism"
+    class_name: ClassVar[str] = "Organism"
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Organism
 
     id: Union[str, OrganismId] = None
     name: str = None
     strain_identifier: str = None
     description: Optional[str] = None
+    organism_name: Optional[str] = None
     taxonomy_id: Optional[str] = None
     host_common_name: Optional[str] = None
     host_taxid: Optional[str] = None
@@ -7520,6 +7543,9 @@ class Organism(YAMLRoot):
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.organism_name is not None and not isinstance(self.organism_name, str):
+            self.organism_name = str(self.organism_name)
 
         if self.taxonomy_id is not None and not isinstance(self.taxonomy_id, str):
             self.taxonomy_id = str(self.taxonomy_id)
@@ -18212,8 +18238,8 @@ slots.org_particles = Slot(uri=BASALT_SCHEMA.org_particles, name="org_particles"
 slots.organism_count = Slot(uri=BASALT_SCHEMA.organism_count, name="organism_count", curie=BASALT_SCHEMA.curie('organism_count'),
                    model_uri=BASALT_SCHEMA.organism_count, domain=None, range=Optional[str])
 
-slots.organism_name = Slot(uri=BASALT_SCHEMA.name, name="organism_name", curie=BASALT_SCHEMA.curie('name'),
-                   model_uri=BASALT_SCHEMA.organism_name, domain=Organism, range=str)
+slots.organism_name = Slot(uri=BASALT_SCHEMA.organism_name, name="organism_name", curie=BASALT_SCHEMA.curie('organism_name'),
+                   model_uri=BASALT_SCHEMA.organism_name, domain=None, range=Optional[str])
 
 slots.organism_ref = Slot(uri=BASALT_SCHEMA.organism_ref, name="organism_ref", curie=BASALT_SCHEMA.curie('organism_ref'),
                    model_uri=BASALT_SCHEMA.organism_ref, domain=None, range=Optional[Union[str, OrganismId]])
@@ -20957,23 +20983,26 @@ slots.XASLCFDataRow_row_num = Slot(uri=BASALT_SCHEMA.row_num, name="XASLCFDataRo
 slots.XASLCFDataRow_x_val = Slot(uri=BASALT_SCHEMA.x_val, name="XASLCFDataRow_x_val", curie=BASALT_SCHEMA.curie('x_val'),
                    model_uri=BASALT_SCHEMA.XASLCFDataRow_x_val, domain=XASLCFDataRow, range=float)
 
-slots.organism_strain_identifier = Slot(uri=BASALT_SCHEMA.strain_identifier, name="organism_strain_identifier", curie=BASALT_SCHEMA.curie('strain_identifier'),
-                   model_uri=BASALT_SCHEMA.organism_strain_identifier, domain=Organism, range=str)
+slots.Organism_strain_identifier = Slot(uri=BASALT_SCHEMA.strain_identifier, name="Organism_strain_identifier", curie=BASALT_SCHEMA.curie('strain_identifier'),
+                   model_uri=BASALT_SCHEMA.Organism_strain_identifier, domain=Organism, range=str)
 
-slots.organism_organism_name = Slot(uri=BASALT_SCHEMA.name, name="organism_organism_name", curie=BASALT_SCHEMA.curie('name'),
-                   model_uri=BASALT_SCHEMA.organism_organism_name, domain=Organism, range=str)
+slots.Organism_name = Slot(uri=BASALT_SCHEMA.name, name="Organism_name", curie=BASALT_SCHEMA.curie('name'),
+                   model_uri=BASALT_SCHEMA.Organism_name, domain=Organism, range=str)
 
-slots.organism_strain_source = Slot(uri=BASALT_SCHEMA.strain_source, name="organism_strain_source", curie=BASALT_SCHEMA.curie('strain_source'),
-                   model_uri=BASALT_SCHEMA.organism_strain_source, domain=Organism, range=Optional[str])
+slots.Organism_organism_name = Slot(uri=BASALT_SCHEMA.organism_name, name="Organism_organism_name", curie=BASALT_SCHEMA.curie('organism_name'),
+                   model_uri=BASALT_SCHEMA.Organism_organism_name, domain=Organism, range=Optional[str])
 
-slots.organism_strain_mutation = Slot(uri=BASALT_SCHEMA.strain_mutation, name="organism_strain_mutation", curie=BASALT_SCHEMA.curie('strain_mutation'),
-                   model_uri=BASALT_SCHEMA.organism_strain_mutation, domain=Organism, range=Optional[str])
+slots.Organism_strain_source = Slot(uri=BASALT_SCHEMA.strain_source, name="Organism_strain_source", curie=BASALT_SCHEMA.curie('strain_source'),
+                   model_uri=BASALT_SCHEMA.Organism_strain_source, domain=Organism, range=Optional[str])
 
-slots.organism_modification_method = Slot(uri=BASALT_SCHEMA.modification_method, name="organism_modification_method", curie=BASALT_SCHEMA.curie('modification_method'),
-                   model_uri=BASALT_SCHEMA.organism_modification_method, domain=Organism, range=Optional[Union[str, "ModificationMethodEnum"]])
+slots.Organism_strain_mutation = Slot(uri=BASALT_SCHEMA.strain_mutation, name="Organism_strain_mutation", curie=BASALT_SCHEMA.curie('strain_mutation'),
+                   model_uri=BASALT_SCHEMA.Organism_strain_mutation, domain=Organism, range=Optional[str])
 
-slots.organism_trophic_level = Slot(uri=BASALT_SCHEMA.trophic_level, name="organism_trophic_level", curie=BASALT_SCHEMA.curie('trophic_level'),
-                   model_uri=BASALT_SCHEMA.organism_trophic_level, domain=Organism, range=Optional[Union[str, "TrophicLevelEnum"]])
+slots.Organism_modification_method = Slot(uri=BASALT_SCHEMA.modification_method, name="Organism_modification_method", curie=BASALT_SCHEMA.curie('modification_method'),
+                   model_uri=BASALT_SCHEMA.Organism_modification_method, domain=Organism, range=Optional[Union[str, "ModificationMethodEnum"]])
+
+slots.Organism_trophic_level = Slot(uri=BASALT_SCHEMA.trophic_level, name="Organism_trophic_level", curie=BASALT_SCHEMA.curie('trophic_level'),
+                   model_uri=BASALT_SCHEMA.Organism_trophic_level, domain=Organism, range=Optional[Union[str, "TrophicLevelEnum"]])
 
 slots.Site_elev = Slot(uri=BASALT_SCHEMA.elev, name="Site_elev", curie=BASALT_SCHEMA.curie('elev'),
                    model_uri=BASALT_SCHEMA.Site_elev, domain=Site, range=str)
@@ -21382,4 +21411,3 @@ slots.Study_external_identifiers = Slot(uri=BASALT_SCHEMA.external_identifiers, 
 
 slots.ProjectParticipant_person = Slot(uri=BASALT_SCHEMA.person, name="ProjectParticipant_person", curie=BASALT_SCHEMA.curie('person'),
                    model_uri=BASALT_SCHEMA.ProjectParticipant_person, domain=ProjectParticipant, range=Union[str, PersonValueId])
-

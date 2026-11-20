@@ -5,7 +5,7 @@ title: Slot definitions for the BASALT Schema
 description: |-
   Slot definitions for basalt-schema in one file for better 
   maintainability and reusability.
-license: MIT
+license: CC0-1.0
 see_also:
   - https://emsl-computing.github.io/BASALT-Schema
   - https://github.com/EMSL-Computing/BASALT-Schema
@@ -1738,7 +1738,7 @@ slots:
       FK reference to an organism representing the biological identity
       strain, isolate, engineered construct) that this sample or activity
       is associated with.
-    range: organism
+    range: Organism
     required: false
     aliases:
       - strain_ref
@@ -3230,7 +3230,7 @@ slots:
     
   strain_ref:
     description: FK reference to a Strain purchasedMaterial used in the activity
-    range: organism
+    range: Organism
     required: false
 
   strain_source:

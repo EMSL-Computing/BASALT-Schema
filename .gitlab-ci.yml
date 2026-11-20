@@ -1,0 +1,61 @@
+---
+# GitLab CI for the BASALT schema. (.github/workflows/ is template boilerplate
+# and does not run on gitlab.pnnl.gov.)
+
+stages:
+  - check
+
+variables:
+  UV_CACHE_DIR: "$CI_PROJECT_DIR/.uv-cache"
+  UV_LINK_MODE: copy
+  GIT_DEPTH: 0  # full history so tags and the MR merge-base are available
+
+default:
+  image: ghcr.io/astral-sh/uv:python3.13-bookworm
+  cache:
+    key:
+      files: [uv.lock]
+    paths: [.uv-cache]
+
+# Breaking-change detection (#33 item 2).
+#   * vs the MR's merge-base with its target branch: fails the job if this MR
+#     introduces breaking changes, unless the MR has the label
+#     `breaking-change-ok` (re-run the pipeline after adding the label).
+#   * vs the latest tag: informational running list since the last release.
+# Both reports go into one MR comment (when SCHEMA_DIFF_TOKEN is set) and are
+# kept as job artifacts.
+breaking-changes:
+  stage: check
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  before_script:
+    - git fetch --tags --quiet
+    - uv sync --no-dev --frozen --quiet
+  script:
+    - BRANCH_FAILED=0
+    - >
+      uv run python util/schema_diff.py
+      --base "$CI_MERGE_REQUEST_DIFF_BASE_SHA"
+      --title "Breaking changes in this MR (vs \`$CI_MERGE_REQUEST_TARGET_BRANCH_NAME\`)"
+      --output branch-report.md --fail-on-breaking || BRANCH_FAILED=1
+    - LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || true)
+    - |
+      if [ -n "$LAST_TAG" ]; then
+        uv run python util/schema_diff.py --base "$LAST_TAG" \
+          --title "Schema changes since \`$LAST_TAG\`" --output tag-report.md --suggest-version
+      else
+        printf '### No tags yet\n\nNo release to compare against.\n' > tag-report.md
+      fi
+    - cat branch-report.md tag-report.md
+    - uv run python util/post_mr_note.py branch-report.md tag-report.md || echo "Could not post MR comment."
+    - |
+      if [ "$BRANCH_FAILED" = 1 ]; then
+        case ",$CI_MERGE_REQUEST_LABELS," in
+          *,breaking-change-ok,*) echo "Breaking changes acknowledged via label." ;;
+          *) echo "Breaking changes found. Add the 'breaking-change-ok' label and re-run to accept them."; exit 1 ;;
+        esac
+      fi
+  artifacts:
+    when: always
+    paths: [branch-report.md, tag-report.md]
+    expire_in: 30 days

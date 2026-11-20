@@ -5,7 +5,7 @@ title: BASALT Sample Class Schema
 description: |-
   LinkML-based schema for sample classes for BASALT.
   This schema defines the data models for samples, sample type subclasses, and processed samples.
-license: MIT
+license: CC0-1.0
 see_also:
   - https://emsl-computing.github.io/BASALT-Schema
   - https://github.com/EMSL-Computing/BASALT-Schema
