@@ -5,6 +5,7 @@ title: 96-Well Plate Workflows   V2 with Entities, Culture Activities, Montana S
 description: |-
   Comprehensive schema delta for 96-well plate workflows (AMP2 + Ecoplate)
   with upstream culture growth activities and generalised processing hierarchy.
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
