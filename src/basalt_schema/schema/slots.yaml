@@ -3261,8 +3261,10 @@ slots:
       - make this inlined/multivalued?
 
   substances_used:
-    range: SubstancesUsedLink
-    description: A reference to substances used in a SampleProcessing activity.
+    range: SampleProcessingSubstance
+    multivalued: true
+    inlined_as_list: true
+    description: The substances used in this activity, with their volumes and concentrations.
 
   sulfate:
     description: 'Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)'

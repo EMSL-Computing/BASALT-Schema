@@ -182,26 +182,12 @@ classes:
       - final_mass_mg
       - final_vol_ml
 
-  SubstancesUsedLink:
-    description: >-
-      A link between a SampleProcessing activity and a PortionOfSubstance that was used in it.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      sample_processing_substance:
-        range: SampleProcessingSubstance
-        description: A substance that was used in the SampleProcessing activity.
-      sample_processing_id:
-        range: SampleProcessing
-        description: The SampleProcessing activity in which the substance was used.
-
   SampleProcessingSubstance:
     description: >-
       A portion of a substance with specific characteristics, as used in a 
-      SampleProcessing activity. Multiple substances may be used in a single 
-      SampleProcessing activity, and the same substance may be used in multiple 
-      SampleProcessing activities.
+      SampleProcessing activity. Each record describes one use: an activity owns
+      its substances through its substances_used slot, and the volume and
+      concentrations here belong to that use only.
     slots:
       - id
       - volume_ml

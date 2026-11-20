@@ -217,6 +217,13 @@ classes:
         range: string
       execution_resource:
         range: ExecutionResourceEnum
+      functional_annotations:
+        range: FunctionalAnnotationCount
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          The functional annotation identifiers this activity used, each with its
+          count.
 
   AlternativeIdentifier:
     description: >-
@@ -230,6 +237,9 @@ classes:
       alternate_identifier_type:
         range: AlternateIdentifierType
         required: true
+      provider:
+        range: InstrumentAltIdProviderEnum
+        description: The system that issued this identifier (e.g., NEXUS, DMS).
 
   FunctionalAnnotationIdentifier:
     description: >-
@@ -281,6 +291,17 @@ classes:
       other_properties:
         range: string
         description: Other important properties of the instrument that are not captured in other fields.
+      alternative_identifiers:
+        range: AlternativeIdentifier
+        multivalued: true
+        inlined_as_list: true
+        description: Identifiers for this instrument issued by other systems (e.g., NEXUS, DMS).
+      custodians:
+        range: Custodian
+        multivalued: true
+        description: >-
+          People responsible for the instrument's maintenance, calibration, and
+          proper use.
 
   OntologyClass: # table has no data
     description: >-
@@ -344,21 +365,6 @@ classes:
     slots:
       - id
       - person
-
-  InstrumentAlternativeIdentifier:
-    description: >-
-      A link between an instrument and an alternative identifier assigned to it by an external provider.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      alt_id:
-        range: AlternativeIdentifier
-      instrument_alt_id_provider:
-        range: InstrumentAltIdProviderEnum
-      instrument_id:
-        range: Instrument
-        required: true
 
   LabDevice:
     description: |-
@@ -468,30 +474,12 @@ classes:
         agree on in_run, since a step belongs to exactly one run. Enforce with a
         database-level check or a validation rule.
 
-  InstrumentCustodian:
+  FunctionalAnnotationCount:
     description: |-
-      A link between an instrument and a custodian (person) responsible for it.
-      This class captures the relationship between an instrument and the person
-      who is responsible for its maintenance, calibration, and proper use.
+      One functional annotation identifier used by a DataProcessingActivity, with
+      its count. Owned by the activity through its functional_annotations slot.
     attributes:
-      instrument_id:
-        range: Instrument
-        required: true
-      custodian_id:
-        range: Custodian
-        required: true
-
-
-  WorkflowExecutionFunctionalAnnotation:
-    description: |-
-      A link between a workflow execution and a functional annotation identifier.
-      This class captures the relationship between a workflow execution and the
-      functional annotation identifier that was used in the analysis.
-    attributes:
-      workflow_id:
-        range: DataProcessingActivity
-        required: true
-      functional_annotation_id:
+      annotation:
         range: FunctionalAnnotationIdentifier
         required: true
       count:

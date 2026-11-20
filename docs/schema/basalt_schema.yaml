@@ -11158,7 +11158,7 @@ slots:
   substances_used:
     name: substances_used
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/substances_used
-    description: A reference to substances used in a SampleProcessing activity.
+    description: The substances used in this activity, with their volumes and concentrations.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:substances_used
     owner: ResuspensionProcess
@@ -11168,7 +11168,10 @@ slots:
     - Dilution
     - Extraction
     - ResuspensionProcess
-    range: SubstancesUsedLink
+    range: SampleProcessingSubstance
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   sulfate:
     name: sulfate
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sulfate
@@ -12475,6 +12478,20 @@ slots:
     domain_of:
     - DataProcessingActivity
     range: ExecutionResourceEnum
+  dataProcessingActivity__functional_annotations:
+    name: dataProcessingActivity__functional_annotations
+    description: The functional annotation identifiers this activity used, each with
+      its count.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    slot_uri: basalt_schema:functional_annotations
+    alias: functional_annotations
+    owner: DataProcessingActivity
+    domain_of:
+    - DataProcessingActivity
+    range: FunctionalAnnotationCount
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   alternativeIdentifier__alternate_id:
     name: alternativeIdentifier__alternate_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12495,6 +12512,16 @@ slots:
     - AlternativeIdentifier
     range: AlternateIdentifierType
     required: true
+  alternativeIdentifier__provider:
+    name: alternativeIdentifier__provider
+    description: The system that issued this identifier (e.g., NEXUS, DMS).
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    slot_uri: basalt_schema:provider
+    alias: provider
+    owner: AlternativeIdentifier
+    domain_of:
+    - AlternativeIdentifier
+    range: InstrumentAltIdProviderEnum
   functionalAnnotationIdentifier__functional_identifier:
     name: functionalAnnotationIdentifier__functional_identifier
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12622,6 +12649,32 @@ slots:
     domain_of:
     - Instrument
     range: string
+  instrument__alternative_identifiers:
+    name: instrument__alternative_identifiers
+    description: Identifiers for this instrument issued by other systems (e.g., NEXUS,
+      DMS).
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    slot_uri: basalt_schema:alternative_identifiers
+    alias: alternative_identifiers
+    owner: Instrument
+    domain_of:
+    - Instrument
+    range: AlternativeIdentifier
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  instrument__custodians:
+    name: instrument__custodians
+    description: People responsible for the instrument's maintenance, calibration,
+      and proper use.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    slot_uri: basalt_schema:custodians
+    alias: custodians
+    owner: Instrument
+    domain_of:
+    - Instrument
+    range: Custodian
+    multivalued: true
   ontologyClass__description:
     name: ontologyClass__description
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12738,45 +12791,6 @@ slots:
     - ContainerAxis
     range: string
     multivalued: true
-  instrumentAlternativeIdentifier__id:
-    name: instrumentAlternativeIdentifier__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: InstrumentAlternativeIdentifier
-    domain_of:
-    - InstrumentAlternativeIdentifier
-    range: uuid
-    required: true
-  instrumentAlternativeIdentifier__alt_id:
-    name: instrumentAlternativeIdentifier__alt_id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:alt_id
-    alias: alt_id
-    owner: InstrumentAlternativeIdentifier
-    domain_of:
-    - InstrumentAlternativeIdentifier
-    range: AlternativeIdentifier
-  instrumentAlternativeIdentifier__instrument_alt_id_provider:
-    name: instrumentAlternativeIdentifier__instrument_alt_id_provider
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:instrument_alt_id_provider
-    alias: instrument_alt_id_provider
-    owner: InstrumentAlternativeIdentifier
-    domain_of:
-    - InstrumentAlternativeIdentifier
-    range: InstrumentAltIdProviderEnum
-  instrumentAlternativeIdentifier__instrument_id:
-    name: instrumentAlternativeIdentifier__instrument_id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:instrument_id
-    alias: instrument_id
-    owner: InstrumentAlternativeIdentifier
-    domain_of:
-    - InstrumentAlternativeIdentifier
-    range: Instrument
-    required: true
   labDevice__description:
     name: labDevice__description
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -12870,54 +12884,24 @@ slots:
     - ProcessingSampleLink
     range: SampleRole
     required: true
-  instrumentCustodian__instrument_id:
-    name: instrumentCustodian__instrument_id
+  functionalAnnotationCount__annotation:
+    name: functionalAnnotationCount__annotation
     from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:instrument_id
-    alias: instrument_id
-    owner: InstrumentCustodian
+    slot_uri: basalt_schema:annotation
+    alias: annotation
+    owner: FunctionalAnnotationCount
     domain_of:
-    - InstrumentCustodian
-    range: Instrument
-    required: true
-  instrumentCustodian__custodian_id:
-    name: instrumentCustodian__custodian_id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:custodian_id
-    alias: custodian_id
-    owner: InstrumentCustodian
-    domain_of:
-    - InstrumentCustodian
-    range: Custodian
-    required: true
-  workflowExecutionFunctionalAnnotation__workflow_id:
-    name: workflowExecutionFunctionalAnnotation__workflow_id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:workflow_id
-    alias: workflow_id
-    owner: WorkflowExecutionFunctionalAnnotation
-    domain_of:
-    - WorkflowExecutionFunctionalAnnotation
-    range: DataProcessingActivity
-    required: true
-  workflowExecutionFunctionalAnnotation__functional_annotation_id:
-    name: workflowExecutionFunctionalAnnotation__functional_annotation_id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:functional_annotation_id
-    alias: functional_annotation_id
-    owner: WorkflowExecutionFunctionalAnnotation
-    domain_of:
-    - WorkflowExecutionFunctionalAnnotation
+    - FunctionalAnnotationCount
     range: FunctionalAnnotationIdentifier
     required: true
-  workflowExecutionFunctionalAnnotation__count:
-    name: workflowExecutionFunctionalAnnotation__count
+  functionalAnnotationCount__count:
+    name: functionalAnnotationCount__count
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slot_uri: basalt_schema:count
     alias: count
-    owner: WorkflowExecutionFunctionalAnnotation
+    owner: FunctionalAnnotationCount
     domain_of:
-    - WorkflowExecutionFunctionalAnnotation
+    - FunctionalAnnotationCount
     range: double
   changelog__version:
     name: changelog__version
@@ -17242,37 +17226,6 @@ slots:
     domain_of:
     - NormalizationProcess
     range: float
-  substancesUsedLink__id:
-    name: substancesUsedLink__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: SubstancesUsedLink
-    domain_of:
-    - SubstancesUsedLink
-    range: uuid
-    required: true
-  substancesUsedLink__sample_processing_substance:
-    name: substancesUsedLink__sample_processing_substance
-    description: A substance that was used in the SampleProcessing activity.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
-    slot_uri: basalt_schema:sample_processing_substance
-    alias: sample_processing_substance
-    owner: SubstancesUsedLink
-    domain_of:
-    - SubstancesUsedLink
-    range: SampleProcessingSubstance
-  substancesUsedLink__sample_processing_id:
-    name: substancesUsedLink__sample_processing_id
-    description: The SampleProcessing activity in which the substance was used.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
-    slot_uri: basalt_schema:sample_processing_id
-    alias: sample_processing_id
-    owner: SubstancesUsedLink
-    domain_of:
-    - SubstancesUsedLink
-    range: SampleProcessing
   sampleProcessingSubstance__known_as:
     name: sampleProcessingSubstance__known_as
     description: Common name or identifier for the substance.
@@ -20673,7 +20626,10 @@ slots:
     - SampleStorage
     is_usage_slot: true
     usage_slot_name: substances_used
-    range: SubstancesUsedLink
+    range: SampleProcessingSubstance
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   CoreSection_core_section:
     name: CoreSection_core_section
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/core_section
@@ -21167,6 +21123,7 @@ classes:
     - dataProcessingActivity__software_version
     - dataProcessingActivity__software_poc
     - dataProcessingActivity__execution_resource
+    - dataProcessingActivity__functional_annotations
     slot_usage:
       description:
         name: description
@@ -21192,6 +21149,13 @@ classes:
       execution_resource:
         name: execution_resource
         range: ExecutionResourceEnum
+      functional_annotations:
+        name: functional_annotations
+        description: The functional annotation identifiers this activity used, each
+          with its count.
+        range: FunctionalAnnotationCount
+        multivalued: true
+        inlined_as_list: true
     class_uri: basalt_schema:DataProcessingActivity
   AlternativeIdentifier:
     name: AlternativeIdentifier
@@ -21203,6 +21167,7 @@ classes:
     - id
     - alternativeIdentifier__alternate_id
     - alternativeIdentifier__alternate_identifier_type
+    - alternativeIdentifier__provider
     attributes:
       alternate_id:
         name: alternate_id
@@ -21212,6 +21177,10 @@ classes:
         name: alternate_identifier_type
         range: AlternateIdentifierType
         required: true
+      provider:
+        name: provider
+        description: The system that issued this identifier (e.g., NEXUS, DMS).
+        range: InstrumentAltIdProviderEnum
     class_uri: basalt_schema:AlternativeIdentifier
   FunctionalAnnotationIdentifier:
     name: FunctionalAnnotationIdentifier
@@ -21254,6 +21223,8 @@ classes:
     - instrument__instrument_parameters
     - instrument__mass_analyzer_type
     - instrument__other_properties
+    - instrument__alternative_identifiers
+    - instrument__custodians
     attributes:
       name:
         name: name
@@ -21296,6 +21267,19 @@ classes:
         description: Other important properties of the instrument that are not captured
           in other fields.
         range: string
+      alternative_identifiers:
+        name: alternative_identifiers
+        description: Identifiers for this instrument issued by other systems (e.g.,
+          NEXUS, DMS).
+        range: AlternativeIdentifier
+        multivalued: true
+        inlined_as_list: true
+      custodians:
+        name: custodians
+        description: People responsible for the instrument's maintenance, calibration,
+          and proper use.
+        range: Custodian
+        multivalued: true
     class_uri: basalt_schema:Instrument
   OntologyClass:
     name: OntologyClass
@@ -21398,33 +21382,6 @@ classes:
     - id
     - person
     class_uri: basalt_schema:Custodian
-  InstrumentAlternativeIdentifier:
-    name: InstrumentAlternativeIdentifier
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/InstrumentAlternativeIdentifier
-    description: A link between an instrument and an alternative identifier assigned
-      to it by an external provider.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slots:
-    - instrumentAlternativeIdentifier__id
-    - instrumentAlternativeIdentifier__alt_id
-    - instrumentAlternativeIdentifier__instrument_alt_id_provider
-    - instrumentAlternativeIdentifier__instrument_id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
-      alt_id:
-        name: alt_id
-        range: AlternativeIdentifier
-      instrument_alt_id_provider:
-        name: instrument_alt_id_provider
-        range: InstrumentAltIdProviderEnum
-      instrument_id:
-        name: instrument_id
-        range: Instrument
-        required: true
-    class_uri: basalt_schema:InstrumentAlternativeIdentifier
   LabDevice:
     name: LabDevice
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/LabDevice
@@ -21573,56 +21530,26 @@ classes:
         - processing_id
         - step_number
         - role
-  InstrumentCustodian:
-    name: InstrumentCustodian
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/InstrumentCustodian
-    description: 'A link between an instrument and a custodian (person) responsible
-      for it.
+  FunctionalAnnotationCount:
+    name: FunctionalAnnotationCount
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/FunctionalAnnotationCount
+    description: 'One functional annotation identifier used by a DataProcessingActivity,
+      with
 
-      This class captures the relationship between an instrument and the person
-
-      who is responsible for its maintenance, calibration, and proper use.'
+      its count. Owned by the activity through its functional_annotations slot.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
-    - instrumentCustodian__instrument_id
-    - instrumentCustodian__custodian_id
+    - functionalAnnotationCount__annotation
+    - functionalAnnotationCount__count
     attributes:
-      instrument_id:
-        name: instrument_id
-        range: Instrument
-        required: true
-      custodian_id:
-        name: custodian_id
-        range: Custodian
-        required: true
-    class_uri: basalt_schema:InstrumentCustodian
-  WorkflowExecutionFunctionalAnnotation:
-    name: WorkflowExecutionFunctionalAnnotation
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/WorkflowExecutionFunctionalAnnotation
-    description: 'A link between a workflow execution and a functional annotation
-      identifier.
-
-      This class captures the relationship between a workflow execution and the
-
-      functional annotation identifier that was used in the analysis.'
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slots:
-    - workflowExecutionFunctionalAnnotation__workflow_id
-    - workflowExecutionFunctionalAnnotation__functional_annotation_id
-    - workflowExecutionFunctionalAnnotation__count
-    attributes:
-      workflow_id:
-        name: workflow_id
-        range: DataProcessingActivity
-        required: true
-      functional_annotation_id:
-        name: functional_annotation_id
+      annotation:
+        name: annotation
         range: FunctionalAnnotationIdentifier
         required: true
       count:
         name: count
         range: double
-    class_uri: basalt_schema:WorkflowExecutionFunctionalAnnotation
+    class_uri: basalt_schema:FunctionalAnnotationCount
   XRayDataGenerationActivity:
     name: XRayDataGenerationActivity
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XRayDataGenerationActivity
@@ -21803,6 +21730,7 @@ classes:
     - dataProcessingActivity__software_version
     - dataProcessingActivity__software_poc
     - dataProcessingActivity__execution_resource
+    - dataProcessingActivity__functional_annotations
     - uses_xas_raw_data
     - xas_filename
     - lcf_type
@@ -22214,6 +22142,7 @@ classes:
     - dataProcessingActivity__software_version
     - dataProcessingActivity__software_poc
     - dataProcessingActivity__execution_resource
+    - dataProcessingActivity__functional_annotations
     - uses_calibration
     - uses_raw_ms_data
     - lims_task_instance_id
@@ -23191,6 +23120,7 @@ classes:
     - dataProcessingActivity__software_version
     - dataProcessingActivity__software_poc
     - dataProcessingActivity__execution_resource
+    - dataProcessingActivity__functional_annotations
     class_uri: basalt_schema:MetagenomicsDataProcessingActivity
   BulkDensityDataGenerationActivity:
     name: BulkDensityDataGenerationActivity
@@ -29331,36 +29261,13 @@ classes:
     - final_mass_mg
     - final_vol_ml
     class_uri: basalt_schema:PoolingProcess
-  SubstancesUsedLink:
-    name: SubstancesUsedLink
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SubstancesUsedLink
-    description: A link between a SampleProcessing activity and a PortionOfSubstance
-      that was used in it.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
-    slots:
-    - substancesUsedLink__id
-    - substancesUsedLink__sample_processing_substance
-    - substancesUsedLink__sample_processing_id
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
-      sample_processing_substance:
-        name: sample_processing_substance
-        description: A substance that was used in the SampleProcessing activity.
-        range: SampleProcessingSubstance
-      sample_processing_id:
-        name: sample_processing_id
-        description: The SampleProcessing activity in which the substance was used.
-        range: SampleProcessing
-    class_uri: basalt_schema:SubstancesUsedLink
   SampleProcessingSubstance:
     name: SampleProcessingSubstance
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SampleProcessingSubstance
-    description: A portion of a substance with specific characteristics, as used in
-      a  SampleProcessing activity. Multiple substances may be used in a single  SampleProcessing
-      activity, and the same substance may be used in multiple  SampleProcessing activities.
+    description: 'A portion of a substance with specific characteristics, as used
+      in a  SampleProcessing activity. Each record describes one use: an activity
+      owns its substances through its substances_used slot, and the volume and concentrations
+      here belong to that use only.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     slots:
     - id
@@ -29816,6 +29723,6 @@ classes:
         - descendant_id
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-11-12T11:16:38'
-source_file_size: 22447
-generation_date: '2026-11-12T11:22:57'
+source_file_date: '2026-11-20T12:36:38'
+source_file_size: 22212
+generation_date: '2026-11-20T12:38:08'
