@@ -5,7 +5,7 @@ title: Slot definitions for the BASALT Schema
 description: |-
   Slot definitions for basalt-schema in one file for better 
   maintainability and reusability.
-license: MIT
+license: CC0-1.0
 see_also:
   - https://emsl-computing.github.io/BASALT-Schema
   - https://github.com/EMSL-Computing/BASALT-Schema

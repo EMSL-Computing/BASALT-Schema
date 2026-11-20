@@ -22,7 +22,7 @@ description: |-
   
   This file documents the ingest contract for rapid validation.
   The operational HydraulicPropertiesProduct class lives in the main schema.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/

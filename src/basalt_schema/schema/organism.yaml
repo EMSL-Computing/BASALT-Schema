@@ -5,7 +5,7 @@ title: BASALT Schema - Organism
 description: |-
   Reference data classes for biological identities (strains, isolates, engineered
   constructs) that can be instantiated by multiple physical samples.
-license: MIT
+license: CC0-1.0
 see_also:
   - https://emsl-computing.github.io/BASALT-Schema
   - https://github.com/EMSL-Computing/BASALT-Schema

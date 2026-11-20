@@ -3,7 +3,7 @@ name: basalt-schema-sample-processing
 title: Sample processing subclasses for BASALT
 description: |
   Sample processing subclasses for BASALT.
-license: MIT
+license: CC0-1.0
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
   linkml: https://w3id.org/linkml/

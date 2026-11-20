@@ -23,7 +23,7 @@ description: |-
   
   Covers Microbial Biomass Carbon (MBC) and Microbial Biomass Nitrogen (MBN)
   measured by chloroform fumigation-extraction.
-license: MIT
+license: CC0-1.0
 
 prefixes:
   basalt_schema: https://emsl-computing.github.io/BASALT-Schema/
